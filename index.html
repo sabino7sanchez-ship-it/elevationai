@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Capital Lending - Your Personalized Quote</title>
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-light: #243660;
+    --accent: #7B61FF;
+    --accent-light: #A78BFA;
+    --white: #FFFFFF;
+    --light-gray: #F4F5F7;
+    --medium-gray: #D1D5DB;
+    --dark-gray: #4B5563;
+    --green: #16A34A;
+    --green-light: #DCFCE7;
+    --red: #DC2626;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--light-gray);
+    color: #1F2937;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 20px 16px 16px;
+    text-align: center;
+  }
+  .header::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background: rgba(255,255,255,0.85);
+    margin-top: 16px;
+  }
+  .logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .logo-sub {
+    font-size: 12px;
+    color: var(--medium-gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ── GREETING ── */
+  .greeting {
+    text-align: center;
+    padding: 28px 16px 8px;
+  }
+  .greeting h1 {
+    font-size: 21px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .greeting p {
+    font-size: 14px;
+    color: var(--dark-gray);
+    margin-top: 6px;
+  }
+
+  /* ── EXPIRY BADGE ── */
+  .expiry-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FFF7ED;
+    border: 1px solid #FED7AA;
+    color: #9A3412;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+  .expiry-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #EA580C;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ── EQUITY BAR ── */
+  .equity-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 16px 4px;
+  }
+  .equity-bar-wrap {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .equity-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--dark-gray);
+    margin-bottom: 6px;
+  }
+  .equity-bar-label span { font-weight: 600; }
+  .equity-bar-track {
+    height: 10px;
+    background: #FEE2E2;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .equity-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), #22C55E);
+    border-radius: 99px;
+    transition: width 1s ease;
+  }
+  .equity-bar-sub {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    margin-top: 5px;
+    color: #9CA3AF;
+  }
+  .equity-bar-sub .owed { color: #EF4444; font-weight: 600; }
+  .equity-bar-sub .equity { color: var(--green); font-weight: 600; }
+
+  /* ── PROPERTY SNAPSHOT ── */
+  .snapshot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px 16px 16px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .snap-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 14px 10px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .snap-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--dark-gray);
+    margin-bottom: 4px;
+  }
+  .snap-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    word-break: break-word;
+  }
+  .snap-value.text-val { font-size: 15px; }
+  .snap-value.equity { color: var(--green); }
+
+  /* ── OPTION TOGGLE ── */
+  .option-toggle-wrap {
+    padding: 4px 16px 8px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .option-toggle-label {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .option-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  .option-btn {
+    padding: 14px 8px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    background: transparent;
+    color: var(--dark-gray);
+    position: relative;
+  }
+  .option-btn.active {
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(27,42,74,0.3);
+  }
+  .option-btn span {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 2px;
+    opacity: 0.8;
+  }
+  .recommended-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--green);
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    display: none;
+  }
+
+  /* ── COMPARISON CARDS ── */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .loan-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 18px 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    text-align: center;
+    position: relative;
+  }
+  .loan-card.current { border-top: 3px solid var(--medium-gray); }
+  .loan-card.new-loan {
+    border-top: 3px solid var(--accent);
+    background: linear-gradient(180deg, #F0EDFF 0%, var(--white) 40%);
+  }
+  .card-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--dark-gray);
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .card-title.new-title { color: var(--navy); }
+  .card-row { margin-bottom: 12px; }
+  .card-row-label {
+    font-size: 10px;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .card-row-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-top: 2px;
+  }
+  .card-row-value.rate { font-size: 24px; }
+  .card-row-value.payment { font-size: 22px; }
+
+  /* savings badge on new loan card */
+  .savings-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-top: 4px;
+  }
+  .rate-diff {
+    display: inline-block;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin-top: 4px;
+  }
+
+  /* ── SAVINGS SECTION ── */
+  .savings-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 16px 16px;
+  }
+  .savings-card {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 24px 18px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .savings-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+  }
+  .savings-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .savings-monthly {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .savings-monthly-label {
+    font-size: 13px;
+    color: var(--medium-gray);
+    margin-bottom: 20px;
+  }
+
+  /* ── TIME TOGGLE ── */
+  .time-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .time-btn {
+    padding: 10px 4px;
+    border: 1px solid rgba(123,97,255,0.3);
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    background: transparent;
+    color: var(--medium-gray);
+  }
+  .time-btn.active {
+    background: var(--accent);
+    color: var(--navy);
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px rgba(123,97,255,0.3);
+  }
+  .savings-total-value {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+  .savings-total-label {
+    font-size: 13px;
+    color: var(--medium-gray);
+    margin-top: 4px;
+  }
+
+  /* what you could do with savings */
+  .savings-use {
+    margin-top: 14px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--medium-gray);
+    font-style: italic;
+  }
+  .savings-use span { color: var(--accent-light); font-style: normal; font-weight: 600; }
+
+  /* ── CTA ── */
+  .cta-section {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 8px 16px 16px;
+    text-align: center;
+  }
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px;
+    background: var(--accent);
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(123,97,255,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(123,97,255,0.4); }
+  .cta-btn:active { transform: scale(0.98); }
+  .cta-icon { font-size: 18px; }
+  .cta-note {
+    font-size: 11px;
+    color: var(--dark-gray);
+    margin-top: 10px;
+  }
+
+  /* ── NEXT STEPS ── */
+  .next-steps {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 16px 16px;
+  }
+  .next-steps-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 18px 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .next-steps-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .step:last-child { margin-bottom: 0; }
+  .step-num {
+    width: 24px; height: 24px;
+    min-width: 24px;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-text {
+    font-size: 13px;
+    color: var(--dark-gray);
+    padding-top: 2px;
+  }
+  .step-text strong { color: var(--navy); }
+
+  .footer {
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 11px;
+    color: #9CA3AF;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .nmls { font-size: 10px; margin-top: 4px; }
+
+  /* ── ADMIN FORM ── */
+  .admin-wrap {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .admin-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .admin-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .admin-sub {
+    font-size: 13px;
+    color: var(--dark-gray);
+    margin-bottom: 20px;
+  }
+  .form-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .form-group { margin-bottom: 14px; }
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 4px;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--navy);
+    transition: border 0.2s;
+    background: var(--white);
+  }
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(123,97,255,0.15);
+  }
+  .form-group input.error {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(220,38,38,0.1);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .generate-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    transition: opacity 0.15s;
+  }
+  .generate-btn:active { opacity: 0.9; }
+  .error-msg {
+    color: var(--red);
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: none;
+    padding: 8px 10px;
+    background: #FEF2F2;
+    border-radius: 8px;
+  }
+  .warn-msg {
+    color: #92400E;
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 600;
+    display: none;
+    padding: 8px 10px;
+    background: #FFFBEB;
+    border-radius: 8px;
+  }
+  .link-output {
+    margin-top: 14px;
+    display: none;
+  }
+  .link-output textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--navy);
+    background: #F5F3FF;
+    resize: none;
+    height: 80px;
+    word-break: break-all;
+  }
+  .copy-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: var(--green);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  .copy-btn.copied { background: var(--navy); color: var(--white); }
+  .preview-link {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: var(--dark-gray);
+    margin-top: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* ── SOCIAL BUTTONS ── */
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--white);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .social-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .social-btn.ig { background: linear-gradient(135deg, #833AB4, #E1306C, #F77737); }
+  .social-btn.fb { background: #1877F2; }
+  .social-btn.li { background: #0A66C2; }
+  .social-btn.tt { background: #010101; }
+  .social-icon { font-size: 16px; }
+
+  .quote-view { display: none; }
+  .admin-view { display: none; }
+
+  /* count-up animation */
+  .count-anim { transition: opacity 0.15s; }
+
+  /* ── ACCESS GATE ── */
+  .gate-view { display: none; }
+  .gate-wrap {
+    max-width: 380px;
+    margin: 80px auto 0;
+    padding: 16px;
+    text-align: center;
+  }
+  .gate-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 36px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+  .gate-icon { font-size: 40px; margin-bottom: 12px; }
+  .gate-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .gate-sub {
+    font-size: 13px;
+    color: var(--dark-gray);
+    margin-bottom: 20px;
+  }
+  .gate-input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--medium-gray);
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 8px;
+    font-weight: 700;
+    color: var(--navy);
+    transition: border 0.2s;
+  }
+  .gate-input:focus {
+    outline: none;
+    border-color: #7B61FF;
+    box-shadow: 0 0 0 3px rgba(123,97,255,0.15);
+  }
+  .gate-input.error { border-color: var(--red); }
+  .gate-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 14px;
+    letter-spacing: 0.5px;
+  }
+  .gate-error {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    display: none;
+  }
+  .gate-attempts {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-top: 8px;
+  }
+  .quota-msg {
+    color: #92400E;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 14px;
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: none;
+  }
+</style>
+<script data-goatcounter="https://sanchezelevationai.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- ACCESS GATE                               -->
+<!-- ══════════════════════════════════════════ -->
+<div class="gate-view" id="gateView">
+  <div class="header">
+    <div class="logo-text">West Capital Lending</div>
+    <div class="logo-sub">Agent Portal</div>
+  </div>
+  <div class="gate-wrap">
+    <div class="gate-card">
+      <div class="gate-icon">🔐</div>
+      <div class="gate-title">Agent Access Required</div>
+      <div class="gate-sub">Enter your access code to continue</div>
+      <input type="password" class="gate-input" id="gateCode" maxlength="6" placeholder="••••" inputmode="numeric">
+      <button class="gate-btn" onclick="checkGate()">Unlock</button>
+      <div class="gate-error" id="gateError">Incorrect code. Try again.</div>
+      <div class="gate-attempts" id="gateAttempts"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div style="margin-top:8px;">Powered by <span style="font-weight:700;color:#7B61FF;">Sanchez_ElevationAI</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- ADMIN VIEW                                -->
+<!-- ══════════════════════════════════════════ -->
+<div class="admin-view" id="adminView">
+  <div class="header">
+    <div class="logo-text">West Capital Lending</div>
+    <div class="logo-sub">Quote Generator</div>
+  </div>
+
+  <div class="admin-wrap">
+    <div class="admin-card">
+      <div class="admin-title">Generate Client Quote</div>
+      <div class="admin-sub">Fill in the numbers, hit generate, text the link.</div>
+
+      <div class="form-section-title">Your Contact Info</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name (Agent)</label>
+          <input type="text" id="f_agent" placeholder="e.g. Manny">
+        </div>
+        <div class="form-group">
+          <label>Your Phone Number</label>
+          <input type="tel" id="f_phone" placeholder="9495418112" value="9495418112">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>NMLS Number</label>
+        <input type="text" id="f_nmls" placeholder="e.g. 123456">
+      </div>
+
+      <div class="form-section-title">Social Media Links</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Instagram Handle</label>
+          <input type="text" id="f_ig" placeholder="@westcapitallending">
+        </div>
+        <div class="form-group">
+          <label>Facebook URL</label>
+          <input type="text" id="f_fb" placeholder="facebook.com/westcapital">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>LinkedIn URL</label>
+          <input type="text" id="f_li" placeholder="linkedin.com/in/manny">
+        </div>
+        <div class="form-group">
+          <label>TikTok Handle</label>
+          <input type="text" id="f_tt" placeholder="@westcapitallending">
+        </div>
+      </div>
+
+      <div class="form-section-title">Client Info</div>
+      <div class="form-group">
+        <label>Client First Name <span style="color:var(--red)">*</span></label>
+        <input type="text" id="f_name" placeholder="e.g. John" required>
+      </div>
+
+      <div class="form-section-title">Property</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Property Value <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_propval" placeholder="500000" inputmode="decimal">
+        </div>
+        <div class="form-group">
+          <label>Credit Rating</label>
+          <select id="f_credit" style="width:100%;padding:10px 12px;border:1px solid var(--medium-gray);border-radius:8px;font-size:15px;color:var(--navy);background:var(--white);transition:border 0.2s;cursor:pointer;">
+            <option value="Excellent">Excellent (750+)</option>
+            <option value="Good">Good (700–749)</option>
+            <option value="Fair">Fair (650–699)</option>
+            <option value="Below Average">Below Average (600–649)</option>
+            <option value="Poor">Poor (below 600)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section-title">Current Loan</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Current Balance <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_cbal" placeholder="350000" inputmode="decimal">
+        </div>
+        <div class="form-group">
+          <label>Current Rate (%) <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_crate" placeholder="7.25" inputmode="decimal">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Current Monthly Payment <span style="color:var(--red)">*</span></label>
+        <input type="text" id="f_cpay" placeholder="2388" inputmode="decimal">
+      </div>
+
+      <div class="form-section-title">Option A — Lower Cost</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>New Loan Amount <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_a_loan" placeholder="345000" inputmode="decimal">
+        </div>
+        <div class="form-group">
+          <label>New Rate (%) <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_a_rate" placeholder="6.25" inputmode="decimal">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>New Monthly Payment <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_a_pay" placeholder="2182" inputmode="decimal">
+        </div>
+        <div class="form-group">
+          <label>Closing Costs ($)</label>
+          <input type="text" id="f_a_cost" placeholder="500" inputmode="decimal">
+        </div>
+      </div>
+
+      <div class="form-section-title">Option B — Lower Rate</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>New Loan Amount <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_b_loan" placeholder="350000" inputmode="decimal">
+        </div>
+        <div class="form-group">
+          <label>New Rate (%) <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_b_rate" placeholder="5.875" inputmode="decimal">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>New Monthly Payment <span style="color:var(--red)">*</span></label>
+          <input type="text" id="f_b_pay" placeholder="2059" inputmode="decimal">
+        </div>
+        <div class="form-group">
+          <label>Closing Costs ($)</label>
+          <input type="text" id="f_b_cost" placeholder="4500" inputmode="decimal">
+        </div>
+      </div>
+
+      <div class="form-section-title">Loan Term</div>
+      <div class="form-group">
+        <label>Term (years)</label>
+        <input type="text" id="f_term" placeholder="30" inputmode="numeric" value="30">
+      </div>
+
+      <button class="generate-btn" onclick="generateLink()">Generate Quote Link</button>
+      <div class="quota-msg" id="quotaMsg"></div>
+      <div class="error-msg" id="errorMsg"></div>
+      <div class="warn-msg" id="warnMsg"></div>
+
+      <div class="link-output" id="linkOutput">
+        <textarea id="linkText" readonly></textarea>
+        <button class="copy-btn" id="copyBtn" onclick="copyLink()">Copy Link to Clipboard</button>
+        <a class="preview-link" id="previewLink" target="_blank">Preview as Client →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>West Capital Lending &mdash; Internal Tool</div>
+    <div style="margin-top:8px;">Powered by <span style="font-weight:700;color:var(--accent);">Sanchez_ElevationAI</span></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!-- QUOTE VIEW — Client sees this             -->
+<!-- ══════════════════════════════════════════ -->
+<div class="quote-view" id="quoteView">
+
+  <div class="header">
+    <div class="logo-text">West Capital Lending</div>
+    <div class="logo-sub">Personalized Quote</div>
+  </div>
+
+  <div class="greeting">
+    <h1 id="greetingName">Your Custom Quote</h1>
+    <p>Here's exactly how much you could be saving</p>
+    <div class="expiry-badge">
+      <div class="expiry-dot"></div>
+      Rates valid for 72 hours
+    </div>
+  </div>
+
+  <!-- Equity Bar -->
+  <div class="equity-section">
+    <div class="equity-bar-wrap">
+      <div class="equity-bar-label">
+        <span>Your Home Equity Position</span>
+        <span id="equityPct" style="color:var(--green)">—</span>
+      </div>
+      <div class="equity-bar-track">
+        <div class="equity-bar-fill" id="equityBarFill" style="width:0%"></div>
+      </div>
+      <div class="equity-bar-sub">
+        <span class="owed" id="barOwed">Balance: —</span>
+        <span class="equity" id="barEquity">Equity: —</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Snapshot -->
+  <div class="snapshot">
+    <div class="snap-card">
+      <div class="snap-label">Property Value</div>
+      <div class="snap-value" id="qPropVal">—</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Available Equity</div>
+      <div class="snap-value equity" id="qEquity">—</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Credit Rating</div>
+      <div class="snap-value text-val" id="qCredit">—</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Loan Term</div>
+      <div class="snap-value text-val" id="qTerm">—</div>
+    </div>
+  </div>
+
+  <!-- Option A / B Toggle -->
+  <div class="option-toggle-wrap">
+    <div class="option-toggle-label">Choose Your Priority</div>
+    <div class="option-toggle">
+      <button class="option-btn active" id="optABtn" onclick="setOption('A')">
+        <div class="recommended-badge" id="recBadgeA">Lower Upfront Cost</div>
+        Lower Cost
+        <span>Minimize upfront costs</span>
+      </button>
+      <button class="option-btn" id="optBBtn" onclick="setOption('B')">
+        <div class="recommended-badge" id="recBadgeB">Best Rate</div>
+        Lower Rate
+        <span>Save more over time</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Side-by-Side Comparison -->
+  <div class="comparison">
+    <div class="loan-card current">
+      <div class="card-title">Current Loan</div>
+      <div class="card-row">
+        <div class="card-row-label">Balance</div>
+        <div class="card-row-value" id="qCurBal">—</div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-label">Interest Rate</div>
+        <div class="card-row-value rate" id="qCurRate">—</div>
+      </div>
+      <div class="card-row" style="margin-bottom:0">
+        <div class="card-row-label">Monthly Payment</div>
+        <div class="card-row-value payment" id="qCurPay">—</div>
+      </div>
+    </div>
+    <div class="loan-card new-loan">
+      <div class="card-title new-title">New Loan</div>
+      <div class="card-row">
+        <div class="card-row-label">Loan Amount</div>
+        <div class="card-row-value" id="qNewBal">—</div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-label">Interest Rate</div>
+        <div class="card-row-value rate" id="qNewRate">—</div>
+        <div class="rate-diff" id="qRateDiff">—</div>
+      </div>
+      <div class="card-row">
+        <div class="card-row-label">Monthly Payment</div>
+        <div class="card-row-value payment" id="qNewPay">—</div>
+        <div class="savings-badge" id="qSaveBadge">↓ —/mo</div>
+      </div>
+      <div class="card-row" style="margin-bottom:0" id="qCostRow">
+        <div class="card-row-label">Closing Costs</div>
+        <div class="card-row-value" id="qNewCost" style="font-size:16px">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Savings -->
+  <div class="savings-section">
+    <div class="savings-card">
+      <div class="savings-label">Your Monthly Savings</div>
+      <div class="savings-monthly count-anim" id="qSaveMonth">—</div>
+      <div class="savings-monthly-label">per month back in your pocket</div>
+
+      <div class="time-toggle">
+        <button class="time-btn active" onclick="setTime(1, this)">1 Year</button>
+        <button class="time-btn" onclick="setTime(5, this)">5 Years</button>
+        <button class="time-btn" onclick="setTime(0, this)">Full Loan</button>
+      </div>
+
+      <div class="savings-total-value count-anim" id="qSaveTotal">—</div>
+      <div class="savings-total-label" id="qSaveTotalLabel">Total savings over 1 year</div>
+      <div class="savings-use" id="savingsUse"></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <a class="cta-btn" id="ctaBtn" href="#">
+      <span class="cta-icon">🔒</span>
+      <span id="ctaBtnText">Call Now &mdash; Lock In Your Rate</span>
+    </a>
+    <div class="cta-note">No obligation &bull; Free consultation &bull; Takes 10 minutes</div>
+  </div>
+
+  <!-- Social Media -->
+  <div class="cta-section" style="padding-top:0">
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;" id="socialWrap">
+    </div>
+    <div style="font-size:11px; color:var(--dark-gray); margin-top:8px;">Follow us for rates & tips</div>
+  </div>
+
+  <!-- Next Steps -->
+  <div class="next-steps">
+    <div class="next-steps-card">
+      <div class="next-steps-title">What Happens Next</div>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>Quick call</strong> — we confirm your details and lock in your rate</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>Income verification</strong> — we collect a few documents (W2, paystub, or bank statements)</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>Close</strong> — most loans close in 2–3 weeks. Savings start immediately.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>&copy; 2026 <a href="#">West Capital Lending</a></div>
+    <div class="nmls" id="footerNmls">Equal Housing Lender</div>
+    <div class="nmls" style="margin-top:8px">This is an estimate only and not a commitment to lend. Rates are subject to change and based on creditworthiness.</div>
+    <div style="margin-top:14px; font-size:11px; color:#6B7280;">Powered by <span style="font-weight:700; color:var(--accent);">Sanchez_ElevationAI</span></div>
+  </div>
+
+</div>
+
+
+<script>
+  var quoteData = {};
+  var currentOption = 'A';
+  var currentYears = 1;
+
+  // ── FORMAT ──
+  function fmt(n) {
+    if (isNaN(n) || n === null) return '—';
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function cleanNum(str) {
+    if (!str) return NaN;
+    return parseFloat(String(str).replace(/[\$,\s]/g, ''));
+  }
+  function getParams() {
+    var p = new URLSearchParams(window.location.search);
+    var obj = {};
+    p.forEach(function(v, k) { obj[k] = v; });
+    return obj;
+  }
+
+  // ── COUNT-UP ANIMATION ──
+  function countUp(el, targetVal, prefix, duration) {
+    var start = 0;
+    var startTime = null;
+    var formatted = Math.round(targetVal);
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      var current = Math.round(eased * formatted);
+      el.textContent = prefix + current.toLocaleString('en-US');
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ── SAVINGS USE HINT ──
+  function savingsUseText(annual) {
+    if (annual >= 10000) return 'That\'s enough for a <span>family vacation every year</span> — fully paid.';
+    if (annual >= 5000)  return 'That\'s over <span>$400/month</span> you could put toward retirement or your kids\' college.';
+    if (annual >= 3000)  return 'That\'s a <span>full car payment</span> covered every month.';
+    if (annual >= 1200)  return 'That\'s your <span>utility bills</span> covered for the year.';
+    return 'That\'s real money <span>back in your pocket</span> every single month.';
+  }
+
+  // ══════════════════════════════════════════
+  // LIMITING FACTORS (Sabin controls these)
+  // ══════════════════════════════════════════
+  var ACCESS_CODE     = '6969';   // (CHANGE THIS: Manny's access PIN — only you know the master)
+  var DAILY_LIMIT     = 10;       // (CHANGE THIS: max quotes Manny can generate per day)
+  var MIN_RATE        = 2.0;      // (CHANGE THIS: lowest rate allowed — blocks garbage entries)
+  var MAX_RATE        = 15.0;     // (CHANGE THIS: highest rate allowed)
+  var MAX_GATE_TRIES  = 5;        // (CHANGE THIS: lockout after X wrong PINs)
+
+  var gateAttempts = 0;
+
+  // ── ACCESS GATE ──
+  function checkGate() {
+    var code = document.getElementById('gateCode').value.trim();
+    var errEl = document.getElementById('gateError');
+    var attEl = document.getElementById('gateAttempts');
+
+    if (gateAttempts >= MAX_GATE_TRIES) {
+      errEl.textContent = 'Too many attempts. Contact your administrator.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    if (code === ACCESS_CODE) {
+      document.getElementById('gateView').style.display = 'none';
+      document.getElementById('adminView').style.display = 'block';
+      loadSavedAgentInfo();
+      updateQuotaDisplay();
+    } else {
+      gateAttempts++;
+      document.getElementById('gateCode').classList.add('error');
+      errEl.style.display = 'block';
+      attEl.textContent = (MAX_GATE_TRIES - gateAttempts) + ' attempts remaining';
+      setTimeout(function() {
+        document.getElementById('gateCode').classList.remove('error');
+      }, 1500);
+    }
+  }
+
+  // Enter key on PIN input
+  document.addEventListener('DOMContentLoaded', function() {
+    var gi = document.getElementById('gateCode');
+    if (gi) gi.addEventListener('keydown', function(e) { if (e.key === 'Enter') checkGate(); });
+  });
+
+  // ── DAILY QUOTA ──
+  function getQuotaKey() {
+    return 'wcl_quota_' + new Date().toISOString().slice(0, 10);
+  }
+  function getQuotaUsed() {
+    try { return parseInt(localStorage.getItem(getQuotaKey())) || 0; } catch(e) { return 0; }
+  }
+  function incrementQuota() {
+    try { localStorage.setItem(getQuotaKey(), getQuotaUsed() + 1); } catch(e) {}
+  }
+  function updateQuotaDisplay() {
+    var used = getQuotaUsed();
+    var remaining = DAILY_LIMIT - used;
+    var qm = document.getElementById('quotaMsg');
+    if (remaining <= 3 && remaining > 0) {
+      qm.textContent = remaining + ' quotes remaining today. Contact admin for more.';
+      qm.style.display = 'block';
+    } else if (remaining <= 0) {
+      qm.textContent = 'Daily quote limit reached (' + DAILY_LIMIT + '/' + DAILY_LIMIT + '). Contact your administrator.';
+      qm.style.display = 'block';
+    }
+  }
+
+  // ── RATE VALIDATION ──
+  function validateRates(g) {
+    var rateFields = [
+      { id: 'f_crate',  label: 'Current Rate' },
+      { id: 'f_a_rate', label: 'Option A Rate' },
+      { id: 'f_b_rate', label: 'Option B Rate' },
+    ];
+    var bad = [];
+    rateFields.forEach(function(f) {
+      var val = cleanNum(g(f.id));
+      if (!isNaN(val) && (val < MIN_RATE || val > MAX_RATE)) {
+        document.getElementById(f.id).classList.add('error');
+        bad.push(f.label + ' (' + val + '%) — must be between ' + MIN_RATE + '% and ' + MAX_RATE + '%');
+      }
+    });
+    return bad;
+  }
+
+  // ── SOURCE CODE PROTECTION ──
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12') e.preventDefault();
+    if (e.ctrlKey && e.key === 'u') e.preventDefault();
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) e.preventDefault();
+  });
+
+  // ── BRANDING PROTECTION ──
+  var BRANDING_TEXT = 'Sanchez_ElevationAI';
+  setInterval(function() {
+    var footers = document.querySelectorAll('.footer');
+    var found = false;
+    footers.forEach(function(f) {
+      if (f.innerHTML.indexOf(BRANDING_TEXT) !== -1) found = true;
+    });
+    if (!found) {
+      document.body.innerHTML = '<div style="text-align:center;padding:80px 20px;font-family:sans-serif;"><h1>Unauthorized Modification</h1><p>This tool has been tampered with. Contact your administrator.</p></div>';
+    }
+  }, 3000);
+
+  // ── INIT ──
+  function init() {
+    var p = getParams();
+    if (!p.cpay) {
+      // Show the access gate, not the admin panel directly
+      document.getElementById('gateView').style.display = 'block';
+      return;
+    }
+
+    document.getElementById('quoteView').style.display = 'block';
+
+    quoteData = {
+      name:    p.name  || '',
+      agent:   p.agent || '',
+      nmls:    p.nmls  || '',
+      propVal: parseFloat(p.pv)    || 0,
+      credit:  p.cr    || 'Excellent',
+      curBal:  parseFloat(p.cb)    || 0,
+      curRate: parseFloat(p.crate) || 0,
+      curPay:  parseFloat(p.cpay)  || 0,
+      aLoan:   parseFloat(p.al)    || 0,
+      aRate:   parseFloat(p.ar)    || 0,
+      aPay:    parseFloat(p.ap)    || 0,
+      aCost:   parseFloat(p.ac)    || 0,
+      bLoan:   parseFloat(p.bl)    || 0,
+      bRate:   parseFloat(p.br)    || 0,
+      bPay:    parseFloat(p.bp)    || 0,
+      bCost:   parseFloat(p.bc)    || 0,
+      term:    parseInt(p.term)    || 30,
+      phone:   p.ph    || '',
+    };
+
+    // Greeting
+    if (quoteData.name) {
+      document.getElementById('greetingName').textContent = quoteData.name + ", Here's Your Custom Quote";
+    }
+
+    // Equity bar
+    var equity = quoteData.propVal - quoteData.curBal;
+    var equityPct = quoteData.propVal > 0 ? Math.round((equity / quoteData.propVal) * 100) : 0;
+    setTimeout(function() {
+      document.getElementById('equityBarFill').style.width = equityPct + '%';
+    }, 300);
+    document.getElementById('equityPct').textContent = equityPct + '% equity';
+    document.getElementById('barOwed').textContent = 'Owed: ' + fmt(quoteData.curBal);
+    document.getElementById('barEquity').textContent = 'Equity: ' + fmt(equity);
+
+    // Snapshot
+    document.getElementById('qPropVal').textContent = fmt(quoteData.propVal);
+    document.getElementById('qEquity').textContent  = fmt(equity);
+    document.getElementById('qCredit').textContent  = quoteData.credit;
+    document.getElementById('qTerm').textContent    = quoteData.term + ' Years';
+
+    // Current loan
+    document.getElementById('qCurBal').textContent  = fmt(quoteData.curBal);
+    document.getElementById('qCurRate').textContent = quoteData.curRate.toFixed(2) + '%';
+    document.getElementById('qCurPay').textContent  = fmt(quoteData.curPay);
+
+    // CTA
+    var ctaBtn = document.getElementById('ctaBtn');
+    if (quoteData.phone) {
+      ctaBtn.href = 'tel:+1' + quoteData.phone.replace(/\D/g, '');
+    }
+    if (quoteData.agent) {
+      document.getElementById('ctaBtnText').textContent = 'Call ' + quoteData.agent + ' \u2014 Lock In Your Rate';
+    }
+
+    // NMLS in footer
+    if (quoteData.nmls) {
+      document.getElementById('footerNmls').textContent = 'NMLS #' + quoteData.nmls + ' | Equal Housing Lender';
+    }
+
+    // Social media buttons
+    var socialWrap = document.getElementById('socialWrap');
+    var socials = [
+      { key: 'ig', param: p.ig, cls: 'ig', icon: '📸', label: 'Instagram', prefix: 'https://instagram.com/', strip: '@' },
+      { key: 'fb', param: p.fb, cls: 'fb', icon: '👤', label: 'Facebook', prefix: 'https://', strip: '' },
+      { key: 'li', param: p.li, cls: 'li', icon: '💼', label: 'LinkedIn', prefix: 'https://', strip: '' },
+      { key: 'tt', param: p.tt, cls: 'tt', icon: '🎵', label: 'TikTok', prefix: 'https://tiktok.com/', strip: '@' },
+    ];
+    socials.forEach(function(s) {
+      if (s.param && s.param.trim()) {
+        var val = s.param.trim();
+        var href = val.indexOf('http') === 0 ? val : s.prefix + val.replace(s.strip, '');
+        var a = document.createElement('a');
+        a.className = 'social-btn ' + s.cls;
+        a.href = href;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.innerHTML = '<span class="social-icon">' + s.icon + '</span> ' + s.label;
+        socialWrap.appendChild(a);
+      }
+    });
+    if (!socialWrap.children.length) socialWrap.parentElement.style.display = 'none';
+
+    // Show badge only if option has an actual cost advantage
+    if (quoteData.aCost >= 0) document.getElementById('recBadgeA').style.display = 'block';
+    if (quoteData.bRate < quoteData.aRate) document.getElementById('recBadgeB').style.display = 'block';
+
+    renderOption();
+  }
+
+  // ── RENDER NEW LOAN SIDE ──
+  function renderOption() {
+    var d = quoteData;
+    var loan, rate, pay;
+
+    var cost;
+    if (currentOption === 'A') {
+      loan = d.aLoan; rate = d.aRate; pay = d.aPay; cost = d.aCost;
+    } else {
+      loan = d.bLoan; rate = d.bRate; pay = d.bPay; cost = d.bCost;
+    }
+
+    document.getElementById('qNewBal').textContent = fmt(loan);
+    document.getElementById('qNewRate').textContent = rate.toFixed(2) + '%';
+    document.getElementById('qNewPay').textContent = fmt(pay);
+
+    // Rate difference badge
+    var rateDiff = d.curRate - rate;
+    var rateDiffEl = document.getElementById('qRateDiff');
+    if (rateDiff > 0) {
+      rateDiffEl.textContent = '\u2193 ' + rateDiff.toFixed(2) + '% lower rate';
+      rateDiffEl.style.background = '#EFF6FF'; rateDiffEl.style.color = '#1D4ED8';
+    } else if (rateDiff < 0) {
+      rateDiffEl.textContent = '\u2191 ' + Math.abs(rateDiff).toFixed(2) + '% higher rate';
+      rateDiffEl.style.background = '#FEF2F2'; rateDiffEl.style.color = '#DC2626';
+    } else {
+      rateDiffEl.textContent = 'Same rate as current';
+      rateDiffEl.style.background = '#F3F4F6'; rateDiffEl.style.color = '#6B7280';
+    }
+
+    // Closing cost display
+    var costEl = document.getElementById('qNewCost');
+    var costRow = document.getElementById('qCostRow');
+    if (cost > 0) {
+      costEl.textContent = fmt(cost);
+      costRow.style.display = 'block';
+    } else {
+      costEl.textContent = '$0';
+      costRow.style.display = 'block';
+    }
+
+    var monthlySave = d.curPay - pay;
+
+    // Savings badge on card
+    document.getElementById('qSaveBadge').textContent = '\u2193 ' + fmt(monthlySave) + '/mo';
+
+    // Animate monthly savings number
+    countUp(document.getElementById('qSaveMonth'), monthlySave, '$', 800);
+
+    renderTimeSavings(monthlySave);
+  }
+
+  function setOption(opt) {
+    currentOption = opt;
+    document.getElementById('optABtn').classList.toggle('active', opt === 'A');
+    document.getElementById('optBBtn').classList.toggle('active', opt === 'B');
+    renderOption();
+  }
+
+  // ── TIME TOGGLE ──
+  function renderTimeSavings(monthlySave) {
+    var years = currentYears;
+    var label;
+    if (years === 0) {
+      years = quoteData.term;
+      label = 'Total savings over the life of the loan';
+    } else if (years === 1) {
+      label = 'Total savings over 1 year';
+    } else {
+      label = 'Total savings over ' + years + ' years';
+    }
+
+    var total = monthlySave * 12 * years;
+    countUp(document.getElementById('qSaveTotal'), total, '$', 900);
+    document.getElementById('qSaveTotalLabel').textContent = label;
+
+    // Savings use hint (based on annual)
+    var annual = monthlySave * 12;
+    document.getElementById('savingsUse').innerHTML = savingsUseText(annual);
+  }
+
+  function setTime(years, btn) {
+    currentYears = years;
+    document.querySelectorAll('.time-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    var pay = currentOption === 'A' ? quoteData.aPay : quoteData.bPay;
+    renderTimeSavings(quoteData.curPay - pay);
+  }
+
+  // ── ADMIN: SAVE / LOAD agent info via localStorage ──
+  function loadSavedAgentInfo() {
+    try {
+      var agent = localStorage.getItem('wcl_agent');
+      var phone = localStorage.getItem('wcl_phone');
+      var nmls  = localStorage.getItem('wcl_nmls');
+      if (agent) document.getElementById('f_agent').value = agent;
+      if (phone) document.getElementById('f_phone').value = phone;
+      if (nmls)  document.getElementById('f_nmls').value  = nmls;
+      var ig = localStorage.getItem('wcl_ig');
+      var fb = localStorage.getItem('wcl_fb');
+      var li = localStorage.getItem('wcl_li');
+      var tt = localStorage.getItem('wcl_tt');
+      if (ig) document.getElementById('f_ig').value = ig;
+      if (fb) document.getElementById('f_fb').value = fb;
+      if (li) document.getElementById('f_li').value = li;
+      if (tt) document.getElementById('f_tt').value = tt;
+    } catch(e) {}
+  }
+  function saveAgentInfo(agent, phone, nmls) {
+    try {
+      localStorage.setItem('wcl_agent', agent);
+      localStorage.setItem('wcl_phone', phone);
+      localStorage.setItem('wcl_nmls',  nmls);
+      var g = function(id) { return document.getElementById(id).value.trim(); };
+      localStorage.setItem('wcl_ig', g('f_ig'));
+      localStorage.setItem('wcl_fb', g('f_fb'));
+      localStorage.setItem('wcl_li', g('f_li'));
+      localStorage.setItem('wcl_tt', g('f_tt'));
+    } catch(e) {}
+  }
+
+  // ── GENERATE LINK ──
+  function generateLink() {
+    document.querySelectorAll('.form-group input').forEach(function(i) { i.classList.remove('error'); });
+    var errEl  = document.getElementById('errorMsg');
+    var warnEl = document.getElementById('warnMsg');
+    var quotaEl = document.getElementById('quotaMsg');
+    errEl.style.display = 'none';
+    warnEl.style.display = 'none';
+
+    // Check daily quota
+    if (getQuotaUsed() >= DAILY_LIMIT) {
+      quotaEl.textContent = 'Daily quote limit reached (' + DAILY_LIMIT + '/' + DAILY_LIMIT + '). Contact your administrator.';
+      quotaEl.style.display = 'block';
+      return;
+    }
+
+    var g = function(id) { return document.getElementById(id).value.trim(); };
+
+    // Text fields — just need to not be empty
+    var textRequired = [
+      { id: 'f_name', label: 'Client First Name' },
+    ];
+    // Number fields — must be non-empty and numeric
+    var numRequired = [
+      { id: 'f_cpay',   label: 'Current Monthly Payment' },
+      { id: 'f_cbal',   label: 'Current Balance' },
+      { id: 'f_crate',  label: 'Current Rate' },
+      { id: 'f_propval',label: 'Property Value' },
+      { id: 'f_a_pay',  label: 'Option A Payment' },
+      { id: 'f_a_rate', label: 'Option A Rate' },
+      { id: 'f_a_loan', label: 'Option A Loan Amount' },
+      { id: 'f_b_pay',  label: 'Option B Payment' },
+      { id: 'f_b_rate', label: 'Option B Rate' },
+      { id: 'f_b_loan', label: 'Option B Loan Amount' },
+    ];
+
+    var missing = [];
+    textRequired.forEach(function(f) {
+      var val = g(f.id);
+      if (!val) {
+        document.getElementById(f.id).classList.add('error');
+        missing.push(f.label);
+      }
+    });
+    numRequired.forEach(function(f) {
+      var val = g(f.id);
+      if (!val || isNaN(cleanNum(val))) {
+        document.getElementById(f.id).classList.add('error');
+        missing.push(f.label);
+      }
+    });
+    if (missing.length) {
+      errEl.textContent = 'Please fill in: ' + missing.join(', ');
+      errEl.style.display = 'block';
+      return;
+    }
+
+    // Rate range validation
+    var badRates = validateRates(g);
+    if (badRates.length) {
+      errEl.innerHTML = 'Rate out of range:<br>' + badRates.join('<br>');
+      errEl.style.display = 'block';
+      return;
+    }
+
+    var curPay = cleanNum(g('f_cpay'));
+    var aPay   = cleanNum(g('f_a_pay'));
+    var bPay   = cleanNum(g('f_b_pay'));
+    if (aPay >= curPay || bPay >= curPay) {
+      warnEl.textContent = 'Warning: one or more new payments are not lower than the current payment. Double-check your numbers before sending.';
+      warnEl.style.display = 'block';
+    }
+
+    var agent = g('f_agent');
+    var phone = g('f_phone').replace(/\D/g, '');
+    var nmls  = g('f_nmls');
+    saveAgentInfo(agent, phone, nmls);
+
+    // Generate unique quote ID
+    var qid = Date.now().toString(36) + Math.random().toString(36).substr(2, 4);
+
+    var params = new URLSearchParams({
+      qid: qid,
+      name:  g('f_name'),
+      agent: agent,
+      ph:    phone,
+      nmls:  nmls,
+      pv:    cleanNum(g('f_propval')),
+      cr:    g('f_credit') || 'Excellent',
+      cb:    cleanNum(g('f_cbal')),
+      crate: cleanNum(g('f_crate')),
+      cpay:  curPay,
+      al:    cleanNum(g('f_a_loan')),
+      ar:    cleanNum(g('f_a_rate')),
+      ap:    aPay,
+      ac:    cleanNum(g('f_a_cost')) || 0,
+      bl:    cleanNum(g('f_b_loan')),
+      br:    cleanNum(g('f_b_rate')),
+      bp:    bPay,
+      bc:    cleanNum(g('f_b_cost')) || 0,
+      term:  g('f_term') || '30',
+      ig:    g('f_ig')   || '',
+      fb:    g('f_fb')   || '',
+      li:    g('f_li')   || '',
+      tt:    g('f_tt')   || '',
+    });
+
+    var base = window.location.origin + window.location.pathname;
+    var link = base + '?' + params.toString();
+    document.getElementById('linkText').value = link;
+    document.getElementById('linkOutput').style.display = 'block';
+    document.getElementById('previewLink').href = link;
+
+    // Increment daily quota
+    incrementQuota();
+    updateQuotaDisplay();
+
+    // Track quote generated event in GoatCounter
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'quote-generated', title: 'Quote Generated', event: true });
+    }
+  }
+
+  // ── COPY ──
+  function copyLink() {
+    var link = document.getElementById('linkText').value;
+    var btn  = document.getElementById('copyBtn');
+    function onSuccess() {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() {
+        btn.textContent = 'Copy Link to Clipboard';
+        btn.classList.remove('copied');
+      }, 2500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(link).then(onSuccess).catch(function() { fallbackCopy(link, onSuccess); });
+    } else { fallbackCopy(link, onSuccess); }
+  }
+  function fallbackCopy(text, cb) {
+    var ta = document.getElementById('linkText');
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); cb(); }
+    catch(e) { alert('Please manually select and copy the link above.'); }
+  }
+
+  init();
+</script>
+</body>
+</html>
