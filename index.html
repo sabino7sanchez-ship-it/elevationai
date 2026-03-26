@@ -398,6 +398,352 @@
   }
   .social-link .icon { font-size: 18px; }
 
+  /* ── CASE STUDY ── */
+  .case-study {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+  .case-study-header {
+    padding: 24px 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .case-study-client {
+    font-size: 11px;
+    color: var(--neon-green);
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .case-study-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border: 1px solid rgba(0,255,136,0.3);
+    border-radius: 99px;
+    font-size: 11px;
+    color: var(--neon-green);
+    font-weight: 600;
+  }
+  .case-study-live-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--neon-green);
+    animation: pulse 2s infinite;
+  }
+  .case-study-title {
+    font-size: 22px;
+    font-weight: 800;
+    padding: 12px 24px 0;
+  }
+  .case-study-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    padding: 8px 24px 20px;
+    line-height: 1.7;
+  }
+  .case-study-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+  }
+  .case-metric {
+    padding: 20px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .case-metric:last-child { border-right: none; }
+  .case-metric-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+  }
+  .case-metric-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial-section {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px 28px;
+    position: relative;
+  }
+  .testimonial-quote {
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  .testimonial-quote::before {
+    content: '"';
+    font-size: 48px;
+    color: var(--neon-cyan);
+    font-family: Georgia, serif;
+    position: absolute;
+    top: 16px;
+    left: 24px;
+    line-height: 1;
+  }
+  .testimonial-author {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .testimonial-role {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .pricing-card:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .pricing-card.featured {
+    border-color: var(--neon-cyan);
+    background: linear-gradient(180deg, rgba(0,240,255,0.05) 0%, var(--bg-card) 40%);
+  }
+  .pricing-popular {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--neon-cyan);
+    color: var(--bg);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .pricing-name {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .pricing-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+  .pricing-amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--neon-cyan);
+  }
+  .pricing-amount span {
+    font-size: 16px;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+  .pricing-features {
+    list-style: none;
+    text-align: left;
+    margin: 24px 0;
+  }
+  .pricing-features li {
+    font-size: 13px;
+    color: var(--text-mid);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pricing-features li::before {
+    content: '✓';
+    color: var(--neon-green);
+    font-weight: 700;
+  }
+  .pricing-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .pricing-btn.primary {
+    background: var(--neon-cyan);
+    color: var(--bg);
+    border: none;
+  }
+  .pricing-btn.primary:hover { box-shadow: 0 0 20px var(--glow-cyan); }
+  .pricing-btn.outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .pricing-btn.outline:hover { border-color: var(--neon-cyan); }
+
+  /* ── FAQ ── */
+  .faq-list { max-width: 700px; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-q::after {
+    content: '+';
+    font-size: 20px;
+    color: var(--neon-cyan);
+    transition: transform 0.2s;
+  }
+  .faq-q.open::after {
+    content: '−';
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s, padding 0.3s;
+    padding-top: 0;
+  }
+  .faq-a.open {
+    max-height: 200px;
+    padding-top: 12px;
+  }
+
+  /* ── CONTACT FORM ── */
+  .contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .form-field {
+    margin-bottom: 14px;
+  }
+  .form-field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .form-field input, .form-field textarea, .form-field select {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: border 0.2s;
+  }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 0 3px var(--glow-cyan);
+  }
+  .form-field textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .form-submit {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--neon-cyan);
+    color: var(--bg);
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover {
+    box-shadow: 0 0 30px var(--glow-cyan);
+    transform: translateY(-2px);
+  }
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 32px;
+    color: var(--neon-green);
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  /* ── VIDEO EMBED ── */
+  .video-placeholder {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 60px 24px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .video-placeholder-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  .video-placeholder-text {
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
   /* ── CTA SECTION ── */
   .cta-section {
     text-align: center;
@@ -606,6 +952,185 @@
   </div>
 </section>
 
+<!-- CASE STUDY -->
+<section class="section fade-in">
+  <div class="section-label">// case study</div>
+  <h2 class="section-title">Real Client. Real Results.</h2>
+  <p class="section-sub">Not a concept. Not a mockup. A tool that's being used right now.</p>
+
+  <div class="case-study">
+    <div class="case-study-header">
+      <div class="case-study-client">West Capital Lending</div>
+      <div class="case-study-live"><div class="case-study-live-dot"></div> Live in Production</div>
+    </div>
+    <div class="case-study-title">Branded Quote Generator for Mortgage Loan Officers</div>
+    <div class="case-study-desc">Manny was texting Excel screenshots to clients. I built him a tool that generates branded, mobile-friendly quote pages in 30 seconds. He enters the numbers, hits generate, and texts a clean link. The client sees their current loan vs two refinance options side by side — with monthly savings, rate comparisons, and closing costs.</div>
+    <div class="case-study-metrics">
+      <div class="case-metric">
+        <div class="case-metric-val">&lt;24h</div>
+        <div class="case-metric-label">Built & Deployed</div>
+      </div>
+      <div class="case-metric">
+        <div class="case-metric-val">2</div>
+        <div class="case-metric-label">Loan Options</div>
+      </div>
+      <div class="case-metric">
+        <div class="case-metric-val">100%</div>
+        <div class="case-metric-label">Mobile Optimized</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section fade-in">
+  <div class="section-label">// what clients say</div>
+  <h2 class="section-title">Don't Take My Word For It</h2>
+  <div class="testimonial-section" style="margin-top:48px;">
+    <div class="testimonial-card">
+      <div class="testimonial-quote">This kid built me a quote tool in one night that looks better than anything my company provides. My clients actually respond now. Game changer.</div>
+      <div class="testimonial-author">Manny — Loan Officer</div>
+      <div class="testimonial-role">West Capital Lending</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="section fade-in">
+  <div class="section-label">// behind the scenes</div>
+  <h2 class="section-title">Watch Me Build</h2>
+  <p class="section-sub">Follow the journey — from code to deployment.</p>
+  <div class="video-placeholder" id="videoEmbed">
+    <div class="video-placeholder-icon">&#127916;</div>
+    <div class="video-placeholder-text">First video dropping soon — follow <a href="https://instagram.com/sabinitosanchez" target="_blank" style="color:var(--neon-cyan);text-decoration:none;">@sabinitosanchez</a> to catch it</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section fade-in" id="pricing">
+  <div class="section-label">// pricing</div>
+  <h2 class="section-title">Simple Pricing. Real Value.</h2>
+  <p class="section-sub">No contracts. No hidden fees. You see results or you don't pay.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-name">Starter</div>
+      <div class="pricing-desc">One custom tool for your business</div>
+      <div class="pricing-amount">$250<span> one-time</span></div>
+      <ul class="pricing-features">
+        <li>1 custom-built tool</li>
+        <li>Mobile responsive</li>
+        <li>Branded to your business</li>
+        <li>Deployed & live in 48 hours</li>
+        <li>30 days of bug fixes</li>
+      </ul>
+      <a class="pricing-btn outline" href="tel:+15623731027">Get Started</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-popular">Most Popular</div>
+      <div class="pricing-name">Growth</div>
+      <div class="pricing-desc">Tool + analytics + ongoing support</div>
+      <div class="pricing-amount">$150<span>/mo</span></div>
+      <ul class="pricing-features">
+        <li>Everything in Starter</li>
+        <li>Analytics dashboard</li>
+        <li>Unlimited updates & improvements</li>
+        <li>Priority support</li>
+        <li>New feature requests monthly</li>
+      </ul>
+      <a class="pricing-btn primary" href="tel:+15623731027">Let's Talk</a>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-name">Enterprise</div>
+      <div class="pricing-desc">Full system build + dedicated support</div>
+      <div class="pricing-amount">Custom</div>
+      <ul class="pricing-features">
+        <li>Everything in Growth</li>
+        <li>Multiple tools & integrations</li>
+        <li>Multi-agent support</li>
+        <li>Custom admin portal</li>
+        <li>Dedicated engineering partner</li>
+      </ul>
+      <a class="pricing-btn outline" href="tel:+15623731027">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section fade-in" id="faq">
+  <div class="section-label">// faq</div>
+  <h2 class="section-title">Questions? Answers.</h2>
+  <div class="faq-list" style="margin-top:32px;">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How fast can you build something?</div>
+      <div class="faq-a">Most tools are built and deployed within 24-48 hours. I don't do months-long timelines. You tell me what you need, I build it, and you're live.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Do I need any technical knowledge?</div>
+      <div class="faq-a">Zero. I handle everything — the code, the hosting, the deployment. You get a link. That's it. If you can text a link to a client, you can use my tools.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What industries do you work with?</div>
+      <div class="faq-a">I specialize in mortgage lending and real estate, but my tools work for any industry that needs client-facing pages, calculators, or admin dashboards.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I make changes after it's built?</div>
+      <div class="faq-a">Yes. On the Growth plan, you get unlimited updates. On Starter, you get 30 days of bug fixes. Either way, you're never stuck with something that doesn't work.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Why should I hire a 19-year-old?</div>
+      <div class="faq-a">Because I ship faster, charge less, and care more than any agency you'll find. I'm building my reputation — which means you get my absolute best work. Every single time.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What if I don't like it?</div>
+      <div class="faq-a">I show you a working preview before you pay anything on the Starter plan. If it's not what you want, you don't pay. Simple.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="section fade-in">
+  <div class="section-label">// get in touch</div>
+  <h2 class="section-title">Let's Build Something</h2>
+  <p class="section-sub">Tell me what you need. I'll tell you exactly how I'd build it — and how fast.</p>
+
+  <div class="contact-form" id="contactForm">
+    <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Lead from SanchezElevationAI.com">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://sabino7sanchez-ship-it.github.io/elevationai/">
+      <div class="form-row-2">
+        <div class="form-field">
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="(555) 123-4567">
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-field">
+        <label>Industry</label>
+        <select name="industry">
+          <option value="Mortgage">Mortgage / Lending</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Finance">Finance / Insurance</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>What do you need built?</label>
+        <textarea name="message" placeholder="Tell me about your business and what tool would help you..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section fade-in" id="contact">
   <div class="section-label">// let's work</div>
@@ -643,6 +1168,20 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  // FAQ toggle
+  function toggleFaq(el) {
+    var answer = el.nextElementSibling;
+    var isOpen = el.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-q').forEach(function(q) { q.classList.remove('open'); });
+    document.querySelectorAll('.faq-a').forEach(function(a) { a.classList.remove('open'); });
+    // Open clicked (if it wasn't already open)
+    if (!isOpen) {
+      el.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
 </script>
 
 <!-- GOATCOUNTER -->
