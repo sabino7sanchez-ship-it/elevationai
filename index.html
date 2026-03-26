@@ -1116,12 +1116,16 @@
       </div>
       <div class="form-field">
         <label>Industry</label>
-        <select name="industry">
+        <select name="industry" id="industrySelect" onchange="toggleOtherIndustry()">
           <option value="Mortgage">Mortgage / Lending</option>
           <option value="Real Estate">Real Estate</option>
           <option value="Finance">Finance / Insurance</option>
           <option value="Other">Other</option>
         </select>
+      </div>
+      <div class="form-field" id="otherIndustryField" style="display:none;">
+        <label>Your Industry</label>
+        <input type="text" name="other_industry" placeholder="Type your industry...">
       </div>
       <div class="form-field">
         <label>What do you need built?</label>
@@ -1169,6 +1173,13 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+  // Industry "Other" toggle
+  function toggleOtherIndustry() {
+    var sel = document.getElementById('industrySelect');
+    var field = document.getElementById('otherIndustryField');
+    field.style.display = sel.value === 'Other' ? 'block' : 'none';
+  }
 
   // FAQ toggle
   function toggleFaq(el) {
