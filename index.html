@@ -791,6 +791,54 @@
     color: var(--text-dim);
     font-weight: 400;
   }
+  .pricing-save {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--neon-green);
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.25);
+    padding: 2px 10px;
+    border-radius: 99px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .pricing-or {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .pricing-or::before, .pricing-or::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+  .pricing-plan {
+    background: rgba(0,212,255,0.06);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: center;
+  }
+  .pricing-plan-amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+  }
+  .pricing-plan-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 2px;
+    letter-spacing: 1px;
+  }
   .pricing-features {
     list-style: none;
     text-align: left;
@@ -1549,7 +1597,13 @@
     <div class="pricing-card">
       <div class="pricing-name">Basic Site</div>
       <div class="pricing-desc">Professional one-page website</div>
-      <div class="pricing-amount">$750<span> one-time</span></div>
+      <div class="pricing-amount">$699<span> one-time</span></div>
+      <div class="pricing-save">Best Deal — Save $51</div>
+      <div class="pricing-or">or</div>
+      <div class="pricing-plan">
+        <div class="pricing-plan-amount">3 × $250</div>
+        <div class="pricing-plan-label">Payment plan — $750 total</div>
+      </div>
       <ul class="pricing-features">
         <li>Custom designed, mobile responsive</li>
         <li>Click-to-call & contact form</li>
