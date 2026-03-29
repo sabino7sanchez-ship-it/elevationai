@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabor Catering Co. | LA & OC Event Catering</title>
+  <meta name="description" content="Full-service catering for weddings, quinceañeras, corporate events, and private parties across Los Angeles and Orange County. Traditional Mexican and American menus." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0A0A0B;
+      --bg2:       #111113;
+      --bg3:       #18181C;
+      --gold:      #FFD700;
+      --gold2:     #FFC200;
+      --gold3:     #FFE566;
+      --gold-dim:  rgba(255,215,0,0.12);
+      --gold-mid:  rgba(255,215,0,0.25);
+      --text:      #F5F0E8;
+      --text2:     #B8B0A0;
+      --text3:     #7A746A;
+      --border:    rgba(255,215,0,0.15);
+      --border2:   rgba(255,255,255,0.06);
+      --radius:    12px;
+      --radius-lg: 20px;
+      --shadow:    0 4px 24px rgba(0,0,0,0.5);
+      --shadow-gold: 0 0 32px rgba(255,215,0,0.18);
+      --font:      'Inter', sans-serif;
+      --mono:      'JetBrains Mono', monospace;
+      --nav-h:     72px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--font); border: none; }
+    input, select, textarea { font-family: var(--font); }
+    ul { list-style: none; }
+    ::selection { background: var(--gold); color: #000; }
+
+    /* =============================================
+       SCROLLBAR
+    ============================================= */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-mid); border-radius: 3px; }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .gold { color: var(--gold); }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text2);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.22s ease;
+      white-space: nowrap;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+    }
+    .btn-gold:hover { background: var(--gold3); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,215,0,0.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold-dim); transform: translateY(-1px); }
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      border-radius: 2px;
+      margin: 20px 0 40px;
+    }
+
+    /* =============================================
+       NAV
+    ============================================= */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 1000;
+      background: rgba(10,10,11,0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border2);
+      transition: all 0.3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(10,10,11,0.98);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-sub {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--text3);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: -3px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text2);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { margin-left: 8px; padding: 10px 20px; font-size: 14px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h); left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,11,0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      backdrop-filter: blur(20px);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .btn { font-size: 16px; padding: 16px 40px; }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: calc(var(--nav-h) + 60px) 0 80px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    /* Gradient mesh */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 15% 30%, rgba(255,200,0,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 70%, rgba(180,80,0,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 50% 10%, rgba(255,215,0,0.05) 0%, transparent 50%),
+        linear-gradient(160deg, #0A0A0B 0%, #121008 50%, #0A0A0B 100%);
+    }
+    /* Noise texture */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+    /* Gold orb */
+    .hero-orb {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+    .hero-orb-2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,140,0,0.05) 0%, transparent 70%);
+      bottom: 0; left: -100px;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-title {
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold3) 50%, #FF9800 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--text2);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {}
+    .hero-stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+    }
+    .hero-stat-label {
+      font-size: 13px;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+    .hero-stat-divider {
+      width: 1px;
+      background: var(--border2);
+      align-self: stretch;
+    }
+
+    /* =============================================
+       PACKAGES
+    ============================================= */
+    .packages {
+      padding: 100px 0;
+      background: var(--bg2);
+      position: relative;
+    }
+    .packages::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .packages-header { margin-bottom: 60px; }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .pkg-card {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .pkg-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+    .pkg-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #1A1800 0%, var(--bg3) 40%);
+      box-shadow: var(--shadow-gold), 0 0 0 1px var(--gold);
+    }
+    .pkg-card.featured:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 48px rgba(255,215,0,0.25), 0 0 0 1px var(--gold);
+    }
+    .pkg-badge {
+      position: absolute;
+      top: -14px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pkg-tier {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 8px;
+    }
+    .pkg-name {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .pkg-card.featured .pkg-name { color: var(--gold); }
+    .pkg-guests {
+      font-size: 13px;
+      color: var(--text3);
+      margin-bottom: 24px;
+    }
+    .pkg-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .pkg-price-num {
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -0.03em;
+    }
+    .pkg-price-unit {
+      font-size: 14px;
+      color: var(--text3);
+    }
+    .pkg-price-note {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 28px;
+    }
+    .pkg-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border2);
+      margin-bottom: 24px;
+    }
+    .pkg-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .pkg-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+    .pkg-feature-icon {
+      width: 18px; height: 18px;
+      min-width: 18px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+    .pkg-feature-icon svg { width: 10px; height: 10px; }
+    .pkg-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+      display: block;
+      transition: all 0.22s ease;
+    }
+    .pkg-btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--border);
+    }
+    .pkg-btn-outline:hover { border-color: var(--gold); background: var(--gold-dim); }
+    .pkg-btn-gold {
+      background: var(--gold);
+      color: #000;
+      border: 1.5px solid var(--gold);
+    }
+    .pkg-btn-gold:hover { background: var(--gold3); box-shadow: 0 6px 20px rgba(255,215,0,0.3); }
+
+    /* =============================================
+       MENU PREVIEW
+    ============================================= */
+    .menu-section {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+    .menu-header { margin-bottom: 60px; }
+    .menu-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--border2);
+      padding-bottom: 0;
+    }
+    .menu-tab {
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text3);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+    }
+    .menu-tab:hover { color: var(--text2); }
+    .menu-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .menu-item {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .menu-item:hover { border-color: var(--border); transform: translateY(-2px); }
+    .menu-item-info { flex: 1; }
+    .menu-item-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .menu-item-desc {
+      font-size: 13px;
+      color: var(--text3);
+      line-height: 1.5;
+    }
+    .menu-item-tag {
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      align-self: flex-start;
+    }
+
+    /* =============================================
+       GALLERY
+    ============================================= */
+    .gallery {
+      padding: 100px 0;
+      background: var(--bg2);
+      position: relative;
+    }
+    .gallery::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .gallery-header { margin-bottom: 60px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .gallery-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    .gallery-card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.4s ease;
+    }
+    .gallery-card:hover .gallery-card-bg { transform: scale(1.06); }
+    .gc-1 .gallery-card-bg {
+      background: linear-gradient(135deg, #1A1200 0%, #3D2B00 40%, #8B5E00 100%);
+    }
+    .gc-2 .gallery-card-bg {
+      background: linear-gradient(135deg, #1A0A18 0%, #3D1A38 40%, #7A2D6B 100%);
+    }
+    .gc-3 .gallery-card-bg {
+      background: linear-gradient(135deg, #0A1520 0%, #0F2A3D 40%, #1A4F6E 100%);
+    }
+    .gc-4 .gallery-card-bg {
+      background: linear-gradient(135deg, #1A0A00 0%, #3D1500 40%, #8B3000 100%);
+    }
+    .gc-5 .gallery-card-bg {
+      background: linear-gradient(135deg, #0D1A08 0%, #1A3A10 40%, #2E6B1A 100%);
+    }
+    .gc-6 .gallery-card-bg {
+      background: linear-gradient(135deg, #0A0A1A 0%, #141433 40%, #22225E 100%);
+    }
+    /* Decorative pattern overlay */
+    .gallery-card-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 30% 40%, rgba(255,215,0,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.04) 0%, transparent 40%);
+    }
+    /* Pattern dots */
+    .gallery-card-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image: radial-gradient(rgba(255,215,0,0.8) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    /* Cutlery / event icon */
+    .gallery-card-icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      opacity: 0.15;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 1;
+    }
+    .gallery-card:hover .gallery-card-icon { opacity: 0.25; transform: translate(-50%, -50%) scale(1.1); }
+    .gallery-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+      z-index: 2;
+    }
+    .gallery-card-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px;
+      z-index: 3;
+    }
+    .gallery-label-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .gallery-label-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* =============================================
+       BOOKING / QUOTE FORM
+    ============================================= */
+    .booking {
+      padding: 100px 0;
+      background: var(--bg);
+      position: relative;
+    }
+    .booking-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .booking-left {}
+    .booking-left .section-label { margin-bottom: 12px; }
+    .booking-features {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .bf-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .bf-icon {
+      width: 40px; height: 40px;
+      min-width: 40px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .bf-text-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .bf-text-sub {
+      font-size: 13px;
+      color: var(--text3);
+    }
+    .booking-form {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+    }
+    .booking-form-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .booking-form-sub {
+      font-size: 14px;
+      color: var(--text3);
+      margin-bottom: 28px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .form-input, .form-select, .form-textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text3); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.1);
+    }
+    .form-select { appearance: none; cursor: pointer; }
+    .form-select option { background: #1A1A1A; color: var(--text); }
+    .form-textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--gold);
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 6px;
+      transition: all 0.22s ease;
+    }
+    .form-submit:hover { background: var(--gold3); box-shadow: 0 8px 24px rgba(255,215,0,0.3); transform: translateY(-1px); }
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text3);
+      margin-top: 12px;
+    }
+
+    /* =============================================
+       REVIEWS
+    ============================================= */
+    .reviews {
+      padding: 100px 0;
+      background: var(--bg2);
+      position: relative;
+    }
+    .reviews::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .reviews-header { margin-bottom: 60px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: border-color 0.2s, transform 0.25s ease;
+    }
+    .review-card:hover { border-color: var(--border); transform: translateY(-4px); }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 18px;
+    }
+    .star { color: var(--gold); font-size: 16px; }
+    .review-text {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #000;
+      flex-shrink: 0;
+    }
+    .av-1 { background: linear-gradient(135deg, #FFD700, #FF8C00); }
+    .av-2 { background: linear-gradient(135deg, #FF69B4, #9932CC); }
+    .av-3 { background: linear-gradient(135deg, #00CED1, #1E90FF); }
+    .review-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .review-event {
+      font-size: 12px;
+      color: var(--text3);
+      margin-top: 2px;
+    }
+
+    /* =============================================
+       CONTACT
+    ============================================= */
+    .contact {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-icon {
+      width: 48px; height: 48px;
+      min-width: 48px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .contact-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .contact-value {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .contact-sub {
+      font-size: 13px;
+      color: var(--text3);
+      margin-top: 3px;
+    }
+    .service-areas {
+      margin-top: 48px;
+      padding: 28px;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+    }
+    .service-areas-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .area-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .area-tag {
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+    .contact-right {}
+    .social-cta {
+      margin-top: 40px;
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      text-align: center;
+    }
+    .social-cta-icon { font-size: 40px; margin-bottom: 12px; }
+    .social-cta-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .social-cta-sub { font-size: 14px; color: var(--text3); margin-bottom: 20px; }
+    .social-cta-handle {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .instagram-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .instagram-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* Hours block */
+    .hours-block {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-top: 24px;
+    }
+    .hours-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border2);
+      font-size: 14px;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--text2); }
+    .hours-time { color: var(--gold); font-weight: 600; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .footer {
+      background: #080809;
+      border-top: 1px solid var(--border2);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text3);
+      text-align: center;
+    }
+    .footer-by {
+      font-size: 13px;
+      color: var(--text3);
+    }
+    .footer-by a {
+      color: var(--gold);
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .footer-by a:hover { opacity: 0.8; }
+
+    /* =============================================
+       MOBILE BOTTOM BANNER
+    ============================================= */
+    .mobile-banner {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 998;
+      background: rgba(10,10,11,0.97);
+      border-top: 1px solid var(--border2);
+      backdrop-filter: blur(20px);
+      padding: 12px 20px;
+      gap: 10px;
+    }
+    .mobile-banner-text {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .mobile-banner-ctas {
+      display: flex;
+      gap: 10px;
+    }
+    .mobile-banner-ctas a {
+      flex: 1;
+      padding: 12px 10px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .mbc-call {
+      background: var(--gold);
+      color: #000;
+    }
+    .mbc-quote {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .booking-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .mobile-banner { display: flex; flex-direction: column; padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+      body { padding-bottom: 120px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+      .hero-stat-divider { display: none; }
+      .booking-form { padding: 24px; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .hero-title { font-size: 34px; }
+      .pkg-card { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav class="nav" id="mainNav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">🍽️</div>
+        <div>
+          <span class="nav-logo-text">Sabor Catering</span>
+          <span class="nav-logo-sub">LA &amp; OC Events</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#booking">Book</a></li>
+      </ul>
+      <a href="#booking" class="btn btn-gold nav-cta">Get a Quote</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu" onclick="closeMobile()">Menu</a>
+    <a href="#packages" onclick="closeMobile()">Packages</a>
+    <a href="#gallery" onclick="closeMobile()">Gallery</a>
+    <a href="#booking" onclick="closeMobile()">Book</a>
+    <a href="#booking" class="btn btn-gold" onclick="closeMobile()">Get a Quote</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb"></div>
+      <div class="hero-orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          Available for Weddings &nbsp;·&nbsp; Quinceañeras &nbsp;·&nbsp; Corporate Events
+        </div>
+        <h1 class="hero-title">
+          Food That Makes Your<br />Event <em>Unforgettable.</em>
+        </h1>
+        <p class="hero-sub">
+          Full-service catering for weddings, quinceañeras, corporate events, and private parties. Traditional Mexican and American menus, elegantly served across Los Angeles and Orange County.
+        </p>
+        <div class="hero-ctas">
+          <a href="#booking" class="btn btn-gold">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            Get a Quote
+          </a>
+          <a href="#menu" class="btn btn-outline">
+            View Menus
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">500+</div>
+            <div class="hero-stat-label">Events Catered</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">8 Yrs</div>
+            <div class="hero-stat-label">In Business</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-label">Client Satisfaction</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3 Regions</div>
+            <div class="hero-stat-label">LA · OC · IE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PACKAGES
+  ============================================================ -->
+  <section class="packages" id="packages">
+    <div class="container">
+      <div class="packages-header">
+        <span class="section-label">Pricing &amp; Packages</span>
+        <h2 class="section-title">Choose Your Experience</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Every package includes chef-prepared food, professional setup, serving equipment, and clean-up. Customization available for dietary needs and special requests.</p>
+      </div>
+      <div class="packages-grid">
+
+        <!-- Silver -->
+        <div class="pkg-card">
+          <div class="pkg-tier">Tier 1</div>
+          <div class="pkg-name">Silver</div>
+          <div class="pkg-guests">Up to 50 guests</div>
+          <div class="pkg-price">
+            <span class="pkg-price-num">$28</span>
+            <span class="pkg-price-unit">/ person</span>
+          </div>
+          <div class="pkg-price-note">Minimum 30 guests · 4 hr service</div>
+          <div class="pkg-divider"></div>
+          <ul class="pkg-features">
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Buffet-style setup &amp; service
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Choice of 2 main entrées
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              2 side dishes + rice &amp; beans
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Tortillas, chips &amp; salsa bar
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Chafing dishes &amp; serving utensils
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Setup &amp; clean-up included
+            </li>
+          </ul>
+          <a href="#booking" class="pkg-btn pkg-btn-outline">Book Silver Package</a>
+        </div>
+
+        <!-- Gold (Featured) -->
+        <div class="pkg-card featured">
+          <div class="pkg-badge">Most Popular</div>
+          <div class="pkg-tier">Tier 2</div>
+          <div class="pkg-name">Gold</div>
+          <div class="pkg-guests">Up to 150 guests</div>
+          <div class="pkg-price">
+            <span class="pkg-price-num">$42</span>
+            <span class="pkg-price-unit">/ person</span>
+          </div>
+          <div class="pkg-price-note">Minimum 50 guests · 6 hr service</div>
+          <div class="pkg-divider"></div>
+          <ul class="pkg-features">
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Buffet + dedicated serving staff
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Choice of 3 main entrées
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              3 appetizers + full sides menu
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Dessert station included
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Non-alcoholic beverage service
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Linens, plates &amp; full rentals
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Dedicated event coordinator
+            </li>
+          </ul>
+          <a href="#booking" class="pkg-btn pkg-btn-gold">Book Gold Package</a>
+        </div>
+
+        <!-- Platinum -->
+        <div class="pkg-card">
+          <div class="pkg-tier">Tier 3</div>
+          <div class="pkg-name">Platinum</div>
+          <div class="pkg-guests">Unlimited guests</div>
+          <div class="pkg-price">
+            <span class="pkg-price-num">$65</span>
+            <span class="pkg-price-unit">/ person</span>
+          </div>
+          <div class="pkg-price-note">Minimum 75 guests · Full event day</div>
+          <div class="pkg-divider"></div>
+          <ul class="pkg-features">
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Full white-glove table service
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Unlimited entrée selection
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Full premium bar service (licensed)
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Cocktail hour + hors d'oeuvres
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Custom dessert &amp; cake service
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Premium China, crystal &amp; linens
+            </li>
+            <li class="pkg-feature">
+              <div class="pkg-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
+              </div>
+              Lead chef on-site all day
+            </li>
+          </ul>
+          <a href="#booking" class="pkg-btn pkg-btn-outline">Book Platinum Package</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MENU PREVIEW
+  ============================================================ -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="menu-header">
+        <span class="section-label">Our Menus</span>
+        <h2 class="section-title">Crafted With Authentic Flavors</h2>
+        <div class="divider"></div>
+        <p class="section-sub">Our chefs blend traditional Mexican recipes passed down through generations with elevated American classics — creating menus guests rave about long after the event.</p>
+      </div>
+      <div class="menu-tabs">
+        <button class="menu-tab active" onclick="switchTab('appetizers', this)">Appetizers</button>
+        <button class="menu-tab" onclick="switchTab('mains', this)">Main Courses</button>
+        <button class="menu-tab" onclick="switchTab('desserts', this)">Desserts</button>
+      </div>
+
+      <!-- Appetizers -->
+      <div class="menu-panel active" id="tab-appetizers">
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Tostadas de Ceviche</div>
+              <div class="menu-item-desc">Crispy corn tostadas topped with citrus-marinated shrimp, cucumber, tomato, avocado crema, and micro cilantro</div>
+            </div>
+            <span class="menu-item-tag">Signature</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Elote Bites</div>
+              <div class="menu-item-desc">Roasted street corn served on skewers with cotija cheese, chipotle mayo, lime zest, and smoked paprika</div>
+            </div>
+            <span class="menu-item-tag">Fan Fav</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Stuffed Jalapeños</div>
+              <div class="menu-item-desc">Fire-roasted jalapeños filled with seasoned cream cheese, crab meat, and wrapped in applewood-smoked bacon</div>
+            </div>
+            <span class="menu-item-tag">Popular</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Mini Sopes Trio</div>
+              <div class="menu-item-desc">Handmade masa sopes topped with refried beans, slow-braised meats, salsa verde, crema, and fresh queso fresco</div>
+            </div>
+            <span class="menu-item-tag">Traditional</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mains -->
+      <div class="menu-panel" id="tab-mains">
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Birria de Res</div>
+              <div class="menu-item-desc">Slow-braised beef in a rich guajillo and ancho chile consommé, 12-hour cook time, served with handmade corn tortillas and consommé for dipping</div>
+            </div>
+            <span class="menu-item-tag">House Special</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Carnitas al Pastor</div>
+              <div class="menu-item-desc">Achiote-marinated pork shoulder slow-cooked in copper pots, served with roasted pineapple, white onion, and fresh cilantro</div>
+            </div>
+            <span class="menu-item-tag">Traditional</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Pollo en Mole Negro</div>
+              <div class="menu-item-desc">Free-range chicken braised in our 32-ingredient black mole made from chocolate, mulato chiles, and toasted spices — a family heirloom recipe</div>
+            </div>
+            <span class="menu-item-tag">Signature</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cedar Plank Atlantic Salmon</div>
+              <div class="menu-item-desc">Wild-caught salmon roasted on cedar with citrus herb butter, capers, and a mango-habanero glaze served alongside roasted seasonal vegetables</div>
+            </div>
+            <span class="menu-item-tag">American</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">New York Strip — 10 oz.</div>
+              <div class="menu-item-desc">Prime-grade USDA strip steak grilled to order, finished with truffle compound butter, crispy shallots, and a red wine demi-glace</div>
+            </div>
+            <span class="menu-item-tag">Premium</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desserts -->
+      <div class="menu-panel" id="tab-desserts">
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Tres Leches Cake</div>
+              <div class="menu-item-desc">Light sponge soaked in three milks, topped with fresh whipped cream, toasted cinnamon, and a caramel drizzle — made fresh day-of</div>
+            </div>
+            <span class="menu-item-tag">Signature</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Churro Bites with Dipping Trio</div>
+              <div class="menu-item-desc">Freshly fried cinnamon-sugar churros served warm alongside dark chocolate ganache, dulce de leche, and a seasonal fruit compote</div>
+            </div>
+            <span class="menu-item-tag">Fan Fav</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Flan de Caramelo</div>
+              <div class="menu-item-desc">Classic Mexican egg custard flan with a silky amber caramel sauce, finished with fresh berries and a light dusting of sea salt</div>
+            </div>
+            <span class="menu-item-tag">Traditional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GALLERY
+  ============================================================ -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="gallery-header">
+        <span class="section-label">Event Gallery</span>
+        <h2 class="section-title">Moments We've Made Special</h2>
+        <div class="divider"></div>
+        <p class="section-sub">From intimate gatherings to grand ballroom affairs, we bring the same level of care, craft, and flavor to every single event.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card gc-1">
+          <div class="gallery-card-bg"></div>
+          <div class="gallery-card-pattern"></div>
+          <div class="gallery-card-icon">💍</div>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-label">
+            <div class="gallery-label-tag">Wedding · 2024</div>
+            <div class="gallery-label-title">Flores–Martinez Wedding</div>
+          </div>
+        </div>
+        <div class="gallery-card gc-2">
+          <div class="gallery-card-bg"></div>
+          <div class="gallery-card-pattern"></div>
+          <div class="gallery-card-icon">👑</div>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-label">
+            <div class="gallery-label-tag">Quinceañera</div>
+            <div class="gallery-label-title">Sofia's Quinceañera</div>
+          </div>
+        </div>
+        <div class="gallery-card gc-3">
+          <div class="gallery-card-bg"></div>
+          <div class="gallery-card-pattern"></div>
+          <div class="gallery-card-icon">🏢</div>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-label">
+            <div class="gallery-label-tag">Corporate</div>
+            <div class="gallery-label-title">Corporate Luncheon — 200 guests</div>
+          </div>
+        </div>
+        <div class="gallery-card gc-4">
+          <div class="gallery-card-bg"></div>
+          <div class="gallery-card-pattern"></div>
+          <div class="gallery-card-icon">🎂</div>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-label">
+            <div class="gallery-label-tag">Birthday Gala</div>
+            <div class="gallery-label-title">50th Birthday Celebration</div>
+          </div>
+        </div>
+        <div class="gallery-card gc-5">
+          <div class="gallery-card-bg"></div>
+          <div class="gallery-card-pattern"></div>
+          <div class="gallery-card-icon">🎓</div>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-label">
+            <div class="gallery-label-tag">Graduation Party</div>
+            <div class="gallery-label-title">Class of 2024 Graduation</div>
+          </div>
+        </div>
+        <div class="gallery-card gc-6">
+          <div class="gallery-card-bg"></div>
+          <div class="gallery-card-pattern"></div>
+          <div class="gallery-card-icon">🕊️</div>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-label">
+            <div class="gallery-label-tag">Baptism</div>
+            <div class="gallery-label-title">Baby Mateo's Baptism</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BOOKING / QUOTE FORM
+  ============================================================ -->
+  <section class="booking" id="booking">
+    <div class="container">
+      <div class="booking-inner">
+        <div class="booking-left">
+          <span class="section-label">Get Your Quote</span>
+          <h2 class="section-title">Let's Plan Your Event</h2>
+          <div class="divider"></div>
+          <p class="section-sub">Fill out the form and we'll get back to you within 24 hours with a custom quote tailored to your event. No pressure, no commitment.</p>
+          <div class="booking-features">
+            <div class="bf-item">
+              <div class="bf-icon">📋</div>
+              <div>
+                <div class="bf-text-title">Free Custom Quote</div>
+                <div class="bf-text-sub">Personalized pricing based on your guest count, venue, and preferences</div>
+              </div>
+            </div>
+            <div class="bf-item">
+              <div class="bf-icon">⚡</div>
+              <div>
+                <div class="bf-text-title">24-Hour Response</div>
+                <div class="bf-text-sub">We respond to every inquiry within one business day — guaranteed</div>
+              </div>
+            </div>
+            <div class="bf-item">
+              <div class="bf-icon">🎨</div>
+              <div>
+                <div class="bf-text-title">Fully Customizable</div>
+                <div class="bf-text-sub">Dietary accommodations, cultural menus, and special requests always welcome</div>
+              </div>
+            </div>
+            <div class="bf-item">
+              <div class="bf-icon">🔒</div>
+              <div>
+                <div class="bf-text-title">Secure Your Date</div>
+                <div class="bf-text-sub">We hold your date with a simple deposit — popular weekends fill fast</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="booking-form">
+          <div class="booking-form-title">Request a Free Quote</div>
+          <div class="booking-form-sub">All fields help us give you the most accurate estimate.</div>
+          <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Catering Quote - Sabor Catering" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="Maria Garcia" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(714) 555-0000" required />
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="email">Email Address</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="event_date">Event Date</label>
+                <input class="form-input" type="date" id="event_date" name="event_date" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="event_type">Event Type</label>
+                <select class="form-select" id="event_type" name="event_type" required>
+                  <option value="" disabled selected>Select type…</option>
+                  <option value="Wedding">Wedding</option>
+                  <option value="Quinceañera">Quinceañera</option>
+                  <option value="Corporate">Corporate Event</option>
+                  <option value="Birthday">Birthday / Gala</option>
+                  <option value="Graduation">Graduation</option>
+                  <option value="Baptism">Baptism / Religious</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="guest_count">Guest Count</label>
+                <input class="form-input" type="number" id="guest_count" name="guest_count" placeholder="e.g. 120" min="1" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="budget">Estimated Budget</label>
+                <select class="form-select" id="budget" name="budget">
+                  <option value="" disabled selected>Select range…</option>
+                  <option value="Under $2,000">Under $2,000</option>
+                  <option value="$2,000–$5,000">$2,000 – $5,000</option>
+                  <option value="$5,000–$10,000">$5,000 – $10,000</option>
+                  <option value="$10,000–$20,000">$10,000 – $20,000</option>
+                  <option value="$20,000+">$20,000+</option>
+                  <option value="Flexible">Flexible / Unsure</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="venue">Location / Venue</label>
+                <input class="form-input" type="text" id="venue" name="venue" placeholder="Venue name or city, e.g. Anaheim Convention Center" />
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="requests">Special Requests</label>
+                <textarea class="form-textarea" id="requests" name="requests" placeholder="Dietary restrictions, menu preferences, cultural needs, service style, etc."></textarea>
+              </div>
+              <div class="form-group full">
+                <button type="submit" class="form-submit">
+                  Send My Quote Request →
+                </button>
+              </div>
+            </div>
+          </form>
+          <p class="form-note">We respond within 24 hours. Your information is never shared or sold.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REVIEWS
+  ============================================================ -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="reviews-header">
+        <span class="section-label">Client Reviews</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">"We hired Sabor Catering for our wedding and could not have asked for a better experience. The birria station was a hit — our guests are still talking about it months later. The team was professional, punctual, and made our day absolutely perfect."</p>
+          <div class="review-author">
+            <div class="review-avatar av-1">AV</div>
+            <div>
+              <div class="review-name">Alejandra &amp; Victor Ramirez</div>
+              <div class="review-event">Wedding · Anaheim, CA · March 2024</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">"As an event planner, I've worked with dozens of caterers. Sabor Catering is the only one I recommend to every client. Their execution is flawless — the food arrives perfect, the staff is polished, and they handle logistics without you having to babysit them."</p>
+          <div class="review-author">
+            <div class="review-avatar av-2">JM</div>
+            <div>
+              <div class="review-name">Jessica Morales</div>
+              <div class="review-event">Event Planner · Premiere Events OC</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-text">"We booked the Platinum package for my daughter's quinceañera — 175 guests. The mole negro was rich and authentic, the staff was incredibly attentive, and the full bar was a huge hit. Worth every single dollar. Sabor is in a league of their own."</p>
+          <div class="review-author">
+            <div class="review-avatar av-3">RL</div>
+            <div>
+              <div class="review-name">Roberto &amp; Lupita Herrera</div>
+              <div class="review-event">Quinceañera · Long Beach, CA · June 2024</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div>
+          <span class="section-label">Contact Us</span>
+          <h2 class="section-title">Let's Talk About<br />Your Event</h2>
+          <div class="divider"></div>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">(714) 555-0382</div>
+                <div class="contact-sub">Mon–Sat, 8AM–8PM PT</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-label">Based In</div>
+                <div class="contact-value">Orange County, CA</div>
+                <div class="contact-sub">Serving LA, OC &amp; Inland Empire</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">hello@saborcatering.com</div>
+                <div class="contact-sub">We reply within 24 hours</div>
+              </div>
+            </div>
+          </div>
+          <div class="service-areas">
+            <div class="service-areas-title">Service Areas</div>
+            <div class="area-tags">
+              <span class="area-tag">Los Angeles</span>
+              <span class="area-tag">Orange County</span>
+              <span class="area-tag">Inland Empire</span>
+              <span class="area-tag">Long Beach</span>
+              <span class="area-tag">Anaheim</span>
+              <span class="area-tag">Irvine</span>
+              <span class="area-tag">Pasadena</span>
+              <span class="area-tag">Torrance</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-right">
+          <div class="social-cta">
+            <div class="social-cta-icon">📸</div>
+            <div class="social-cta-title">Follow Our Work</div>
+            <div class="social-cta-sub">See our latest events, behind-the-scenes kitchen moments, and mouthwatering food photos</div>
+            <a class="social-cta-handle">@saborcatering</a>
+            <br />
+            <a href="https://instagram.com/saborcatering" target="_blank" rel="noopener" class="instagram-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              View on Instagram
+            </a>
+          </div>
+          <div class="hours-block">
+            <div class="hours-title">Availability</div>
+            <div class="hours-row"><span class="hours-day">Monday – Friday</span><span class="hours-time">Available</span></div>
+            <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">Available</span></div>
+            <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">Available</span></div>
+            <div class="hours-row"><span class="hours-day">Holidays</span><span class="hours-time">Upon Request</span></div>
+            <div class="hours-row"><span class="hours-day">Office Hours</span><span class="hours-time">Mon–Sat 8AM–8PM</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">Sabor Catering Co.</div>
+      <div class="footer-copy">
+        &copy; 2026 Sabor Catering Co. &nbsp;·&nbsp; Orange County, CA &nbsp;·&nbsp; Serving LA + OC + Inland Empire
+      </div>
+      <div class="footer-by">
+        Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">SanchezElevationAI</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MOBILE BOTTOM BANNER
+  ============================================================ -->
+  <div class="mobile-banner" id="mobileBanner">
+    <div class="mobile-banner-text">Ready to plan your event?</div>
+    <div class="mobile-banner-ctas">
+      <a href="tel:+17145550382" class="mbc-call">📞 Call Now</a>
+      <a href="#booking" class="mbc-quote" onclick="closeBanner()">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT (inline, no external deps)
+  ============================================================ -->
+  <script>
+    // ── Nav scroll effect
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+    function closeMobile() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Menu tabs
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    // ── Mobile banner dismiss on quote click
+    function closeBanner() {
+      // Just let scroll handle it
+    }
+
+    // ── Smooth anchor scrolling accounting for fixed nav
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    // ── Fade-in on scroll (lightweight IntersectionObserver)
+    const fadeEls = document.querySelectorAll(
+      '.pkg-card, .menu-item, .gallery-card, .review-card, .contact-item, .bf-item'
+    );
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = entry.target.style.transform.replace('translateY(20px)', 'translateY(0)');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = (el.style.transform || '') + ' translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
