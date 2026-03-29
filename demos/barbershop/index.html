@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fresh Cutz Barbershop — Compton, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0A0A0B;
+      --bg2:       #111114;
+      --bg3:       #18181C;
+      --gold:      #FFD700;
+      --gold-dim:  #C9A800;
+      --gold-glow: rgba(255,215,0,0.18);
+      --text:      #FAFAFA;
+      --muted:     #8A8A9A;
+      --border:    rgba(255,215,0,0.12);
+      --radius:    12px;
+      --nav-h:     68px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-bottom: 64px; /* room for mobile banner */
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── Utility ───────────────────────────────────────────────── */
+    .gold        { color: var(--gold); }
+    .mono        { font-family: 'JetBrains Mono', monospace; }
+    .section     { padding: 96px 24px; }
+    .container   { max-width: 1100px; margin: 0 auto; }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-glow);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+      max-width: 520px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+      border: none;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 4px 24px rgba(255,215,0,0.3);
+    }
+    .btn-gold:hover { box-shadow: 0 8px 36px rgba(255,215,0,0.45); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── NAV ───────────────────────────────────────────────────── */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      height: var(--nav-h);
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--gold);
+    }
+    .nav-logo span { color: var(--text); font-weight: 300; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { margin-left: 16px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* Mobile menu */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 998;
+      padding: 24px;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a {
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      border: 1px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    #mobile-menu a:hover, #mobile-menu a.cta {
+      background: var(--gold-glow);
+      border-color: var(--border);
+      color: var(--gold);
+    }
+    #mobile-menu a.cta {
+      margin-top: 8px;
+      text-align: center;
+      background: var(--gold);
+      color: #000;
+      border-color: var(--gold);
+    }
+
+    /* ─── HERO ──────────────────────────────────────────────────── */
+    #hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 65% 40%, rgba(255,215,0,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(255,180,0,0.05) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 70% at 90% 10%, rgba(255,220,0,0.04) 0%, transparent 50%),
+        var(--bg);
+    }
+    /* Animated grain overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,215,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,215,0,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .hero-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,215,0,0.5); }
+      50%       { box-shadow: 0 0 0 8px rgba(255,215,0,0); }
+    }
+    .hero-eyebrow-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero-h1 {
+      font-size: clamp(44px, 9vw, 86px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      margin-bottom: 24px;
+    }
+    .hero-h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 60px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .hero-stat-num {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .hero-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      align-self: center;
+    }
+
+    /* ─── SOCIAL PROOF STRIP ────────────────────────────────────── */
+    #strip {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      overflow: hidden;
+    }
+    .strip-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px 32px;
+    }
+    .strip-item {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .strip-item .accent { color: var(--gold); font-weight: 700; }
+    .strip-sep {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    /* ─── SERVICES ──────────────────────────────────────────────── */
+    #services { background: var(--bg); }
+    .services-header { margin-bottom: 56px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .service-card:hover {
+      border-color: rgba(255,215,0,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .service-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .service-name {
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .service-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .service-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── GALLERY ───────────────────────────────────────────────── */
+    #gallery { background: var(--bg2); }
+    .gallery-header { margin-bottom: 48px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-card {
+      aspect-ratio: 3 / 4;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .gallery-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+    }
+    .gallery-card:nth-child(1) .gc-bg {
+      background: linear-gradient(160deg, #1a1200 0%, #2d2000 40%, #0a0a0b 100%);
+    }
+    .gallery-card:nth-child(2) .gc-bg {
+      background: linear-gradient(160deg, #0d1a0a 0%, #1a2d14 40%, #0a0a0b 100%);
+    }
+    .gallery-card:nth-child(3) .gc-bg {
+      background: linear-gradient(160deg, #0a0d1a 0%, #141e2d 40%, #0a0a0b 100%);
+    }
+    .gallery-card:nth-child(4) .gc-bg {
+      background: linear-gradient(160deg, #1a0a12 0%, #2d1420 40%, #0a0a0b 100%);
+    }
+    .gallery-card:nth-child(5) .gc-bg {
+      background: linear-gradient(160deg, #1a0f00 0%, #2d1a00 40%, #0a0a0b 100%);
+    }
+    .gallery-card:nth-child(6) .gc-bg {
+      background: linear-gradient(160deg, #0a1a0f 0%, #142d1e 40%, #0a0a0b 100%);
+    }
+    .gc-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .gc-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 1px, transparent 1px, transparent 12px),
+        repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 1px, transparent 1px, transparent 12px);
+    }
+    .gc-shine {
+      position: absolute;
+      top: -40%;
+      left: -40%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(ellipse, rgba(255,215,0,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .gc-scissors {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      font-size: clamp(36px, 6vw, 56px);
+      opacity: 0.15;
+      filter: grayscale(1) brightness(3);
+    }
+    .gc-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 18px 16px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    }
+    .gc-name {
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .gc-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .gc-corner {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 28px; height: 28px;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ─── BOOKING CTA ───────────────────────────────────────────── */
+    #book {
+      background: var(--bg);
+      text-align: center;
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    #book::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(255,215,0,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .book-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .book-h2 {
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+    .book-sub {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .book-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    .book-phone {
+      margin-top: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    .book-phone a { color: var(--gold); }
+
+    /* ─── REVIEWS ───────────────────────────────────────────────── */
+    #reviews { background: var(--bg2); }
+    .reviews-header { margin-bottom: 48px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color 0.2s;
+    }
+    .review-card:hover { border-color: rgba(255,215,0,0.25); }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .star { color: var(--gold); font-size: 16px; }
+    .review-quote {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #D0D0D8;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .review-quote::before {
+      content: '\201C';
+      font-size: 48px;
+      line-height: 0;
+      vertical-align: -18px;
+      color: var(--gold);
+      opacity: 0.25;
+      margin-right: 4px;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2a2200, #1a1400);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .review-name { font-weight: 700; font-size: 14px; }
+    .review-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .review-badge {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .g-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 900;
+      color: #4285F4;
+    }
+
+    /* ─── CONTACT ───────────────────────────────────────────────── */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .contact-info { }
+    .contact-header { margin-bottom: 40px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .ci-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--gold-glow);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .ci-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+    .ci-val { font-size: 16px; font-weight: 600; }
+    .ci-val a { color: var(--gold); }
+    .hours-grid {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .hours-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 20px;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 14px;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--muted); }
+    .hours-time { font-weight: 600; }
+    .hours-closed { color: #444; }
+    .hours-open {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22C55E;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    #footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--gold);
+    }
+    .footer-logo span { color: var(--muted); font-weight: 300; }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .footer-copy a {
+      color: var(--gold);
+      font-weight: 600;
+      transition: opacity 0.15s;
+    }
+    .footer-copy a:hover { opacity: 0.75; }
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .social-link {
+      width: 38px; height: 38px;
+      border-radius: 9px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .social-link:hover { border-color: var(--gold); background: var(--gold-glow); }
+
+    /* ─── MOBILE BOTTOM BANNER ──────────────────────────────────── */
+    #mobile-banner {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 997;
+      background: #111114;
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .mb-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .mb-text a {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      #mobile-banner { display: flex; }
+      body { padding-bottom: 56px; }
+
+      .section { padding: 72px 20px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-card:last-child { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-stats { gap: 24px; }
+      .hero-divider { display: none; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+      .book-btns { flex-direction: column; align-items: center; }
+    }
+    @media (min-width: 769px) {
+      #mobile-banner { display: none !important; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════ NAV ═══════════════════════════ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Fresh<span>Cutz</span></a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn btn-gold nav-cta" style="padding:10px 22px; font-size:14px;">Book Now</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#gallery" onclick="closeMenu()">Gallery</a>
+    <a href="#book" onclick="closeMenu()">Book</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="cta" onclick="closeMenu()">Book Now →</a>
+  </div>
+
+  <!-- ═══════════════════════════════ HERO ══════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow fade-up">
+        <div class="hero-dot"></div>
+        <span class="hero-eyebrow-text">Compton, CA · Est. 2018</span>
+      </div>
+      <h1 class="hero-h1 fade-up">
+        Look <em>Sharp.</em><br/>Feel <em>Sharp.</em>
+      </h1>
+      <p class="hero-sub fade-up">
+        Premium cuts, fades, and lineups — walk out a different person. We don't just cut hair, we build confidence.
+      </p>
+      <div class="hero-btns fade-up">
+        <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn btn-gold">
+          ✂ Book Your Cut
+        </a>
+        <a href="#gallery" class="btn btn-ghost">
+          See Our Work →
+        </a>
+      </div>
+      <div class="hero-stats fade-up">
+        <div>
+          <div class="hero-stat-num">847+</div>
+          <div class="hero-stat-label">Google Reviews</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div>
+          <div class="hero-stat-num">5.0★</div>
+          <div class="hero-stat-label">Avg Rating</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div>
+          <div class="hero-stat-num">6+</div>
+          <div class="hero-stat-label">Years Serving</div>
+        </div>
+        <div class="hero-divider"></div>
+        <div>
+          <div class="hero-stat-num">Walk-ins</div>
+          <div class="hero-stat-label">Always Welcome</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ PROOF STRIP ═══════════════════════ -->
+  <div id="strip">
+    <div class="strip-track">
+      <div class="strip-item">
+        <span class="accent">⭐ 5.0</span> on Google
+      </div>
+      <div class="strip-sep"></div>
+      <div class="strip-item">
+        <span class="accent">847</span> Reviews
+      </div>
+      <div class="strip-sep"></div>
+      <div class="strip-item">
+        📍 Compton, CA
+      </div>
+      <div class="strip-sep"></div>
+      <div class="strip-item">
+        🟢 Walk-ins Welcome
+      </div>
+      <div class="strip-sep"></div>
+      <div class="strip-item">
+        ✂ Tue–Sun Open
+      </div>
+      <div class="strip-sep"></div>
+      <div class="strip-item">
+        <span class="accent">#1</span> Barbershop in South LA
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ SERVICES ══════════════════════════ -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="services-header">
+        <div class="tag">What We Do</div>
+        <h2 class="section-title">Services &amp; Pricing</h2>
+        <p class="section-sub">Every service is delivered with precision, care, and the attention to detail you deserve.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon">💈</div>
+          <div class="service-row">
+            <span class="service-name">Haircut</span>
+            <span class="service-price">$35</span>
+          </div>
+          <p class="service-desc">Classic or modern cut tailored to your head shape, hair texture, and personal style.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">✂️</div>
+          <div class="service-row">
+            <span class="service-name">Fade</span>
+            <span class="service-price">$40</span>
+          </div>
+          <p class="service-desc">Skin, low, mid, or high — executed clean and crisp. No blotchy lines, ever.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">🧔</div>
+          <div class="service-row">
+            <span class="service-name">Beard Trim</span>
+            <span class="service-price">$20</span>
+          </div>
+          <p class="service-desc">Shape, line, and condition your beard for a groomed, professional finish.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">👑</div>
+          <div class="service-row">
+            <span class="service-name">Haircut + Beard</span>
+            <span class="service-price">$55</span>
+          </div>
+          <p class="service-desc">The full package — cut and beard done together. Best value, complete look.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">🧒</div>
+          <div class="service-row">
+            <span class="service-name">Kids Cut</span>
+            <span class="service-price">$25</span>
+          </div>
+          <p class="service-desc">Patient, fun, and precise cuts for the little ones. Ages 2–12 welcome.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon">⚡</div>
+          <div class="service-row">
+            <span class="service-name">Shape Up</span>
+            <span class="service-price">$15</span>
+          </div>
+          <p class="service-desc">Edge up your hairline, temples, and neck for a fresh, defined look between cuts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ GALLERY ══════════════════════════ -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="gallery-header">
+        <div class="tag">The Work</div>
+        <h2 class="section-title">Our Gallery</h2>
+        <p class="section-sub">Every client leaves looking like a different person. See the results for yourself.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-card fade-up">
+          <div class="gc-bg"></div>
+          <div class="gc-pattern"></div>
+          <div class="gc-shine"></div>
+          <div class="gc-scissors">✂</div>
+          <div class="gc-corner"></div>
+          <div class="gc-label">
+            <div class="gc-name">Fade</div>
+            <div class="gc-tag">Skin Fade · Clean</div>
+          </div>
+        </div>
+        <div class="gallery-card fade-up">
+          <div class="gc-bg"></div>
+          <div class="gc-pattern"></div>
+          <div class="gc-shine"></div>
+          <div class="gc-scissors">💈</div>
+          <div class="gc-corner"></div>
+          <div class="gc-label">
+            <div class="gc-name">Taper</div>
+            <div class="gc-tag">Mid Taper · Sharp</div>
+          </div>
+        </div>
+        <div class="gallery-card fade-up">
+          <div class="gc-bg"></div>
+          <div class="gc-pattern"></div>
+          <div class="gc-shine"></div>
+          <div class="gc-scissors">⚡</div>
+          <div class="gc-corner"></div>
+          <div class="gc-label">
+            <div class="gc-name">Lineup</div>
+            <div class="gc-tag">Edge Up · Crisp</div>
+          </div>
+        </div>
+        <div class="gallery-card fade-up">
+          <div class="gc-bg"></div>
+          <div class="gc-pattern"></div>
+          <div class="gc-shine"></div>
+          <div class="gc-scissors">🧔</div>
+          <div class="gc-corner"></div>
+          <div class="gc-label">
+            <div class="gc-name">Beard</div>
+            <div class="gc-tag">Full Beard · Shaped</div>
+          </div>
+        </div>
+        <div class="gallery-card fade-up">
+          <div class="gc-bg"></div>
+          <div class="gc-pattern"></div>
+          <div class="gc-shine"></div>
+          <div class="gc-scissors">🧒</div>
+          <div class="gc-corner"></div>
+          <div class="gc-label">
+            <div class="gc-name">Kids Cut</div>
+            <div class="gc-tag">Youth · Fresh</div>
+          </div>
+        </div>
+        <div class="gallery-card fade-up">
+          <div class="gc-bg"></div>
+          <div class="gc-pattern"></div>
+          <div class="gc-shine"></div>
+          <div class="gc-scissors">👑</div>
+          <div class="gc-corner"></div>
+          <div class="gc-label">
+            <div class="gc-name">Shape Up</div>
+            <div class="gc-tag">Tight Lines · Clean</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ BOOKING CTA ════════════════════════ -->
+  <section id="book" class="section">
+    <div class="book-inner">
+      <div class="tag fade-up">Reserve Your Spot</div>
+      <h2 class="book-h2 fade-up">Ready to<br/><em class="gold">Book Your Cut?</em></h2>
+      <p class="book-sub fade-up">Don't wait — our chairs fill up fast. Book online in 60 seconds or walk in any day we're open.</p>
+      <div class="book-btns fade-up">
+        <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn btn-gold" style="padding:18px 40px; font-size:17px;">
+          ✂ Book My Appointment
+        </a>
+        <a href="#contact" class="btn btn-ghost" style="padding:18px 32px; font-size:17px;">
+          View Hours
+        </a>
+      </div>
+      <p class="book-phone fade-up">Or call us: <a href="tel:+13105550247">(310) 555-0247</a></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ REVIEWS ═══════════════════════════ -->
+  <section id="reviews" class="section">
+    <div class="container">
+      <div class="reviews-header">
+        <div class="tag">Client Love</div>
+        <h2 class="section-title">What They're Saying</h2>
+        <p class="section-sub">Don't take our word for it — here's what real clients say after sitting in the chair.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card fade-up">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-quote">
+            Been coming here for two years straight. My barber knows exactly what I want without me even saying it. The fade is always on point — no patchy spots, no blurry lines. This is the only shop I trust.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">M</div>
+            <div>
+              <div class="review-name">Marcus T.</div>
+              <div class="review-meta">Local Guide · 3 months ago</div>
+            </div>
+            <div class="review-badge">
+              <div class="g-dot">G</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-quote">
+            Walked in on a Saturday without an appointment and still got taken care of in under 20 minutes. Cut was immaculate — got the taper fade with a lineup. Left looking like a whole different person. 10/10.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">J</div>
+            <div>
+              <div class="review-name">Jaylen R.</div>
+              <div class="review-meta">3 reviews · 1 month ago</div>
+            </div>
+            <div class="review-badge">
+              <div class="g-dot">G</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card fade-up">
+          <div class="review-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="review-quote">
+            Brought my son in for his first real cut and they made him feel so comfortable. Patient, professional, and the result was better than anything I've seen. We're coming back every month. Best in Compton hands down.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <div>
+              <div class="review-name">David M.</div>
+              <div class="review-meta">8 reviews · 2 weeks ago</div>
+            </div>
+            <div class="review-badge">
+              <div class="g-dot">G</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ CONTACT ════════════════════════════ -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-header">
+            <div class="tag">Find Us</div>
+            <h2 class="section-title">Come See Us</h2>
+            <p class="section-sub">Walk in or book ahead — we're ready for you either way.</p>
+          </div>
+          <div class="contact-item fade-up">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-label">Phone</div>
+              <div class="ci-val"><a href="tel:+13105550247">(310) 555-0247</a></div>
+            </div>
+          </div>
+          <div class="contact-item fade-up">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Address</div>
+              <div class="ci-val">1823 Central Ave<br/>Compton, CA 90221</div>
+            </div>
+          </div>
+          <div class="contact-item fade-up">
+            <div class="ci-icon">📸</div>
+            <div>
+              <div class="ci-label">Instagram</div>
+              <div class="ci-val"><a href="https://instagram.com/freshcutzbarbershop" target="_blank">@freshcutzbarbershop</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="fade-up">
+          <div class="hours-grid">
+            <div class="hours-title">Hours of Operation</div>
+            <div class="hours-row">
+              <span class="hours-day">Monday</span>
+              <span class="hours-closed">Closed</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Tuesday</span>
+              <span class="hours-time"><span class="hours-open"></span>9:00 AM – 7:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Wednesday</span>
+              <span class="hours-time"><span class="hours-open"></span>9:00 AM – 7:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Thursday</span>
+              <span class="hours-time"><span class="hours-open"></span>9:00 AM – 7:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Friday</span>
+              <span class="hours-time"><span class="hours-open"></span>9:00 AM – 7:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Saturday</span>
+              <span class="hours-time"><span class="hours-open"></span>9:00 AM – 7:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Sunday</span>
+              <span class="hours-time"><span class="hours-open"></span>10:00 AM – 5:00 PM</span>
+            </div>
+          </div>
+          <div style="margin-top:16px;">
+            <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn btn-gold" style="width:100%; justify-content:center; padding:16px;">
+              Book Appointment →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">Fresh<span>Cutz</span> Barbershop</div>
+      <div class="footer-copy">
+        © 2026 Fresh Cutz Barbershop · Compton, CA<br/>
+        Website by <a href="https://sanchezelevationai.com" target="_blank">SanchezElevationAI</a>
+        — Powered by <a href="https://sanchezelevationai.com" target="_blank">SanchezElevationAI.com</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://instagram.com/freshcutzbarbershop" target="_blank" class="social-link" aria-label="Instagram">📸</a>
+        <a href="tel:+13105550247" class="social-link" aria-label="Phone">📞</a>
+        <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="social-link" aria-label="Book">📅</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════ MOBILE BOTTOM BANNER ═══════════════════════ -->
+  <div id="mobile-banner">
+    <span class="mb-text">
+      Website by <a href="https://sanchezelevationai.com" target="_blank">SanchezElevationAI</a> — Get yours: <a href="https://sanchezelevationai.com" target="_blank">sanchezelevationai.com</a>
+    </span>
+  </div>
+
+  <!-- ═══════════════════════════ SCRIPTS ═══════════════════════════ -->
+  <script>
+    // ── Hamburger Menu ──────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // ── Scroll Animations (IntersectionObserver) ────────────────────
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger sibling cards
+          const siblings = entry.target.parentElement.querySelectorAll('.fade-up');
+          let delay = 0;
+          siblings.forEach((sib, idx) => {
+            if (sib === entry.target) delay = idx * 80;
+          });
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ── Nav active link highlight on scroll ─────────────────────────
+    const sections = document.querySelectorAll('section[id], div[id="strip"]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = '';
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.style.color = 'var(--text)';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+</body>
+</html>
