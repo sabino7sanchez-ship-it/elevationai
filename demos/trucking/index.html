@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpha Freight LLC — Inland Empire Trucking & Freight</title>
+  <meta name="description" content="Full truckload, LTL, flatbed, and refrigerated freight across California and the Southwest. Based in Fontana, CA. DOT Certified. 24/7 Dispatch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #0A0A0B;
+      --bg2:      #0F0F11;
+      --bg3:      #141417;
+      --bg4:      #1A1A1F;
+      --cyan:     #00F0FF;
+      --cyan-dim: #00bfcc;
+      --cyan-glow:#00F0FF33;
+      --text:     #FAFAFA;
+      --muted:    #9999AA;
+      --border:   #2A2A35;
+      --success:  #00FF88;
+      --warning:  #FFB800;
+      --radius:   10px;
+      --radius-lg:16px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .cyan { color: var(--cyan); }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--cyan);
+      color: #000;
+    }
+    .btn-primary:hover { background: #2af4ff; box-shadow: 0 0 28px var(--cyan-glow); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+    .card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { border-color: var(--cyan-dim); box-shadow: 0 0 30px #00F0FF15; }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10,10,11,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo svg { width: 28px; height: 28px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 16px 20px 20px;
+      border-top: 1px solid var(--border);
+      background: rgba(10,10,11,0.98);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 10px 4px;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border: none; }
+    .mobile-menu a:hover { color: var(--cyan); }
+    .mobile-menu .btn { margin-top: 10px; justify-content: center; }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      position: relative;
+      overflow: hidden;
+      padding: 100px 0 90px;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, #00F0FF12 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, #00F0FF08 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 10%, #00F0FF06 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.25;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--cyan);
+      margin-bottom: 28px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero-h1 {
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--cyan);
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-btns .btn-primary svg,
+    .hero-btns .btn-outline svg { width: 16px; height: 16px; }
+
+    /* ============================================================
+       STATS STRIP
+    ============================================================ */
+    #stats {
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 22px 0;
+    }
+    .stats-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 28px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-icon { color: var(--cyan); flex-shrink: 0; }
+    .stat-text { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; color: var(--text); }
+    @media (max-width: 640px) {
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 10px 16px; width: 100%; justify-content: center; }
+      .stat-item:last-child { border-bottom: none; }
+    }
+
+    /* ============================================================
+       QUOTE CALCULATOR
+    ============================================================ */
+    #quote {
+      padding: 100px 0;
+      background: var(--bg);
+      position: relative;
+    }
+    #quote::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, #00F0FF07 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .quote-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .quote-header { text-align: center; margin-bottom: 44px; }
+    .quote-box {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 60px #00F0FF0A;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-control {
+      background: var(--bg4);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-control::placeholder { color: #555; }
+    .form-control:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px var(--cyan-glow); }
+    select.form-control { cursor: pointer; }
+    select.form-control option { background: var(--bg4); }
+    .calc-btn-wrap { margin-top: 24px; }
+    .calc-btn {
+      width: 100%;
+      justify-content: center;
+      font-size: 16px;
+      padding: 16px;
+      border-radius: var(--radius);
+    }
+    .calc-btn svg { width: 18px; height: 18px; }
+
+    /* Result box */
+    #quote-result {
+      display: none;
+      margin-top: 28px;
+      background: var(--bg4);
+      border: 1px solid var(--cyan-dim);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      animation: slideUp 0.3s ease;
+      box-shadow: 0 0 40px #00F0FF18;
+    }
+    #quote-result.visible { display: block; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .result-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .result-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+    .result-badge {
+      background: #00FF8822;
+      color: var(--success);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid #00FF8844;
+    }
+    .result-rows { display: flex; flex-direction: column; gap: 12px; }
+    .result-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .result-row-label {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .result-row-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .result-divider { border: none; border-top: 1px solid var(--border); margin: 4px 0; }
+    .result-total-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .result-total-label {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .result-total-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--cyan);
+    }
+    .result-transit {
+      margin-top: 16px;
+      background: #00F0FF0A;
+      border: 1px solid #00F0FF22;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .result-transit strong { color: var(--text); }
+    .result-disclaimer {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #555;
+      text-align: center;
+    }
+    .result-action { margin-top: 20px; display: flex; gap: 12px; }
+    .result-action .btn { flex: 1; justify-content: center; }
+
+    @media (max-width: 580px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .quote-box { padding: 24px 18px; }
+      .result-action { flex-direction: column; }
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    #services {
+      padding: 100px 0;
+      background: var(--bg2);
+    }
+    .services-header { margin-bottom: 52px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 26px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+    .service-card:hover {
+      border-color: var(--cyan-dim);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 40px #00F0FF10;
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: #00F0FF12;
+      border: 1px solid var(--cyan-glow);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      color: var(--cyan);
+    }
+    .service-icon svg { width: 26px; height: 26px; }
+    .service-name {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .service-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+    .service-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--cyan);
+      background: var(--cyan-glow);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    #about {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 36px;
+    }
+    .about-stat {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+    }
+    .about-stat-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--cyan);
+      line-height: 1;
+    }
+    .about-stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .about-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-card-stack {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .about-feat {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .about-feat-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--cyan-glow);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan);
+    }
+    .about-feat-icon svg { width: 20px; height: 20px; }
+    .about-feat-text { font-size: 14px; color: var(--muted); }
+    .about-feat-text strong { color: var(--text); display: block; font-size: 15px; margin-bottom: 2px; }
+    @media (max-width: 860px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ============================================================
+       REVIEWS
+    ============================================================ */
+    #reviews {
+      padding: 100px 0;
+      background: var(--bg2);
+    }
+    .reviews-header { margin-bottom: 52px; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: border-color 0.2s;
+    }
+    .review-card:hover { border-color: var(--cyan-dim); }
+    .stars { color: #FFB800; font-size: 16px; margin-bottom: 14px; letter-spacing: 2px; }
+    .review-text { font-size: 15px; color: var(--muted); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--cyan-glow);
+      border: 1px solid var(--cyan-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--cyan);
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 600; font-size: 14px; }
+    .reviewer-title { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* ============================================================
+       CONTACT / DISPATCH FORM
+    ============================================================ */
+    #contact {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-block {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      gap: 16px;
+    }
+    .contact-block-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: var(--cyan-glow);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan);
+    }
+    .contact-block-icon svg { width: 20px; height: 20px; }
+    .contact-block-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .contact-block-val {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .contact-block-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .contact-form-box {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .contact-form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .contact-form-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .contact-form-grid .form-group.full { grid-column: 1 / -1; }
+    .contact-form-grid textarea.form-control { resize: vertical; min-height: 110px; }
+    .submit-btn { width: 100%; justify-content: center; margin-top: 6px; font-size: 15px; }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px;
+      color: var(--success);
+    }
+    .form-success svg { width: 48px; height: 48px; margin: 0 auto 16px; }
+    .form-success h3 { font-size: 20px; color: var(--text); }
+    .form-success p { font-size: 14px; color: var(--muted); margin-top: 8px; }
+    @media (max-width: 860px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+      .contact-form-grid { grid-template-columns: 1fr; }
+      .contact-form-grid .form-group.full { grid-column: 1; }
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      padding: 40px 0 20px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--cyan);
+      letter-spacing: -0.02em;
+    }
+    .footer-meta {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: right;
+    }
+    .footer-meta a { color: var(--cyan); }
+    .footer-meta a:hover { text-decoration: underline; }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 24px 0 16px;
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .footer-copy { font-size: 12px; color: #555; }
+    .footer-copy a { color: var(--muted); }
+    .footer-copy a:hover { color: var(--cyan); }
+    .footer-dot-tags {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #555;
+    }
+
+    /* ============================================================
+       BOTTOM BANNER (mobile fixed)
+    ============================================================ */
+    #bottom-banner {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 900;
+      background: rgba(10,10,11,0.96);
+      border-top: 1px solid var(--border);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+    }
+    #bottom-banner a { color: var(--cyan); font-weight: 600; }
+    @media (max-width: 768px) {
+      #bottom-banner { display: block; }
+      body { padding-bottom: 50px; }
+    }
+
+    /* ============================================================
+       MISC / SCROLL REVEAL PLACEHOLDER
+    ============================================================ */
+    .divider-line {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <header id="nav">
+    <div class="container">
+      <nav class="nav-inner">
+        <a href="#hero" class="nav-logo" aria-label="Alpha Freight LLC home">
+          <!-- Truck icon -->
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="9" width="17" height="11" rx="1.5" fill="currentColor" opacity="0.9"/>
+            <path d="M19 12h4l3 4v4h-7V12z" fill="currentColor"/>
+            <circle cx="7" cy="21" r="2.5" fill="#0A0A0B" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="21" cy="21" r="2.5" fill="#0A0A0B" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          Alpha Freight
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#quote">Quote</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#quote" class="btn btn-primary nav-cta">Get a Quote</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#services" class="mobile-link">Services</a>
+      <a href="#quote" class="mobile-link">Quote</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+      <a href="#quote" class="btn btn-primary mobile-link">Get a Quote</a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Now Dispatching — Inland Empire, CA
+        </div>
+        <h1 class="hero-h1">
+          Freight That Gets There.<br>
+          <em>On Time, Every Time.</em>
+        </h1>
+        <p class="hero-sub">
+          Full truckload, LTL, and regional freight services across California and the Southwest. Built for businesses that can't afford delays.
+        </p>
+        <div class="hero-btns">
+          <a href="#quote" class="btn btn-primary">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 1.5A6.5 6.5 0 1 1 1.5 8 6.507 6.507 0 0 1 8 1.5zM0 8a8 8 0 1 0 16 0A8 8 0 0 0 0 8zm7.25-3.25v3.5l3 1.75-.75 1.25-3.5-2.05V4.75h1.25z"/></svg>
+            Get Instant Quote
+          </a>
+          <a href="tel:+19095550261" class="btn btn-outline">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/></svg>
+            Call Dispatch
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS STRIP
+  ============================================================ -->
+  <div id="stats" role="region" aria-label="Company highlights">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <span class="stat-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+          </span>
+          <span class="stat-text">500+ Loads Delivered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"/></svg>
+          </span>
+          <span class="stat-text">98% On-Time Rate</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+          </span>
+          <span class="stat-text">Inland Empire, CA</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524z"/></svg>
+          </span>
+          <span class="stat-text">DOT Certified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       QUOTE CALCULATOR
+  ============================================================ -->
+  <section id="quote" aria-labelledby="quote-title">
+    <div class="container">
+      <div class="quote-wrap">
+        <div class="quote-header">
+          <p class="section-label">Instant Pricing</p>
+          <h2 class="section-title" id="quote-title">Get an Instant Freight Quote</h2>
+          <p class="section-sub" style="margin: 12px auto 0; text-align:center;">
+            Fill in your shipment details and get a real-time rate estimate in seconds — no broker, no waiting.
+          </p>
+        </div>
+        <div class="quote-box">
+          <form id="quote-form" novalidate autocomplete="off">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="origin">Origin City</label>
+                <input type="text" id="origin" class="form-control" placeholder="e.g. Fontana, CA" required />
+              </div>
+              <div class="form-group">
+                <label for="destination">Destination City</label>
+                <input type="text" id="destination" class="form-control" placeholder="e.g. Las Vegas, NV" required />
+              </div>
+              <div class="form-group">
+                <label for="load-type">Load Type</label>
+                <select id="load-type" class="form-control" required>
+                  <option value="" disabled selected>Select load type...</option>
+                  <option value="ftl">Full Truckload (FTL) — $3.20/mi</option>
+                  <option value="ltl">LTL – Less Than Load — $0.08/lb + $1.50/mi</option>
+                  <option value="flatbed">Flatbed — $3.80/mi</option>
+                  <option value="reefer">Refrigerated — $4.20/mi</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="weight">Weight (lbs)</label>
+                <input type="number" id="weight" class="form-control" placeholder="e.g. 18000" min="1" required />
+              </div>
+              <div class="form-group full">
+                <label for="miles">Estimated Miles</label>
+                <input type="number" id="miles" class="form-control" placeholder="e.g. 280" min="1" required />
+              </div>
+            </div>
+            <div class="calc-btn-wrap">
+              <button type="submit" class="btn btn-primary calc-btn">
+                <svg viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M3 1a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3zm5 3a1 1 0 0 1 1 1v2h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H5a1 1 0 0 1 0-2h2V5a1 1 0 0 1 1-1z"/></svg>
+                Calculate Quote
+              </button>
+            </div>
+          </form>
+
+          <!-- RESULT BOX -->
+          <div id="quote-result" role="region" aria-live="polite" aria-label="Quote result">
+            <div class="result-header">
+              <span class="result-title">Freight Estimate</span>
+              <span class="result-badge" id="result-badge">ESTIMATE READY</span>
+            </div>
+            <div class="result-rows">
+              <div class="result-row">
+                <span class="result-row-label" id="res-origin-dest">—</span>
+                <span class="result-row-val" id="res-load-type">—</span>
+              </div>
+              <hr class="result-divider" />
+              <div class="result-row">
+                <span class="result-row-label">Base Rate</span>
+                <span class="result-row-val" id="res-base">—</span>
+              </div>
+              <div class="result-row">
+                <span class="result-row-label">Fuel Surcharge <span class="mono" style="font-size:11px;color:#555">(12%)</span></span>
+                <span class="result-row-val" id="res-fuel">—</span>
+              </div>
+            </div>
+            <div class="result-total-row">
+              <span class="result-total-label">Total Estimate</span>
+              <span class="result-total-val" id="res-total">—</span>
+            </div>
+            <div class="result-transit" id="res-transit">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="color:var(--cyan);flex-shrink:0" aria-hidden="true"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg>
+              <span id="res-transit-text">Est. transit time loading...</span>
+            </div>
+            <p class="result-disclaimer">*Estimate based on standard conditions. Final rate confirmed at booking. Minimum charge $350.</p>
+            <div class="result-action">
+              <a href="#contact" class="btn btn-primary">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/></svg>
+                Request This Quote
+              </a>
+              <button type="button" class="btn btn-outline" onclick="document.getElementById('quote-form').reset(); document.getElementById('quote-result').classList.remove('visible');" aria-label="Reset calculator">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/><path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/></svg>
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">What We Haul</p>
+        <h2 class="section-title" id="services-title">Freight Solutions Built for the West</h2>
+        <p class="section-sub">
+          Whether you're moving a full load or just a few pallets, we've got the capacity, equipment, and drivers to get it done.
+        </p>
+      </div>
+      <div class="services-grid">
+        <!-- FTL -->
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="7" width="16" height="10" rx="1.5" fill="currentColor" opacity="0.85"/><path d="M18 11h4l3 4v4h-7V11z" fill="currentColor"/><circle cx="7" cy="19" r="2.5" fill="var(--bg3)" stroke="currentColor" stroke-width="1.5"/><circle cx="21" cy="19" r="2.5" fill="var(--bg3)" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <div class="service-name">Full Truckload (FTL)</div>
+          <div class="service-desc">
+            Dedicated truck for your load — no sharing, no delays. Ideal for high-volume shippers moving 20,000+ lbs. Direct door-to-door service across CA, NV, and AZ.
+          </div>
+          <span class="service-tag">$3.20 / mile</span>
+        </article>
+        <!-- LTL -->
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 26 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="8" height="8" rx="1.2" opacity="0.9"/><rect x="13" y="5" width="10" height="8" rx="1.2" opacity="0.7"/><rect x="3" y="15" width="12" height="7" rx="1.2" opacity="0.8"/><rect x="17" y="15" width="6" height="7" rx="1.2" opacity="0.6"/></svg>
+          </div>
+          <div class="service-name">LTL – Less Than Load</div>
+          <div class="service-desc">
+            Smart option for smaller shipments. Share trailer space, pay only for what you use. Scheduled pickups across the Inland Empire and greater Southern California.
+          </div>
+          <span class="service-tag">$0.08/lb + $1.50/mi</span>
+        </article>
+        <!-- Flatbed -->
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 26 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="12" width="22" height="5" rx="1" opacity="0.9"/><rect x="4" y="8" width="16" height="4" rx="0.8" opacity="0.7"/><circle cx="6" cy="19" r="2.5" fill="var(--bg3)" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="19" r="2.5" fill="var(--bg3)" stroke="currentColor" stroke-width="1.5"/><rect x="12" y="5" width="8" height="7" rx="0.8" opacity="0.5"/></svg>
+          </div>
+          <div class="service-name">Flatbed Freight</div>
+          <div class="service-desc">
+            Built for oversized, heavy, or irregularly shaped cargo — construction materials, equipment, steel, lumber. Our flatbed fleet handles what standard trailers can't.
+          </div>
+          <span class="service-tag">$3.80 / mile</span>
+        </article>
+        <!-- Reefer -->
+        <article class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 26 26" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="22" height="13" rx="1.5" opacity="0.8"/><path d="M13 4v18M8 9l5 4 5-4M8 15l5-4 5 4" stroke="var(--bg3)" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.9"/></svg>
+          </div>
+          <div class="service-name">Refrigerated Transport</div>
+          <div class="service-desc">
+            Temperature-controlled freight for perishables, pharmaceuticals, and sensitive cargo. Maintained at precise temps from pickup to delivery — no exceptions.
+          </div>
+          <span class="service-tag">$4.20 / mile</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title" id="about-title">Built in the IE. Trusted Across the Southwest.</h2>
+          <p class="section-sub">
+            Alpha Freight LLC has operated out of Fontana, California for over a decade. We started with two trucks and a commitment to never missing a delivery window. That same promise drives every load we move today.
+          </p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="about-stat-num">10+</div>
+              <div class="about-stat-label">Years in Business</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">50+</div>
+              <div class="about-stat-label">Trucks in Fleet</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">3</div>
+              <div class="about-stat-label">States Served</div>
+            </div>
+            <div class="about-stat">
+              <div class="about-stat-num">24/7</div>
+              <div class="about-stat-label">Live Dispatch</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-card-stack">
+            <div class="about-feat">
+              <div class="about-feat-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1a9 9 0 1 0 0 18A9 9 0 0 0 10 1zm0 2a7 7 0 1 1 0 14A7 7 0 0 1 10 3zm.75 3.75a.75.75 0 0 0-1.5 0v3.5l2.25 2.25a.75.75 0 1 0 1.06-1.06L10.75 9.94V6.75z" clip-rule="evenodd"/></svg>
+              </div>
+              <div class="about-feat-text">
+                <strong>24/7 Live Dispatch</strong>
+                Real drivers, real dispatchers — not bots. Always reachable.
+              </div>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.667a8.333 8.333 0 1 0 0 16.666A8.333 8.333 0 0 0 10 1.667zM3.333 10a6.667 6.667 0 1 1 13.334 0 6.667 6.667 0 0 1-13.334 0zm9.577-2.09a.833.833 0 0 0-1.18-1.18L9 9.46 8.27 8.73a.833.833 0 0 0-1.178 1.18l1.32 1.32a.833.833 0 0 0 1.178 0l3.32-3.32z" clip-rule="evenodd"/></svg>
+              </div>
+              <div class="about-feat-text">
+                <strong>DOT #3847291 · MC #1293847</strong>
+                Fully licensed, insured, and FMCSA compliant.
+              </div>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 3.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0z"/><path d="M10 6a.75.75 0 0 1 .75.75v3.5h2a.75.75 0 0 1 0 1.5H9.25a.75.75 0 0 1-.75-.75v-4.25A.75.75 0 0 1 10 6z"/></svg>
+              </div>
+              <div class="about-feat-text">
+                <strong>Real-Time ETA Updates</strong>
+                Know where your freight is at every stage of the haul.
+              </div>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4zm0 6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-2zm1 5a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2H4z"/></svg>
+              </div>
+              <div class="about-feat-text">
+                <strong>Digital BOL & Proof of Delivery</strong>
+                Paperless documentation delivered to your inbox instantly.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REVIEWS
+  ============================================================ -->
+  <section id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="reviews-header">
+        <p class="section-label">Client Reviews</p>
+        <h2 class="section-title" id="reviews-title">What Shippers Say About Us</h2>
+      </div>
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <article class="review-card">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p class="review-text">
+            "We've used Alpha Freight for our construction supply runs from Fontana to Phoenix every month for over two years. Not once have they missed a window. Their dispatch team is reachable at 3 AM if needed. That's not common in this industry."
+          </p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" aria-hidden="true">MR</div>
+            <div>
+              <div class="reviewer-name">Marco Reyes</div>
+              <div class="reviewer-title">Logistics Manager, SoCal Build Group</div>
+            </div>
+          </div>
+        </article>
+        <!-- Review 2 -->
+        <article class="review-card">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p class="review-text">
+            "We run a produce distribution operation out of the IE and needed reliable reefer capacity on short notice. Alpha Freight delivered — literally. Temperature logs were perfect, and the driver called ahead at every stop. We switched our entire cold chain to them."
+          </p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" aria-hidden="true">JC</div>
+            <div>
+              <div class="reviewer-name">Jessica Calderon</div>
+              <div class="reviewer-title">Owner, Calderon Fresh Distributors</div>
+            </div>
+          </div>
+        </article>
+        <!-- Review 3 -->
+        <article class="review-card">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p class="review-text">
+            "The instant quote tool on their site sold me before I even called. Knew exactly what I'd pay for my flatbed load to Las Vegas. No surprises at invoice. As a business owner that kind of transparency is rare — and worth paying for."
+          </p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" aria-hidden="true">DT</div>
+            <div>
+              <div class="reviewer-name">Daniel Torres</div>
+              <div class="reviewer-title">Owner, Torres Welding & Fabrication</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT / DISPATCH FORM
+  ============================================================ -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div style="margin-bottom: 52px;">
+        <p class="section-label">Reach Out</p>
+        <h2 class="section-title" id="contact-title">Talk to Our Dispatch Team</h2>
+        <p class="section-sub">Ready to book a load or need a custom quote? Fill out the form and we'll get back to you within 1 hour during business hours.</p>
+      </div>
+      <div class="contact-grid">
+        <!-- Left: Info -->
+        <aside class="contact-info" aria-label="Contact information">
+          <div class="contact-block">
+            <div class="contact-block-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 0 1 1-1h2.153a1 1 0 0 1 .986.836l.74 4.435a1 1 0 0 1-.54 1.06l-1.548.773a11.037 11.037 0 0 0 6.105 6.105l.774-1.548a1 1 0 0 1 1.059-.54l4.435.74a1 1 0 0 1 .836.986V17a1 1 0 0 1-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            </div>
+            <div>
+              <div class="contact-block-label">Dispatch Line</div>
+              <div class="contact-block-val"><a href="tel:+19095550261">(909) 555-0261</a></div>
+              <div class="contact-block-sub">24/7 — Always Answered</div>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 1 1 9.9 9.9L10 18.9l-4.95-4.95a7 7 0 0 1 0-9.9zM10 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="contact-block-label">Headquarters</div>
+              <div class="contact-block-val">Fontana, CA 92335</div>
+              <div class="contact-block-sub">Inland Empire, California</div>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1a9 9 0 1 0 0 18A9 9 0 0 0 10 1zm-1 5a1 1 0 0 1 2 0v3.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 9 10V6z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="contact-block-label">Hours</div>
+              <div class="contact-block-val">24 / 7 / 365</div>
+              <div class="contact-block-sub">Dispatch never sleeps</div>
+            </div>
+          </div>
+          <div class="contact-block">
+            <div class="contact-block-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1.667a8.333 8.333 0 1 0 0 16.666A8.333 8.333 0 0 0 10 1.667zM3.333 10a6.667 6.667 0 1 1 13.334 0 6.667 6.667 0 0 1-13.334 0zm9.577-2.09a.833.833 0 0 0-1.18-1.18L9 9.46 8.27 8.73a.833.833 0 0 0-1.178 1.18l1.32 1.32a.833.833 0 0 0 1.178 0l3.32-3.32z" clip-rule="evenodd"/></svg>
+            </div>
+            <div>
+              <div class="contact-block-label">DOT &amp; MC Numbers</div>
+              <div class="contact-block-val">DOT #3847291</div>
+              <div class="contact-block-sub">MC #1293847 · FMCSA Certified</div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right: Form -->
+        <div class="contact-form-box">
+          <div id="form-body">
+            <h3 class="contact-form-title">Request a Freight Quote</h3>
+            <p class="contact-form-sub">We'll confirm your rate and availability within 1 hour.</p>
+            <form
+              id="contact-form"
+              action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+              method="POST"
+              novalidate
+            >
+              <input type="hidden" name="_subject" value="Freight Quote Request - Alpha Freight" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value="about:blank" />
+              <div class="contact-form-grid">
+                <div class="form-group">
+                  <label for="c-name">Your Name</label>
+                  <input type="text" id="c-name" name="name" class="form-control" placeholder="John Smith" required />
+                </div>
+                <div class="form-group">
+                  <label for="c-company">Company</label>
+                  <input type="text" id="c-company" name="company" class="form-control" placeholder="Your Business" />
+                </div>
+                <div class="form-group">
+                  <label for="c-phone">Phone</label>
+                  <input type="tel" id="c-phone" name="phone" class="form-control" placeholder="(909) 000-0000" />
+                </div>
+                <div class="form-group">
+                  <label for="c-email">Email</label>
+                  <input type="email" id="c-email" name="email" class="form-control" placeholder="you@company.com" required />
+                </div>
+                <div class="form-group full">
+                  <label for="c-details">Load Details</label>
+                  <textarea id="c-details" name="load_details" class="form-control" placeholder="Origin, destination, weight, load type, preferred dates..." required></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary submit-btn">
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/></svg>
+                Send to Dispatch
+              </button>
+            </form>
+          </div>
+          <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+              <path d="M14 24l7 7 13-14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Quote Request Sent!</h3>
+            <p>Our dispatch team will reach out within 1 hour. Check your email for confirmation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">Alpha Freight LLC</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:6px;">
+            Fontana, CA · Inland Empire · (909) 555-0261
+          </div>
+        </div>
+        <div class="footer-meta">
+          <div>Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener noreferrer">SanchezElevationAI</a></div>
+          <div style="margin-top:4px; font-size:12px;">Powered by AI. Built for business.</div>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <div class="footer-copy">
+          © 2026 Alpha Freight LLC · <a href="https://sanchezelevationai.com" target="_blank" rel="noopener noreferrer">Website by SanchezElevationAI</a>
+        </div>
+        <div class="footer-dot-tags">
+          <span class="footer-tag">DOT #3847291</span>
+          <span class="footer-tag">MC #1293847</span>
+          <span class="footer-tag">CA, NV, AZ</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MOBILE BOTTOM BANNER
+  ============================================================ -->
+  <div id="bottom-banner" role="contentinfo" aria-label="Agency credit">
+    Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener noreferrer">SanchezElevationAI</a> — sanchezelevationai.com
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ---- Hamburger ---- */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---- Quote Calculator ---- */
+    const RATES = {
+      ftl:     { type: 'per_mile',         rate: 3.20,  label: 'Full Truckload (FTL)' },
+      ltl:     { type: 'per_lb_plus_mile', rate: 0.08,  mileRate: 1.50, label: 'LTL – Less Than Load' },
+      flatbed: { type: 'per_mile',         rate: 3.80,  label: 'Flatbed' },
+      reefer:  { type: 'per_mile',         rate: 4.20,  label: 'Refrigerated' },
+    };
+    const FUEL_SURCHARGE_PCT = 0.12;
+    const MIN_CHARGE = 350;
+
+    function calcTransitTime(miles) {
+      if (miles <= 150)  return '1 business day';
+      if (miles <= 400)  return '1–2 business days';
+      if (miles <= 800)  return '2–3 business days';
+      if (miles <= 1400) return '3–4 business days';
+      return '4–5 business days';
+    }
+
+    function formatUSD(n) {
+      return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    document.getElementById('quote-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const origin      = document.getElementById('origin').value.trim();
+      const destination = document.getElementById('destination').value.trim();
+      const loadType    = document.getElementById('load-type').value;
+      const weightRaw   = parseFloat(document.getElementById('weight').value);
+      const milesRaw    = parseFloat(document.getElementById('miles').value);
+
+      /* --- Validation --- */
+      if (!origin || !destination) {
+        alert('Please enter both origin and destination cities.');
+        return;
+      }
+      if (!loadType) {
+        alert('Please select a load type.');
+        return;
+      }
+      if (isNaN(weightRaw) || weightRaw <= 0) {
+        alert('Please enter a valid weight (lbs).');
+        return;
+      }
+      if (isNaN(milesRaw) || milesRaw <= 0) {
+        alert('Please enter a valid mileage.');
+        return;
+      }
+
+      const config = RATES[loadType];
+      let baseRate;
+
+      if (config.type === 'per_mile') {
+        baseRate = config.rate * milesRaw;
+      } else if (config.type === 'per_lb_plus_mile') {
+        baseRate = (config.rate * weightRaw) + (config.mileRate * milesRaw);
+      }
+
+      /* Apply minimum */
+      baseRate = Math.max(baseRate, MIN_CHARGE);
+      const fuelSurcharge = baseRate * FUEL_SURCHARGE_PCT;
+      const total = baseRate + fuelSurcharge;
+      const transitTime = calcTransitTime(milesRaw);
+
+      /* --- Populate result --- */
+      document.getElementById('res-origin-dest').textContent = origin + ' → ' + destination;
+      document.getElementById('res-load-type').textContent   = config.label;
+      document.getElementById('res-base').textContent        = formatUSD(baseRate);
+      document.getElementById('res-fuel').textContent        = formatUSD(fuelSurcharge);
+      document.getElementById('res-total').textContent       = formatUSD(total);
+      document.getElementById('res-transit-text').innerHTML  =
+        'Estimated transit time: <strong>' + transitTime + '</strong> · ' +
+        milesRaw.toLocaleString() + ' miles · ' + weightRaw.toLocaleString() + ' lbs';
+
+      /* --- Show result --- */
+      const resultBox = document.getElementById('quote-result');
+      resultBox.classList.add('visible');
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    /* ---- Contact form intercept (prevent page nav, show success) ---- */
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name  = document.getElementById('c-name').value.trim();
+        const email = document.getElementById('c-email').value.trim();
+        const details = document.getElementById('c-details').value.trim();
+        if (!name || !email || !details) {
+          alert('Please fill in your name, email, and load details.');
+          return;
+        }
+        /* Fire-and-forget to formsubmit */
+        const formData = new FormData(contactForm);
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).catch(() => {}); /* silent fail — still show success */
+        document.getElementById('form-body').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      });
+    }
+
+    /* ---- Smooth scroll for anchor links ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
