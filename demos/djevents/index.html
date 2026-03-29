@@ -1,0 +1,2482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DJ Luxe Events | Professional DJ & MC | LA · OC · IE</title>
+  <meta name="description" content="Professional DJ & MC services for weddings, quinceañeras, sweet 16s, corporate events, and more. Serving Los Angeles, Orange County, and Inland Empire." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================
+       RESET & BASE
+    ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0A0A0B;
+      --bg-2: #111114;
+      --bg-3: #16161A;
+      --bg-card: #1A1A1F;
+      --accent: #7B61FF;
+      --accent-bright: #9B85FF;
+      --accent-dim: #5A44CC;
+      --accent-glow: rgba(123, 97, 255, 0.35);
+      --blue: #3B82F6;
+      --blue-glow: rgba(59, 130, 246, 0.3);
+      --cyan: #06B6D4;
+      --pink: #EC4899;
+      --white: #FFFFFF;
+      --white-90: rgba(255,255,255,0.9);
+      --white-70: rgba(255,255,255,0.7);
+      --white-40: rgba(255,255,255,0.4);
+      --white-15: rgba(255,255,255,0.08);
+      --border: rgba(123,97,255,0.2);
+      --border-subtle: rgba(255,255,255,0.06);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    /* ============================================
+       SCROLLBAR
+    ============================================ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+    /* ============================================
+       UTILITIES
+    ============================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--white-70);
+      max-width: 600px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 100px;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: 0 0 20px var(--accent-glow), 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-bright);
+      box-shadow: 0 0 35px rgba(123,97,255,0.6), 0 6px 20px rgba(0,0,0,0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.25);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .glow-text {
+      background: linear-gradient(135deg, var(--accent-bright), var(--blue), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================
+       NAV
+    ============================================ */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: all 0.3s ease;
+    }
+
+    #nav.scrolled {
+      background: rgba(10, 10, 11, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      text-shadow: 0 0 20px rgba(123,97,255,0.5);
+      flex-shrink: 0;
+    }
+
+    .nav-logo span {
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white-70);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10,10,11,0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white-70);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--accent);
+    }
+
+    .mobile-menu .btn {
+      font-size: 16px;
+      margin-top: 12px;
+    }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123,97,255,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(59,130,246,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(236,72,153,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, rgba(10,10,11,0.8) 0%, var(--bg) 70%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(123,97,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123,97,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-orb-1 {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,97,255,0.2), transparent 70%);
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+
+    .hero-orb-2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.15), transparent 70%);
+      bottom: 0;
+      right: -100px;
+      animation: orbFloat 10s ease-in-out infinite reverse;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-30px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(123,97,255,0.12);
+      border: 1px solid rgba(123,97,255,0.3);
+      border-radius: 100px;
+      padding: 8px 18px;
+      margin-bottom: 28px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white-90);
+      backdrop-filter: blur(10px);
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.4);
+      animation: livePulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+    }
+
+    .hero-title {
+      font-size: clamp(38px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 19px);
+      color: var(--white-70);
+      max-width: 580px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--accent-bright);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--white-40);
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border-subtle);
+      align-self: center;
+    }
+
+    /* ============================================
+       SERVICES / EVENTS
+    ============================================ */
+    #services {
+      padding: 96px 0;
+      background: var(--bg-2);
+      position: relative;
+    }
+
+    #services::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .services-header .section-label {
+      justify-content: center;
+    }
+
+    .services-header .section-label::before {
+      display: none;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(123,97,255,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-card:hover {
+      border-color: var(--border);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow);
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .service-emoji {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+      line-height: 1;
+    }
+
+    .service-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--white-70);
+      line-height: 1.65;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--accent);
+      background: rgba(123,97,255,0.1);
+      border: 1px solid rgba(123,97,255,0.2);
+      border-radius: 100px;
+      padding: 3px 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       PACKAGES
+    ============================================ */
+    #packages {
+      padding: 96px 0;
+    }
+
+    .packages-header {
+      margin-bottom: 56px;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .package-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    .package-card.featured {
+      background: linear-gradient(145deg, rgba(123,97,255,0.12), rgba(59,130,246,0.06));
+      border-color: var(--accent);
+      box-shadow: 0 0 60px rgba(123,97,255,0.2), 0 0 0 1px rgba(123,97,255,0.3);
+      transform: scale(1.03);
+    }
+
+    .package-card.featured:hover {
+      transform: scale(1.03) translateY(-6px);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 18px;
+      border-radius: 100px;
+      white-space: nowrap;
+      font-family: var(--mono);
+    }
+
+    .package-tier {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .package-name {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .package-price {
+      font-size: 48px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .package-price span {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white-70);
+      vertical-align: top;
+      margin-top: 8px;
+      display: inline-block;
+    }
+
+    .package-duration {
+      font-size: 13px;
+      color: var(--white-40);
+      font-family: var(--mono);
+      margin-bottom: 28px;
+    }
+
+    .package-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin-bottom: 24px;
+    }
+
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--white-70);
+    }
+
+    .package-features li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 13px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .package-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ============================================
+       GALLERY
+    ============================================ */
+    #gallery {
+      padding: 96px 0;
+      background: var(--bg-2);
+      position: relative;
+    }
+
+    #gallery::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    }
+
+    .gallery-header {
+      margin-bottom: 48px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+      border-color: rgba(123,97,255,0.4);
+      box-shadow: 0 0 30px rgba(123,97,255,0.25);
+    }
+
+    .gallery-item:nth-child(1) .gallery-bg { background: linear-gradient(135deg, #1a0a2e 0%, #0a1628 40%, #1a0030 100%); }
+    .gallery-item:nth-child(2) .gallery-bg { background: linear-gradient(135deg, #0a0a2a 0%, #1a0040 50%, #0d0d30 100%); }
+    .gallery-item:nth-child(3) .gallery-bg { background: linear-gradient(135deg, #0a1a10 0%, #0a0a20 50%, #1a0020 100%); }
+    .gallery-item:nth-child(4) .gallery-bg { background: linear-gradient(135deg, #200a40 0%, #0a0a20 50%, #000a20 100%); }
+    .gallery-item:nth-child(5) .gallery-bg { background: linear-gradient(135deg, #0a1030 0%, #150020 50%, #0a0a20 100%); }
+    .gallery-item:nth-child(6) .gallery-bg { background: linear-gradient(135deg, #100030 0%, #000020 50%, #1a0040 100%); }
+
+    .gallery-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .gallery-lights {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .gallery-item:nth-child(1) .gallery-lights { background:
+      radial-gradient(ellipse 60% 40% at 30% 60%, rgba(123,97,255,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 70% 40%, rgba(59,130,246,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 50% 20%, rgba(236,72,153,0.3) 0%, transparent 60%); }
+
+    .gallery-item:nth-child(2) .gallery-lights { background:
+      radial-gradient(ellipse 70% 50% at 50% 70%, rgba(155,133,255,0.7) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 20% 30%, rgba(236,72,153,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 50%, rgba(6,182,212,0.3) 0%, transparent 60%); }
+
+    .gallery-item:nth-child(3) .gallery-lights { background:
+      radial-gradient(ellipse 60% 50% at 60% 50%, rgba(59,130,246,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 30% 70%, rgba(123,97,255,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 70% 20%, rgba(34,197,94,0.3) 0%, transparent 60%); }
+
+    .gallery-item:nth-child(4) .gallery-lights { background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(236,72,153,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 20% 60%, rgba(123,97,255,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 70%, rgba(59,130,246,0.4) 0%, transparent 60%); }
+
+    .gallery-item:nth-child(5) .gallery-lights { background:
+      radial-gradient(ellipse 60% 50% at 40% 30%, rgba(6,182,212,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 70% 60%, rgba(123,97,255,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 30% at 50% 90%, rgba(59,130,246,0.4) 0%, transparent 60%); }
+
+    .gallery-item:nth-child(6) .gallery-lights { background:
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(123,97,255,0.7) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 20% 20%, rgba(236,72,153,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(59,130,246,0.4) 0%, transparent 60%); }
+
+    .gallery-noise {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      mix-blend-mode: overlay;
+    }
+
+    .gallery-beams {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .gallery-beam {
+      position: absolute;
+      bottom: 0;
+      width: 2px;
+      height: 70%;
+      border-radius: 2px;
+      opacity: 0.6;
+      transform-origin: bottom center;
+    }
+
+    .gallery-item:nth-child(1) .gallery-beam:nth-child(1) { left: 30%; background: linear-gradient(to top, rgba(123,97,255,0.8), transparent); transform: rotate(-15deg); }
+    .gallery-item:nth-child(1) .gallery-beam:nth-child(2) { left: 50%; background: linear-gradient(to top, rgba(59,130,246,0.8), transparent); }
+    .gallery-item:nth-child(1) .gallery-beam:nth-child(3) { left: 70%; background: linear-gradient(to top, rgba(236,72,153,0.6), transparent); transform: rotate(15deg); }
+
+    .gallery-item:nth-child(2) .gallery-beam:nth-child(1) { left: 25%; background: linear-gradient(to top, rgba(155,133,255,0.8), transparent); transform: rotate(-10deg); }
+    .gallery-item:nth-child(2) .gallery-beam:nth-child(2) { left: 50%; background: linear-gradient(to top, rgba(236,72,153,0.7), transparent); }
+    .gallery-item:nth-child(2) .gallery-beam:nth-child(3) { left: 75%; background: linear-gradient(to top, rgba(123,97,255,0.7), transparent); transform: rotate(12deg); }
+
+    .gallery-item:nth-child(3) .gallery-beam:nth-child(1) { left: 20%; background: linear-gradient(to top, rgba(59,130,246,0.8), transparent); transform: rotate(-8deg); }
+    .gallery-item:nth-child(3) .gallery-beam:nth-child(2) { left: 45%; background: linear-gradient(to top, rgba(123,97,255,0.7), transparent); }
+    .gallery-item:nth-child(3) .gallery-beam:nth-child(3) { left: 70%; background: linear-gradient(to top, rgba(6,182,212,0.7), transparent); transform: rotate(10deg); }
+
+    .gallery-item:nth-child(4) .gallery-beam:nth-child(1) { left: 30%; background: linear-gradient(to top, rgba(236,72,153,0.8), transparent); transform: rotate(-12deg); }
+    .gallery-item:nth-child(4) .gallery-beam:nth-child(2) { left: 55%; background: linear-gradient(to top, rgba(123,97,255,0.7), transparent); }
+    .gallery-item:nth-child(4) .gallery-beam:nth-child(3) { left: 75%; background: linear-gradient(to top, rgba(59,130,246,0.6), transparent); transform: rotate(8deg); }
+
+    .gallery-item:nth-child(5) .gallery-beam:nth-child(1) { left: 25%; background: linear-gradient(to top, rgba(6,182,212,0.7), transparent); transform: rotate(-10deg); }
+    .gallery-item:nth-child(5) .gallery-beam:nth-child(2) { left: 50%; background: linear-gradient(to top, rgba(123,97,255,0.8), transparent); }
+    .gallery-item:nth-child(5) .gallery-beam:nth-child(3) { left: 75%; background: linear-gradient(to top, rgba(59,130,246,0.7), transparent); transform: rotate(14deg); }
+
+    .gallery-item:nth-child(6) .gallery-beam:nth-child(1) { left: 20%; background: linear-gradient(to top, rgba(123,97,255,0.9), transparent); transform: rotate(-20deg); }
+    .gallery-item:nth-child(6) .gallery-beam:nth-child(2) { left: 50%; background: linear-gradient(to top, rgba(236,72,153,0.7), transparent); }
+    .gallery-item:nth-child(6) .gallery-beam:nth-child(3) { left: 80%; background: linear-gradient(to top, rgba(59,130,246,0.8), transparent); transform: rotate(18deg); }
+
+    .gallery-floor {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 16px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white-90);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .gallery-label-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(123,97,255,0.3);
+      border: 1px solid rgba(123,97,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+
+    /* ============================================
+       MIX SAMPLES
+    ============================================ */
+    #mixes {
+      padding: 96px 0;
+    }
+
+    .mixes-header {
+      margin-bottom: 48px;
+    }
+
+    .mixes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .mix-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mix-card:hover {
+      border-color: var(--border);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px var(--accent-glow);
+    }
+
+    .mix-card-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+    }
+
+    .mix-card:nth-child(1) .mix-card-bg { background: linear-gradient(135deg, #FF6B6B, #FF8E53); }
+    .mix-card:nth-child(2) .mix-card-bg { background: linear-gradient(135deg, #7B61FF, #3B82F6); }
+    .mix-card:nth-child(3) .mix-card-bg { background: linear-gradient(135deg, #EC4899, #7B61FF); }
+
+    .mix-genre-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mix-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mix-desc {
+      font-size: 13px;
+      color: var(--white-40);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mix-waveform {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 36px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mix-bar {
+      flex: 1;
+      border-radius: 2px;
+      background: rgba(123,97,255,0.4);
+      transition: background 0.3s;
+    }
+
+    .mix-card:hover .mix-bar {
+      background: rgba(123,97,255,0.7);
+    }
+
+    .mix-waveform-heights {
+      display: contents;
+    }
+
+    .mix-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mix-play-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 20px rgba(123,97,255,0.4);
+    }
+
+    .mix-play-btn:hover {
+      background: var(--accent-bright);
+      box-shadow: 0 0 30px rgba(123,97,255,0.6);
+      transform: scale(1.08);
+    }
+
+    .mix-play-icon {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 7px 0 7px 12px;
+      border-color: transparent transparent transparent white;
+      margin-left: 3px;
+    }
+
+    .mix-time {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--white-40);
+    }
+
+    .mix-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-left: auto;
+    }
+
+    .mix-tag {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--white-40);
+      background: var(--white-15);
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+
+    .mixes-instagram {
+      text-align: center;
+      padding: 20px;
+      background: rgba(123,97,255,0.06);
+      border: 1px solid rgba(123,97,255,0.15);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--white-70);
+    }
+
+    .mixes-instagram strong {
+      color: var(--accent-bright);
+    }
+
+    /* ============================================
+       BOOKING FORM
+    ============================================ */
+    #booking {
+      padding: 96px 0;
+      background: var(--bg-2);
+      position: relative;
+    }
+
+    #booking::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .booking-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .booking-info {
+      position: sticky;
+      top: 100px;
+    }
+
+    .booking-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .booking-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .booking-perk-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(123,97,255,0.12);
+      border: 1px solid rgba(123,97,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .booking-perk-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .booking-perk-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .booking-perk-desc {
+      font-size: 13px;
+      color: var(--white-40);
+    }
+
+    .booking-form {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 36px;
+    }
+
+    .form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 16px;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--white-70);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-family: var(--mono);
+    }
+
+    .form-control {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 14px;
+      padding: 12px 16px;
+      transition: all 0.2s ease;
+      outline: none;
+      width: 100%;
+    }
+
+    .form-control::placeholder {
+      color: var(--white-40);
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      background: rgba(123,97,255,0.06);
+      box-shadow: 0 0 0 3px rgba(123,97,255,0.12);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    select.form-control option {
+      background: #1A1A1F;
+      color: var(--white);
+    }
+
+    .form-submit {
+      width: 100%;
+      justify-content: center;
+      font-size: 15px;
+      padding: 15px 28px;
+      margin-top: 8px;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--white-40);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* ============================================
+       REVIEWS
+    ============================================ */
+    #reviews {
+      padding: 96px 0;
+    }
+
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .reviews-header .section-label {
+      justify-content: center;
+    }
+
+    .reviews-header .section-label::before {
+      display: none;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 30px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      border-color: rgba(123,97,255,0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .review-quote {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 48px;
+      color: rgba(123,97,255,0.15);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .review-stars span {
+      color: #FBBF24;
+      font-size: 16px;
+    }
+
+    .review-text {
+      font-size: 15px;
+      color: var(--white-70);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .review-card:nth-child(1) .review-avatar { background: linear-gradient(135deg, #7B61FF, #3B82F6); }
+    .review-card:nth-child(2) .review-avatar { background: linear-gradient(135deg, #EC4899, #7B61FF); }
+    .review-card:nth-child(3) .review-avatar { background: linear-gradient(135deg, #06B6D4, #3B82F6); }
+
+    .review-author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .review-author-name {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .review-author-event {
+      font-size: 12px;
+      color: var(--white-40);
+      font-family: var(--mono);
+    }
+
+    .review-platform {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--white-40);
+      font-family: var(--mono);
+    }
+
+    /* ============================================
+       CONTACT
+    ============================================ */
+    #contact {
+      padding: 96px 0;
+      background: var(--bg-2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--pink), transparent);
+    }
+
+    .contact-orb {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,97,255,0.12), transparent 70%);
+      top: -200px;
+      right: -200px;
+      pointer-events: none;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      transition: all 0.25s ease;
+    }
+
+    .contact-item:hover {
+      border-color: var(--border);
+      background: rgba(123,97,255,0.06);
+    }
+
+    .contact-item-icon {
+      font-size: 22px;
+      width: 44px;
+      height: 44px;
+      background: rgba(123,97,255,0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-item-label {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--white-40);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .contact-item-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .contact-item-value a {
+      color: var(--accent-bright);
+    }
+
+    .contact-cta-box {
+      background: linear-gradient(145deg, rgba(123,97,255,0.12), rgba(59,130,246,0.06));
+      border: 1px solid rgba(123,97,255,0.25);
+      border-radius: var(--radius);
+      padding: 36px;
+      text-align: center;
+    }
+
+    .contact-cta-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .contact-cta-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .contact-cta-sub {
+      font-size: 14px;
+      color: var(--white-70);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .contact-avail {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--white-40);
+      margin-top: 14px;
+      font-family: var(--mono);
+    }
+
+    .avail-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: livePulse 2s ease-in-out infinite;
+    }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border-subtle);
+      background: var(--bg);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+    }
+
+    .footer-logo span {
+      color: var(--white-40);
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--white-40);
+      text-align: center;
+    }
+
+    .footer-credit {
+      font-size: 13px;
+      color: var(--white-40);
+    }
+
+    .footer-credit a {
+      color: var(--accent-bright);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .footer-credit a:hover {
+      color: var(--white);
+    }
+
+    /* ============================================
+       MOBILE BOTTOM BANNER
+    ============================================ */
+    .mobile-cta-banner {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      background: rgba(10,10,11,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+    }
+
+    .mobile-cta-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-cta-text {
+      flex: 1;
+    }
+
+    .mobile-cta-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .mobile-cta-text span {
+      font-size: 11px;
+      color: var(--white-40);
+      font-family: var(--mono);
+    }
+
+    .mobile-cta-btn {
+      padding: 11px 20px;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-cta-banner {
+        display: block;
+      }
+
+      body {
+        padding-bottom: 74px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .hamburger { display: none; }
+      .mobile-menu { display: none !important; }
+    }
+
+    /* ============================================
+       SECTION DIVIDERS / ACCENTS
+    ============================================ */
+    .glow-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--blue));
+      border-radius: 2px;
+      margin-top: 16px;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger delays */
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAV
+  ============================================ -->
+  <nav id="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">DJ Luxe <span>Events</span></a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#mixes">Mixes</a></li>
+          <li><a href="#booking">Book</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" rel="noopener" class="btn btn-primary">Check My Date</a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#packages" class="mobile-nav-link">Packages</a>
+    <a href="#gallery" class="mobile-nav-link">Gallery</a>
+    <a href="#mixes" class="mobile-nav-link">Mixes</a>
+    <a href="#booking" class="mobile-nav-link">Book</a>
+    <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn btn-primary">Check My Date</a>
+  </div>
+
+  <!-- ============================================
+       HERO
+  ============================================ -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-mesh"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-orb-1"></div>
+      <div class="hero-orb-2"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          <span>🎵 Available for 2026 Bookings</span>
+        </div>
+        <h1 class="hero-title">
+          The DJ That Makes<br>
+          Them Stay Till <span class="glow-text">Midnight.</span>
+        </h1>
+        <p class="hero-sub">
+          Weddings, quinceañeras, sweet 16s, corporate events — professional DJ &amp; MC with full sound and lighting packages serving LA, OC &amp; Inland Empire.
+        </p>
+        <div class="hero-actions">
+          <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Check Availability
+          </a>
+          <a href="#packages" class="btn btn-outline">View Packages</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">200+</div>
+            <div class="hero-stat-label">Events Played</div>
+          </div>
+          <div class="hero-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">5★</div>
+            <div class="hero-stat-label">Avg. Rating</div>
+          </div>
+          <div class="hero-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3</div>
+            <div class="hero-stat-label">Counties Served</div>
+          </div>
+          <div class="hero-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">7</div>
+            <div class="hero-stat-label">Days Available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       EVENTS SERVED
+  ============================================ -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Every Event Deserves<br>a Legendary Night</h2>
+        <p class="section-sub" style="margin: 12px auto 0;">Full DJ &amp; MC services customized to your celebration — from intimate gatherings to full production events.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-emoji">💍</span>
+          <div class="service-name">Weddings</div>
+          <p class="service-desc">From ceremony music and cocktail hour to first dance and reception — we read the room and keep the dance floor packed all night long. Full coordination with your venue and timeline.</p>
+          <span class="service-tag">Most Popular</span>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-emoji">🌹</span>
+          <div class="service-name">Quinceañeras</div>
+          <p class="service-desc">A quinceañera is once in a lifetime. We bring the energy for vals, surprise dances, and high-octane floor sets mixing Latin, reggaeton, and crowd favorites. Bilingual MC available.</p>
+          <span class="service-tag">Bilingual MC</span>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <span class="service-emoji">🎂</span>
+          <div class="service-name">Sweet 16s</div>
+          <p class="service-desc">Custom playlists, shoutouts, and high-energy sets built for the next generation. We coordinate with parents and keep the vibe exactly right for your teen's big moment.</p>
+          <span class="service-tag">Custom Playlist</span>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <span class="service-emoji">🏢</span>
+          <div class="service-name">Corporate Events</div>
+          <p class="service-desc">Company parties, holiday galas, and team-building events. We bring polished, professional entertainment with branded intros, background music, and party sets that loosen up any crowd.</p>
+          <span class="service-tag">Professional</span>
+        </div>
+        <div class="service-card reveal reveal-delay-5">
+          <span class="service-emoji">🎉</span>
+          <div class="service-name">Birthday Parties</div>
+          <p class="service-desc">From milestone 18ths and 21sts to 50th celebrations — every birthday deserves a soundtrack. Custom mixes, themed sets, and live MC hype to make the night unforgettable.</p>
+          <span class="service-tag">All Ages</span>
+        </div>
+        <div class="service-card reveal reveal-delay-6">
+          <span class="service-emoji">🎧</span>
+          <div class="service-name">Night Club / Bar</div>
+          <p class="service-desc">Resident and guest DJ sets for nightclubs, bars, and rooftop venues. High-energy mixes, proper reads on crowd energy, and seamless transitions to keep the party moving all night.</p>
+          <span class="service-tag">Venue Ready</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PACKAGES
+  ============================================ -->
+  <section id="packages">
+    <div class="container">
+      <div class="packages-header reveal">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Transparent Packages.<br>No Hidden Fees.</h2>
+        <p class="section-sub">Choose the package that fits your event. All packages include professional DJ &amp; MC services and setup/teardown.</p>
+        <div class="glow-divider"></div>
+      </div>
+      <div class="packages-grid">
+
+        <!-- Essential -->
+        <div class="package-card reveal reveal-delay-1">
+          <div class="package-tier">Starter</div>
+          <div class="package-name">Essential</div>
+          <div class="package-price"><span>$</span>800</div>
+          <div class="package-duration">4-Hour Package</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>4 hours of DJ performance</li>
+            <li>Professional sound system (up to 150 guests)</li>
+            <li>DJ &amp; MC services included</li>
+            <li>Wireless microphone</li>
+            <li>Custom playlist coordination</li>
+            <li>Setup &amp; teardown included</li>
+            <li>Online booking &amp; consultation</li>
+          </ul>
+          <a href="#booking" class="btn btn-outline package-btn">Book Essential</a>
+        </div>
+
+        <!-- Premium (featured) -->
+        <div class="package-card featured reveal reveal-delay-2">
+          <div class="featured-badge">Most Popular</div>
+          <div class="package-tier">Best Value</div>
+          <div class="package-name">Premium</div>
+          <div class="package-price"><span>$</span>1,400</div>
+          <div class="package-duration">6-Hour Package</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>6 hours of DJ performance</li>
+            <li>Professional sound system (up to 300 guests)</li>
+            <li>DJ &amp; MC services included</li>
+            <li>Full LED lighting package</li>
+            <li>Fog machine effect</li>
+            <li>Photo booth (2 hours)</li>
+            <li>Wireless microphone + backup</li>
+            <li>Custom playlist &amp; event timeline</li>
+            <li>Setup &amp; teardown included</li>
+          </ul>
+          <a href="#booking" class="btn btn-primary package-btn">Book Premium</a>
+        </div>
+
+        <!-- Elite -->
+        <div class="package-card reveal reveal-delay-3">
+          <div class="package-tier">Full Production</div>
+          <div class="package-name">Elite</div>
+          <div class="package-price"><span>$</span>2,200</div>
+          <div class="package-duration">8-Hour Package</div>
+          <div class="package-divider"></div>
+          <ul class="package-features">
+            <li>8 hours of DJ performance</li>
+            <li>Full production sound system (500+ guests)</li>
+            <li>DJ &amp; MC services included</li>
+            <li>Professional lighting show + moving heads</li>
+            <li>Uplighting (up to 10 fixtures)</li>
+            <li>Fog machine &amp; haze effects</li>
+            <li>Photo booth (full event)</li>
+            <li>Custom monogram projection</li>
+            <li>Priority event coordination</li>
+            <li>Setup &amp; teardown included</li>
+          </ul>
+          <a href="#booking" class="btn btn-outline package-btn">Book Elite</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       GALLERY
+  ============================================ -->
+  <section id="gallery">
+    <div class="container">
+      <div class="gallery-header reveal">
+        <div class="section-label">Past Events</div>
+        <h2 class="section-title">Lights, Sound, Crowd.<br>Every Time.</h2>
+        <p class="section-sub">Snapshots from some of our favorite nights across LA, OC, and the Inland Empire.</p>
+      </div>
+      <div class="gallery-grid">
+
+        <div class="gallery-item reveal reveal-delay-1">
+          <div class="gallery-bg"></div>
+          <div class="gallery-lights"></div>
+          <div class="gallery-beams">
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+          </div>
+          <div class="gallery-noise"></div>
+          <div class="gallery-floor"></div>
+          <div class="gallery-label">
+            <span>Wedding Reception</span>
+            <div class="gallery-label-icon">💍</div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-2">
+          <div class="gallery-bg"></div>
+          <div class="gallery-lights"></div>
+          <div class="gallery-beams">
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+          </div>
+          <div class="gallery-noise"></div>
+          <div class="gallery-floor"></div>
+          <div class="gallery-label">
+            <span>Quinceañera 2024</span>
+            <div class="gallery-label-icon">🌹</div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-3">
+          <div class="gallery-bg"></div>
+          <div class="gallery-lights"></div>
+          <div class="gallery-beams">
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+          </div>
+          <div class="gallery-noise"></div>
+          <div class="gallery-floor"></div>
+          <div class="gallery-label">
+            <span>Corporate Party</span>
+            <div class="gallery-label-icon">🏢</div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-4">
+          <div class="gallery-bg"></div>
+          <div class="gallery-lights"></div>
+          <div class="gallery-beams">
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+          </div>
+          <div class="gallery-noise"></div>
+          <div class="gallery-floor"></div>
+          <div class="gallery-label">
+            <span>Sweet 16</span>
+            <div class="gallery-label-icon">🎂</div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-5">
+          <div class="gallery-bg"></div>
+          <div class="gallery-lights"></div>
+          <div class="gallery-beams">
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+          </div>
+          <div class="gallery-noise"></div>
+          <div class="gallery-floor"></div>
+          <div class="gallery-label">
+            <span>Rooftop Event</span>
+            <div class="gallery-label-icon">🌃</div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal reveal-delay-6">
+          <div class="gallery-bg"></div>
+          <div class="gallery-lights"></div>
+          <div class="gallery-beams">
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+            <div class="gallery-beam"></div>
+          </div>
+          <div class="gallery-noise"></div>
+          <div class="gallery-floor"></div>
+          <div class="gallery-label">
+            <span>Night Club Set</span>
+            <div class="gallery-label-icon">🎧</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       MIX SAMPLES
+  ============================================ -->
+  <section id="mixes">
+    <div class="container">
+      <div class="mixes-header reveal">
+        <div class="section-label">Sample Mixes</div>
+        <h2 class="section-title">Hear the Vibe.<br>Feel the Energy.</h2>
+        <p class="section-sub">Three distinct sounds for every crowd. From Latin heat to club anthems — we've got the playlist for your night.</p>
+        <div class="glow-divider"></div>
+      </div>
+      <div class="mixes-grid">
+
+        <!-- Latin/Reggaeton -->
+        <div class="mix-card reveal reveal-delay-1">
+          <div class="mix-card-bg"></div>
+          <div class="mix-genre-label">Genre Mix 01</div>
+          <div class="mix-title">Latin / Reggaeton</div>
+          <div class="mix-desc">Bad Bunny · J Balvin · Karol G · Ozuna · Maluma</div>
+          <div class="mix-waveform" id="wave1"></div>
+          <div class="mix-controls">
+            <button class="mix-play-btn" aria-label="Preview mix">
+              <div class="mix-play-icon"></div>
+            </button>
+            <span class="mix-time">45:22</span>
+            <div class="mix-tags">
+              <span class="mix-tag">Latin</span>
+              <span class="mix-tag">Reggaeton</span>
+              <span class="mix-tag">Dembow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hip-Hop/R&B -->
+        <div class="mix-card reveal reveal-delay-2">
+          <div class="mix-card-bg"></div>
+          <div class="mix-genre-label">Genre Mix 02</div>
+          <div class="mix-title">Hip-Hop / R&amp;B</div>
+          <div class="mix-desc">Drake · Kendrick · SZA · Chris Brown · Beyoncé</div>
+          <div class="mix-waveform" id="wave2"></div>
+          <div class="mix-controls">
+            <button class="mix-play-btn" aria-label="Preview mix">
+              <div class="mix-play-icon"></div>
+            </button>
+            <span class="mix-time">52:10</span>
+            <div class="mix-tags">
+              <span class="mix-tag">Hip-Hop</span>
+              <span class="mix-tag">R&amp;B</span>
+              <span class="mix-tag">Trap</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top 40/EDM -->
+        <div class="mix-card reveal reveal-delay-3">
+          <div class="mix-card-bg"></div>
+          <div class="mix-genre-label">Genre Mix 03</div>
+          <div class="mix-title">Top 40 / EDM</div>
+          <div class="mix-desc">The Weeknd · Dua Lipa · Calvin Harris · Tiesto · Zedd</div>
+          <div class="mix-waveform" id="wave3"></div>
+          <div class="mix-controls">
+            <button class="mix-play-btn" aria-label="Preview mix">
+              <div class="mix-play-icon"></div>
+            </button>
+            <span class="mix-time">38:47</span>
+            <div class="mix-tags">
+              <span class="mix-tag">Top 40</span>
+              <span class="mix-tag">EDM</span>
+              <span class="mix-tag">Pop</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="mixes-instagram reveal">
+        Preview full mixes on Instagram &mdash; <strong>@djluxeevents</strong> &mdash; follow for new content every week
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BOOKING FORM
+  ============================================ -->
+  <section id="booking">
+    <div class="container">
+      <div class="booking-layout">
+
+        <div class="booking-info reveal">
+          <div class="section-label">Get a Quote</div>
+          <h2 class="section-title">Let's Make Your<br>Night Legendary.</h2>
+          <p class="section-sub" style="max-width: 100%;">Fill out the form and we'll get back to you within 24 hours with availability and a custom quote.</p>
+          <ul class="booking-perks">
+            <li class="booking-perk">
+              <div class="booking-perk-icon">⚡</div>
+              <div class="booking-perk-text">
+                <span class="booking-perk-title">Fast Response</span>
+                <span class="booking-perk-desc">Reply within 24 hours, usually same day</span>
+              </div>
+            </li>
+            <li class="booking-perk">
+              <div class="booking-perk-icon">🎯</div>
+              <div class="booking-perk-text">
+                <span class="booking-perk-title">Free Consultation</span>
+                <span class="booking-perk-desc">30-min planning call to design your event</span>
+              </div>
+            </li>
+            <li class="booking-perk">
+              <div class="booking-perk-icon">🔒</div>
+              <div class="booking-perk-text">
+                <span class="booking-perk-title">Date Hold</span>
+                <span class="booking-perk-desc">Deposit locks in your date — no surprises</span>
+              </div>
+            </li>
+            <li class="booking-perk">
+              <div class="booking-perk-icon">🎵</div>
+              <div class="booking-perk-text">
+                <span class="booking-perk-title">Custom Playlist</span>
+                <span class="booking-perk-desc">We build a set around your music preferences</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <form class="booking-form" action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="DJ Booking - DJ Luxe Events" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <div class="form-title">Request a Booking</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="event-date">Event Date *</label>
+                <input type="date" id="event-date" name="event_date" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="event-type">Event Type *</label>
+                <select id="event-type" name="event_type" class="form-control" required>
+                  <option value="" disabled selected>Select type...</option>
+                  <option>Wedding</option>
+                  <option>Quinceañera</option>
+                  <option>Sweet 16</option>
+                  <option>Corporate Event</option>
+                  <option>Birthday Party</option>
+                  <option>Night Club / Bar</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="guest-count">Guest Count *</label>
+                <input type="number" id="guest-count" name="guest_count" class="form-control" placeholder="e.g. 150" min="10" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="hours">Hours Needed *</label>
+                <select id="hours" name="hours_needed" class="form-control" required>
+                  <option value="" disabled selected>Select hours...</option>
+                  <option value="3">3 hours</option>
+                  <option value="4">4 hours</option>
+                  <option value="5">5 hours</option>
+                  <option value="6">6 hours</option>
+                  <option value="8">8 hours</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="venue">Venue Name</label>
+              <input type="text" id="venue" name="venue_name" class="form-control" placeholder="e.g. The Westin Pasadena" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="package">Package Interest</label>
+              <select id="package" name="package_interest" class="form-control">
+                <option value="" disabled selected>Select a package...</option>
+                <option>Essential ($800 — 4 hrs)</option>
+                <option>Premium ($1,400 — 6 hrs)</option>
+                <option>Elite ($2,200 — 8 hrs)</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="name">Your Name *</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Full name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="(909) 555-0000" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="notes">Additional Notes</label>
+              <textarea id="notes" name="notes" class="form-control" placeholder="Tell us about your vision, special requests, or questions..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Booking Request
+            </button>
+            <p class="form-note">No payment required to request. We'll contact you within 24 hours.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       REVIEWS
+  ============================================ -->
+  <section id="reviews">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <div class="section-label">Testimonials</div>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-sub" style="margin: 12px auto 0;">Real feedback from real events — because words mean more when the dance floor was packed.</p>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card reveal reveal-delay-1">
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">"DJ Luxe completely took over our wedding reception and I mean that in the best way possible. The dance floor was packed from the first song to the last. He read the crowd perfectly — transitioned from our first dance into full party mode without missing a beat. Our guests are still talking about it."</p>
+          <div class="review-author">
+            <div class="review-avatar">MR</div>
+            <div class="review-author-info">
+              <div class="review-author-name">Monica &amp; Rafael Delgado</div>
+              <div class="review-author-event">Wedding Reception — Ontario, CA</div>
+            </div>
+            <div class="review-platform">Google</div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-2">
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">"We hired DJ Luxe for my daughter's quinceañera and he was absolutely incredible. He coordinated the vals, surprised her with her favorite songs, and kept the energy high all the way through. The bilingual MC work was a huge hit with both our English and Spanish-speaking family. Would book again 100%."</p>
+          <div class="review-author">
+            <div class="review-avatar">TG</div>
+            <div class="review-author-info">
+              <div class="review-author-name">Teresa Gutierrez</div>
+              <div class="review-author-event">Quinceañera — Pomona, CA</div>
+            </div>
+            <div class="review-platform">Yelp</div>
+          </div>
+        </div>
+
+        <div class="review-card reveal reveal-delay-3">
+          <div class="review-quote">"</div>
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">"As an event planner I've worked with a lot of DJs — DJ Luxe is one of the few I actively recommend to my clients. He's punctual, professional, communicates clearly before the event, and delivers on the night. The lighting package transformed our corporate holiday party. Already have him booked for two more events this year."</p>
+          <div class="review-author">
+            <div class="review-avatar">JM</div>
+            <div class="review-author-info">
+              <div class="review-author-name">Jessica Morales</div>
+              <div class="review-author-event">Event Planner — Los Angeles, CA</div>
+            </div>
+            <div class="review-platform">Google</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CONTACT
+  ============================================ -->
+  <section id="contact">
+    <div class="contact-orb"></div>
+    <div class="container">
+      <div class="contact-layout">
+        <div class="reveal">
+          <div class="section-label">Contact</div>
+          <h2 class="section-title">Let's Talk<br>About Your Event</h2>
+          <p class="section-sub" style="max-width:100%; margin-top:12px;">Reach out directly — we're available 7 days a week and respond fast.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div class="contact-item-content">
+                <div class="contact-item-label">Phone / Text</div>
+                <div class="contact-item-value">(909) 555-0214</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-content">
+                <div class="contact-item-label">Service Area</div>
+                <div class="contact-item-value">Inland Empire · Los Angeles · Orange County</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📸</div>
+              <div class="contact-item-content">
+                <div class="contact-item-label">Instagram</div>
+                <div class="contact-item-value"><a href="https://instagram.com/djluxeevents" target="_blank" rel="noopener">@djluxeevents</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🕐</div>
+              <div class="contact-item-content">
+                <div class="contact-item-label">Availability</div>
+                <div class="contact-item-value">7 Days a Week · Year-Round</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="contact-cta-box">
+            <span class="contact-cta-icon">🎵</span>
+            <div class="contact-cta-title">Ready to Book Your Date?</div>
+            <p class="contact-cta-sub">Check real-time availability and schedule a free 30-minute planning call — no pressure, just good vibes.</p>
+            <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%; justify-content:center; font-size:15px; padding:15px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Check My Availability
+            </a>
+            <div class="contact-avail">
+              <div class="avail-dot"></div>
+              Accepting bookings for 2026 events
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+  ============================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">DJ Luxe <span>Events</span></div>
+        <div class="footer-copy">DJ Luxe Events &copy; 2026 &nbsp;&middot;&nbsp; LA · OC · IE</div>
+        <div class="footer-credit">Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">SanchezElevationAI</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       MOBILE BOTTOM BANNER
+  ============================================ -->
+  <div class="mobile-cta-banner">
+    <div class="mobile-cta-inner">
+      <div class="mobile-cta-text">
+        <strong>DJ Luxe Events</strong>
+        <span>Available for 2026 Bookings</span>
+      </div>
+      <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" rel="noopener" class="btn btn-primary mobile-cta-btn">Check Date</a>
+    </div>
+  </div>
+
+  <!-- ============================================
+       JAVASCRIPT
+  ============================================ -->
+  <script>
+    // ——————————————————————————————————————————
+    // Nav scroll behavior
+    // ——————————————————————————————————————————
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // ——————————————————————————————————————————
+    // Hamburger / mobile menu
+    // ——————————————————————————————————————————
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ——————————————————————————————————————————
+    // Scroll reveal (IntersectionObserver)
+    // ——————————————————————————————————————————
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ——————————————————————————————————————————
+    // Generate waveform bars procedurally
+    // ——————————————————————————————————————————
+    const waveHeights = [
+      [20, 35, 55, 40, 65, 80, 50, 70, 45, 90, 60, 75, 55, 40, 70, 50, 85, 45, 65, 55, 40, 75, 60, 50, 80, 35, 60, 45, 70, 55],
+      [30, 50, 40, 75, 55, 65, 80, 45, 90, 35, 70, 55, 40, 85, 60, 75, 50, 65, 40, 80, 55, 70, 45, 60, 35, 75, 50, 65, 40, 80],
+      [45, 70, 55, 40, 85, 60, 75, 50, 65, 80, 45, 55, 70, 35, 90, 60, 40, 75, 55, 65, 50, 80, 45, 60, 70, 35, 55, 80, 45, 65]
+    ];
+
+    ['wave1', 'wave2', 'wave3'].forEach((id, idx) => {
+      const container = document.getElementById(id);
+      if (!container) return;
+      const heights = waveHeights[idx];
+      heights.forEach(h => {
+        const bar = document.createElement('div');
+        bar.className = 'mix-bar';
+        bar.style.height = h + '%';
+        container.appendChild(bar);
+      });
+    });
+
+    // ——————————————————————————————————————————
+    // Smooth scroll for anchor links
+    // ——————————————————————————————————————————
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ——————————————————————————————————————————
+    // Mix play button — visual feedback
+    // ——————————————————————————————————————————
+    document.querySelectorAll('.mix-play-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Toggle play/pause icon visually
+        const icon = this.querySelector('.mix-play-icon');
+        const isPlaying = this.dataset.playing === 'true';
+        if (isPlaying) {
+          icon.style.borderWidth = '7px 0 7px 12px';
+          icon.style.borderColor = 'transparent transparent transparent white';
+          this.dataset.playing = 'false';
+        } else {
+          // Pause icon (two vertical bars)
+          icon.style.width = '12px';
+          icon.style.height = '14px';
+          icon.style.borderStyle = 'none';
+          icon.style.background = 'transparent';
+          icon.style.boxShadow = '4px 0 0 0 white, -4px 0 0 0 white';
+          icon.style.borderRadius = '0';
+          this.dataset.playing = 'true';
+          // Show Instagram note
+          const note = document.createElement('div');
+          note.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#1A1A1F;border:1px solid rgba(123,97,255,0.4);border-radius:10px;padding:12px 20px;font-size:13px;color:rgba(255,255,255,0.8);z-index:9999;text-align:center;pointer-events:none;';
+          note.textContent = 'Preview full mixes on Instagram @djluxeevents';
+          document.body.appendChild(note);
+          setTimeout(() => note.remove(), 3000);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
