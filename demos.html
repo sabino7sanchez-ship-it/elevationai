@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Demos — SanchezElevationAI</title>
+<meta name="description" content="18 live industry demos built by SanchezElevationAI. Send any demo directly to a prospect. Restaurant, auto detailing, trucking, real estate, fitness, and more.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08090d;--card:rgba(15,17,23,.9);--border:rgba(0,240,255,.1);--cyan:#00f0ff;--text:#e8eaed;--text2:#8b949e;--font:'Inter',sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+.header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:18px;font-weight:800;letter-spacing:1px}
+.logo span{color:var(--cyan)}
+.back{color:var(--cyan);font-size:13px;font-weight:600}
+
+.hero{text-align:center;padding:48px 20px 24px}
+.hero h1{font-size:clamp(24px,5vw,36px);font-weight:900;margin-bottom:8px}
+.hero h1 span{color:var(--cyan)}
+.hero p{color:var(--text2);font-size:15px;max-width:500px;margin:0 auto}
+.count{display:inline-block;margin-top:12px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);border-radius:20px;padding:6px 16px;font-size:13px;font-weight:700;color:var(--cyan)}
+
+.grid{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:.25s;display:flex;flex-direction:column;cursor:pointer;position:relative;overflow:hidden}
+.card:hover{border-color:rgba(0,240,255,.4);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,240,255,.08)}
+.card-icon{font-size:28px;margin-bottom:8px}
+.card-title{font-size:17px;font-weight:800;margin-bottom:4px}
+.card-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:12px;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{font-size:10px;padding:3px 8px;border-radius:6px;background:rgba(0,240,255,.08);color:var(--cyan);border:1px solid rgba(0,240,255,.15);font-weight:600}
+.card-link{display:inline-flex;align-items:center;gap:6px;color:var(--cyan);font-weight:700;font-size:13px;padding:8px 0;border-top:1px solid rgba(255,255,255,.05)}
+.card-link svg{width:14px;height:14px;fill:currentColor;transition:.2s}
+.card:hover .card-link svg{transform:translateX(3px)}
+
+.copy-btn{position:absolute;top:12px;right:12px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);color:var(--cyan);font-size:11px;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:var(--font);font-weight:600;transition:.2s}
+.copy-btn:hover{background:rgba(0,240,255,.2)}
+
+.section-label{max-width:1200px;margin:32px auto 8px;padding:0 20px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text2)}
+
+.footer{text-align:center;padding:40px 20px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:40px}
+
+@media(max-width:600px){.grid{grid-template-columns:1fr;padding:12px}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo"><span>ELEVATION</span>AI DEMOS</div>
+  <a class="back" href="https://sanchezelevationai.com">← Back to Main Site</a>
+</header>
+
+<div class="hero">
+  <h1>Live <span>Industry Demos</span></h1>
+  <p>Every demo is a fully built website you can send directly to a prospect. Click any card to view it live.</p>
+  <div class="count">18 DEMOS • 18 INDUSTRIES • ALL LIVE</div>
+</div>
+
+<div class="section-label">Real Client Sites</div>
+<div class="grid">
+  <a href="https://sabino7sanchez-ship-it.github.io/west-capital-quote/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sabino7sanchez-ship-it.github.io/west-capital-quote/',this)">Copy Link</button>
+    <div class="card-icon">🏦</div>
+    <div class="card-title">West Capital Lending</div>
+    <div class="card-desc">Bilingual mortgage quote generator with 6 loan types, PIN-protected admin, and social sharing. Built for a real loan officer.</div>
+    <div class="card-tags"><span class="tag">REAL CLIENT</span><span class="tag">BILINGUAL</span><span class="tag">QUOTE TOOL</span></div>
+    <div class="card-link">View Live Site <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="https://allendes-construction.netlify.app" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://allendes-construction.netlify.app',this)">Copy Link</button>
+    <div class="card-icon">🏗</div>
+    <div class="card-title">Allendes Construction</div>
+    <div class="card-desc">Full business site for a construction + landscaping company with service showcase, contact forms, and professional branding.</div>
+    <div class="card-tags"><span class="tag">REAL CLIENT</span><span class="tag">CONSTRUCTION</span><span class="tag">LIVE</span></div>
+    <div class="card-link">View Live Site <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="https://sabino7sanchez-ship-it.github.io/reynosos-handyman/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sabino7sanchez-ship-it.github.io/reynosos-handyman/',this)">Copy Link</button>
+    <div class="card-icon">🔨</div>
+    <div class="card-title">Reynoso's Handyman</div>
+    <div class="card-desc">Professional handyman site with click-to-call, photo gallery, contact form, and local SEO optimization for LA area.</div>
+    <div class="card-tags"><span class="tag">REAL CLIENT</span><span class="tag">HANDYMAN</span><span class="tag">LIVE</span></div>
+    <div class="card-link">View Live Site <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+</div>
+
+<div class="section-label">Industry Demos — Send to Any Prospect</div>
+<div class="grid">
+  <a href="/demos/autoshop/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/autoshop/',this)">Copy Link</button>
+    <div class="card-icon">🚗</div>
+    <div class="card-title">Auto Detailing / Car Wash</div>
+    <div class="card-desc">Premium dark-themed site with service menu, instant quote calculator (luxury vs domestic), photo gallery, booking CTA, live open/closed status.</div>
+    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">GALLERY</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/restaurant/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/restaurant/',this)">Copy Link</button>
+    <div class="card-icon">🍽</div>
+    <div class="card-title">Restaurant</div>
+    <div class="card-desc">Digital menu, online order inquiry form, photo gallery, Google Maps embed, click-to-call. Mobile-first for walk-in and delivery.</div>
+    <div class="card-tags"><span class="tag">MENU</span><span class="tag">ORDERS</span><span class="tag">GALLERY</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/barbershop/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/barbershop/',this)">Copy Link</button>
+    <div class="card-icon">💈</div>
+    <div class="card-title">Barbershop</div>
+    <div class="card-desc">Photo gallery, service menu with pricing, one-tap booking, Instagram feed embed, and Google Review display.</div>
+    <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">GALLERY</span><span class="tag">REVIEWS</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/realestate/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/realestate/',this)">Copy Link</button>
+    <div class="card-icon">🏠</div>
+    <div class="card-title">Real Estate</div>
+    <div class="card-desc">Lead capture with home valuation form, active listings, testimonials, neighborhood guides, Calendly booking.</div>
+    <div class="card-tags"><span class="tag">LEAD CAPTURE</span><span class="tag">LISTINGS</span><span class="tag">BOOKING</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/fitness/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/fitness/',this)">Copy Link</button>
+    <div class="card-icon">💪</div>
+    <div class="card-title">Fitness / Personal Trainer</div>
+    <div class="card-desc">Online session scheduling, workout package selector, payment intake, transformation gallery.</div>
+    <div class="card-tags"><span class="tag">SCHEDULING</span><span class="tag">PACKAGES</span><span class="tag">PAYMENTS</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/trucking/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/trucking/',this)">Copy Link</button>
+    <div class="card-icon">🚛</div>
+    <div class="card-title">Trucking / Freight</div>
+    <div class="card-desc">Instant freight quote calculator with FTL/LTL/Flatbed/Refrigerated pricing, professional PDF-style output.</div>
+    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">FREIGHT</span><span class="tag">PDF</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/insurance/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/insurance/',this)">Copy Link</button>
+    <div class="card-icon">🛡</div>
+    <div class="card-title">Insurance</div>
+    <div class="card-desc">3-carrier policy comparison tool. Agent enters info, generates side-by-side comparison to text or email to clients.</div>
+    <div class="card-tags"><span class="tag">COMPARISON</span><span class="tag">3 CARRIERS</span><span class="tag">SHAREABLE</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/plumbing/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/plumbing/',this)">Copy Link</button>
+    <div class="card-icon">🔧</div>
+    <div class="card-title">Plumbing / HVAC</div>
+    <div class="card-desc">Estimate calculator with price ranges, emergency CTA, service area map, reviews, and 24/7 booking.</div>
+    <div class="card-tags"><span class="tag">ESTIMATES</span><span class="tag">EMERGENCY</span><span class="tag">24/7</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/nailsalon/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/nailsalon/',this)">Copy Link</button>
+    <div class="card-icon">💅</div>
+    <div class="card-title">Nail Salon</div>
+    <div class="card-desc">Service menu with pricing, online booking, photo gallery of nail art, reviews showcase, and gift cards.</div>
+    <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">GALLERY</span><span class="tag">PRICING</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/tattoo/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/tattoo/',this)">Copy Link</button>
+    <div class="card-icon">🎨</div>
+    <div class="card-title">Tattoo Shop</div>
+    <div class="card-desc">Artist portfolio gallery, consultation request form, aftercare guide, walk-in availability display.</div>
+    <div class="card-tags"><span class="tag">PORTFOLIO</span><span class="tag">CONSULTATION</span><span class="tag">WALK-INS</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/foodtruck/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/foodtruck/',this)">Copy Link</button>
+    <div class="card-icon">🌮</div>
+    <div class="card-title">Food Truck</div>
+    <div class="card-desc">Live menu, location schedule tracker, catering inquiry form, photo gallery, social media integration.</div>
+    <div class="card-tags"><span class="tag">MENU</span><span class="tag">LOCATION</span><span class="tag">CATERING</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/photography/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/photography/',this)">Copy Link</button>
+    <div class="card-icon">📸</div>
+    <div class="card-title">Photography</div>
+    <div class="card-desc">Full portfolio gallery, package pricing, session booking form, client testimonials, and print ordering.</div>
+    <div class="card-tags"><span class="tag">PORTFOLIO</span><span class="tag">PACKAGES</span><span class="tag">BOOKING</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/medspa/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/medspa/',this)">Copy Link</button>
+    <div class="card-icon">💉</div>
+    <div class="card-title">Med Spa</div>
+    <div class="card-desc">Treatment menu, before/after gallery, consultation request, patient testimonials, and financing options.</div>
+    <div class="card-tags"><span class="tag">TREATMENTS</span><span class="tag">BEFORE/AFTER</span><span class="tag">BOOKING</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/cleaning/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/cleaning/',this)">Copy Link</button>
+    <div class="card-icon">🧹</div>
+    <div class="card-title">Cleaning Service</div>
+    <div class="card-desc">Instant quote calculator with service type, home size, frequency, and add-ons. Online booking integration.</div>
+    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">ADD-ONS</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/moving/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/moving/',this)">Copy Link</button>
+    <div class="card-icon">📦</div>
+    <div class="card-title">Moving Company</div>
+    <div class="card-desc">Instant moving quote with hourly rates, distance pricing, packing add-ons. Book online in 60 seconds.</div>
+    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">PACKING</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/roofing/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/roofing/',this)">Copy Link</button>
+    <div class="card-icon">🏗</div>
+    <div class="card-title">Roofing</div>
+    <div class="card-desc">Free inspection request form, project gallery, financing options, service area map, emergency repairs.</div>
+    <div class="card-tags"><span class="tag">INSPECTIONS</span><span class="tag">GALLERY</span><span class="tag">FINANCING</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/catering/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/catering/',this)">Copy Link</button>
+    <div class="card-icon">🍱</div>
+    <div class="card-title">Catering</div>
+    <div class="card-desc">Event quote builder, menu packages, dietary options, photo gallery, booking for weddings and corporate.</div>
+    <div class="card-tags"><span class="tag">EVENT QUOTE</span><span class="tag">MENUS</span><span class="tag">BOOKING</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+  <a href="/demos/djevents/" target="_blank" rel="noopener" class="card">
+    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/djevents/',this)">Copy Link</button>
+    <div class="card-icon">🎧</div>
+    <div class="card-title">DJ / Events</div>
+    <div class="card-desc">Event booking, package pricing, past event gallery, music genre selection, video showreel embed.</div>
+    <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">PACKAGES</span><span class="tag">GALLERY</span></div>
+    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
+  </a>
+</div>
+
+<footer class="footer">
+  Built by SanchezElevationAI | <a href="https://sanchezelevationai.com">sanchezelevationai.com</a> | (562) 373-1027
+</footer>
+
+<script>
+function copyLink(url, btn) {
+  navigator.clipboard.writeText(url).then(() => {
+    btn.textContent = 'Copied!';
+    btn.style.background = 'rgba(34,197,94,.2)';
+    btn.style.borderColor = 'rgba(34,197,94,.4)';
+    btn.style.color = '#22c55e';
+    setTimeout(() => {
+      btn.textContent = 'Copy Link';
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
