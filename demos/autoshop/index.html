@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Precision Auto Care — Norwalk, CA | Full-Service Auto Repair</title>
+  <meta name="description" content="ASE Certified full-service auto repair in Norwalk, CA. Honest pricing, fast turnaround, guaranteed work. Serving Norwalk, Downey & surrounding areas since 2008." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #FFD700;
+      --gold-dim: #E6C200;
+      --gold-glow: rgba(255, 215, 0, 0.15);
+      --gold-border: rgba(255, 215, 0, 0.3);
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #18181c;
+      --bg4: #1e1e24;
+      --text: #F0F0F2;
+      --text-muted: #888899;
+      --text-dim: #555566;
+      --border: rgba(255,255,255,0.07);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+    /* ── UTILITIES ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .gold { color: var(--gold); }
+    .mono { font-family: var(--mono); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 8px; font-family: var(--font);
+      font-weight: 600; font-size: 15px; cursor: pointer;
+      text-decoration: none; border: none; transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-gold {
+      background: var(--gold); color: #0A0A0B;
+      box-shadow: 0 0 20px rgba(255,215,0,0.25);
+    }
+    .btn-gold:hover {
+      background: #ffe033; transform: translateY(-1px);
+      box-shadow: 0 4px 24px rgba(255,215,0,0.4);
+    }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold); color: var(--gold);
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      background: rgba(255,215,0,0.08); color: var(--gold);
+      border: 1.5px solid var(--gold-border);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,215,0,0.18); transform: translateY(-1px);
+    }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    #nav.scrolled {
+      background: rgba(10,10,11,0.97);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo-text {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .nav-logo-name {
+      font-weight: 800; font-size: 17px; color: var(--text); letter-spacing: -0.3px;
+    }
+    .nav-logo-sub {
+      font-family: var(--mono); font-size: 10px; color: var(--gold); letter-spacing: 0.5px;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--text-muted); font-size: 14px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px; background: var(--text); border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; color: var(--text); font-size: 16px; font-weight: 500;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .btn { margin-top: 16px; text-align: center; justify-content: center; }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 68px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 65% 40%, rgba(255,215,0,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(255,215,0,0.04) 0%, transparent 60%),
+        linear-gradient(135deg, #0A0A0B 0%, #0f0f12 50%, #0A0A0B 100%);
+    }
+    .hero-grid-overlay {
+      position: absolute; inset: 0; z-index: 0; opacity: 0.03;
+      background-image:
+        linear-gradient(rgba(255,215,0,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,215,0,0.5) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 680px;
+      padding: 80px 0;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,215,0,0.08); border: 1px solid var(--gold-border);
+      border-radius: 100px; padding: 7px 16px;
+      font-family: var(--mono); font-size: 12px; color: var(--gold);
+      letter-spacing: 0.3px; margin-bottom: 28px;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; background: var(--gold);
+      border-radius: 50%; animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-headline {
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .hero-headline .accent { color: var(--gold); }
+    .hero-sub {
+      font-size: 18px; color: var(--text-muted); line-height: 1.65;
+      max-width: 560px; margin-bottom: 36px; font-weight: 400;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+    .hero-stats {
+      display: flex; gap: 36px; flex-wrap: wrap;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat { }
+    .hero-stat-num {
+      font-size: 28px; font-weight: 800; color: var(--gold);
+      font-family: var(--mono); letter-spacing: -1px;
+    }
+    .hero-stat-label {
+      font-size: 13px; color: var(--text-muted); margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION SHARED
+    ══════════════════════════════════════ */
+    section { padding: 90px 0; }
+    .section-label {
+      font-family: var(--mono); font-size: 12px; color: var(--gold);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 12px; display: block;
+    }
+    .section-title {
+      font-size: clamp(30px, 4vw, 44px); font-weight: 800;
+      letter-spacing: -1px; line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--text-muted); font-size: 17px; max-width: 540px; line-height: 1.6;
+    }
+    .section-header { margin-bottom: 56px; }
+
+    /* ══════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════ */
+    #services { background: var(--bg2); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: all 0.25s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .service-card:hover {
+      border-color: var(--gold-border);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--gold-border);
+      background: var(--bg4);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 32px; margin-bottom: 14px; display: block;
+    }
+    .service-name {
+      font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--text);
+    }
+    .service-price {
+      font-family: var(--mono); font-size: 13px; color: var(--gold);
+      font-weight: 600; margin-bottom: 10px;
+    }
+    .service-desc {
+      font-size: 14px; color: var(--text-muted); line-height: 1.55;
+    }
+
+    /* ══════════════════════════════════════
+       ESTIMATE TOOL
+    ══════════════════════════════════════ */
+    #estimate { background: var(--bg); }
+    .estimate-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    }
+    .estimate-form-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px 32px;
+    }
+    .form-row { margin-bottom: 20px; }
+    .form-label {
+      display: block; font-size: 13px; font-weight: 600; color: var(--text-muted);
+      margin-bottom: 8px; letter-spacing: 0.3px; text-transform: uppercase;
+      font-family: var(--mono);
+    }
+    .form-select, .form-input, .form-textarea {
+      width: 100%; padding: 13px 16px;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text); font-family: var(--font);
+      font-size: 15px; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23888899' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+    .form-select:focus, .form-input:focus, .form-textarea:focus {
+      border-color: var(--gold-border);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.08);
+    }
+    .form-select option { background: var(--bg3); color: var(--text); }
+    .form-textarea { resize: vertical; min-height: 100px; }
+    .estimate-result {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px 32px;
+      position: sticky; top: 88px;
+    }
+    .estimate-result-title {
+      font-family: var(--mono); font-size: 12px; color: var(--gold);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px;
+    }
+    .estimate-placeholder {
+      text-align: center; padding: 32px 0;
+    }
+    .estimate-placeholder-icon { font-size: 48px; margin-bottom: 16px; display: block; }
+    .estimate-placeholder-text { color: var(--text-dim); font-size: 15px; line-height: 1.5; }
+    .estimate-output { display: none; }
+    .estimate-output.visible { display: block; }
+    .estimate-price-row {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    .estimate-price-label { font-size: 14px; color: var(--text-muted); }
+    .estimate-price-val {
+      font-family: var(--mono); font-size: 32px; font-weight: 600; color: var(--gold);
+      letter-spacing: -1px;
+    }
+    .estimate-detail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px;
+    }
+    .estimate-detail-row:last-of-type { border-bottom: none; }
+    .estimate-detail-label { color: var(--text-muted); }
+    .estimate-detail-val { color: var(--text); font-weight: 600; font-family: var(--mono); }
+    .estimate-note {
+      margin-top: 20px; padding: 14px 16px;
+      background: rgba(255,215,0,0.06); border: 1px solid var(--gold-border);
+      border-radius: 8px; font-size: 13px; color: var(--text-muted); line-height: 1.5;
+    }
+    .estimate-note strong { color: var(--gold); }
+    .urgency-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 600;
+      font-family: var(--mono);
+    }
+    .urgency-standard { background: rgba(100,200,100,0.12); color: #6dc87a; border: 1px solid rgba(100,200,100,0.2); }
+    .urgency-wait { background: rgba(255,200,0,0.12); color: var(--gold); border: 1px solid var(--gold-border); }
+    .urgency-emergency { background: rgba(255,80,80,0.12); color: #ff6b6b; border: 1px solid rgba(255,80,80,0.2); }
+
+    /* ══════════════════════════════════════
+       TRUST BADGES
+    ══════════════════════════════════════ */
+    #trust { background: var(--bg2); }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px;
+    }
+    .trust-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 30px 24px;
+      text-align: center; transition: all 0.25s;
+    }
+    .trust-card:hover {
+      border-color: var(--gold-border);
+      box-shadow: 0 8px 32px rgba(255,215,0,0.06);
+      transform: translateY(-3px);
+    }
+    .trust-icon { font-size: 38px; margin-bottom: 14px; display: block; }
+    .trust-name { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .trust-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ══════════════════════════════════════
+       REVIEWS
+    ══════════════════════════════════════ */
+    #reviews { background: var(--bg); }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
+    }
+    .review-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 24px;
+      transition: all 0.25s;
+    }
+    .review-card:hover {
+      border-color: var(--gold-border); transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .review-stars { color: var(--gold); font-size: 18px; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-text { font-size: 15px; color: var(--text); line-height: 1.65; margin-bottom: 20px; }
+    .review-footer { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 17px; color: #0A0A0B; flex-shrink: 0;
+    }
+    .review-name { font-size: 14px; font-weight: 600; }
+    .review-meta { font-size: 12px; color: var(--text-dim); font-family: var(--mono); margin-top: 2px; }
+    .google-badge {
+      margin-left: auto; display: flex; align-items: center; gap: 5px;
+      font-size: 12px; color: var(--text-dim);
+    }
+    .google-g { font-weight: 700; font-size: 14px; color: #4285f4; }
+
+    /* ══════════════════════════════════════
+       APPOINTMENT
+    ══════════════════════════════════════ */
+    #appointment { background: var(--bg2); }
+    .appt-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
+    }
+    .appt-info { padding-top: 8px; }
+    .appt-why { margin-top: 36px; }
+    .appt-why-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+    }
+    .appt-why-item:last-child { border-bottom: none; }
+    .appt-why-icon { font-size: 20px; margin-top: 2px; flex-shrink: 0; }
+    .appt-why-text strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 2px; }
+    .appt-why-text span { font-size: 13px; color: var(--text-muted); }
+    .appt-form-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px 32px;
+    }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .submit-btn {
+      width: 100%; padding: 16px; font-size: 16px; font-weight: 700;
+      background: var(--gold); color: #0A0A0B; border: none;
+      border-radius: 10px; cursor: pointer; font-family: var(--font);
+      transition: all 0.2s; margin-top: 8px;
+    }
+    .submit-btn:hover { background: #ffe033; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(255,215,0,0.35); }
+    .form-notice {
+      text-align: center; font-size: 12px; color: var(--text-dim);
+      margin-top: 14px; font-family: var(--mono);
+    }
+
+    /* ══════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════ */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start;
+    }
+    .contact-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 36px 32px;
+    }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 18px 0; border-bottom: 1px solid var(--border);
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-item-icon {
+      width: 44px; height: 44px; background: rgba(255,215,0,0.08);
+      border: 1px solid var(--gold-border); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .contact-item-label { font-size: 12px; color: var(--text-dim); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .contact-item-val { font-size: 16px; font-weight: 600; color: var(--text); }
+    .contact-item-val a { color: var(--gold); text-decoration: none; }
+    .contact-item-val a:hover { text-decoration: underline; }
+    .contact-item-sub { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+    .hours-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px;
+    }
+    .hours-title {
+      font-family: var(--mono); font-size: 12px; color: var(--gold);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 14px;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--text-muted); }
+    .hours-time { font-family: var(--mono); font-weight: 600; color: var(--text); }
+    .hours-closed { color: var(--text-dim); }
+    .open-now {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(100,200,100,0.1); border: 1px solid rgba(100,200,100,0.25);
+      border-radius: 100px; padding: 5px 12px;
+      font-family: var(--mono); font-size: 12px; color: #6dc87a;
+      margin-top: 16px;
+    }
+    .open-now-dot { width: 6px; height: 6px; background: #6dc87a; border-radius: 50%; animation: pulse 2s infinite; }
+    .accepted-wrap {
+      margin-top: 24px; padding: 20px 24px;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); font-size: 14px;
+    }
+    .accepted-title { font-weight: 600; margin-bottom: 10px; color: var(--text); }
+    .accepted-list { color: var(--text-muted); line-height: 1.8; font-size: 13px; }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 36px 0; text-align: center;
+    }
+    .footer-logo { font-weight: 800; font-size: 18px; color: var(--text); margin-bottom: 8px; }
+    .footer-address { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; font-family: var(--mono); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { font-size: 13px; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-size: 12px; color: var(--text-dim);
+      border-top: 1px solid var(--border); padding-top: 16px; margin-top: 8px;
+    }
+    .footer-copy a { color: var(--gold); text-decoration: none; }
+    .footer-copy a:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════
+       MOBILE BOTTOM BANNER
+    ══════════════════════════════════════ */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+      background: rgba(10,10,11,0.97);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      backdrop-filter: blur(12px);
+    }
+    .mobile-cta-inner {
+      display: flex; gap: 12px;
+    }
+    .mobile-cta-inner a {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 13px; border-radius: 8px;
+      font-weight: 700; font-size: 14px; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .mobile-cta-call {
+      background: var(--gold); color: #0A0A0B;
+    }
+    .mobile-cta-call:hover { background: #ffe033; }
+    .mobile-cta-appt {
+      background: var(--bg3); color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .mobile-cta-appt:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ══════════════════════════════════════
+       DIVIDER / STRIP
+    ══════════════════════════════════════ */
+    .strip {
+      background: var(--gold); padding: 16px 0; overflow: hidden;
+    }
+    .strip-inner {
+      display: flex; gap: 48px; align-items: center; justify-content: center; flex-wrap: wrap;
+    }
+    .strip-item {
+      display: flex; align-items: center; gap: 8px;
+      font-weight: 700; font-size: 14px; color: #0A0A0B;
+      white-space: nowrap;
+    }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .estimate-wrap { grid-template-columns: 1fr; }
+      .appt-wrap { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .estimate-result { position: static; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-cta-bar { display: block; }
+      section { padding: 70px 0; }
+      body { padding-bottom: 72px; }
+      .form-grid-2 { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+    }
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { text-align: center; justify-content: center; }
+    }
+
+    /* ══════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════ */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { opacity: 0; animation: fadeInUp 0.6s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+    .delay-4 { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">🔧</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Precision Auto Care</span>
+          <span class="nav-logo-sub">NORWALK, CA · ASE CERTIFIED</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#estimate">Estimate</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#appointment" class="btn btn-gold nav-cta">Schedule Service</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#estimate" class="mobile-link">Get an Estimate</a>
+    <a href="#reviews" class="mobile-link">Reviews</a>
+    <a href="#contact" class="mobile-link">Contact & Hours</a>
+    <a href="#appointment" class="btn btn-gold">Schedule Service</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge fade-in">
+        <span class="hero-badge-dot"></span>
+        ASE Certified &nbsp;·&nbsp; Family Owned Since 2008
+      </div>
+      <h1 class="hero-headline fade-in delay-1">
+        Your Car Fixed<br /><span class="accent">Right. The First Time.</span>
+      </h1>
+      <p class="hero-sub fade-in delay-2">
+        Full-service auto repair for all makes and models. Honest pricing, fast turnaround, guaranteed work. Serving Norwalk, Downey & the greater LA area.
+      </p>
+      <div class="hero-ctas fade-in delay-3">
+        <a href="#appointment" class="btn btn-gold">📅 Schedule Service</a>
+        <a href="#estimate" class="btn btn-outline">🔍 Get an Estimate</a>
+      </div>
+      <div class="hero-stats fade-in delay-4">
+        <div class="hero-stat">
+          <div class="hero-stat-num">16+</div>
+          <div class="hero-stat-label">Years in Business</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4,800+</div>
+          <div class="hero-stat-label">Cars Serviced</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5★</div>
+          <div class="hero-stat-label">Google Rating</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">2-yr</div>
+          <div class="hero-stat-label">Parts Warranty</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STRIP ══ -->
+<div class="strip">
+  <div class="container">
+    <div class="strip-inner">
+      <div class="strip-item">✅ Free Estimates</div>
+      <div class="strip-item">🔧 All Makes & Models</div>
+      <div class="strip-item">🛡️ 2-Year Warranty</div>
+      <div class="strip-item">🚗 Loaner Cars Available</div>
+      <div class="strip-item">📍 Walk-Ins Welcome</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Full-Service Auto Repair</h2>
+      <p class="section-sub">From routine maintenance to complex engine work — we do it all under one roof with certified technicians.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🛢️</span>
+        <div class="service-name">Oil Change</div>
+        <div class="service-price">from $49</div>
+        <div class="service-desc">Conventional or full synthetic. Includes multi-point inspection, tire pressure check, and fluid top-off. Done in under an hour.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🛑</span>
+        <div class="service-name">Brake Service</div>
+        <div class="service-price">from $149 per axle</div>
+        <div class="service-desc">Pads, rotors, calipers, and brake fluid flush. We use quality OEM-grade parts and warranty all brake work for 2 years.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">⚙️</span>
+        <div class="service-name">Transmission</div>
+        <div class="service-price">from $120</div>
+        <div class="service-desc">Fluid service, filter replacement, and full rebuilds. Automatic and manual. We diagnose slipping, hard shifts, and no-start conditions.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">❄️</span>
+        <div class="service-name">AC Repair</div>
+        <div class="service-price">from $89</div>
+        <div class="service-desc">Recharge, leak detection, compressor replacement, and complete system diagnostics. Stay cool all summer long.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔬</span>
+        <div class="service-name">Engine Diagnostics</div>
+        <div class="service-price">FREE with repair</div>
+        <div class="service-desc">Check engine light on? We scan all fault codes, diagnose root cause, and give you a straight answer — no guesswork.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🚗</span>
+        <div class="service-name">Tires & Alignment</div>
+        <div class="service-price">from $25/tire install</div>
+        <div class="service-desc">New tires, flat repairs, rotations, and precision 4-wheel alignment. Extend tire life and improve fuel economy.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💨</span>
+        <div class="service-name">Smog Check</div>
+        <div class="service-price">$49.95</div>
+        <div class="service-desc">STAR-certified smog station. Fast in-and-out, same-day certificate. We handle the DMV submission electronically.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🚛</span>
+        <div class="service-name">Fleet Service</div>
+        <div class="service-price">Custom pricing</div>
+        <div class="service-desc">Priority scheduling for business fleets of any size. Dedicated fleet account manager, consolidated invoicing, and bulk service discounts.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ESTIMATE TOOL ══ -->
+<section id="estimate">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Instant Estimate</span>
+      <h2 class="section-title">Get a Price Range Now</h2>
+      <p class="section-sub">Select your service and vehicle to get an immediate estimate. Final pricing confirmed on arrival — no surprises.</p>
+    </div>
+    <div class="estimate-wrap">
+      <!-- Form -->
+      <div class="estimate-form-card">
+        <div class="form-row">
+          <label class="form-label" for="est-service">Service Type</label>
+          <select class="form-select" id="est-service" onchange="calculateEstimate()">
+            <option value="">— Select a service —</option>
+            <option value="oil-conv">Oil Change (Conventional)</option>
+            <option value="oil-syn">Oil Change (Full Synthetic)</option>
+            <option value="brakes-front">Brake Service (Front Axle)</option>
+            <option value="brakes-rear">Brake Service (Rear Axle)</option>
+            <option value="brakes-full">Brake Service (Full — All 4)</option>
+            <option value="transmission">Transmission Service</option>
+            <option value="ac-recharge">AC Recharge</option>
+            <option value="ac-repair">AC Full Repair</option>
+            <option value="diagnostics">Engine Diagnostics</option>
+            <option value="tires-install">Tire Install (per tire)</option>
+            <option value="alignment">4-Wheel Alignment</option>
+            <option value="smog">Smog Check</option>
+            <option value="tune-up">Tune-Up</option>
+            <option value="coolant">Coolant Flush</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="est-make">Vehicle Make</label>
+          <select class="form-select" id="est-make" onchange="calculateEstimate()">
+            <option value="domestic">— Select make —</option>
+            <option value="domestic">Toyota</option>
+            <option value="domestic">Honda</option>
+            <option value="domestic">Ford</option>
+            <option value="domestic">Chevrolet</option>
+            <option value="domestic">Nissan</option>
+            <option value="domestic">Hyundai</option>
+            <option value="domestic">Kia</option>
+            <option value="luxury">BMW</option>
+            <option value="luxury">Mercedes-Benz</option>
+            <option value="luxury">Audi</option>
+            <option value="luxury">Lexus</option>
+            <option value="domestic">Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="est-year">Vehicle Year</label>
+          <select class="form-select" id="est-year" onchange="calculateEstimate()">
+            <option value="new">— Select year —</option>
+            <option value="new">2024</option>
+            <option value="new">2023</option>
+            <option value="new">2022</option>
+            <option value="new">2021</option>
+            <option value="new">2020</option>
+            <option value="mid">2019</option>
+            <option value="mid">2018</option>
+            <option value="mid">2017</option>
+            <option value="mid">2016</option>
+            <option value="mid">2015</option>
+            <option value="old">2014</option>
+            <option value="old">2013</option>
+            <option value="old">2012</option>
+            <option value="old">2011</option>
+            <option value="old">2010</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="est-urgency">Drop-Off or Wait?</label>
+          <select class="form-select" id="est-urgency" onchange="calculateEstimate()">
+            <option value="">— Select preference —</option>
+            <option value="dropoff">Drop Off (flexible pickup)</option>
+            <option value="wait">Wait at Shop</option>
+            <option value="emergency">Emergency / ASAP</option>
+          </select>
+        </div>
+        <a href="#appointment" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px;">
+          📅 Book This Service
+        </a>
+      </div>
+
+      <!-- Result -->
+      <div class="estimate-result">
+        <div class="estimate-result-title">// ESTIMATE RESULT</div>
+
+        <div class="estimate-placeholder" id="estPlaceholder">
+          <span class="estimate-placeholder-icon">🔧</span>
+          <p class="estimate-placeholder-text">Fill out the fields on the left to get your instant price estimate and turnaround time.</p>
+        </div>
+
+        <div class="estimate-output" id="estOutput">
+          <div class="estimate-price-row">
+            <div>
+              <div class="estimate-price-label">Estimated Cost</div>
+              <div class="estimate-price-val" id="estPrice">—</div>
+            </div>
+            <div id="estUrgencyBadge"></div>
+          </div>
+          <div class="estimate-detail-row">
+            <span class="estimate-detail-label">Service</span>
+            <span class="estimate-detail-val" id="estServiceName">—</span>
+          </div>
+          <div class="estimate-detail-row">
+            <span class="estimate-detail-label">Turnaround</span>
+            <span class="estimate-detail-val" id="estTurnaround">—</span>
+          </div>
+          <div class="estimate-detail-row">
+            <span class="estimate-detail-label">Parts Warranty</span>
+            <span class="estimate-detail-val">2 Years / 24,000 mi</span>
+          </div>
+          <div class="estimate-detail-row">
+            <span class="estimate-detail-label">Diagnostics</span>
+            <span class="estimate-detail-val">FREE with repair</span>
+          </div>
+          <div class="estimate-note" id="estNote">
+            <strong>Note:</strong> This is a general estimate. Final price confirmed after visual inspection at no charge.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST BADGES ══ -->
+<section id="trust">
+  <div class="container">
+    <div class="section-header" style="text-align:center;max-width:600px;margin:0 auto 56px;">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title">Built on Trust. Backed by Results.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-icon">🏅</span>
+        <div class="trust-name">ASE Certified</div>
+        <div class="trust-desc">All technicians hold current ASE certifications. You're not guessing — you're getting proven expertise on every job.</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🛡️</span>
+        <div class="trust-name">2-Year Warranty</div>
+        <div class="trust-desc">Every repair comes with a 2-year / 24,000-mile parts and labor warranty. We stand behind every bolt we turn.</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🔍</span>
+        <div class="trust-name">Free Diagnostics with Repair</div>
+        <div class="trust-desc">No charge for diagnostic scans when you move forward with service. Transparent write-ups — you approve everything before we start.</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">📅</span>
+        <div class="trust-name">16+ Years in Business</div>
+        <div class="trust-desc">Family-owned since 2008. We've built our reputation one honest repair at a time — no upsells, no surprises, no nonsense.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REVIEWS ══ -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Customer Reviews</span>
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-sub">4.9 stars across 340+ Google reviews. Honest work earns honest feedback.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've been coming to Precision Auto Care for 5 years now and I won't go anywhere else. They diagnosed my check engine light in 20 minutes, explained everything in plain English, and the price was way lower than the dealer quoted me. Honest shop — truly rare to find."</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#FFD700;">M</div>
+          <div>
+            <div class="review-name">Maria G.</div>
+            <div class="review-meta">Norwalk, CA · 2 weeks ago</div>
+          </div>
+          <div class="google-badge"><span class="google-g">G</span> Google</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Brought my 2019 F-150 in for brake work. They had it done same day, called me with updates the whole time, and even noticed my rear tires were worn unevenly and told me about it without trying to push a sale. That kind of integrity keeps me coming back. Fast turnaround, fair price."</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#3a86ff;color:#fff;">D</div>
+          <div>
+            <div class="review-name">David R.</div>
+            <div class="review-meta">Downey, CA · 1 month ago</div>
+          </div>
+          <div class="google-badge"><span class="google-g">G</span> Google</div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Best smog station in the area — in and out in 30 minutes, super affordable. I also had them do an oil change and AC recharge while I waited. The waiting area is clean, the staff are professional, and they didn't try to sell me anything I didn't need. Highly recommend to anyone in the 562."</p>
+        <div class="review-footer">
+          <div class="review-avatar" style="background:#06d6a0;color:#fff;">J</div>
+          <div>
+            <div class="review-name">Jessica L.</div>
+            <div class="review-meta">Norwalk, CA · 3 weeks ago</div>
+          </div>
+          <div class="google-badge"><span class="google-g">G</span> Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APPOINTMENT ══ -->
+<section id="appointment">
+  <div class="container">
+    <div class="appt-wrap">
+      <div class="appt-info">
+        <span class="section-label">Book Online</span>
+        <h2 class="section-title">Schedule Your Service</h2>
+        <p class="section-sub">Submit your info and we'll confirm your appointment within 1 business hour. Same-day openings usually available Mon–Fri.</p>
+        <div class="appt-why">
+          <div class="appt-why-item">
+            <span class="appt-why-icon">⚡</span>
+            <div class="appt-why-text">
+              <strong>Fast Confirmation</strong>
+              <span>We reply within 1 hour during business hours. No waiting games.</span>
+            </div>
+          </div>
+          <div class="appt-why-item">
+            <span class="appt-why-icon">💬</span>
+            <div class="appt-why-text">
+              <strong>Text or Call Updates</strong>
+              <span>We'll keep you posted on your car's status throughout the day.</span>
+            </div>
+          </div>
+          <div class="appt-why-item">
+            <span class="appt-why-icon">🔒</span>
+            <div class="appt-why-text">
+              <strong>Approve Before We Start</strong>
+              <span>We call with the diagnosis. You approve the work. No surprises on the bill.</span>
+            </div>
+          </div>
+          <div class="appt-why-item">
+            <span class="appt-why-icon">🚗</span>
+            <div class="appt-why-text">
+              <strong>Drop-Off or Wait</strong>
+              <span>Comfortable waiting lounge with WiFi, or drop it off and pick up later.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="appt-form-card">
+        <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Service Appointment - Precision Auto Care" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="#appointment" />
+
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label class="form-label" for="f-name">Full Name</label>
+              <input class="form-input" type="text" id="f-name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-row">
+              <label class="form-label" for="f-phone">Phone Number</label>
+              <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="(562) 555-0100" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label">Vehicle</label>
+            <div class="form-grid-2">
+              <input class="form-input" type="text" name="vehicle_year" placeholder="Year (e.g. 2020)" />
+              <input class="form-input" type="text" name="vehicle_make" placeholder="Make (e.g. Honda)" />
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top:16px;">
+            <input class="form-input" type="text" name="vehicle_model" placeholder="Model (e.g. Civic EX)" />
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="f-service">Service Needed</label>
+            <select class="form-select" id="f-service" name="service" required>
+              <option value="">— Select service —</option>
+              <option>Oil Change</option>
+              <option>Brake Service</option>
+              <option>Transmission Service</option>
+              <option>AC Repair / Recharge</option>
+              <option>Engine Diagnostics</option>
+              <option>Tires / Alignment</option>
+              <option>Smog Check</option>
+              <option>Tune-Up</option>
+              <option>Fleet Service</option>
+              <option>Other (describe in notes)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="f-date">Preferred Date</label>
+            <input class="form-input" type="date" id="f-date" name="preferred_date" required />
+          </div>
+
+          <div class="form-row">
+            <label class="form-label" for="f-notes">Notes / Additional Info</label>
+            <textarea class="form-textarea" id="f-notes" name="notes" placeholder="Describe the issue, any warning lights, noises, etc..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">📅 Request Appointment</button>
+          <p class="form-notice">We'll confirm via text or call within 1 business hour.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Find Us</span>
+      <h2 class="section-title">Location & Hours</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-card">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-val"><a href="tel:+15625550193">(562) 555-0193</a></div>
+              <div class="contact-item-sub">Call or text anytime during business hours</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Address</div>
+              <div class="contact-item-val">8847 Imperial Hwy, Norwalk, CA 90650</div>
+              <div class="contact-item-sub">Easy access off I-5 · Ample parking</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🔧</div>
+            <div>
+              <div class="contact-item-label">Fleet & Commercial</div>
+              <div class="contact-item-val">Fleet Accounts Welcome</div>
+              <div class="contact-item-sub">Priority scheduling · Consolidated billing · Volume discounts</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💳</div>
+            <div>
+              <div class="contact-item-label">Payment & Insurance</div>
+              <div class="contact-item-val">All Major Cards Accepted</div>
+              <div class="contact-item-sub">Cash · Credit · Fleet accounts · Most insurance accepted</div>
+            </div>
+          </div>
+        </div>
+        <div class="accepted-wrap">
+          <div class="accepted-title">Accepted Insurance & Payment</div>
+          <div class="accepted-list">Visa · Mastercard · American Express · Discover · Cash · Checks (business fleet) · Most auto insurance claims accepted · AAA members welcome</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="hours-card">
+          <div class="hours-title">// BUSINESS HOURS</div>
+          <div class="hours-row">
+            <span class="hours-day">Monday</span>
+            <span class="hours-time">7:30 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Tuesday</span>
+            <span class="hours-time">7:30 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Wednesday</span>
+            <span class="hours-time">7:30 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Thursday</span>
+            <span class="hours-time">7:30 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Friday</span>
+            <span class="hours-time">7:30 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Saturday</span>
+            <span class="hours-time">8:00 AM – 4:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-closed">Closed</span>
+          </div>
+          <div class="open-now" id="openNow">
+            <span class="open-now-dot"></span>
+            <span id="openNowText">Checking hours...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">🔧 Precision Auto Care</div>
+    <div class="footer-address">8847 Imperial Hwy, Norwalk, CA 90650 · (562) 555-0193</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#estimate">Estimate</a>
+      <a href="#appointment">Schedule</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">
+      Precision Auto Care &copy; 2026 &nbsp;·&nbsp;
+      Website by <a href="https://sanchezelevationai.com" target="_blank">SanchezElevationAI</a>
+      &nbsp;·&nbsp;
+      <a href="https://sanchezelevationai.com" target="_blank">sanchezelevationai.com</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ MOBILE BOTTOM BANNER ══ -->
+<div class="mobile-cta-bar">
+  <div class="mobile-cta-inner">
+    <a href="tel:+15625550193" class="mobile-cta-call">📞 Call Us</a>
+    <a href="#appointment" class="mobile-cta-appt">📅 Book Service</a>
+  </div>
+</div>
+
+<!-- ══ JAVASCRIPT ══ -->
+<script>
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── HAMBURGER ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // ── ESTIMATE CALCULATOR ──
+  const serviceData = {
+    'oil-conv':        { name: 'Oil Change (Conventional)', base: [49, 69],     time: '~45 min',    note: 'Includes up to 5 qts conventional oil, new filter, and multi-point inspection.' },
+    'oil-syn':         { name: 'Oil Change (Full Synthetic)', base: [69, 99],    time: '~45–60 min', note: 'Full synthetic oil, new OEM-style filter. We recommend synthetic for most 2015+ vehicles.' },
+    'brakes-front':    { name: 'Brake Service (Front)',      base: [149, 250],   time: '~1.5–2 hrs', note: 'Front pads + rotor resurface. Rotor replacement adds $60–120 depending on vehicle.' },
+    'brakes-rear':     { name: 'Brake Service (Rear)',       base: [149, 250],   time: '~1.5–2 hrs', note: 'Rear pads + rotor resurface. Drum brakes priced separately — call for quote.' },
+    'brakes-full':     { name: 'Brake Service (All 4 Wheels)',base:[299, 499],   time: '~2.5–3 hrs', note: 'Complete 4-wheel brake service. Significant safety upgrade with full peace of mind.' },
+    'transmission':    { name: 'Transmission Service',      base: [120, 280],   time: '~1–2 hrs',   note: 'Fluid drain & fill, new filter, pan gasket. Full rebuild quoted after inspection.' },
+    'ac-recharge':     { name: 'AC Recharge',               base: [89, 139],    time: '~1 hr',      note: 'R-134a recharge with UV dye leak check included. Most vehicles without leaks.' },
+    'ac-repair':       { name: 'AC Full Repair',            base: [250, 650],   time: '~2–4 hrs',   note: 'Compressor, condenser, or evaporator replacement depending on fault. Diagnosis included.' },
+    'diagnostics':     { name: 'Engine Diagnostics',        base: [0, 0],       time: '~30–60 min', note: 'FREE with any qualifying repair. Standalone diagnostic fee: $75, credited toward repair.' },
+    'tires-install':   { name: 'Tire Install (per tire)',   base: [25, 35],     time: '~30–45 min', note: 'Mount, balance, and valve stem. Disposal fee: $4/tire. Tires not included in price.' },
+    'alignment':       { name: '4-Wheel Alignment',         base: [79, 119],    time: '~1–1.5 hrs', note: 'Computer-guided precision alignment. Recommended after new tires or suspension work.' },
+    'smog':            { name: 'Smog Check',                base: [49, 49],     time: '~30 min',    note: 'STAR-certified. DMV electronic filing included. Retest free if we do the repair.' },
+    'tune-up':         { name: 'Tune-Up',                   base: [120, 280],   time: '~1.5–2 hrs', note: 'Spark plugs, air filter, PCV valve, fuel system check. Coil packs quoted separately.' },
+    'coolant':         { name: 'Coolant Flush',             base: [89, 129],    time: '~1 hr',      note: 'Full drain & refill with factory-spec coolant. Includes pressure test and cap inspection.' },
+  };
+
+  const luxuryMultiplier = { 'luxury': 1.35, 'domestic': 1.0 };
+  const yearMultiplier   = { 'new': 1.1, 'mid': 1.0, 'old': 0.95 };
+  const urgencyAdd       = { 'emergency': 75, 'wait': 0, 'dropoff': 0 };
+  const urgencyTime      = {
+    'dropoff':   { label: 'Drop Off', class: 'urgency-standard', timeMod: '' },
+    'wait':      { label: 'Wait at Shop', class: 'urgency-wait', timeMod: '' },
+    'emergency': { label: 'Emergency / Rush', class: 'urgency-emergency', timeMod: ' (priority)' }
+  };
+
+  function calculateEstimate() {
+    const svc    = document.getElementById('est-service').value;
+    const make   = document.getElementById('est-make').value;
+    const year   = document.getElementById('est-year').value;
+    const urgency= document.getElementById('est-urgency').value;
+
+    const placeholder = document.getElementById('estPlaceholder');
+    const output      = document.getElementById('estOutput');
+
+    if (!svc || !make || !year || !urgency) {
+      placeholder.style.display = 'block';
+      output.classList.remove('visible');
+      return;
+    }
+
+    const d    = serviceData[svc];
+    const lMult = luxuryMultiplier[make] || 1.0;
+    const yMult = yearMultiplier[year]   || 1.0;
+    const uAdd  = urgencyAdd[urgency]    || 0;
+
+    let lo = Math.round(d.base[0] * lMult * yMult) + uAdd;
+    let hi = Math.round(d.base[1] * lMult * yMult) + uAdd;
+
+    // Smog is fixed
+    if (svc === 'smog') { lo = 49; hi = 49; }
+    if (svc === 'diagnostics') { lo = 0; hi = 0; }
+
+    const priceText = (lo === 0 && hi === 0)
+      ? 'FREE*'
+      : (lo === hi ? `$${lo}` : `$${lo} – $${hi}`);
+
+    const urgInfo = urgencyTime[urgency] || urgencyTime['dropoff'];
+
+    document.getElementById('estPrice').textContent       = priceText;
+    document.getElementById('estServiceName').textContent = d.name;
+    document.getElementById('estTurnaround').textContent  = d.time + urgInfo.timeMod;
+    document.getElementById('estNote').innerHTML          = `<strong>Note:</strong> ${d.note}`;
+
+    const badge = document.getElementById('estUrgencyBadge');
+    badge.innerHTML = `<span class="urgency-badge ${urgInfo.class}">${urgInfo.label}</span>`;
+
+    placeholder.style.display = 'none';
+    output.classList.add('visible');
+  }
+
+  // ── OPEN NOW INDICATOR ──
+  function checkOpenNow() {
+    const el = document.getElementById('openNow');
+    const txt = document.getElementById('openNowText');
+    const now = new Date();
+    const day = now.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+    const h   = now.getHours();
+    const m   = now.getMinutes();
+    const mins = h * 60 + m;
+
+    let open = false;
+    if (day >= 1 && day <= 5) {
+      // Mon–Fri: 7:30am–6:00pm
+      open = (mins >= 450 && mins < 1080);
+    } else if (day === 6) {
+      // Sat: 8am–4pm
+      open = (mins >= 480 && mins < 960);
+    }
+
+    if (open) {
+      el.style.background = 'rgba(100,200,100,0.1)';
+      el.style.borderColor = 'rgba(100,200,100,0.25)';
+      el.querySelector('.open-now-dot').style.background = '#6dc87a';
+      txt.style.color = '#6dc87a';
+      txt.textContent = 'Open Now — Come on in!';
+    } else {
+      el.style.background = 'rgba(255,100,100,0.08)';
+      el.style.borderColor = 'rgba(255,100,100,0.2)';
+      el.querySelector('.open-now-dot').style.background = '#ff6b6b';
+      txt.style.color = '#ff6b6b';
+      txt.textContent = 'Currently Closed';
+    }
+  }
+  checkOpenNow();
+
+  // ── SMOOTH SCROLL (fallback for older browsers) ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
