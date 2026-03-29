@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevationAI Sales Toolkit | Sales Associate Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08090d;--bg2:#0f1117;--card:rgba(15,17,23,.9);--border:rgba(0,240,255,.1);--cyan:#00f0ff;--green:#22c55e;--red:#ef4444;--gold:#eab308;--purple:#a855f7;--text:#e8eaed;--text2:#8b949e;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+
+.header{padding:20px 24px;border-bottom:1px solid var(--border);text-align:center}
+.header h1{font-size:22px;font-weight:900;letter-spacing:1px}
+.header h1 span{color:var(--cyan)}
+.header p{color:var(--text2);font-size:13px;margin-top:4px}
+.badge{display:inline-block;margin-top:8px;background:rgba(34,197,94,.12);color:var(--green);border:1px solid rgba(34,197,94,.3);padding:4px 14px;border-radius:20px;font-size:12px;font-weight:700}
+
+.container{max-width:900px;margin:0 auto;padding:20px}
+.section{margin-bottom:32px}
+.section-title{font-size:16px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:3px;height:18px;background:var(--cyan);border-radius:2px}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px}
+.card h3{font-size:15px;font-weight:800;margin-bottom:8px}
+.card p{font-size:13px;color:var(--text2);line-height:1.7}
+
+.script-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;margin:10px 0;position:relative;font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap}
+.copy-btn{position:absolute;top:8px;right:8px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.25);color:var(--cyan);padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font)}
+.copy-btn:hover{background:rgba(0,240,255,.2)}
+
+.price-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.price-table th{text-align:left;padding:10px;border-bottom:2px solid var(--border);color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.price-table td{padding:10px;border-bottom:1px solid rgba(255,255,255,.04)}
+.price-table tr:hover td{background:rgba(0,240,255,.03)}
+.highlight{color:var(--green);font-weight:700}
+
+.checklist{list-style:none;padding:0}
+.checklist li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;display:flex;align-items:flex-start;gap:8px}
+.checklist li::before{content:'';width:18px;height:18px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;margin-top:1px;cursor:pointer}
+.checklist li.done::before{background:var(--green);border-color:var(--green);content:'✓';color:#000;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}
+
+.objection{border-left:3px solid var(--gold);padding-left:14px;margin:10px 0}
+.objection .q{font-weight:700;color:var(--gold);font-size:13px;margin-bottom:4px}
+.objection .a{font-size:13px;color:var(--text2);line-height:1.7}
+
+.demo-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:12px 0}
+.demo-link{background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:8px;padding:10px 14px;font-size:13px;font-weight:700;transition:.2s;display:flex;align-items:center;gap:6px}
+.demo-link:hover{border-color:rgba(0,240,255,.4)}
+
+.commission-calc{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;margin:12px 0}
+.calc-result{font-family:var(--mono);font-size:36px;font-weight:900;color:var(--green);margin:12px 0}
+.calc-label{font-size:12px;color:var(--text2)}
+
+@media(max-width:600px){.demo-links{grid-template-columns:1fr 1fr}.container{padding:14px}.price-table{font-size:12px}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1><span>ELEVATION</span>AI — SALES TOOLKIT</h1>
+  <p>Everything you need to close deals. Copy scripts. Send demos. Get paid.</p>
+  <div class="badge">$50 PER CLIENT YOU BRING IN</div>
+</header>
+
+<div class="container">
+
+<!-- COMMISSION CALCULATOR -->
+<div class="section">
+  <div class="section-title">Your Earnings</div>
+  <div class="commission-calc">
+    <div class="calc-label">CLIENTS PER WEEK</div>
+    <input type="range" id="clientSlider" min="1" max="20" value="3" style="width:80%;accent-color:var(--cyan);margin:8px 0" oninput="updateCalc()">
+    <div class="calc-result" id="calcResult">$150/week</div>
+    <div class="calc-label" id="calcMonthly">$600/month | 3 clients/week</div>
+    <div style="margin-top:12px;font-size:12px;color:var(--text2)">
+      Top performers: 5-10 clients/week = <span style="color:var(--green);font-weight:700">$1,000-$2,000/month</span>
+    </div>
+  </div>
+</div>
+
+<!-- THE PITCH (30 seconds) -->
+<div class="section">
+  <div class="section-title">The 30-Second Pitch</div>
+  <div class="card">
+    <h3>Use this EXACT script — it works.</h3>
+    <div class="script-box" id="pitch30">
+<button class="copy-btn" onclick="copyScript('pitch30')">Copy</button>
+Hey, I'm [YOUR NAME] with ElevationAI. We build professional websites for local businesses — and I'm not here to sell you anything today.
+
+I actually already put together a quick demo of what a site could look like for YOUR business. Took me 10 minutes. It's live right now.
+
+Want me to text you the link so you can check it out? No pressure, no follow-up calls. Just look at it and if you like it, we'll talk.
+
+Most of our clients pay $1,500 for the full site and $200 a month to keep it running. But the demo is free — it's already built.</div>
+  </div>
+</div>
+
+<!-- COLD CALL SCRIPT -->
+<div class="section">
+  <div class="section-title">Cold Call Script (Phone)</div>
+  <div class="card">
+    <h3>When calling a business directly:</h3>
+    <div class="script-box" id="coldCall">
+<button class="copy-btn" onclick="copyScript('coldCall')">Copy</button>
+YOU: Hey, is this [BUSINESS NAME]? Cool — my name is [YOUR NAME], I'm with ElevationAI, a web design company based in SoCal.
+
+I'm not trying to sell you anything on this call. I'm actually reaching out because I noticed you don't have a website [OR: your current site could be a lot stronger].
+
+What we do is we actually BUILD you a demo site for FREE — no charge, no commitment. You can see exactly what your business would look like online before you spend a dollar.
+
+Would you be open to me sending you a quick preview? It takes 2 minutes to look at.
+
+[IF YES]: Perfect. What's the best number to text it to? I'll send it right now.
+
+[IF NO/BUSY]: Totally understand. Can I just text you the link? It takes 30 seconds to look at, and if it's not for you, no worries at all.
+
+[IF "HOW MUCH?"]: Great question. Our full websites start at $1,500 with everything included — design, mobile, contact forms, SEO. And we do $200 a month to keep it updated and running. But honestly, just look at the demo first. If you love it, we'll talk numbers.</div>
+  </div>
+</div>
+
+<!-- WALK-IN SCRIPT -->
+<div class="section">
+  <div class="section-title">Walk-In Script (In Person)</div>
+  <div class="card">
+    <h3>When walking into a local business:</h3>
+    <div class="script-box" id="walkIn">
+<button class="copy-btn" onclick="copyScript('walkIn')">Copy</button>
+[Walk in confidently. Look around first. Notice something specific about their business.]
+
+YOU: Hey! Love what you guys got going on here. Quick question — do you have a website for the business?
+
+[IF NO]: That's actually why I'm here. I work with a company called ElevationAI — we build websites for local businesses like yours. And check this out...
+
+[Show them a demo on your phone]
+
+This is a demo I already put together for a [similar business]. It's got a full menu/service list, contact form, click-to-call, the whole thing. We could build something just like this for YOU — and the demo is completely free.
+
+[IF YES BUT IT'S BAD]: I actually checked it out before coming in. It's solid, but I think we could take it to another level. Look at this...
+
+[Show demo on phone]
+
+This is what a modern site looks like in 2026. Click-to-call, mobile-first, shows up on Google. We build these in 48 hours.
+
+[CLOSE]: Can I get your number? I'll text you the link so you can look at it when you have a minute. Zero pressure.</div>
+  </div>
+</div>
+
+<!-- INSTAGRAM DM SCRIPT -->
+<div class="section">
+  <div class="section-title">Instagram DM Script</div>
+  <div class="card">
+    <h3>Copy and paste into DMs. Personalize the [brackets].</h3>
+    <div class="script-box" id="igDM">
+<button class="copy-btn" onclick="copyScript('igDM')">Copy</button>
+Hey [NAME/BUSINESS], just checked out your page — you're clearly putting in work! 🔥
+
+I noticed you [don't have a website linked / your site could be way stronger]. I actually put together a quick concept of what a modern site could look like for a business like yours.
+
+Here's the link: [PASTE DEMO URL]
+
+No strings, no pitch — just wanted to show you what's possible. If you like it, I can get one built for you in 48 hours. LMK! 💪</div>
+  </div>
+</div>
+
+<!-- TEXT FOLLOW-UP -->
+<div class="section">
+  <div class="section-title">Text Message Follow-Ups</div>
+  <div class="card">
+    <h3>Day 1 — After sending demo:</h3>
+    <div class="script-box" id="text1">
+<button class="copy-btn" onclick="copyScript('text1')">Copy</button>
+Hey [NAME]! This is [YOUR NAME] from ElevationAI. Just sent you that website demo — here's the link again: [URL]. Let me know what you think! No pressure at all 🤝</div>
+    <h3 style="margin-top:16px">Day 3 — Follow-up:</h3>
+    <div class="script-box" id="text2">
+<button class="copy-btn" onclick="copyScript('text2')">Copy</button>
+Hey [NAME], just following up on that demo I sent over. Did you get a chance to check it out? Happy to walk you through it if you want — takes 5 min. If not, totally cool 👊</div>
+    <h3 style="margin-top:16px">Day 7 — Final touch:</h3>
+    <div class="script-box" id="text3">
+<button class="copy-btn" onclick="copyScript('text3')">Copy</button>
+Hey [NAME], last message from me — just wanted to make sure you saw the demo. If the timing isn't right, no worries. The link will stay live if you ever want to revisit it. Wishing you the best with the business! 💯</div>
+  </div>
+</div>
+
+<!-- OBJECTION HANDLING -->
+<div class="section">
+  <div class="section-title">Objection Handling</div>
+  <div class="card">
+    <h3>When they push back, use these:</h3>
+
+    <div class="objection">
+      <div class="q">"I already have a website."</div>
+      <div class="a">"That's great! I actually looked at it. Can I show you what a 2026 version looks like? Most businesses we work with had a site but it wasn't bringing in leads. We built them something that actually converts visitors into calls. Just take a quick look at the demo — if yours is better, I'll be the first to say so."</div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"I can't afford it right now."</div>
+      <div class="a">"Totally understand. That's actually why we do payment plans — $750 to start, $750 when it goes live. And the monthly is only $200, which usually pays for itself with just one or two new customers from the site. But no pressure — just check out the demo and see if it's worth it to you."</div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"I'll think about it."</div>
+      <div class="a">"100%. I'll text you the link so you can look at it whenever. Just know that we only take on 3-5 new clients per month, so if you do decide, just shoot me a text and we'll lock in your spot."</div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"I don't need a website."</div>
+      <div class="a">"I hear you. But here's the thing — when someone Googles your business or finds you on Instagram, they're going to look for a website. And if you don't have one, they go to the next guy who does. A website isn't about being fancy — it's about not losing the customers you're already getting. Just look at the demo — 30 seconds, I promise."</div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"How do I know it's legit?"</div>
+      <div class="a">"Great question. Here's our main site [show sanchezelevationai.com]. We have real clients, real sites that are live right now. I can show you our construction client's site, our mortgage client's quote tool — all live, all working. We've been doing this since March and already have paying clients."</div>
+    </div>
+
+    <div class="objection">
+      <div class="q">"My nephew/friend does websites."</div>
+      <div class="a">"That's awesome. Honestly, family helping family is the best. But if you ever need something more professional — something that shows up on Google, works perfectly on phones, and actually brings in customers — that's what we specialize in. The demo is free either way. Just compare and see which one you'd rather have represent your business."</div>
+    </div>
+  </div>
+</div>
+
+<!-- DEMO LINKS TO SEND -->
+<div class="section">
+  <div class="section-title">Demo Links — Send These to Prospects</div>
+  <div class="card">
+    <h3>Match the demo to their industry. Click to open, long-press to copy link.</h3>
+    <div class="demo-links">
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/autoshop/" target="_blank">🚗 Auto Detailing</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/restaurant/" target="_blank">🍽 Restaurant</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/barbershop/" target="_blank">💈 Barbershop</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/realestate/" target="_blank">🏠 Real Estate</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/fitness/" target="_blank">💪 Fitness</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/trucking/" target="_blank">🚛 Trucking</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/insurance/" target="_blank">🛡 Insurance</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/plumbing/" target="_blank">🔧 Plumbing</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/nailsalon/" target="_blank">💅 Nail Salon</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/tattoo/" target="_blank">🎨 Tattoo Shop</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/foodtruck/" target="_blank">🌮 Food Truck</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/photography/" target="_blank">📸 Photography</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/medspa/" target="_blank">💉 Med Spa</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/cleaning/" target="_blank">🧹 Cleaning</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/moving/" target="_blank">📦 Moving</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/roofing/" target="_blank">🏗 Roofing</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/catering/" target="_blank">🍱 Catering</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/djevents/" target="_blank">🎧 DJ / Events</a>
+    </div>
+    <p style="margin-top:12px;font-size:12px;color:var(--text2)">Main site: <a href="https://sanchezelevationai.com" target="_blank">sanchezelevationai.com</a> | All demos: <a href="https://sanchezelevationai.com/demos.html" target="_blank">sanchezelevationai.com/demos.html</a></p>
+  </div>
+</div>
+
+<!-- PRICING CHEAT SHEET -->
+<div class="section">
+  <div class="section-title">Pricing Cheat Sheet</div>
+  <div class="card">
+    <h3>What to tell the client:</h3>
+    <table class="price-table">
+      <thead><tr><th>Package</th><th>Setup</th><th>Monthly</th><th>What's Included</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Starter</strong></td><td>$1,500</td><td>$200/mo</td><td>3-5 page site, mobile, contact form, SEO basics, 30 days support</td></tr>
+        <tr><td><strong>Growth</strong></td><td>$2,500</td><td>$400/mo</td><td>Everything in Starter + Google Business setup, social media starter kit, monthly updates</td></tr>
+        <tr><td><strong>Full Package</strong></td><td>$4,000+</td><td>$800/mo</td><td>Everything + ads management, SEO, social media, AI tools, priority support</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px;color:var(--text2);margin-top:8px"><strong>Payment plans available:</strong> 50% upfront, 50% on launch. Or 3 payments.</p>
+    <p style="font-size:12px;color:var(--green);margin-top:4px;font-weight:700">Your commission: $50 per signed client, paid same day via Venmo/Zelle.</p>
+  </div>
+</div>
+
+<!-- DAILY CHECKLIST -->
+<div class="section">
+  <div class="section-title">Daily Sales Checklist</div>
+  <div class="card">
+    <ul class="checklist" id="dailyChecklist">
+      <li onclick="this.classList.toggle('done')">Send 10 Instagram DMs to local businesses</li>
+      <li onclick="this.classList.toggle('done')">Walk into 3 businesses in your area</li>
+      <li onclick="this.classList.toggle('done')">Make 5 cold calls from Google Maps listings</li>
+      <li onclick="this.classList.toggle('done')">Follow up with yesterday's prospects</li>
+      <li onclick="this.classList.toggle('done')">Post one story/reel tagging @sanchezelevationai</li>
+      <li onclick="this.classList.toggle('done')">Report your numbers to Sabino</li>
+    </ul>
+    <p style="font-size:12px;color:var(--text2);margin-top:12px">Hit all 6 every day and you'll close 2-5 clients per week = <span class="highlight">$100-$250/week minimum</span></p>
+  </div>
+</div>
+
+<!-- HOW TO REPORT -->
+<div class="section">
+  <div class="section-title">How to Report a Lead</div>
+  <div class="card">
+    <h3>When a prospect says YES or wants to talk more:</h3>
+    <div class="script-box" id="reportTemplate">
+<button class="copy-btn" onclick="copyScript('reportTemplate')">Copy</button>
+🔥 NEW LEAD
+
+Business: [Name]
+Industry: [Type]
+Contact: [Name + Phone]
+Instagram: [@handle]
+Status: [Interested / Wants demo / Ready to buy]
+Notes: [Anything relevant]
+
+— [Your Name]</div>
+    <p style="font-size:13px;color:var(--text2);margin-top:8px">Text this to Sabino: <strong>(562) 373-1027</strong></p>
+  </div>
+</div>
+
+<!-- RECRUITMENT PITCH -->
+<div class="section">
+  <div class="section-title">Recruiting More Sales Associates</div>
+  <div class="card">
+    <h3>Send this to anyone who might want to join:</h3>
+    <div class="script-box" id="recruitPitch">
+<button class="copy-btn" onclick="copyScript('recruitPitch')">Copy</button>
+Yo, I just got put on as a sales associate at ElevationAI — it's a web design company that builds websites for local businesses.
+
+The deal: you find businesses that need a website, you show them a free demo on your phone, and if they sign up, you get $50 cash. No experience needed, no cold calling required (but it helps), and you work on your own schedule.
+
+I got my first client in 2 days. There's plenty of room to grow — they're hiring right now.
+
+Hit up Sabino at (562) 373-1027 or check out sanchezelevationai.com if you're interested. Get paid what you're worth 💪</div>
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<footer style="text-align:center;padding:32px;border-top:1px solid var(--border);font-size:12px;color:var(--text2)">
+  ElevationAI Sales Toolkit | Questions? Text Sabino: (562) 373-1027<br>
+  <a href="https://sanchezelevationai.com" target="_blank">sanchezelevationai.com</a>
+</footer>
+
+<script>
+function copyScript(id){
+  const el=document.getElementById(id);
+  const text=el.innerText.replace('Copy','').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=el.querySelector('.copy-btn');
+    btn.textContent='Copied!';btn.style.background='rgba(34,197,94,.2)';btn.style.color='#22c55e';
+    setTimeout(()=>{btn.textContent='Copy';btn.style.background='';btn.style.color=''},2000);
+  });
+}
+function updateCalc(){
+  const v=document.getElementById('clientSlider').value;
+  const weekly=v*50;const monthly=weekly*4;
+  document.getElementById('calcResult').textContent='$'+weekly+'/week';
+  document.getElementById('calcMonthly').textContent='$'+monthly+'/month | '+v+' clients/week';
+}
+</script>
+</body>
+</html>
