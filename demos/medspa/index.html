@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glow Med Spa — Medical-Grade Aesthetic Treatments · Newport Beach, CA</title>
+  <meta name="description" content="Newport Beach's premier medical spa. Botox, fillers, laser, HydraFacial, and advanced skincare — performed by licensed medical professionals in a luxury environment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #0A0A0B;
+      --bg2:       #111114;
+      --bg3:       #18181C;
+      --accent:    #00D4AA;
+      --accent2:   #00F5C8;
+      --accent3:   #007A62;
+      --text:      #F0F0F2;
+      --muted:     #8A8A96;
+      --border:    rgba(0,212,170,.15);
+      --glow:      rgba(0,212,170,.18);
+      --card:      rgba(255,255,255,.03);
+      --card-hover:rgba(255,255,255,.06);
+      --font:      'Inter', sans-serif;
+      --mono:      'JetBrains Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: var(--accent); color: #0A0A0B; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent3); border-radius: 3px; }
+
+    /* ── UTILITY ── */
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 90px 0; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: .95rem;
+      cursor: pointer;
+      transition: all .2s ease;
+      border: none;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0A0A0B;
+    }
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(0,212,170,.35);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid rgba(255,255,255,.2);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0,212,170,.07);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+      background: rgba(0,212,170,.06);
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border) 40%, var(--border) 60%, transparent);
+      margin: 0;
+    }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10,10,11,.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: all .3s ease;
+    }
+    #nav.scrolled {
+      background: rgba(10,10,11,.96);
+      box-shadow: 0 4px 32px rgba(0,0,0,.4);
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -.03em;
+    }
+    .nav-logo span {
+      color: var(--text);
+      font-weight: 300;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all .25s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(10,10,11,.97);
+      backdrop-filter: blur(18px);
+      z-index: 999;
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-menu ul li a {
+      display: block;
+      padding: 14px 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      transition: color .2s;
+    }
+    .mobile-menu ul li a:hover { color: var(--accent); }
+    .mobile-menu .btn { width: 100%; justify-content: center; margin-top: 18px; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 20%, rgba(0,212,170,.13) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(0,245,200,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 60% 60%, rgba(0,122,98,.12) 0%, transparent 55%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,170,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,170,.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+    .hero-badge {
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: -.04em;
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+    .hero-title .accent { color: var(--accent); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      margin-top: 52px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { }
+    .hero-stat .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -.03em;
+      line-height: 1;
+    }
+    .hero-stat .label {
+      font-size: .78rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      letter-spacing: .06em;
+      margin-top: 4px;
+    }
+    .hero-img-col {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-visual {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(0,212,170,.12), rgba(0,122,98,.08));
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 30%, rgba(0,212,170,.2), transparent 70%),
+        linear-gradient(180deg, rgba(0,212,170,.08) 0%, transparent 100%);
+    }
+    .hero-visual-inner {
+      position: relative;
+      text-align: center;
+      padding: 32px;
+    }
+    .hero-visual-inner .big-icon { font-size: 5rem; opacity: .6; display: block; margin-bottom: 12px; }
+    .hero-visual-inner p { font-family: var(--mono); font-size: .7rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+    .floating-card {
+      position: absolute;
+      bottom: 32px;
+      left: -32px;
+      background: rgba(18,18,22,.9);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      backdrop-filter: blur(12px);
+      min-width: 180px;
+    }
+    .floating-card .fc-label { font-size: .68rem; color: var(--muted); font-family: var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .floating-card .fc-val { font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-top: 2px; }
+    .floating-card2 {
+      position: absolute;
+      top: 32px;
+      left: -48px;
+      background: rgba(18,18,22,.9);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 16px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .floating-card2 .stars { color: #FFD166; font-size: .9rem; }
+    .floating-card2 .fc2-text { font-size: .75rem; }
+    .floating-card2 .fc2-text strong { display: block; font-weight: 600; font-size: .82rem; }
+    .floating-card2 .fc2-text span { color: var(--muted); font-size: .7rem; }
+
+    /* ── TREATMENTS ── */
+    #treatments { background: var(--bg2); }
+    .treatments-header { margin-bottom: 52px; }
+    .treatments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .treatment-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: all .25s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .treatment-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .treatment-card:hover {
+      background: var(--card-hover);
+      border-color: rgba(0,212,170,.3);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.35), 0 0 0 1px rgba(0,212,170,.1);
+    }
+    .treatment-card:hover::before { opacity: 1; }
+    .tc-icon { font-size: 2.2rem; margin-bottom: 16px; display: block; }
+    .tc-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .tc-price {
+      font-family: var(--mono);
+      font-size: .82rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .tc-desc {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── PROMO BANNER ── */
+    #promo { padding: 60px 0; }
+    .promo-card {
+      background: linear-gradient(135deg, rgba(0,212,170,.1) 0%, rgba(0,122,98,.07) 50%, rgba(0,245,200,.05) 100%);
+      border: 1.5px solid rgba(0,212,170,.35);
+      border-radius: 24px;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(0,212,170,.08), inset 0 0 80px rgba(0,212,170,.03);
+    }
+    .promo-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(0,212,170,.2), transparent 50%, rgba(0,212,170,.1));
+      z-index: -1;
+    }
+    .promo-card::after {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(0,212,170,.15), transparent 70%);
+      pointer-events: none;
+    }
+    .promo-label {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(0,212,170,.1);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 18px;
+    }
+    .promo-card h2 {
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: 12px;
+    }
+    .promo-card h2 .price-big {
+      color: var(--accent);
+    }
+    .promo-card p {
+      color: var(--muted);
+      margin-bottom: 28px;
+      font-size: 1rem;
+    }
+    .promo-save {
+      display: inline-block;
+      background: rgba(0,212,170,.15);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-weight: 700;
+      font-family: var(--mono);
+      font-size: .9rem;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-left: 10px;
+    }
+
+    /* ── BEFORE/AFTER ── */
+    #before-after { background: var(--bg2); }
+    .ba-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .ba-card {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .ba-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(0,212,170,.15);
+    }
+    .ba-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 200px;
+      position: relative;
+    }
+    .ba-before, .ba-after {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .ba-before {
+      background: linear-gradient(135deg, #1A1A20, #0F0F12);
+    }
+    .ba-after {
+      background: linear-gradient(135deg, rgba(0,212,170,.12), rgba(0,122,98,.1));
+    }
+    .ba-label {
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .ba-before .ba-label { background: rgba(255,255,255,.06); color: var(--muted); }
+    .ba-after .ba-label { background: rgba(0,212,170,.15); color: var(--accent); }
+    .ba-before .ba-icon, .ba-after .ba-icon { font-size: 2.2rem; opacity: .5; }
+    .ba-after .ba-icon { opacity: .8; }
+    .ba-divider {
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--accent);
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .ba-divider::after {
+      content: '↔';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--accent);
+      color: #0A0A0B;
+      font-size: .65rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ba-info {
+      padding: 18px 20px;
+    }
+    .ba-info h4 {
+      font-weight: 700;
+      font-size: .95rem;
+      margin-bottom: 4px;
+    }
+    .ba-info p {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .ba-disclaimer {
+      margin-top: 28px;
+      font-size: .75rem;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* ── BOOKING FORM ── */
+    #booking { background: var(--bg); }
+    .booking-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .booking-info h2 { margin-bottom: 16px; }
+    .booking-info p { color: var(--muted); margin-bottom: 28px; }
+    .booking-perks { display: flex; flex-direction: column; gap: 14px; }
+    .perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .perk-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(0,212,170,.1);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .perk-text strong { display: block; font-size: .9rem; font-weight: 600; }
+    .perk-text span { font-size: .8rem; color: var(--muted); }
+    .booking-form {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    .booking-form h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 7px;
+      font-family: var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1.5px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-size: .92rem;
+      font-family: var(--font);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238A8A96' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,212,170,.12);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,.2); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-group option { background: #18181C; color: var(--text); }
+    .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid rgba(255,255,255,.2);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .checkbox-item span { font-size: .88rem; color: var(--muted); }
+    .form-submit {
+      width: 100%;
+      margin-top: 6px;
+      padding: 15px;
+      font-size: 1rem;
+    }
+    .form-note {
+      text-align: center;
+      margin-top: 12px;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .about-visual {
+      background: linear-gradient(145deg, rgba(0,212,170,.1), rgba(0,122,98,.05));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-visual::before {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(0,212,170,.12), transparent 70%);
+    }
+    .dr-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0,212,170,.3), rgba(0,122,98,.2));
+      border: 3px solid rgba(0,212,170,.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin: 0 auto 20px;
+    }
+    .dr-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+    .dr-title { font-size: .82rem; color: var(--accent); font-family: var(--mono); font-weight: 500; letter-spacing: .06em; }
+    .dr-desc { font-size: .88rem; color: var(--muted); margin-top: 14px; line-height: 1.65; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .about-stat {
+      background: rgba(0,212,170,.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+    .about-stat .num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .about-stat .label {
+      font-size: .7rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      letter-spacing: .06em;
+      margin-top: 2px;
+    }
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.75;
+    }
+    .credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cred-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .9rem;
+    }
+    .cred-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(0,212,170,.15);
+      border: 1px solid rgba(0,212,170,.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    /* ── REVIEWS ── */
+    #reviews { background: var(--bg); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: transform .25s, border-color .25s;
+    }
+    .review-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,212,170,.25);
+    }
+    .review-stars {
+      color: #FFD166;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+    .review-text {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0,212,170,.3), rgba(0,122,98,.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .review-name { font-weight: 600; font-size: .9rem; }
+    .review-detail { font-size: .75rem; color: var(--muted); }
+    .verified-badge {
+      margin-left: auto;
+      font-family: var(--mono);
+      font-size: .62rem;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 100px;
+      letter-spacing: .08em;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-info > p { color: var(--muted); margin-bottom: 36px; }
+    .contact-items { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(0,212,170,.08);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item-text strong { display: block; font-weight: 600; font-size: .9rem; margin-bottom: 2px; }
+    .contact-item-text span { font-size: .85rem; color: var(--muted); }
+    .contact-item-text a { color: var(--muted); transition: color .2s; }
+    .contact-item-text a:hover { color: var(--accent); }
+    .map-placeholder {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+    }
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,212,170,.06), transparent);
+    }
+    .map-placeholder .map-icon { font-size: 3.5rem; opacity: .5; }
+    .map-placeholder p {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .map-placeholder p strong { color: var(--text); display: block; font-size: .85rem; letter-spacing: .04em; }
+    .hours-table { margin-top: 32px; }
+    .hours-table h4 {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      font-size: .88rem;
+    }
+    .hours-row .day { color: var(--muted); }
+    .hours-row .time { color: var(--text); font-weight: 500; }
+    .hours-row .closed { color: rgba(255,255,255,.25); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 36px 0 100px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .footer-logo span { color: var(--muted); font-weight: 300; }
+    .footer-copy {
+      font-size: .8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .footer-credit {
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .footer-credit a {
+      color: var(--accent);
+      font-weight: 600;
+      transition: color .2s;
+    }
+    .footer-credit a:hover { color: var(--accent2); }
+
+    /* ── MOBILE BOTTOM BANNER ── */
+    .mobile-bottom-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 990;
+      background: rgba(10,10,11,.95);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      gap: 10px;
+    }
+    .mobile-bottom-bar a {
+      flex: 1;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: .88rem;
+    }
+    .mbb-call {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text) !important;
+    }
+    .mbb-book {
+      background: var(--accent);
+      color: #0A0A0B !important;
+    }
+    .mbb-book:hover { background: var(--accent2); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,170,.0); }
+      50% { box-shadow: 0 0 24px 4px rgba(0,212,170,.18); }
+    }
+    .floating-card { animation: float 4s ease-in-out infinite; }
+    .floating-card2 { animation: float 4s ease-in-out infinite .8s; }
+    .promo-card { animation: pulse-glow 3s ease-in-out infinite; }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid,
+      .booking-wrap,
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-img-col { display: none; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .section { padding: 64px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-bottom-bar { display: flex; }
+      .hero-title { font-size: 2.2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .treatments-grid { grid-template-columns: 1fr 1fr; }
+      .ba-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+    }
+    @media (max-width: 420px) {
+      .treatments-grid { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <div class="nav-logo">Glow<span> Med Spa</span></div>
+  <ul class="nav-links">
+    <li><a href="#treatments">Treatments</a></li>
+    <li><a href="#promo">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="btn btn-primary nav-cta">Book Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#treatments" class="mobile-link">Treatments</a></li>
+    <li><a href="#promo" class="mobile-link">Pricing</a></li>
+    <li><a href="#about" class="mobile-link">About</a></li>
+    <li><a href="#reviews" class="mobile-link">Reviews</a></li>
+    <li><a href="#contact" class="mobile-link">Contact</a></li>
+  </ul>
+  <a href="#booking" class="btn btn-primary mobile-link">Book a Consultation</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content fade-in">
+      <div class="hero-badge">
+        <span class="tag">✦ Medical-Grade Treatments · Newport Beach, CA</span>
+      </div>
+      <h1 class="hero-title">Your Best Skin<br><span class="accent">Starts Here.</span></h1>
+      <p class="hero-sub">Botox, fillers, laser, and advanced skincare treatments — performed by licensed medical professionals in a luxury environment.</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn btn-primary">Book a Consultation</a>
+        <a href="#treatments" class="btn btn-outline">See Treatments ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">500+</div>
+          <div class="label">Clients Served</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">5.0★</div>
+          <div class="label">Average Rating</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">8+</div>
+          <div class="label">Treatments</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img-col">
+    <div class="hero-visual">
+      <div class="hero-visual-inner">
+        <span class="big-icon">✨</span>
+        <p>Luxury · Clinical · Precise</p>
+      </div>
+      <div class="floating-card">
+        <div class="fc-label">Next Available</div>
+        <div class="fc-val">Tomorrow, 10am</div>
+      </div>
+      <div class="floating-card2">
+        <div class="stars">★★★★★</div>
+        <div class="fc2-text">
+          <strong>5.0 / 5.0</strong>
+          <span>128+ Google Reviews</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ TREATMENTS ══ -->
+<section id="treatments" class="section">
+  <div class="container">
+    <div class="treatments-header fade-in">
+      <span class="section-label">// Services</span>
+      <h2 class="section-title">Medical-Grade Treatments</h2>
+      <p class="section-sub">Every treatment is performed or supervised by licensed medical professionals using FDA-cleared technology.</p>
+    </div>
+    <div class="treatments-grid">
+      <div class="treatment-card fade-in">
+        <span class="tc-icon">💉</span>
+        <div class="tc-name">Botox</div>
+        <div class="tc-price">from $11 / unit</div>
+        <div class="tc-desc">Smooth forehead lines, crow's feet, and frown lines with precision neuromodulator injections. Results in 3–7 days, lasts 3–4 months.</div>
+      </div>
+      <div class="treatment-card fade-in">
+        <span class="tc-icon">💋</span>
+        <div class="tc-name">Lip Filler</div>
+        <div class="tc-price">from $650</div>
+        <div class="tc-desc">Natural-looking volume and definition using Juvederm or Restylane hyaluronic acid fillers. Customized to your lip anatomy for beautiful results.</div>
+      </div>
+      <div class="treatment-card fade-in">
+        <span class="tc-icon">💧</span>
+        <div class="tc-name">HydraFacial</div>
+        <div class="tc-price">from $199</div>
+        <div class="tc-desc">Multi-step clinical facial that cleanses, extracts, and infuses skin with antioxidants and peptides. Immediate glow with zero downtime.</div>
+      </div>
+      <div class="treatment-card fade-in">
+        <span class="tc-icon">⚡</span>
+        <div class="tc-name">Laser Hair Removal</div>
+        <div class="tc-price">from $89 / session</div>
+        <div class="tc-desc">Permanent hair reduction with state-of-the-art Alexandrite and Nd:YAG technology. Safe for all skin tones. Package pricing available.</div>
+      </div>
+      <div class="treatment-card fade-in">
+        <span class="tc-icon">🪡</span>
+        <div class="tc-name">Microneedling</div>
+        <div class="tc-price">from $299</div>
+        <div class="tc-desc">Stimulate collagen production and improve skin texture, scars, and pore size with SkinPen® microneedling. Optional PRP add-on available.</div>
+      </div>
+      <div class="treatment-card fade-in">
+        <span class="tc-icon">🧪</span>
+        <div class="tc-name">Chemical Peel</div>
+        <div class="tc-price">from $149</div>
+        <div class="tc-desc">Medical-grade peels (VI Peel, TCA, Jessner) to address hyperpigmentation, fine lines, and uneven skin tone. Multiple strengths available.</div>
+      </div>
+      <div class="treatment-card fade-in">
+        <span class="tc-icon">🩸</span>
+        <div class="tc-name">IV Vitamin Therapy</div>
+        <div class="tc-price">from $149</div>
+        <div class="tc-desc">Customized IV drips for hydration, energy, immunity, and skin radiance. Administered by registered nurses. Formulated for your specific goals.</div>
+      </div>
+      <div class="treatment-card fade-in">
+        <span class="tc-icon">🧵</span>
+        <div class="tc-name">PDO Thread Lift</div>
+        <div class="tc-price">from $1,200</div>
+        <div class="tc-desc">Non-surgical facelift using polydioxanone threads to lift, tighten, and redefine facial contours. Immediate results with collagen-stimulating benefits.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PROMO ══ -->
+<section id="promo" class="section" style="padding: 70px 0;">
+  <div class="container">
+    <div class="promo-card fade-in">
+      <div class="promo-label">🎉 Limited-Time Offer</div>
+      <h2>New Client Special: 20 Units Botox<br>+ HydraFacial for <span class="price-big">$499</span> <span class="promo-save">Save $150</span></h2>
+      <p>Perfect for first-time clients. Receive a full Botox treatment (up to 20 units) plus a signature HydraFacial — all in one relaxing appointment. Valid for new clients only.</p>
+      <a href="#booking" class="btn btn-primary" style="font-size:1rem; padding:14px 36px;">Claim This Offer →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ BEFORE / AFTER ══ -->
+<section id="before-after" class="section">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">// Results</span>
+      <h2 class="section-title">Real Patient Transformations</h2>
+      <p class="section-sub">Consistent, natural-looking results — never overdone. Our medical team prioritizes safety and harmony with your natural features.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card fade-in">
+        <div class="ba-visual">
+          <div class="ba-before">
+            <span class="ba-icon">😐</span>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-divider"></div>
+          <div class="ba-after">
+            <span class="ba-icon">😊</span>
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4>Forehead Lines</h4>
+          <p>Botox · 20 units · 2 weeks post-treatment</p>
+        </div>
+      </div>
+      <div class="ba-card fade-in">
+        <div class="ba-visual">
+          <div class="ba-before">
+            <span class="ba-icon">💬</span>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-divider"></div>
+          <div class="ba-after">
+            <span class="ba-icon">💋</span>
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4>Lip Enhancement</h4>
+          <p>Juvederm Ultra · 1ml · Natural augmentation</p>
+        </div>
+      </div>
+      <div class="ba-card fade-in">
+        <div class="ba-visual">
+          <div class="ba-before">
+            <span class="ba-icon">🌑</span>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-divider"></div>
+          <div class="ba-after">
+            <span class="ba-icon">✨</span>
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4>Skin Texture</h4>
+          <p>Microneedling + VI Peel · 3 session series</p>
+        </div>
+      </div>
+      <div class="ba-card fade-in">
+        <div class="ba-visual">
+          <div class="ba-before">
+            <span class="ba-icon">😶</span>
+            <span class="ba-label">Before</span>
+          </div>
+          <div class="ba-divider"></div>
+          <div class="ba-after">
+            <span class="ba-icon">🫦</span>
+            <span class="ba-label">After</span>
+          </div>
+        </div>
+        <div class="ba-info">
+          <h4>Jawline Slimming</h4>
+          <p>Masseter Botox · 50 units · 4 weeks post</p>
+        </div>
+      </div>
+    </div>
+    <p class="ba-disclaimer">*Results may vary. All images are representational. Actual before/after photos available during consultation. Treatments performed by licensed medical professionals.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ BOOKING FORM ══ -->
+<section id="booking" class="section">
+  <div class="container">
+    <div class="booking-wrap">
+      <div class="booking-info fade-in">
+        <span class="section-label">// Book Now</span>
+        <h2 class="section-title">Request a Free Consultation</h2>
+        <p>Our medical team will review your goals and create a personalized treatment plan tailored to your skin. No pressure, no commitment — just expert guidance.</p>
+        <div class="booking-perks">
+          <div class="perk">
+            <div class="perk-icon">🩺</div>
+            <div class="perk-text">
+              <strong>Medical Assessment Included</strong>
+              <span>Every consultation includes a skin assessment by our licensed team</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">🔒</div>
+            <div class="perk-text">
+              <strong>HIPAA-Compliant &amp; Confidential</strong>
+              <span>Your medical information is always protected and private</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">⚡</div>
+            <div class="perk-text">
+              <strong>Fast Response — Within 2 Hours</strong>
+              <span>Our team responds to all inquiries during business hours</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon">💎</div>
+            <div class="perk-text">
+              <strong>New Client Special Available</strong>
+              <span>Ask about our $499 Botox + HydraFacial combo package</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-form fade-in">
+        <h3>Consultation Request</h3>
+        <form
+          action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+          method="POST"
+          id="consultForm"
+        >
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" value="Consultation Request - Glow Med Spa" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="" />
+          <input type="text" name="_honey" style="display:none" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="(949) 555-0000" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="jane@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="treatment">Treatment Interest *</label>
+            <select id="treatment" name="treatment" required>
+              <option value="" disabled selected>Select a treatment...</option>
+              <option>Botox</option>
+              <option>Lip Filler</option>
+              <option>HydraFacial</option>
+              <option>Laser Hair Removal</option>
+              <option>Microneedling</option>
+              <option>Chemical Peel</option>
+              <option>IV Vitamin Therapy</option>
+              <option>PDO Thread Lift</option>
+              <option>Not sure — need consultation</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="skintype">Skin Type</label>
+            <select id="skintype" name="skin_type">
+              <option value="" disabled selected>Select your skin type...</option>
+              <option>Type I — Very Fair</option>
+              <option>Type II — Fair</option>
+              <option>Type III — Medium</option>
+              <option>Type IV — Olive / Brown</option>
+              <option>Type V — Dark Brown</option>
+              <option>Type VI — Very Dark</option>
+              <option>Unsure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Medical History (select all that apply)</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="medical_none" value="None" />
+                <span>None / No relevant history</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="medical_pregnancy" value="Pregnancy or breastfeeding" />
+                <span>Pregnancy or currently breastfeeding</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="medical_blood_thinners" value="Blood thinners" />
+                <span>Taking blood thinners / anticoagulants</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="medical_allergies" value="Allergies to injectables" />
+                <span>Known allergies to injectables or topicals</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" placeholder="Any specific concerns, questions, or goals you'd like to discuss..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Request Free Consultation →</button>
+          <p class="form-note">🔒 Confidential · HIPAA-compliant · No spam, ever</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual fade-in">
+        <div class="dr-avatar">👩‍⚕️</div>
+        <div class="dr-name">Dr. Elena Vasquez, MD</div>
+        <div class="dr-title">Medical Director</div>
+        <div class="dr-desc">Board-certified physician with 12+ years in aesthetic medicine. Trained at UCLA Medical Center and fellowship in cosmetic dermatology. Member of ASPS and AMSPA.</div>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="num">500+</div>
+            <div class="label">Clients</div>
+          </div>
+          <div class="about-stat">
+            <div class="num">12+</div>
+            <div class="label">Years Exp.</div>
+          </div>
+          <div class="about-stat">
+            <div class="num">4</div>
+            <div class="label">RN Injectors</div>
+          </div>
+          <div class="about-stat">
+            <div class="num">5.0★</div>
+            <div class="label">Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-content fade-in">
+        <span class="section-label">// About Glow Med Spa</span>
+        <h2 class="section-title">Luxury Aesthetics,<br>Medical Precision.</h2>
+        <p>Glow Med Spa was founded on a single belief: that exceptional aesthetic outcomes require medical expertise, not just technique. Located in the heart of Newport Beach, we serve Orange County's most discerning clients.</p>
+        <p>Our team includes a board-certified medical director, registered nurse injectors, and licensed estheticians — all working together to deliver safe, natural-looking results that enhance rather than alter.</p>
+        <div class="credentials">
+          <div class="cred-item">
+            <div class="cred-check">✓</div>
+            <span>State-licensed medical facility — California Medical Board</span>
+          </div>
+          <div class="cred-item">
+            <div class="cred-check">✓</div>
+            <span>Board-certified Medical Director on-site for all injections</span>
+          </div>
+          <div class="cred-item">
+            <div class="cred-check">✓</div>
+            <span>RN injectors with 5+ years aesthetic experience each</span>
+          </div>
+          <div class="cred-item">
+            <div class="cred-check">✓</div>
+            <span>FDA-cleared devices and pharmaceutical-grade products only</span>
+          </div>
+          <div class="cred-item">
+            <div class="cred-check">✓</div>
+            <span>HIPAA-compliant patient records and privacy practices</span>
+          </div>
+          <div class="cred-item">
+            <div class="cred-check">✓</div>
+            <span>Emergency reversal agents on-site at all times</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ REVIEWS ══ -->
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="fade-in" style="text-align:center; margin-bottom:0;">
+      <span class="section-label" style="display:block; text-align:center;">// Patient Reviews</span>
+      <h2 class="section-title" style="text-align:center;">What Our Clients Say</h2>
+      <p class="section-sub" style="margin:0 auto; text-align:center;">500+ five-star reviews across Google and RealSelf. We let our results speak for themselves.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I've been to a few med spas in Orange County and Glow is on a completely different level. The facility is immaculate, the staff is incredibly professional, and my Botox results look so natural — no frozen face at all. Dr. Vasquez took her time explaining everything before touching a needle. Already booked my follow-up."</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Ashley M.</div>
+            <div class="review-detail">Botox · Lip Filler · Newport Beach</div>
+          </div>
+          <div class="verified-badge">Verified</div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I was nervous about my first HydraFacial + microneedling combo but the RN walked me through every step. My skin texture has improved more in 3 sessions than years of skincare products ever did. Clean, upscale space — feels like a luxury hotel, not a clinical office. 10/10 recommend for anyone serious about their skin."</p>
+        <div class="review-author">
+          <div class="review-avatar">K</div>
+          <div>
+            <div class="review-name">Kayla T.</div>
+            <div class="review-detail">Microneedling · HydraFacial · Irvine</div>
+          </div>
+          <div class="verified-badge">Verified</div>
+        </div>
+      </div>
+      <div class="review-card fade-in">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The team at Glow Med Spa treated me like a VIP from the moment I walked in. I came in for their new client special and walked out looking refreshed — not overdone. The before/after difference is subtle in the best possible way. Real expertise here. Worth every penny and then some. This is my new go-to for all aesthetic treatments."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Michelle R.</div>
+            <div class="review-detail">New Client Special · Botox + HydraFacial</div>
+          </div>
+          <div class="verified-badge">Verified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <span class="section-label">// Contact</span>
+        <h2 class="section-title">Visit Us in Newport Beach</h2>
+        <p>Conveniently located at Newport Center — easy parking, discreet entrance, and a welcoming team ready to help you look and feel your best.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <strong>Phone</strong>
+              <span><a href="tel:9495550183">(949) 555-0183</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Address</strong>
+              <span>427 Newport Center Dr<br>Newport Beach, CA 92660</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📸</div>
+            <div class="contact-item-text">
+              <strong>Instagram</strong>
+              <span><a href="https://instagram.com/glowmedspa.oc" target="_blank" rel="noopener">@glowmedspa.oc</a></span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <strong>Email</strong>
+              <span><a href="mailto:hello@glowmedspa.com">hello@glowmedspa.com</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="hours-table">
+          <h4>Hours of Operation</h4>
+          <div class="hours-row">
+            <span class="day">Monday</span>
+            <span class="closed">Closed</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Tuesday</span>
+            <span class="time">9:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Wednesday</span>
+            <span class="time">9:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Thursday</span>
+            <span class="time">9:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Friday</span>
+            <span class="time">9:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="day">Saturday</span>
+            <span class="time">9:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row" style="border:none;">
+            <span class="day">Sunday</span>
+            <span class="closed">Closed</span>
+          </div>
+        </div>
+      </div>
+      <div class="fade-in">
+        <div class="map-placeholder">
+          <span class="map-icon">🗺️</span>
+          <p><strong>427 Newport Center Dr</strong>Newport Beach, CA 92660</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">Glow<span> Med Spa</span></div>
+      <div class="footer-copy">Glow Med Spa &copy; 2026 &nbsp;·&nbsp; Newport Beach, CA &nbsp;·&nbsp; All rights reserved</div>
+      <div class="footer-credit">Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">SanchezElevationAI</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ MOBILE BOTTOM BANNER ══ -->
+<div class="mobile-bottom-bar">
+  <a href="tel:9495550183" class="btn mbb-call">📞 Call Us</a>
+  <a href="#booking" class="btn mbb-book">Book Now →</a>
+</div>
+
+<!-- ══ JAVASCRIPT ══ -->
+<script>
+  // Sticky nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Intersection Observer for fade-in animations
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 60 * (Array.from(fadeEls).indexOf(entry.target) % 4));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Smooth scroll offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Form submit feedback
+  const form = document.getElementById('consultForm');
+  form.addEventListener('submit', function() {
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+  });
+</script>
+</body>
+</html>
