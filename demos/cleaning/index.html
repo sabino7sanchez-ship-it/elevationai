@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spotless Pro Cleaning | LA & Orange County House Cleaning</title>
+  <meta name="description" content="Professional house cleaning, deep cleans, and commercial services across LA County and Orange County. Insured, bonded, and background-checked. Get a free instant quote." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111113;
+      --bg3: #16161A;
+      --border: rgba(255,255,255,0.07);
+      --accent: #00FF88;
+      --accent-dim: rgba(0,255,136,0.12);
+      --accent-glow: rgba(0,255,136,0.25);
+      --text: #F0F0F2;
+      --text-muted: #888896;
+      --text-dim: #5A5A6B;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,11,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-glow);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0A0A0B;
+    }
+
+    .btn-primary:hover {
+      background: #00e67a;
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(0,255,136,0.4);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+
+    .btn-lg { padding: 14px 28px; font-size: 1rem; border-radius: 14px; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px 24px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--text); }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    .mobile-menu .btn {
+      margin-top: 16px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 80px 24px 100px;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(0,255,136,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(0,255,136,0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 60% 80%, rgba(0,200,100,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,255,136,0.3);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 24px;
+      max-width: 780px;
+    }
+
+    .hero h1 .accent { color: var(--accent); }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 64px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .hero-stat { }
+
+    .hero-stat .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero-stat .label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 96px 24px;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    /* ── SERVICES ── */
+    .services-bg { background: var(--bg2); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-dim) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(0,255,136,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 40px rgba(0,255,136,0.06);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-emoji {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card .btn {
+      position: relative;
+      z-index: 1;
+      font-size: 0.8rem;
+      padding: 8px 18px;
+    }
+
+    /* ── QUOTE CALCULATOR ── */
+    .calculator-wrap {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calculator-wrap::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      padding: 12px 16px;
+      transition: border-color 0.2s;
+      outline: none;
+      appearance: none;
+    }
+
+    .form-control:focus {
+      border-color: rgba(0,255,136,0.5);
+      box-shadow: 0 0 0 3px rgba(0,255,136,0.08);
+    }
+
+    .form-control option { background: var(--bg2); }
+
+    .addons-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .addon-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .addon-item:hover { border-color: rgba(0,255,136,0.25); }
+
+    .addon-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .addon-label {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .addon-price {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .quote-result {
+      background: var(--bg2);
+      border: 1px solid rgba(0,255,136,0.2);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: sticky;
+      top: 88px;
+    }
+
+    .quote-result-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 24px;
+    }
+
+    .quote-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quote-line:last-of-type { border-bottom: none; }
+
+    .quote-line-label { font-size: 0.9rem; color: var(--text-muted); }
+    .quote-line-value { font-size: 0.9rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+
+    .quote-discount { color: #FF6B6B !important; }
+
+    .quote-total {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px solid rgba(0,255,136,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .quote-total-label {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .quote-total-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .quote-note {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    .quote-cta {
+      margin-top: 24px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* ── TRUST ── */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .trust-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .trust-card:hover {
+      border-color: rgba(0,255,136,0.25);
+      transform: translateY(-3px);
+    }
+
+    .trust-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,255,136,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 20px;
+    }
+
+    .trust-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .trust-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-bg { background: var(--bg2); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all 0.3s;
+    }
+
+    .review-card:hover {
+      border-color: rgba(0,255,136,0.2);
+      transform: translateY(-2px);
+    }
+
+    .stars {
+      color: #FFD700;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,255,136,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .review-name { font-size: 0.9rem; font-weight: 700; }
+    .review-meta { font-size: 0.78rem; color: var(--text-dim); margin-top: 2px; }
+
+    /* ── BOOKING FORM ── */
+    .booking-wrap {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .booking-wrap::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .booking-grid .full-width { grid-column: 1 / -1; }
+
+    .form-control::placeholder { color: var(--text-dim); }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .booking-submit {
+      width: 100%;
+      justify-content: center;
+      padding: 16px;
+      font-size: 1rem;
+      border-radius: 14px;
+      margin-top: 8px;
+    }
+
+    .booking-note {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 16px;
+    }
+
+    /* ── SERVICE AREA ── */
+    .area-bg { background: var(--bg2); }
+
+    .area-inner {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .area-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .area-chip {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .area-chip:hover {
+      border-color: rgba(0,255,136,0.3);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .area-chip.featured {
+      border-color: rgba(0,255,136,0.3);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .contact-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-icon { font-size: 1.6rem; }
+    .contact-label { font-size: 0.72rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; font-family: 'JetBrains Mono', monospace; }
+    .contact-value { font-size: 1rem; font-weight: 600; color: var(--text); }
+    .contact-value a { color: var(--accent); text-decoration: none; }
+    .contact-value a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    .footer-brand {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    .footer-brand a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-brand a:hover { text-decoration: underline; }
+
+    /* ── MOBILE BOTTOM BANNER ── */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(10,10,11,0.96);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      padding: 14px 20px;
+    }
+
+    .mobile-cta-bar-inner {
+      display: flex;
+      gap: 12px;
+    }
+
+    .mobile-cta-bar .btn {
+      flex: 1;
+      justify-content: center;
+      padding: 13px 16px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 24px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .quote-result { position: static; }
+      .booking-grid { grid-template-columns: 1fr; }
+      .booking-grid .full-width { grid-column: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero { min-height: 100svh; padding: 60px 24px 120px; }
+      .section { padding: 72px 24px; }
+      .calculator-wrap { padding: 28px 20px; }
+      .booking-wrap { padding: 28px 20px; }
+      .mobile-cta-bar { display: block; }
+      .hero-stats { gap: 28px; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .fade-in-delay-1 { animation-delay: 0.1s; }
+    .fade-in-delay-2 { animation-delay: 0.2s; }
+    .fade-in-delay-3 { animation-delay: 0.3s; }
+    .fade-in-delay-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">✨</div>
+      Spotless Pro
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="#book" class="btn btn-primary nav-cta">Get a Free Quote</a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobileMenu()">Services</a>
+    <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+    <a href="#book" onclick="closeMobileMenu()">Book</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+    <a href="#book" class="btn btn-primary" onclick="closeMobileMenu()">Get a Free Quote</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge fade-in">✅ Insured & Bonded · Same-Day Available</div>
+
+    <h1 class="fade-in fade-in-delay-1">
+      A Cleaner Home.<br>
+      <span class="accent">A Clearer Mind.</span>
+    </h1>
+
+    <p class="fade-in fade-in-delay-2">
+      Professional house cleaning, deep cleans, and commercial services. Reliable, thorough, and background-checked teams serving all of LA &amp; Orange County.
+    </p>
+
+    <div class="hero-ctas fade-in fade-in-delay-3">
+      <a href="#pricing" class="btn btn-primary btn-lg">
+        <span>⚡</span> Get Free Quote
+      </a>
+      <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+        <span>📅</span> Book Online
+      </a>
+    </div>
+
+    <div class="hero-stats fade-in fade-in-delay-4">
+      <div class="hero-stat">
+        <div class="num">500+</div>
+        <div class="label">Happy Clients</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">5★</div>
+        <div class="label">Avg. Rating</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">7</div>
+        <div class="label">Days a Week</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">4yr</div>
+        <div class="label">In Business</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════════ -->
+<section class="section services-bg" id="services">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Every Clean You Need,<br>Done Right.</h2>
+      <p class="section-sub">From weekly maintenance to move-out deep cleans — we handle it all with care and consistency.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-emoji">🧹</span>
+        <div class="service-name">Standard Clean</div>
+        <div class="service-tag">Weekly / Biweekly</div>
+        <p class="service-desc">Our most popular service — dusting, vacuuming, mopping, kitchen wipe-down, bathroom sanitizing, and tidying. Perfect for maintaining a consistently clean home.</p>
+        <a href="#pricing" class="btn btn-outline">Get Quote</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-emoji">🫧</span>
+        <div class="service-name">Deep Clean</div>
+        <div class="service-tag">Thorough Top-to-Bottom</div>
+        <p class="service-desc">An intensive clean covering baseboards, blinds, inside cabinets, grout lines, and hard-to-reach areas. Ideal for first-time clients or seasonal refreshes.</p>
+        <a href="#pricing" class="btn btn-outline">Get Quote</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-emoji">📦</span>
+        <div class="service-name">Move-In / Move-Out</div>
+        <div class="service-tag">Full Property Clean</div>
+        <p class="service-desc">Leave the old place spotless or make your new home feel fresh from day one. Includes inside appliances, cabinets, closets, and all surfaces — empty or furnished.</p>
+        <a href="#pricing" class="btn btn-outline">Get Quote</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-emoji">🏗️</span>
+        <div class="service-name">Post-Construction</div>
+        <div class="service-tag">Construction Cleanup</div>
+        <p class="service-desc">Removal of construction dust, debris, adhesive residue, paint overspray, and more. We restore newly built or renovated spaces to a move-in-ready state.</p>
+        <a href="#pricing" class="btn btn-outline">Get Quote</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-emoji">🏢</span>
+        <div class="service-name">Commercial / Office</div>
+        <div class="service-tag">Business Spaces</div>
+        <p class="service-desc">Regular cleaning for offices, retail stores, medical waiting rooms, and more. Flexible scheduling around your business hours — early morning, evening, or weekend.</p>
+        <a href="#pricing" class="btn btn-outline">Get Quote</a>
+      </div>
+
+      <div class="service-card">
+        <span class="service-emoji">🏠</span>
+        <div class="service-name">Airbnb Turnover</div>
+        <div class="service-tag">Short-Term Rentals</div>
+        <p class="service-desc">Fast, reliable turnover cleans between guests. Linen swaps, restocking, damage reporting, and photoshoot-ready presentation. Supports same-day scheduling.</p>
+        <a href="#pricing" class="btn btn-outline">Get Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     INSTANT QUOTE CALCULATOR
+═══════════════════════════════════════════════ -->
+<section class="section" id="pricing">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Transparent Pricing</div>
+      <h2 class="section-title">Get an Instant Quote</h2>
+      <p class="section-sub">No hidden fees. No upsells. Configure your clean below and see your exact price in real time.</p>
+    </div>
+
+    <div class="calculator-wrap">
+      <div class="calc-grid">
+        <!-- Left: Controls -->
+        <div>
+          <div class="form-group">
+            <label class="form-label" for="calcService">Service Type</label>
+            <select class="form-control" id="calcService" onchange="updateQuote()">
+              <option value="standard">Standard Clean</option>
+              <option value="deep">Deep Clean</option>
+              <option value="moveinout">Move-In / Move-Out</option>
+              <option value="postconstruction">Post-Construction</option>
+              <option value="commercial">Commercial / Office</option>
+              <option value="airbnb">Airbnb Turnover</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="calcSize">Home Size</label>
+            <select class="form-control" id="calcSize" onchange="updateQuote()">
+              <option value="99">Studio</option>
+              <option value="119">1 Bedroom</option>
+              <option value="149" selected>2 Bedrooms</option>
+              <option value="179">3 Bedrooms</option>
+              <option value="219">4 Bedrooms</option>
+              <option value="259">5 Bedrooms+</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="calcFreq">Frequency</label>
+            <select class="form-control" id="calcFreq" onchange="updateQuote()">
+              <option value="0">One-Time</option>
+              <option value="20">Weekly (Save 20%)</option>
+              <option value="15">Biweekly (Save 15%)</option>
+              <option value="10">Monthly (Save 10%)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Add-On Services</label>
+            <div class="addons-group">
+              <label class="addon-item">
+                <input type="checkbox" value="30" onchange="updateQuote()" id="addonFridge" />
+                <span class="addon-label">🧊 Inside Fridge</span>
+                <span class="addon-price">+$30</span>
+              </label>
+              <label class="addon-item">
+                <input type="checkbox" value="25" onchange="updateQuote()" id="addonOven" />
+                <span class="addon-label">🔥 Inside Oven</span>
+                <span class="addon-price">+$25</span>
+              </label>
+              <label class="addon-item">
+                <input type="checkbox" value="40" onchange="updateQuote()" id="addonLaundry" />
+                <span class="addon-label">🧺 Laundry (wash + dry)</span>
+                <span class="addon-price">+$40</span>
+              </label>
+              <label class="addon-item">
+                <input type="checkbox" value="50" onchange="updateQuote()" id="addonWindows" />
+                <span class="addon-label">🪟 Interior Windows</span>
+                <span class="addon-price">+$50</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Result -->
+        <div>
+          <div class="quote-result" id="quoteResult">
+            <div class="quote-result-title">// YOUR QUOTE</div>
+
+            <div class="quote-line">
+              <span class="quote-line-label">Service</span>
+              <span class="quote-line-value" id="qService">Standard Clean</span>
+            </div>
+            <div class="quote-line">
+              <span class="quote-line-label">Base Price</span>
+              <span class="quote-line-value" id="qBase">$149</span>
+            </div>
+            <div class="quote-line" id="qDeepRow" style="display:none;">
+              <span class="quote-line-label">Deep Clean Multiplier</span>
+              <span class="quote-line-value" id="qDeep" style="color: var(--accent)">×1.6</span>
+            </div>
+            <div class="quote-line" id="qDiscountRow" style="display:none;">
+              <span class="quote-line-label" id="qDiscountLabel">Recurring Discount</span>
+              <span class="quote-line-value quote-discount" id="qDiscount">-$0</span>
+            </div>
+            <div class="quote-line" id="qAddonsRow" style="display:none;">
+              <span class="quote-line-label">Add-Ons</span>
+              <span class="quote-line-value" id="qAddons">+$0</span>
+            </div>
+
+            <div class="quote-total">
+              <span class="quote-total-label">Total Estimate</span>
+              <span class="quote-total-value" id="qTotal">$149</span>
+            </div>
+
+            <p class="quote-note">* Final price may vary based on actual condition and square footage. Quote is an estimate — confirmed at booking.</p>
+
+            <a href="#book" class="btn btn-primary btn-lg quote-cta">Book This Clean →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     TRUST
+═══════════════════════════════════════════════ -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-inner">
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">🛡️</div>
+        <div class="trust-title">Background Checked</div>
+        <p class="trust-desc">Every team member passes a thorough background check before entering your home. Your safety is our top priority.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">🌿</div>
+        <div class="trust-title">Eco-Friendly Products</div>
+        <p class="trust-desc">We use non-toxic, plant-based cleaning solutions that are safe for kids, pets, and the environment.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">💯</div>
+        <div class="trust-title">100% Satisfaction Guarantee</div>
+        <p class="trust-desc">Not happy? We'll come back and re-clean for free, no questions asked. We stand behind every job we do.</p>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">📋</div>
+        <div class="trust-title">Insured & Bonded</div>
+        <p class="trust-desc">Fully insured and bonded for your peace of mind. Any accidental damage is fully covered — always.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     REVIEWS
+═══════════════════════════════════════════════ -->
+<section class="section reviews-bg" id="reviews">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-sub">Real reviews from homeowners and Airbnb hosts across LA and Orange County.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I've tried three different cleaning services over the years, and Spotless Pro is on another level. My kitchen looked brand new after their deep clean. The team was punctual, professional, and incredibly thorough. I'm now on a biweekly plan and I couldn't be happier."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Maria L.</div>
+            <div class="review-meta">Homeowner · Pasadena, CA · Biweekly Client</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"As an Airbnb superhost managing 4 units in Anaheim, I need same-day turnover cleans constantly. Spotless Pro never lets me down — they're fast, detail-oriented, and always leave the units photoshoot-ready. My guest reviews have gone way up since switching to them."</p>
+        <div class="review-author">
+          <div class="review-avatar">J</div>
+          <div>
+            <div class="review-name">Jason T.</div>
+            <div class="review-meta">Airbnb Superhost · Anaheim, CA · 4 Properties</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"We used Spotless Pro for a move-out clean on our rental in Long Beach. The place had been lived in hard for 3 years and they made it look absolutely new. Landlord returned our full deposit without a single complaint. 10/10 would use again — and already booked them for our new place!"</p>
+        <div class="review-author">
+          <div class="review-avatar">A</div>
+          <div>
+            <div class="review-name">Ashley & Kevin R.</div>
+            <div class="review-meta">Renters · Long Beach, CA · Move-Out Clean</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     BOOKING FORM
+═══════════════════════════════════════════════ -->
+<section class="section" id="book">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center; margin-bottom: 40px;">
+      <div class="section-label" style="justify-content:center; display:flex;">Book a Clean</div>
+      <h2 class="section-title">Ready to Schedule?</h2>
+      <p class="section-sub" style="margin: 0 auto;">Fill out the form below and we'll confirm your booking within 2 hours. Same-day slots often available.</p>
+    </div>
+
+    <div class="booking-wrap">
+      <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="Cleaning Booking - Spotless Pro" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://spotlessprocleaning.com/thank-you" />
+
+        <div class="booking-grid">
+          <div class="form-group">
+            <label class="form-label" for="bookName">Full Name *</label>
+            <input type="text" id="bookName" name="Name" class="form-control" placeholder="Jane Smith" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bookPhone">Phone Number *</label>
+            <input type="tel" id="bookPhone" name="Phone" class="form-control" placeholder="(310) 555-0000" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bookEmail">Email Address *</label>
+            <input type="email" id="bookEmail" name="Email" class="form-control" placeholder="jane@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bookService">Service Type *</label>
+            <select id="bookService" name="Service" class="form-control" required>
+              <option value="" disabled selected>Select a service...</option>
+              <option>Standard Clean</option>
+              <option>Deep Clean</option>
+              <option>Move-In / Move-Out</option>
+              <option>Post-Construction</option>
+              <option>Commercial / Office</option>
+              <option>Airbnb Turnover</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="bookAddress">Service Address *</label>
+            <input type="text" id="bookAddress" name="Address" class="form-control" placeholder="123 Main St, Los Angeles, CA 90001" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bookDate">Preferred Date *</label>
+            <input type="date" id="bookDate" name="Preferred Date" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="bookTime">Preferred Time *</label>
+            <select id="bookTime" name="Preferred Time" class="form-control" required>
+              <option value="" disabled selected>Select time...</option>
+              <option>7:00 AM – 9:00 AM</option>
+              <option>9:00 AM – 11:00 AM</option>
+              <option>11:00 AM – 1:00 PM</option>
+              <option>1:00 PM – 3:00 PM</option>
+              <option>3:00 PM – 5:00 PM</option>
+              <option>5:00 PM – 7:00 PM</option>
+              <option>Flexible / Any Time</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="bookNotes">Special Instructions (Optional)</label>
+            <textarea id="bookNotes" name="Notes" class="form-control" placeholder="e.g. Please focus on kitchen and bathrooms. Entry code: 1234. We have a cat."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary booking-submit">
+          ✅ Request My Booking
+        </button>
+        <p class="booking-note">We'll call or text to confirm within 2 hours · No payment required to book</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SERVICE AREA
+═══════════════════════════════════════════════ -->
+<section class="section area-bg">
+  <div class="section-inner">
+    <div class="area-inner">
+      <div class="section-label" style="display:flex; justify-content:center;">Service Area</div>
+      <h2 class="section-title" style="text-align:center;">Serving All of<br><span style="color:var(--accent)">LA & Orange County</span></h2>
+      <p class="section-sub" style="text-align:center; margin: 0 auto 8px;">We dispatch teams 7 days a week across the greater Los Angeles area and all of Orange County. If you're in SoCal, we've got you covered.</p>
+      <div class="area-chips">
+        <div class="area-chip featured">Los Angeles</div>
+        <div class="area-chip featured">Orange County</div>
+        <div class="area-chip">Long Beach</div>
+        <div class="area-chip">Pasadena</div>
+        <div class="area-chip">Santa Monica</div>
+        <div class="area-chip">Glendale</div>
+        <div class="area-chip">Burbank</div>
+        <div class="area-chip">Torrance</div>
+        <div class="area-chip">Anaheim</div>
+        <div class="area-chip">Irvine</div>
+        <div class="area-chip">Fullerton</div>
+        <div class="area-chip">Santa Ana</div>
+        <div class="area-chip">Costa Mesa</div>
+        <div class="area-chip">Huntington Beach</div>
+        <div class="area-chip">Norwalk</div>
+        <div class="area-chip">Downey</div>
+        <div class="area-chip">Compton</div>
+        <div class="area-chip">El Monte</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-sub">Questions? Ready to book? Reach out any time — we're available 7 days a week.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value"><a href="tel:+13105550247">(310) 555-0247</a></div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <div class="contact-label">Location</div>
+        <div class="contact-value">Los Angeles, CA</div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">🕐</div>
+        <div class="contact-label">Hours</div>
+        <div class="contact-value">7 Days a Week<br><span style="font-size:0.85rem; color:var(--text-muted)">7:00 AM – 7:00 PM</span></div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📸</div>
+        <div class="contact-label">Instagram</div>
+        <div class="contact-value"><a href="https://instagram.com/spotlessprocleaning" target="_blank" rel="noopener">@spotlessprocleaning</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<div class="divider"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">Spotless Pro Cleaning © 2026</div>
+    <div class="footer-brand">Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">SanchezElevationAI</a> · <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">sanchezelevationai.com</a></div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════
+     MOBILE BOTTOM BANNER
+═══════════════════════════════════════════════ -->
+<div class="mobile-cta-bar">
+  <div class="mobile-cta-bar-inner">
+    <a href="tel:+13105550247" class="btn btn-outline">📞 Call Now</a>
+    <a href="#book" class="btn btn-primary">Get Free Quote</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════ -->
+<script>
+  /* ── HAMBURGER ── */
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobileMenu() {
+    hamburgerBtn.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ── QUOTE CALCULATOR ── */
+  const serviceMultipliers = {
+    standard: 1.0,
+    deep: 1.6,
+    moveinout: 1.6,
+    postconstruction: 1.8,
+    commercial: 1.4,
+    airbnb: 1.2
+  };
+
+  const serviceNames = {
+    standard: 'Standard Clean',
+    deep: 'Deep Clean',
+    moveinout: 'Move-In / Move-Out',
+    postconstruction: 'Post-Construction',
+    commercial: 'Commercial / Office',
+    airbnb: 'Airbnb Turnover'
+  };
+
+  const deepServices = ['deep', 'moveinout', 'postconstruction'];
+
+  function updateQuote() {
+    const serviceKey = document.getElementById('calcService').value;
+    const basePrice = parseFloat(document.getElementById('calcSize').value);
+    const discountPct = parseFloat(document.getElementById('calcFreq').value);
+    const freqText = document.getElementById('calcFreq').options[document.getElementById('calcFreq').selectedIndex].text;
+
+    const multiplier = serviceMultipliers[serviceKey] || 1.0;
+    const isDeep = multiplier !== 1.0;
+
+    // Addons
+    const addonIds = ['addonFridge','addonOven','addonLaundry','addonWindows'];
+    let addonsTotal = 0;
+    addonIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el.checked) addonsTotal += parseFloat(el.value);
+    });
+
+    // Calculations
+    const adjustedBase = Math.round(basePrice * multiplier);
+    const discountAmount = discountPct > 0 ? Math.round(adjustedBase * discountPct / 100) : 0;
+    const afterDiscount = adjustedBase - discountAmount;
+    const total = afterDiscount + addonsTotal;
+
+    // Update DOM
+    document.getElementById('qService').textContent = serviceNames[serviceKey];
+    document.getElementById('qBase').textContent = '$' + adjustedBase;
+
+    // Deep row
+    const deepRow = document.getElementById('qDeepRow');
+    if (isDeep) {
+      deepRow.style.display = 'flex';
+      document.getElementById('qDeep').textContent = '×' + multiplier.toFixed(1);
+    } else {
+      deepRow.style.display = 'none';
+    }
+
+    // Discount row
+    const discountRow = document.getElementById('qDiscountRow');
+    if (discountPct > 0) {
+      discountRow.style.display = 'flex';
+      document.getElementById('qDiscountLabel').textContent = freqText.split('(')[0].trim() + ' Discount';
+      document.getElementById('qDiscount').textContent = '-$' + discountAmount;
+    } else {
+      discountRow.style.display = 'none';
+    }
+
+    // Addons row
+    const addonsRow = document.getElementById('qAddonsRow');
+    if (addonsTotal > 0) {
+      addonsRow.style.display = 'flex';
+      document.getElementById('qAddons').textContent = '+$' + addonsTotal;
+    } else {
+      addonsRow.style.display = 'none';
+    }
+
+    document.getElementById('qTotal').textContent = '$' + total;
+  }
+
+  // Initialize
+  updateQuote();
+
+  /* ── SMOOTH SCROLL OFFSET FOR STICKY NAV ── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  /* ── SET MIN DATE FOR BOOKING ── */
+  const dateInput = document.getElementById('bookDate');
+  if (dateInput) {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    dateInput.min = `${yyyy}-${mm}-${dd}`;
+  }
+</script>
+</body>
+</html>
