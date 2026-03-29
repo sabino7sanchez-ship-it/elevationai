@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElevationAI - 30-Day Instagram Content Calendar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-card-hover: #1a1a2e;
+            --cyan: #00e5ff;
+            --purple: #a855f7;
+            --pink: #ec4899;
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --border: #1e1e2e;
+            --gradient: linear-gradient(135deg, #00e5ff, #a855f7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            position: relative;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 300px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(0,229,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .header h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+        .header .brand {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 18px;
+            border: 1px solid rgba(0,229,255,0.3);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--cyan);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            margin: 0 auto 30px;
+            max-width: 800px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* CONTENT TYPE TAGS */
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tag-portfolio { background: rgba(0,229,255,0.15); color: #00e5ff; }
+        .tag-value { background: rgba(168,85,247,0.15); color: #a855f7; }
+        .tag-bts { background: rgba(236,72,153,0.15); color: #ec4899; }
+        .tag-casestudy { background: rgba(34,197,94,0.15); color: #22c55e; }
+        .tag-founder { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .tag-reel { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .tag-cta { background: rgba(99,102,241,0.15); color: #6366f1; }
+
+        /* LEGEND */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 0 20px 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* CALENDAR GRID */
+        .calendar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+        .weekday-headers {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .weekday-header {
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 0;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+        .day-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 12px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            min-height: 110px;
+        }
+        .day-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(0,229,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,229,255,0.08);
+        }
+        .day-card.empty {
+            background: transparent;
+            border: 1px dashed #1a1a2a;
+            cursor: default;
+            min-height: 0;
+        }
+        .day-card.empty:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: #1a1a2a;
+        }
+        .day-number {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .day-date {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+        .day-title {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text);
+            line-height: 1.3;
+            margin-top: 6px;
+        }
+        .day-time {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            margin-top: 6px;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 36px;
+            position: relative;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        .modal-close:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .modal-day-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--cyan);
+            margin-bottom: 4px;
+        }
+        .modal-date {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+        }
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .modal-section {
+            margin-bottom: 20px;
+        }
+        .modal-section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .modal-caption {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text);
+            white-space: pre-line;
+            background: rgba(0,0,0,0.3);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .modal-hashtags {
+            font-size: 0.85rem;
+            color: var(--cyan);
+            line-height: 1.8;
+        }
+        .modal-visual {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.6;
+            background: rgba(168,85,247,0.08);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(168,85,247,0.15);
+        }
+        .modal-time {
+            font-size: 0.9rem;
+            color: var(--purple);
+            font-weight: 500;
+        }
+        .copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--gradient);
+            color: #000;
+            border: none;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+        .copy-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 20px rgba(0,229,255,0.3);
+        }
+        .copy-btn.copied {
+            background: #22c55e;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .weekday-headers { display: none; }
+            .calendar-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .day-card.empty { display: none; }
+            .day-card {
+                min-height: 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 10px;
+                padding: 16px;
+            }
+            .day-number { margin-bottom: 0; font-size: 1.1rem; }
+            .day-date { margin-bottom: 0; }
+            .day-title { flex: 1; margin-top: 0; min-width: 120px; }
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+        .footer a {
+            color: var(--cyan);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>30-Day Instagram Calendar</h1>
+    <p class="subtitle">ElevationAI Launch Campaign &mdash; March 30 to April 28, 2026</p>
+    <span class="brand">@SanchezElevationAI</span>
+</div>
+
+<div class="stats-bar">
+    <div class="stat"><div class="stat-number">30</div><div class="stat-label">Total Posts</div></div>
+    <div class="stat"><div class="stat-number">7</div><div class="stat-label">Reels</div></div>
+    <div class="stat"><div class="stat-number">4</div><div class="stat-label">Carousels</div></div>
+    <div class="stat"><div class="stat-number">19</div><div class="stat-label">Single Images</div></div>
+</div>
+
+<div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#00e5ff;"></div>Portfolio</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#a855f7;"></div>Value Tip</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ec4899;"></div>Behind the Scenes</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#22c55e;"></div>Case Study</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fbbf24;"></div>Founder Story</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444;"></div>Reel</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#6366f1;"></div>CTA</div>
+</div>
+
+<div class="calendar-container">
+    <div class="weekday-headers">
+        <div class="weekday-header">Mon</div>
+        <div class="weekday-header">Tue</div>
+        <div class="weekday-header">Wed</div>
+        <div class="weekday-header">Thu</div>
+        <div class="weekday-header">Fri</div>
+        <div class="weekday-header">Sat</div>
+        <div class="weekday-header">Sun</div>
+    </div>
+    <div class="calendar-grid" id="calendarGrid"></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<div class="footer">
+    Built by <a href="https://sanchezelevationai.com" target="_blank">SanchezElevationAI</a> &mdash; Launch Calendar 2026
+</div>
+
+<script>
+const calendarData = [
+    // ===== WEEK 1 =====
+    {
+        day: 1, date: "Mon, Mar 30", type: "portfolio", tag: "Portfolio Showcase", tagClass: "tag-portfolio",
+        title: "Contractor site speed build",
+        time: "11:00 AM PST",
+        format: "Single Image",
+        caption: `I built this entire contractor website in under 2 hours.\n\nNo templates. No drag-and-drop builders. Just clean code, custom design, and AI-powered tools built right into the site.\n\nThis is what happens when you combine modern web development with real business strategy. Every section is designed to convert visitors into leads:\n\n- Hero with instant credibility\n- Services grid that sells\n- Quote request form that actually works\n- Mobile-first design (because 80% of your customers are on their phone)\n\nMost agencies take 4-6 weeks and charge $3,000+. I deliver in 48 hours at a fraction of the cost.\n\nIf you are a contractor in SoCal and your website looks like it was built in 2015, it is costing you money every single day.\n\nDM me "SITE" and I will show you what is possible.`,
+        hashtags: "#ElevationAI #SanchezElevationAI #WebDesign #ContractorWebsite #SoCalBusiness #ModernWebsite #DarkModeDesign #48HourBuild",
+        visual: "Screenshot of Allendes Construction demo site on a MacBook mockup, dark theme visible, with code editor subtly blurred in the background. Clean, professional composition."
+    },
+    {
+        day: 2, date: "Tue, Mar 31", type: "value", tag: "Value Post", tagClass: "tag-value",
+        title: "3 things killing your Google ranking",
+        time: "12:00 PM PST",
+        format: "Carousel (4 slides)",
+        caption: `Your website is invisible on Google and here is exactly why.\n\nI audit small business websites every week and these 3 mistakes show up almost every time:\n\n1. No mobile optimization\nOver 60% of Google searches happen on phones. If your site is not mobile-first, Google literally pushes you down in results. Not optional anymore.\n\n2. Zero local SEO setup\nYou need your city, your service area, and your business type on every page. Google My Business connected. Schema markup added. Most small business sites have none of this.\n\n3. Slow load times\nIf your site takes more than 3 seconds to load, over half your visitors leave before they even see your homepage. That is money walking out the door.\n\nThe good news? All 3 of these can be fixed in a single weekend.\n\nSave this post and share it with a business owner who needs to hear it.\n\nWant me to audit your site for free? Drop a comment or DM me.`,
+        hashtags: "#SEOTips #SmallBusinessWebsite #GoogleRanking #LocalSEO #WebDesigner #OrangeCountyBusiness #LASmallBusiness #MarketingTips",
+        visual: "Carousel format. Slide 1: Bold title text on dark gradient background. Slides 2-4: Each mistake with icon and short explanation. Clean typography, cyan accent color, ElevationAI watermark in corner."
+    },
+    {
+        day: 3, date: "Wed, Apr 1", type: "bts", tag: "Behind the Scenes", tagClass: "tag-bts",
+        title: "Late night coding session",
+        time: "6:00 PM PST",
+        format: "Single Image",
+        caption: `11 PM. Energy drink empty. Third monitor glowing.\n\nThis is what building a real business at 19 looks like. No glamour. No shortcuts. Just screen time and deadlines.\n\nTonight I am finishing up a custom AI-powered quote calculator for a loan officer client. This is not some basic contact form. This tool lets their customers punch in loan details and get a real estimate instantly.\n\nBuilt from scratch. Custom logic. Bilingual English and Spanish. Branded to their company.\n\nEvery tool I build is designed to save my clients time and make them money. That is the whole philosophy behind ElevationAI.\n\nWhile other agencies are reselling WordPress templates for $2K, I am writing real code that actually does something.\n\nThe grind is not pretty but the results speak for themselves.\n\nWhat are you working on tonight?`,
+        hashtags: "#BuildInPublic #19YearOldCEO #CodingLife #WebDeveloper #TechStartup #GenZEntrepreneur #StartupLife #LateNightGrind",
+        visual: "Moody desk setup photo: dark room, monitor with VS Code open showing real code, ambient RGB lighting (cyan/purple glow), energy drink can, ElevationAI sticker on laptop."
+    },
+    {
+        day: 4, date: "Thu, Apr 2", type: "casestudy", tag: "Case Study", tagClass: "tag-casestudy",
+        title: "Loan officer quote tool results",
+        time: "12:00 PM PST",
+        format: "Carousel (3 slides)",
+        caption: `Before: A loan officer sending manual PDF quotes over email.\nAfter: A custom AI-powered quote generator on their website that works 24/7.\n\nHere is what I built for a mortgage professional in SoCal:\n\nThe problem was simple. Every time a potential borrower wanted a quote, the loan officer had to manually calculate rates, build a PDF, and email it back. That process took 20-30 minutes per lead.\n\nMy solution: a branded quote tool built directly into their website. Borrowers select their loan type, enter their numbers, and get a professional branded estimate instantly. Works on desktop and mobile. Fully bilingual.\n\nThe result? Their response time went from hours to seconds. They close the lead while the borrower is still interested.\n\nThis is what real AI tools look like for small businesses. Not chatbots. Not gimmicks. Actual automation that saves time and makes money.\n\nWant something like this for your business? Let me know what you do and I will tell you what I can build.`,
+        hashtags: "#CaseStudy #LoanOfficerMarketing #AIAgency #SmallBusinessWebsite #WebDesign #AutomationTools #SanchezElevationAI #SoCalBusiness",
+        visual: "Before/after split: Left side shows old email PDF workflow (mocked up, blurred). Right side shows the sleek quote tool interface on a phone mockup. Green arrow connecting them."
+    },
+    {
+        day: 5, date: "Fri, Apr 3", type: "founder", tag: "Founder Story", tagClass: "tag-founder",
+        title: "Why I started at 19",
+        time: "5:00 PM PST",
+        format: "Single Image",
+        caption: `I am 19 years old and I run an AI-powered web agency.\n\nNo trust fund. No connections in tech. No CS degree (yet).\n\nHere is my story.\n\nI started learning to code because I saw small businesses in my community getting ripped off. Contractors paying $3,000 for basic WordPress sites. Restaurants with no online presence at all. Loan officers still using paper flyers.\n\nI thought: what if I could build better websites, faster, and actually affordable? What if I could add real AI tools that help them run their business?\n\nSo I started ElevationAI. I taught myself web development, design, SEO, and AI integration. I built 18 demo sites to prove I could deliver. Then I landed my first real clients.\n\nNow I build full websites in 48 hours. I create custom tools like quote calculators and booking systems. Everything is bilingual because that is what SoCal businesses need.\n\nI am not the cheapest. I am not the most experienced. But I guarantee nobody my age is outworking me.\n\nIf you are a young person thinking about starting something: just start. Build proof. Show results. The clients will come.\n\nWho else is building something right now? Drop what you are working on below.`,
+        hashtags: "#YoungEntrepreneur #19YearOldCEO #GenZEntrepreneur #StartupLife #BuildInPublic #ElevationAI #TechStartup #FounderStory",
+        visual: "Professional headshot or candid photo of Sabino at desk/workspace. Clean background, good lighting. Text overlay with age (19) and company name. Authentic, not overly polished."
+    },
+    {
+        day: 6, date: "Sat, Apr 4", type: "reel", tag: "Reel", tagClass: "tag-reel",
+        title: "60-second website speed build",
+        time: "10:00 AM PST",
+        format: "Reel (60 seconds)",
+        caption: `Watch me build a full business website in 60 seconds.\n\nTimelapse of a real client build from blank screen to finished site. This is not a template. Every pixel is custom.\n\nHere is what goes into a typical ElevationAI build:\n\n0:00 - Wireframe and layout planning\n0:15 - Hero section with brand colors\n0:30 - Services grid and pricing\n0:45 - Contact form and footer\n1:00 - Final result reveal\n\nThe actual build took about 3 hours. But the point is: you do not need to wait 6 weeks for a website in 2026.\n\nSpeed. Quality. AI-powered tools. That is the ElevationAI difference.\n\nSave this and send it to a business owner who is still waiting on their web designer to finish.\n\nLink in bio for a free site audit.`,
+        hashtags: "#SpeedBuild #WebDesign #TimeLapse #ReelsTrending #WebDeveloper #SmallBusinessWebsite #ElevationAI #SoCalBusiness",
+        visual: "Screen recording timelapse: VS Code on left, browser preview on right. Fast cuts showing the site coming together section by section. Trending audio track. Text overlays at each milestone. Final zoom into the completed site."
+    },
+    {
+        day: 7, date: "Sun, Apr 5", type: "cta", tag: "CTA Post", tagClass: "tag-cta",
+        title: "Free website audit offer",
+        time: "11:00 AM PST",
+        format: "Single Image",
+        caption: `Your website is either making you money or losing you money. There is no in between.\n\nThis week I am offering free website audits for any small business owner who wants honest feedback on their online presence.\n\nHere is what I check:\n\n- Mobile responsiveness (does it work on phones?)\n- Page speed (are you losing visitors to slow load times?)\n- SEO fundamentals (can Google actually find you?)\n- Conversion design (does your site turn visitors into customers?)\n- Competitor comparison (how do you stack up?)\n\nNo sales pitch. No pressure. Just a real breakdown of where you stand and what you can improve.\n\nI have already audited 15 businesses this month and every single one had at least 3 critical issues they did not know about.\n\nWant yours done? Comment AUDIT below or DM me your website link.\n\nI will record a quick video walkthrough of my findings and send it to you for free.\n\nSeriously. Free. Let me help.`,
+        hashtags: "#FreeAudit #WebsiteAudit #SmallBusinessHelp #ElevationAI #SanchezElevationAI #OrangeCountyBusiness #NorwalkCA #DowneyCA",
+        visual: "Bold graphic with text: FREE WEBSITE AUDIT on dark background. Checklist iconography. ElevationAI branding. Cyan/purple gradient accents. Clean, high-contrast design that stops the scroll."
+    },
+
+    // ===== WEEK 2 =====
+    {
+        day: 8, date: "Mon, Apr 6", type: "portfolio", tag: "Portfolio Showcase", tagClass: "tag-portfolio",
+        title: "Auto detailing site reveal",
+        time: "11:00 AM PST",
+        format: "Single Image",
+        caption: `New build alert: custom website for an auto detailing business in Orange County.\n\nThis one was fun. The client wanted something dark, aggressive, and premium. So I delivered exactly that.\n\nFeatures built into this site:\n- Online booking system integrated directly\n- Service packages with pricing tiers\n- Before/after gallery with slider\n- Mobile-optimized for on-the-go customers\n- SEO setup targeting their local area\n\nAuto detailers are one of my favorite niches to build for because the visual content is insane. Every car is a portfolio piece.\n\nThe best part? This was built and deployed in under 48 hours. The client went from having zero online presence to a fully functional lead-generating machine in a weekend.\n\nIf you run a detailing business and your website does not match the quality of your work, we need to talk.\n\nDM me to see the full site live.`,
+        hashtags: "#AutoDetailingBusiness #WebDesign #ElevationAI #DarkModeDesign #OrangeCountyBusiness #CarDetailing #ModernWebsite #SanchezElevationAI",
+        visual: "Dunox Detailing demo site displayed on an angled laptop mockup. Dark theme with dramatic car imagery. Maybe a real car photo subtly in the background. Premium feel."
+    },
+    {
+        day: 9, date: "Tue, Apr 7", type: "value", tag: "Value Post", tagClass: "tag-value",
+        title: "Why you need a website in 2026",
+        time: "12:00 PM PST",
+        format: "Single Image",
+        caption: `Still think you do not need a website because you have Instagram?\n\nLet me break this down for you.\n\nInstagram is rented land. You do not own it. The algorithm changes, your reach drops, and you have zero control. One account suspension and your entire business presence vanishes.\n\nA website is property you own. It works for you 24/7. It shows up on Google when someone searches for your service. It makes you look legitimate to every new customer who finds you.\n\nHere is what a real website does that Instagram cannot:\n\n1. Ranks on Google for local searches\n2. Collects leads automatically through forms\n3. Showcases your full portfolio without limits\n4. Builds trust instantly with professional design\n5. Works while you sleep, eat, and work on other jobs\n\nI am not saying quit Instagram. I am saying Instagram without a website is a house built on sand.\n\nEvery serious business needs both. The website is your foundation.\n\nAm I wrong? Tell me in the comments.`,
+        hashtags: "#WebDesign #SmallBusinessTips #DigitalMarketing #WhyYouNeedAWebsite #AIAgency #SoCalBusiness #MarketingStrategy #ElevationAI",
+        visual: "Clean infographic style: Instagram logo on one side, website on the other. Comparison list. Dark background, bold white text, cyan accents. Designed to be saved and shared."
+    },
+    {
+        day: 10, date: "Wed, Apr 8", type: "bts", tag: "Behind the Scenes", tagClass: "tag-bts",
+        title: "Design process walkthrough",
+        time: "6:00 PM PST",
+        format: "Single Image",
+        caption: `Here is exactly how I design a website from scratch.\n\nStep 1: Research. I study the client's industry, competitors, and target customers. I look at what is working and what is not in their market.\n\nStep 2: Wireframe. I sketch out the page structure. Where does the hero go? How many sections? What is the conversion flow?\n\nStep 3: Design. Colors, fonts, spacing, imagery. Everything is chosen with intention. Dark themes for premium brands, clean whites for professional services.\n\nStep 4: Build. I write every line of code by hand. No page builders. No bloated plugins. Just clean, fast, semantic HTML and CSS.\n\nStep 5: AI integration. This is where ElevationAI is different. I build custom tools directly into the site: quote calculators, booking systems, dynamic content.\n\nStep 6: Test. Every device. Every browser. Every edge case.\n\nStep 7: Deploy. Site goes live in 48 hours from start to finish.\n\nThis is the process behind every site I build. No corners cut.\n\nWant to see it in action? Follow along this week.`,
+        hashtags: "#DesignProcess #WebDeveloper #BuildInPublic #BehindTheScenes #CodingLife #TechStartup #ElevationAI #WebDesign",
+        visual: "Flat lay of the design process: notebook with wireframe sketches, monitor showing Figma or code, phone with the final mobile view. Overhead shot with moody lighting."
+    },
+    {
+        day: 11, date: "Thu, Apr 9", type: "casestudy", tag: "Case Study", tagClass: "tag-casestudy",
+        title: "Handyman service transformation",
+        time: "12:00 PM PST",
+        format: "Single Image",
+        caption: `This handyman had zero online presence. Now he gets leads while he is on the job.\n\nHere is what I built for a local handyman service in the LA area:\n\nThe situation: This guy is incredible at what he does. Plumbing, electrical, drywall, painting, you name it. But all his business came from word of mouth. No website. No Google listing. No way for new customers to find him.\n\nWhat I delivered:\n- A clean, professional website showcasing all his services\n- A simple quote request form that sends directly to his phone\n- Google My Business setup and optimization\n- Local SEO targeting his service areas\n- Bilingual English and Spanish for his customer base\n\nThe result: Within two weeks of launching, he received his first online lead. Someone searched for handyman services in his city, found his site, and booked a job. That one lead paid for the entire website.\n\nThis is the power of having a real online presence. You do not need to be a tech company to benefit from technology.\n\nKnow a tradesperson who needs this? Tag them below.`,
+        hashtags: "#CaseStudy #HandymanBusiness #SmallBusinessWebsite #LocalSEO #SoCalBusiness #ElevationAI #WebDesign #NorwalkCA",
+        visual: "Split layout: left side shows a blank Google search with no results. Right side shows the new website on a phone mockup with a lead notification popup. Arrow showing the transformation."
+    },
+    {
+        day: 12, date: "Fri, Apr 10", type: "founder", tag: "Founder Story", tagClass: "tag-founder",
+        title: "Balancing school and business",
+        time: "5:00 PM PST",
+        format: "Single Image",
+        caption: `Full-time student. Part-time trucking job. Full-time agency owner. Welcome to my schedule.\n\nMonday through Friday I wake up early for my day job. Tuesdays and Thursdays I have classes at Cal State Fullerton from 4 to 7 PM. Every other hour goes to ElevationAI.\n\nPeople ask me how I manage it all. Honestly? I do not manage it perfectly. Some nights I am coding until 2 AM. Some mornings I am running on four hours of sleep.\n\nBut here is what I know for sure: the businesses I am building now are going to compound. Every site I launch, every client I serve, every tool I build adds to the portfolio that will define my career.\n\nI am not building for today. I am building for the version of me that exists in 5 years.\n\nThe sacrifice is real but so is the vision. If you are in your teens or twenties reading this and thinking about starting something, here is my advice: you will never have more energy and fewer obligations than right now.\n\nUse it.\n\nWhat is your grind schedule? Share below.`,
+        hashtags: "#StudentEntrepreneur #GenZEntrepreneur #CSUF #CollegeLife #StartupLife #YoungEntrepreneur #19YearOldCEO #ElevationAI",
+        visual: "Day-in-the-life collage: morning alarm, driving, campus shot, desk with code on screen. Grid layout or film strip style. Real, relatable content."
+    },
+    {
+        day: 13, date: "Sat, Apr 11", type: "reel", tag: "Reel", tagClass: "tag-reel",
+        title: "Before/after site transformation",
+        time: "10:00 AM PST",
+        format: "Reel (30 seconds)",
+        caption: `The power of good design in 30 seconds.\n\nSwipe to see what happens when a small business invests in a real website.\n\nBefore: Outdated layout, no mobile support, slow loading, zero SEO.\nAfter: Modern dark theme, lightning fast, mobile-first, AI tools built in.\n\nThis is not a redesign. This is a complete rebuild from the ground up.\n\nEvery ElevationAI site is:\n- Custom coded (no templates)\n- Mobile optimized\n- SEO ready on day one\n- Built with real conversion strategy\n\nThe difference between a website that sits there and a website that generates leads is intentional design.\n\nTag a business owner who needs to see this transformation.\n\nFree audit link in bio.`,
+        hashtags: "#BeforeAndAfter #WebDesign #Transformation #ReelsTrending #SmallBusinessWebsite #ModernWebsite #ElevationAI #DesignMatters",
+        visual: "Reel format: dramatic reveal transition. Slow zoom on old/ugly website, then quick cut or swipe transition to the sleek ElevationAI version. Trending sound. Text overlays for before/after."
+    },
+    {
+        day: 14, date: "Sun, Apr 12", type: "cta", tag: "CTA Post", tagClass: "tag-cta",
+        title: "DM me your business type",
+        time: "11:00 AM PST",
+        format: "Single Image",
+        caption: `I want to build something for YOUR industry.\n\nOver the past few months I have built websites and tools for:\n- Contractors and construction companies\n- Loan officers and mortgage brokers\n- Auto detailers\n- Handyman services\n- Landscaping companies\n\nBut here is the thing. I want to expand into new niches. Restaurants. Barbershops. Fitness trainers. Real estate agents. Cleaning services. Whatever.\n\nSo here is my offer:\n\nDM me your business type and I will build a free demo specifically for your industry. Not a generic template. A real, custom demo site that shows you exactly what your online presence could look like.\n\nNo cost. No obligation. I just want to prove what is possible.\n\nWhy am I doing this for free? Because every demo I build becomes a portfolio piece that helps me land more clients. You get a free preview, I get proof of work. Everybody wins.\n\nDrop your industry in the comments or DM me directly.\n\nFirst 5 replies get priority.`,
+        hashtags: "#FreeDemo #SmallBusinessHelp #WebDesign #SanchezElevationAI #ElevationAI #SoCalBusiness #LASmallBusiness #DowneyCA",
+        visual: "Grid of industry icons (wrench, car, house, scissors, dumbbell) on dark background with glowing cyan outlines. Center text: WHAT DO YOU DO? Bold, attention-grabbing layout."
+    },
+
+    // ===== WEEK 3 =====
+    {
+        day: 15, date: "Mon, Apr 13", type: "portfolio", tag: "Portfolio Showcase", tagClass: "tag-portfolio",
+        title: "Construction company full build",
+        time: "11:00 AM PST",
+        format: "Single Image",
+        caption: `Just shipped: a full website for a construction and landscaping company.\n\nThis client needed something that showed they are serious. Professional. Trustworthy. The kind of site that makes homeowners feel confident handing over a $50K renovation project.\n\nWhat I built:\n- Clean hero section with service area callout\n- Portfolio gallery with project categories\n- Service breakdown with pricing indicators\n- Contact form with project type selector\n- Fully bilingual English and Spanish\n- Mobile-first responsive design\n\nConstruction is one of the most competitive local industries. The company with the best online presence wins the customer before the first phone call even happens.\n\nThis site was built and deployed in 40 hours. Two days from brief to live.\n\nIf your construction company is still relying on business cards and word of mouth alone, you are leaving jobs on the table.\n\nDM me CONSTRUCTION to see the full site.`,
+        hashtags: "#ConstructionWebsite #ContractorWebsite #WebDesign #ElevationAI #SanchezElevationAI #LASmallBusiness #ModernWebsite #BilingualWebsite",
+        visual: "Allendes Group construction site displayed on desktop and mobile mockups. Maybe a subtle construction texture or pattern in the background. Professional, clean composition."
+    },
+    {
+        day: 16, date: "Tue, Apr 14", type: "value", tag: "Value Post", tagClass: "tag-value",
+        title: "5 pages every business site needs",
+        time: "12:00 PM PST",
+        format: "Carousel (5 slides)",
+        caption: `If your website does not have these 5 pages, you are leaving money on the table.\n\nPage 1: Homepage. This is your digital handshake. You have 3 seconds to convince someone to stay. Clear headline, clear value, clear call to action.\n\nPage 2: Services page. List everything you do with enough detail that customers can self-qualify. Include pricing ranges if possible. Transparency builds trust.\n\nPage 3: About page. People buy from people. Show your face, your story, your credentials. This is especially important for local service businesses.\n\nPage 4: Portfolio or gallery. Proof of work. Before and after photos. Completed projects. Testimonials from real clients. Social proof sells.\n\nPage 5: Contact page. Make it dead simple. Phone number, email, and a form. Include your service area and hours. The harder you make it to contact you, the fewer leads you get.\n\nBonus: A blog or resources section for SEO. Google rewards fresh, relevant content.\n\nSave this post and check your own site against this list. How many do you have?\n\nMissing any? I can help. Link in bio.`,
+        hashtags: "#WebDesignTips #SmallBusinessWebsite #BusinessTips #WebsiteStrategy #ElevationAI #DigitalMarketing #SEOTips #OrangeCountyBusiness",
+        visual: "Carousel: Each slide features one page type with a mockup example and 2-3 bullet points. Dark background, numbered slides (1/5, 2/5, etc.), consistent design. Last slide is CTA."
+    },
+    {
+        day: 17, date: "Wed, Apr 15", type: "bts", tag: "Behind the Scenes", tagClass: "tag-bts",
+        title: "Building a quote calculator live",
+        time: "6:00 PM PST",
+        format: "Single Image",
+        caption: `Currently building a custom AI-powered tool and I want to show you how it works.\n\nThis is a quote calculator for a mortgage loan officer. Instead of making potential borrowers call and wait for a callback, this tool lets them get an instant estimate right on the website.\n\nHere is the technical breakdown for my fellow builders:\n\n- Pure JavaScript, no frameworks needed\n- Real-time calculation based on loan type, amount, and rate\n- Dynamic UI that updates as users interact\n- PDF export so borrowers can save their quote\n- Google Analytics tracking on every quote generated\n- Fully responsive for mobile users\n- Bilingual toggle between English and Spanish\n\nThis is what I mean when I say AI-powered tools. I am not just building pretty pages. I am building software that runs inside websites and solves real business problems.\n\nThe loan officer does not need to learn any new system. They just send people to their website and the tool does the work.\n\nBuilding something interesting? Show me in the comments.`,
+        hashtags: "#WebDeveloper #JavaScript #BuildInPublic #BehindTheScenes #CodingLife #AIAgency #ElevationAI #LoanOfficerMarketing",
+        visual: "Close-up of code editor showing JavaScript functions. Split screen with the live quote tool interface on the right. Syntax highlighting visible. Dark editor theme matching brand."
+    },
+    {
+        day: 18, date: "Thu, Apr 16", type: "casestudy", tag: "Case Study", tagClass: "tag-casestudy",
+        title: "18 demo sites in 30 days",
+        time: "12:00 PM PST",
+        format: "Single Image",
+        caption: `I built 18 demo websites in a single month. Here is why that matters.\n\nWhen I started ElevationAI, I had zero clients and zero portfolio pieces. Nobody was going to hire a 19-year-old with nothing to show.\n\nSo I did what any serious builder would do: I created the proof myself.\n\nI researched the industries that need websites the most. Contractors. Detailers. Loan officers. Handymen. Landscapers. Then I built a demo site for each one.\n\nEach demo is a fully functional website that could go live tomorrow:\n- Custom design for the specific industry\n- Real copy written for their type of customer\n- Mobile responsive\n- SEO fundamentals in place\n- Some with built-in AI tools\n\nThe result: when a potential client asks what I can do, I do not explain. I show them. I send a link that matches their exact industry and say this is what I can build for you.\n\nThe close rate went through the roof.\n\nLesson: Do not wait for permission. Build the proof. Show the work. The opportunities follow.\n\nHow many portfolio pieces do you have? Is it enough?`,
+        hashtags: "#PortfolioBuilding #WebDesign #ElevationAI #StartupLife #BuildInPublic #Hustle #SanchezElevationAI #ProofOfWork",
+        visual: "Mosaic grid showing screenshots of all 18 demo sites. Small thumbnails arranged in a clean grid. Title overlay: 18 SITES. 30 DAYS. Impressive visual impact."
+    },
+    {
+        day: 19, date: "Fri, Apr 17", type: "founder", tag: "Founder Story", tagClass: "tag-founder",
+        title: "Lessons from first client",
+        time: "5:00 PM PST",
+        format: "Single Image",
+        caption: `My first real client taught me more than any class ever could.\n\nHere are 5 lessons I learned the hard way:\n\n1. Clients do not care about code. They care about results. I used to explain my tech stack. Now I explain how many leads they will get.\n\n2. Communication wins deals. The fastest reply gets the job. I respond to every inquiry within 30 minutes. That alone puts me ahead of most agencies.\n\n3. Scope creep is real. You say one revision and suddenly you are redesigning the whole site for free. Now I define exactly what is included upfront.\n\n4. Bilingual is not optional in SoCal. Half of my clients' customers prefer Spanish. Building bilingual is not a feature, it is a requirement.\n\n5. Recurring revenue changes everything. A one-time build is great. A monthly subscription for hosting, updates, and support is how you build a real business.\n\nEvery single one of these lessons cost me time, stress, or money to learn. I am sharing them so you do not have to repeat my mistakes.\n\nWhat is the biggest lesson your business taught you? Drop it below.`,
+        hashtags: "#BusinessLessons #YoungEntrepreneur #FounderStory #StartupLife #19YearOldCEO #GenZEntrepreneur #ElevationAI #LearnedTheHardWay",
+        visual: "Minimal design: numbered list on dark background with subtle gradient. Each lesson as a one-liner. Founder photo in the corner. Clean, quote-style graphic."
+    },
+    {
+        day: 20, date: "Sat, Apr 18", type: "reel", tag: "Reel", tagClass: "tag-reel",
+        title: "What $200/mo gets you vs $2000 agency",
+        time: "10:00 AM PST",
+        format: "Reel (45 seconds)",
+        caption: `The $2,000 agency vs the $200/month agency. Who wins?\n\nLet me show you exactly what you get from each.\n\nThe $2,000 agency:\n- WordPress template site\n- Takes 4-6 weeks to deliver\n- Generic stock photos\n- You pay again for every update\n- No AI tools\n- No bilingual support\n\nThe $200/month ElevationAI plan:\n- Custom coded site built in 48 hours\n- AI-powered tools (calculators, booking, quotes)\n- Bilingual English and Spanish\n- Monthly updates included\n- SEO optimization included\n- Direct communication with the developer (me)\n\nI am not saying every agency is bad. I am saying value should match price.\n\nMy clients pay a fraction of what traditional agencies charge and get a better product with ongoing support.\n\nThe game has changed. Small businesses deserve better than overpriced templates.\n\nLink in bio to see real examples.`,
+        hashtags: "#AgencyComparison #WebDesign #SmallBusinessTips #ValueForMoney #ElevationAI #AffordableWebDesign #ReelsTrending #TechStartup",
+        visual: "Split screen reel: left side (red tint) shows frustrating template-building process. Right side (cyan tint) shows fast, clean ElevationAI build. Side-by-side comparison cards pop up. Trending audio."
+    },
+    {
+        day: 21, date: "Sun, Apr 19", type: "cta", tag: "CTA Post", tagClass: "tag-cta",
+        title: "Book a free strategy call",
+        time: "11:00 AM PST",
+        format: "Single Image",
+        caption: `I am opening up 5 free strategy calls this week for small business owners who are serious about leveling up their online presence.\n\nHere is what we will cover in 15 minutes:\n\n1. Where your business currently stands online\n2. What your competitors are doing that you are not\n3. The 3 highest-impact changes you can make right now\n4. Whether a custom website or AI tool makes sense for your business\n5. A realistic timeline and budget to get it done\n\nThis is not a sales call disguised as a consultation. I genuinely enjoy helping business owners see what is possible with modern web technology.\n\nWho is this for:\n- Contractors who want more residential leads\n- Loan officers who want faster response tools\n- Any service business in SoCal without a website\n- Business owners whose current site is outdated\n\nWho is this not for:\n- People who just want a logo (not my thing)\n- Businesses outside the US (for now)\n\nComment CALL below or DM me to grab one of the 5 spots.\n\nFirst come, first served. I will follow up within the hour.`,
+        hashtags: "#FreeConsultation #StrategyCall #SmallBusinessHelp #ElevationAI #SanchezElevationAI #SoCalBusiness #NorwalkCA #BusinessGrowth",
+        visual: "Calendar/booking style graphic on dark background. 5 SPOTS OPEN text with numbered slots. Urgency design elements. Professional but approachable."
+    },
+
+    // ===== WEEK 4 =====
+    {
+        day: 22, date: "Mon, Apr 20", type: "portfolio", tag: "Portfolio Showcase", tagClass: "tag-portfolio",
+        title: "Landscaping company site",
+        time: "11:00 AM PST",
+        format: "Single Image",
+        caption: `Fresh deploy: a landscaping company website that actually looks as good as the yards they build.\n\nMost landscaper websites look like they were made in 2010. Stock photos of grass, basic contact form, zero personality. That is a missed opportunity.\n\nThis build focuses on:\n- High-impact hero with real project photography\n- Service breakdown (hardscape, softscape, maintenance, design)\n- Before and after project gallery\n- Free estimate request form with project type selector\n- Service area map for local SEO\n- Fully bilingual for the SoCal market\n\nThe landscaping industry is booming in Southern California. Homeowners are spending thousands on outdoor spaces. But they are choosing the company with the best online presence, not necessarily the best work.\n\nIf your work is incredible but your website does not reflect that, you are losing to competitors who invested in their digital presence.\n\nYour website should be your best salesperson. It works 24/7, never calls in sick, and never forgets the pitch.\n\nDM me LANDSCAPE to see this one live.`,
+        hashtags: "#LandscapingBusiness #WebDesign #ElevationAI #SoCalBusiness #ModernWebsite #ContractorWebsite #DarkModeDesign #SanchezElevationAI",
+        visual: "Landscaping website on iPad and phone mockups. Beautiful outdoor/garden imagery in the background. Clean composition showing the site's dark theme against natural elements."
+    },
+    {
+        day: 23, date: "Tue, Apr 21", type: "value", tag: "Value Post", tagClass: "tag-value",
+        title: "Google My Business optimization tips",
+        time: "12:00 PM PST",
+        format: "Carousel (4 slides)",
+        caption: `Google My Business is free and most small businesses are not using it correctly.\n\nHere are 4 things you should do right now to start showing up in local searches.\n\nTip 1: Complete every single field. Business name, address, phone, hours, website, services, description. Google ranks completed profiles higher. If any field is blank, fill it today.\n\nTip 2: Add photos every single week. Businesses with photos get 42% more direction requests and 35% more website clicks. Take photos of your work, your team, your location. Post them regularly.\n\nTip 3: Get reviews and respond to every one. Reviews are the number one local ranking factor. Ask every happy customer. And respond to every review, good or bad. Google watches this.\n\nTip 4: Post updates weekly. Google My Business has a post feature that most people ignore. Use it like a mini blog. Share projects, offers, and updates. It signals to Google that your business is active.\n\nDo these 4 things consistently for 30 days and watch your local visibility increase.\n\nNeed help setting this up? I include GMB optimization with every website build.\n\nSave this for later.`,
+        hashtags: "#GoogleMyBusiness #LocalSEO #SmallBusinessTips #SEOTips #DigitalMarketing #ElevationAI #OrangeCountyBusiness #LASmallBusiness",
+        visual: "Carousel format: each slide covers one tip with a Google Maps style mockup showing improved visibility. Clean numbered design (1/4, 2/4, etc.). Dark theme, green accent for Google branding."
+    },
+    {
+        day: 24, date: "Wed, Apr 22", type: "bts", tag: "Behind the Scenes", tagClass: "tag-bts",
+        title: "My actual tech stack",
+        time: "6:00 PM PST",
+        format: "Single Image",
+        caption: `People always ask what tools I use to build sites in 48 hours. Here is my complete tech stack.\n\nCode editor: VS Code with a custom dark theme (obviously)\n\nLanguages: HTML, CSS, JavaScript. No frameworks for most client sites. Clean, fast, lightweight code that loads in under 2 seconds.\n\nAI tools: Claude for brainstorming, code assistance, and content. I use AI to accelerate, not replace, the creative process.\n\nDesign: Figma for wireframes when needed. Most of the time I design directly in code because it is faster.\n\nHosting: GitHub Pages for static sites, Netlify for anything needing backend.\n\nVersion control: Git for everything. Every change is tracked, nothing gets lost.\n\nAnalytics: Google Analytics 4 with custom event tracking. I track quote generations, phone calls, form submissions.\n\nSEO: Manual optimization, proper meta tags, schema markup, local business structured data.\n\nThat is it. No bloated tech stack. No expensive subscriptions. Just efficient tools and fast execution.\n\nThe magic is not in the tools. It is in knowing how to use them at speed.\n\nWhat is in your tech stack?`,
+        hashtags: "#TechStack #WebDeveloper #CodingLife #VSCode #BuildInPublic #BehindTheScenes #ElevationAI #DeveloperSetup",
+        visual: "Tech stack infographic: icons for each tool arranged in a clean layout on dark background. VS Code, HTML/CSS/JS logos, GitHub, Google Analytics icons. Organized, visual, shareable."
+    },
+    {
+        day: 25, date: "Thu, Apr 23", type: "casestudy", tag: "Case Study", tagClass: "tag-casestudy",
+        title: "Bilingual site impact",
+        time: "12:00 PM PST",
+        format: "Single Image",
+        caption: `Adding a Spanish toggle to a client's website changed everything.\n\nSouthern California has one of the largest Spanish-speaking populations in the country. Yet most local business websites are English only. That is a massive blind spot.\n\nWhen I added a full bilingual toggle to a loan officer's quote tool, here is what happened:\n\n- 35% of all quote tool interactions switched to Spanish mode\n- Average time on site increased significantly for Spanish-language visitors\n- The client received leads from borrowers who said they felt more comfortable using the tool in their language\n\nThink about that. Over a third of potential customers preferred to interact in Spanish. Without the toggle, those leads might have gone to a competitor who spoke their language.\n\nEvery ElevationAI website for SoCal businesses includes bilingual support as a standard feature, not an upsell. Because in this market, it is not a nice-to-have. It is a business necessity.\n\nIs your website only speaking to half your market?\n\nDM me and let us fix that.`,
+        hashtags: "#BilingualWebsite #SpanishToggle #SoCalBusiness #LocalBusiness #ElevationAI #WebDesign #InclusiveDesign #LoanOfficerMarketing",
+        visual: "Side by side of the EN and ES versions of the quote tool. Language toggle button highlighted. Clean comparison layout on dark background."
+    },
+    {
+        day: 26, date: "Fri, Apr 24", type: "founder", tag: "Founder Story", tagClass: "tag-founder",
+        title: "Biggest mistake so far",
+        time: "5:00 PM PST",
+        format: "Single Image",
+        caption: `My biggest mistake in business so far was building in silence.\n\nFor the first few months of ElevationAI, I told nobody what I was doing. I was heads down building demo sites, learning new tech, perfecting my process. But I was not sharing any of it.\n\nNo social media. No outreach. No content. Nothing.\n\nI thought the work would speak for itself. I thought people would just find me.\n\nThat is not how business works.\n\nThe truth is: nobody cares about your skills if they do not know you exist. You can be the best web developer in your city and still have zero clients if nobody knows about you.\n\nThe day I started sharing my work online, everything changed. I posted a demo site on Instagram. Someone saw it. They told a friend. That friend became a client. That client referred another.\n\nNow I share everything. Every build. Every process. Every lesson. Because building in public is the most powerful marketing strategy that exists.\n\nIf you are building something in silence right now, this is your sign to start sharing today.\n\nWhat is one thing you have been keeping to yourself that you should be sharing?`,
+        hashtags: "#BuildInPublic #FounderLessons #YoungEntrepreneur #StartupLife #GenZEntrepreneur #ElevationAI #ContentMarketing #19YearOldCEO",
+        visual: "Split graphic: left side is dark/empty (silence), right side is bright/connected (sharing). Metaphorical design. Simple, clean, emotional."
+    },
+    {
+        day: 27, date: "Sat, Apr 25", type: "reel", tag: "Reel", tagClass: "tag-reel",
+        title: "Client site vs template site",
+        time: "10:00 AM PST",
+        format: "Reel (30 seconds)",
+        caption: `Template site vs custom ElevationAI site. The difference is obvious.\n\nWatch this quick comparison and tell me which one you would trust with your money.\n\nThe template site:\n- Same layout as 10,000 other businesses\n- Generic stock photos that scream template\n- Slow loading from bloated code\n- No custom features or tools\n\nThe ElevationAI site:\n- Unique design that matches the brand\n- Real business photography and content\n- Lightning fast load times\n- AI-powered tools built right in\n\nYour website is your first impression. Most customers decide in 3 seconds whether they trust you enough to reach out.\n\nWhich site earns that trust? The one that looks like every other business, or the one that was clearly built with care?\n\nThe answer is obvious.\n\nSend this to a business owner who is still using a template. They need to see this.`,
+        hashtags: "#TemplateVsCustom #WebDesign #ReelsTrending #SmallBusinessTips #ElevationAI #CustomWebsite #DarkModeDesign #QualityMatters",
+        visual: "Side by side scroll reel: generic Wix/Squarespace template on the left (with exaggerated stock photos), custom ElevationAI site on the right. Same industry, dramatic quality difference. Trending audio."
+    },
+    {
+        day: 28, date: "Sun, Apr 26", type: "cta", tag: "CTA Post", tagClass: "tag-cta",
+        title: "Launch week countdown",
+        time: "11:00 AM PST",
+        format: "Single Image",
+        caption: `We are officially in launch mode.\n\nElevationAI is not just a side project anymore. It is a full-service AI-powered web agency and we are ready to take on new clients.\n\nHere is what we are offering for our official launch:\n\nThe Launch Package:\n- Custom website built in 48 hours\n- Mobile-first responsive design\n- Basic SEO setup and Google My Business\n- One AI-powered tool (booking, quotes, or calculator)\n- Bilingual English and Spanish\n- 30 days of free support\n\nLaunch pricing will only be available for a limited time. After that, rates go up.\n\nIf you have been watching this page and thinking about reaching out, now is the time. I am taking on a limited number of clients at launch pricing because I want every single build to be perfect.\n\nTo claim a launch spot:\n1. DM me your business name and type\n2. I will send you a custom demo within 48 hours\n3. If you love it, we move forward\n\nNo pressure. No contracts. Just results.\n\nDM me LAUNCH to get started.`,
+        hashtags: "#LaunchDay #ElevationAI #SanchezElevationAI #WebDesign #AIAgency #SoCalBusiness #SmallBusinessWebsite #NewBusiness",
+        visual: "Launch announcement graphic. Bold LAUNCHING SOON text with countdown aesthetic. Cyan/purple gradient, ElevationAI logo prominent. Package details in clean list format. Premium and urgent."
+    },
+
+    // ===== WEEK 5 (days 29-30) =====
+    {
+        day: 29, date: "Mon, Apr 27", type: "portfolio", tag: "Portfolio Showcase", tagClass: "tag-portfolio",
+        title: "Full portfolio reveal",
+        time: "11:00 AM PST",
+        format: "Carousel (6 slides)",
+        caption: `18 demo sites. 3 real clients. 1 month of nonstop building. Here is the full ElevationAI portfolio.\n\nSlide through to see every site I have built:\n\n- Construction companies\n- Auto detailing businesses\n- Loan officer tools\n- Handyman services\n- Landscaping companies\n- And more\n\nEvery single site was built with the same philosophy:\n1. Custom code, never templates\n2. Dark modern design that looks premium\n3. Mobile-first because that is where your customers are\n4. AI-powered tools that solve real problems\n5. Bilingual for the SoCal market\n6. Delivered in 48 hours\n\nThis portfolio represents hundreds of hours of work, thousands of lines of code, and a genuine commitment to helping small businesses look and perform their best online.\n\nAnd this is just the beginning. By the end of 2026, I plan to have 50 clients on monthly retainers.\n\nWhich one is your favorite? Comment the number.\n\nDM me if you want to be next.`,
+        hashtags: "#Portfolio #WebDesign #ElevationAI #SanchezElevationAI #18Sites #SmallBusinessWebsite #ModernWebsite #SoCalBusiness",
+        visual: "Carousel: Each slide shows a different demo site on device mockups. Consistent dark presentation. Number each slide. Final slide is CTA with DM prompt. Gallery feel."
+    },
+    {
+        day: 30, date: "Tue, Apr 28", type: "cta", tag: "CTA Post", tagClass: "tag-cta",
+        title: "Official launch announcement",
+        time: "12:00 PM PST",
+        format: "Reel (60 seconds)",
+        caption: `Day 30. We are live. ElevationAI is officially open for business.\n\nThirty days ago I started sharing my work publicly for the first time. Today, I am launching my agency with a portfolio of 21 sites, 3 paying clients, and a stack of AI-powered tools that no other agency my size is building.\n\nHere is what I have learned in 30 days of showing up every single day:\n\n1. Consistency beats perfection. Not every post was amazing. But every post was there.\n2. Your audience grows when you give value first and sell second.\n3. People connect with the person behind the brand, not just the product.\n4. 19 years old is not too young to run a serious business.\n5. The only thing standing between you and your goal is the willingness to start.\n\nTo everyone who followed along, liked, commented, shared, and sent a DM: thank you. This is just the start.\n\nTo every small business owner reading this: your website does not have to be average. It can be extraordinary. And I would love to build it for you.\n\nLink in bio. DM me LAUNCH. Let us go.\n\nMonth one is done. Month two is going to be even bigger.`,
+        hashtags: "#LaunchDay #ElevationAI #SanchezElevationAI #WeAreOpen #AIAgency #WebDesign #19YearOldCEO #GenZEntrepreneur #SmallBusinessWebsite #BuildInPublic",
+        visual: "Cinematic reel: montage of all 30 days of content flashing by. Code. Sites. Late nights. Desk setup. Portfolio shots. Building up energy. Final frame: ElevationAI logo with WE ARE LIVE text. Powerful trending audio."
+    }
+];
+
+// Build calendar
+function buildCalendar() {
+    const grid = document.getElementById('calendarGrid');
+    // Mar 30, 2026 is a Monday, so no empty cells needed at the start
+    // Week 1: Mon-Sun = days 1-7
+    // Week 2: Mon-Sun = days 8-14
+    // Week 3: Mon-Sun = days 15-21
+    // Week 4: Mon-Sun = days 22-28
+    // Week 5: Mon-Tue = days 29-30, then 5 empty
+
+    calendarData.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'day-card';
+        card.onclick = () => openModal(d);
+
+        const borderColors = {
+            portfolio: 'rgba(0,229,255,0.4)',
+            value: 'rgba(168,85,247,0.4)',
+            bts: 'rgba(236,72,153,0.4)',
+            casestudy: 'rgba(34,197,94,0.4)',
+            founder: 'rgba(251,191,36,0.4)',
+            reel: 'rgba(239,68,68,0.4)',
+            cta: 'rgba(99,102,241,0.4)'
+        };
+        card.style.borderLeftColor = borderColors[d.type] || 'var(--border)';
+        card.style.borderLeftWidth = '3px';
+
+        card.innerHTML = `
+            <div class="day-number">${d.day}</div>
+            <div class="day-date">${d.date}</div>
+            <span class="tag ${d.tagClass}">${d.tag}</span>
+            <div class="day-title">${d.title}</div>
+            <div class="day-time">${d.time}</div>
+        `;
+        grid.appendChild(card);
+    });
+
+    // Add empty cells to fill last week
+    for (let i = 0; i < 5; i++) {
+        const empty = document.createElement('div');
+        empty.className = 'day-card empty';
+        grid.appendChild(empty);
+    }
+}
+
+function openModal(d) {
+    const overlay = document.getElementById('modalOverlay');
+    const content = document.getElementById('modalContent');
+
+    content.innerHTML = `
+        <div class="modal-day-number">Day ${d.day} of 30</div>
+        <div class="modal-date">${d.date} &middot; ${d.format}</div>
+        <span class="tag ${d.tagClass}" style="margin-bottom:16px;display:inline-block;">${d.tag}</span>
+        <div class="modal-title">${d.title}</div>
+
+        <div class="modal-section">
+            <div class="modal-section-label">Best Posting Time</div>
+            <div class="modal-time">${d.time}</div>
+        </div>
+
+        <div class="modal-section">
+            <div class="modal-section-label">Caption (ready to copy)</div>
+            <div class="modal-caption" id="captionText">${d.caption}</div>
+            <button class="copy-btn" onclick="copyCaption(this)" style="margin-top:12px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Caption
+            </button>
+        </div>
+
+        <div class="modal-section">
+            <div class="modal-section-label">Hashtags</div>
+            <div class="modal-hashtags" id="hashtagText">${d.hashtags}</div>
+            <button class="copy-btn" onclick="copyHashtags(this)" style="margin-top:12px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                Copy Hashtags
+            </button>
+        </div>
+
+        <div class="modal-section">
+            <div class="modal-section-label">Visual Direction</div>
+            <div class="modal-visual">${d.visual}</div>
+        </div>
+    `;
+
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+});
+
+function copyCaption(btn) {
+    const caption = document.getElementById('captionText').innerText;
+    const hashtags = document.getElementById('hashtagText').innerText;
+    navigator.clipboard.writeText(caption + '\n\n' + hashtags).then(() => {
+        btn.classList.add('copied');
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Copied!`;
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy Caption`;
+        }, 2000);
+    });
+}
+
+function copyHashtags(btn) {
+    const hashtags = document.getElementById('hashtagText').innerText;
+    navigator.clipboard.writeText(hashtags).then(() => {
+        btn.classList.add('copied');
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Copied!`;
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy Hashtags`;
+        }, 2000);
+    });
+}
+
+buildCalendar();
+</script>
+
+</body>
+</html>
