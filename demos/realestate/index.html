@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reyes Realty Group | Diana Reyes — San Gabriel Valley Real Estate</title>
+  <meta name="description" content="Diana Reyes — trusted local real estate expert in the San Gabriel Valley. 10+ years helping families buy, sell, and invest in SoCal real estate." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: #0A0A0B;
+      color: #FAFAFA;
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+
+    /* ─── CSS VARS ─── */
+    :root {
+      --purple: #7B61FF;
+      --purple-light: #9B85FF;
+      --purple-dim: rgba(123,97,255,0.15);
+      --purple-glow: rgba(123,97,255,0.35);
+      --bg: #0A0A0B;
+      --bg-2: #111115;
+      --bg-3: #18181F;
+      --bg-card: #13131A;
+      --border: rgba(255,255,255,0.07);
+      --text: #FAFAFA;
+      --text-muted: #8B8B9A;
+      --text-dim: #5A5A6E;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 14px;
+      --radius-lg: 20px;
+      --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--purple-dim); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--purple); }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 17px;
+      max-width: 540px;
+      margin-top: 14px;
+      line-height: 1.7;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: var(--purple);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--purple-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px var(--purple-glow);
+    }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.18);
+      color: var(--text);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      border-color: var(--purple);
+      color: var(--purple-light);
+      transform: translateY(-2px);
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--purple);
+    }
+    .nav-logo span {
+      color: var(--text);
+      font-weight: 300;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { margin-left: 8px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 20px 32px;
+      z-index: 998;
+      backdrop-filter: blur(18px);
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .mobile-menu ul li a {
+      display: block;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      transition: color var(--transition);
+    }
+    .mobile-menu ul li a:hover { color: var(--purple); }
+    .mobile-menu .btn { width: 100%; justify-content: center; margin-top: 20px; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(123,97,255,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(123,97,255,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 80% 10%, rgba(155,133,255,0.08) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 75%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple-dim);
+      border: 1px solid rgba(123,97,255,0.3);
+      border-radius: 100px;
+      padding: 6px 14px;
+      margin-bottom: 28px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      background: var(--purple);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.85); }
+    }
+    .hero-badge span { font-family: var(--mono); font-size: 12px; color: var(--purple-light); letter-spacing: 0.06em; }
+    .hero-headline {
+      font-size: clamp(36px, 6vw, 70px);
+      font-weight: 900;
+      line-height: 1.07;
+      letter-spacing: -0.035em;
+      margin-bottom: 22px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--purple-light) 0%, #C4B8FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 38px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 52px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .avatar-stack {
+      display: flex;
+    }
+    .avatar-stack .av {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      margin-left: -8px;
+      background: linear-gradient(135deg, var(--purple), #2D1B8E);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+    }
+    .avatar-stack .av:first-child { margin-left: 0; }
+    .hero-trust-text { font-size: 13px; color: var(--text-muted); }
+    .hero-trust-text strong { color: var(--text); }
+    .stars-inline { color: #FFD147; font-size: 13px; }
+
+    /* ─── STATS STRIP ─── */
+    #stats {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 0;
+    }
+    .stats-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+    }
+    .stat-item {
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      padding: 16px 24px;
+      position: relative;
+    }
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 20%; bottom: 20%;
+      width: 1px;
+      background: var(--border);
+    }
+    .stat-num {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #fff 0%, var(--purple-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ─── SECTIONS SHARED ─── */
+    section { padding: 96px 0; }
+    .section-header { margin-bottom: 52px; }
+
+    /* ─── LISTINGS ─── */
+    #listings { background: var(--bg); }
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+    }
+    .listing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .listing-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(123,97,255,0.35);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(123,97,255,0.1);
+    }
+    .listing-img {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+    .listing-img-inner {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .listing-img-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+    }
+    .listing-img-inner .house-icon {
+      position: relative;
+      z-index: 2;
+      opacity: 0.45;
+    }
+    .listing-img-inner .house-icon svg {
+      width: 72px; height: 72px;
+      fill: rgba(255,255,255,0.6);
+    }
+    .card-1 .listing-img-inner::before {
+      background: linear-gradient(135deg, #1A0A3E 0%, #2D1B6E 40%, #7B61FF 100%);
+    }
+    .card-2 .listing-img-inner::before {
+      background: linear-gradient(135deg, #0E1A2B 0%, #1E3A5F 40%, #5B8FCC 100%);
+    }
+    .card-3 .listing-img-inner::before {
+      background: linear-gradient(135deg, #1A1A0A 0%, #3D3B10 40%, #9B9525 100%);
+    }
+    .listing-badge {
+      position: absolute;
+      top: 14px; left: 14px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 3;
+    }
+    .badge-active { background: rgba(52,199,89,0.2); color: #52C759; border: 1px solid rgba(52,199,89,0.4); }
+    .badge-pending { background: rgba(255,159,10,0.2); color: #FF9F0A; border: 1px solid rgba(255,159,10,0.4); }
+    .badge-sold { background: rgba(255,69,58,0.2); color: #FF453A; border: 1px solid rgba(255,69,58,0.4); }
+    .listing-body { padding: 22px; }
+    .listing-price {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+    .listing-address {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .listing-meta {
+      display: flex;
+      gap: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .listing-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+    .listing-meta span svg { flex-shrink: 0; }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--bg-2); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px 26px;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(123,97,255,0.3);
+    }
+    .service-icon {
+      width: 50px; height: 50px;
+      background: var(--purple-dim);
+      border: 1px solid rgba(123,97,255,0.25);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .service-icon svg { width: 24px; height: 24px; color: var(--purple); }
+    .service-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .service-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ─── VALUATION FORM ─── */
+    #valuation { background: var(--bg); }
+    .val-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .val-form-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-group input,
+    .form-group select {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 12px 14px;
+      font-size: 14px;
+      color: var(--text);
+      font-family: inherit;
+      transition: border-color var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(123,97,255,0.15);
+    }
+    .form-group input::placeholder { color: var(--text-dim); }
+    .form-group select option { background: var(--bg-3); color: var(--text); }
+    .form-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 18px;
+      padding: 15px;
+      font-size: 16px;
+    }
+    .val-info .section-title { margin-bottom: 18px; }
+    .val-features { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .val-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .val-features li .check {
+      width: 22px; height: 22px;
+      background: var(--purple-dim);
+      border: 1px solid rgba(123,97,255,0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .val-features li .check svg { width: 12px; height: 12px; color: var(--purple); }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--bg-2); }
+    .about-wrap {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-photo {
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2D1B6E 0%, #7B61FF 50%, #C4B8FF 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .about-photo::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), transparent 60%);
+      z-index: -1;
+    }
+    .about-photo-initials {
+      font-size: 60px;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      color: rgba(255,255,255,0.9);
+    }
+    .about-label { margin-bottom: 12px; }
+    .about-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    .about-bio {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 580px;
+    }
+    .about-bio + .about-bio { margin-top: 14px; }
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .about-tag {
+      padding: 6px 14px;
+      background: var(--purple-dim);
+      border: 1px solid rgba(123,97,255,0.25);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--purple-light);
+    }
+
+    /* ─── REVIEWS ─── */
+    #reviews { background: var(--bg); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color var(--transition);
+    }
+    .review-card:hover { border-color: rgba(123,97,255,0.25); }
+    .review-stars { color: #FFD147; font-size: 16px; letter-spacing: 2px; margin-bottom: 16px; }
+    .review-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reviewer-av {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .reviewer-av-1 { background: linear-gradient(135deg, #2D1B6E, #7B61FF); }
+    .reviewer-av-2 { background: linear-gradient(135deg, #0E2D40, #3A8FCC); }
+    .reviewer-av-3 { background: linear-gradient(135deg, #2D1B0E, #B87333); }
+    .reviewer-name { font-size: 14px; font-weight: 700; }
+    .reviewer-location { font-size: 12px; color: var(--text-dim); margin-top: 2px; font-family: var(--mono); }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--bg-2); }
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; margin-top: 32px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .contact-icon {
+      width: 46px; height: 46px;
+      background: var(--purple-dim);
+      border: 1px solid rgba(123,97,255,0.25);
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 20px; height: 20px; color: var(--purple); }
+    .contact-label-text {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .contact-value { font-size: 15px; font-weight: 600; }
+    .contact-value a:hover { color: var(--purple-light); }
+    .license-box {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-top: 10px;
+    }
+    .license-box .label { margin-bottom: 6px; }
+    .license-num {
+      font-family: var(--mono);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.06em;
+    }
+    .contact-map-placeholder {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 50% 50%, rgba(123,97,255,0.08) 0%, transparent 70%),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, var(--border) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, var(--border) 40px);
+    }
+    .map-pin {
+      position: relative;
+      z-index: 2;
+      width: 52px; height: 52px;
+      background: var(--purple);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(123,97,255,0.5);
+    }
+    .map-pin svg { transform: rotate(45deg); width: 22px; height: 22px; fill: white; }
+    .map-label {
+      position: relative;
+      z-index: 2;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .map-sub {
+      position: relative;
+      z-index: 2;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-left .nav-logo { font-size: 18px; }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 6px;
+    }
+    .footer-right {
+      text-align: right;
+    }
+    .footer-credit {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-credit a {
+      color: var(--purple);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .footer-credit a:hover { color: var(--purple-light); }
+    .footer-disclaimer {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      margin-top: 5px;
+    }
+
+    /* ─── MOBILE BOTTOM BANNER ─── */
+    .bottom-banner {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 990;
+      background: linear-gradient(90deg, #0D0B1A, #13101F);
+      border-top: 1px solid rgba(123,97,255,0.3);
+      padding: 12px 20px;
+      text-align: center;
+    }
+    .bottom-banner p {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+    .bottom-banner a {
+      color: var(--purple);
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .bottom-banner a:hover { color: var(--purple-light); }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .val-wrap { grid-template-columns: 1fr; gap: 36px; }
+      .about-wrap { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .about-photo { margin: 0 auto; }
+      .about-tags { justify-content: center; }
+      .about-bio { max-width: 100%; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 36px; }
+      .footer-right { text-align: left; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 70px 0; }
+      .stat-item:not(:last-child)::after { display: none; }
+      .stats-inner { gap: 4px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .bottom-banner { display: block; }
+      body { padding-bottom: 52px; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .listing-meta { flex-wrap: wrap; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">Reyes<span> Realty</span></a>
+        <ul class="nav-links">
+          <li><a href="#listings">Listings</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#valuation" class="btn btn-primary nav-cta" style="padding:10px 20px;font-size:14px;">Free Consultation</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#listings" onclick="closeMobileMenu()">Listings</a></li>
+      <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
+      <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
+      <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+    <a href="#valuation" class="btn btn-primary" onclick="closeMobileMenu()">Free Consultation</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>San Gabriel Valley Specialist</span>
+        </div>
+        <h1 class="hero-headline">
+          Find Your Perfect Home in the<br />
+          <em>San Gabriel Valley.</em>
+        </h1>
+        <p class="hero-sub">
+          Trusted local expert with 10+ years helping families buy, sell, and invest in SoCal real estate. Bilingual. Driven. Results you can count on.
+        </p>
+        <div class="hero-actions">
+          <a href="#listings" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            See Listings
+          </a>
+          <a href="#valuation" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Free Home Valuation
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="avatar-stack">
+            <div class="av">MR</div>
+            <div class="av">JL</div>
+            <div class="av">AT</div>
+            <div class="av">SV</div>
+          </div>
+          <div class="hero-trust-text">
+            <strong>127 families</strong> served across the SGV &nbsp;<span class="stars-inline">★★★★★</span>&nbsp; <strong>5.0</strong> average rating
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div id="stats">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item reveal">
+          <span class="stat-num">127</span>
+          <div class="stat-label">Homes Sold</div>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num">$89M</span>
+          <div class="stat-label">in Sales Volume</div>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num">10+</span>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num">5.0 ★</span>
+          <div class="stat-label">Client Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED LISTINGS -->
+  <section id="listings">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Featured Properties</div>
+        <h2 class="section-title reveal">Current Listings &amp; Recent Sales</h2>
+        <p class="section-sub reveal">Hand-picked properties across Alhambra, Monterey Park, Rosemead, and surrounding SGV communities.</p>
+      </div>
+      <div class="listings-grid">
+
+        <!-- Card 1 -->
+        <div class="listing-card card-1 reveal">
+          <div class="listing-img">
+            <div class="listing-img-inner">
+              <span class="listing-badge badge-active">Active</span>
+              <div class="house-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9.5L12 3l9 6.5V21H15v-5h-6v5H3V9.5z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="listing-body">
+            <div class="listing-price">$650,000</div>
+            <div class="listing-address">1842 Garfield Ave, Alhambra, CA 91801</div>
+            <div class="listing-meta">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V8l9-6 9 6v14H15v-5H9v5H3z"/></svg>
+                3 Beds
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 18h16M4 6h4v6H4zM12 6h8v6h-8z"/></svg>
+                2 Baths
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                1,340 sqft
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="listing-card card-2 reveal">
+          <div class="listing-img">
+            <div class="listing-img-inner">
+              <span class="listing-badge badge-pending">Pending</span>
+              <div class="house-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9.5L12 3l9 6.5V21H15v-5h-6v5H3V9.5z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="listing-body">
+            <div class="listing-price">$825,000</div>
+            <div class="listing-address">324 Potrero Grande Dr, Monterey Park, CA 91754</div>
+            <div class="listing-meta">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V8l9-6 9 6v14H15v-5H9v5H3z"/></svg>
+                4 Beds
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 18h16M4 6h4v6H4zM12 6h8v6h-8z"/></svg>
+                3 Baths
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                1,820 sqft
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="listing-card card-3 reveal">
+          <div class="listing-img">
+            <div class="listing-img-inner">
+              <span class="listing-badge badge-sold">Sold</span>
+              <div class="house-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9.5L12 3l9 6.5V21H15v-5h-6v5H3V9.5z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="listing-body">
+            <div class="listing-price">$1,100,000</div>
+            <div class="listing-address">7703 Mission Dr, Rosemead, CA 91770</div>
+            <div class="listing-meta">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V8l9-6 9 6v14H15v-5H9v5H3z"/></svg>
+                5 Beds
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 18h16M4 6h4v6H4zM12 6h8v6h-8z"/></svg>
+                3.5 Baths
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                2,610 sqft
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">What I Offer</div>
+        <h2 class="section-title reveal">Full-Service Real Estate,<br />Simplified for You</h2>
+        <p class="section-sub reveal">From first-time buyers to seasoned investors — I guide you every step of the way with local market expertise you can trust.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="service-title">Buyer Representation</div>
+          <p class="service-desc">I'll help you find the right home at the right price. From offer strategy to close of escrow, you'll never navigate the process alone.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="service-title">Seller Services</div>
+          <p class="service-desc">Strategic pricing, professional staging advice, and aggressive marketing to get your home sold fast — and for top dollar.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+          </div>
+          <div class="service-title">Investment Properties</div>
+          <p class="service-desc">From multi-family units to fix-and-flips, I'll identify high-ROI opportunities in the SGV with deep knowledge of local market trends.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="service-title">Free Home Valuation</div>
+          <p class="service-desc">Not sure what your home is worth in today's market? Get a free, no-obligation comparative market analysis delivered to your inbox.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME VALUATION FORM -->
+  <section id="valuation">
+    <div class="container">
+      <div class="val-wrap">
+        <div class="val-info">
+          <div class="label">Free CMA Report</div>
+          <h2 class="section-title reveal">What's Your<br />Home Worth?</h2>
+          <p class="section-sub reveal">Get a free, data-driven home valuation from a local SGV expert. No obligation, no pressure — just real numbers.</p>
+          <ul class="val-features">
+            <li class="reveal">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Comparable sales analysis using live MLS data
+            </li>
+            <li class="reveal">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Personalized report delivered within 24 hours
+            </li>
+            <li class="reveal">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              100% free — no strings attached
+            </li>
+            <li class="reveal">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Bilingual support — Hablamos Español
+            </li>
+          </ul>
+        </div>
+
+        <div class="val-form-box reveal">
+          <div class="label" style="margin-bottom:4px;">Get Your Free Valuation</div>
+          <p style="color:var(--text-muted);font-size:14px;">Fill out the form below and I'll reach out within 24 hours.</p>
+          <form
+            action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="Home Valuation Request - Reyes Realty" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <div class="form-grid">
+              <div class="form-group full">
+                <label for="address">Property Address</label>
+                <input type="text" id="address" name="address" placeholder="123 Main St, Alhambra, CA" required />
+              </div>
+              <div class="form-group">
+                <label for="bedrooms">Bedrooms</label>
+                <select id="bedrooms" name="bedrooms" required>
+                  <option value="" disabled selected>Select</option>
+                  <option value="1">1 Bed</option>
+                  <option value="2">2 Beds</option>
+                  <option value="3">3 Beds</option>
+                  <option value="4">4 Beds</option>
+                  <option value="5">5+ Beds</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="bathrooms">Bathrooms</label>
+                <select id="bathrooms" name="bathrooms" required>
+                  <option value="" disabled selected>Select</option>
+                  <option value="1">1 Bath</option>
+                  <option value="1.5">1.5 Baths</option>
+                  <option value="2">2 Baths</option>
+                  <option value="2.5">2.5 Baths</option>
+                  <option value="3">3 Baths</option>
+                  <option value="3.5">3.5+ Baths</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Maria Rodriguez" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(626) 555-0000" required />
+              </div>
+              <div class="form-group full">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="maria@email.com" required />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Get My Free Valuation
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-wrap">
+        <div class="about-photo">
+          <div class="about-photo-initials">DR</div>
+        </div>
+        <div class="about-text">
+          <div class="label about-label">About Diana</div>
+          <h2 class="about-title reveal">Your SGV Neighbor &amp; Real Estate Expert</h2>
+          <p class="about-bio reveal">
+            With over a decade of experience in San Gabriel Valley real estate, Diana Reyes has built a reputation for honesty, hustle, and results. A lifelong SGV resident, she brings unmatched local knowledge to every transaction — from first-time buyers in Alhambra to multi-family investors in Rosemead.
+          </p>
+          <p class="about-bio reveal" style="margin-top:14px;">
+            Diana is fully bilingual in English and Spanish, making the complex process of buying or selling a home accessible to every family she serves. She's not just your agent — she's your advocate, your advisor, and your neighbor.
+          </p>
+          <div class="about-tags">
+            <span class="about-tag">Bilingual EN/ES</span>
+            <span class="about-tag">SGV Specialist</span>
+            <span class="about-tag">Buyer Rep</span>
+            <span class="about-tag">Seller Strategy</span>
+            <span class="about-tag">Investment Focus</span>
+            <span class="about-tag">10+ Years</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Client Testimonials</div>
+        <h2 class="section-title reveal">What Families Are Saying</h2>
+        <p class="section-sub reveal">Real stories from real clients who found their homes — and peace of mind — with Diana's guidance.</p>
+      </div>
+      <div class="reviews-grid">
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Diana made the whole process feel easy. We were first-time buyers and had no idea what we were doing. She walked us through every step, negotiated hard on our behalf, and we ended up closing $15K under asking. I cannot recommend her enough."</p>
+          <div class="review-author">
+            <div class="reviewer-av reviewer-av-1">MV</div>
+            <div>
+              <div class="reviewer-name">Maria &amp; Carlos Vega</div>
+              <div class="reviewer-location">Bought in Alhambra, CA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"We sold our Monterey Park home in under two weeks and got $40K over asking price. Diana's marketing strategy was unlike anything I'd seen before. Professional, responsive, and just genuinely cares about her clients. Five stars isn't enough."</p>
+          <div class="review-author">
+            <div class="reviewer-av reviewer-av-2">JL</div>
+            <div>
+              <div class="reviewer-name">Jennifer &amp; Kevin Liu</div>
+              <div class="reviewer-location">Sold in Monterey Park, CA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Diana helped me buy my first investment duplex in Rosemead. She knew exactly what to look for, ran the numbers with me, and helped me get the deal done in a competitive market. Already cash flowing. If you want an agent who actually thinks like an investor, call her."</p>
+          <div class="review-author">
+            <div class="reviewer-av reviewer-av-3">AT</div>
+            <div>
+              <div class="reviewer-name">Andre Torres</div>
+              <div class="reviewer-location">Invested in Rosemead, CA</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Get in Touch</div>
+        <h2 class="section-title reveal">Ready to Make Your Move?</h2>
+        <p class="section-sub reveal">Reach out directly — Diana personally responds to every inquiry within 24 hours.</p>
+      </div>
+      <div class="contact-wrap">
+        <div>
+          <div class="contact-info">
+            <div class="contact-item reveal">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012.18 1h3a2 2 0 012 1.72c.13 1 .37 2 .7 2.94a2 2 0 01-.45 2.11L7.09 8a16 16 0 006.91 6.91l.23-.34a2 2 0 012.11-.45c.94.33 1.93.57 2.94.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div class="contact-label-text">Phone</div>
+                <div class="contact-value"><a href="tel:+16265550134">(626) 555-0134</a></div>
+              </div>
+            </div>
+            <div class="contact-item reveal">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-label-text">Email</div>
+                <div class="contact-value"><a href="mailto:diana@reyesrealtygroup.com">diana@reyesrealtygroup.com</a></div>
+              </div>
+            </div>
+            <div class="contact-item reveal">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
+              <div>
+                <div class="contact-label-text">Instagram</div>
+                <div class="contact-value"><a href="https://instagram.com/dianareyes.realtor" target="_blank" rel="noopener">@dianareyes.realtor</a></div>
+              </div>
+            </div>
+            <div class="license-box reveal">
+              <div class="label">CalBRE License</div>
+              <div class="license-num">#01924853</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map-placeholder reveal">
+          <div class="map-pin">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="map-label">San Gabriel Valley, CA</div>
+          <div class="map-sub">Alhambra · Monterey Park · Rosemead · El Monte</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="nav-logo">Reyes<span> Realty Group</span></div>
+          <div class="footer-copy">© 2026 Reyes Realty Group. All rights reserved. CalBRE #01924853</div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-credit">
+            Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">SanchezElevationAI</a>
+          </div>
+          <div class="footer-disclaimer">Powered by SanchezElevationAI · sanchezelevationai.com</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE BOTTOM BANNER -->
+  <div class="bottom-banner">
+    <p>Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">SanchezElevationAI</a> — sanchezelevationai.com</p>
+  </div>
+
+  <script>
+    // ─── HAMBURGER MENU ───
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    });
+
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    // ─── SCROLL REVEAL ───
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger siblings
+          const siblings = entry.target.closest('.listings-grid, .services-grid, .reviews-grid, .stats-inner');
+          if (siblings) {
+            const idx = Array.from(siblings.querySelectorAll('.reveal')).indexOf(entry.target);
+            entry.target.style.transitionDelay = `${idx * 80}ms`;
+          }
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ─── NAV ACTIVE SECTION HIGHLIGHTING ───
+    const sections = document.querySelectorAll('section[id], #stats');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.style.color = link.getAttribute('href') === `#${id}` ? 'var(--text)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => activeObserver.observe(s));
+
+    // ─── SMOOTH SCROLL POLYFILL (for older Safari) ───
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
