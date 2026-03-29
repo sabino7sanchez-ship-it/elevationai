@@ -5,6 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ProFlow Plumbing | Fast Plumbing Fixes in Los Angeles</title>
   <meta name="description" content="Licensed, bonded & insured plumbing in LA County. 24/7 emergency service, drain cleaning, water heaters, leak repair. Call (562) 373-1027." />
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Plumber",
+    "name": "ProFlow Plumbing",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://proflowplumbing.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "312"
+    },
+    "areaServed": ["Los Angeles","Long Beach","Burbank","Glendale","Pasadena","Torrance","Downey","Norwalk","Whittier","Compton"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -1173,6 +1202,29 @@
   </div>
 </section>
 
+<!-- ===== SERVICE AREA ===== -->
+<section style="padding:72px 0;text-align:center;">
+  <div class="container">
+    <div class="section-label">Service Area</div>
+    <h2 class="section-title" style="margin-bottom:12px;">Serving All of LA County — 24/7</h2>
+    <p class="section-sub" style="max-width:540px;margin:0 auto 28px;">Fast dispatch anywhere in Los Angeles County. Our plumbers are always nearby and ready to respond.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:750px;margin:0 auto;">
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Los Angeles</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Long Beach</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Burbank</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Glendale</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Pasadena</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Torrance</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Downey</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Norwalk</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Whittier</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Compton</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Santa Monica</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Inglewood</span>
+    </div>
+  </div>
+</section>
+
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
@@ -1180,6 +1232,7 @@
       <div class="footer-copy">
         ProFlow Plumbing <span>© 2026</span> · Los Angeles, CA · CSLB Lic# C-36 847392
       </div>
+      <div style="color:var(--muted);font-size:12px;margin:6px 0;">Open 24/7/365 · Emergency calls answered immediately · Licensed, Bonded & Insured · Serving all of LA County</div>
       <div class="footer-brand">
         Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">SanchezElevationAI</a> · sanchezelevationai.com
       </div>
@@ -1270,6 +1323,24 @@
     result.classList.add('show');
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
+
+  /* ---- Scroll Animations (IntersectionObserver) ---- */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.section-header, .trust-card, .review-card, .contact-info-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
+  });
 
   /* ---- Smooth Scroll (fallback for older browsers) ---- */
   document.querySelectorAll('a[href^="#"]').forEach(link => {

@@ -4,6 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fresh Cutz Barbershop — Compton, CA</title>
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarberShop",
+    "name": "Fresh Cutz Barbershop",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1823 Central Ave",
+      "addressLocality": "Compton",
+      "addressRegion": "CA",
+      "postalCode": "90221",
+      "addressCountry": "US"
+    },
+    "url": "https://freshcutzbarbershop.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "17:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "187"
+    },
+    "areaServed": ["Compton","Lynwood","Paramount","Carson","Long Beach","Watts","Willowbrook","South Gate"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -1072,6 +1101,79 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════ STATS ═══════════════════════════ -->
+  <div style="padding:48px 24px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;">
+      <div class="fade-up">
+        <div style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--gold);">7+</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;">Years in Business</div>
+      </div>
+      <div class="fade-up">
+        <div style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--gold);">4.9 ★</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;">Google Rating</div>
+      </div>
+      <div class="fade-up">
+        <div style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--gold);">187+</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;">5-Star Reviews</div>
+      </div>
+      <div class="fade-up">
+        <div style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--gold);">5K+</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;">Happy Clients</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ WHY CHOOSE US ═══════════════════════════ -->
+  <section id="why-us" class="section">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:48px;">
+        <div class="tag">Why Fresh Cutz</div>
+        <h2 class="section-title">Why Clients Choose Us</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+        <div class="fade-up" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;">
+          <div style="font-size:28px;margin-bottom:12px;">✂️</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Master Barbers Only</div>
+          <div style="color:var(--muted);font-size:14px;line-height:1.6;">Licensed professionals with 5+ years of experience. Every fade, every lineup — precision guaranteed.</div>
+        </div>
+        <div class="fade-up" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;">
+          <div style="font-size:28px;margin-bottom:12px;">⏱️</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Walk-Ins Welcome</div>
+          <div style="color:var(--muted);font-size:14px;line-height:1.6;">No appointment needed. Walk in any time during business hours and get a fresh cut same day.</div>
+        </div>
+        <div class="fade-up" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;">
+          <div style="font-size:28px;margin-bottom:12px;">🧹</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Clean & Modern Shop</div>
+          <div style="color:var(--muted);font-size:14px;line-height:1.6;">Sanitized tools between every client. Modern equipment, comfortable chairs, good vibes only.</div>
+        </div>
+        <div class="fade-up" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px;">
+          <div style="font-size:28px;margin-bottom:12px;">💯</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Satisfaction Guaranteed</div>
+          <div style="color:var(--muted);font-size:14px;line-height:1.6;">Not happy with your cut? Come back within 48 hours and we'll fix it — no questions asked.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ SERVICE AREA ═══════════════════════════ -->
+  <section style="padding:64px 24px;text-align:center;">
+    <div class="container">
+      <div class="tag">Service Area</div>
+      <h2 class="section-title fade-up" style="margin:16px 0 12px;">Serving Compton & Surrounding Areas</h2>
+      <p class="section-sub fade-up" style="margin:0 auto 28px;max-width:500px;">Clients drive from across South LA for a fresh cut they can count on.</p>
+      <div class="fade-up" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:650px;margin:0 auto;">
+        <span style="background:var(--gold-glow);border:1px solid var(--border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Compton</span>
+        <span style="background:var(--gold-glow);border:1px solid var(--border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Lynwood</span>
+        <span style="background:var(--gold-glow);border:1px solid var(--border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Paramount</span>
+        <span style="background:var(--gold-glow);border:1px solid var(--border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Carson</span>
+        <span style="background:var(--gold-glow);border:1px solid var(--border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Long Beach</span>
+        <span style="background:var(--gold-glow);border:1px solid var(--border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Watts</span>
+        <span style="background:var(--gold-glow);border:1px solid var(--border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Willowbrook</span>
+        <span style="background:var(--gold-glow);border:1px solid var(--border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">South Gate</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════════════════ REVIEWS ═══════════════════════════ -->
   <section id="reviews" class="section">
     <div class="container">
@@ -1217,6 +1319,7 @@
   <footer id="footer">
     <div class="footer-inner">
       <div class="footer-logo">Fresh<span>Cutz</span> Barbershop</div>
+      <div style="color:var(--muted);font-size:12px;margin:8px 0;">Tue–Sat 9AM–7PM · Sun 10AM–5PM · Mon Closed · Walk-Ins Welcome · 1823 Central Ave, Compton, CA</div>
       <div class="footer-copy">
         © 2026 Fresh Cutz Barbershop · Compton, CA<br/>
         Website by <a href="https://sanchezelevationai.com" target="_blank">SanchezElevationAI</a>

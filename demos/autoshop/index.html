@@ -5,6 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Precision Auto Care — Norwalk, CA | Full-Service Auto Repair</title>
   <meta name="description" content="ASE Certified full-service auto repair in Norwalk, CA. Honest pricing, fast turnaround, guaranteed work. Serving Norwalk, Downey & surrounding areas since 2008." />
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Precision Auto Care",
+    "image": "",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "8847 Imperial Hwy",
+      "addressLocality": "Norwalk",
+      "addressRegion": "CA",
+      "postalCode": "90650",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 33.9164,
+      "longitude": -118.0717
+    },
+    "url": "https://precisionautocare.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "07:30", "closes": "18:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "16:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "340"
+    },
+    "areaServed": ["Norwalk","Downey","Whittier","La Mirada","Cerritos","Bellflower","Santa Fe Springs","Pico Rivera"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -1169,11 +1204,33 @@
   </div>
 </section>
 
+<!-- ══ SERVICE AREA ══ -->
+<section id="service-area" style="padding:80px 0;">
+  <div class="container" style="text-align:center;">
+    <span class="section-label">Service Area</span>
+    <h2 class="section-title" style="margin-bottom:16px;">Proudly Serving Southeast Los Angeles County</h2>
+    <p class="section-sub" style="max-width:600px;margin:0 auto 32px;">Trusted by drivers across the 562 and beyond. Convenient location off I-5 with easy access from all surrounding cities.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:700px;margin:0 auto;">
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Norwalk</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Downey</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Whittier</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">La Mirada</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Cerritos</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Bellflower</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Santa Fe Springs</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Pico Rivera</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Artesia</span>
+      <span style="background:var(--gold-glow);border:1px solid var(--gold-border);color:var(--gold);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Lakewood</span>
+    </div>
+  </div>
+</section>
+
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="container">
     <div class="footer-logo">🔧 Precision Auto Care</div>
-    <div class="footer-address">8847 Imperial Hwy, Norwalk, CA 90650 · (562) 373-1027</div>
+    <div class="footer-address">8847 Imperial Hwy, Norwalk, CA 90650 · <a href="tel:+15623731027" style="color:var(--gold);text-decoration:none;">(562) 373-1027</a></div>
+    <div style="color:var(--text-muted);font-size:13px;margin:8px 0;">Mon–Fri 7:30AM–6PM · Sat 8AM–4PM · Sun Closed · Serving Norwalk, Downey, Whittier & surrounding areas</div>
     <div class="footer-links">
       <a href="#services">Services</a>
       <a href="#estimate">Estimate</a>
@@ -1326,6 +1383,24 @@
     }
   }
   checkOpenNow();
+
+  // ── SCROLL ANIMATIONS (IntersectionObserver) ──
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.section-header, .trust-card, .review-card, #service-area .container').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
+  });
 
   // ── SMOOTH SCROLL (fallback for older browsers) ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {

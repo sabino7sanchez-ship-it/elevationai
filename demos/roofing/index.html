@@ -5,6 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Summit Roofing Co. | San Fernando Valley, CA — Licensed Roofing Contractor</title>
   <meta name="description" content="Summit Roofing Co. — San Fernando Valley's trusted roofing contractor. New roofs, repairs, re-roofing, flat roofs, gutters, and storm damage restoration. Licensed, insured, and financing available. Lic# C-39 892341." />
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RoofingContractor",
+    "name": "Summit Roofing Co.",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Fernando Valley",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://summitroofingco.com",
+    "priceRange": "$$$",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "19:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "248"
+    },
+    "areaServed": ["Chatsworth","Northridge","Van Nuys","Burbank","Glendale","Reseda","Canoga Park","Thousand Oaks","Woodland Hills"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -1150,6 +1176,29 @@
 </section>
 
 <!-- ══════════════════════════════
+     SERVICE AREA
+══════════════════════════════ -->
+<section style="padding:72px 0;text-align:center;">
+  <div class="container">
+    <span class="section-label">Service Area</span>
+    <h2 class="section-title" style="margin-bottom:12px;">Protecting Roofs Across LA & Ventura Counties</h2>
+    <p class="section-sub" style="max-width:560px;margin:0 auto 28px;">From the San Fernando Valley to the coast — Summit serves homeowners and businesses throughout the region.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:750px;margin:0 auto;">
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Chatsworth</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Northridge</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Van Nuys</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Burbank</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Glendale</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Woodland Hills</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Thousand Oaks</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Reseda</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Canoga Park</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Simi Valley</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
      FOOTER
 ══════════════════════════════ -->
 <footer>
@@ -1162,6 +1211,7 @@
         Website by <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">SanchezElevationAI</a> · <a href="https://sanchezelevationai.com" target="_blank" rel="noopener">sanchezelevationai.com</a>
       </div>
     </div>
+    <div style="color:var(--text-muted);font-size:12px;margin:8px 0;text-align:center;">Mon–Sat 7AM–7PM · 24/7 Emergency Line · Free Inspections · Financing Available</div>
     <p class="footer-lic">Summit Roofing Co. is a licensed roofing contractor in the state of California (CSLB License C-39 #892341). All work is performed by W-2 employees and backed by manufacturer and labor warranties. Serving Los Angeles and Ventura Counties since 2007.</p>
   </div>
 </footer>
@@ -1217,6 +1267,24 @@
         window.scrollTo({ top, behavior: 'smooth' });
       }
     });
+  });
+
+  // ── Scroll Animations (IntersectionObserver) ──
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.service-card, .why-card, .review-card, .contact-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
   });
 
   // ── Form feedback ──
