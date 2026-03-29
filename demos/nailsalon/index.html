@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxe Nails & Spa — Arcadia, CA</title>
+  <meta name="description" content="Luxury manicures, pedicures, and nail art in a relaxing spa environment. Located in Arcadia, CA. Book your appointment today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink: #FF69B4;
+      --pink-light: #FFB3D9;
+      --pink-dark: #E0509A;
+      --pink-glow: rgba(255, 105, 180, 0.25);
+      --purple: #9B59B6;
+      --purple-deep: #6C3483;
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #17171C;
+      --bg4: #1E1E25;
+      --border: rgba(255,105,180,0.15);
+      --text: #F5F0F5;
+      --text-muted: #8B8098;
+      --text-soft: #C4B8C4;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─────────────────────────────────────
+       SCROLLBAR
+    ───────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--pink-dark); border-radius: 3px; }
+
+    /* ─────────────────────────────────────
+       SELECTION
+    ───────────────────────────────────── */
+    ::selection { background: var(--pink); color: var(--bg); }
+
+    /* ─────────────────────────────────────
+       NAV
+    ───────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 11, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition);
+    }
+
+    .nav-logo {
+      font-family: var(--font);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--pink);
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-logo span { color: var(--text); font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--pink); }
+
+    .btn-nav {
+      background: var(--pink);
+      color: var(--bg);
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all var(--transition);
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-nav:hover {
+      background: var(--pink-light);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px var(--pink-glow);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 1100;
+    }
+    .hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      display: block;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 70px;
+      background: rgba(10, 10, 11, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text);
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--pink); }
+    .mobile-menu .btn-nav { font-size: 1.1rem; padding: 14px 36px; }
+
+    /* ─────────────────────────────────────
+       HERO
+    ───────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 100px 24px 120px;
+    }
+
+    /* Gradient mesh background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 20%, rgba(155, 89, 182, 0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 20% 70%, rgba(255, 105, 180, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 70% at 80% 80%, rgba(108, 52, 131, 0.18) 0%, transparent 50%),
+        radial-gradient(ellipse 90% 90% at 50% 50%, rgba(17, 17, 20, 0.6) 0%, rgba(10, 10, 11, 0.9) 100%);
+      z-index: 0;
+    }
+
+    /* Floating orbs */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .orb1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,105,180,0.5), transparent 70%);
+      top: -100px; right: -100px;
+      animation: floatOrb 8s ease-in-out infinite;
+    }
+    .orb2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(155,89,182,0.5), transparent 70%);
+      bottom: -80px; left: -80px;
+      animation: floatOrb 10s ease-in-out infinite reverse;
+    }
+    .orb3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,182,193,0.4), transparent 70%);
+      top: 40%; left: 50%;
+      animation: floatOrb 12s ease-in-out infinite 2s;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.97); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 105, 180, 0.12);
+      border: 1px solid rgba(255, 105, 180, 0.35);
+      color: var(--pink-light);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 8px; height: 8px;
+      background: var(--pink);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,105,180,0.7); opacity: 1; }
+      50% { box-shadow: 0 0 0 6px rgba(255,105,180,0); opacity: 0.8; }
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--pink) 0%, #E040FB 60%, var(--pink-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text-soft);
+      max-width: 520px;
+      margin-bottom: 40px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink) 0%, #E040FB 100%);
+      color: #fff;
+      padding: 15px 32px;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all var(--transition);
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      box-shadow: 0 4px 20px rgba(255,105,180,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255,105,180,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      padding: 14px 30px;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      transition: all var(--transition);
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      border-color: var(--pink);
+      color: var(--pink);
+      background: rgba(255,105,180,0.06);
+    }
+
+    /* Hero stats strip */
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--pink);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─────────────────────────────────────
+       SECTION BASE
+    ───────────────────────────────────── */
+    section {
+      padding: 100px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--pink);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 60px;
+    }
+
+    /* ─────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────── */
+    #services {
+      background: var(--bg2);
+      max-width: 100%;
+      padding: 100px 24px;
+    }
+    #services .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,105,180,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .service-card:hover {
+      border-color: rgba(255,105,180,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(255,105,180,0.1);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-emoji {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .service-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .service-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .service-price {
+      font-family: var(--mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--pink);
+      background: rgba(255,105,180,0.1);
+      padding: 4px 12px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────
+       GALLERY
+    ───────────────────────────────────── */
+    #gallery { background: var(--bg); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-card {
+      aspect-ratio: 3/4;
+      border-radius: var(--radius-sm);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--transition);
+    }
+    .gallery-card:hover { transform: scale(1.02); }
+    .gallery-card:hover .gallery-overlay { opacity: 1; }
+
+    /* Unique gradient per card */
+    .gc1 { background: linear-gradient(145deg, #1A0829 0%, #6C1A5A 40%, #E040FB 100%); }
+    .gc2 { background: linear-gradient(145deg, #0D0A1A 0%, #4A1A7A 40%, #9B59B6 100%); }
+    .gc3 { background: linear-gradient(145deg, #1A0812 0%, #8B1557 40%, #FF69B4 100%); }
+    .gc4 { background: linear-gradient(145deg, #0A0D1A 0%, #1A2A6C 40%, #7B68EE 100%); }
+    .gc5 { background: linear-gradient(145deg, #1A0520 0%, #7B0D5A 40%, #DA70D6 100%); }
+    .gc6 { background: linear-gradient(145deg, #0A1A15 0%, #1A5A4A 35%, #40E0D0 80%, rgba(255,105,180,0.4) 100%); }
+    .gc7 { background: linear-gradient(145deg, #1A0A0A 0%, #7A1A3A 40%, #FF8FAB 100%); }
+    .gc8 { background: linear-gradient(145deg, #12091A 0%, #5A1A8A 40%, #C77DFF 100%); }
+
+    /* Decorative nail dots inside gallery cards */
+    .gallery-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle 60px at 30% 30%, rgba(255,255,255,0.08) 0%, transparent 60%),
+        radial-gradient(circle 40px at 70% 65%, rgba(255,255,255,0.06) 0%, transparent 60%),
+        radial-gradient(circle 80px at 50% 50%, rgba(0,0,0,0.2) 0%, transparent 70%);
+    }
+
+    /* Sparkle decoration */
+    .gallery-card::after {
+      content: '✦';
+      position: absolute;
+      top: 14px; right: 14px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      opacity: 0.7;
+      transition: opacity var(--transition);
+    }
+    .gallery-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Decorative nail art patterns on cards */
+    .nail-art {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0.15;
+    }
+    .nail-art-row {
+      display: flex;
+      gap: 8px;
+    }
+    .nail {
+      width: 18px;
+      height: 26px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 50% 50% 40% 40% / 40% 40% 35% 35%;
+      position: relative;
+    }
+    .nail::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      right: 20%;
+      height: 35%;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+    }
+
+    /* ─────────────────────────────────────
+       BOOKING
+    ───────────────────────────────────── */
+    #book {
+      background: var(--bg2);
+      max-width: 100%;
+      padding: 100px 24px;
+    }
+    #book .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .booking-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 64px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,105,180,0.3), rgba(155,89,182,0.3), transparent 60%);
+      z-index: -1;
+    }
+    .booking-card::after {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,105,180,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .booking-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .booking-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--pink), #E040FB);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .booking-sub {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+    .booking-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-call {
+      color: var(--text-soft);
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .btn-call:hover { color: var(--pink); }
+
+    /* ─────────────────────────────────────
+       REVIEWS
+    ───────────────────────────────────── */
+    #reviews { background: var(--bg); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      position: relative;
+      transition: all var(--transition);
+    }
+    .review-card:hover {
+      border-color: rgba(255,105,180,0.3);
+      transform: translateY(-3px);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .star { color: var(--pink); font-size: 1rem; }
+
+    .review-text {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+    .av1 { background: linear-gradient(135deg, var(--pink), #E040FB); }
+    .av2 { background: linear-gradient(135deg, #7B68EE, var(--purple)); }
+    .av3 { background: linear-gradient(135deg, #FFB347, #FF8FAB); }
+
+    .review-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .review-handle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+
+    .review-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(255,105,180,0.1);
+      border: 1px solid rgba(255,105,180,0.2);
+      color: var(--pink);
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: var(--mono);
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ─────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────── */
+    #contact {
+      background: var(--bg2);
+      max-width: 100%;
+      padding: 100px 24px;
+    }
+    #contact .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,105,180,0.1);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item-text { display: flex; flex-direction: column; gap: 3px; }
+    .contact-label {
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      color: var(--pink);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .contact-value {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .contact-value a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .contact-value a:hover { color: var(--pink); }
+
+    /* Hours table */
+    .hours-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .hours-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--pink);
+      margin-bottom: 20px;
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.9rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--text-soft); }
+    .hours-time { color: var(--text); font-weight: 600; font-family: var(--mono); }
+
+    /* Map placeholder */
+    .map-placeholder {
+      background: var(--bg4);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .map-placeholder .map-icon { font-size: 2rem; }
+
+    /* ─────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px 100px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--pink);
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--text-muted); font-weight: 300; }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--pink); }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .footer-copy a {
+      color: var(--pink);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-copy a:hover { text-decoration: underline; }
+
+    .footer-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      margin: 20px auto;
+      border-radius: 1px;
+    }
+
+    /* ─────────────────────────────────────
+       MOBILE BOTTOM BANNER
+    ───────────────────────────────────── */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      background: rgba(10, 10, 11, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+      gap: 12px;
+    }
+    .mobile-cta-bar a {
+      flex: 1;
+      text-align: center;
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .mobile-cta-book {
+      background: linear-gradient(135deg, var(--pink), #E040FB);
+      color: #fff;
+    }
+    .mobile-cta-call {
+      background: var(--bg4);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ─────────────────────────────────────
+       ANIMATIONS / MISC
+    ───────────────────────────────────── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+    .delay-4 { animation-delay: 0.5s; }
+
+    /* Divider line */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* Pink gradient text utility */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--pink) 0%, #E040FB 60%, var(--pink-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-links + .btn-nav { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 80px 20px 100px; min-height: 100svh; }
+      .hero h1 { font-size: 2.8rem; }
+      .hero-stats { gap: 28px; }
+      .stat-num { font-size: 1.4rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .booking-card { padding: 40px 24px; }
+      .booking-title { font-size: 2rem; }
+
+      section { padding: 70px 20px; }
+      #services, #book, #contact { padding: 70px 20px; }
+
+      .mobile-cta-bar { display: flex; }
+
+      footer { padding-bottom: 100px; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════ -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Luxe <span>Nails&nbsp;&amp;&nbsp;Spa</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn-nav">Book Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#gallery" onclick="closeMenu()">Gallery</a>
+    <a href="#book" onclick="closeMenu()">Book</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn-nav" onclick="closeMenu()">Book Now</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+    <div class="hero-orb orb3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge fade-in">
+        <span class="badge-dot"></span>
+        Now Accepting Bookings
+      </div>
+
+      <h1 class="fade-in delay-1">
+        Nails That<br /><em>Turn Heads.</em>
+      </h1>
+
+      <p class="fade-in delay-2">
+        Luxury manicures, pedicures, and nail art in a relaxing spa environment. Located in the heart of Arcadia, CA.
+      </p>
+
+      <div class="hero-ctas fade-in delay-3">
+        <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn-primary">
+          Book Your Appointment
+        </a>
+        <a href="#gallery" class="btn-outline">See Our Work</a>
+      </div>
+
+      <div class="hero-stats fade-in delay-4">
+        <div class="stat-item">
+          <span class="stat-num">500+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">5.0★</span>
+          <span class="stat-label">Google Rating</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">8+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Sanitary Tools</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════ -->
+  <section id="services">
+    <div class="inner">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Treatments &amp; Pricing</h2>
+      <p class="section-sub">Every service uses professional-grade products, sterilized tools, and the gentle touch you deserve.</p>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <span class="service-emoji">💅</span>
+          <div class="service-top">
+            <span class="service-name">Classic Manicure</span>
+            <span class="service-price">$25</span>
+          </div>
+          <p class="service-desc">Nail shaping, cuticle care, buffing, and your choice of regular polish. A timeless must-have refresh.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-emoji">✨</span>
+          <div class="service-top">
+            <span class="service-name">Gel Manicure</span>
+            <span class="service-price">$45</span>
+          </div>
+          <p class="service-desc">Long-lasting UV gel polish that stays chip-free for 2–3 weeks. Glossy, flawless finish every time.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-emoji">💎</span>
+          <div class="service-top">
+            <span class="service-name">Acrylic Full Set</span>
+            <span class="service-price">$55</span>
+          </div>
+          <p class="service-desc">Sculpted acrylic extensions built to your preferred length and shape — almond, coffin, stiletto &amp; more.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-emoji">🌸</span>
+          <div class="service-top">
+            <span class="service-name">Classic Pedicure</span>
+            <span class="service-price">$40</span>
+          </div>
+          <p class="service-desc">Relaxing foot soak, exfoliation, callus removal, massage, and polish. A treat from heel to toe.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-emoji">🌺</span>
+          <div class="service-top">
+            <span class="service-name">Gel Pedicure</span>
+            <span class="service-price">$55</span>
+          </div>
+          <p class="service-desc">All the pampering of our classic pedi with chip-resistant gel polish for lasting color and shine.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-emoji">🎨</span>
+          <div class="service-top">
+            <span class="service-name">Nail Art</span>
+            <span class="service-price">from $10/nail</span>
+          </div>
+          <p class="service-desc">Custom designs — florals, chrome, ombre, French, gems, 3D art &amp; more. Your nails as a canvas.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       GALLERY
+  ═══════════════════════════════════════ -->
+  <section id="gallery">
+    <span class="section-tag">Our Work</span>
+    <h2 class="section-title">Nail Art Gallery</h2>
+    <p class="section-sub">A glimpse into the artistry our technicians bring to every set, every single visit.</p>
+
+    <div class="gallery-grid">
+
+      <div class="gallery-card gc1">
+        <div class="nail-art">
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div><div class="nail"></div>
+          </div>
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div>
+          </div>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-label">French Tips</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gc2">
+        <div class="nail-art">
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div><div class="nail"></div>
+          </div>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-label">Ombre Set</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gc3">
+        <div class="nail-art">
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div>
+          </div>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-label">Custom Nail Art</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gc4">
+        <div class="nail-art">
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div><div class="nail"></div>
+          </div>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-label">Gel Mani</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gc5">
+        <div class="nail-art">
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div>
+          </div>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-label">Chrome Finish</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gc6">
+        <div class="nail-art">
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div><div class="nail"></div>
+          </div>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-label">Floral Design</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gc7">
+        <div class="nail-art">
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div>
+          </div>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-label">Coffin Acrylics</span>
+        </div>
+      </div>
+
+      <div class="gallery-card gc8">
+        <div class="nail-art">
+          <div class="nail-art-row">
+            <div class="nail"></div><div class="nail"></div><div class="nail"></div>
+          </div>
+        </div>
+        <div class="gallery-overlay">
+          <span class="gallery-label">3D Gem Art</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       BOOKING
+  ═══════════════════════════════════════ -->
+  <section id="book">
+    <div class="inner">
+      <div class="booking-card">
+        <span class="section-tag" style="display:block; text-align:center;">Reserve Your Spot</span>
+        <h2 class="booking-title">Ready to <em>Treat Yourself?</em></h2>
+        <p class="booking-sub">Online booking is open 24/7. Pick your service, choose your time, and leave the rest to us.</p>
+        <div class="booking-actions">
+          <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn-primary">
+            Book Your Appointment →
+          </a>
+          <a href="tel:6265550198" class="btn-call">
+            <span style="font-size:1.1rem">📞</span> Or call us: (626) 555-0198
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       REVIEWS
+  ═══════════════════════════════════════ -->
+  <section id="reviews">
+    <span class="section-tag">Client Love</span>
+    <h2 class="section-title">What Our Clients Say</h2>
+    <p class="section-sub">Real reviews from real clients who come back time and time again.</p>
+
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <span class="review-badge">Verified ★ Google</span>
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"Honestly the best nail salon I've been to in the SGV. My gel set lasted a full four weeks without a single chip. Jenny did my ombre and it looks absolutely stunning — I've had so many compliments. The space is so clean and calm, I feel like I'm at a luxury spa every time."</p>
+        <div class="review-author">
+          <div class="review-avatar av1">ML</div>
+          <div>
+            <div class="review-name">Michelle Lim</div>
+            <div class="review-handle">@michellelim · Arcadia, CA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <span class="review-badge">Verified ★ Yelp</span>
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"I came in for a coffin set with 3D floral art for my cousin's wedding and WOW. Everyone in the bridal party wanted to know where I went. The technician took her time and made sure every nail was perfect. Pricing is so fair for the quality. Luxe Nails is my new forever spot."</p>
+        <div class="review-author">
+          <div class="review-avatar av2">SD</div>
+          <div>
+            <div class="review-name">Sofia Delgado</div>
+            <div class="review-handle">@sofiadelgado · Temple City, CA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <span class="review-badge">Verified ★ Google</span>
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"Super clean, super professional, and they use fresh tools every single time — I watched them open sealed packages. My gel pedicure was so relaxing I almost fell asleep. Amy is genuinely talented, she remembered my preferences from last visit without me saying anything. 10/10 every visit."</p>
+        <div class="review-author">
+          <div class="review-avatar av3">YC</div>
+          <div>
+            <div class="review-name">Yuna Chen</div>
+            <div class="review-handle">@yunachen · Monrovia, CA</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════ -->
+  <section id="contact">
+    <div class="inner">
+      <span class="section-tag">Find Us</span>
+      <h2 class="section-title">Visit the Salon</h2>
+      <p class="section-sub">Walk-ins welcome when available. Appointments recommended for the best experience.</p>
+
+      <div class="contact-grid">
+        <div class="contact-info-block">
+
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-text">
+              <span class="contact-label">Location</span>
+              <span class="contact-value">842 W Duarte Rd, Arcadia, CA 91007</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-item-text">
+              <span class="contact-label">Phone</span>
+              <span class="contact-value"><a href="tel:6265550198">(626) 555-0198</a></span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">📸</div>
+            <div class="contact-item-text">
+              <span class="contact-label">Instagram</span>
+              <span class="contact-value"><a href="https://instagram.com/luxenailsspa" target="_blank">@luxenailsspa</a></span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">🗓</div>
+            <div class="contact-item-text">
+              <span class="contact-label">Online Booking</span>
+              <span class="contact-value"><a href="https://calendly.com/sabino-sanchez7/30min" target="_blank">Book at calendly.com</a></span>
+            </div>
+          </div>
+
+          <div class="map-placeholder">
+            <span class="map-icon">🗺</span>
+            <span>842 W Duarte Rd, Arcadia CA 91007</span>
+            <a href="https://maps.google.com/?q=842+W+Duarte+Rd+Arcadia+CA" target="_blank" style="color:var(--pink); font-size:0.82rem; font-weight:600; text-decoration:none;">Open in Google Maps →</a>
+          </div>
+        </div>
+
+        <div class="hours-card">
+          <div class="hours-title">Business Hours</div>
+
+          <div class="hours-row">
+            <span class="hours-day">Monday</span>
+            <span class="hours-time">9:30 AM – 7:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Tuesday</span>
+            <span class="hours-time">9:30 AM – 7:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Wednesday</span>
+            <span class="hours-time">9:30 AM – 7:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Thursday</span>
+            <span class="hours-time">9:30 AM – 7:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Friday</span>
+            <span class="hours-time">9:30 AM – 7:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Saturday</span>
+            <span class="hours-time">9:30 AM – 7:30 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time">10:00 AM – 6:00 PM</span>
+          </div>
+
+          <div style="margin-top:28px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.05);">
+            <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.6;">
+              Walk-ins are always welcome. For evenings and weekends, we recommend booking in advance to secure your preferred technician and time.
+            </p>
+          </div>
+
+          <div style="margin-top:20px;">
+            <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="btn-primary" style="display:block; text-align:center; font-size:0.95rem; padding:14px;">
+              Book Online Now
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-logo">Luxe <span>Nails &amp; Spa</span></div>
+    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">842 W Duarte Rd, Arcadia, CA 91007</p>
+
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#book">Book</a>
+      <a href="#contact">Contact</a>
+      <a href="https://instagram.com/luxenailsspa" target="_blank">Instagram</a>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <p class="footer-copy">
+      Luxe Nails &amp; Spa &copy; 2026 &nbsp;&middot;&nbsp;
+      Website by <a href="https://sanchezelevationai.com" target="_blank">SanchezElevationAI</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://sanchezelevationai.com" target="_blank">sanchezelevationai.com</a>
+    </p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       MOBILE BOTTOM CTA BAR
+  ═══════════════════════════════════════ -->
+  <div class="mobile-cta-bar">
+    <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" class="mobile-cta-book">Book Appointment</a>
+    <a href="tel:6265550198" class="mobile-cta-call">📞 Call Us</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       INLINE JS (hamburger only)
+  ═══════════════════════════════════════ -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const body = document.body;
+
+    hamburger.addEventListener('click', function () {
+      const isOpen = mobileMenu.classList.contains('open');
+      if (isOpen) {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        body.style.overflow = '';
+      } else {
+        mobileMenu.classList.add('open');
+        hamburger.classList.add('active');
+        body.style.overflow = 'hidden';
+      }
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('active');
+      body.style.overflow = '';
+    }
+
+    // Close mobile menu on resize
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) closeMenu();
+    });
+
+    // Scroll-based nav opacity
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(10, 10, 11, 0.97)';
+      } else {
+        navbar.style.background = 'rgba(10, 10, 11, 0.85)';
+      }
+    });
+  </script>
+</body>
+</html>
