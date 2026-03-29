@@ -1126,7 +1126,7 @@ body {
   <a class="nav-logo" href="#">Sanchez<span>ElevationAI</span></a>
   <div class="nav-links">
     <a class="nav-link" href="#work">Work</a>
-    <a class="nav-link" href="/demos.html" style="color:var(--cyan);font-weight:700">Demos</a>
+    <a class="nav-link" href="/demos.html" style="color:var(--neon-cyan);font-weight:700">Demos</a>
     <a class="nav-link" href="#services">Services</a>
     <a class="nav-link" href="#pricing">Pricing</a>
     <a class="nav-link" href="#contact">Contact</a>
@@ -1139,11 +1139,13 @@ body {
 
 <div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
 <div class="mobile-drawer" id="mobileDrawer">
+  <a href="/demos.html" onclick="toggleDrawer()" style="color:var(--neon-cyan);font-weight:700">View All Demos</a>
   <a href="#work" onclick="toggleDrawer()">Work</a>
   <a href="#services" onclick="toggleDrawer()">Services</a>
   <a href="#pricing" onclick="toggleDrawer()">Pricing</a>
+  <a href="#faq" onclick="toggleDrawer()">FAQ</a>
   <a href="#contact" onclick="toggleDrawer()">Contact</a>
-  <a class="nav-cta" href="https://calendly.com/sabino-sanchez7/30min" target="_blank">Book a Free Demo</a>
+  <a class="nav-cta" href="https://calendly.com/sabino-sanchez7/30min" target="_blank">Book a Free Call</a>
 </div>
 
 <!-- ── HERO ── -->
@@ -1162,7 +1164,7 @@ body {
 
   <div class="hero-ctas">
     <a class="btn-primary" href="https://calendly.com/sabino-sanchez7/30min" target="_blank">Book Your Free Demo →</a>
-    <a class="btn-secondary" href="#work">See My Work</a>
+    <a class="btn-secondary" href="/demos.html">Browse 18 Live Demos</a>
   </div>
 
   <div class="hero-trust">
@@ -2169,8 +2171,14 @@ body {
   <div>Built by <a href="https://linkedin.com/in/sabino-sanchez-77401b381" target="_blank" style="color:var(--neon-cyan); text-decoration:none;">Sabino Sanchez</a> &mdash; You deserve it.</div>
 </footer>
 
-<!-- Floating Mobile CTA -->
-<a class="floating-cta" href="https://calendly.com/sabino-sanchez7/30min" target="_blank">Book a Demo</a>
+<!-- Floating Mobile CTAs -->
+<div style="position:fixed;bottom:16px;left:16px;right:16px;z-index:999;display:none;gap:8px" id="floatingBar">
+  <a href="/demos.html" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:14px;background:rgba(0,240,255,.15);border:1px solid rgba(0,240,255,.4);color:#00F0FF;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none;backdrop-filter:blur(20px)">View Demos</a>
+  <a href="#contact" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:14px;background:var(--neon-cyan);color:#000;border-radius:12px;font-weight:700;font-size:14px;text-decoration:none">Get Started</a>
+</div>
+<style>
+@media(max-width:768px){#floatingBar{display:flex!important}}
+</style>
 
 <!-- CALENDLY SCRIPT -->
 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
