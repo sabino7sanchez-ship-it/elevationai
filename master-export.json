@@ -1,0 +1,135 @@
+{
+  "project": "ElevationAI-MasterExport",
+  "version": "1.0",
+  "date": "2026-03-30",
+  "owner": "Sabino Sanchez",
+
+  "active_clients": [
+    {
+      "name": "Allendes Group Inc",
+      "contact": "Santiago Torres Allende",
+      "phone": "(949) 619-0844",
+      "site": "allendes-group.netlify.app",
+      "setup_fee": 500,
+      "paid": 150,
+      "remaining": 350,
+      "payment_schedule": "$100/week",
+      "monthly_maintenance": 100,
+      "status": "active",
+      "pricing_locked": true,
+      "DO_NOT_CHANGE_PRICING": true
+    },
+    {
+      "name": "Bianca Barbosa Photography",
+      "phone": "(333) 504-0034",
+      "site": "sanchezelevationai.com/demos/bianca-photography/",
+      "setup_fee": 0,
+      "status": "free_demo",
+      "notes": "Portfolio piece, bilingual EN/ES"
+    }
+  ],
+
+  "sales_team": {
+    "vp_sales": {
+      "name": "Ever Duarte",
+      "role": "VP of Sales Associates",
+      "training": "sanchezelevationai.com/ever-training.html",
+      "access_code": "6767"
+    },
+    "commission_structure": {
+      "base": 50,
+      "tier_2_threshold": 5,
+      "tier_2_rate": 75,
+      "tier_3_threshold": 10,
+      "tier_3_rate": 100,
+      "growth_bonus": 200,
+      "recruiter_override": 25
+    },
+    "minimum_standards": {
+      "dms_per_day": 10,
+      "walkins_per_week": 3,
+      "daily_checkin_deadline": "9PM PT",
+      "weekly_homework_deadline": "Sunday night"
+    }
+  },
+
+  "pricing": {
+    "starter": {"setup": 1500, "monthly": 200},
+    "growth": {"setup": 2500, "monthly": 400},
+    "full": {"setup": 4000, "monthly": 800},
+    "payment_plans": ["50/50", "40/30/30"],
+    "minimum_deal": 1500,
+    "RULE": "Push Growth ($2500) as default. Stop selling Starter for $100K sprint."
+  },
+
+  "live_assets": {
+    "public": [
+      {"name": "Main Site", "url": "/"},
+      {"name": "All Demos (19)", "url": "/demos.html"},
+      {"name": "Booking Center", "url": "/booking.html"},
+      {"name": "Join the Team", "url": "/#join"},
+      {"name": "Sell My House Fast", "url": "/sell-my-house.html"},
+      {"name": "City SEO Pages (25)", "url": "/locations.html"},
+      {"name": "Bianca Photography", "url": "/demos/bianca-photography/"},
+      {"name": "Art's Pool Service", "url": "/demos/pool-service/"}
+    ],
+    "protected_6767": [
+      {"name": "Sales Training", "url": "/sales-training.html"},
+      {"name": "Ever's Training", "url": "/ever-training.html"},
+      {"name": "Sales Toolkit", "url": "/sales-toolkit.html"},
+      {"name": "CRM", "url": "/crm.html"},
+      {"name": "Invoice Generator", "url": "/invoice.html"},
+      {"name": "Analytics", "url": "/analytics.html"},
+      {"name": "Prospect List", "url": "/prospect-list.html"},
+      {"name": "Cold Email System", "url": "/cold-email-system.html"},
+      {"name": "Growth Plan", "url": "/growth-plan.html"},
+      {"name": "Wholesale RE Guide", "url": "/wholesale-guide.html"},
+      {"name": "Instagram Calendar", "url": "/instagram-calendar.html"},
+      {"name": "University (247 topics)", "url": "/university.html"},
+      {"name": "Allendes Marketing Kit", "url": "/clients/allendes-marketing.html"},
+      {"name": "Agent Command Center", "url": "/company-command-center.html"}
+    ]
+  },
+
+  "automation": {
+    "scheduled_tasks": [
+      {"id": "daily-lead-check", "schedule": "8:08 AM daily", "action": "Scan email for overnight leads, prioritize, brief Sabino"},
+      {"id": "pipeline-builder", "schedule": "6:04 AM Mon-Fri", "action": "Find 10 new prospect businesses for outreach"},
+      {"id": "weekly-revenue-report", "schedule": "7:02 AM Monday", "action": "Full revenue, pipeline, close rate summary"}
+    ],
+    "trading_bot": {
+      "status": "active_paper_mode",
+      "strategies": ["grid", "dca", "rsi"],
+      "pairs": ["BTC-USD", "ETH-USD", "SOL-USD"],
+      "paper_balance_start": 10000,
+      "location": "C:\\Users\\sabin\\OneDrive\\Desktop\\CLAUDE WIP\\trading-ladder-system"
+    },
+    "seo_pages": {
+      "count": 25,
+      "template": "/web-design.html?city=[slug]",
+      "index": "/locations.html"
+    }
+  },
+
+  "tools_installed": [
+    "UI/UX Pro Max (auto-activates on UI work)",
+    "GSD v2.58.0 (spec-driven development)",
+    "Supabase CLI (via npx)"
+  ],
+
+  "goals": {
+    "60_day": "$100K revenue (April-May 2026)",
+    "6_month": "30 employees, $50K/month",
+    "1_year": "100 employees, $500K/month",
+    "real_estate": "First wholesale deal in 30 days, first flip by end of 2026"
+  },
+
+  "rules": {
+    "pricing_override": "REQUIRES_SABINO_APPROVAL",
+    "never_change_existing_client_pricing": true,
+    "revenue_first": true,
+    "demo_before_pitch": true,
+    "automate_everything": true,
+    "teach_sabino_everything": true
+  }
+}
