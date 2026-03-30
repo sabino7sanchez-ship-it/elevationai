@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>ElevationAI — Ever's Training Camp</title>
+<style>
+/* Anti-copy/share protections */
+body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+body.allow-select .script-box{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
+@media print{body *{display:none!important}body::after{content:'This document is confidential. Printing is disabled.';display:block;font-size:24px;text-align:center;padding:100px;color:#000}}
+</style>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -613,6 +620,17 @@ function copyScript(id){
     setTimeout(()=>{btn.textContent='Copy';btn.style.background='';btn.style.color=''},2000);
   });
 }
+
+// Anti-copy protections
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&(e.key==='c'||e.key==='u'||e.key==='s'||e.key==='p'||e.key==='a')){e.preventDefault();return false}
+  if(e.key==='F12'||e.key==='PrintScreen'){e.preventDefault();return false}
+  if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C')){e.preventDefault();return false}
+});
+document.addEventListener('copy',e=>{e.preventDefault();e.clipboardData.setData('text/plain','Content is protected.')});
+// Allow copy ONLY on script boxes (they need copy-to-clipboard)
+document.body.classList.add('allow-select');
 
 document.querySelectorAll('.checklist li').forEach((li,i)=>{
   if(localStorage.getItem('ever_check_'+i)==='done') li.classList.add('done');
