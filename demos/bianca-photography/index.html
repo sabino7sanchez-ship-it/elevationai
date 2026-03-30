@@ -402,8 +402,8 @@ function toggleLang(){
   localStorage.setItem('bianca_lang', currentLang);
 }
 
-// Load saved preference
-if(localStorage.getItem('bianca_lang') === 'es') toggleLang();
+// Default to Spanish, allow switch to English
+if(localStorage.getItem('bianca_lang') !== 'en') toggleLang();
 
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.getElementById('menuOverlay').classList.toggle('open');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('open')?'hidden':''}
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
