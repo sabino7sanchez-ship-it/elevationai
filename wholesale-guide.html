@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wholesale Real Estate Playbook — Sabino's Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08090d;--bg2:#0f1117;--card:rgba(15,17,23,.9);--border:rgba(0,240,255,.1);--cyan:#00f0ff;--green:#22c55e;--red:#ef4444;--gold:#eab308;--purple:#a855f7;--text:#e8eaed;--text2:#8b949e;--text3:#484f58;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+.header{text-align:center;padding:48px 24px 32px;border-bottom:1px solid var(--border)}
+.header h1{font-size:clamp(28px,5vw,42px);font-weight:900}.header h1 span{color:var(--green)}
+.header p{color:var(--text2);font-size:15px;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto}
+.container{max-width:800px;margin:0 auto;padding:24px}
+.section{margin-bottom:36px}
+.section-num{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--green);margin-bottom:4px}
+.section-title{font-size:20px;font-weight:900;margin-bottom:6px}
+.section-sub{color:var(--text2);font-size:14px;margin-bottom:16px;line-height:1.7}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:10px}
+.card h3{font-size:15px;font-weight:800;margin-bottom:8px}
+.card p,.card li{font-size:13px;color:var(--text2);line-height:1.8}
+.card ul{list-style:none;padding:0}
+.card li{padding:4px 0;padding-left:16px;position:relative}
+.card li::before{content:'→';position:absolute;left:0;color:var(--green)}
+.rule-box{background:linear-gradient(135deg,rgba(34,197,94,.06),rgba(0,240,255,.06));border:1px solid rgba(34,197,94,.2);border-radius:12px;padding:20px;margin:12px 0}
+.rule-box h3{color:var(--green);font-size:16px;margin-bottom:8px}
+.rule-box p{font-size:14px;color:var(--text);line-height:1.8}
+.formula{background:var(--bg2);border:1px solid var(--green);border-radius:10px;padding:20px;margin:12px 0;text-align:center}
+.formula-title{font-size:12px;color:var(--green);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.formula-main{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px}
+.formula-sub{font-size:12px;color:var(--text2)}
+.warning{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:16px;margin:12px 0}
+.warning h4{color:var(--red);font-size:14px;margin-bottom:6px}
+.warning p{font-size:13px;color:var(--text2);line-height:1.7}
+.step{display:grid;grid-template-columns:48px 1fr;gap:12px;margin:12px 0;align-items:start}
+.step-num{font-family:var(--mono);font-size:28px;font-weight:900;color:var(--green);text-align:center;line-height:1}
+.step-content h4{font-size:14px;font-weight:800;margin-bottom:4px}
+.step-content p{font-size:13px;color:var(--text2);line-height:1.7}
+.calc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
+.calc h3{font-size:16px;font-weight:800;color:var(--green);margin-bottom:16px}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.calc label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px}
+.calc input{width:100%;padding:10px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:14px}
+.calc input:focus{outline:none;border-color:var(--green)}
+.calc-result{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:8px;padding:16px;margin-top:16px;text-align:center}
+.calc-result-val{font-family:var(--mono);font-size:28px;font-weight:900;color:var(--green)}
+.calc-result-label{font-size:12px;color:var(--text2);margin-top:2px}
+.script-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;margin:10px 0;font-size:13px;line-height:1.8;white-space:pre-wrap;position:relative}
+.copy-btn{position:absolute;top:8px;right:8px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:var(--green);padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:12px 0}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.metric-val{font-family:var(--mono);font-size:22px;font-weight:900;color:var(--green)}
+.metric-label{font-size:10px;color:var(--text2);margin-top:2px;text-transform:uppercase;letter-spacing:1px}
+@media(max-width:600px){.calc-row{grid-template-columns:1fr}.step{grid-template-columns:36px 1fr}.metrics{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Wholesale <span>Real Estate</span> Playbook</h1>
+  <p>Make $5K-$20K per deal without buying property. The complete California guide with contracts, scripts, and deal calculator.</p>
+</header>
+
+<div class="container">
+
+<!-- WHAT IS IT -->
+<div class="section">
+  <div class="section-num">THE BASICS</div>
+  <div class="section-title">What Is Wholesale Real Estate?</div>
+  <div class="rule-box">
+    <h3>The Simple Version</h3>
+    <p>You find a homeowner who wants to sell fast (motivated seller). You put their house under contract at a discount. Then you sell that CONTRACT (not the house) to a cash buyer/investor for a fee. You never own the property. You never need a mortgage. You need $0 to start. Your profit = the assignment fee ($5K-$20K per deal).</p>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-val">$0</div><div class="metric-label">Capital Needed</div></div>
+    <div class="metric"><div class="metric-val">$5-20K</div><div class="metric-label">Per Deal</div></div>
+    <div class="metric"><div class="metric-val">30 days</div><div class="metric-label">Avg Deal Time</div></div>
+    <div class="metric"><div class="metric-val">Legal</div><div class="metric-label">In California</div></div>
+  </div>
+</div>
+
+<!-- THE FORMULA -->
+<div class="section">
+  <div class="section-num">THE MATH</div>
+  <div class="section-title">The Wholesale Formula</div>
+
+  <div class="formula">
+    <div class="formula-title">Maximum Allowable Offer (MAO)</div>
+    <div class="formula-main">MAO = ARV × 70% − Repairs − Your Fee</div>
+    <div class="formula-sub">ARV = After Repair Value (what the house is worth fixed up)</div>
+  </div>
+
+  <div class="card">
+    <h3>Example Deal</h3>
+    <ul>
+      <li>House ARV (fixed up): <strong>$500,000</strong></li>
+      <li>70% of ARV: <strong>$350,000</strong></li>
+      <li>Estimated repairs: <strong>$50,000</strong></li>
+      <li>Your assignment fee: <strong>$15,000</strong></li>
+      <li>MAO (your max offer to seller): <strong>$285,000</strong></li>
+      <li>You contract at $285K → assign to buyer at $300K → you pocket <strong>$15,000</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- DEAL CALCULATOR -->
+<div class="section">
+  <div class="section-num">CALCULATOR</div>
+  <div class="section-title">Wholesale Deal Calculator</div>
+
+  <div class="calc">
+    <h3>Run Your Numbers</h3>
+    <div class="calc-row">
+      <div><label>After Repair Value (ARV)</label><input type="number" id="arv" placeholder="500000" oninput="calcDeal()"></div>
+      <div><label>Estimated Repairs</label><input type="number" id="repairs" placeholder="50000" oninput="calcDeal()"></div>
+    </div>
+    <div class="calc-row">
+      <div><label>Your Assignment Fee</label><input type="number" id="fee" placeholder="15000" value="15000" oninput="calcDeal()"></div>
+      <div><label>Rule % (default 70%)</label><input type="number" id="rule" placeholder="70" value="70" oninput="calcDeal()"></div>
+    </div>
+    <div class="calc-result">
+      <div class="calc-result-label">YOUR MAX OFFER TO SELLER</div>
+      <div class="calc-result-val" id="maoResult">$0</div>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;font-size:12px;text-align:center">
+        <div><div style="color:var(--text2)">Assign Price</div><div style="font-family:var(--mono);font-weight:700" id="assignPrice">$0</div></div>
+        <div><div style="color:var(--text2)">Your Profit</div><div style="font-family:var(--mono);font-weight:700;color:var(--green)" id="yourProfit">$0</div></div>
+        <div><div style="color:var(--text2)">Buyer's Equity</div><div style="font-family:var(--mono);font-weight:700" id="buyerEquity">$0</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8 STEPS -->
+<div class="section">
+  <div class="section-num">THE PROCESS</div>
+  <div class="section-title">8 Steps to Your First Deal</div>
+
+  <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Form Your LLC</h4><p>File with California Secretary of State ($70). Name it something like "Sanchez Property Solutions LLC." This protects you legally and makes you look professional. File your BOI report with FinCEN (required 2026 — $500 penalty if you forget).</p></div></div>
+
+  <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Learn Your Target Markets</h4><p>Your areas: Pico Rivera, Norwalk, Downey, Bellflower, Long Beach, Torrance, Anaheim. Study comps on Zillow/Redfin. Know what houses sell for in each zip code. You need to spot a deal in 30 seconds.</p></div></div>
+
+  <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Build Your Cash Buyers List FIRST</h4><p>Before you find a single deal, build a list of 20+ cash buyers. Search your county recorder for recent cash purchases. Join local REI meetups (REIA). Join BiggerPockets. Post in Facebook groups: "I wholesale off-market properties in [city]. Interested buyers DM me." No buyers = no business.</p></div></div>
+
+  <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Find Motivated Sellers</h4><p><strong>Free methods:</strong> Driving for Dollars (drive neighborhoods, look for distressed properties — overgrown yards, boarded windows, code violations), Craigslist "for sale by owner," Facebook Marketplace, Zillow FSBOs. <strong>Paid methods:</strong> PropStream ($99/mo — pull distressed property lists), direct mail campaigns, PPC ads ("sell my house fast [city]"), bandit signs (check local laws), cold calling absentee owners.</p></div></div>
+
+  <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Talk to the Seller (The Conversation)</h4><p>Your goal: find their pain point and timeline. Ask: "Why are you selling?" "What's your ideal timeline?" "What do you owe on the house?" "Would you be open to a cash offer that closes in 2 weeks?" Be honest — tell them you're an investor. Build rapport. Solve their problem.</p></div></div>
+
+  <div class="step"><div class="step-num">6</div><div class="step-content"><h4>Run the Numbers & Make an Offer</h4><p>Use the calculator above. Pull comps (3-5 similar homes sold in last 6 months within 1 mile). Estimate repairs (use contractor contacts — Santiago can help). Calculate MAO. Make the offer BELOW MAO to leave negotiation room. Always offer in writing.</p></div></div>
+
+  <div class="step"><div class="step-num">7</div><div class="step-content"><h4>Get It Under Contract</h4><p>Use a standard Purchase and Sale Agreement with an assignment clause: "Buyer reserves the right to assign this contract to a third party." Include an inspection period (14-21 days) as your escape clause. Put up $500-$1,000 earnest money deposit (refundable during inspection period).</p></div></div>
+
+  <div class="step"><div class="step-num">8</div><div class="step-content"><h4>Assign the Contract & Get Paid</h4><p>Send the deal to your cash buyers list. First serious buyer gets it. They sign an Assignment of Contract and pay your assignment fee at closing. The title company handles everything — you get a check at the closing table. Done.</p></div></div>
+</div>
+
+<!-- CALIFORNIA LAWS -->
+<div class="section">
+  <div class="section-num">LEGAL</div>
+  <div class="section-title">California Wholesale Laws (2026)</div>
+
+  <div class="card">
+    <h3>What's Legal</h3>
+    <ul>
+      <li>Assigning contracts for a fee — <strong>100% legal</strong> in California</li>
+      <li>No real estate license required (as long as you're assigning YOUR contract, not brokering)</li>
+      <li>Collecting assignment fees at closing</li>
+      <li>Marketing your CONTRACT rights (not the property itself)</li>
+    </ul>
+  </div>
+
+  <div class="warning">
+    <h4>What Can Get You in Trouble</h4>
+    <p><strong>Do NOT:</strong> Market the property as if you own it. Act as a broker between buyer and seller without a license. Do more than 1-2 deals without an LLC. Fail to disclose that you're an investor assigning the contract. Skip the BOI report for your LLC ($500+ fine).</p>
+  </div>
+
+  <div class="card">
+    <h3>Required Disclosures</h3>
+    <ul>
+      <li>Tell the seller: "I am a real estate investor and may assign this contract to another buyer for a profit"</li>
+      <li>Include assignment language in the purchase agreement</li>
+      <li>Disclose your fee if asked (you're not required to volunteer it, but don't lie)</li>
+      <li>Never advertise the property address as "for sale" — you don't own it</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SELLER SCRIPTS -->
+<div class="section">
+  <div class="section-num">SCRIPTS</div>
+  <div class="section-title">Seller Conversation Scripts</div>
+
+  <div class="card">
+    <h3>Cold Call to Property Owner</h3>
+    <div class="script-box" id="sellerCall">
+<button class="copy-btn" onclick="copyScript('sellerCall')">Copy</button>
+"Hi, is this [Owner Name]? My name is Sabino with Sanchez Property Solutions. I'm a local real estate investor and I noticed you own a property at [address].
+
+I'm reaching out because I buy houses in the area for cash, and I was curious — have you ever thought about selling? Or is there any chance you'd consider a fair cash offer?
+
+[IF YES/MAYBE]: Great. I'd love to learn more about the property. Can I ask you a few quick questions?
+- What's the current condition of the house?
+- Are you currently living there or is it a rental?
+- What's your timeline — are you looking to sell soon or just exploring?
+- Do you have a price in mind?
+- Is there a mortgage on it?
+
+[Based on answers, run your numbers and make an offer]
+
+I can typically close in 14-21 days, all cash, and I cover the closing costs. Would you be open to meeting at the property so I can take a look?"</div>
+  </div>
+
+  <div class="card">
+    <h3>Driving for Dollars Script (Knocking on Door)</h3>
+    <div class="script-box" id="doorKnock">
+<button class="copy-btn" onclick="copyScript('doorKnock')">Copy</button>
+"Hey there! My name's Sabino, I'm a local real estate investor. I was driving through the neighborhood and noticed your property. I buy houses in this area for cash, and I wanted to see if you or the owner might be interested in a fair offer.
+
+I know that's kind of out of the blue — but I work with homeowners who want to sell fast without dealing with agents, open houses, or repairs. I buy as-is, close in 2-3 weeks, and cover all closing costs.
+
+Is this something you'd be open to chatting about?"</div>
+  </div>
+
+  <div class="card">
+    <h3>Follow-Up Text After Initial Contact</h3>
+    <div class="script-box" id="sellerText">
+<button class="copy-btn" onclick="copyScript('sellerText')">Copy</button>
+Hey [Name], this is Sabino from Sanchez Property Solutions. We spoke about your property at [address]. I ran some numbers and I'd like to make you a fair cash offer. Would you have 15 minutes this week to chat? I can come to you. No pressure at all — just want to show you what I can do 🤝</div>
+  </div>
+</div>
+
+<!-- BUYER SCRIPTS -->
+<div class="section">
+  <div class="section-num">BUYERS</div>
+  <div class="section-title">Cash Buyer Scripts</div>
+
+  <div class="card">
+    <h3>Message to Potential Cash Buyer</h3>
+    <div class="script-box" id="buyerMsg">
+<button class="copy-btn" onclick="copyScript('buyerMsg')">Copy</button>
+Hey [Name], I'm Sabino with Sanchez Property Solutions. I wholesale off-market properties in [area — Norwalk/Downey/Long Beach/Anaheim].
+
+I've got a property under contract right now:
+📍 [City/Neighborhood]
+🏠 [Beds/Baths/SqFt]
+💰 Contract price: $[X]
+🔧 Est. repairs: $[X]
+📈 ARV: $[X]
+💵 Assignment fee: $[X]
+
+Want me to send you the details? I can also add you to my buyers list for future deals — I send out 2-3 per month.</div>
+  </div>
+
+  <div class="card">
+    <h3>Where to Find Cash Buyers</h3>
+    <ul>
+      <li><strong>County Recorder</strong> — search recent cash purchases in your target zip codes</li>
+      <li><strong>BiggerPockets.com</strong> — join forums, post in marketplace</li>
+      <li><strong>Facebook Groups</strong> — "SoCal Real Estate Investors," "LA County Wholesalers," "Cash Buyers Network"</li>
+      <li><strong>Local REIA Meetings</strong> — Inland Empire REIA, OC REIA, LA REIA</li>
+      <li><strong>Craigslist</strong> — post "Off-market wholesale deal in [city]" in real estate section</li>
+      <li><strong>Instagram</strong> — follow and DM local flippers and investors</li>
+      <li><strong>Santiago (Allendes Construction)</strong> — he knows investors and can estimate repairs for you</li>
+    </ul>
+  </div>
+</div>
+
+<!-- YOUR EDGE -->
+<div class="section">
+  <div class="section-num">YOUR EDGE</div>
+  <div class="section-title">Why You Can Win at This</div>
+
+  <div class="card">
+    <h3>Unfair Advantages You Already Have</h3>
+    <ul>
+      <li><strong>800 credit score at 19</strong> — you can get a real estate license ($300 course + $245 exam) if you decide to scale. Most 19-year-olds can't.</li>
+      <li><strong>Bilingual (English + Spanish)</strong> — MASSIVE advantage. Spanish-speaking homeowners in SoCal are an underserved market. Most wholesalers can't communicate with them.</li>
+      <li><strong>You already know construction costs</strong> — Santiago can estimate repairs for your deals. Most wholesalers guess. You have a real contractor.</li>
+      <li><strong>You build websites</strong> — build yourself a "Sell My House Fast" landing page + run Google Ads. Most wholesalers use ugly bandit signs. You can dominate online.</li>
+      <li><strong>Your target markets are perfect</strong> — Pico Rivera, Norwalk, Downey, Bellflower are all transition neighborhoods with motivated sellers. Not too expensive, not too cheap.</li>
+      <li><strong>You have sales skills now</strong> — everything you learned selling websites applies to talking to sellers. Same framework: open, qualify, offer, handle objections, close.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- FIRST 30 DAYS -->
+<div class="section">
+  <div class="section-num">ACTION PLAN</div>
+  <div class="section-title">Your First 30 Days</div>
+
+  <div class="card">
+    <h3>Week 1: Foundation</h3>
+    <ul>
+      <li>File LLC with California Secretary of State ($70)</li>
+      <li>File BOI report with FinCEN (free, required)</li>
+      <li>Study 50 recent sales in Norwalk/Downey/Pico Rivera on Zillow</li>
+      <li>Join 5 Facebook groups for SoCal real estate investors</li>
+      <li>Create BiggerPockets profile</li>
+      <li>Download PropStream free trial and pull absentee owner list</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Week 2: Build Buyers List</h3>
+    <ul>
+      <li>Search county recorder for 20 recent cash purchases in your zip codes</li>
+      <li>Contact each buyer: "I wholesale off-market properties in [area]. Can I add you to my list?"</li>
+      <li>Attend 1 local REIA meeting or Facebook group meetup</li>
+      <li>Post in 3 Facebook groups: "Looking for cash buyers in LA/OC area"</li>
+      <li>Goal: 20 buyers on your list by end of week 2</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Week 3: Find Sellers</h3>
+    <ul>
+      <li>Drive for Dollars: spend 3 hours driving your target neighborhoods. Write down every distressed property</li>
+      <li>Skip trace the owners (use BatchSkipTracing.com — $0.15/record)</li>
+      <li>Cold call 20 owners from your list</li>
+      <li>Send 10 yellow letters to the most distressed properties</li>
+      <li>Check Craigslist + Facebook Marketplace for FSBO properties</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Week 4: Get Under Contract</h3>
+    <ul>
+      <li>Follow up with every seller from week 3</li>
+      <li>Make 5 offers (expect 1-2 to stick)</li>
+      <li>Get at least 1 property under contract</li>
+      <li>Blast the deal to your buyers list</li>
+      <li>Close and collect your first assignment fee</li>
+    </ul>
+  </div>
+</div>
+
+<!-- COSTS -->
+<div class="section">
+  <div class="section-num">COSTS</div>
+  <div class="section-title">What It Actually Costs to Start</div>
+
+  <div class="card">
+    <ul>
+      <li>LLC filing: <strong>$70</strong></li>
+      <li>PropStream (skip tracing + lists): <strong>$99/mo</strong> (7-day free trial)</li>
+      <li>Earnest money deposits: <strong>$500-$1,000</strong> per deal (refundable during inspection)</li>
+      <li>Driving for Dollars: <strong>gas money</strong></li>
+      <li>BatchSkipTracing: <strong>$0.15/record</strong></li>
+      <li>Marketing (optional): <strong>$200-$500/mo</strong> for direct mail or PPC</li>
+      <li><strong>Total to start: ~$300-$500</strong> (LLC + gas + first skip traces)</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:32px;border-top:1px solid var(--border);font-size:12px;color:var(--text2)">
+  Sabino's Wholesale Playbook | For personal use only<br>
+  <a href="https://sanchezelevationai.com">sanchezelevationai.com</a>
+</footer>
+
+<script>
+function calcDeal(){
+  const arv=parseFloat(document.getElementById('arv').value)||0;
+  const repairs=parseFloat(document.getElementById('repairs').value)||0;
+  const fee=parseFloat(document.getElementById('fee').value)||0;
+  const rule=(parseFloat(document.getElementById('rule').value)||70)/100;
+  const mao=arv*rule-repairs-fee;
+  const assignPrice=mao+fee;
+  const buyerEquity=arv-assignPrice-repairs;
+  document.getElementById('maoResult').textContent='$'+Math.max(0,Math.round(mao)).toLocaleString();
+  document.getElementById('assignPrice').textContent='$'+Math.max(0,Math.round(assignPrice)).toLocaleString();
+  document.getElementById('yourProfit').textContent='$'+Math.round(fee).toLocaleString();
+  document.getElementById('buyerEquity').textContent='$'+Math.max(0,Math.round(buyerEquity)).toLocaleString();
+}
+function copyScript(id){
+  const el=document.getElementById(id);
+  const text=el.innerText.replace('Copy','').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=el.querySelector('.copy-btn');
+    btn.textContent='Copied!';btn.style.background='rgba(34,197,94,.2)';btn.style.color='#22c55e';
+    setTimeout(()=>{btn.textContent='Copy';btn.style.background='';btn.style.color=''},2000);
+  });
+}
+calcDeal();
+</script>
+</body>
+</html>
