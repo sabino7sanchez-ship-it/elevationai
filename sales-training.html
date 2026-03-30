@@ -69,6 +69,16 @@ a{color:var(--cyan);text-decoration:none}
 </head>
 <body>
 
+<!-- PASSWORD GATE -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px">
+  <div style="font-size:24px;font-weight:900">🔒</div>
+  <div style="font-size:16px;font-weight:700">Access Code Required</div>
+  <div style="color:var(--text2);font-size:13px">Enter the 4-digit code to view this page</div>
+  <input type="password" id="codeInput" maxlength="4" placeholder="••••" style="width:140px;text-align:center;padding:14px;background:var(--bg2);border:2px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--mono);font-size:24px;letter-spacing:8px;outline:none" onkeyup="checkCode(event)" autofocus>
+  <div id="codeError" style="color:var(--red);font-size:12px;display:none">Wrong code. Try again.</div>
+</div>
+<div id="content" style="display:none">
+
 <header class="header">
   <h1>Sales <span>Mastery</span></h1>
   <p>The complete playbook. Read it. Drill it. Close deals.</p>
@@ -448,6 +458,26 @@ document.querySelectorAll('.checklist li').forEach((li, i) => {
     localStorage.setItem('sales_check_'+i, li.classList.contains('done')?'done':'');
   });
 });
+
+// Password gate
+function checkCode(e){
+  const v=document.getElementById('codeInput').value;
+  if(v.length===4){
+    if(v==='6767'){
+      document.getElementById('gate').style.display='none';
+      document.getElementById('content').style.display='block';
+      sessionStorage.setItem('sales_auth','1');
+    } else {
+      document.getElementById('codeError').style.display='block';
+      document.getElementById('codeInput').value='';
+      document.getElementById('codeInput').style.borderColor='var(--red)';
+      setTimeout(()=>{document.getElementById('codeInput').style.borderColor='var(--border)';document.getElementById('codeError').style.display='none'},1500);
+    }
+  }
+}
+// Auto-unlock if already authed this session
+if(sessionStorage.getItem('sales_auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block'}
 </script>
+</div><!-- end #content -->
 </body>
 </html>
