@@ -68,6 +68,15 @@ a{color:var(--cyan);text-decoration:none}
 </style>
 </head>
 <body>
+<!-- PASSWORD GATE -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#08090d;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;font-family:'Inter',sans-serif;color:#e8eaed">
+  <div style="font-size:24px;font-weight:900">🔒</div>
+  <div style="font-size:16px;font-weight:700">Access Code Required</div>
+  <div style="color:#8b949e;font-size:13px">Enter the 4-digit code</div>
+  <input type="password" id="codeInput" maxlength="4" placeholder="••••" style="width:140px;text-align:center;padding:14px;background:#0f1117;border:2px solid rgba(0,240,255,.1);border-radius:10px;color:#e8eaed;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:8px;outline:none" onkeyup="checkCode()" autofocus>
+  <div id="codeError" style="color:#ef4444;font-size:12px;display:none">Wrong code.</div>
+</div>
+<div id="content" style="display:none">
 
 <header class="header">
   <h1>Road to <span>100 Employees</span></h1>
@@ -439,5 +448,10 @@ a{color:var(--cyan);text-decoration:none}
   ElevationAI Growth Plan | For Sabino's eyes only<br>
   <a href="https://sanchezelevationai.com">sanchezelevationai.com</a>
 </footer>
+</div><!-- end #content -->
+<script>
+function checkCode(){var v=document.getElementById('codeInput').value;if(v.length===4){if(v==='6767'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block';sessionStorage.setItem('ea_auth','1')}else{document.getElementById('codeError').style.display='block';document.getElementById('codeInput').value='';document.getElementById('codeInput').style.borderColor='#ef4444';setTimeout(function(){document.getElementById('codeInput').style.borderColor='rgba(0,240,255,.1)';document.getElementById('codeError').style.display='none'},1500)}}}
+if(sessionStorage.getItem('ea_auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block'}
+</script>
 </body>
 </html>
