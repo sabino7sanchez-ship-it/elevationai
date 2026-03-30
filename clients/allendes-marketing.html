@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allendes Group Inc — Marketing Launch Kit | ElevationAI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--card:#12121a;--card2:#1a1a28;--border:#2a2a3a;--accent:#6c5ce7;--accent2:#a29bfe;--green:#00e676;--orange:#ff9100;--red:#ff5252;--text:#e0e0e0;--text2:#a0a0b0;--text3:#707080;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.4)}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.6;min-height:100vh}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Header */
+.header{background:linear-gradient(135deg,#6c5ce7 0%,#a29bfe 50%,#6c5ce7 100%);padding:48px 24px;text-align:center;position:relative;overflow:hidden}
+.header::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Cpath d='M0 20h40M20 0v40' stroke='rgba(255,255,255,.06)' stroke-width='1'/%3E%3C/svg%3E")}
+.header h1{font-size:2.4rem;font-weight:800;color:#fff;position:relative;z-index:1}
+.header p{color:rgba(255,255,255,.85);font-size:1.1rem;margin-top:8px;position:relative;z-index:1}
+.header .badge{display:inline-block;background:rgba(0,0,0,.25);color:#fff;padding:6px 16px;border-radius:20px;font-size:.85rem;margin-top:12px;position:relative;z-index:1}
+
+/* Nav */
+.nav{background:var(--card);border-bottom:1px solid var(--border);padding:12px 24px;position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+.nav a{display:inline-block;color:var(--text2);padding:8px 16px;border-radius:8px;font-size:.85rem;font-weight:600;transition:.2s}
+.nav a:hover,.nav a.active{background:var(--accent);color:#fff;text-decoration:none}
+
+/* Container */
+.container{max-width:1100px;margin:0 auto;padding:32px 20px}
+
+/* Section */
+.section{margin-bottom:48px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--accent)}
+.section-num{background:var(--accent);color:#fff;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;flex-shrink:0}
+.section-header h2{font-size:1.5rem;font-weight:700;color:#fff}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px;transition:.2s}
+.card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.card h3{color:var(--accent2);font-size:1.1rem;margin-bottom:12px}
+.card h4{color:var(--orange);font-size:.95rem;margin:16px 0 8px}
+
+/* Copy block */
+.copy-block{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:16px;margin:12px 0;position:relative;font-size:.9rem;white-space:pre-wrap;word-wrap:break-word}
+.copy-btn{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:600;transition:.2s}
+.copy-btn:hover{background:var(--accent2)}
+.copy-btn.copied{background:var(--green);color:#000}
+
+/* Checklist */
+.checklist{list-style:none;padding:0}
+.checklist li{padding:10px 12px;border-left:3px solid var(--accent);margin-bottom:8px;background:var(--card2);border-radius:0 8px 8px 0;font-size:.92rem}
+.checklist li::before{content:'';display:inline-block;width:18px;height:18px;border:2px solid var(--accent);border-radius:4px;margin-right:10px;vertical-align:middle;flex-shrink:0}
+
+/* Table */
+.tracker-table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);overflow:hidden}
+.tracker-table th{background:var(--accent);color:#fff;padding:12px 16px;text-align:left;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px}
+.tracker-table td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:.9rem}
+.tracker-table tr:hover td{background:var(--card2)}
+
+/* Tags */
+.tag{display:inline-block;background:var(--card2);border:1px solid var(--border);padding:3px 10px;border-radius:12px;font-size:.78rem;margin:2px 4px 2px 0;color:var(--text2)}
+.tag.green{border-color:var(--green);color:var(--green)}
+.tag.orange{border-color:var(--orange);color:var(--orange)}
+.tag.accent{border-color:var(--accent);color:var(--accent2)}
+
+/* Post card */
+.post-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px}
+.post-card .post-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.post-card .post-type{font-weight:700;color:var(--accent2);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px}
+.post-card .post-time{color:var(--text3);font-size:.82rem}
+.post-card .hashtags{margin-top:10px;font-size:.82rem;color:var(--accent2)}
+
+/* Utilities */
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.mt-8{margin-top:8px}.mt-16{margin-top:16px}
+.text-green{color:var(--green)}.text-orange{color:var(--orange)}.text-accent{color:var(--accent2)}
+.text-sm{font-size:.85rem}.text-xs{font-size:.78rem}
+.bold{font-weight:700}
+.pill{display:inline-block;background:var(--accent);color:#fff;padding:4px 12px;border-radius:20px;font-size:.78rem;font-weight:600}
+hr{border:none;border-top:1px solid var(--border);margin:24px 0}
+.footer{text-align:center;padding:40px 20px;color:var(--text3);font-size:.82rem;border-top:1px solid var(--border)}
+.footer span{color:var(--accent2);font-weight:600}
+
+@media(max-width:768px){
+  .header h1{font-size:1.6rem}
+  .grid-2{grid-template-columns:1fr}
+  .nav a{font-size:.78rem;padding:6px 12px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Allendes Group Inc</h1>
+  <p>Marketing Launch Kit &mdash; Construction &amp; Landscaping</p>
+  <div class="badge">Prepared by ElevationAI &bull; March 2026</div>
+</div>
+
+<nav class="nav" id="topnav">
+  <a href="#gmb">1. GMB</a>
+  <a href="#instagram">2. Instagram</a>
+  <a href="#nextdoor">3. Nextdoor</a>
+  <a href="#facebook">4. Facebook</a>
+  <a href="#yelp">5. Yelp</a>
+  <a href="#seo">6. Local SEO</a>
+  <a href="#reviews">7. Reviews</a>
+  <a href="#referral">8. Referrals</a>
+  <a href="#classifieds">9. Classifieds</a>
+  <a href="#tracker">10. Tracker</a>
+</nav>
+
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- SECTION 1: GMB -->
+<!-- ============================================================ -->
+<div class="section" id="gmb">
+  <div class="section-header"><div class="section-num">1</div><h2>Google My Business Optimization</h2></div>
+
+  <div class="card">
+    <h3>Business Profile Setup</h3>
+    <ul class="checklist">
+      <li><strong>Business Name:</strong> Allendes Group Inc</li>
+      <li><strong>Primary Category:</strong> General Contractor</li>
+      <li><strong>Additional Categories:</strong> Landscaping Company, Construction Company, Remodeling Contractor, Concrete Contractor</li>
+      <li><strong>Phone:</strong> (949) 619-0844</li>
+      <li><strong>Website:</strong> allendes-group.netlify.app</li>
+      <li><strong>Service Areas:</strong> Orange County, Los Angeles County, Riverside County</li>
+      <li><strong>Hours:</strong> Monday - Saturday: 7:00 AM - 6:00 PM | Sunday: Closed</li>
+      <li><strong>Founded:</strong> Add year founded to build trust</li>
+      <li><strong>Business Description:</strong> Use the copy block below</li>
+    </ul>
+
+    <h4>GMB Business Description (750 chars max)</h4>
+    <div class="copy-block" id="gmb-desc">Allendes Group Inc is a full-service construction and landscaping company serving Orange County, LA County, and Riverside County. We specialize in residential and commercial remodeling, concrete work, hardscaping, retaining walls, ADU construction, room additions, kitchen and bathroom renovations, and complete landscape design. Licensed, insured, and committed to quality craftsmanship on every project. Free estimates &mdash; call (949) 619-0844 today.<button class="copy-btn" onclick="copyBlock('gmb-desc')">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <h3>All 26 Services to List on GMB</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+      <span class="tag accent">General Contracting</span>
+      <span class="tag accent">Kitchen Remodeling</span>
+      <span class="tag accent">Bathroom Remodeling</span>
+      <span class="tag accent">Room Additions</span>
+      <span class="tag accent">ADU Construction</span>
+      <span class="tag accent">Concrete Driveways</span>
+      <span class="tag accent">Concrete Patios</span>
+      <span class="tag accent">Stamped Concrete</span>
+      <span class="tag accent">Retaining Walls</span>
+      <span class="tag accent">Block Walls</span>
+      <span class="tag accent">Hardscaping</span>
+      <span class="tag accent">Landscape Design</span>
+      <span class="tag accent">Sprinkler Systems</span>
+      <span class="tag accent">Artificial Turf</span>
+      <span class="tag accent">Sod Installation</span>
+      <span class="tag accent">Tree Trimming</span>
+      <span class="tag accent">Fence Installation</span>
+      <span class="tag accent">Deck Building</span>
+      <span class="tag accent">Pergolas &amp; Patio Covers</span>
+      <span class="tag accent">Outdoor Kitchens</span>
+      <span class="tag accent">Drywall &amp; Painting</span>
+      <span class="tag accent">Flooring Installation</span>
+      <span class="tag accent">Roofing Repairs</span>
+      <span class="tag accent">Demolition</span>
+      <span class="tag accent">Grading &amp; Excavation</span>
+      <span class="tag accent">Commercial Construction</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Photo Checklist (20+ photos needed)</h3>
+    <ul class="checklist">
+      <li>Logo (high-res, square format)</li>
+      <li>Cover photo (best finished project, wide shot)</li>
+      <li>5+ Before &amp; After pairs of completed jobs</li>
+      <li>3+ photos of team members at work</li>
+      <li>2+ equipment / truck photos</li>
+      <li>3+ close-up detail shots (concrete finish, tile work, landscaping)</li>
+      <li>2+ photos of the team together (builds trust)</li>
+      <li>Drone shots of large projects (if available)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>8 Pre-Written GMB Posts (Post Weekly)</h3>
+
+    <div class="copy-block" id="gmb-post-1"><strong>Week 1 &mdash; Project Showcase</strong>
+Just completed a full backyard transformation in Anaheim! New stamped concrete patio, retaining walls, and drought-tolerant landscaping. Ready to upgrade your outdoor space? Call (949) 619-0844 for a free estimate.
+
+#AllendGroup #ConcreteContractor #OrangeCounty<button class="copy-btn" onclick="copyBlock('gmb-post-1')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-post-2"><strong>Week 2 &mdash; Services Highlight</strong>
+Did you know we handle everything from concrete driveways to full kitchen remodels? Allendes Group Inc is your one-stop shop for construction and landscaping in OC, LA, and Riverside County. Licensed &amp; insured. Free estimates: (949) 619-0844
+
+#GeneralContractor #Remodeling #SoCalContractor<button class="copy-btn" onclick="copyBlock('gmb-post-2')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-post-3"><strong>Week 3 &mdash; Tip / Education</strong>
+Thinking about an ADU? Here are 3 things to consider before you start:
+1. Check your city's zoning requirements
+2. Budget 10-15% for unexpected costs
+3. Hire a licensed contractor (like us!)
+
+We build ADUs from permits to keys. Call (949) 619-0844.
+
+#ADU #HomeAddition #OrangeCountyContractor<button class="copy-btn" onclick="copyBlock('gmb-post-3')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-post-4"><strong>Week 4 &mdash; Review / Testimonial</strong>
+Another 5-star review! Our clients love the quality and attention to detail we bring to every project. Thank you for trusting Allendes Group Inc with your home.
+
+Ready to start your project? (949) 619-0844
+
+#5StarContractor #ClientTestimonial #QualityCraftsmanship<button class="copy-btn" onclick="copyBlock('gmb-post-4')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-post-5"><strong>Week 5 &mdash; Before/After</strong>
+Swipe to see the transformation! This Irvine homeowner wanted a modern patio with a built-in BBQ area. We delivered stamped concrete, new block walls, and a custom pergola. Your backyard could be next.
+
+Free estimates: (949) 619-0844
+
+#BeforeAndAfter #BackyardGoals #Hardscaping<button class="copy-btn" onclick="copyBlock('gmb-post-5')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-post-6"><strong>Week 6 &mdash; Seasonal</strong>
+Spring is the perfect time to invest in your outdoor space. Whether it's a new concrete patio, artificial turf, or a complete landscape redesign, our team is ready to bring your vision to life.
+
+Book your spring project now: (949) 619-0844
+
+#SpringRenovation #LandscapeDesign #OutdoorLiving<button class="copy-btn" onclick="copyBlock('gmb-post-6')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-post-7"><strong>Week 7 &mdash; Team / Culture</strong>
+Our crew takes pride in every job, big or small. From day one, Allendes Group Inc has been built on hard work, honesty, and quality craftsmanship. We treat every home like our own.
+
+Experience the difference: (949) 619-0844
+
+#MeetTheTeam #FamilyOwned #HardWork<button class="copy-btn" onclick="copyBlock('gmb-post-7')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-post-8"><strong>Week 8 &mdash; Offer / CTA</strong>
+Limited availability this month! We're booking concrete, remodeling, and landscaping projects now. Don't wait until summer to start your renovation.
+
+Call today for a free same-week estimate: (949) 619-0844
+
+#FreeEstimate #BookNow #ConstructionCompany<button class="copy-btn" onclick="copyBlock('gmb-post-8')">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <h3>10 Pre-Written Q&amp;A to Seed Your GMB Listing</h3>
+    <p class="text-sm text-orange" style="margin-bottom:12px">Post these as questions from a personal Google account, then answer from the business account.</p>
+
+    <div class="copy-block" id="gmb-qa-1"><strong>Q:</strong> Do you offer free estimates?
+<strong>A:</strong> Yes! We provide free, no-obligation estimates for all our services. Call us at (949) 619-0844 or visit allendes-group.netlify.app to request one today.<button class="copy-btn" onclick="copyBlock('gmb-qa-1')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-2"><strong>Q:</strong> What areas do you serve?
+<strong>A:</strong> We serve all of Orange County, Los Angeles County, and Riverside County. Cities include Anaheim, Irvine, Santa Ana, Fullerton, Long Beach, Downey, Riverside, and many more.<button class="copy-btn" onclick="copyBlock('gmb-qa-2')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-3"><strong>Q:</strong> Are you licensed and insured?
+<strong>A:</strong> Absolutely. Allendes Group Inc is fully licensed and insured. We're happy to provide our license number and proof of insurance upon request.<button class="copy-btn" onclick="copyBlock('gmb-qa-3')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-4"><strong>Q:</strong> Do you do kitchen and bathroom remodels?
+<strong>A:</strong> Yes! Kitchen and bathroom remodeling are some of our most popular services. We handle everything from demolition to final finishes, including cabinets, countertops, tile, plumbing, and electrical.<button class="copy-btn" onclick="copyBlock('gmb-qa-4')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-5"><strong>Q:</strong> Can you build an ADU on my property?
+<strong>A:</strong> Yes, we specialize in ADU (Accessory Dwelling Unit) construction. We handle the full process from design and permits to construction and finishing. Great for rental income or multi-generational living.<button class="copy-btn" onclick="copyBlock('gmb-qa-5')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-6"><strong>Q:</strong> How long does a typical concrete driveway take?
+<strong>A:</strong> Most residential concrete driveways take 3-5 days from demolition to finished pour, depending on size and complexity. We also offer stamped and colored concrete options.<button class="copy-btn" onclick="copyBlock('gmb-qa-6')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-7"><strong>Q:</strong> Do you offer financing?
+<strong>A:</strong> We can discuss payment plans on larger projects. Please call us at (949) 619-0844 to talk about options that work for your budget.<button class="copy-btn" onclick="copyBlock('gmb-qa-7')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-8"><strong>Q:</strong> What types of landscaping do you do?
+<strong>A:</strong> We offer full landscape design and installation including hardscaping, artificial turf, sod, sprinkler systems, retaining walls, drought-tolerant landscapes, tree trimming, and outdoor living spaces.<button class="copy-btn" onclick="copyBlock('gmb-qa-8')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-9"><strong>Q:</strong> Do you handle permits?
+<strong>A:</strong> Yes, we handle all necessary permits and inspections for your project. Our team is experienced with local building codes across Orange County, LA County, and Riverside County.<button class="copy-btn" onclick="copyBlock('gmb-qa-9')">Copy</button></div>
+
+    <div class="copy-block" id="gmb-qa-10"><strong>Q:</strong> How do I get started?
+<strong>A:</strong> It's easy! Call us at (949) 619-0844 or visit allendes-group.netlify.app. We'll schedule a free on-site estimate, discuss your vision, and provide a detailed quote within 48 hours.<button class="copy-btn" onclick="copyBlock('gmb-qa-10')">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <h3>Review Strategy</h3>
+    <ul class="checklist">
+      <li>Ask EVERY client for a review at project completion (in person, before you leave the job site)</li>
+      <li>Send the text message template within 24 hours of job completion</li>
+      <li>Follow up 3 days later if no review posted</li>
+      <li>Respond to EVERY review (positive and negative) within 24 hours</li>
+      <li>Goal: 5 new reviews per month minimum</li>
+      <li>Never offer discounts or incentives for reviews (violates Google policy)</li>
+      <li>Print QR code linking to your Google review page &mdash; put on business cards, invoices, truck</li>
+    </ul>
+
+    <h4>Review Request Text Message</h4>
+    <div class="copy-block" id="gmb-review-txt">Hi [CLIENT NAME]! This is Santiago from Allendes Group Inc. Thank you for trusting us with your project &mdash; it was great working with you! If you have a moment, we'd really appreciate a Google review. It helps us reach more homeowners like you. Here's the link: [INSERT GOOGLE REVIEW LINK]
+
+Thank you! 🙏<button class="copy-btn" onclick="copyBlock('gmb-review-txt')">Copy</button></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: INSTAGRAM -->
+<!-- ============================================================ -->
+<div class="section" id="instagram">
+  <div class="section-header"><div class="section-num">2</div><h2>30 Instagram Posts (Copy-Paste Captions)</h2></div>
+
+  <p class="text-sm" style="margin-bottom:20px;color:var(--text2)">Post 3-4x per week. Best times: <span class="tag green">Tue/Wed/Thu 11AM-1PM</span> and <span class="tag green">Fri 10AM</span>. Use a mix of Reels, carousels, and single images.</p>
+
+  <!-- BEFORE/AFTER (10) -->
+  <h3 style="color:var(--orange);margin-bottom:16px">Before &amp; After Project Posts (10)</h3>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #1</span><span class="post-time">Best: Tuesday 11 AM</span></div>
+    <div class="copy-block" id="ig-1">The transformation is REAL. 🔨
+
+This backyard went from overgrown and cracked concrete to a stunning outdoor living space with stamped concrete, new retaining walls, and fresh landscaping.
+
+This is what happens when you hire the right team.
+
+Ready to transform your space?
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+#BeforeAndAfter #BackyardTransformation #ConcreteContractor #OrangeCountyContractor #StampedConcrete #HardscapeDesign #LandscapingOC #HomeRenovation<button class="copy-btn" onclick="copyBlock('ig-1')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #2</span><span class="post-time">Best: Wednesday 12 PM</span></div>
+    <div class="copy-block" id="ig-2">From dated kitchen to modern dream. ✨
+
+New cabinets. New countertops. New flooring. Same footprint, completely different feel.
+
+This is what a full kitchen remodel looks like with Allendes Group Inc.
+
+DM us or call for your free estimate.
+📞 (949) 619-0844
+
+#KitchenRemodel #KitchenRenovation #BeforeAfterKitchen #RemodelingContractor #OrangeCounty #HomeUpgrade #ModernKitchen #ContractorLife<button class="copy-btn" onclick="copyBlock('ig-2')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #3</span><span class="post-time">Best: Thursday 11 AM</span></div>
+    <div class="copy-block" id="ig-3">Driveway glow-up complete. 💪
+
+Old, cracked concrete OUT. Fresh stamped concrete driveway IN. Instant curb appeal upgrade.
+
+Your driveway is the first thing people see. Make it count.
+
+Free estimates: (949) 619-0844
+
+#ConcreteDriveway #CurbAppeal #StampedConcrete #DriveWayGoals #SoCalContractor #OrangeCountyConstruction #HomeImprovement #ExteriorDesign<button class="copy-btn" onclick="copyBlock('ig-3')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #4</span><span class="post-time">Best: Tuesday 1 PM</span></div>
+    <div class="copy-block" id="ig-4">Bathroom renovation done RIGHT. 🚿
+
+Custom tile, new vanity, modern fixtures, walk-in shower. Every detail matters.
+
+We don't cut corners. We build them.
+
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+#BathroomRemodel #BathroomRenovation #TileWork #WalkInShower #RemodelingOC #ContractorWork #HomeDesign #UpgradeYourHome<button class="copy-btn" onclick="copyBlock('ig-4')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #5</span><span class="post-time">Best: Wednesday 11 AM</span></div>
+    <div class="copy-block" id="ig-5">This retaining wall turned a sloped, unusable yard into a flat, functional outdoor space. 🏗️
+
+Block wall + drainage + grading + new sod = a yard the whole family can enjoy.
+
+Don't let a slope hold you back.
+📞 (949) 619-0844
+
+#RetainingWall #BlockWall #LandscapeConstruction #YardTransformation #GradingAndExcavation #SoCalLandscaping #OutdoorLiving #ConstructionCompany<button class="copy-btn" onclick="copyBlock('ig-5')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #6</span><span class="post-time">Best: Friday 10 AM</span></div>
+    <div class="copy-block" id="ig-6">Full backyard remodel: pergola, concrete patio, outdoor kitchen, and artificial turf. 🌿
+
+From an empty lot to the ultimate entertainment space. This is California outdoor living at its finest.
+
+Let's design YOUR dream backyard.
+📞 (949) 619-0844
+
+#OutdoorKitchen #Pergola #ArtificialTurf #BackyardDesign #OutdoorLivingSpace #CaliforniaLiving #PatioDesign #LandscapingContractor<button class="copy-btn" onclick="copyBlock('ig-6')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #7</span><span class="post-time">Best: Tuesday 12 PM</span></div>
+    <div class="copy-block" id="ig-7">Room addition COMPLETE. 🏠
+
+Added 400 sq ft to this family's home &mdash; new bedroom, closet, and ensuite bathroom. Seamless match with the existing structure.
+
+More space. More value. More comfort.
+📞 (949) 619-0844
+
+#RoomAddition #HomeAddition #HomeExpansion #ResidentialConstruction #GeneralContractor #MoreSpace #HomeValue #BuildingDreams<button class="copy-btn" onclick="copyBlock('ig-7')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #8</span><span class="post-time">Best: Thursday 1 PM</span></div>
+    <div class="copy-block" id="ig-8">New fence, who dis? 🪵
+
+Replaced a rotting wood fence with a brand new one &mdash; clean lines, solid posts, and built to last.
+
+Privacy. Security. Curb appeal. All in one project.
+📞 (949) 619-0844
+
+#FenceInstallation #WoodFence #NewFence #PropertyUpgrade #HomeExterior #CurbAppeal #ContractorServices #FenceBuilder<button class="copy-btn" onclick="copyBlock('ig-8')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #9</span><span class="post-time">Best: Wednesday 1 PM</span></div>
+    <div class="copy-block" id="ig-9">Complete landscape redesign. 🌴
+
+Removed dead lawn, installed drought-tolerant plants, decorative rock, new irrigation, and pathway lighting.
+
+Beautiful AND water-smart. California landscaping done right.
+📞 (949) 619-0844
+
+#DroughtTolerant #LandscapeDesign #CaliforniaLandscaping #WaterWise #GardenDesign #Xeriscaping #SoCalGarden #GreenLiving<button class="copy-btn" onclick="copyBlock('ig-9')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Before/After #10</span><span class="post-time">Best: Friday 11 AM</span></div>
+    <div class="copy-block" id="ig-10">ADU build from start to finish. 🔑
+
+Full 500 sq ft detached ADU &mdash; kitchen, bathroom, bedroom, and separate entrance. Perfect for rental income or family.
+
+We handle permits, plans, and construction.
+📞 (949) 619-0844
+
+#ADUBuild #AccessoryDwellingUnit #ADUConstruction #RentalIncome #CaliforniaADU #GrannyFlat #PassiveIncome #NewConstruction<button class="copy-btn" onclick="copyBlock('ig-10')">Copy</button></div>
+  </div>
+
+  <!-- TIPS (5) -->
+  <h3 style="color:var(--green);margin:24px 0 16px">Tips &amp; Advice Posts (5)</h3>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Tip #1</span><span class="post-time">Best: Tuesday 11 AM</span></div>
+    <div class="copy-block" id="ig-11">3 things to look for before hiring a contractor: 👇
+
+1. Verify their license on the CSLB website
+2. Ask for proof of insurance (liability + workers comp)
+3. Get EVERYTHING in writing &mdash; scope, timeline, payment schedule
+
+A good contractor won't hesitate to provide all three.
+
+We're Allendes Group Inc &mdash; licensed, insured, transparent.
+📞 (949) 619-0844
+
+#ContractorTips #HiringAContractor #HomeownerTips #CSLB #LicensedContractor #ConstructionAdvice #SmartHomeowner #ProtectYourInvestment<button class="copy-btn" onclick="copyBlock('ig-11')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Tip #2</span><span class="post-time">Best: Wednesday 12 PM</span></div>
+    <div class="copy-block" id="ig-12">Planning a kitchen remodel? Here's what most people forget: 🍳
+
+- Outlet placement (plan for where appliances go FIRST)
+- Lighting layers (overhead, under-cabinet, accent)
+- Ventilation (range hood is not optional)
+- Storage (soft-close drawers > cabinets)
+
+Save this for when you're ready to remodel.
+📞 (949) 619-0844
+
+#KitchenRemodel #KitchenDesign #RemodelingTips #HomeDesignTips #KitchenPlanning #RenovationAdvice #InteriorDesign #KitchenInspo<button class="copy-btn" onclick="copyBlock('ig-12')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Tip #3</span><span class="post-time">Best: Thursday 11 AM</span></div>
+    <div class="copy-block" id="ig-13">Concrete 101: Why your slab cracked and how to prevent it 🧱
+
+- Proper sub-grade compaction is EVERYTHING
+- Control joints need to be cut within 24 hours
+- Curing time matters (don't rush it)
+- Rebar/fiber mesh for structural integrity
+
+This is why hiring pros matters.
+📞 (949) 619-0844
+
+#ConcreteWork #ConcreteTips #ConcreteContractor #ConstructionKnowledge #BuildingRight #QualityConcrete #ProTips #ConcreteFinishing<button class="copy-btn" onclick="copyBlock('ig-13')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Tip #4</span><span class="post-time">Best: Tuesday 1 PM</span></div>
+    <div class="copy-block" id="ig-14">5 backyard upgrades that add the MOST value to your home: 💰
+
+1. Stamped concrete patio
+2. Outdoor kitchen / BBQ island
+3. ADU (rental income!)
+4. Artificial turf (low maintenance)
+5. Pergola with lighting
+
+Which one are you doing first?
+📞 (949) 619-0844
+
+#HomeValue #BackyardUpgrade #ROI #PropertyValue #OutdoorLiving #HomeInvestment #RealEstateValue #SmartUpgrades<button class="copy-btn" onclick="copyBlock('ig-14')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Tip #5</span><span class="post-time">Best: Friday 10 AM</span></div>
+    <div class="copy-block" id="ig-15">Red flags when getting a contractor quote: 🚩
+
+- No written contract
+- Asks for 50%+ upfront
+- No license number on the bid
+- "We don't pull permits"
+- Price way below everyone else
+
+If you see these, RUN. You deserve better.
+
+We do it right. (949) 619-0844
+
+#ContractorRedFlags #HomeownerAdvice #SmartHiring #ConstructionScams #ProtectYourHome #LicensedAndInsured #Trustworthy #QualityOverPrice<button class="copy-btn" onclick="copyBlock('ig-15')">Copy</button></div>
+  </div>
+
+  <!-- BTS (5) -->
+  <h3 style="color:var(--accent2);margin:24px 0 16px">Behind-the-Scenes / Team Posts (5)</h3>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">BTS #1</span><span class="post-time">Best: Wednesday 11 AM</span></div>
+    <div class="copy-block" id="ig-16">Early mornings, hard work, great results. ☀️
+
+This is what 7 AM looks like for our crew. Coffee, game plan, and let's get it done.
+
+We don't just build projects. We build trust.
+
+📞 (949) 619-0844
+
+#BehindTheScenes #ConstructionLife #HardWork #CrewLife #MorningGrind #ContractorLife #BuildingDreams #TeamWork<button class="copy-btn" onclick="copyBlock('ig-16')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">BTS #2</span><span class="post-time">Best: Thursday 12 PM</span></div>
+    <div class="copy-block" id="ig-17">Concrete pour day is always a good day. 🏗️
+
+Hours of prep, forms, rebar, and grading all lead to this moment. There's nothing like watching it all come together.
+
+Swipe to see the process from start to finish.
+
+#ConcretePour #PourDay #ConstructionProcess #ConcreteLife #Satisfying #ProcessVideo #BuiltRight #CraftsmanshipMatters<button class="copy-btn" onclick="copyBlock('ig-17')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">BTS #3</span><span class="post-time">Best: Tuesday 12 PM</span></div>
+    <div class="copy-block" id="ig-18">Meet the hands behind the work. 🤝
+
+Our team brings years of experience and real pride to every project. From framing to finishing, we treat your home like our own.
+
+This is the Allendes Group difference.
+📞 (949) 619-0844
+
+#MeetTheTeam #OurCrew #FamilyBusiness #Craftsmanship #PeopleOfConstruction #RealContractors #TrustedTeam #WeAreAllendes<button class="copy-btn" onclick="copyBlock('ig-18')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">BTS #4</span><span class="post-time">Best: Friday 11 AM</span></div>
+    <div class="copy-block" id="ig-19">Demolition day hits different. 💥
+
+Out with the old, in with the new. Watching an outdated space get torn down knowing what's coming next is always exciting.
+
+Stay tuned for the finished result.
+
+#DemoDay #Demolition #Renovation #Construction #TransformationInProgress #RenovationJourney #ExcitingTimes #ComingSoon<button class="copy-btn" onclick="copyBlock('ig-19')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">BTS #5</span><span class="post-time">Best: Wednesday 1 PM</span></div>
+    <div class="copy-block" id="ig-20">End of the week, trucks loaded, jobs done. ✅
+
+Another week of transforming homes and building something we're proud of. This isn't just work &mdash; it's our craft.
+
+Happy Friday from the Allendes Group crew!
+
+#FridayFeeling #WeekInReview #ConstructionCrew #ProudOfOurWork #EndOfWeek #ContractorFriday #WeBuilt #TeamAllendes<button class="copy-btn" onclick="copyBlock('ig-20')">Copy</button></div>
+  </div>
+
+  <!-- TESTIMONIAL (5) -->
+  <h3 style="color:#ff9100;margin:24px 0 16px">Testimonial / Review Posts (5)</h3>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Testimonial #1</span><span class="post-time">Best: Tuesday 11 AM</span></div>
+    <div class="copy-block" id="ig-21">"They showed up on time, stayed on budget, and the quality exceeded our expectations." ⭐⭐⭐⭐⭐
+
+Nothing beats hearing this from a happy client. We pour everything into every project because your home deserves the best.
+
+📞 (949) 619-0844
+
+#5StarReview #HappyClient #ClientTestimonial #QualityWork #TrustedContractor #HomeownerApproved #AllendGroup #BestContractor<button class="copy-btn" onclick="copyBlock('ig-21')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Testimonial #2</span><span class="post-time">Best: Thursday 12 PM</span></div>
+    <div class="copy-block" id="ig-22">"We interviewed 5 contractors. Allendes Group was the most professional, detailed, and fairly priced. The finished product speaks for itself." ⭐⭐⭐⭐⭐
+
+Thank you for choosing us. Results &gt; promises.
+
+📞 (949) 619-0844
+
+#ContractorReview #ChooseWisely #ResultsSpeak #ProfessionalContractor #FairPricing #HomePro #ClientLove #Grateful<button class="copy-btn" onclick="copyBlock('ig-22')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Testimonial #3</span><span class="post-time">Best: Wednesday 11 AM</span></div>
+    <div class="copy-block" id="ig-23">"They turned our outdated backyard into something out of a magazine. Our neighbors keep asking who did the work!" ⭐⭐⭐⭐⭐
+
+The best marketing is a job well done.
+
+📞 (949) 619-0844
+
+#NeighborApproved #BackyardGoals #WordOfMouth #ClientTestimonial #MagazineWorthy #OutdoorDesign #ProudWork #TopContractor<button class="copy-btn" onclick="copyBlock('ig-23')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Testimonial #4</span><span class="post-time">Best: Friday 10 AM</span></div>
+    <div class="copy-block" id="ig-24">"Santiago and his team were honest, communicative, and delivered exactly what they promised. No surprises, no games." ⭐⭐⭐⭐⭐
+
+This is how we do business. Period.
+
+📞 (949) 619-0844
+
+#HonestContractor #Transparency #NoSurprises #ClientFirst #TrustMatters #ReliableContractor #SantiagoBuilds #IntegrityFirst<button class="copy-btn" onclick="copyBlock('ig-24')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">Testimonial #5</span><span class="post-time">Best: Tuesday 1 PM</span></div>
+    <div class="copy-block" id="ig-25">"We've used Allendes Group for two projects now and they just keep getting better. Already planning project #3!" ⭐⭐⭐⭐⭐
+
+Repeat clients = the ultimate compliment.
+
+📞 (949) 619-0844
+
+#RepeatClient #Loyalty #ConsistentQuality #TrustedPartner #LongTermRelationship #BuildingTrust #ReturnCustomer #ThankYou<button class="copy-btn" onclick="copyBlock('ig-25')">Copy</button></div>
+  </div>
+
+  <!-- CTA (5) -->
+  <h3 style="color:var(--red);margin:24px 0 16px">CTA / Free Estimate Posts (5)</h3>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">CTA #1</span><span class="post-time">Best: Wednesday 12 PM</span></div>
+    <div class="copy-block" id="ig-26">Your dream project starts with ONE call. 📞
+
+Whether it's a kitchen remodel, concrete patio, ADU build, or full backyard transformation &mdash; we've got you covered.
+
+FREE estimates. Licensed &amp; insured.
+
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+📩 DM us anytime
+
+#FreeEstimate #CallNow #ConstructionCompany #GetStarted #HomeProject #ReadyToBuild #LetsGo #AllendGroup<button class="copy-btn" onclick="copyBlock('ig-26')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">CTA #2</span><span class="post-time">Best: Thursday 11 AM</span></div>
+    <div class="copy-block" id="ig-27">STOP scrolling if you've been putting off that renovation. 🛑
+
+The best time to start was yesterday. The second best time is NOW.
+
+We make it easy:
+1. Call us
+2. We come to you
+3. Free estimate in 48 hours
+
+📞 (949) 619-0844
+
+#StopScrolling #StartBuilding #NoMoreWaiting #FreeEstimate #RenovationReady #TakeAction #YourHomeDeservesIt #LetsDoThis<button class="copy-btn" onclick="copyBlock('ig-27')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">CTA #3</span><span class="post-time">Best: Friday 10 AM</span></div>
+    <div class="copy-block" id="ig-28">Limited spots available this month. 📅
+
+We only take on a set number of projects to maintain quality. Don't get pushed to next month.
+
+Currently booking:
+- Concrete work
+- Kitchen/bath remodels
+- Landscaping
+- ADU builds
+
+📞 (949) 619-0844
+
+#BookNow #LimitedAvailability #QualityOverQuantity #DontWait #ScheduleNow #ProjectBooking #InDemand #PremiumContractor<button class="copy-btn" onclick="copyBlock('ig-28')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">CTA #4</span><span class="post-time">Best: Tuesday 12 PM</span></div>
+    <div class="copy-block" id="ig-29">Tag someone who needs a backyard upgrade. 👇
+
+We'll turn their Pinterest board into reality.
+
+Licensed. Insured. Serving OC, LA, &amp; Riverside County.
+
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+#TagAFriend #BackyardUpgrade #PinterestToReality #DreamBackyard #OutdoorMakeover #SoCalLiving #HomeGoals #LetsBuild<button class="copy-btn" onclick="copyBlock('ig-29')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">CTA #5</span><span class="post-time">Best: Thursday 1 PM</span></div>
+    <div class="copy-block" id="ig-30">Thinking about it won't get it built. 🔨
+
+Every big project starts with a simple conversation. Tell us what you're dreaming of and we'll make it happen.
+
+Free estimates. No pressure. Just honest advice.
+
+📞 (949) 619-0844
+
+#JustDoIt #StartToday #FreeEstimate #NoPressure #HonestContractor #DreamsToReality #BuildItNow #MakeItHappen<button class="copy-btn" onclick="copyBlock('ig-30')">Copy</button></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: NEXTDOOR -->
+<!-- ============================================================ -->
+<div class="section" id="nextdoor">
+  <div class="section-header"><div class="section-num">3</div><h2>Nextdoor Strategy</h2></div>
+
+  <div class="card">
+    <h3>How to Claim Your Business on Nextdoor</h3>
+    <ul class="checklist">
+      <li>Go to <strong>business.nextdoor.com</strong></li>
+      <li>Click "Claim your free Business Page"</li>
+      <li>Search for "Allendes Group Inc" &mdash; if not found, create new listing</li>
+      <li>Verify via postcard or phone</li>
+      <li>Add business details: (949) 619-0844, allendes-group.netlify.app</li>
+      <li>Select categories: General Contractor, Landscaping, Construction</li>
+      <li>Add cover photo (best project shot) and logo</li>
+      <li>Add service area: Orange County, LA County, Riverside County</li>
+      <li>Start posting and responding to neighborhood requests</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>5 Pre-Written Nextdoor Posts</h3>
+
+    <div class="copy-block" id="nd-1"><strong>Post 1 &mdash; Introduction</strong>
+Hi neighbors! Santiago here from Allendes Group Inc. We're a local construction and landscaping company serving OC, LA, and Riverside County. We specialize in concrete work, remodeling, hardscaping, ADU builds, and full landscape design. Licensed and insured. If you have any upcoming projects, I'd love to help. Free estimates &mdash; call me at (949) 619-0844 or check out our work at allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('nd-1')">Copy</button></div>
+
+    <div class="copy-block" id="nd-2"><strong>Post 2 &mdash; Project Showcase</strong>
+Just finished a beautiful stamped concrete patio and retaining wall project right here in [CITY]. If you've been thinking about upgrading your outdoor space, now is the perfect time. Happy to provide a free on-site estimate. (949) 619-0844<button class="copy-btn" onclick="copyBlock('nd-2')">Copy</button></div>
+
+    <div class="copy-block" id="nd-3"><strong>Post 3 &mdash; Seasonal Offer</strong>
+Spring is here and we're booking up fast! If you need concrete work, landscaping, a kitchen/bath remodel, or an ADU, don't wait until summer. We offer free estimates and work with your timeline. Allendes Group Inc &mdash; (949) 619-0844<button class="copy-btn" onclick="copyBlock('nd-3')">Copy</button></div>
+
+    <div class="copy-block" id="nd-4"><strong>Post 4 &mdash; Helpful Response Template</strong>
+(Use this when someone asks "looking for a contractor" on Nextdoor)
+
+Hi [NAME]! I'd be happy to help. I'm Santiago from Allendes Group Inc &mdash; we're local, licensed, and insured. We handle [TYPE OF WORK THEY NEED]. I can come out for a free estimate at your convenience. Feel free to call or text me at (949) 619-0844. Check out our website and past work at allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('nd-4')">Copy</button></div>
+
+    <div class="copy-block" id="nd-5"><strong>Post 5 &mdash; Review Request</strong>
+If we've done work for you in the past, we'd really appreciate a recommendation on Nextdoor! Your support helps us reach more homeowners in the community. Thank you for trusting Allendes Group Inc.<button class="copy-btn" onclick="copyBlock('nd-5')">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <h3>How to Respond to "Looking for a Contractor" Posts</h3>
+    <ul class="checklist">
+      <li>Check Nextdoor daily for posts like "anyone know a good contractor?"</li>
+      <li>Respond within 1 hour for best results (first responders get the most clicks)</li>
+      <li>Be helpful, not salesy &mdash; answer their question, then offer your services</li>
+      <li>Always include phone number and website</li>
+      <li>Ask neighbors who've used you to recommend you in the comments</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: FACEBOOK -->
+<!-- ============================================================ -->
+<div class="section" id="facebook">
+  <div class="section-header"><div class="section-num">4</div><h2>Facebook Business Page Posts (10)</h2></div>
+  <p class="text-sm" style="margin-bottom:20px;color:var(--text2)">Facebook favors engagement. Ask questions, use photos/video, and respond to every comment.</p>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #1 &mdash; Intro</span></div>
+    <div class="copy-block" id="fb-1">Looking for a reliable contractor in Orange County, LA, or Riverside? 👋
+
+Allendes Group Inc handles it all &mdash; concrete, remodeling, landscaping, ADU builds, and more.
+
+Licensed. Insured. Free estimates.
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+Like our page to see our latest projects!<button class="copy-btn" onclick="copyBlock('fb-1')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #2 &mdash; Before/After</span></div>
+    <div class="copy-block" id="fb-2">Can you believe this is the SAME backyard? 🤯
+
+Swipe to see the before. Our team transformed this space with stamped concrete, new landscaping, and a custom pergola.
+
+What would you add to YOUR dream backyard? Comment below! 👇
+
+📞 (949) 619-0844 for free estimates<button class="copy-btn" onclick="copyBlock('fb-2')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #3 &mdash; Poll/Engagement</span></div>
+    <div class="copy-block" id="fb-3">If you could only do ONE upgrade to your home, which would it be?
+
+🅰️ Kitchen remodel
+🅱️ Bathroom renovation
+🅲️ New backyard / patio
+🅳️ ADU (extra income!)
+
+Drop your answer below! 👇
+
+Whatever you choose, we can make it happen. (949) 619-0844<button class="copy-btn" onclick="copyBlock('fb-3')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #4 &mdash; Testimonial</span></div>
+    <div class="copy-block" id="fb-4">Another happy homeowner! ⭐⭐⭐⭐⭐
+
+"Santiago and his team did an amazing job on our concrete driveway and front yard landscaping. Professional, clean, and finished ahead of schedule."
+
+This is why we do what we do. Thank you for your trust!
+
+Your project could be next: (949) 619-0844<button class="copy-btn" onclick="copyBlock('fb-4')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #5 &mdash; Team Photo</span></div>
+    <div class="copy-block" id="fb-5">The faces behind Allendes Group Inc. 💪
+
+Our crew brings years of experience, dedication, and pride to every job site. We don't just build structures &mdash; we build relationships.
+
+Thank you to every client who trusts us with their home.
+
+📞 (949) 619-0844<button class="copy-btn" onclick="copyBlock('fb-5')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #6 &mdash; Tip</span></div>
+    <div class="copy-block" id="fb-6">🚨 Homeowner tip: Before hiring ANY contractor, check these 3 things:
+
+1. Active license on the CSLB website (cslb.ca.gov)
+2. Proof of workers' comp AND liability insurance
+3. Written contract with scope, timeline, and payment terms
+
+Share this with someone planning a home project! 🏠
+
+Need a contractor who checks all the boxes? (949) 619-0844<button class="copy-btn" onclick="copyBlock('fb-6')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #7 &mdash; Video/Reel</span></div>
+    <div class="copy-block" id="fb-7">Watch this satisfying concrete pour in 30 seconds. 🎥
+
+There's something about watching a fresh slab come together. Hours of prep, perfect forms, and smooth finishing.
+
+Save this if you're planning any concrete work this year!
+
+Allendes Group Inc | (949) 619-0844<button class="copy-btn" onclick="copyBlock('fb-7')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #8 &mdash; Community</span></div>
+    <div class="copy-block" id="fb-8">Proud to serve the communities of Orange County, LA, and Riverside. 🧡
+
+From Anaheim to Long Beach, Irvine to Riverside &mdash; we've been helping homeowners build, remodel, and transform their spaces.
+
+Know someone who needs a contractor? Tag them below!
+
+📞 (949) 619-0844<button class="copy-btn" onclick="copyBlock('fb-8')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #9 &mdash; Seasonal CTA</span></div>
+    <div class="copy-block" id="fb-9">Summer is coming &mdash; is your backyard ready? ☀️
+
+Now is the time to book your outdoor project:
+✅ Concrete patios &amp; driveways
+✅ Artificial turf
+✅ Pergolas &amp; patio covers
+✅ Outdoor kitchens
+✅ Full landscape design
+
+Limited spots available. Free estimates!
+📞 (949) 619-0844<button class="copy-btn" onclick="copyBlock('fb-9')">Copy</button></div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-meta"><span class="post-type">FB Post #10 &mdash; Share Request</span></div>
+    <div class="copy-block" id="fb-10">Quick favor: If you know ANYONE looking for a contractor, please share this post or tag them. 🙏
+
+Allendes Group Inc offers:
+🔨 Construction &amp; remodeling
+🌿 Landscaping &amp; hardscaping
+🏗️ ADU builds
+🪨 Concrete work
+
+Free estimates. Licensed &amp; insured.
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+One share can make a huge difference for a small business. Thank you!<button class="copy-btn" onclick="copyBlock('fb-10')">Copy</button></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: YELP -->
+<!-- ============================================================ -->
+<div class="section" id="yelp">
+  <div class="section-header"><div class="section-num">5</div><h2>Yelp Optimization Guide</h2></div>
+
+  <div class="card">
+    <h3>Yelp Business Setup Checklist</h3>
+    <ul class="checklist">
+      <li>Go to <strong>biz.yelp.com</strong> and claim or create "Allendes Group Inc"</li>
+      <li><strong>Categories:</strong> General Contractor (primary), Landscaping, Masonry/Concrete, Home Remodeling</li>
+      <li><strong>Phone:</strong> (949) 619-0844</li>
+      <li><strong>Website:</strong> allendes-group.netlify.app</li>
+      <li><strong>Hours:</strong> Mon-Sat 7AM-6PM</li>
+      <li><strong>Service Area:</strong> Orange County, Los Angeles County, Riverside County</li>
+      <li>Upload 20+ photos (same set as GMB)</li>
+      <li>Add detailed business description</li>
+      <li>Enable "Request a Quote" feature</li>
+      <li>Respond to EVERY review within 24 hours</li>
+      <li>Never ask for reviews on Yelp directly (they filter solicited reviews)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Yelp Review Response Templates</h3>
+
+    <h4>Positive Review Response</h4>
+    <div class="copy-block" id="yelp-pos">Thank you so much for the kind words, [NAME]! It was a pleasure working on your [PROJECT TYPE]. We take a lot of pride in delivering quality work, and knowing you're happy with the results means everything. We'd love to work with you again on any future projects. &mdash; Santiago, Allendes Group Inc<button class="copy-btn" onclick="copyBlock('yelp-pos')">Copy</button></div>
+
+    <h4>Negative Review Response</h4>
+    <div class="copy-block" id="yelp-neg">Hi [NAME], thank you for your feedback. We're sorry to hear your experience didn't meet expectations. We take every concern seriously and would like the opportunity to make things right. Please call me directly at (949) 619-0844 so we can discuss this and find a resolution. &mdash; Santiago, Allendes Group Inc<button class="copy-btn" onclick="copyBlock('yelp-neg')">Copy</button></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: LOCAL SEO -->
+<!-- ============================================================ -->
+<div class="section" id="seo">
+  <div class="section-header"><div class="section-num">6</div><h2>Local SEO Quick Wins</h2></div>
+
+  <div class="card">
+    <h3>NAP Consistency (Must Match Everywhere)</h3>
+    <div class="copy-block" id="nap"><strong>Name:</strong> Allendes Group Inc
+<strong>Phone:</strong> (949) 619-0844
+<strong>Website:</strong> allendes-group.netlify.app
+<strong>Service Areas:</strong> Orange County, CA | Los Angeles County, CA | Riverside County, CA<button class="copy-btn" onclick="copyBlock('nap')">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <h3>20 Directory Submissions (Create/Claim Listings)</h3>
+    <p class="text-sm text-orange" style="margin-bottom:12px">Submit to each one using the exact NAP above. Check off as you complete each.</p>
+    <div class="grid-2">
+      <ul class="checklist">
+        <li><strong>Google Business Profile</strong> &mdash; google.com/business</li>
+        <li><strong>Yelp</strong> &mdash; biz.yelp.com</li>
+        <li><strong>Angi (Angie's List)</strong> &mdash; angi.com</li>
+        <li><strong>HomeAdvisor</strong> &mdash; homeadvisor.com</li>
+        <li><strong>Houzz</strong> &mdash; houzz.com</li>
+        <li><strong>BBB</strong> &mdash; bbb.org</li>
+        <li><strong>Thumbtack</strong> &mdash; thumbtack.com</li>
+        <li><strong>Nextdoor</strong> &mdash; business.nextdoor.com</li>
+        <li><strong>Porch</strong> &mdash; porch.com</li>
+        <li><strong>BuildZoom</strong> &mdash; buildzoom.com</li>
+      </ul>
+      <ul class="checklist">
+        <li><strong>Facebook Business</strong> &mdash; facebook.com/business</li>
+        <li><strong>Apple Maps</strong> &mdash; mapsconnect.apple.com</li>
+        <li><strong>Bing Places</strong> &mdash; bingplaces.com</li>
+        <li><strong>Manta</strong> &mdash; manta.com</li>
+        <li><strong>Yellow Pages</strong> &mdash; yellowpages.com</li>
+        <li><strong>Bark</strong> &mdash; bark.com</li>
+        <li><strong>Contractor.com</strong> &mdash; contractor.com</li>
+        <li><strong>Expertise.com</strong> &mdash; expertise.com</li>
+        <li><strong>GuildQuality</strong> &mdash; guildquality.com</li>
+        <li><strong>ChamberOfCommerce.com</strong> &mdash; chamberofcommerce.com</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Citation Building Checklist</h3>
+    <ul class="checklist">
+      <li>Use the EXACT same business name, phone, and address on every listing</li>
+      <li>Use the same description/bio across all platforms (adapt length as needed)</li>
+      <li>Upload the same logo and cover photo everywhere</li>
+      <li>Link back to allendes-group.netlify.app on every listing</li>
+      <li>Select the same categories on every platform</li>
+      <li>Check for duplicate listings and merge/remove them</li>
+      <li>Set up Google Alerts for "Allendes Group Inc" to monitor mentions</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: REVIEWS -->
+<!-- ============================================================ -->
+<div class="section" id="reviews">
+  <div class="section-header"><div class="section-num">7</div><h2>Review Request System</h2></div>
+
+  <div class="card">
+    <h3>Goal: 5 New Google Reviews Per Month</h3>
+
+    <h4>Text Message Template (Send within 24 hours of job completion)</h4>
+    <div class="copy-block" id="rev-text">Hi [CLIENT NAME], this is Santiago from Allendes Group Inc. Thank you for choosing us for your [PROJECT TYPE]! We really enjoyed working on it.
+
+If you're happy with the results, we'd be grateful if you could leave us a quick Google review. It only takes 30 seconds and helps us reach more homeowners like you.
+
+Here's the link: [INSERT GOOGLE REVIEW LINK]
+
+Thank you so much! 🙏<button class="copy-btn" onclick="copyBlock('rev-text')">Copy</button></div>
+
+    <h4>Follow-Up Text (Send 3 days later if no review)</h4>
+    <div class="copy-block" id="rev-followup">Hi [CLIENT NAME], just following up! If you have a quick moment, we'd really appreciate your feedback on Google. Your review helps small businesses like ours grow. Here's the link: [INSERT GOOGLE REVIEW LINK]
+
+No pressure at all &mdash; we're grateful either way. Thank you!<button class="copy-btn" onclick="copyBlock('rev-followup')">Copy</button></div>
+
+    <h4>Email Template</h4>
+    <div class="copy-block" id="rev-email">Subject: Thank you for choosing Allendes Group Inc!
+
+Hi [CLIENT NAME],
+
+Thank you for trusting Allendes Group Inc with your recent [PROJECT TYPE] project. It was a pleasure working with you, and we hope you're enjoying the results!
+
+If you have a moment, we'd be incredibly grateful if you could share your experience with a Google review. It helps other homeowners find reliable contractors in the area.
+
+Leave a review here: [INSERT GOOGLE REVIEW LINK]
+
+Thank you for your support. If you ever need anything in the future, don't hesitate to reach out.
+
+Best,
+Santiago Torres Allende
+Allendes Group Inc
+(949) 619-0844
+allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('rev-email')">Copy</button></div>
+
+    <h4>QR Code Strategy</h4>
+    <ul class="checklist">
+      <li>Generate a QR code linking to your Google Review page</li>
+      <li>Print it on: business cards, invoices, job completion sheets, truck decal</li>
+      <li>Use a free QR generator like qr-code-generator.com</li>
+      <li>Test the QR code on multiple phones before printing</li>
+      <li>Add text next to QR: "Scan to leave us a review!"</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: REFERRAL -->
+<!-- ============================================================ -->
+<div class="section" id="referral">
+  <div class="section-header"><div class="section-num">8</div><h2>Referral Cards &amp; Business Card Copy</h2></div>
+
+  <div class="card">
+    <h3>Referral Card Copy</h3>
+    <div class="copy-block" id="ref-card"><strong>FRONT:</strong>
+ALLENDES GROUP INC
+Construction &amp; Landscaping
+
+Refer a friend, get $100 off your next project!
+
+---
+
+<strong>BACK:</strong>
+Referred by: ___________________
+
+New client name: ___________________
+Phone: ___________________
+
+To redeem: Call (949) 619-0844 and mention this card.
+Valid for projects $2,000+. Cannot be combined with other offers.
+
+allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('ref-card')">Copy</button></div>
+
+    <h3 class="mt-16">Business Card Copy</h3>
+    <div class="copy-block" id="biz-card"><strong>FRONT:</strong>
+ALLENDES GROUP INC
+Construction | Landscaping | Remodeling
+
+Santiago Torres Allende
+Owner
+
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+---
+
+<strong>BACK:</strong>
+OUR SERVICES:
+• General Contracting &amp; Remodeling
+• Concrete &amp; Hardscaping
+• Landscape Design &amp; Installation
+• ADU Construction
+• Room Additions
+
+Serving OC | LA | Riverside County
+Licensed &amp; Insured | Free Estimates<button class="copy-btn" onclick="copyBlock('biz-card')">Copy</button></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 9: CLASSIFIEDS -->
+<!-- ============================================================ -->
+<div class="section" id="classifieds">
+  <div class="section-header"><div class="section-num">9</div><h2>Craigslist &amp; Facebook Marketplace Ads</h2></div>
+
+  <div class="card">
+    <h3>5 Craigslist Ads</h3>
+    <p class="text-sm text-orange" style="margin-bottom:12px">Post under "services > skilled trade services." Repost every 48 hours. Include photos.</p>
+
+    <div class="copy-block" id="cl-1"><strong>Title:</strong> ★ Concrete Driveways, Patios, Stamped Concrete &mdash; Free Estimates ★
+
+Looking for quality concrete work? Allendes Group Inc specializes in:
+- Concrete driveways (standard, stamped, colored)
+- Patios and walkways
+- Retaining walls and block walls
+- Demolition and removal of old concrete
+
+Licensed &amp; insured. Serving all of Orange County, LA County, and Riverside County.
+
+FREE on-site estimates. Call or text today!
+
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('cl-1')">Copy</button></div>
+
+    <div class="copy-block" id="cl-2"><strong>Title:</strong> ★ Kitchen &amp; Bathroom Remodeling &mdash; Licensed Contractor ★
+
+Transform your kitchen or bathroom with Allendes Group Inc!
+- Full kitchen remodels (cabinets, countertops, flooring, tile)
+- Bathroom renovations (walk-in showers, vanities, tile work)
+- Drywall, painting, and finishing
+- Plumbing and electrical coordination
+
+Quality craftsmanship at fair prices. Licensed and insured.
+
+Call for a FREE estimate: (949) 619-0844
+allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('cl-2')">Copy</button></div>
+
+    <div class="copy-block" id="cl-3"><strong>Title:</strong> ★ Landscaping, Hardscaping, Artificial Turf &mdash; OC, LA, Riverside ★
+
+Complete landscaping services:
+- Landscape design and installation
+- Hardscaping (pavers, stone, concrete)
+- Artificial turf installation
+- Sprinkler and irrigation systems
+- Sod installation
+- Tree trimming and removal
+- Retaining walls
+
+Transform your outdoor space! Free estimates.
+
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('cl-3')">Copy</button></div>
+
+    <div class="copy-block" id="cl-4"><strong>Title:</strong> ★ ADU Construction &mdash; Permits to Keys &mdash; Licensed Builder ★
+
+Thinking about building an ADU (Accessory Dwelling Unit)?
+
+Allendes Group Inc handles the entire process:
+- Design and planning
+- Permits and city approvals
+- Full construction from foundation to finishing
+- Plumbing, electrical, HVAC
+- Final inspection and certificate of occupancy
+
+Add rental income or extra space for family.
+
+FREE consultation: (949) 619-0844
+allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('cl-4')">Copy</button></div>
+
+    <div class="copy-block" id="cl-5"><strong>Title:</strong> ★ General Contractor &mdash; Room Additions, Remodeling, Construction ★
+
+Allendes Group Inc &mdash; Your one-stop construction company:
+- Room additions
+- Full home remodeling
+- Concrete work
+- Roofing repairs
+- Flooring installation
+- Fence building
+- Pergolas and patio covers
+- Outdoor kitchens
+- Demolition and grading
+
+Licensed. Insured. Serving OC, LA, and Riverside County.
+Over [X] years of experience. References available.
+
+Call today for your FREE estimate: (949) 619-0844
+🌐 allendes-group.netlify.app<button class="copy-btn" onclick="copyBlock('cl-5')">Copy</button></div>
+  </div>
+
+  <div class="card">
+    <h3>5 Facebook Marketplace Posts</h3>
+    <p class="text-sm text-orange" style="margin-bottom:12px">List under "Home Services" or "Home Improvement." Include project photos. Repost weekly.</p>
+
+    <div class="copy-block" id="fbm-1"><strong>Title:</strong> Concrete Driveways &amp; Patios &mdash; Free Estimates | Licensed
+
+Need a new concrete driveway or patio? We specialize in standard, stamped, and decorative concrete for residential and commercial properties.
+
+Allendes Group Inc &mdash; Licensed &amp; insured contractor serving OC, LA, and Riverside County.
+
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+Price: Free Estimate<button class="copy-btn" onclick="copyBlock('fbm-1')">Copy</button></div>
+
+    <div class="copy-block" id="fbm-2"><strong>Title:</strong> Kitchen &amp; Bathroom Remodeling Services | Licensed Contractor
+
+Full kitchen and bathroom renovations. Cabinets, countertops, tile, flooring, fixtures, and more. Quality workmanship, fair prices.
+
+Allendes Group Inc
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+Price: Free Estimate<button class="copy-btn" onclick="copyBlock('fbm-2')">Copy</button></div>
+
+    <div class="copy-block" id="fbm-3"><strong>Title:</strong> Landscaping &amp; Hardscaping &mdash; Design to Installation
+
+Complete landscape transformations. Hardscaping, artificial turf, sprinklers, retaining walls, sod, drought-tolerant designs, and more.
+
+Serving Orange County, LA County, and Riverside County.
+
+📞 (949) 619-0844
+allendes-group.netlify.app
+
+Price: Free Estimate<button class="copy-btn" onclick="copyBlock('fbm-3')">Copy</button></div>
+
+    <div class="copy-block" id="fbm-4"><strong>Title:</strong> ADU Builder &mdash; Permits to Keys &mdash; Licensed &amp; Insured
+
+We build ADUs (granny flats, in-law suites) from start to finish. Permits, design, construction, and final inspection all handled.
+
+Great for rental income or family space.
+
+Allendes Group Inc
+📞 (949) 619-0844
+
+Price: Free Consultation<button class="copy-btn" onclick="copyBlock('fbm-4')">Copy</button></div>
+
+    <div class="copy-block" id="fbm-5"><strong>Title:</strong> General Contractor &mdash; Remodeling, Additions, Concrete, Fencing
+
+One company for ALL your home improvement needs. Room additions, remodeling, concrete, fencing, pergolas, outdoor kitchens, and more.
+
+Licensed. Insured. Free estimates.
+
+📞 (949) 619-0844
+🌐 allendes-group.netlify.app
+
+Price: Free Estimate<button class="copy-btn" onclick="copyBlock('fbm-5')">Copy</button></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 10: TRACKER -->
+<!-- ============================================================ -->
+<div class="section" id="tracker">
+  <div class="section-header"><div class="section-num">10</div><h2>Monthly Results Tracker</h2></div>
+
+  <div class="card">
+    <h3>Monthly ROI Dashboard</h3>
+    <p class="text-sm" style="margin-bottom:16px;color:var(--text2)">Fill in each month to show Santiago the ROI of ElevationAI's marketing services.</p>
+    <div style="overflow-x:auto">
+    <table class="tracker-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Leads</th>
+          <th>Jobs Closed</th>
+          <th>Revenue</th>
+          <th>Google Reviews</th>
+          <th>Website Visits</th>
+          <th>Social Followers</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>April 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>May 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>June 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>July 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>August 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>September 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>October 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>November 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>December 2026</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>January 2027</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>February 2027</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+        <tr><td>March 2027</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td><td contenteditable="true" style="background:var(--card2)">-</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="text-xs mt-16" style="color:var(--text3)">Click any cell to edit. Data is not saved automatically &mdash; screenshot or export monthly.</p>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  Built by <span>ElevationAI</span> for Allendes Group Inc &bull; March 2026<br>
+  All content copy-paste ready. Santiago&rsquo;s phone: (949) 619-0844 &bull; allendes-group.netlify.app
+</div>
+
+<script>
+function copyBlock(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  // Get text without the button text
+  const clone=el.cloneNode(true);
+  const btns=clone.querySelectorAll('.copy-btn');
+  btns.forEach(b=>b.remove());
+  const text=clone.innerText.trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=el.querySelector('.copy-btn');
+    if(btn){
+      btn.textContent='Copied!';
+      btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied')},2000);
+    }
+  });
+}
+
+// Smooth scroll for nav
+document.querySelectorAll('.nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// Active nav highlighting
+const sections=document.querySelectorAll('.section');
+const navLinks=document.querySelectorAll('.nav a');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const id=entry.target.getAttribute('id');
+      const active=document.querySelector(`.nav a[href="#${id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{threshold:0.2,rootMargin:'-80px 0px 0px 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
