@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevationAI - Cold Email Outreach System</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #08090d;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 16px;
+    line-height: 1.5;
+  }
+  h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, #00e5ff, #00bcd4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+  }
+  .subtitle { text-align: center; color: #888; font-size: 0.85rem; margin-bottom: 20px; }
+  /* NAV TABS */
+  .nav-tabs {
+    display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;
+    margin-bottom: 20px; position: sticky; top: 0; background: #08090d;
+    padding: 10px 0; z-index: 100; border-bottom: 1px solid #1a1a2e;
+  }
+  .nav-tab {
+    background: #10111a; border: 1px solid #1a1a2e; color: #aaa;
+    padding: 8px 16px; border-radius: 8px; cursor: pointer;
+    font-size: 0.8rem; transition: all 0.2s; font-weight: 500;
+  }
+  .nav-tab:hover, .nav-tab.active {
+    background: #00e5ff; color: #08090d; border-color: #00e5ff; font-weight: 700;
+  }
+  /* SECTIONS */
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .section-title {
+    font-size: 1.2rem; font-weight: 700; color: #00e5ff;
+    margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1a1a2e;
+  }
+  /* CARDS */
+  .card {
+    background: #10111a; border: 1px solid #1a1a2e; border-radius: 10px;
+    padding: 16px; margin-bottom: 12px; transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #00e5ff; }
+  .card h3 { color: #00e5ff; font-size: 0.95rem; margin-bottom: 8px; }
+  .card p, .card li { color: #ccc; font-size: 0.85rem; }
+  .card ul { padding-left: 18px; }
+  .card li { margin-bottom: 4px; }
+  /* CHECKLIST */
+  .checklist-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #10111a; border: 1px solid #1a1a2e; border-radius: 10px;
+    padding: 14px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s;
+  }
+  .checklist-item:hover { border-color: #00e5ff; }
+  .checklist-item.done { opacity: 0.5; border-color: #1a3a2e; }
+  .checklist-item.done .step-title { text-decoration: line-through; }
+  .check-box {
+    width: 22px; height: 22px; min-width: 22px; border: 2px solid #00e5ff;
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; color: #00e5ff; margin-top: 2px;
+  }
+  .checklist-item.done .check-box { background: #00e5ff; color: #08090d; }
+  .step-num { color: #00e5ff; font-weight: 700; font-size: 0.75rem; }
+  .step-title { font-weight: 600; font-size: 0.9rem; color: #fff; }
+  .step-desc { font-size: 0.8rem; color: #999; margin-top: 2px; }
+  /* EMAIL TEMPLATES */
+  .sequence-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .seq-tab {
+    background: #10111a; border: 1px solid #1a1a2e; color: #aaa;
+    padding: 6px 14px; border-radius: 20px; cursor: pointer;
+    font-size: 0.78rem; transition: all 0.2s;
+  }
+  .seq-tab:hover, .seq-tab.active { background: #00e5ff; color: #08090d; border-color: #00e5ff; }
+  .sequence-content { display: none; }
+  .sequence-content.active { display: block; }
+  .email-block {
+    background: #0d0e15; border: 1px solid #1a1a2e; border-radius: 10px;
+    padding: 14px; margin-bottom: 10px; position: relative;
+  }
+  .email-block .day-badge {
+    position: absolute; top: 10px; right: 10px; background: #00e5ff;
+    color: #08090d; font-size: 0.7rem; font-weight: 700; padding: 2px 8px;
+    border-radius: 12px;
+  }
+  .email-label { font-size: 0.75rem; color: #00e5ff; font-weight: 600; margin-bottom: 4px; }
+  .email-subject { font-size: 0.85rem; color: #fff; font-weight: 600; margin-bottom: 6px; }
+  .email-body {
+    font-size: 0.82rem; color: #bbb; white-space: pre-wrap;
+    background: #08090d; border-radius: 6px; padding: 10px; line-height: 1.5;
+    border: 1px solid #151520;
+  }
+  .copy-btn {
+    background: #10111a; border: 1px solid #00e5ff; color: #00e5ff;
+    padding: 5px 14px; border-radius: 6px; cursor: pointer;
+    font-size: 0.75rem; margin-top: 8px; transition: all 0.2s;
+  }
+  .copy-btn:hover { background: #00e5ff; color: #08090d; }
+  .copy-btn.copied { background: #10b981; border-color: #10b981; color: #fff; }
+  /* SUBJECT LINES */
+  .sl-category { margin-bottom: 16px; }
+  .sl-category h4 { color: #00e5ff; font-size: 0.85rem; margin-bottom: 8px; }
+  .sl-item {
+    display: flex; justify-content: space-between; align-items: center;
+    background: #0d0e15; border: 1px solid #151520; border-radius: 6px;
+    padding: 8px 12px; margin-bottom: 4px; font-size: 0.82rem; color: #ccc;
+  }
+  .sl-copy {
+    background: none; border: 1px solid #333; color: #888; padding: 3px 10px;
+    border-radius: 4px; cursor: pointer; font-size: 0.7rem; transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .sl-copy:hover { border-color: #00e5ff; color: #00e5ff; }
+  .sl-copy.copied { border-color: #10b981; color: #10b981; }
+  /* LEAD GUIDE */
+  .tool-card {
+    background: #10111a; border: 1px solid #1a1a2e; border-radius: 10px;
+    padding: 16px; margin-bottom: 10px;
+  }
+  .tool-card h4 { color: #00e5ff; font-size: 0.9rem; margin-bottom: 6px; }
+  .tool-card p { color: #bbb; font-size: 0.82rem; margin-bottom: 8px; }
+  .tool-card ol { padding-left: 18px; }
+  .tool-card ol li { color: #999; font-size: 0.8rem; margin-bottom: 4px; }
+  .csv-template {
+    width: 100%; overflow-x: auto; margin-top: 12px; border-radius: 8px;
+    border: 1px solid #1a1a2e;
+  }
+  .csv-template table {
+    width: 100%; border-collapse: collapse; font-size: 0.78rem;
+  }
+  .csv-template th {
+    background: #00e5ff; color: #08090d; padding: 8px 10px;
+    text-align: left; font-weight: 700; white-space: nowrap;
+  }
+  .csv-template td {
+    background: #10111a; color: #999; padding: 6px 10px;
+    border-bottom: 1px solid #1a1a2e; white-space: nowrap;
+  }
+  /* RULES */
+  .rule-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    background: #10111a; border: 1px solid #1a1a2e; border-radius: 8px;
+    padding: 12px; margin-bottom: 6px;
+  }
+  .rule-icon { font-size: 1.1rem; min-width: 24px; text-align: center; }
+  .rule-text { font-size: 0.82rem; color: #ccc; }
+  .rule-text strong { color: #00e5ff; }
+  .banned-words {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+  }
+  .banned-word {
+    background: #2a0a0a; border: 1px solid #5a1a1a; color: #ff6b6b;
+    padding: 4px 10px; border-radius: 14px; font-size: 0.75rem;
+  }
+  /* TRACKING DASHBOARD */
+  .dashboard-table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid #1a1a2e; }
+  .dashboard-table {
+    width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 700px;
+  }
+  .dashboard-table th {
+    background: #00e5ff; color: #08090d; padding: 10px 12px;
+    text-align: left; font-weight: 700; font-size: 0.75rem;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .dashboard-table td {
+    background: #10111a; padding: 8px 12px; border-bottom: 1px solid #1a1a2e;
+    color: #ccc;
+  }
+  .dashboard-table input {
+    background: #08090d; border: 1px solid #1a1a2e; color: #fff;
+    padding: 5px 8px; border-radius: 4px; width: 100%; font-size: 0.8rem;
+    text-align: center;
+  }
+  .dashboard-table input:focus { border-color: #00e5ff; outline: none; }
+  .dashboard-table .calc-cell {
+    color: #00e5ff; font-weight: 700; text-align: center;
+  }
+  .dash-actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .dash-btn {
+    background: #10111a; border: 1px solid #00e5ff; color: #00e5ff;
+    padding: 8px 18px; border-radius: 8px; cursor: pointer;
+    font-size: 0.8rem; transition: all 0.2s;
+  }
+  .dash-btn:hover { background: #00e5ff; color: #08090d; }
+  .dash-btn.danger { border-color: #ff6b6b; color: #ff6b6b; }
+  .dash-btn.danger:hover { background: #ff6b6b; color: #fff; }
+  .toast {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: #10b981; color: #fff; padding: 10px 24px; border-radius: 8px;
+    font-size: 0.85rem; font-weight: 600; z-index: 9999;
+    opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<h1>Cold Email Outreach System</h1>
+<p class="subtitle">ElevationAI Internal -- Sequences, Templates, Tracking</p>
+
+<div class="nav-tabs">
+  <div class="nav-tab active" data-section="domains">Domain Setup</div>
+  <div class="nav-tab" data-section="sequences">Email Sequences</div>
+  <div class="nav-tab" data-section="subjects">Subject Lines</div>
+  <div class="nav-tab" data-section="leads">Lead Building</div>
+  <div class="nav-tab" data-section="rules">Deliverability</div>
+  <div class="nav-tab" data-section="tracking">Tracking</div>
+</div>
+
+<!-- ========== SECTION 1: DOMAIN SETUP ========== -->
+<div class="section active" id="sec-domains">
+  <div class="section-title">Domain Setup Checklist</div>
+  <div id="checklist-container"></div>
+</div>
+
+<!-- ========== SECTION 2: EMAIL SEQUENCES ========== -->
+<div class="section" id="sec-sequences">
+  <div class="section-title">Email Sequences</div>
+  <div class="sequence-tabs" id="seq-tabs"></div>
+  <div id="seq-content-wrap"></div>
+</div>
+
+<!-- ========== SECTION 3: SUBJECT LINES ========== -->
+<div class="section" id="sec-subjects">
+  <div class="section-title">Subject Line Library (30 Proven Lines)</div>
+  <div id="subject-lines-container"></div>
+</div>
+
+<!-- ========== SECTION 4: LEAD BUILDING ========== -->
+<div class="section" id="sec-leads">
+  <div class="section-title">Lead List Building Guide</div>
+  <div id="lead-guide-container"></div>
+</div>
+
+<!-- ========== SECTION 5: DELIVERABILITY RULES ========== -->
+<div class="section" id="sec-rules">
+  <div class="section-title">Deliverability Rules</div>
+  <div id="rules-container"></div>
+</div>
+
+<!-- ========== SECTION 6: TRACKING DASHBOARD ========== -->
+<div class="section" id="sec-tracking">
+  <div class="section-title">Campaign Tracking Dashboard</div>
+  <div class="dashboard-table-wrap">
+    <table class="dashboard-table" id="dash-table">
+      <thead>
+        <tr>
+          <th>Campaign</th><th>Sent</th><th>Opens</th><th>Replies</th>
+          <th>Reply Rate</th><th>Meetings</th><th>Closed</th><th>Conv Rate</th><th></th>
+        </tr>
+      </thead>
+      <tbody id="dash-body"></tbody>
+    </table>
+  </div>
+  <div class="dash-actions">
+    <button class="dash-btn" onclick="addRow()">+ Add Campaign</button>
+    <button class="dash-btn" onclick="saveDashboard()">Save</button>
+    <button class="dash-btn danger" onclick="clearDashboard()">Clear All</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// === TOAST ===
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// === COPY TO CLIPBOARD ===
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    showToast('Copied to clipboard');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+  });
+}
+
+// === NAV TABS ===
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('sec-' + tab.dataset.section).classList.add('active');
+  });
+});
+
+// === SECTION 1: DOMAIN SETUP CHECKLIST ===
+const checklistSteps = [
+  { title: 'Buy 3-5 outreach domains', desc: 'Examples: tryelevationai.com, getelevationai.com, hirelevationai.com, meetelvationai.com, reachelevationai.com. Keep them brand-adjacent but separate from your main domain.' },
+  { title: 'Purchase on Cloudflare Registrar', desc: '$10.44/domain at cost -- no markup. Cloudflare also gives you free DNS management and fast propagation.' },
+  { title: 'Set up email hosting', desc: 'Google Workspace ($6/mo per domain) for best deliverability, or Zoho Mail (free tier) to start lean. Create addresses like sabino@tryelevationai.com.' },
+  { title: 'Configure SPF record', desc: 'Add a TXT record to your DNS: v=spf1 include:_spf.google.com ~all (for Google Workspace). This tells servers your emails are legit.' },
+  { title: 'Configure DKIM record', desc: 'In Google Workspace Admin > Apps > Gmail > Authenticate Email. Generate DKIM key and add the TXT record to DNS.' },
+  { title: 'Configure DMARC record', desc: 'Add TXT record: _dmarc.yourdomain.com with value v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com. Start with p=none, move to p=quarantine after 30 days.' },
+  { title: 'Warm up domains for 14 days', desc: 'Use Smartlead built-in warmup (included) or Mailwarm ($69/mo). Send 10-20 emails/day between warm accounts, gradually increasing. Do NOT send cold emails during warmup.' },
+  { title: 'NEVER send from sanchezelevationai.com', desc: 'Your main domain is for receiving replies and client communication only. Cold outreach goes through burner domains to protect your sender reputation.' }
+];
+const checklistContainer = document.getElementById('checklist-container');
+const savedChecks = JSON.parse(localStorage.getItem('ea_domain_checklist') || '[]');
+checklistSteps.forEach((s, i) => {
+  const done = savedChecks.includes(i);
+  const el = document.createElement('div');
+  el.className = 'checklist-item' + (done ? ' done' : '');
+  el.innerHTML = `<div class="check-box">${done ? '&#10003;' : ''}</div>
+    <div><span class="step-num">STEP ${i + 1}</span>
+    <div class="step-title">${s.title}</div>
+    <div class="step-desc">${s.desc}</div></div>`;
+  el.addEventListener('click', () => {
+    el.classList.toggle('done');
+    el.querySelector('.check-box').innerHTML = el.classList.contains('done') ? '&#10003;' : '';
+    const checks = [];
+    document.querySelectorAll('.checklist-item').forEach((c, idx) => { if (c.classList.contains('done')) checks.push(idx); });
+    localStorage.setItem('ea_domain_checklist', JSON.stringify(checks));
+  });
+  checklistContainer.appendChild(el);
+});
+
+// === SECTION 2: EMAIL SEQUENCES ===
+const sequences = [
+  {
+    name: 'Restaurant',
+    emails: [
+      { day: 'Day 0', subject: 'Quick question about {{business_name}}', body: `Hi {{first_name}},
+
+I was looking for a place to eat in {{city}} and came across {{business_name}}. Your food looks incredible, but I had a hard time finding you online.
+
+Most restaurants in your area are pulling 30-40 new customers per month just from having a solid online presence. Right now, people searching "best {{cuisine}} in {{city}}" aren't finding you.
+
+I help restaurants fix that in about a week. Would it make sense to chat for 10 minutes this week?
+
+- Sabino` },
+      { day: 'Day 3', subject: 'Re: Quick question about {{business_name}}', body: `Hi {{first_name}},
+
+Following up on my last note. I actually built a quick mockup of what a modern site could look like for {{business_name}}:
+
+[Demo Link]
+
+Takes about 15 seconds to load -- let me know what you think. No strings attached.
+
+- Sabino` },
+      { day: 'Day 7', subject: '{{competitor_name}} is ranking above you on Google', body: `Hi {{first_name}},
+
+I noticed {{competitor_name}} down the street from you shows up first when I search "{{cuisine}} in {{city}}." They have a website, online ordering, and 200+ reviews pulling in.
+
+This is fixable. I can show you exactly how in a 10-minute call. Open this week?
+
+- Sabino` },
+      { day: 'Day 13', subject: 'Should I close your file?', body: `Hi {{first_name}},
+
+I've reached out a few times about helping {{business_name}} get found online. I don't want to be a pest, so I'll assume the timing isn't right.
+
+If anything changes down the road, I'm here. Just reply to this email.
+
+All the best,
+Sabino` }
+    ]
+  },
+  {
+    name: 'Contractor',
+    emails: [
+      { day: 'Day 0', subject: 'Homeowners in {{city}} can\'t find {{business_name}}', body: `Hi {{first_name}},
+
+I was searching for {{service_type}} contractors in {{city}} and noticed {{business_name}} doesn't show up in the top results.
+
+Most homeowners pick the first contractor they find on Google. Right now, your competitors are getting those calls instead of you.
+
+I build websites and Google profiles specifically for contractors that generate 15-25 new leads per month. Takes about a week to set up.
+
+Worth a quick 10-minute call?
+
+- Sabino` },
+      { day: 'Day 3', subject: 'Re: Homeowners in {{city}} can\'t find {{business_name}}', body: `Hi {{first_name}},
+
+Quick follow-up. I put together a sample site for a contractor in your space:
+
+[Demo Link]
+
+Mobile-friendly, loads fast, has a quote request form built in. This is the kind of site that converts visitors into actual jobs.
+
+Take a look when you get a chance.
+
+- Sabino` },
+      { day: 'Day 7', subject: 'Your competitor just launched a new website', body: `Hi {{first_name}},
+
+I noticed another {{service_type}} company in {{city}} just upgraded their site. They've got online reviews, a booking form, and they're showing up on Google Maps.
+
+Every month without a strong online presence is jobs going to someone else. Happy to show you what a modern setup looks like for your business.
+
+Free to talk this week?
+
+- Sabino` },
+      { day: 'Day 13', subject: 'Last note from me', body: `Hi {{first_name}},
+
+I've reached out a few times about helping {{business_name}} get found online. I know you're busy running jobs, so I'll keep this short.
+
+If you ever want to explore getting more leads from the internet, just reply here. I'll be around.
+
+Best,
+Sabino` }
+    ]
+  },
+  {
+    name: 'Auto Detailing',
+    emails: [
+      { day: 'Day 0', subject: 'People in {{city}} want detailing but can\'t book you', body: `Hi {{first_name}},
+
+I found {{business_name}} on Instagram and your work is legit. But when I searched "auto detailing {{city}}" on Google, you didn't come up.
+
+Most detailing customers search Google before they book. A simple website with online booking and your portfolio could add 10-20 new bookings per month.
+
+I help detailers build exactly that. Worth a quick chat?
+
+- Sabino` },
+      { day: 'Day 3', subject: 'Re: People in {{city}} want detailing but can\'t book you', body: `Hi {{first_name}},
+
+Following up -- I built a sample detailing website to show you what's possible:
+
+[Demo Link]
+
+Online booking, service packages, before/after gallery, mobile-optimized. This is what top detailers are using to fill their schedule.
+
+What do you think?
+
+- Sabino` },
+      { day: 'Day 7', subject: 'A detailer near you is booking 5x more jobs online', body: `Hi {{first_name}},
+
+I came across another detailing business in {{city}} that has a full website with online booking. They're getting consistent 5-star reviews and showing up first on Google.
+
+Instagram is great for showcase, but a website is what actually converts browsers into booked jobs. I can show you the difference in 10 minutes.
+
+Open this week?
+
+- Sabino` },
+      { day: 'Day 13', subject: 'Closing the loop on {{business_name}}', body: `Hi {{first_name}},
+
+I've sent a few notes about helping {{business_name}} get more online bookings. I don't want to clog your inbox, so this will be my last one.
+
+If you ever want to chat about getting a website or online booking set up, just reply to this email. No expiration on the offer.
+
+- Sabino` }
+    ]
+  },
+  {
+    name: 'Real Estate',
+    emails: [
+      { day: 'Day 0', subject: 'Your listings deserve a better online presence', body: `Hi {{first_name}},
+
+I came across your profile on {{platform}} and noticed you're active in {{city}}. Great market.
+
+Most agents and loan officers rely solely on Zillow and Realtor.com for leads, but top producers are building personal brands with their own sites that capture leads 24/7.
+
+I build high-converting websites specifically for real estate pros. Online lead capture, property showcases, rate calculators -- the full setup.
+
+Worth 10 minutes to see what this could look like for you?
+
+- Sabino` },
+      { day: 'Day 3', subject: 'Re: Your listings deserve a better online presence', body: `Hi {{first_name}},
+
+Quick follow-up. Here's a sample of what a modern real estate site looks like:
+
+[Demo Link]
+
+Lead capture forms, featured listings, client testimonials, and it's mobile-first. Takes about a week to customize for your brand.
+
+Let me know if you want to see one built for you.
+
+- Sabino` },
+      { day: 'Day 7', subject: 'An agent in {{city}} just launched a site that generates leads on autopilot', body: `Hi {{first_name}},
+
+I recently helped a real estate professional in your area set up a personal brand website. Within the first month, they captured 40+ leads through the site alone.
+
+The difference between agents who rely on referrals only and agents who dominate their market is online visibility. Happy to show you the playbook.
+
+Got 10 minutes this week?
+
+- Sabino` },
+      { day: 'Day 13', subject: 'Last message -- no hard feelings', body: `Hi {{first_name}},
+
+I've reached out a few times about building your online presence. Totally understand if now isn't the right time.
+
+If you ever want to explore getting a professional website that generates leads, just reply to this email. The offer doesn't expire.
+
+Wishing you a great quarter,
+Sabino` }
+    ]
+  },
+  {
+    name: 'General Local Biz',
+    emails: [
+      { day: 'Day 0', subject: 'I searched for {{service}} in {{city}} -- you\'re invisible', body: `Hi {{first_name}},
+
+I was looking for {{service}} businesses in {{city}} and noticed {{business_name}} doesn't show up on Google.
+
+That means every potential customer searching for what you offer is finding your competitors instead. In 2026, not having a website is like not having a phone number.
+
+I help local businesses build professional websites that actually bring in customers. Takes about a week and costs less than you'd think.
+
+Worth a quick chat?
+
+- Sabino` },
+      { day: 'Day 3', subject: 'Re: I searched for {{service}} in {{city}} -- you\'re invisible', body: `Hi {{first_name}},
+
+Following up on my last email. I put together a quick demo of what a modern business website looks like:
+
+[Demo Link]
+
+Mobile-friendly, fast, professional. This is the minimum standard customers expect in 2026.
+
+Take a look and let me know what you think.
+
+- Sabino` },
+      { day: 'Day 7', subject: '{{business_name}} vs. your top competitor -- here\'s the gap', body: `Hi {{first_name}},
+
+I compared {{business_name}} with a competitor in {{city}}. They have a website, 100+ Google reviews, and show up in the top 3 results on Maps.
+
+The gap isn't quality of work -- it's online visibility. And that's actually the easiest part to fix.
+
+I can walk you through exactly what they're doing and how to match it. 10 minutes?
+
+- Sabino` },
+      { day: 'Day 13', subject: 'Closing the loop', body: `Hi {{first_name}},
+
+I've reached out a few times about helping {{business_name}} get found online. I respect your time, so this will be my last email.
+
+If things change and you want to explore building an online presence, just hit reply. I'll be here.
+
+All the best,
+Sabino` }
+    ]
+  }
+];
+
+// Render sequence tabs
+const seqTabsEl = document.getElementById('seq-tabs');
+const seqWrap = document.getElementById('seq-content-wrap');
+sequences.forEach((seq, si) => {
+  const tab = document.createElement('div');
+  tab.className = 'seq-tab' + (si === 0 ? ' active' : '');
+  tab.textContent = seq.name;
+  tab.dataset.seq = si;
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.seq-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.sequence-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('seq-' + si).classList.add('active');
+  });
+  seqTabsEl.appendChild(tab);
+
+  const content = document.createElement('div');
+  content.className = 'sequence-content' + (si === 0 ? ' active' : '');
+  content.id = 'seq-' + si;
+  seq.emails.forEach(em => {
+    const block = document.createElement('div');
+    block.className = 'email-block';
+    const fullText = `Subject: ${em.subject}\n\n${em.body}`;
+    block.innerHTML = `<div class="day-badge">${em.day}</div>
+      <div class="email-label">Subject:</div>
+      <div class="email-subject">${em.subject}</div>
+      <div class="email-body">${em.body}</div>
+      <button class="copy-btn" onclick="copyText(\`${fullText.replace(/`/g, '\\`').replace(/\\/g, '\\\\')}\`, this)">Copy</button>`;
+    content.appendChild(block);
+  });
+  seqWrap.appendChild(content);
+});
+
+// Fix copy buttons to use data attributes instead of inline template literals
+document.querySelectorAll('.email-block').forEach(block => {
+  const subject = block.querySelector('.email-subject').textContent;
+  const body = block.querySelector('.email-body').textContent;
+  const fullText = `Subject: ${subject}\n\n${body}`;
+  const btn = block.querySelector('.copy-btn');
+  btn.onclick = function() { copyText(fullText, this); };
+});
+
+// === SECTION 3: SUBJECT LINES ===
+const subjectLines = {
+  'Curiosity': [
+    'Quick question about {{business_name}}',
+    'Something odd I noticed about {{business_name}}',
+    'This might be none of my business, but...',
+    'Weird thing happened when I searched for you',
+    'I have an idea for {{business_name}}',
+    'Not sure if this is relevant to you'
+  ],
+  'Pain Point': [
+    'Customers in {{city}} can\'t find you',
+    '{{business_name}} is invisible on Google right now',
+    'You\'re losing customers to {{competitor_name}}',
+    'Why your phone isn\'t ringing from Google',
+    'The #1 reason local businesses lose customers in 2026',
+    'Your competitors are spending $0 to outrank you'
+  ],
+  'Competitor': [
+    '{{competitor_name}} just launched a new website',
+    '{{competitor_name}} is ranking above you on Google',
+    'A {{industry}} business near you is booking 5x more online',
+    'Your competitor just started getting leads from their website',
+    'Someone in {{city}} is doing what you do -- but online',
+    'The business down the street just upgraded'
+  ],
+  'Direct': [
+    'Website for {{business_name}} -- quick question',
+    'Can I build {{business_name}} a website?',
+    'I build websites for {{industry}} businesses in {{city}}',
+    '10 minutes to show you something for {{business_name}}',
+    'I want to help {{business_name}} get more customers',
+    'Free mockup for {{business_name}}'
+  ],
+  'Question': [
+    'Does {{business_name}} have a website?',
+    'How are you getting customers right now?',
+    'Have you thought about online booking?',
+    'Who handles your online presence?',
+    'Are you happy with your current lead flow?',
+    'Should I close your file?'
+  ]
+};
+const slContainer = document.getElementById('subject-lines-container');
+Object.entries(subjectLines).forEach(([cat, lines]) => {
+  const catDiv = document.createElement('div');
+  catDiv.className = 'sl-category';
+  catDiv.innerHTML = `<h4>${cat} (${lines.length})</h4>`;
+  lines.forEach(line => {
+    const item = document.createElement('div');
+    item.className = 'sl-item';
+    item.innerHTML = `<span>${line}</span><button class="sl-copy">Copy</button>`;
+    item.querySelector('.sl-copy').addEventListener('click', function(e) {
+      e.stopPropagation();
+      navigator.clipboard.writeText(line).then(() => {
+        this.textContent = 'Copied!';
+        this.classList.add('copied');
+        showToast('Copied');
+        setTimeout(() => { this.textContent = 'Copy'; this.classList.remove('copied'); }, 1200);
+      });
+    });
+    catDiv.appendChild(item);
+  });
+  slContainer.appendChild(catDiv);
+});
+
+// === SECTION 4: LEAD BUILDING GUIDE ===
+const leadGuide = [
+  {
+    title: 'Google Maps Prospecting',
+    desc: 'The best free method to find businesses without websites.',
+    steps: [
+      'Open Google Maps and search: "{{industry}} in {{city}}" (e.g., "plumber in Norwalk")',
+      'Click through each result in the list',
+      'Look for businesses with no website link, low review count, or outdated info',
+      'Check their Google Business Profile -- if no website is listed, they\'re a prospect',
+      'Note their phone number, owner name (from reviews or GBP), and address',
+      'Add to your CSV spreadsheet with all details',
+      'Pro tip: search during business hours and call them directly for fastest results'
+    ]
+  },
+  {
+    title: 'Apollo.io for Email Finding',
+    desc: 'Free tier gives 50 email credits/month. Best for finding owner/decision-maker emails.',
+    steps: [
+      'Create free account at apollo.io',
+      'Use People Search -- filter by Title (Owner, Founder, Manager), Location, Industry',
+      'Filter by company size: 1-10 employees for small local businesses',
+      'Export contacts with verified emails',
+      'Cross-reference with Google Maps to confirm they need a website',
+      'Pro tip: use "Owner" + your target city for hyper-local results'
+    ]
+  },
+  {
+    title: 'Hunter.io for Verification',
+    desc: 'Verify emails before sending to protect your sender reputation.',
+    steps: [
+      'Create free account at hunter.io (25 free verifications/month)',
+      'Use Email Verifier to check each email before adding to your campaign',
+      'Status must be "valid" -- skip "risky" or "invalid" emails',
+      'Use Domain Search to find emails associated with a business website',
+      'Pro tip: always verify before uploading to your sending tool'
+    ]
+  }
+];
+const leadContainer = document.getElementById('lead-guide-container');
+leadGuide.forEach(tool => {
+  const card = document.createElement('div');
+  card.className = 'tool-card';
+  card.innerHTML = `<h4>${tool.title}</h4><p>${tool.desc}</p>
+    <ol>${tool.steps.map(s => `<li>${s}</li>`).join('')}</ol>`;
+  leadContainer.appendChild(card);
+});
+// CSV Template
+const csvDiv = document.createElement('div');
+csvDiv.className = 'tool-card';
+csvDiv.innerHTML = `<h4>CSV Template</h4><p>Use this structure for your lead lists. Copy the header row to start.</p>
+  <div class="csv-template"><table>
+    <tr><th>Business Name</th><th>Owner Name</th><th>Email</th><th>Phone</th><th>Industry</th><th>City</th><th>Website (Y/N)</th><th>Notes</th></tr>
+    <tr><td>Joe's Plumbing</td><td>Joe Martinez</td><td>joe@joesplumb.com</td><td>(562) 555-1234</td><td>Plumbing</td><td>Norwalk</td><td>N</td><td>No online presence, active GBP</td></tr>
+    <tr><td>Bella's Nails</td><td>Bella Tran</td><td>bella@gmail.com</td><td>(714) 555-5678</td><td>Nail Salon</td><td>Anaheim</td><td>N</td><td>Instagram only, 2k followers</td></tr>
+  </table></div>
+  <button class="copy-btn" style="margin-top:10px" id="copy-csv-btn">Copy CSV Header</button>`;
+leadContainer.appendChild(csvDiv);
+document.getElementById('copy-csv-btn').addEventListener('click', function() {
+  copyText('Business Name,Owner Name,Email,Phone,Industry,City,Website (Y/N),Notes', this);
+});
+
+// === SECTION 5: DELIVERABILITY RULES ===
+const rules = [
+  { icon: '&#x1F4E7;', text: '<strong>Max 50 emails/day per domain.</strong> Spread across all outreach domains. 5 domains = 250 emails/day total.' },
+  { icon: '&#x1F5BC;', text: '<strong>No images in the first email.</strong> Images trigger spam filters. Plain text only for the opener.' },
+  { icon: '&#x1F6AB;', text: '<strong>No "unsubscribe" link in first email.</strong> Use the breakup email (Email 4) as your natural opt-out. Adding unsub links to cold emails flags you as bulk sender.' },
+  { icon: '&#x26A0;', text: '<strong>Avoid spam trigger words.</strong> These words will tank your deliverability:' },
+  { icon: '&#x270D;', text: '<strong>Always personalize the first line.</strong> Mention their business name, city, something specific. Generic = spam folder.' },
+  { icon: '&#x1F4CF;', text: '<strong>Keep body under 100 words.</strong> Short emails get higher reply rates. Say less, mean more.' },
+  { icon: '&#x1F4DD;', text: '<strong>Plain text only.</strong> No HTML formatting, no bold, no colors, no fancy signatures. Write like a human, not a marketer.' },
+  { icon: '&#x23F0;', text: '<strong>Send between 8-11 AM local time.</strong> Tuesday through Thursday are the highest-open days.' },
+  { icon: '&#x1F504;', text: '<strong>Warm up new domains for 14 days minimum.</strong> Never skip warmup. Your domain reputation is everything.' },
+  { icon: '&#x2705;', text: '<strong>Verify every email before sending.</strong> Bounces destroy your sender reputation. Use Hunter.io or NeverBounce.' }
+];
+const rulesContainer = document.getElementById('rules-container');
+rules.forEach((r, i) => {
+  const el = document.createElement('div');
+  el.className = 'rule-item';
+  el.innerHTML = `<div class="rule-icon">${r.icon}</div><div class="rule-text">${r.text}</div>`;
+  rulesContainer.appendChild(el);
+  if (i === 3) {
+    const banned = document.createElement('div');
+    banned.className = 'banned-words';
+    ['free', 'guaranteed', 'limited time', 'act now', 'no obligation', 'exclusive deal', 'click here', 'buy now', 'order now', 'risk-free', 'winner', 'congratulations', 'earn money', 'make money', 'cash bonus', 'discount', '100%', 'amazing', 'urgent'].forEach(w => {
+      banned.innerHTML += `<span class="banned-word">${w}</span>`;
+    });
+    rulesContainer.appendChild(banned);
+  }
+});
+
+// === SECTION 6: TRACKING DASHBOARD ===
+const DASH_KEY = 'ea_cold_email_dashboard';
+function loadDashboard() {
+  return JSON.parse(localStorage.getItem(DASH_KEY) || '[]');
+}
+function saveDashboard() {
+  const rows = [];
+  document.querySelectorAll('#dash-body tr').forEach(tr => {
+    const inputs = tr.querySelectorAll('input');
+    rows.push({
+      name: inputs[0].value,
+      sent: parseInt(inputs[1].value) || 0,
+      opens: parseInt(inputs[2].value) || 0,
+      replies: parseInt(inputs[3].value) || 0,
+      meetings: parseInt(inputs[4].value) || 0,
+      closed: parseInt(inputs[5].value) || 0
+    });
+  });
+  localStorage.setItem(DASH_KEY, JSON.stringify(rows));
+  showToast('Dashboard saved');
+}
+function renderDashboard() {
+  const data = loadDashboard();
+  const body = document.getElementById('dash-body');
+  body.innerHTML = '';
+  if (data.length === 0) {
+    addRow(); return;
+  }
+  data.forEach(r => createRow(r));
+}
+function createRow(data = {}) {
+  const body = document.getElementById('dash-body');
+  const tr = document.createElement('tr');
+  const sent = data.sent || 0;
+  const replies = data.replies || 0;
+  const closed = data.closed || 0;
+  const replyRate = sent > 0 ? ((replies / sent) * 100).toFixed(1) + '%' : '0%';
+  const convRate = sent > 0 ? ((closed / sent) * 100).toFixed(1) + '%' : '0%';
+  tr.innerHTML = `
+    <td><input value="${data.name || ''}" placeholder="Campaign name"></td>
+    <td><input type="number" value="${sent}" min="0"></td>
+    <td><input type="number" value="${data.opens || 0}" min="0"></td>
+    <td><input type="number" value="${replies}" min="0"></td>
+    <td class="calc-cell">${replyRate}</td>
+    <td><input type="number" value="${data.meetings || 0}" min="0"></td>
+    <td><input type="number" value="${closed}" min="0"></td>
+    <td class="calc-cell">${convRate}</td>
+    <td><button class="copy-btn" style="padding:3px 8px;font-size:0.7rem;margin:0" onclick="this.closest('tr').remove()">X</button></td>`;
+  // Auto-recalculate on input change
+  tr.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('input', () => {
+      const inputs = tr.querySelectorAll('input');
+      const s = parseInt(inputs[1].value) || 0;
+      const r = parseInt(inputs[3].value) || 0;
+      const c = parseInt(inputs[5].value) || 0;
+      const cells = tr.querySelectorAll('.calc-cell');
+      cells[0].textContent = s > 0 ? ((r / s) * 100).toFixed(1) + '%' : '0%';
+      cells[1].textContent = s > 0 ? ((c / s) * 100).toFixed(1) + '%' : '0%';
+    });
+  });
+  body.appendChild(tr);
+}
+function addRow() { createRow(); }
+function clearDashboard() {
+  if (confirm('Clear all campaign data?')) {
+    localStorage.removeItem(DASH_KEY);
+    renderDashboard();
+    showToast('Dashboard cleared');
+  }
+}
+renderDashboard();
+</script>
+</body>
+</html>
