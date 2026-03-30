@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevationAI — Ever's Training Camp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08090d;--bg2:#0f1117;--card:rgba(15,17,23,.9);--border:rgba(0,240,255,.1);--cyan:#00f0ff;--green:#22c55e;--red:#ef4444;--gold:#eab308;--purple:#a855f7;--orange:#f97316;--text:#e8eaed;--text2:#8b949e;--text3:#484f58;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+
+.header{text-align:center;padding:48px 24px 24px;border-bottom:1px solid var(--border)}
+.header h1{font-size:clamp(24px,5vw,36px);font-weight:900}.header h1 span{color:var(--cyan)}
+.header-name{font-size:14px;color:var(--green);font-weight:700;margin-top:4px;letter-spacing:1px}
+.header p{color:var(--text2);font-size:14px;margin-top:8px;max-width:500px;margin-left:auto;margin-right:auto}
+.badge{display:inline-block;margin-top:12px;background:linear-gradient(135deg,rgba(0,240,255,.1),rgba(34,197,94,.1));border:1px solid rgba(0,240,255,.2);padding:6px 20px;border-radius:20px;font-size:12px;font-weight:700;color:var(--cyan)}
+
+.container{max-width:800px;margin:0 auto;padding:20px}
+.section{margin-bottom:36px}
+.section-num{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--cyan);margin-bottom:4px}
+.section-title{font-size:20px;font-weight:900;margin-bottom:6px}
+.section-sub{color:var(--text2);font-size:14px;margin-bottom:16px;line-height:1.7}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:10px}
+.card h3{font-size:15px;font-weight:800;margin-bottom:8px}
+.card p,.card li{font-size:13px;color:var(--text2);line-height:1.8}
+.card ul{list-style:none;padding:0}
+.card li{padding:4px 0;padding-left:16px;position:relative}
+.card li::before{content:'→';position:absolute;left:0;color:var(--cyan)}
+
+.rule-box{background:linear-gradient(135deg,rgba(0,240,255,.06),rgba(34,197,94,.06));border:1px solid rgba(0,240,255,.2);border-radius:12px;padding:20px;margin:12px 0}
+.rule-box h3{color:var(--cyan);font-size:16px;margin-bottom:8px}
+.rule-box p{font-size:14px;color:var(--text);line-height:1.8}
+
+.script-box{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;margin:10px 0;font-size:13px;line-height:1.8;white-space:pre-wrap;position:relative}
+.copy-btn{position:absolute;top:8px;right:8px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.25);color:var(--cyan);padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font)}
+
+.objection{border-left:3px solid var(--gold);padding:12px 16px;background:rgba(234,179,8,.04);border-radius:0 8px 8px 0;margin:8px 0}
+.objection .q{color:var(--red);font-weight:700;font-size:13px;margin-bottom:4px}
+.objection .a{color:var(--green);font-weight:700;font-size:13px;margin-bottom:4px}
+.objection p{font-size:13px;color:var(--text2);line-height:1.7}
+
+.step{display:grid;grid-template-columns:48px 1fr;gap:12px;margin:12px 0;align-items:start}
+.step-num{font-family:var(--mono);font-size:28px;font-weight:900;color:var(--cyan);text-align:center}
+.step-content h4{font-size:14px;font-weight:800;margin-bottom:4px}
+.step-content p{font-size:13px;color:var(--text2);line-height:1.7}
+
+.demo-links{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;margin:12px 0}
+.demo-link{background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:8px;padding:10px 12px;font-size:12px;font-weight:700;transition:.2s}
+.demo-link:hover{border-color:rgba(0,240,255,.4)}
+
+.checklist{list-style:none;padding:0}
+.checklist li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.checklist li::before{content:'';width:20px;height:20px;border:2px solid var(--border);border-radius:4px;flex-shrink:0}
+.checklist li.done::before{background:var(--green);border-color:var(--green)}
+
+.earnings{background:var(--card);border:1px solid var(--green);border-radius:12px;padding:24px;text-align:center;margin:16px 0}
+.earnings-val{font-family:var(--mono);font-size:42px;font-weight:900;color:var(--green)}
+.earnings-sub{font-size:13px;color:var(--text2);margin-top:4px}
+
+.week-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:10px;border-left:3px solid var(--cyan)}
+.week-card h3{font-size:15px;font-weight:800;color:var(--cyan);margin-bottom:8px}
+.week-card p{font-size:13px;color:var(--text2);line-height:1.8}
+
+.quote{text-align:center;padding:24px;font-size:16px;color:var(--cyan);font-style:italic;border:1px solid var(--border);border-radius:12px;margin:16px 0;font-weight:600}
+
+@media(max-width:600px){.demo-links{grid-template-columns:1fr 1fr}.step{grid-template-columns:36px 1fr}}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px">
+  <div style="font-size:24px;font-weight:900">🔒</div>
+  <div style="font-size:16px;font-weight:700">ElevationAI Training Camp</div>
+  <div style="color:var(--text2);font-size:13px">Enter your access code</div>
+  <input type="password" id="codeInput" maxlength="4" placeholder="••••" style="width:140px;text-align:center;padding:14px;background:var(--bg2);border:2px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--mono);font-size:24px;letter-spacing:8px;outline:none" onkeyup="checkCode()" autofocus>
+  <div id="codeError" style="color:var(--red);font-size:12px;display:none">Wrong code.</div>
+</div>
+<div id="content" style="display:none">
+
+<header class="header">
+  <h1>Welcome to <span>Training Camp</span></h1>
+  <div class="header-name">EVER DUARTE — VP OF SALES ASSOCIATES</div>
+  <p>Everything you need to close deals for ElevationAI. Follow this training start to finish. Master it. Get paid.</p>
+  <div class="badge">$50 PER CLIENT • NO CAP ON EARNINGS</div>
+</header>
+
+<div class="container">
+
+<!-- YOUR ROLE -->
+<div class="section">
+  <div class="section-num">YOUR ROLE</div>
+  <div class="section-title">What You Do at ElevationAI</div>
+
+  <div class="rule-box">
+    <h3>The Simple Version</h3>
+    <p>You find local businesses that need a website. You show them a free demo on your phone. If they want it, you connect them with Sabino. You get $50 cash for every client that signs. No experience needed. No cold calling required (but it helps). You work your own schedule.</p>
+  </div>
+
+  <div class="card">
+    <h3>Your Job in 4 Steps</h3>
+    <ul>
+      <li><strong>Find</strong> — DM businesses on Instagram, walk into shops, cold call from Google Maps</li>
+      <li><strong>Show</strong> — Pull up a demo on your phone that matches their industry</li>
+      <li><strong>Connect</strong> — If they're interested, get their name + number and text it to Sabino</li>
+      <li><strong>Get Paid</strong> — When they sign, you get $50 via Venmo or Zelle. Same day.</li>
+    </ul>
+  </div>
+
+  <div class="earnings">
+    <div style="font-size:12px;color:var(--text2);margin-bottom:4px">YOUR EARNING POTENTIAL</div>
+    <div class="earnings-val" id="earningsVal">$200/week</div>
+    <div class="earnings-sub" id="earningsSub">4 clients/week</div>
+    <div style="margin-top:12px">
+      <input type="range" id="earnSlider" min="1" max="20" value="4" style="width:80%;accent-color:var(--green)" oninput="updateEarnings()">
+    </div>
+    <div style="font-size:11px;color:var(--text3);margin-top:8px">Slide to see what you could make. Top performers: 8-15 clients/week.</div>
+  </div>
+
+  <div class="card">
+    <h3>Commission Structure (The More You Close, The More You Make)</h3>
+    <ul>
+      <li><strong>Base: $50/client</strong> — every signed client, paid same day</li>
+      <li><strong>5 clients in a week: $75/client that week</strong> — hit 5 and ALL of them pay at the higher rate</li>
+      <li><strong>10 clients in a month: $100/client for the rest of the month</strong> — you're at the top tier now</li>
+      <li><strong>Bonus: $200 for every client you close on a Growth ($2,500+) or Full ($4,000+) package</strong></li>
+      <li><strong>Recruiter bonus: $25 for every client a rep YOU recruited closes</strong> — build a team, earn while they work</li>
+    </ul>
+    <p style="margin-top:8px;color:var(--gold);font-weight:700">Example: 10 Starter clients + 2 Growth clients in a month = $1,000 + $400 = $1,400/month</p>
+  </div>
+</div>
+
+<!-- YOUR JOB (SPECIFIC) -->
+<div class="section">
+  <div class="section-num">YOUR LANE</div>
+  <div class="section-title">What You Do vs What Sabino Does</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0">
+    <div class="card" style="border-color:rgba(0,240,255,.3)">
+      <h3 style="color:var(--cyan)">EVER (You)</h3>
+      <ul>
+        <li>Cold call businesses from Google Maps</li>
+        <li>Walk into businesses in person</li>
+        <li>Send Instagram DMs</li>
+        <li>Show demos on your phone</li>
+        <li>Handle objections</li>
+        <li>Get them to say YES</li>
+        <li>Report lead to Sabino immediately</li>
+        <li>Follow up with open prospects</li>
+        <li>Recruit and train new reps</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:rgba(34,197,94,.3)">
+      <h3 style="color:var(--green)">SABINO</h3>
+      <ul>
+        <li>Builds the actual website</li>
+        <li>Handles all technical work</li>
+        <li>Creates custom demos</li>
+        <li>Sends invoices + contracts</li>
+        <li>Deploys and hosts sites</li>
+        <li>Client onboarding</li>
+        <li>Monthly maintenance</li>
+        <li>All design and coding</li>
+        <li>Pays your commission same day</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rule-box">
+    <h3>The Deal</h3>
+    <p>You find them, you pitch them, you close them. Sabino builds everything. You never need to know HTML, design, or tech. All you need is a phone, confidence, and these scripts. The demo does the heavy lifting — your job is getting it in front of eyeballs.</p>
+  </div>
+</div>
+
+<!-- WHAT WE SELL -->
+<div class="section">
+  <div class="section-num">MODULE 1</div>
+  <div class="section-title">What We Sell (Know This Cold)</div>
+
+  <div class="card">
+    <h3>ElevationAI builds professional websites for local businesses.</h3>
+    <p>We're not Wix. We're not Squarespace. We custom-build every site. Dark modern designs, mobile-first, contact forms, click-to-call, SEO — the works. A business owner gets a site that looks like a Fortune 500 company built it, for a fraction of the price.</p>
+  </div>
+
+  <div class="card">
+    <h3>Pricing (memorize this)</h3>
+    <ul>
+      <li><strong>Starter — $1,500</strong> + $200/mo → 3-5 page site, mobile, contact form, SEO, 30 days support</li>
+      <li><strong>Growth — $2,500</strong> + $400/mo → Everything + Google Business setup, social media kit, monthly updates</li>
+      <li><strong>Full Package — $4,000+</strong> + $800/mo → Everything + ads, SEO, social media management, AI tools, priority support</li>
+    </ul>
+    <p style="margin-top:8px;color:var(--green);font-weight:700">Payment plans available: 50% upfront, 50% on launch.</p>
+  </div>
+
+  <div class="card">
+    <h3>What Makes Us Different (say these words)</h3>
+    <ul>
+      <li>"We build the site BEFORE you pay — you see it first, then decide"</li>
+      <li>"48-hour delivery — not 6 weeks like other agencies"</li>
+      <li>"Agency quality at freelancer prices"</li>
+      <li>"We already have paying clients — here's a live site I can show you right now"</li>
+      <li>"Bilingual — we serve English and Spanish-speaking businesses"</li>
+    </ul>
+  </div>
+</div>
+
+<!-- THE DEMO -->
+<div class="section">
+  <div class="section-num">MODULE 2</div>
+  <div class="section-title">The Demo (Your #1 Weapon)</div>
+  <div class="section-sub">When you show someone a live demo on your phone, the sale is 80% done. They can SEE what they're getting. No imagination required.</div>
+
+  <div class="card">
+    <h3>How to Show a Demo</h3>
+    <ul>
+      <li>Open the demo on YOUR phone — don't hand them the phone</li>
+      <li>Hold it so you're BOTH looking at it together (side by side, tilted toward them)</li>
+      <li>Scroll through slowly — let them absorb each section</li>
+      <li>Say: "This is what a site for YOUR type of business looks like"</li>
+      <li>Point out specific features: "See this contact form? Every inquiry goes straight to your phone"</li>
+      <li>Ask: "What do you think? Can you see your business looking like this?"</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Pick the Right Demo (match their industry)</h3>
+    <div class="demo-links">
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/autoshop/" target="_blank">🚗 Auto Detail</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/restaurant/" target="_blank">🍽 Restaurant</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/barbershop/" target="_blank">💈 Barbershop</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/realestate/" target="_blank">🏠 Real Estate</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/fitness/" target="_blank">💪 Fitness</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/trucking/" target="_blank">🚛 Trucking</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/insurance/" target="_blank">🛡 Insurance</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/plumbing/" target="_blank">🔧 Plumbing</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/nailsalon/" target="_blank">💅 Nails</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/tattoo/" target="_blank">🎨 Tattoo</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/foodtruck/" target="_blank">🌮 Food Truck</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/photography/" target="_blank">📸 Photo</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/medspa/" target="_blank">💉 Med Spa</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/cleaning/" target="_blank">🧹 Cleaning</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/moving/" target="_blank">📦 Moving</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/roofing/" target="_blank">🏗 Roofing</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/catering/" target="_blank">🍱 Catering</a>
+      <a class="demo-link" href="https://sanchezelevationai.com/demos/djevents/" target="_blank">🎧 DJ/Events</a>
+    </div>
+    <p style="margin-top:8px;font-size:12px;color:var(--text3)">Bookmark all of these on your phone for instant access. If their industry isn't here, show the closest match.</p>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<div class="section">
+  <div class="section-num">MODULE 3</div>
+  <div class="section-title">Word-for-Word Scripts</div>
+  <div class="section-sub">Don't freestyle. Use these exact words until they feel natural. Then make them your own.</div>
+
+  <div class="card">
+    <h3>Walking Into a Business</h3>
+    <div class="script-box" id="s1"><button class="copy-btn" onclick="copyScript('s1')">Copy</button>
+"Hey! Love what you guys got going on here. Quick question — do you have a website for the business?
+
+[IF NO]: You know what, that's actually why I'm here. I work with a company called ElevationAI — we build websites for local businesses. Check this out real quick...
+
+[Show demo on your phone]
+
+This is a demo I put together for a [their industry] business. Full service menu, contact form, click-to-call, looks amazing on phones. We could build something just like this for YOU.
+
+The best part? We build it BEFORE you pay. You see exactly what you're getting first.
+
+Can I get your number? I'll have Sabino — he's the owner and builder — reach out to show you a custom version for your business."</div>
+  </div>
+
+  <div class="card">
+    <h3>Instagram DM</h3>
+    <div class="script-box" id="s2"><button class="copy-btn" onclick="copyScript('s2')">Copy</button>
+"Hey [NAME], just checked out your page — your work is 🔥
+
+I noticed you don't have a website linked yet. I work with a web design company that builds sites for [their industry] businesses. We actually already have a demo built for your type of business.
+
+Want me to send you the link? No cost, no catch — just want to show you what's possible. 💪"</div>
+  </div>
+
+  <div class="card">
+    <h3>Cold Call (Phone)</h3>
+    <div class="script-box" id="s3"><button class="copy-btn" onclick="copyScript('s3')">Copy</button>
+"Hey, is this [BUSINESS NAME]? My name's Ever, I'm with ElevationAI. We build professional websites for local businesses.
+
+I'm not trying to sell you anything on this call — I actually already have a demo of what a website for your business could look like. Would you be open to me texting you the link? Takes 30 seconds to look at.
+
+[IF YES]: Perfect! What's the best number to text it to?
+
+[IF NOT INTERESTED]: No worries at all. If you ever need a website upgrade, we're here. Have a great day!"</div>
+  </div>
+
+  <div class="card">
+    <h3>Follow-Up Text (Day 3)</h3>
+    <div class="script-box" id="s4"><button class="copy-btn" onclick="copyScript('s4')">Copy</button>
+"Hey [NAME]! Just following up on that website demo I sent over. Did you get a chance to check it out? No pressure — just want to make sure you saw it because it came out really clean. LMK! 🤝"</div>
+  </div>
+
+  <div class="card">
+    <h3>Breakup Text (Day 7)</h3>
+    <div class="script-box" id="s5"><button class="copy-btn" onclick="copyScript('s5')">Copy</button>
+"Hey [NAME], last message from me — I know you're busy running a business. If you ever want to revisit the website thing, the demo link will stay live. Wishing you the best! 💯"</div>
+  </div>
+</div>
+
+<!-- OBJECTIONS -->
+<div class="section">
+  <div class="section-num">MODULE 4</div>
+  <div class="section-title">When They Push Back</div>
+  <div class="section-sub">Every objection has a response. Memorize these 6 and you'll never be caught off guard.</div>
+
+  <div class="card">
+    <h3>The Rule: Agree First, Then Redirect</h3>
+    <p>Never argue. Say "I totally get that" or "That makes sense." Then pivot to the value. People buy from people who listen, not people who push.</p>
+  </div>
+
+  <div class="objection">
+    <div class="q">❌ "I can't afford it right now."</div>
+    <div class="a">✅ Say this:</div>
+    <p>"I totally get that — budget is real. That's actually why we offer payment plans. Half upfront, half when it goes live. And honestly, if your site brings in even ONE new customer, it pays for itself. How much is one new client worth to your business?"</p>
+  </div>
+
+  <div class="objection">
+    <div class="q">❌ "I need to think about it."</div>
+    <div class="a">✅ Say this:</div>
+    <p>"100%, take your time. Can I ask — what specifically are you thinking over? Is it the price, the timing, or something about the site? [Let them answer.] Got it. What if I have Sabino call you and walk through it? He can answer any questions way better than I can. Would that help?"</p>
+  </div>
+
+  <div class="objection">
+    <div class="q">❌ "I already have a website."</div>
+    <div class="a">✅ Say this:</div>
+    <p>"That's great! Can I ask — is it bringing you leads? Does it look good on phones? [Show your demo.] This is what a modern 2026 site looks like. Compare it with yours and see which one you'd rather have representing your business. If yours is better, no hard feelings!"</p>
+  </div>
+
+  <div class="objection">
+    <div class="q">❌ "My nephew does websites."</div>
+    <div class="a">✅ Say this:</div>
+    <p>"That's awesome — family helping family. But real talk — is it showing up on Google? Is it bringing in new customers? Because that's really the difference between a website and a website that makes money. Just look at our demo and compare. No pressure."</p>
+  </div>
+
+  <div class="objection">
+    <div class="q">❌ "I don't need a website."</div>
+    <div class="a">✅ Say this:</div>
+    <p>"I hear you. But when was the last time YOU looked up a business that didn't have a website? What did you think? Your customers are thinking the same thing. The businesses in your area that DO have sites are getting the calls that should be going to you."</p>
+  </div>
+
+  <div class="objection">
+    <div class="q">❌ "How do I know this is legit?"</div>
+    <div class="a">✅ Say this:</div>
+    <p>"Great question. Here — check out our main site. [Show sanchezelevationai.com.] We have real clients with real live sites right now. A construction company, a loan officer, a photographer — all live and working. I can also connect you directly with Sabino, the owner."</p>
+  </div>
+</div>
+
+<!-- LEAD REPORTING -->
+<div class="section">
+  <div class="section-num">MODULE 5</div>
+  <div class="section-title">How to Report a Lead</div>
+  <div class="section-sub">When someone says yes or wants to learn more — text this to Sabino IMMEDIATELY.</div>
+
+  <div class="card">
+    <h3>Text this to Sabino: (562) 373-1027</h3>
+    <div class="script-box" id="s6"><button class="copy-btn" onclick="copyScript('s6')">Copy</button>
+🔥 NEW LEAD
+
+Business: [Name of business]
+Industry: [Restaurant, Barbershop, etc.]
+Contact: [Owner's name + phone number]
+Instagram: [@handle if they have one]
+Status: [Interested / Wants demo / Ready to buy]
+How I found them: [Walk-in / DM / Cold call]
+Notes: [Anything helpful — "loved the demo", "wants to see pricing", etc.]
+
+— Ever</div>
+  </div>
+
+  <div class="rule-box">
+    <h3>Speed Matters</h3>
+    <p>The moment someone shows interest, text Sabino. Don't wait until you get home. Don't wait until tomorrow. Hot leads go cold in hours. Sabino will call them the same day and close the deal. The faster you report, the faster you get paid.</p>
+  </div>
+</div>
+
+<!-- YOUR 4-WEEK PLAN -->
+<div class="section">
+  <div class="section-num">MODULE 6</div>
+  <div class="section-title">Your 4-Week Ramp-Up Plan</div>
+
+  <div class="week-card">
+    <h3>Week 1 — Learn & Practice</h3>
+    <p>Read this entire training page twice. Bookmark all 18 demos on your phone. Practice the walk-in script in front of a mirror 5 times. Send 10 Instagram DMs to local businesses. Walk into 3 businesses near you. Goal: <strong>1 lead reported to Sabino.</strong></p>
+  </div>
+
+  <div class="week-card">
+    <h3>Week 2 — Build the Habit</h3>
+    <p>15 Instagram DMs per day. Walk into 3 businesses per day. Follow up with everyone from Week 1. Practice objection responses out loud in the car. Goal: <strong>3 leads reported. First commission earned.</strong></p>
+  </div>
+
+  <div class="week-card">
+    <h3>Week 3 — Hit Your Stride</h3>
+    <p>20 DMs per day. 5 walk-ins per day. Add cold calls (5/day from Google Maps). You should have scripts memorized by now. Goal: <strong>5 leads. $250 earned.</strong></p>
+  </div>
+
+  <div class="week-card">
+    <h3>Week 4 — Start Recruiting</h3>
+    <p>You're now experienced enough to train others. Recruit 2-3 friends as sales reps under you. You get an override on every client THEY close. Share this training page with them (code: 6767). Goal: <strong>8+ leads. $400+ earned. 2 reps trained.</strong></p>
+  </div>
+</div>
+
+<!-- DAILY NUMBERS -->
+<div class="section">
+  <div class="section-num">MODULE 7</div>
+  <div class="section-title">Your Daily Numbers</div>
+  <div class="section-sub">Sales is math. Hit these numbers every day and the money follows.</div>
+
+  <div class="card" style="text-align:center">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0">
+      <div><div style="font-family:var(--mono);font-size:28px;font-weight:900;color:var(--cyan)">20</div><div style="font-size:11px;color:var(--text2)">DMs Sent</div></div>
+      <div><div style="font-family:var(--mono);font-size:28px;font-weight:900;color:var(--cyan)">5</div><div style="font-size:11px;color:var(--text2)">Walk-Ins</div></div>
+      <div><div style="font-family:var(--mono);font-size:28px;font-weight:900;color:var(--cyan)">5</div><div style="font-size:11px;color:var(--text2)">Cold Calls</div></div>
+      <div><div style="font-family:var(--mono);font-size:28px;font-weight:900;color:var(--green)">ALL</div><div style="font-size:11px;color:var(--text2)">Follow-Ups</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin-top:8px">30 touches/day = ~5 conversations = ~1 lead = $50. Do this 5 days/week = <span style="color:var(--green);font-weight:700">$250/week minimum.</span></p>
+  </div>
+</div>
+
+<!-- TIPS FROM SABINO -->
+<div class="section">
+  <div class="section-num">FROM THE BOSS</div>
+  <div class="section-title">Sabino's Tips for You</div>
+
+  <div class="card">
+    <h3>Things That Will Make You Successful</h3>
+    <ul>
+      <li><strong>Smile first.</strong> Before you say a single word, smile. It changes everything.</li>
+      <li><strong>Use their name.</strong> "Hey Maria, check this out..." People love hearing their name.</li>
+      <li><strong>Don't pitch — show.</strong> The demo sells itself. Your job is to get them to LOOK at it.</li>
+      <li><strong>Text me leads FAST.</strong> I close them. You get paid. The faster the text, the faster the check.</li>
+      <li><strong>Don't take rejection personally.</strong> 8 out of 10 will say no. That's normal. The 2 who say yes pay your bills.</li>
+      <li><strong>Be honest.</strong> Never lie. Never oversell. Say "I don't know, but I'll find out" if they ask something technical. Then text me and I'll handle it.</li>
+      <li><strong>Consistency beats talent.</strong> The rep who sends 20 DMs every day will always outperform the one who sends 100 on Monday and zero the rest of the week.</li>
+      <li><strong>Dress clean. Look professional.</strong> You don't need a suit. But you need to look like someone a business owner would trust. Clean shoes. Clean shirt. Confidence.</li>
+    </ul>
+  </div>
+
+  <div class="quote">"I got my first client in 2 days. There's plenty of room to grow. You're getting in early — make it count." — Sabino</div>
+</div>
+
+<!-- DAILY CHECKLIST -->
+<div class="section">
+  <div class="section-num">DAILY TRACKER</div>
+  <div class="section-title">Today's Checklist</div>
+  <div class="section-sub">Check off each item. Resets your progress each day mentally. Be honest with yourself.</div>
+
+  <ul class="checklist" id="dailyList">
+    <li onclick="this.classList.toggle('done')">Sent 20 Instagram DMs to local businesses</li>
+    <li onclick="this.classList.toggle('done')">Walked into 5 businesses in person</li>
+    <li onclick="this.classList.toggle('done')">Made 5 cold calls from Google Maps</li>
+    <li onclick="this.classList.toggle('done')">Followed up with all open prospects</li>
+    <li onclick="this.classList.toggle('done')">Showed at least 3 people a demo</li>
+    <li onclick="this.classList.toggle('done')">Reported any new leads to Sabino</li>
+    <li onclick="this.classList.toggle('done')">Practiced one objection response out loud</li>
+  </ul>
+</div>
+
+<!-- HOMEWORK & ACCOUNTABILITY -->
+<div class="section">
+  <div class="section-num">ACCOUNTABILITY</div>
+  <div class="section-title">Homework & Check-Ins</div>
+  <div class="section-sub">This isn't optional. If you want to get paid, you do the work. Sabino checks these.</div>
+
+  <div class="card" style="border-left:3px solid var(--gold)">
+    <h3 style="color:var(--gold)">Weekly Homework (Due Every Sunday Night)</h3>
+    <ul>
+      <li><strong>Screenshot your Instagram DM outbox</strong> — prove you sent 100+ DMs this week</li>
+      <li><strong>Log your call list</strong> — business name, number, outcome (interested/not interested/no answer)</li>
+      <li><strong>Report all leads</strong> — every lead should already be texted to Sabino, but send a weekly summary too</li>
+      <li><strong>Record 1 practice pitch</strong> — voice memo of you doing the walk-in script. Send to Sabino for feedback</li>
+      <li><strong>Write 3 things you learned this week</strong> — what worked, what didn't, what you'll do differently</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--cyan)">
+    <h3 style="color:var(--cyan)">Daily Check-In (Text Sabino by 9PM)</h3>
+    <div class="script-box" id="s7"><button class="copy-btn" onclick="copyScript('s7')">Copy</button>
+📊 DAILY REPORT — [Today's Date]
+
+DMs sent: [number]
+Walk-ins: [number]
+Cold calls: [number]
+Demos shown: [number]
+Leads generated: [number]
+Follow-ups done: [number]
+
+Best moment: [what went well]
+Biggest challenge: [what was hard]
+
+— Ever</div>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--green)">
+    <h3 style="color:var(--green)">Performance Review (Every Friday)</h3>
+    <ul>
+      <li>Sabino reviews your weekly numbers</li>
+      <li>Compare week-over-week: are you improving?</li>
+      <li>Commission payout for the week (Venmo/Zelle same day)</li>
+      <li>If below 10 DMs/day average → coaching call to troubleshoot</li>
+      <li>If above 20 DMs/day average → eligible for commission bump</li>
+      <li>3 consecutive weeks below minimum targets → probation conversation</li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-left:3px solid var(--red)">
+    <h3 style="color:var(--red)">Minimum Standards (Non-Negotiable)</h3>
+    <ul>
+      <li><strong>10 DMs per day minimum</strong> — anything less and you're not trying</li>
+      <li><strong>3 walk-ins per week minimum</strong> — in-person closes at 5x the rate of DMs</li>
+      <li><strong>Daily check-in text by 9PM</strong> — miss 3 in a row = you're off the team</li>
+      <li><strong>Weekly homework by Sunday night</strong> — no homework = no commission payout that week</li>
+      <li><strong>Honesty always</strong> — fake numbers get you fired instantly. Real numbers get you promoted.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- GRADING SYSTEM -->
+<div class="section">
+  <div class="section-num">SCORECARD</div>
+  <div class="section-title">Your Weekly Grade</div>
+
+  <div class="card">
+    <h3>How You're Scored Each Week</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0">
+      <div style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:12px;text-align:center">
+        <div style="font-size:24px;font-weight:900;color:var(--green)">A</div>
+        <div style="font-size:12px;color:var(--text2)">20+ DMs/day<br>5+ walk-ins/week<br>5+ leads reported<br>All homework done</div>
+        <div style="font-size:11px;color:var(--green);margin-top:4px;font-weight:700">COMMISSION BUMP ELIGIBLE</div>
+      </div>
+      <div style="background:rgba(0,240,255,.08);border:1px solid rgba(0,240,255,.2);border-radius:8px;padding:12px;text-align:center">
+        <div style="font-size:24px;font-weight:900;color:var(--cyan)">B</div>
+        <div style="font-size:12px;color:var(--text2)">15+ DMs/day<br>3+ walk-ins/week<br>3+ leads reported<br>Homework done</div>
+        <div style="font-size:11px;color:var(--cyan);margin-top:4px;font-weight:700">ON TRACK — KEEP PUSHING</div>
+      </div>
+      <div style="background:rgba(234,179,8,.08);border:1px solid rgba(234,179,8,.2);border-radius:8px;padding:12px;text-align:center">
+        <div style="font-size:24px;font-weight:900;color:var(--gold)">C</div>
+        <div style="font-size:12px;color:var(--text2)">10+ DMs/day<br>1+ walk-in/week<br>1+ lead reported<br>Homework done</div>
+        <div style="font-size:11px;color:var(--gold);margin-top:4px;font-weight:700">MINIMUM — NEEDS IMPROVEMENT</div>
+      </div>
+      <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:12px;text-align:center">
+        <div style="font-size:24px;font-weight:900;color:var(--red)">F</div>
+        <div style="font-size:12px;color:var(--text2)">Below 10 DMs/day<br>No walk-ins<br>No leads<br>Missing homework</div>
+        <div style="font-size:11px;color:var(--red);margin-top:4px;font-weight:700">PROBATION — 2 WEEKS TO IMPROVE</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK LINKS -->
+<div class="section">
+  <div class="section-num">RESOURCES</div>
+  <div class="section-title">Quick Links</div>
+  <div class="card">
+    <ul>
+      <li><a href="https://sanchezelevationai.com" target="_blank">Main Website — sanchezelevationai.com</a></li>
+      <li><a href="https://sanchezelevationai.com/demos.html" target="_blank">All 18 Demos — sanchezelevationai.com/demos.html</a></li>
+      <li><a href="https://sanchezelevationai.com/booking.html" target="_blank">Booking Page — send prospects here</a></li>
+      <li><a href="https://sanchezelevationai.com/sales-toolkit.html" target="_blank">Sales Toolkit — quick reference scripts</a></li>
+      <li><a href="tel:+15623731027">Call/Text Sabino — (562) 373-1027</a></li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- container -->
+
+<footer style="text-align:center;padding:32px;border-top:1px solid var(--border);font-size:12px;color:var(--text2)">
+  ElevationAI Training Camp | Confidential — Do not share outside the team<br>
+  Questions? Text Sabino: <a href="tel:+15623731027">(562) 373-1027</a>
+</footer>
+
+</div><!-- end #content -->
+
+<script>
+function checkCode(){
+  const v=document.getElementById('codeInput').value;
+  if(v.length===4){
+    if(v==='6767'){
+      document.getElementById('gate').style.display='none';
+      document.getElementById('content').style.display='block';
+      sessionStorage.setItem('ever_auth','1');
+    } else {
+      document.getElementById('codeError').style.display='block';
+      document.getElementById('codeInput').value='';
+      document.getElementById('codeInput').style.borderColor='var(--red)';
+      setTimeout(()=>{document.getElementById('codeInput').style.borderColor='var(--border)';document.getElementById('codeError').style.display='none'},1500);
+    }
+  }
+}
+if(sessionStorage.getItem('ever_auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block'}
+
+function updateEarnings(){
+  const v=document.getElementById('earnSlider').value;
+  document.getElementById('earningsVal').textContent='$'+(v*50)+'/week';
+  document.getElementById('earningsSub').textContent=v+' clients/week = $'+(v*50*4)+'/month';
+}
+
+function copyScript(id){
+  const el=document.getElementById(id);
+  const text=el.innerText.replace('Copy','').trim();
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=el.querySelector('.copy-btn');
+    btn.textContent='Copied!';btn.style.background='rgba(34,197,94,.2)';btn.style.color='#22c55e';
+    setTimeout(()=>{btn.textContent='Copy';btn.style.background='';btn.style.color=''},2000);
+  });
+}
+
+document.querySelectorAll('.checklist li').forEach((li,i)=>{
+  if(localStorage.getItem('ever_check_'+i)==='done') li.classList.add('done');
+  li.addEventListener('click',()=>{localStorage.setItem('ever_check_'+i,li.classList.contains('done')?'done':'')});
+});
+</script>
+</body>
+</html>
