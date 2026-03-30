@@ -27,6 +27,28 @@
   "priceRange": "$$"
 }
 </script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'YOUR_PIXEL_ID');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -1182,10 +1204,10 @@ body {
 <div class="proof-bar">
   <div class="proof-item">
     <span>⭐⭐⭐⭐⭐</span>
-    <span><strong>5.0</strong> &nbsp;·&nbsp; 2 reviews</span>
+    <span><strong>5.0</strong> &nbsp;·&nbsp; 5 reviews</span>
   </div>
   <div class="proof-divider"></div>
-  <div class="proof-item"><strong>4</strong>&nbsp; Client Projects Live</div>
+  <div class="proof-item"><strong>8+</strong>&nbsp; Client Projects Live</div>
   <div class="proof-divider"></div>
   <div class="proof-item"><strong>&lt;24h</strong>&nbsp; Fastest Build</div>
   <div class="proof-divider"></div>
@@ -2010,11 +2032,35 @@ body {
         <div class="testimonial-author">Manny Aranda — Loan Officer</div>
         <div class="testimonial-role">West Capital Lending · Southern California</div>
       </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"I was paying $800/mo to Zillow for leads and had no website. Sabino built me a full lead capture site with booking in less than 48 hours. Now leads come to ME."</div>
+        <div class="testimonial-author">Carlos M. — Real Estate Agent</div>
+        <div class="testimonial-role">Residential Sales · Orange County</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"We needed a bilingual site that could route calls to the right person based on language. He built it in one night with WhatsApp integration and analytics. Incredible."</div>
+        <div class="testimonial-author">Santiago T. — Contractor</div>
+        <div class="testimonial-role">Allendes Group Inc · Construction & Landscaping</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"I showed him my old site and he rebuilt the entire thing with a quote calculator, SEO, and a booking system. I went from zero online presence to fully booked."</div>
+        <div class="testimonial-author">Daniel R. — Auto Detailer</div>
+        <div class="testimonial-role">Mobile Detailing · Los Angeles</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-quote">"I've worked with agencies that charge $5K+ and take 2 months. Sabino had a live preview the same day we talked, and it was better than anything I've seen. Don't sleep on this kid."</div>
+        <div class="testimonial-author">Jessica L. — Salon Owner</div>
+        <div class="testimonial-role">Beauty & Wellness · Fullerton</div>
+      </div>
     </div>
 
     <div class="review-cta">
       <div class="review-stars">★★★★★</div>
-      <div class="review-count">5.0 · 2 reviews</div>
+      <div class="review-count">5.0 · 5 reviews</div>
       <div class="review-copy">Worked with me? Leave a review — it means everything to a young founder building his reputation.</div>
       <a class="review-btn" href="https://g.page/r/write-review" target="_blank">⭐ Leave a Google Review</a>
     </div>
@@ -2312,6 +2358,87 @@ document.querySelectorAll('.mobile-drawer a').forEach(function(a) {
   a.addEventListener('click', function() {
     var d = document.getElementById('mobileDrawer');
     if (d.classList.contains('open')) toggleDrawer();
+  });
+});
+</script>
+
+<!-- ── EXIT-INTENT POPUP ── -->
+<div id="exitPopup" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+  <div style="background:#111113;border:1px solid #222225;border-radius:16px;padding:40px 36px;max-width:480px;width:90%;text-align:center;position:relative;box-shadow:0 24px 80px rgba(0,240,255,0.12);">
+    <button onclick="closeExitPopup()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#71717A;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+    <div style="font-size:40px;margin-bottom:12px;">🎁</div>
+    <h3 style="font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:#FAFAFA;margin-bottom:8px;">Wait — Free AI Prompt Pack</h3>
+    <p style="color:#A1A1AA;font-size:14px;margin-bottom:24px;line-height:1.6;">50 copy-paste AI prompts for 10 industries. Social posts, emails, review requests, ad copy — all ready to use. Yours free.</p>
+    <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST" style="display:flex;flex-direction:column;gap:10px;">
+      <input type="hidden" name="_subject" value="NEW LEAD — Free AI Prompt Pack Download">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://sanchezelevationai.com/products/ai-prompt-pack">
+      <input type="text" name="name" placeholder="Your Name" required style="padding:12px 16px;background:#0A0A0B;border:1px solid #222225;border-radius:8px;color:#FAFAFA;font-size:15px;font-family:'Inter',sans-serif;outline:none;">
+      <input type="email" name="email" placeholder="Your Best Email" required style="padding:12px 16px;background:#0A0A0B;border:1px solid #222225;border-radius:8px;color:#FAFAFA;font-size:15px;font-family:'Inter',sans-serif;outline:none;">
+      <input type="tel" name="phone" placeholder="Phone (optional)" style="padding:12px 16px;background:#0A0A0B;border:1px solid #222225;border-radius:8px;color:#FAFAFA;font-size:15px;font-family:'Inter',sans-serif;outline:none;">
+      <button type="submit" onclick="trackPopupConversion()" style="padding:14px;background:linear-gradient(135deg,#00F0FF,#00FF88);color:#0A0A0B;font-weight:700;font-size:15px;border:none;border-radius:8px;cursor:pointer;transition:all 0.3s;margin-top:4px;">Send Me the Free Pack</button>
+    </form>
+    <p style="font-size:11px;color:#71717A;margin-top:12px;">No spam. Unsubscribe anytime. We also build AI-powered growth systems — <a href="/booking.html" style="color:#00F0FF;">book a free demo</a>.</p>
+  </div>
+</div>
+
+<script>
+// Exit-intent popup
+var exitPopupShown = false;
+document.addEventListener('mouseout', function(e) {
+  if (e.clientY < 5 && !exitPopupShown && !sessionStorage.getItem('exitPopupDismissed')) {
+    document.getElementById('exitPopup').style.display = 'flex';
+    exitPopupShown = true;
+    if (typeof gtag === 'function') gtag('event', 'exit_popup_shown', {event_category: 'engagement'});
+    if (typeof fbq === 'function') fbq('track', 'ViewContent', {content_name: 'exit_popup'});
+  }
+});
+
+// Mobile: show after 45 seconds
+setTimeout(function() {
+  if (!exitPopupShown && !sessionStorage.getItem('exitPopupDismissed') && window.innerWidth < 768) {
+    document.getElementById('exitPopup').style.display = 'flex';
+    exitPopupShown = true;
+  }
+}, 45000);
+
+function closeExitPopup() {
+  document.getElementById('exitPopup').style.display = 'none';
+  sessionStorage.setItem('exitPopupDismissed', '1');
+}
+
+function trackPopupConversion() {
+  if (typeof gtag === 'function') gtag('event', 'lead_magnet_download', {event_category: 'conversion', event_label: 'ai_prompt_pack'});
+  if (typeof fbq === 'function') fbq('track', 'Lead', {content_name: 'ai_prompt_pack'});
+}
+
+// Track all CTA clicks
+document.querySelectorAll('a[href*="booking"], a[href*="tel:"], .review-btn').forEach(function(el) {
+  el.addEventListener('click', function() {
+    var label = this.href.includes('booking') ? 'book_demo' : this.href.includes('tel:') ? 'phone_call' : 'google_review';
+    if (typeof gtag === 'function') gtag('event', label, {event_category: 'conversion'});
+    if (typeof fbq === 'function') fbq('track', 'Lead', {content_name: label});
+  });
+});
+
+// Track form submissions
+document.querySelectorAll('form').forEach(function(f) {
+  f.addEventListener('submit', function() {
+    if (typeof gtag === 'function') gtag('event', 'form_submit', {event_category: 'conversion', event_label: this.querySelector('[name="_subject"]') ? this.querySelector('[name="_subject"]').value : 'contact'});
+    if (typeof fbq === 'function') fbq('track', 'Lead');
+  });
+});
+
+// Track scroll depth
+var scrollMilestones = [25, 50, 75, 100];
+var scrollFired = {};
+window.addEventListener('scroll', function() {
+  var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+  scrollMilestones.forEach(function(m) {
+    if (pct >= m && !scrollFired[m]) {
+      scrollFired[m] = true;
+      if (typeof gtag === 'function') gtag('event', 'scroll_depth', {event_category: 'engagement', event_label: m + '%'});
+    }
   });
 });
 </script>
