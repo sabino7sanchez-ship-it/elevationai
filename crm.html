@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElevationAI CRM — Lead Pipeline Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08090d;
+  --bg-card: #0e1017;
+  --bg-card-hover: #151821;
+  --bg-surface: #111420;
+  --border: #1c2030;
+  --border-mid: #252a3a;
+  --text: #f0f2f8;
+  --text-dim: #5a6280;
+  --text-mid: #8890a8;
+  --cyan: #00e5ff;
+  --cyan-dim: rgba(0,229,255,0.12);
+  --cyan-glow: rgba(0,229,255,0.25);
+  --green: #00e87b;
+  --green-dim: rgba(0,232,123,0.12);
+  --red: #ff4466;
+  --red-dim: rgba(255,68,102,0.12);
+  --orange: #ff8c38;
+  --orange-dim: rgba(255,140,56,0.12);
+  --purple: #7c6aff;
+  --purple-dim: rgba(124,106,255,0.12);
+  --yellow: #ffd233;
+  --yellow-dim: rgba(255,210,51,0.12);
+  --pink: #ff5599;
+  --pink-dim: rgba(255,85,153,0.12);
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden;min-height:100vh;}
+code,pre,.mono{font-family:'JetBrains Mono',monospace;}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border-mid);border-radius:8px;}
+::-webkit-scrollbar-thumb:hover{background:var(--text-dim);}
+
+/* ─── Layout ─── */
+.app{display:flex;flex-direction:column;min-height:100vh;}
+header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--bg);}
+header .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--cyan);text-decoration:none;}
+header .brand span{color:var(--text-dim);font-weight:400;font-size:13px;}
+.header-actions{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* ─── Tabs ─── */
+.tabs{display:flex;gap:4px;padding:12px 24px;border-bottom:1px solid var(--border);background:var(--bg);overflow-x:auto;}
+.tab{padding:8px 18px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;color:var(--text-mid);border:none;background:transparent;transition:all .15s;}
+.tab:hover{color:var(--text);background:var(--bg-card);}
+.tab.active{color:var(--cyan);background:var(--cyan-dim);}
+
+/* ─── Buttons ─── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--bg-card);color:var(--text);transition:all .15s;white-space:nowrap;}
+.btn:hover{background:var(--bg-card-hover);border-color:var(--border-mid);}
+.btn-cyan{background:var(--cyan);color:#000;border-color:var(--cyan);font-weight:600;}
+.btn-cyan:hover{background:#00ccee;box-shadow:0 0 20px var(--cyan-dim);}
+.btn-sm{padding:5px 10px;font-size:11px;}
+.btn-ghost{background:transparent;border-color:transparent;}
+.btn-ghost:hover{background:var(--bg-card);}
+.btn-danger{color:var(--red);border-color:var(--red-dim);}
+.btn-danger:hover{background:var(--red-dim);}
+
+/* ─── Stats ─── */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;padding:20px 24px;}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;}
+.stat-card .label{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-dim);margin-bottom:4px;}
+.stat-card .value{font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.stat-card .sub{font-size:11px;color:var(--text-mid);margin-top:2px;}
+.stat-cyan .value{color:var(--cyan);}
+.stat-green .value{color:var(--green);}
+.stat-orange .value{color:var(--orange);}
+.stat-purple .value{color:var(--purple);}
+.stat-yellow .value{color:var(--yellow);}
+
+/* ─── Pipeline ─── */
+.pipeline-view{flex:1;overflow:hidden;display:none;}
+.pipeline-view.active{display:flex;flex-direction:column;}
+.pipeline-toolbar{display:flex;gap:8px;padding:12px 24px;align-items:center;flex-wrap:wrap;}
+.pipeline-toolbar input[type="text"]{flex:1;min-width:200px;padding:8px 14px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:13px;outline:none;}
+.pipeline-toolbar input[type="text"]:focus{border-color:var(--cyan);box-shadow:0 0 0 2px var(--cyan-dim);}
+.pipeline-board{display:flex;gap:12px;padding:0 24px 24px;overflow-x:auto;flex:1;align-items:flex-start;}
+.pipeline-col{min-width:280px;max-width:320px;flex:1;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);display:flex;flex-direction:column;max-height:calc(100vh - 280px);}
+.col-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg-surface);border-radius:var(--radius) var(--radius) 0 0;z-index:1;}
+.col-header .col-title{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;}
+.col-header .col-count{font-size:11px;background:var(--bg-card);border:1px solid var(--border);border-radius:99px;padding:2px 8px;color:var(--text-mid);font-family:'JetBrains Mono',monospace;}
+.col-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.col-cards{padding:8px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:8px;}
+
+/* Column colors */
+.col-new .col-dot{background:var(--cyan);}
+.col-contacted .col-dot{background:var(--purple);}
+.col-demo .col-dot{background:var(--orange);}
+.col-followup .col-dot{background:var(--yellow);}
+.col-closing .col-dot{background:var(--pink);}
+.col-won .col-dot{background:var(--green);}
+.col-lost .col-dot{background:var(--red);}
+
+/* ─── Lead Cards ─── */
+.lead-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;cursor:default;transition:all .15s;}
+.lead-card:hover{border-color:var(--border-mid);background:var(--bg-card-hover);}
+.lead-card .biz-name{font-weight:600;font-size:14px;margin-bottom:2px;word-break:break-word;}
+.lead-card .contact-name{font-size:12px;color:var(--text-mid);margin-bottom:6px;}
+.lead-card .phone-link{font-size:12px;color:var(--cyan);text-decoration:none;font-family:'JetBrains Mono',monospace;}
+.lead-card .phone-link:hover{text-decoration:underline;}
+.lead-card .badges{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0;}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+.badge-industry{background:var(--purple-dim);color:#b0a0ff;}
+.badge-source{background:var(--cyan-dim);color:var(--cyan);}
+.badge-days{background:var(--orange-dim);color:var(--orange);font-family:'JetBrains Mono',monospace;}
+.lead-card .last-note{font-size:11px;color:var(--text-dim);margin:6px 0;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.lead-card .card-actions{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap;}
+
+/* ─── Activity View ─── */
+.activity-view{flex:1;padding:20px 24px;overflow-y:auto;display:none;}
+.activity-view.active{display:block;}
+.activity-filter{margin-bottom:16px;display:flex;gap:8px;flex-wrap:wrap;}
+.activity-list{display:flex;flex-direction:column;gap:8px;}
+.activity-item{display:flex;gap:12px;padding:12px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);}
+.activity-time{font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;white-space:nowrap;min-width:130px;}
+.activity-body{font-size:13px;flex:1;}
+.activity-body strong{color:var(--cyan);}
+.activity-empty{color:var(--text-dim);font-size:14px;text-align:center;padding:40px;}
+
+/* ─── Modal ─── */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:24px;}
+.modal h2{font-size:18px;font-weight:700;margin-bottom:20px;color:var(--cyan);}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:12px;font-weight:500;color:var(--text-mid);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:border .15s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 2px var(--cyan-dim);}
+.form-group textarea{min-height:70px;resize:vertical;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;}
+
+/* ─── Responsive ─── */
+@media(max-width:768px){
+  header{padding:12px 16px;}
+  .stats-grid{padding:12px 16px;grid-template-columns:repeat(2,1fr);}
+  .pipeline-board{padding:0 16px 16px;}
+  .pipeline-col{min-width:260px;}
+  .pipeline-toolbar{padding:10px 16px;}
+  .activity-view{padding:16px;}
+  .form-row{grid-template-columns:1fr;}
+  .tabs{padding:10px 16px;}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .stat-card .value{font-size:22px;}
+  .header-actions .btn span.hide-mobile{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="brand">ElevationAI <span>/ CRM</span></a>
+    <div class="header-actions">
+      <button class="btn" onclick="exportData()" title="Export leads to JSON">Export JSON</button>
+      <label class="btn" title="Import leads from JSON">Import JSON<input type="file" accept=".json" onchange="importData(event)" style="display:none"></label>
+      <button class="btn btn-cyan" onclick="openAddLead()">+ Add Lead</button>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card stat-cyan"><div class="label">Total Leads</div><div class="value" id="statTotal">0</div></div>
+    <div class="stat-card stat-green"><div class="label">Pipeline Value</div><div class="value" id="statValue">$0</div><div class="sub">@ $1,500 avg deal</div></div>
+    <div class="stat-card stat-orange"><div class="label">Conversion Rate</div><div class="value" id="statConversion">0%</div><div class="sub" id="statConvSub">0 won / 0 total</div></div>
+    <div class="stat-card stat-purple"><div class="label">Leads This Week</div><div class="value" id="statWeek">0</div></div>
+    <div class="stat-card stat-yellow"><div class="label">Avg Days to Close</div><div class="value" id="statDays">--</div></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="switchView('pipeline',this)">Pipeline Board</button>
+    <button class="tab" onclick="switchView('activity',this)">Activity Log</button>
+  </div>
+
+  <!-- Pipeline View -->
+  <div class="pipeline-view active" id="pipelineView">
+    <div class="pipeline-toolbar">
+      <input type="text" placeholder="Search leads..." id="searchInput" oninput="renderPipeline()">
+      <select class="btn" id="sortSelect" onchange="renderPipeline()">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="alpha">A - Z</option>
+        <option value="industry">By Industry</option>
+      </select>
+    </div>
+    <div class="pipeline-board" id="pipelineBoard"></div>
+  </div>
+
+  <!-- Activity View -->
+  <div class="activity-view" id="activityView">
+    <div class="activity-filter">
+      <select class="btn" id="activityFilter" onchange="renderActivity()">
+        <option value="all">All Leads</option>
+      </select>
+    </div>
+    <div class="activity-list" id="activityList"></div>
+  </div>
+</div>
+
+<!-- Add/Edit Lead Modal -->
+<div class="modal-overlay" id="leadModal">
+  <div class="modal">
+    <h2 id="modalTitle">Add New Lead</h2>
+    <input type="hidden" id="editLeadId">
+    <div class="form-row">
+      <div class="form-group"><label>Contact Name *</label><input type="text" id="fName" placeholder="John Doe"></div>
+      <div class="form-group"><label>Business Name *</label><input type="text" id="fBusiness" placeholder="Doe Construction"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Phone</label><input type="tel" id="fPhone" placeholder="(562) 555-1234"></div>
+      <div class="form-group"><label>Email</label><input type="email" id="fEmail" placeholder="john@example.com"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Instagram</label><input type="text" id="fIG" placeholder="@doeconstruction"></div>
+      <div class="form-group"><label>Source</label>
+        <select id="fSource">
+          <option value="Instagram DM">Instagram DM</option>
+          <option value="Walk-in">Walk-in</option>
+          <option value="Cold Call">Cold Call</option>
+          <option value="Referral">Referral</option>
+          <option value="Website">Website</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Industry</label>
+        <select id="fIndustry">
+          <option value="Barbershop">Barbershop</option>
+          <option value="Plumbing">Plumbing</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Restaurant">Restaurant</option>
+          <option value="Auto Shop">Auto Shop</option>
+          <option value="Catering">Catering</option>
+          <option value="Roofing">Roofing</option>
+          <option value="Cleaning">Cleaning</option>
+          <option value="Fitness">Fitness</option>
+          <option value="DJ / Events">DJ / Events</option>
+          <option value="Food Truck">Food Truck</option>
+          <option value="Insurance">Insurance</option>
+          <option value="Med Spa">Med Spa</option>
+          <option value="Moving">Moving</option>
+          <option value="Photography">Photography</option>
+          <option value="Tattoo">Tattoo</option>
+          <option value="Nail Salon">Nail Salon</option>
+          <option value="Trucking">Trucking</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Demo Sent</label>
+        <select id="fDemo">
+          <option value="">None yet</option>
+          <option value="Barbershop Demo">Barbershop</option>
+          <option value="Plumbing Demo">Plumbing</option>
+          <option value="Real Estate Demo">Real Estate</option>
+          <option value="Restaurant Demo">Restaurant</option>
+          <option value="Auto Shop Demo">Auto Shop</option>
+          <option value="Catering Demo">Catering</option>
+          <option value="Roofing Demo">Roofing</option>
+          <option value="Cleaning Demo">Cleaning</option>
+          <option value="Fitness Demo">Fitness</option>
+          <option value="DJ / Events Demo">DJ / Events</option>
+          <option value="Food Truck Demo">Food Truck</option>
+          <option value="Insurance Demo">Insurance</option>
+          <option value="Med Spa Demo">Med Spa</option>
+          <option value="Moving Demo">Moving</option>
+          <option value="Photography Demo">Photography</option>
+          <option value="Tattoo Demo">Tattoo</option>
+          <option value="Nail Salon Demo">Nail Salon</option>
+          <option value="Trucking Demo">Trucking</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>Status</label>
+      <select id="fStatus">
+        <option value="new">New Lead</option>
+        <option value="contacted">Contacted</option>
+        <option value="demo">Demo Sent</option>
+        <option value="followup">Follow-Up</option>
+        <option value="closing">Closing</option>
+        <option value="won">Won</option>
+        <option value="lost">Lost</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Notes</label><textarea id="fNotes" placeholder="Initial notes about this lead..."></textarea></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-cyan" onclick="saveLead()">Save Lead</button>
+    </div>
+  </div>
+</div>
+
+<!-- Activity Log Modal -->
+<div class="modal-overlay" id="logModal">
+  <div class="modal">
+    <h2>Log Activity</h2>
+    <input type="hidden" id="logLeadId">
+    <div class="form-group"><label>Activity Note</label><textarea id="logNote" placeholder="What happened? What's next?"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeLogModal()">Cancel</button>
+      <button class="btn btn-cyan" onclick="saveLog()">Save Note</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA LAYER
+   ═══════════════════════════════════════════ */
+const STAGES = [
+  {key:'new',label:'New Lead',cls:'col-new'},
+  {key:'contacted',label:'Contacted',cls:'col-contacted'},
+  {key:'demo',label:'Demo Sent',cls:'col-demo'},
+  {key:'followup',label:'Follow-Up',cls:'col-followup'},
+  {key:'closing',label:'Closing',cls:'col-closing'},
+  {key:'won',label:'Won',cls:'col-won'},
+  {key:'lost',label:'Lost',cls:'col-lost'}
+];
+
+const DEAL_VALUE = 1500;
+
+function getLeads(){ return JSON.parse(localStorage.getItem('ea_crm_leads')||'[]'); }
+function saveLeads(leads){ localStorage.setItem('ea_crm_leads',JSON.stringify(leads)); }
+function getActivities(){ return JSON.parse(localStorage.getItem('ea_crm_activities')||'[]'); }
+function saveActivities(a){ localStorage.setItem('ea_crm_activities',JSON.stringify(a)); }
+
+function genId(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function daysBetween(d1,d2){ return Math.floor((d2-d1)/(1000*60*60*24)); }
+
+/* ═══════════════════════════════════════════
+   STATS
+   ═══════════════════════════════════════════ */
+function updateStats(){
+  const leads = getLeads();
+  const total = leads.length;
+  const active = leads.filter(l=>!['won','lost'].includes(l.status)).length;
+  const won = leads.filter(l=>l.status==='won').length;
+  const rate = total > 0 ? ((won/total)*100).toFixed(1) : 0;
+
+  const now = new Date();
+  const weekAgo = new Date(now); weekAgo.setDate(weekAgo.getDate()-7);
+  const thisWeek = leads.filter(l=>new Date(l.createdAt)>=weekAgo).length;
+
+  const wonLeads = leads.filter(l=>l.status==='won'&&l.closedAt);
+  let avgDays = '--';
+  if(wonLeads.length){
+    const totalDays = wonLeads.reduce((s,l)=>s+daysBetween(new Date(l.createdAt),new Date(l.closedAt)),0);
+    avgDays = Math.round(totalDays/wonLeads.length);
+  }
+
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statValue').textContent = '$'+(active*DEAL_VALUE).toLocaleString();
+  document.getElementById('statConversion').textContent = rate+'%';
+  document.getElementById('statConvSub').textContent = won+' won / '+total+' total';
+  document.getElementById('statWeek').textContent = thisWeek;
+  document.getElementById('statDays').textContent = avgDays;
+}
+
+/* ═══════════════════════════════════════════
+   PIPELINE RENDERING
+   ═══════════════════════════════════════════ */
+function renderPipeline(){
+  const board = document.getElementById('pipelineBoard');
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const sort = document.getElementById('sortSelect').value;
+  let leads = getLeads();
+
+  // filter
+  if(search){
+    leads = leads.filter(l=>
+      (l.name||'').toLowerCase().includes(search)||
+      (l.business||'').toLowerCase().includes(search)||
+      (l.industry||'').toLowerCase().includes(search)||
+      (l.phone||'').includes(search)||
+      (l.email||'').toLowerCase().includes(search)||
+      (l.ig||'').toLowerCase().includes(search)
+    );
+  }
+
+  // sort
+  leads.sort((a,b)=>{
+    if(sort==='newest') return new Date(b.createdAt)-new Date(a.createdAt);
+    if(sort==='oldest') return new Date(a.createdAt)-new Date(b.createdAt);
+    if(sort==='alpha') return (a.business||'').localeCompare(b.business||'');
+    if(sort==='industry') return (a.industry||'').localeCompare(b.industry||'');
+    return 0;
+  });
+
+  board.innerHTML = '';
+  STAGES.forEach(stage=>{
+    const stageLeads = leads.filter(l=>l.status===stage.key);
+    const col = document.createElement('div');
+    col.className = 'pipeline-col '+stage.cls;
+    col.innerHTML = `
+      <div class="col-header">
+        <div class="col-title"><span class="col-dot"></span>${stage.label}</div>
+        <span class="col-count">${stageLeads.length}</span>
+      </div>
+      <div class="col-cards">${stageLeads.map(l=>renderCard(l,stage.key)).join('')}</div>
+    `;
+    board.appendChild(col);
+  });
+  updateStats();
+}
+
+function renderCard(lead, stageKey){
+  const now = new Date();
+  const created = new Date(lead.createdAt);
+  const days = daysBetween(created, now);
+  const lastNote = lead.lastNote || '';
+
+  // Move buttons
+  const idx = STAGES.findIndex(s=>s.key===stageKey);
+  let moveHtml = '';
+  if(idx > 0){
+    moveHtml += `<button class="btn btn-sm btn-ghost" onclick="moveLead('${lead.id}','${STAGES[idx-1].key}')" title="Move to ${STAGES[idx-1].label}">&larr;</button>`;
+  }
+  if(idx < STAGES.length-1){
+    moveHtml += `<button class="btn btn-sm btn-ghost" onclick="moveLead('${lead.id}','${STAGES[idx+1].key}')" title="Move to ${STAGES[idx+1].label}">&rarr;</button>`;
+  }
+
+  return `<div class="lead-card">
+    <div class="biz-name">${esc(lead.business||'Unnamed')}</div>
+    <div class="contact-name">${esc(lead.name||'')}</div>
+    ${lead.phone ? `<a href="tel:${lead.phone}" class="phone-link">${esc(lead.phone)}</a>` : ''}
+    <div class="badges">
+      <span class="badge badge-industry">${esc(lead.industry||'--')}</span>
+      <span class="badge badge-source">${esc(lead.source||'--')}</span>
+      <span class="badge badge-days">${days}d</span>
+    </div>
+    ${lastNote ? `<div class="last-note">${esc(lastNote)}</div>` : ''}
+    <div class="card-actions">
+      ${moveHtml}
+      <button class="btn btn-sm" onclick="openEditLead('${lead.id}')">Edit</button>
+      <button class="btn btn-sm" onclick="openLogActivity('${lead.id}')">Log</button>
+      <button class="btn btn-sm btn-danger" onclick="deleteLead('${lead.id}')">Del</button>
+    </div>
+  </div>`;
+}
+
+function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+/* ═══════════════════════════════════════════
+   LEAD CRUD
+   ═══════════════════════════════════════════ */
+function openAddLead(){
+  document.getElementById('modalTitle').textContent='Add New Lead';
+  document.getElementById('editLeadId').value='';
+  ['fName','fBusiness','fPhone','fEmail','fIG','fNotes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fSource').value='Instagram DM';
+  document.getElementById('fIndustry').value='Barbershop';
+  document.getElementById('fDemo').value='';
+  document.getElementById('fStatus').value='new';
+  document.getElementById('leadModal').classList.add('open');
+}
+
+function openEditLead(id){
+  const lead = getLeads().find(l=>l.id===id);
+  if(!lead) return;
+  document.getElementById('modalTitle').textContent='Edit Lead';
+  document.getElementById('editLeadId').value=id;
+  document.getElementById('fName').value=lead.name||'';
+  document.getElementById('fBusiness').value=lead.business||'';
+  document.getElementById('fPhone').value=lead.phone||'';
+  document.getElementById('fEmail').value=lead.email||'';
+  document.getElementById('fIG').value=lead.ig||'';
+  document.getElementById('fSource').value=lead.source||'Instagram DM';
+  document.getElementById('fIndustry').value=lead.industry||'Barbershop';
+  document.getElementById('fDemo').value=lead.demo||'';
+  document.getElementById('fStatus').value=lead.status||'new';
+  document.getElementById('fNotes').value=lead.notes||'';
+  document.getElementById('leadModal').classList.add('open');
+}
+
+function closeModal(){ document.getElementById('leadModal').classList.remove('open'); }
+
+function saveLead(){
+  const id = document.getElementById('editLeadId').value;
+  const name = document.getElementById('fName').value.trim();
+  const business = document.getElementById('fBusiness').value.trim();
+  if(!name && !business){ alert('Name or business required.'); return; }
+
+  const data = {
+    name, business,
+    phone: document.getElementById('fPhone').value.trim(),
+    email: document.getElementById('fEmail').value.trim(),
+    ig: document.getElementById('fIG').value.trim(),
+    source: document.getElementById('fSource').value,
+    industry: document.getElementById('fIndustry').value,
+    demo: document.getElementById('fDemo').value,
+    status: document.getElementById('fStatus').value,
+    notes: document.getElementById('fNotes').value.trim()
+  };
+
+  let leads = getLeads();
+  if(id){
+    // edit
+    const idx = leads.findIndex(l=>l.id===id);
+    if(idx>=0){
+      const oldStatus = leads[idx].status;
+      leads[idx] = {...leads[idx],...data};
+      if(data.status==='won' && oldStatus!=='won') leads[idx].closedAt = new Date().toISOString();
+      if(data.status!=='won') delete leads[idx].closedAt;
+      addActivity(id, `Updated lead info. Status: ${stageLabel(data.status)}`);
+    }
+  } else {
+    // new
+    const newLead = {id:genId(), ...data, createdAt:new Date().toISOString(), lastNote:data.notes};
+    if(data.status==='won') newLead.closedAt = new Date().toISOString();
+    leads.push(newLead);
+    addActivity(newLead.id, `Lead created. Source: ${data.source}`);
+  }
+  saveLeads(leads);
+  closeModal();
+  renderPipeline();
+  updateActivityFilter();
+}
+
+function moveLead(id, newStatus){
+  let leads = getLeads();
+  const idx = leads.findIndex(l=>l.id===id);
+  if(idx<0) return;
+  const oldLabel = stageLabel(leads[idx].status);
+  leads[idx].status = newStatus;
+  if(newStatus==='won') leads[idx].closedAt = new Date().toISOString();
+  else delete leads[idx].closedAt;
+  saveLeads(leads);
+  addActivity(id, `Moved from ${oldLabel} to ${stageLabel(newStatus)}`);
+  renderPipeline();
+  updateActivityFilter();
+}
+
+function deleteLead(id){
+  if(!confirm('Delete this lead permanently?')) return;
+  let leads = getLeads().filter(l=>l.id!==id);
+  saveLeads(leads);
+  // remove activities
+  let acts = getActivities().filter(a=>a.leadId!==id);
+  saveActivities(acts);
+  renderPipeline();
+  updateActivityFilter();
+}
+
+function stageLabel(key){ return (STAGES.find(s=>s.key===key)||{}).label || key; }
+
+/* ═══════════════════════════════════════════
+   ACTIVITY LOG
+   ═══════════════════════════════════════════ */
+function addActivity(leadId, text){
+  const acts = getActivities();
+  acts.unshift({id:genId(), leadId, text, ts:new Date().toISOString()});
+  saveActivities(acts);
+  // also update lastNote on lead
+  let leads = getLeads();
+  const idx = leads.findIndex(l=>l.id===leadId);
+  if(idx>=0){ leads[idx].lastNote = text; saveLeads(leads); }
+}
+
+function openLogActivity(id){
+  document.getElementById('logLeadId').value = id;
+  document.getElementById('logNote').value = '';
+  document.getElementById('logModal').classList.add('open');
+}
+function closeLogModal(){ document.getElementById('logModal').classList.remove('open'); }
+function saveLog(){
+  const id = document.getElementById('logLeadId').value;
+  const note = document.getElementById('logNote').value.trim();
+  if(!note) return;
+  addActivity(id, note);
+  closeLogModal();
+  renderPipeline();
+  renderActivity();
+}
+
+function renderActivity(){
+  const filter = document.getElementById('activityFilter').value;
+  let acts = getActivities();
+  if(filter!=='all') acts = acts.filter(a=>a.leadId===filter);
+  const leads = getLeads();
+  const list = document.getElementById('activityList');
+  if(!acts.length){ list.innerHTML='<div class="activity-empty">No activity yet. Add leads and start tracking.</div>'; return; }
+  list.innerHTML = acts.map(a=>{
+    const lead = leads.find(l=>l.id===a.leadId);
+    const name = lead ? (lead.business||lead.name) : 'Deleted lead';
+    const d = new Date(a.ts);
+    const ts = d.toLocaleDateString('en-US',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+    return `<div class="activity-item">
+      <div class="activity-time">${ts}</div>
+      <div class="activity-body"><strong>${esc(name)}</strong> &mdash; ${esc(a.text)}</div>
+    </div>`;
+  }).join('');
+}
+
+function updateActivityFilter(){
+  const select = document.getElementById('activityFilter');
+  const val = select.value;
+  const leads = getLeads();
+  select.innerHTML = '<option value="all">All Leads</option>';
+  leads.forEach(l=>{
+    select.innerHTML += `<option value="${l.id}">${esc(l.business||l.name)}</option>`;
+  });
+  select.value = val || 'all';
+}
+
+/* ═══════════════════════════════════════════
+   VIEWS
+   ═══════════════════════════════════════════ */
+function switchView(view, tabEl){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  tabEl.classList.add('active');
+  document.getElementById('pipelineView').classList.toggle('active', view==='pipeline');
+  document.getElementById('activityView').classList.toggle('active', view==='activity');
+  if(view==='activity') renderActivity();
+}
+
+/* ═══════════════════════════════════════════
+   IMPORT / EXPORT
+   ═══════════════════════════════════════════ */
+function exportData(){
+  const data = {leads:getLeads(), activities:getActivities(), exportedAt:new Date().toISOString()};
+  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'elevationai-crm-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click(); URL.revokeObjectURL(url);
+}
+
+function importData(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  if(!confirm('Import will MERGE with existing data. Continue?')) return;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    try{
+      const data = JSON.parse(ev.target.result);
+      if(data.leads){
+        const existing = getLeads();
+        const existingIds = new Set(existing.map(l=>l.id));
+        const newLeads = data.leads.filter(l=>!existingIds.has(l.id));
+        saveLeads([...existing,...newLeads]);
+      }
+      if(data.activities){
+        const existing = getActivities();
+        const existingIds = new Set(existing.map(a=>a.id));
+        const newActs = data.activities.filter(a=>!existingIds.has(a.id));
+        saveActivities([...newActs,...existing]);
+      }
+      renderPipeline();
+      updateActivityFilter();
+      alert('Import complete. '+((data.leads||[]).length)+' leads processed.');
+    }catch(err){ alert('Invalid JSON file.'); }
+  };
+  reader.readAsText(file);
+  e.target.value='';
+}
+
+/* ═══════════════════════════════════════════
+   KEYBOARD SHORTCUTS & INIT
+   ═══════════════════════════════════════════ */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    closeModal();
+    closeLogModal();
+  }
+});
+
+// close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(ov=>{
+  ov.addEventListener('click',e=>{ if(e.target===ov) ov.classList.remove('open'); });
+});
+
+// Boot
+renderPipeline();
+updateActivityFilter();
+</script>
+</body>
+</html>
