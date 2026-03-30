@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>ElevationAI - Cold Email Outreach System</title>
 <style>
+  body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+  @media print{body *{display:none!important}body::after{content:'This document is confidential. Printing is disabled.';display:block;font-size:24px;text-align:center;padding:100px;color:#000}}
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: #08090d;
@@ -814,6 +817,12 @@ function clearDashboard() {
   }
 }
 renderDashboard();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&(e.key==='c'||e.key==='u'||e.key==='s'||e.key==='p')){e.preventDefault();return false}
+  if(e.key==='F12'||e.key==='PrintScreen'){e.preventDefault();return false}
+  if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C')){e.preventDefault();return false}
+});
 </script>
 </body>
 </html>

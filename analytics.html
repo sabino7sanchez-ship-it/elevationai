@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>ElevationAI Analytics | Sabino's Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+@media print{body *{display:none!important}body::after{content:'This document is confidential. Printing is disabled.';display:block;font-size:24px;text-align:center;padding:100px;color:#000}}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
 --bg:#08090d;--bg2:#0f1117;--bg3:#161922;--card:rgba(15,17,23,.85);
@@ -696,6 +699,12 @@ calcOutreach();
 <script>
 function checkCode(){var v=document.getElementById('codeInput').value;if(v.length===4){if(v==='6767'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block';sessionStorage.setItem('ea_auth','1')}else{document.getElementById('codeError').style.display='block';document.getElementById('codeInput').value='';document.getElementById('codeInput').style.borderColor='#ef4444';setTimeout(function(){document.getElementById('codeInput').style.borderColor='rgba(0,240,255,.1)';document.getElementById('codeError').style.display='none'},1500)}}}
 if(sessionStorage.getItem('ea_auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block'}
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&(e.key==='c'||e.key==='u'||e.key==='s'||e.key==='p')){e.preventDefault();return false}
+  if(e.key==='F12'||e.key==='PrintScreen'){e.preventDefault();return false}
+  if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C')){e.preventDefault();return false}
+});
 </script>
 </body>
 </html>

@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Sales Mastery Training — Sabino's Playbook</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+@media print{body *{display:none!important}body::after{content:'This document is confidential. Printing is disabled.';display:block;font-size:24px;text-align:center;padding:100px;color:#000}}
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#08090d;--bg2:#0f1117;--card:rgba(15,17,23,.9);--border:rgba(0,240,255,.1);--cyan:#00f0ff;--green:#22c55e;--red:#ef4444;--gold:#eab308;--purple:#a855f7;--orange:#f97316;--text:#e8eaed;--text2:#8b949e;--text3:#484f58;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
@@ -477,6 +480,12 @@ function checkCode(e){
 }
 // Auto-unlock if already authed this session
 if(sessionStorage.getItem('sales_auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block'}
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&(e.key==='c'||e.key==='u'||e.key==='s'||e.key==='p')){e.preventDefault();return false}
+  if(e.key==='F12'||e.key==='PrintScreen'){e.preventDefault();return false}
+  if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C')){e.preventDefault();return false}
+});
 </script>
 </div><!-- end #content -->
 </body>
