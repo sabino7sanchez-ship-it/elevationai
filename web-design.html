@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Professional Web Design in Southern California — SanchezElevationAI</title>
+<meta id="meta-desc" name="description" content="Custom websites for local businesses in Southern California. See a live demo in 10 minutes. No contracts. No agencies. Starting at $1,500.">
+<meta id="og-title" property="og:title" content="Professional Web Design in Southern California — SanchezElevationAI">
+<meta id="og-desc" property="og:description" content="Custom websites for local businesses in Southern California. See a live demo in 10 minutes. No contracts, no agencies.">
+<meta property="og:type" content="website">
+<meta id="og-url" property="og:url" content="https://sanchezelevationai.com/web-design.html">
+<meta property="og:image" content="https://sanchezelevationai.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" id="canonical-link" href="https://sanchezelevationai.com/web-design.html">
+<script id="schema-ld" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "SanchezElevationAI — Web Design in Southern California",
+  "url": "https://sanchezelevationai.com/web-design.html",
+  "telephone": "+15623731027",
+  "description": "Professional web design for local businesses in Southern California. Custom websites starting at $1,500 with 48-hour delivery.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Southern California",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Southern California"
+  },
+  "priceRange": "$1,500 - $4,000+",
+  "image": "https://sanchezelevationai.com/og-image.png",
+  "sameAs": [
+    "https://www.instagram.com/sanchezelevationai"
+  ],
+  "openingHours": "Mo-Su 08:00-22:00",
+  "serviceType": ["Web Design", "Website Development", "SEO", "Digital Marketing"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web Design Packages",
+    "itemListElement": [
+      {"@type": "Offer", "name": "Starter Website", "price": "1500", "priceCurrency": "USD"},
+      {"@type": "Offer", "name": "Growth Website", "price": "2500", "priceCurrency": "USD"},
+      {"@type": "Offer", "name": "Full Website", "price": "4000", "priceCurrency": "USD"}
+    ]
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0A0B;
+  --bg-card: #111113;
+  --bg-card-hover: #18181B;
+  --border: #222225;
+  --border-mid: #2A2A2E;
+  --text: #FAFAFA;
+  --text-dim: #71717A;
+  --text-mid: #A1A1AA;
+  --neon-cyan: #00F0FF;
+  --neon-green: #00FF88;
+  --neon-purple: #7B61FF;
+  --neon-orange: #FF6B35;
+  --glow-cyan: rgba(0,240,255,0.15);
+  --glow-green: rgba(0,255,136,0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: var(--neon-cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 24px; height: 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,10,11,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px; font-weight: 700; letter-spacing: 1px;
+}
+.nav-logo span { color: var(--neon-cyan); }
+.nav-links { display: flex; gap: 16px; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--text-mid); }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-cta {
+  background: var(--neon-cyan); color: #000 !important;
+  padding: 6px 16px; border-radius: 6px; font-weight: 700; font-size: 13px;
+}
+.nav-cta:hover { opacity: 0.9; text-decoration: none; }
+
+/* HERO */
+.hero {
+  padding: 120px 24px 80px; text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 60%);
+}
+.hero-badge {
+  display: inline-block; margin-bottom: 20px;
+  background: rgba(0,240,255,0.08); border: 1px solid rgba(0,240,255,0.2);
+  border-radius: 20px; padding: 6px 18px;
+  font-size: 12px; font-weight: 700; color: var(--neon-cyan);
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.hero h1 {
+  font-size: clamp(32px, 6vw, 56px); font-weight: 900;
+  line-height: 1.1; margin-bottom: 20px;
+}
+.hero h1 .accent { color: var(--neon-cyan); }
+.hero p {
+  font-size: clamp(16px, 2.5vw, 20px); color: var(--text-mid);
+  max-width: 640px; margin: 0 auto 32px; line-height: 1.6;
+}
+.hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--neon-cyan); color: #000; padding: 14px 32px;
+  border-radius: 8px; font-weight: 800; font-size: 16px;
+  border: none; cursor: pointer; transition: 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); text-decoration: none; color: #000; }
+.btn-secondary {
+  background: transparent; color: var(--text); padding: 14px 32px;
+  border-radius: 8px; font-weight: 700; font-size: 16px;
+  border: 1px solid var(--border-mid); cursor: pointer; transition: 0.2s;
+}
+.btn-secondary:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); text-decoration: none; }
+.hero-phone {
+  margin-top: 20px; font-size: 14px; color: var(--text-dim);
+}
+.hero-phone a { color: var(--neon-cyan); font-weight: 700; }
+
+/* SECTIONS */
+.section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--neon-cyan); margin-bottom: 12px;
+}
+.section h2 {
+  font-size: clamp(24px, 4vw, 40px); font-weight: 900;
+  margin-bottom: 16px; line-height: 1.15;
+}
+.section h2 .accent { color: var(--neon-cyan); }
+.section-sub { color: var(--text-mid); font-size: 16px; max-width: 600px; margin-bottom: 40px; }
+
+/* WHAT WE BUILD */
+.industries-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.industry-tag {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 20px;
+  font-size: 15px; font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+  transition: 0.2s;
+}
+.industry-tag:hover { border-color: rgba(0,240,255,0.3); background: var(--bg-card-hover); }
+.industry-tag .icon { font-size: 22px; }
+
+/* WHY US */
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.feature-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px;
+  transition: 0.2s;
+}
+.feature-card:hover { border-color: rgba(0,240,255,0.3); transform: translateY(-2px); }
+.feature-icon { font-size: 28px; margin-bottom: 12px; }
+.feature-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+/* DEMOS / OUR WORK */
+.demos-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.demo-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden; transition: 0.25s; cursor: pointer;
+}
+.demo-card:hover { border-color: rgba(0,240,255,0.4); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,240,255,0.08); }
+.demo-thumb {
+  width: 100%; height: 160px; background: var(--bg-card-hover);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; border-bottom: 1px solid var(--border);
+}
+.demo-info { padding: 16px 20px; }
+.demo-info h3 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+.demo-info p { font-size: 13px; color: var(--text-dim); }
+.demo-link { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--neon-cyan); }
+
+/* PRICING */
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.price-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 32px; text-align: center;
+  transition: 0.2s; position: relative;
+}
+.price-card.popular { border-color: var(--neon-cyan); }
+.price-card.popular::before {
+  content: 'MOST POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--neon-cyan); color: #000; font-size: 11px; font-weight: 800;
+  padding: 4px 14px; border-radius: 10px; letter-spacing: 1px;
+}
+.price-card h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+.price-amount { font-size: 40px; font-weight: 900; margin-bottom: 4px; }
+.price-amount .currency { font-size: 20px; vertical-align: super; }
+.price-note { font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+.price-features { list-style: none; text-align: left; margin-bottom: 24px; }
+.price-features li {
+  font-size: 14px; color: var(--text-mid); padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: center; gap: 8px;
+}
+.price-features li::before { content: '\2713'; color: var(--neon-green); font-weight: 700; }
+
+/* SERVICE AREAS */
+.cities-grid {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.city-tag {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 16px;
+  font-size: 14px; font-weight: 500; color: var(--text-mid);
+  transition: 0.2s;
+}
+.city-tag:hover { border-color: rgba(0,240,255,0.3); color: var(--text); text-decoration: none; }
+.city-tag.active {
+  background: rgba(0,240,255,0.08); border-color: rgba(0,240,255,0.3);
+  color: var(--neon-cyan); font-weight: 700;
+}
+
+/* CONTACT FORM */
+.form-section {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 40px; max-width: 600px; margin: 0 auto;
+}
+.form-section h2 { text-align: center; margin-bottom: 8px; }
+.form-sub { text-align: center; color: var(--text-mid); font-size: 15px; margin-bottom: 32px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-mid); }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; padding: 12px 16px; background: var(--bg);
+  border: 1px solid var(--border-mid); border-radius: 8px;
+  color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px;
+  transition: 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  outline: none; border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 3px rgba(0,240,255,0.1);
+}
+.form-group textarea { min-height: 100px; resize: vertical; }
+.form-submit {
+  width: 100%; padding: 14px; background: var(--neon-cyan); color: #000;
+  border: none; border-radius: 8px; font-size: 16px; font-weight: 800;
+  cursor: pointer; transition: 0.2s;
+}
+.form-submit:hover { opacity: 0.9; }
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid var(--border); padding: 40px 24px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700;
+  margin-bottom: 12px;
+}
+.footer-logo span { color: var(--neon-cyan); }
+.footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+.footer-links a { font-size: 13px; color: var(--text-dim); font-weight: 500; }
+.footer-links a:hover { color: var(--neon-cyan); text-decoration: none; }
+.footer-copy { font-size: 12px; color: var(--text-dim); }
+.footer-social { display: flex; gap: 16px; justify-content: center; margin-top: 16px; }
+.footer-social a { color: var(--text-dim); font-size: 18px; }
+.footer-social a:hover { color: var(--neon-cyan); }
+
+/* SEPARATOR */
+.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .section { padding: 60px 16px; }
+  .hero { padding: 100px 16px 60px; }
+  .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .form-section { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo"><span>ELEVATION</span>AI</div>
+  <div class="nav-links">
+    <a href="#what-we-build">Services</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#our-work">Our Work</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+    <a href="/booking.html" class="nav-cta">Book Free Demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Web Design Services</div>
+  <h1>Professional Web Design in<br><span class="accent city-name">Southern California</span></h1>
+  <p>Custom websites for local businesses in <span class="city-name">Southern California</span>. See a live demo in 10 minutes. No contracts. No agencies.</p>
+  <div class="hero-ctas">
+    <a href="/booking.html" class="btn-primary">Get Your Free Demo &rarr;</a>
+    <a href="tel:+15623731027" class="btn-secondary">Call (562) 373-1027</a>
+  </div>
+  <p class="hero-phone">Or text us anytime: <a href="tel:+15623731027">(562) 373-1027</a></p>
+</section>
+
+<hr class="divider">
+
+<!-- WHAT WE BUILD -->
+<section class="section" id="what-we-build">
+  <div class="section-label">What We Build</div>
+  <h2>Websites for Every <span class="accent">Local Business</span></h2>
+  <p class="section-sub">We design websites specifically for businesses in <span class="city-name">Southern California</span>. Fast, affordable, and built to get you customers.</p>
+  <div class="industries-grid">
+    <div class="industry-tag"><span class="icon">&#127860;</span> Restaurants &amp; Catering</div>
+    <div class="industry-tag"><span class="icon">&#128295;</span> Contractors &amp; Roofers</div>
+    <div class="industry-tag"><span class="icon">&#128663;</span> Auto Shops &amp; Detailing</div>
+    <div class="industry-tag"><span class="icon">&#128135;</span> Barber Shops &amp; Salons</div>
+    <div class="industry-tag"><span class="icon">&#127968;</span> Real Estate Agents</div>
+    <div class="industry-tag"><span class="icon">&#128170;</span> Gyms &amp; Fitness Studios</div>
+    <div class="industry-tag"><span class="icon">&#128247;</span> Photographers</div>
+    <div class="industry-tag"><span class="icon">&#128666;</span> Trucking &amp; Logistics</div>
+    <div class="industry-tag"><span class="icon">&#128137;</span> Med Spas &amp; Clinics</div>
+    <div class="industry-tag"><span class="icon">&#127925;</span> DJs &amp; Event Planners</div>
+    <div class="industry-tag"><span class="icon">&#128736;</span> Plumbers &amp; HVAC</div>
+    <div class="industry-tag"><span class="icon">&#128230;</span> Moving Companies</div>
+  </div>
+  <p style="margin-top: 24px; text-align: center;">
+    <a href="/demos.html" style="font-weight: 700; font-size: 15px;">See all 18 live demos &rarr;</a>
+  </p>
+</section>
+
+<hr class="divider">
+
+<!-- WHY US -->
+<section class="section" id="why-us">
+  <div class="section-label">Why Choose Us</div>
+  <h2>Why <span class="accent city-name">Southern California</span> Businesses Choose Us</h2>
+  <p class="section-sub">We're not an agency. We're faster, cheaper, and better.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">&#9889;</div>
+      <h3>48-Hour Delivery</h3>
+      <p>Your website goes live in 2 days, not 2 months. We move fast because your business can't wait.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128176;</div>
+      <h3>Starting at $1,500</h3>
+      <p>Agencies charge $10K+. We deliver the same quality for a fraction of the price. No hidden fees.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128064;</div>
+      <h3>Demo Before You Pay</h3>
+      <p>See a working preview of YOUR website before spending a single dollar. No risk, no commitment.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#127464;&#127480;</div>
+      <h3>Bilingual (EN/ES)</h3>
+      <p>Reach English and Spanish-speaking customers. Every site we build supports both languages.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128241;</div>
+      <h3>Mobile-First Design</h3>
+      <p>75% of your customers browse on their phone. Every site we build looks perfect on mobile.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">&#128270;</div>
+      <h3>SEO Included</h3>
+      <p>Google-optimized from day one. Meta tags, schema markup, fast loading, and local SEO built in.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- OUR WORK -->
+<section class="section" id="our-work">
+  <div class="section-label">Our Work</div>
+  <h2>Live Demos You Can <span class="accent">Send Right Now</span></h2>
+  <p class="section-sub">These are real working websites. Click any demo to see it live.</p>
+  <div class="demos-grid">
+    <a href="/demos/restaurant/index.html" class="demo-card" style="text-decoration:none;color:inherit;">
+      <div class="demo-thumb">&#127860;</div>
+      <div class="demo-info">
+        <h3>Restaurant Website</h3>
+        <p>Menu, reservations, online ordering</p>
+        <span class="demo-link">View Live Demo &rarr;</span>
+      </div>
+    </a>
+    <a href="/demos/roofing/index.html" class="demo-card" style="text-decoration:none;color:inherit;">
+      <div class="demo-thumb">&#128295;</div>
+      <div class="demo-info">
+        <h3>Contractor Website</h3>
+        <p>Portfolio, free quote form, reviews</p>
+        <span class="demo-link">View Live Demo &rarr;</span>
+      </div>
+    </a>
+    <a href="/demos/autoshop/index.html" class="demo-card" style="text-decoration:none;color:inherit;">
+      <div class="demo-thumb">&#128663;</div>
+      <div class="demo-info">
+        <h3>Auto Shop Website</h3>
+        <p>Services, booking, location map</p>
+        <span class="demo-link">View Live Demo &rarr;</span>
+      </div>
+    </a>
+    <a href="/demos/realestate/index.html" class="demo-card" style="text-decoration:none;color:inherit;">
+      <div class="demo-thumb">&#127968;</div>
+      <div class="demo-info">
+        <h3>Real Estate Website</h3>
+        <p>Listings, agent profile, lead capture</p>
+        <span class="demo-link">View Live Demo &rarr;</span>
+      </div>
+    </a>
+  </div>
+  <p style="margin-top: 24px; text-align: center;">
+    <a href="/demos.html" style="font-weight: 700; font-size: 15px;">See all 18 industry demos &rarr;</a>
+  </p>
+</section>
+
+<hr class="divider">
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2>Simple, <span class="accent">Transparent</span> Pricing</h2>
+  <p class="section-sub">No surprises. No contracts. Just results.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>Starter</h3>
+      <div class="price-amount"><span class="currency">$</span>1,500</div>
+      <div class="price-note">One-time + $100/mo hosting</div>
+      <ul class="price-features">
+        <li>Custom 1-page website</li>
+        <li>Mobile responsive</li>
+        <li>Contact form</li>
+        <li>Basic SEO setup</li>
+        <li>48-hour delivery</li>
+      </ul>
+      <a href="/booking.html" class="btn-primary" style="width:100%;justify-content:center;">Get Started</a>
+    </div>
+    <div class="price-card popular">
+      <h3>Growth</h3>
+      <div class="price-amount"><span class="currency">$</span>2,500</div>
+      <div class="price-note">One-time + $100/mo hosting</div>
+      <ul class="price-features">
+        <li>Multi-page website (up to 5)</li>
+        <li>Bilingual (EN/ES)</li>
+        <li>Online booking system</li>
+        <li>Google Business optimization</li>
+        <li>Social media integration</li>
+        <li>48-hour delivery</li>
+      </ul>
+      <a href="/booking.html" class="btn-primary" style="width:100%;justify-content:center;">Get Started</a>
+    </div>
+    <div class="price-card">
+      <h3>Full Package</h3>
+      <div class="price-amount"><span class="currency">$</span>4,000<span style="font-size:20px;font-weight:400;">+</span></div>
+      <div class="price-note">One-time + $100/mo hosting</div>
+      <ul class="price-features">
+        <li>Everything in Growth</li>
+        <li>Business cards &amp; branding</li>
+        <li>Social media setup</li>
+        <li>Google Ads campaign</li>
+        <li>AI chatbot integration</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="/booking.html" class="btn-primary" style="width:100%;justify-content:center;">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICE AREAS -->
+<section class="section" id="areas">
+  <div class="section-label">Service Areas</div>
+  <h2>Serving All of <span class="accent">Southern California</span></h2>
+  <p class="section-sub">We build websites for businesses across the greater Los Angeles and Orange County area.</p>
+  <div class="cities-grid" id="cities-grid">
+    <!-- Populated by JS -->
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT FORM -->
+<section class="section" id="contact">
+  <div class="form-section">
+    <h2>Get a <span class="accent">Free Quote</span></h2>
+    <p class="form-sub">Tell us about your business. We'll send you a working demo within 48 hours.</p>
+    <form action="https://formsubmit.co/sabino7sanchez@gmail.com" method="POST">
+      <input type="hidden" name="_subject" id="form-subject" value="NEW LEAD -- Web Design in Southern California">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://sanchezelevationai.com/booking.html">
+      <input type="hidden" name="City" id="form-city" value="Southern California">
+      <input type="hidden" name="Source" value="SEO Landing Page - Web Design">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" name="Name" required placeholder="John Martinez">
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" name="Phone" required placeholder="(562) 555-0123">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="Email" placeholder="john@mybusiness.com">
+      </div>
+      <div class="form-group">
+        <label>Business Type</label>
+        <select name="Business Type">
+          <option value="">Select your industry...</option>
+          <option>Restaurant / Food</option>
+          <option>Contractor / Construction</option>
+          <option>Auto Shop / Detailing</option>
+          <option>Barber / Salon / Nails</option>
+          <option>Real Estate</option>
+          <option>Fitness / Gym</option>
+          <option>Photography / Videography</option>
+          <option>Trucking / Logistics</option>
+          <option>Med Spa / Health</option>
+          <option>DJ / Events</option>
+          <option>Plumbing / HVAC</option>
+          <option>Moving Company</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell us about your project</label>
+        <textarea name="Message" placeholder="I need a website for my business..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Request &rarr;</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo"><span>SANCHEZ</span>ELEVATIONAI</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/demos.html">Demos</a>
+    <a href="/booking.html">Book a Demo</a>
+    <a href="/locations.html">Service Areas</a>
+    <a href="tel:+15623731027">(562) 373-1027</a>
+    <a href="mailto:sabino7sanchez@gmail.com">sabino7sanchez@gmail.com</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/sanchezelevationai" target="_blank" rel="noopener" aria-label="Instagram">&#128247;</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 SanchezElevationAI. All rights reserved.</p>
+</footer>
+
+<script>
+(function(){
+  // City data
+  const CITIES = [
+    { name: 'Norwalk', slug: 'norwalk' },
+    { name: 'Downey', slug: 'downey' },
+    { name: 'Pico Rivera', slug: 'pico-rivera' },
+    { name: 'Bellflower', slug: 'bellflower' },
+    { name: 'Long Beach', slug: 'long-beach' },
+    { name: 'Whittier', slug: 'whittier' },
+    { name: 'Torrance', slug: 'torrance' },
+    { name: 'Anaheim', slug: 'anaheim' },
+    { name: 'Santa Ana', slug: 'santa-ana' },
+    { name: 'Garden Grove', slug: 'garden-grove' },
+    { name: 'Fullerton', slug: 'fullerton' },
+    { name: 'Costa Mesa', slug: 'costa-mesa' },
+    { name: 'Lakewood', slug: 'lakewood' },
+    { name: 'Cerritos', slug: 'cerritos' },
+    { name: 'La Mirada', slug: 'la-mirada' },
+    { name: 'Buena Park', slug: 'buena-park' },
+    { name: 'Paramount', slug: 'paramount' },
+    { name: 'South Gate', slug: 'south-gate' },
+    { name: 'Compton', slug: 'compton' },
+    { name: 'Carson', slug: 'carson' },
+    { name: 'Hawthorne', slug: 'hawthorne' },
+    { name: 'Inglewood', slug: 'inglewood' },
+    { name: 'Huntington Beach', slug: 'huntington-beach' },
+    { name: 'Irvine', slug: 'irvine' },
+    { name: 'Westminster', slug: 'westminster' }
+  ];
+
+  // Parse city from URL
+  const params = new URLSearchParams(window.location.search);
+  const citySlug = params.get('city');
+  const cityObj = CITIES.find(c => c.slug === citySlug);
+  const cityName = cityObj ? cityObj.name : null;
+  const displayName = cityName ? cityName + ', CA' : 'Southern California';
+  const shortName = cityName || 'Southern California';
+
+  // Update all city-name spans
+  document.querySelectorAll('.city-name').forEach(el => {
+    el.textContent = displayName;
+  });
+
+  // Update page title
+  document.getElementById('page-title').textContent =
+    'Professional Web Design in ' + displayName + ' — SanchezElevationAI';
+
+  // Update meta tags
+  document.getElementById('meta-desc').setAttribute('content',
+    'Custom websites for local businesses in ' + displayName + '. See a live demo in 10 minutes. No contracts. No agencies. Starting at $1,500.');
+  document.getElementById('og-title').setAttribute('content',
+    'Professional Web Design in ' + displayName + ' — SanchezElevationAI');
+  document.getElementById('og-desc').setAttribute('content',
+    'Custom websites for local businesses in ' + displayName + '. See a live demo in 10 minutes. No contracts, no agencies.');
+
+  // Update canonical URL
+  var canonicalUrl = 'https://sanchezelevationai.com/web-design.html';
+  if (citySlug) canonicalUrl += '?city=' + citySlug;
+  document.getElementById('canonical-link').setAttribute('href', canonicalUrl);
+  document.getElementById('og-url').setAttribute('content', canonicalUrl);
+
+  // Update JSON-LD schema
+  var schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "SanchezElevationAI — Web Design in " + displayName,
+    "url": canonicalUrl,
+    "telephone": "+15623731027",
+    "description": "Professional web design for local businesses in " + displayName + ". Custom websites starting at $1,500 with 48-hour delivery.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": shortName,
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": shortName
+    },
+    "priceRange": "$1,500 - $4,000+",
+    "image": "https://sanchezelevationai.com/og-image.png",
+    "sameAs": ["https://www.instagram.com/sanchezelevationai"],
+    "openingHours": "Mo-Su 08:00-22:00",
+    "serviceType": ["Web Design", "Website Development", "SEO", "Digital Marketing"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Design Packages",
+      "itemListElement": [
+        {"@type": "Offer", "name": "Starter Website", "price": "1500", "priceCurrency": "USD"},
+        {"@type": "Offer", "name": "Growth Website", "price": "2500", "priceCurrency": "USD"},
+        {"@type": "Offer", "name": "Full Website", "price": "4000", "priceCurrency": "USD"}
+      ]
+    }
+  };
+  document.getElementById('schema-ld').textContent = JSON.stringify(schema);
+
+  // Update form hidden fields
+  document.getElementById('form-subject').value =
+    'NEW LEAD -- Web Design in ' + (cityName || 'Southern California');
+  document.getElementById('form-city').value = cityName || 'Southern California';
+
+  // Render cities grid
+  var grid = document.getElementById('cities-grid');
+  CITIES.forEach(function(city) {
+    var a = document.createElement('a');
+    a.href = '/web-design.html?city=' + city.slug;
+    a.className = 'city-tag' + (city.slug === citySlug ? ' active' : '');
+    a.textContent = city.name;
+    grid.appendChild(a);
+  });
+})();
+</script>
+
+</body>
+</html>
