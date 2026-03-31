@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <!-- Dark background for GMB -->
+  <rect width="1200" height="1200" rx="120" fill="#0A0A0B"/>
+
+  <!-- Outer circuit ring -->
+  <circle cx="600" cy="520" r="380" fill="none" stroke="#00D4E6" stroke-width="8" opacity="0.3"/>
+
+  <!-- Circuit nodes -->
+  <circle cx="600" cy="140" r="18" fill="#00D4E6" opacity="0.7"/>
+  <circle cx="980" cy="520" r="18" fill="#00D4E6" opacity="0.7"/>
+  <circle cx="600" cy="900" r="18" fill="#00D4E6" opacity="0.7"/>
+  <circle cx="220" cy="520" r="18" fill="#7B61FF" opacity="0.7"/>
+
+  <!-- Abstract S path -->
+  <path d="M460 700 C460 700, 460 590, 600 590 C740 590, 740 530, 600 530 C460 530, 460 420, 600 420"
+        fill="none" stroke="#00D4E6" stroke-width="32" stroke-linecap="round"/>
+
+  <!-- Upward arrow -->
+  <path d="M600 420 L600 220" fill="none" stroke="#00D4E6" stroke-width="32" stroke-linecap="round"/>
+  <path d="M520 310 L600 220 L680 310" fill="none" stroke="#00D4E6" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Pulse dot -->
+  <circle cx="600" cy="195" r="28" fill="#00D4E6"/>
+
+  <!-- Purple accent arc -->
+  <path d="M330 790 A300 300 0 0 1 230 550" fill="none" stroke="#7B61FF" stroke-width="14" opacity="0.6" stroke-linecap="round"/>
+
+  <!-- Brand name -->
+  <text x="600" y="1020" text-anchor="middle" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="80" font-weight="800" fill="#FFFFFF" letter-spacing="6">SANCHEZ</text>
+  <text x="600" y="1100" text-anchor="middle" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="52" font-weight="500" fill="#00D4E6" letter-spacing="8">ELEVATION AI</text>
+</svg>
