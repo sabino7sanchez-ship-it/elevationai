@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Prospect Generator — Sales Team Tool | ElevationAI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0B;--bg2:#111113;--bg3:#18181B;--border:#222225;--text:#FAFAFA;--dim:#71717A;--mid:#A1A1AA;--cyan:#00F0FF;--green:#00FF88;--red:#FF4444;--purple:#7B61FF;--gcyan:rgba(0,240,255,.12);--ggreen:rgba(0,255,136,.12);--gred:rgba(255,68,68,.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* SIDEBAR */
+.sidebar{width:260px;background:var(--bg2);border-right:1px solid var(--border);padding:20px;flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto}
+.sidebar h2{font-size:14px;font-weight:800;color:var(--cyan);font-family:'JetBrains Mono',monospace;margin-bottom:4px}
+.sidebar .sub{font-size:11px;color:var(--dim);margin-bottom:20px}
+.goal-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+.goal-label{font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.goal-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.goal-name{font-size:13px;color:var(--mid)}
+.goal-count{display:flex;align-items:center;gap:8px}
+.goal-num{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:800;min-width:30px;text-align:center}
+.goal-target{font-size:11px;color:var(--dim)}
+.cnt-btn{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700}
+.cnt-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.goal-bar{height:4px;background:var(--bg2);border-radius:2px;margin-top:6px;overflow:hidden}
+.goal-fill{height:100%;border-radius:2px;transition:width .3s}
+.history-title{font-size:11px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin:20px 0 8px}
+.history-row{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.03);color:var(--mid)}
+.history-row .date{color:var(--dim)}
+
+/* MAIN */
+.main{margin-left:260px;flex:1;padding:20px}
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.top-bar h1{font-size:18px;font-weight:800}
+.top-bar h1 span{color:var(--cyan)}
+.top-actions{display:flex;gap:8px}
+.action-btn{padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--bg2);color:var(--mid);font-family:'Inter',sans-serif;transition:.2s}
+.action-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.action-btn.primary{background:var(--cyan);color:var(--bg);border-color:var(--cyan)}
+.action-btn.primary:hover{opacity:.9}
+.action-btn.danger{border-color:var(--red);color:var(--red)}
+.action-btn.danger:hover{background:var(--gred)}
+.date-input{padding:8px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;background:var(--bg2)}
+table{width:100%;border-collapse:collapse;min-width:1100px}
+th{font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:.8px;padding:10px 8px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;font-family:'JetBrains Mono',monospace}
+td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.02);font-size:13px}
+tr:hover{background:rgba(0,240,255,.02)}
+td input,td select{width:100%;padding:6px 8px;background:transparent;border:1px solid transparent;border-radius:4px;color:var(--text);font-size:13px;font-family:'Inter',sans-serif;outline:none}
+td input:focus,td select:focus{border-color:var(--cyan);background:var(--bg)}
+td select{cursor:pointer}
+td select option{background:var(--bg2)}
+.row-num{font-family:'JetBrains Mono',monospace;color:var(--dim);font-size:11px;font-weight:700;width:30px;text-align:center}
+.status-select{font-size:12px;padding:4px 8px}
+.status-not{color:var(--dim)}
+.status-called{color:var(--mid)}
+.status-interested{color:var(--green)}
+.status-booked{color:var(--cyan)}
+.status-declined{color:var(--red)}
+.no-web{background:var(--gred);color:var(--red);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;display:inline-block}
+.has-web{background:var(--ggreen);color:var(--green);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;display:inline-block}
+
+/* WEEKLY */
+.weekly{margin-top:24px;padding:20px;background:var(--bg2);border:1px solid var(--border);border-radius:10px}
+.weekly h3{font-size:14px;font-weight:700;margin-bottom:12px;color:var(--cyan)}
+.weekly-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.weekly-stat{text-align:center;padding:12px;background:var(--bg);border-radius:8px;border:1px solid var(--border)}
+.weekly-num{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:800}
+.weekly-label{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+
+@media(max-width:900px){.sidebar{display:none}.main{margin-left:0}}
+@media print{.sidebar,.top-actions{display:none!important}.main{margin-left:0!important}table{font-size:11px}}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <h2>ElevationAI Sales</h2>
+  <div class="sub">Daily Prospect Tracker</div>
+
+  <div class="goal-card">
+    <div class="goal-label">Daily Goals</div>
+    <div class="goal-row">
+      <span class="goal-name">Contacts</span>
+      <div class="goal-count"><button class="cnt-btn" onclick="adj('contacts',-1)">-</button><span class="goal-num" id="contactsNum">0</span><button class="cnt-btn" onclick="adj('contacts',1)">+</button><span class="goal-target">/ 20</span></div>
+    </div>
+    <div class="goal-bar"><div class="goal-fill" id="contactsBar" style="width:0%;background:var(--cyan)"></div></div>
+    <div class="goal-row" style="margin-top:12px">
+      <span class="goal-name">Demos Booked</span>
+      <div class="goal-count"><button class="cnt-btn" onclick="adj('demos',-1)">-</button><span class="goal-num" id="demosNum">0</span><button class="cnt-btn" onclick="adj('demos',1)">+</button><span class="goal-target">/ 3</span></div>
+    </div>
+    <div class="goal-bar"><div class="goal-fill" id="demosBar" style="width:0%;background:var(--green)"></div></div>
+    <div class="goal-row" style="margin-top:12px">
+      <span class="goal-name">Deals Closed</span>
+      <div class="goal-count"><button class="cnt-btn" onclick="adj('deals',-1)">-</button><span class="goal-num" id="dealsNum">0</span><button class="cnt-btn" onclick="adj('deals',1)">+</button><span class="goal-target">/ 1</span></div>
+    </div>
+    <div class="goal-bar"><div class="goal-fill" id="dealsBar" style="width:0%;background:var(--purple)"></div></div>
+  </div>
+
+  <div class="goal-card" style="font-size:11px;color:var(--mid);line-height:1.6">
+    <strong style="color:var(--text)">Quick Reminder:</strong><br>
+    Text Sabino every lead IMMEDIATELY:<br>
+    <strong style="color:var(--cyan)">(562) 373-1027</strong><br><br>
+    Demo page: <a href="/demos.html" style="color:var(--cyan)">demos.html</a><br>
+    Training: <a href="/ever-training.html" style="color:var(--cyan)">ever-training.html</a> (6767)
+  </div>
+
+  <div class="history-title">Past Days</div>
+  <div id="historyList"><div class="history-row"><span class="date" style="color:var(--dim)">No history yet</span></div></div>
+</aside>
+
+<div class="main">
+  <div class="top-bar">
+    <div>
+      <h1>Prospect <span>Generator</span></h1>
+      <div style="font-size:12px;color:var(--dim);margin-top:2px">Date: <input type="date" class="date-input" id="dateInput" onchange="loadDay()"></div>
+    </div>
+    <div class="top-actions">
+      <button class="action-btn" onclick="addRow()">+ Add Row</button>
+      <button class="action-btn" onclick="copyAll()">Copy All</button>
+      <button class="action-btn" onclick="window.print()">Print</button>
+      <button class="action-btn primary" onclick="saveDay()">Save</button>
+      <button class="action-btn danger" onclick="clearAll()">Clear</button>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Business Name</th>
+          <th>Owner</th>
+          <th>Phone</th>
+          <th>Industry</th>
+          <th>City</th>
+          <th>Website?</th>
+          <th>Rating</th>
+          <th>Status</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <div class="weekly" id="weeklySummary">
+    <h3>Weekly Summary</h3>
+    <div class="weekly-grid">
+      <div class="weekly-stat"><div class="weekly-num" id="wContacts">0</div><div class="weekly-label">Total Contacts</div></div>
+      <div class="weekly-stat"><div class="weekly-num" id="wDemos">0</div><div class="weekly-label">Demos Booked</div></div>
+      <div class="weekly-stat"><div class="weekly-num" id="wDeals">0</div><div class="weekly-label">Deals Closed</div></div>
+      <div class="weekly-stat"><div class="weekly-num" id="wConversion" style="color:var(--green)">0%</div><div class="weekly-label">Demo → Deal Rate</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const INDUSTRIES = ['','Contractor','Restaurant','Barbershop','Auto Detailing','Auto Body','Real Estate','Photography','Fitness','Cleaning','Salon','Pool Service','Trucking','Insurance','Food Truck','Landscaping','Nail Salon','Tattoo','Med Spa','DJ/Events','Moving','Roofing','Other'];
+const STATUSES = ['Not Called','Called - No Answer','Interested','Demo Booked','Not Interested'];
+let rows = 20;
+
+// Init date
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('dateInput').value = today;
+
+// Build table
+function buildTable(data) {
+  const tb = document.getElementById('tableBody');
+  tb.innerHTML = '';
+  const count = data ? data.length : rows;
+  for (let i = 0; i < count; i++) {
+    const d = data ? data[i] : {};
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="row-num">${i+1}</td>
+      <td><input type="text" name="biz" value="${d.biz||''}" placeholder="Business name"></td>
+      <td><input type="text" name="owner" value="${d.owner||''}" placeholder="Owner"></td>
+      <td><input type="tel" name="phone" value="${d.phone||''}" placeholder="(xxx) xxx-xxxx"></td>
+      <td><select name="industry">${INDUSTRIES.map(ind=>`<option${ind===(d.industry||'')?'selected':''}>${ind||'Select...'}</option>`).join('')}</select></td>
+      <td><input type="text" name="city" value="${d.city||''}" placeholder="City"></td>
+      <td><select name="website" style="font-size:12px"><option value="no"${d.website==='no'||!d.website?' selected':''}>No</option><option value="yes"${d.website==='yes'?' selected':''}>Yes</option></select></td>
+      <td><input type="text" name="rating" value="${d.rating||''}" placeholder="4.5" style="width:50px"></td>
+      <td><select name="status" class="status-select">${STATUSES.map(s=>`<option${s===(d.status||'Not Called')?' selected':''}>${s}</option>`).join('')}</select></td>
+      <td><input type="text" name="notes" value="${d.notes||''}" placeholder="Notes..."></td>
+    `;
+    tb.appendChild(tr);
+  }
+}
+buildTable();
+
+function addRow() {
+  rows++;
+  const tb = document.getElementById('tableBody');
+  const i = tb.children.length;
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td class="row-num">${i+1}</td>
+    <td><input type="text" name="biz" placeholder="Business name"></td>
+    <td><input type="text" name="owner" placeholder="Owner"></td>
+    <td><input type="tel" name="phone" placeholder="(xxx) xxx-xxxx"></td>
+    <td><select name="industry">${INDUSTRIES.map(ind=>`<option>${ind||'Select...'}</option>`).join('')}</select></td>
+    <td><input type="text" name="city" placeholder="City"></td>
+    <td><select name="website" style="font-size:12px"><option value="no">No</option><option value="yes">Yes</option></select></td>
+    <td><input type="text" name="rating" placeholder="4.5" style="width:50px"></td>
+    <td><select name="status" class="status-select">${STATUSES.map(s=>`<option>${s}</option>`).join('')}</select></td>
+    <td><input type="text" name="notes" placeholder="Notes..."></td>
+  `;
+  tb.appendChild(tr);
+  tr.querySelector('input').focus();
+}
+
+function getTableData() {
+  const trs = document.getElementById('tableBody').querySelectorAll('tr');
+  const data = [];
+  trs.forEach(tr => {
+    const biz = tr.querySelector('[name=biz]').value.trim();
+    if (!biz) return;
+    data.push({
+      biz,
+      owner: tr.querySelector('[name=owner]').value.trim(),
+      phone: tr.querySelector('[name=phone]').value.trim(),
+      industry: tr.querySelector('[name=industry]').value,
+      city: tr.querySelector('[name=city]').value.trim(),
+      website: tr.querySelector('[name=website]').value,
+      rating: tr.querySelector('[name=rating]').value.trim(),
+      status: tr.querySelector('[name=status]').value,
+      notes: tr.querySelector('[name=notes]').value.trim()
+    });
+  });
+  return data;
+}
+
+// Counters
+let counters = {contacts:0, demos:0, deals:0};
+function adj(key, delta) {
+  counters[key] = Math.max(0, counters[key] + delta);
+  document.getElementById(key+'Num').textContent = counters[key];
+  const targets = {contacts:20, demos:3, deals:1};
+  const pct = Math.min(100, (counters[key] / targets[key]) * 100);
+  document.getElementById(key+'Bar').style.width = pct + '%';
+  saveCounters();
+}
+function saveCounters() {
+  const date = document.getElementById('dateInput').value;
+  const all = JSON.parse(localStorage.getItem('ea_counters') || '{}');
+  all[date] = {...counters};
+  localStorage.setItem('ea_counters', JSON.stringify(all));
+  updateHistory();
+  updateWeekly();
+}
+function loadCounters(date) {
+  const all = JSON.parse(localStorage.getItem('ea_counters') || '{}');
+  counters = all[date] || {contacts:0, demos:0, deals:0};
+  ['contacts','demos','deals'].forEach(k => {
+    document.getElementById(k+'Num').textContent = counters[k];
+    const targets = {contacts:20, demos:3, deals:1};
+    document.getElementById(k+'Bar').style.width = Math.min(100,(counters[k]/targets[k])*100)+'%';
+  });
+}
+
+// Save / Load day
+function saveDay() {
+  const date = document.getElementById('dateInput').value;
+  const data = getTableData();
+  const all = JSON.parse(localStorage.getItem('ea_prospects') || '{}');
+  all[date] = data;
+  localStorage.setItem('ea_prospects', JSON.stringify(all));
+  saveCounters();
+  alert('Saved for ' + date + '!');
+}
+function loadDay() {
+  const date = document.getElementById('dateInput').value;
+  const all = JSON.parse(localStorage.getItem('ea_prospects') || '{}');
+  if (all[date]) buildTable(all[date]); else buildTable();
+  loadCounters(date);
+}
+loadDay();
+
+// Clear
+function clearAll() {
+  if (!confirm('Clear all rows for today? This cannot be undone.')) return;
+  buildTable();
+  counters = {contacts:0, demos:0, deals:0};
+  ['contacts','demos','deals'].forEach(k => {
+    document.getElementById(k+'Num').textContent = 0;
+    document.getElementById(k+'Bar').style.width = '0%';
+  });
+}
+
+// Copy to clipboard
+function copyAll() {
+  const data = getTableData();
+  if (!data.length) { alert('No data to copy'); return; }
+  let txt = 'PROSPECT LIST — ' + document.getElementById('dateInput').value + '\n\n';
+  data.forEach((d, i) => {
+    txt += `${i+1}. ${d.biz}`;
+    if (d.owner) txt += ` (${d.owner})`;
+    txt += `\n   Phone: ${d.phone || 'N/A'}`;
+    txt += ` | ${d.industry || 'N/A'} | ${d.city || 'N/A'}`;
+    txt += ` | Website: ${d.website === 'yes' ? 'YES' : 'NO'}`;
+    if (d.status !== 'Not Called') txt += ` | Status: ${d.status}`;
+    if (d.notes) txt += `\n   Notes: ${d.notes}`;
+    txt += '\n\n';
+  });
+  txt += `Stats: ${counters.contacts} contacts | ${counters.demos} demos | ${counters.deals} deals`;
+  navigator.clipboard.writeText(txt).then(() => alert('Copied to clipboard!'));
+}
+
+// History
+function updateHistory() {
+  const all = JSON.parse(localStorage.getItem('ea_counters') || '{}');
+  const el = document.getElementById('historyList');
+  const dates = Object.keys(all).sort().reverse().slice(0, 14);
+  if (!dates.length) { el.innerHTML = '<div class="history-row"><span class="date">No history yet</span></div>'; return; }
+  el.innerHTML = dates.map(d => {
+    const c = all[d];
+    return `<div class="history-row"><span class="date">${d}</span><span>${c.contacts||0}C / ${c.demos||0}D / ${c.deals||0}$</span></div>`;
+  }).join('');
+}
+updateHistory();
+
+// Weekly summary
+function updateWeekly() {
+  const all = JSON.parse(localStorage.getItem('ea_counters') || '{}');
+  const now = new Date();
+  const weekStart = new Date(now);
+  weekStart.setDate(now.getDate() - now.getDay());
+  let wC=0, wD=0, wDl=0;
+  for (const [date, c] of Object.entries(all)) {
+    const d = new Date(date);
+    if (d >= weekStart && d <= now) {
+      wC += c.contacts||0;
+      wD += c.demos||0;
+      wDl += c.deals||0;
+    }
+  }
+  document.getElementById('wContacts').textContent = wC;
+  document.getElementById('wDemos').textContent = wD;
+  document.getElementById('wDeals').textContent = wDl;
+  document.getElementById('wConversion').textContent = wD > 0 ? Math.round((wDl/wD)*100)+'%' : '0%';
+}
+updateWeekly();
+</script>
+</body>
+</html>
