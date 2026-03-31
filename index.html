@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NRD18H529M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NRD18H529M');
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1460548358899377');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1460548358899377&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sanchez_ElevationAI — AI-Powered Tools for Real Estate & Mortgage</title>
-<meta name="description" content="AI-powered tools for mortgage loan officers and real estate professionals. Built by Sabin Sanchez.">
+<title>Sanchez_ElevationAI — AI-Powered Websites, Lead Generation & Growth Systems</title>
+<meta name="description" content="AI-powered websites, lead generation systems, and marketing automation that help businesses grow, get more clients, and make more money. Built in 48 hours.">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
 
   :root {
     --bg: #0A0A0B;
@@ -515,6 +540,41 @@
     color: var(--text-dim);
     margin-top: 2px;
   }
+  .review-cta {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .review-stars {
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: #FFD700;
+  }
+  .review-cta-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+  .btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-review:hover {
+    background: var(--neon-cyan);
+    color: #000;
+  }
 
   /* ── PRICING ── */
   .pricing-grid {
@@ -794,15 +854,132 @@
     .hero h1 { letter-spacing: -1px; }
   }
 
-  /* ── SCROLL ANIMATIONS ── */
+  /* ── ACCENT TYPOGRAPHY (from Junior Films) ── */
+  .accent-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .accent-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+  }
+
+  /* ── BACKGROUND NOISE TEXTURE (from Junior Films) ── */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* ── SERVICE NUMBERING (from Junior Films counter style) ── */
+  .service-card {
+    counter-increment: service-counter;
+  }
+  .service-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: rgba(0,240,255,0.08);
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  /* ── STAGGERED SCROLL ANIMATIONS (from Junior Films) ── */
   .fade-in {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s, transform 0.6s;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.23, 1, 0.32, 1), transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+  .fade-in-up { transition-delay: 0s; }
+  .fade-in-up-2 { transition-delay: 0.1s; }
+  .fade-in-up-3 { transition-delay: 0.2s; }
+  .fade-in-up-4 { transition-delay: 0.3s; }
+  .fade-in-up-5 { transition-delay: 0.4s; }
+  .fade-in-up-6 { transition-delay: 0.5s; }
+
+  /* ── ENHANCED HOVER STATES (from Junior Films) ── */
+  .service-card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,240,255,0.08), 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .service-card:hover .service-number {
+    color: rgba(0,240,255,0.15);
+    transition: color 0.4s;
+  }
+  .pricing-card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,240,255,0.1), 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .social-link {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .social-link:hover {
+    transform: translateY(-3px);
+  }
+
+  /* ── ENHANCED TESTIMONIAL (from Junior Films) ── */
+  .testimonial-card {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    border-image: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)) 1;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 14px;
+    border-image: none;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonial-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-green));
+    opacity: 0.7;
+  }
+  .testimonial-quote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── ENHANCED CTA SECTION (from Junior Films full-bleed style) ── */
+  .cta-section {
+    background: linear-gradient(180deg, var(--bg) 0%, rgba(123,97,255,0.06) 50%, var(--bg) 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .cta-title .accent-text {
+    color: var(--neon-cyan);
+  }
+
+  /* ── SECTION DIVIDER LINES (from Junior Films) ── */
+  .section-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--neon-cyan), transparent);
+    margin-bottom: 24px;
   }
 </style>
 </head>
@@ -811,7 +988,14 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-logo">Sanchez<span>_ElevationAI</span></div>
-  <a class="nav-cta" href="#contactForm">Get in Touch</a>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <a href="shop.html" style="font-size:13px;color:var(--neon-green);text-decoration:none;font-weight:600;transition:color 0.2s;">Shop</a>
+    <a href="demos.html" style="font-size:13px;color:var(--text-mid);text-decoration:none;font-weight:500;transition:color 0.2s;">Demos</a>
+    <a href="case-studies.html" style="font-size:13px;color:var(--text-mid);text-decoration:none;font-weight:500;transition:color 0.2s;">Results</a>
+    <a href="blog/index.html" style="font-size:13px;color:var(--text-mid);text-decoration:none;font-weight:500;transition:color 0.2s;">Blog</a>
+    <a href="referral.html" style="font-size:13px;color:var(--neon-purple);text-decoration:none;font-weight:600;transition:color 0.2s;">Earn $100</a>
+    <a class="nav-cta" href="#contactForm">Get in Touch</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -820,8 +1004,8 @@
     <div class="hero-badge-dot"></div>
     Currently accepting new clients
   </div>
-  <h1>I Build <span class="gradient">AI-Powered Tools</span> for Real Estate & Mortgage</h1>
-  <p class="hero-sub">Custom software that helps loan officers close faster, look more professional, and stop screenshotting spreadsheets.</p>
+  <h1>I Build <span class="gradient">AI-Powered Growth Systems</span> That <span class="accent-text">Get You More Clients</span></h1>
+  <p class="hero-sub">Websites, lead generation, automation, and marketing systems that help businesses grow faster and make more money. Built in 48 hours.</p>
   <div class="hero-ctas">
     <a class="btn-primary" href="#contactForm">Let's Build Something</a>
     <a class="btn-secondary" href="#work">See My Work</a>
@@ -831,105 +1015,119 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-value">19</div>
-    <div class="stat-label">Years Old</div>
+    <div class="stat-value">18+</div>
+    <div class="stat-label">Industry Demos Live</div>
   </div>
   <div class="stat">
-    <div class="stat-value">800</div>
-    <div class="stat-label">Credit Score</div>
+    <div class="stat-value">48hr</div>
+    <div class="stat-label">Average Build Time</div>
   </div>
   <div class="stat">
-    <div class="stat-value">1</div>
-    <div class="stat-label">Products Shipped</div>
+    <div class="stat-value">12</div>
+    <div class="stat-label">Services Active</div>
   </div>
   <div class="stat">
-    <div class="stat-value">24hr</div>
-    <div class="stat-label">Idea to Deployed</div>
+    <div class="stat-value">EN/ES</div>
+    <div class="stat-label">Bilingual Built In</div>
   </div>
 </div>
 
 <!-- SERVICES -->
 <section class="section fade-in" id="services">
   <div class="section-label">// what I build</div>
-  <h2 class="section-title">Tools That Close Deals</h2>
-  <p class="section-sub">I build custom AI-powered tools that make mortgage and real estate professionals look cutting-edge and work faster.</p>
+  <h2 class="section-title">Systems That <span class="accent-text">Grow Your Business</span></h2>
+  <p class="section-sub">AI-powered websites, lead generation, booking systems, and marketing automation — for any industry, any size, anywhere.</p>
 
   <div class="services-grid" id="servicesGrid">
-    <div class="service-card">
+    <!-- ROW 1: Core Website Services -->
+    <div class="service-card fade-in fade-in-up">
+      <div class="service-number">01</div>
       <div class="service-icon">&#9889;</div>
-      <div class="service-title">Quote Generators</div>
-      <div class="service-desc">Branded, mobile-friendly quote pages. Your client taps a link and sees their savings side by side. No more Excel screenshots.</div>
-      <div class="service-tag">LIVE IN PRODUCTION</div>
+      <div class="service-title">AI-Powered Websites</div>
+      <div class="service-desc">Custom websites with lead capture, online booking, and instant quotes built in. Your customers find you, book you, and pay you — 24/7. Built in 48 hours.</div>
+      <div class="service-tag">ACTIVE — FROM $599</div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-in fade-in-up-2">
+      <div class="service-number">02</div>
       <div class="service-icon">&#128202;</div>
-      <div class="service-title">Client Analytics</div>
-      <div class="service-desc">Track how many quotes you send, how many clients open them, and which options they prefer. Data that proves your value.</div>
-      <div class="service-tag">AVAILABLE</div>
+      <div class="service-title">Lead Generation Systems</div>
+      <div class="service-desc">AI-powered funnels that capture leads, follow up automatically, and convert visitors into paying customers while you sleep. More leads = more revenue.</div>
+      <div class="service-tag">ACTIVE — FROM $500</div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-in fade-in-up-3">
+      <div class="service-number">03</div>
+      <div class="service-icon">&#128269;</div>
+      <div class="service-title">SEO & Local Search</div>
+      <div class="service-desc">Get found when people search for your services. Google Business Profile, keyword optimization, schema markup, and local directory submissions.</div>
+      <div class="service-tag">ACTIVE — FROM $299</div>
+    </div>
+    <!-- ROW 2: Marketing & Automation -->
+    <div class="service-card fade-in fade-in-up-4">
+      <div class="service-number">04</div>
       <div class="service-icon">&#129302;</div>
-      <div class="service-title">AI Automation</div>
-      <div class="service-desc">Automate repetitive workflows — rate comparisons, client follow-ups, document generation. Spend time closing, not computing.</div>
-      <div class="service-tag">COMING SOON</div>
+      <div class="service-title">Marketing Automation</div>
+      <div class="service-desc">Automated follow-ups, review requests, email sequences, and social media scheduling. Your marketing runs itself so you can focus on your craft.</div>
+      <div class="service-tag">ACTIVE — $497/MO</div>
     </div>
-    <div class="service-card">
-      <div class="service-icon">&#128231;</div>
-      <div class="service-title">Email & SMS Automation</div>
-      <div class="service-desc">Auto follow-ups after a client views their quote. Drip campaigns that nurture leads while you sleep. Never lose a warm lead again.</div>
-      <div class="service-tag">COMING SOON</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#127919;</div>
-      <div class="service-title">Landing Pages</div>
-      <div class="service-desc">High-converting pages for your ad campaigns. Drive traffic from Facebook, Google, or Instagram straight to a page that captures leads.</div>
-      <div class="service-tag">COMING SOON</div>
-    </div>
-    <div class="service-card">
+    <div class="service-card fade-in fade-in-up-5">
+      <div class="service-number">05</div>
       <div class="service-icon">&#128187;</div>
-      <div class="service-title">Custom Dashboards</div>
-      <div class="service-desc">Internal tools, admin panels, and client portals built to your exact workflow. Not some generic SaaS — built for YOU.</div>
-      <div class="service-tag">COMING SOON</div>
+      <div class="service-title">CRM & Booking Systems</div>
+      <div class="service-desc">AI chatbot, automated text/email follow-up, lead capture, booking integration, sales pipeline, and review automation. Your entire operation on autopilot.</div>
+      <div class="service-tag">ACTIVE — FROM $297/MO</div>
+    </div>
+    <div class="service-card fade-in fade-in-up-6">
+      <div class="service-number">06</div>
+      <div class="service-icon">&#127919;</div>
+      <div class="service-title">Google Ads & Social Ads</div>
+      <div class="service-desc">Paid advertising on Google, Facebook, and Instagram. We set up, manage, and optimize your campaigns so every dollar brings back more customers.</div>
+      <div class="service-tag">ACTIVE — $497/MO</div>
     </div>
   </div>
 
-  <!-- Hidden services - revealed on click -->
+  <!-- More services - revealed on click -->
   <div class="services-grid" id="moreServices" style="display:none; margin-top:16px;">
-    <div class="service-card">
+    <div class="service-card fade-in">
+      <div class="service-number">07</div>
+      <div class="service-icon">&#128231;</div>
+      <div class="service-title">Branding & Design</div>
+      <div class="service-desc">Logos, business cards, social media templates, and a full visual identity. Look like a million-dollar brand from day one.</div>
+      <div class="service-tag">ACTIVE</div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-number">08</div>
       <div class="service-icon">&#128241;</div>
-      <div class="service-title">Social Media Tools</div>
-      <div class="service-desc">Content calendars, engagement analytics, and posting automation. Build your brand while you focus on deals.</div>
-      <div class="service-tag">COMING SOON</div>
+      <div class="service-title">Social Media Management</div>
+      <div class="service-desc">Content calendars, branded posts, Reels/TikToks, hashtag strategy, and engagement. We build your online presence while you run your business.</div>
+      <div class="service-tag">ACTIVE — $497/MO</div>
     </div>
-    <div class="service-card">
-      <div class="service-icon">&#128200;</div>
-      <div class="service-title">Investment Calculators</div>
-      <div class="service-desc">BRRRR analysis, house hacking calculators, cap rate tools. Custom-built for your investment strategy.</div>
-      <div class="service-tag">COMING SOON</div>
+    <div class="service-card fade-in">
+      <div class="service-number">09</div>
+      <div class="service-icon">&#128176;</div>
+      <div class="service-title">E-Commerce Stores</div>
+      <div class="service-desc">Full online store with product pages, payment processing, inventory management, and 48-hour launch. Shopify or custom-built.</div>
+      <div class="service-tag">ACTIVE — $1,500</div>
     </div>
-    <div class="service-card">
+    <div class="service-card fade-in">
+      <div class="service-number">10</div>
+      <div class="service-icon">&#129302;</div>
+      <div class="service-title">Custom AI Tools</div>
+      <div class="service-desc">Quote generators, pricing calculators, instant estimators, and custom automation tools branded to your business. Built with AI, deployed in 48 hours.</div>
+      <div class="service-tag">ACTIVE — FROM $500</div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-number">11</div>
+      <div class="service-icon">&#127916;</div>
+      <div class="service-title">UGC & Video Content</div>
+      <div class="service-desc">Short-form video creation, Reels, TikToks, YouTube Shorts. Scripts, editing, hooks, captions, and platform-optimized cuts that drive engagement and sales.</div>
+      <div class="service-tag">ACTIVE — FROM $500</div>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-number">12</div>
       <div class="service-icon">&#128196;</div>
-      <div class="service-title">PDF Report Generators</div>
-      <div class="service-desc">Auto-generate branded loan summaries, proposals, and comparison reports. One click — professional PDF in your client's inbox.</div>
-      <div class="service-tag">COMING SOON</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#128140;</div>
-      <div class="service-title">CRM Integrations</div>
-      <div class="service-desc">Connect your tools to your existing CRM, email, and lead systems. No double entry. No lost leads. Everything synced.</div>
-      <div class="service-tag">COMING SOON</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#128274;</div>
-      <div class="service-title">Client Portals</div>
-      <div class="service-desc">Private login for each borrower to track their loan status, upload documents, and communicate securely. White-labeled to your brand.</div>
-      <div class="service-tag">COMING SOON</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">&#128270;</div>
-      <div class="service-title">Lead Capture Systems</div>
-      <div class="service-desc">Branded forms, pop-ups, and landing pages that feed leads directly into your pipeline. Know who's interested before they even call.</div>
-      <div class="service-tag">COMING SOON</div>
+      <div class="service-title">Bilingual EN/ES</div>
+      <div class="service-desc">Every site, tool, and campaign we build comes with full Spanish language support. Reach the massive Spanish-speaking market in SoCal and beyond.</div>
+      <div class="service-tag">INCLUDED FREE</div>
     </div>
   </div>
 
@@ -948,8 +1146,8 @@
     <div class="about-text">
       <p><strong>I'm Sabin Sanchez.</strong> 19 years old. Cal State Fullerton student. Founder of Sanchez_ElevationAI.</p>
       <p>I don't pitch ideas — I ship products. My first client got a live tool in less than 24 hours. No meetings. No wireframes. No "let me get back to you." Just a working product in their hands.</p>
-      <p>I specialize in the <strong>mortgage and real estate industry</strong> because I understand it. I'm building my own real estate portfolio while I build tools for the people already in the game.</p>
-      <p>If you're a loan officer, broker, or agent who wants to <strong>look more professional than your competition</strong> — let's talk.</p>
+      <p>I build AI-powered growth systems for <strong>contractors, realtors, barbers, restaurants, detailers, photographers</strong> — any business that wants more clients and more revenue. 18+ industry demos live and ready to customize.</p>
+      <p>If you're a business owner who wants to <strong>dominate your market online</strong> — let's talk.</p>
     </div>
     <div class="about-stats">
       <div class="about-stat-card">
@@ -980,21 +1178,25 @@
       <div class="terminal-title">sabin@elevationai ~ portfolio</div>
     </div>
     <div class="terminal-body">
-      <div><span class="prompt">$</span> <span class="cmd">ls projects/</span></div>
+      <div><span class="prompt">$</span> <span class="cmd">ls projects/ --active</span></div>
       <div>&nbsp;</div>
-      <div><span class="output">client-001/</span> <span class="comment">// live quote generator for mortgage LO</span></div>
-      <div><span class="output">sanchezelevationai.com/</span> <span class="comment">// this website</span></div>
+      <div><span class="output">allendes-construction/</span> <span class="comment">// 26-service contractor site + marketing kit</span></div>
+      <div><span class="output">west-capital-lending/</span> <span class="comment">// AI quote generator for mortgage LO</span></div>
+      <div><span class="output">sanchezelevationai.com/</span> <span class="comment">// agency site + 18 demos + shop</span></div>
+      <div><span class="output">profix-handyman/</span> <span class="comment">// full service handyman site</span></div>
       <div>&nbsp;</div>
-      <div><span class="prompt">$</span> <span class="cmd">cat client-001/status.txt</span></div>
+      <div><span class="prompt">$</span> <span class="cmd">ls demos/ | wc -l</span></div>
+      <div><span class="output">18 industry demos live</span></div>
       <div>&nbsp;</div>
-      <div><span class="output">STATUS: LIVE</span></div>
-      <div><span class="output">CLIENT: [Confidential]</span></div>
-      <div><span class="output">TOOL: Branded Quote Generator</span></div>
-      <div><span class="output">FEATURES: Side-by-side comparison, rate toggle, mobile-first</span></div>
-      <div><span class="output">BUILT IN: 1 night</span></div>
+      <div><span class="prompt">$</span> <span class="cmd">cat stats.json</span></div>
+      <div><span class="output">SERVICES: 12 active</span></div>
+      <div><span class="output">DEMOS: 18+ industries</span></div>
+      <div><span class="output">AVG BUILD: 48 hours</span></div>
+      <div><span class="output">BILINGUAL: EN/ES on every build</span></div>
+      <div><span class="output">STACK: AI-powered, custom-coded, zero templates</span></div>
       <div>&nbsp;</div>
-      <div><span class="prompt">$</span> <span class="cmd">echo "More coming soon..."</span></div>
-      <div><span class="output">More coming soon...</span></div>
+      <div><span class="prompt">$</span> <span class="cmd">echo "Ready to build yours."</span></div>
+      <div><span class="output">Ready to build yours.</span></div>
     </div>
   </div>
 </section>
@@ -1007,11 +1209,11 @@
 
   <div class="case-study">
     <div class="case-study-header">
-      <div class="case-study-client">Mortgage Lending Client</div>
+      <div class="case-study-client">Client Case Study</div>
       <div class="case-study-live"><div class="case-study-live-dot"></div> Live in Production</div>
     </div>
-    <div class="case-study-title">Branded Quote Generator for Mortgage Loan Officers</div>
-    <div class="case-study-desc">A loan officer was texting Excel screenshots to clients. I built a tool that generates branded, mobile-friendly quote pages in 30 seconds. The agent enters the numbers, hits generate, and texts a clean link. The client sees their current loan vs two refinance options side by side — with monthly savings, rate comparisons, and closing costs.</div>
+    <div class="case-study-title">AI-Powered Quote Tool for a Lending Professional</div>
+    <div class="case-study-desc">A client was texting Excel screenshots to prospects. I built an AI tool that generates branded, mobile-friendly quote pages in 30 seconds. They enter the numbers, hit generate, and text a clean link. The prospect sees options side by side — with savings, comparisons, and costs. Professional. Instant. Automated.</div>
     <div class="case-study-metrics">
       <div class="case-metric">
         <div class="case-metric-val">&lt;24h</div>
@@ -1035,9 +1237,17 @@
   <h2 class="section-title">Don't Take My Word For It</h2>
   <div class="testimonial-section" style="margin-top:48px;">
     <div class="testimonial-card">
-      <div class="testimonial-quote">This kid built me a quote tool in one night that looks better than anything my company provides. My clients actually respond now. Game changer.</div>
-      <div class="testimonial-author">M. — Loan Officer</div>
-      <div class="testimonial-role">Southern California Mortgage Lender</div>
+      <div class="testimonial-quote">This kid built me a tool in one night that looks better than anything my company provides. My clients actually respond now. Game changer.</div>
+      <div class="testimonial-author">M. — Business Owner</div>
+      <div class="testimonial-role">Southern California</div>
+    </div>
+    <div class="review-cta">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-cta-label">Happy with your results? Leave us a review — it takes 30 seconds.</div>
+      <a class="btn-review" href="https://g.page/r/YOUR_GOOGLE_PLACE_ID/review" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.35 11.1H12.18V13.83H18.69C18.36 17.64 15.19 19.27 12.19 19.27C8.36 19.27 5 16.25 5 12C5 7.9 8.2 4.73 12.2 4.73C15.29 4.73 17.1 6.7 17.1 6.7L19 4.72C19 4.72 16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12C2.03 17.05 6.16 22 12.39 22C17.6 22 21.96 18.33 21.96 12.1C21.96 11.46 21.35 11.1 21.35 11.1Z"/></svg>
+        Leave a Google Review
+      </a>
     </div>
   </div>
 </section>
@@ -1061,45 +1271,54 @@
 
   <div class="pricing-grid">
     <div class="pricing-card">
-      <div class="pricing-name">Starter</div>
-      <div class="pricing-desc">One custom tool for your business</div>
-      <div class="pricing-amount">$500<span> one-time</span></div>
+      <div class="pricing-name">Basic Site</div>
+      <div class="pricing-desc">Custom website, live in 48 hours</div>
+      <div class="pricing-amount">$599<span> one-time</span></div>
       <ul class="pricing-features">
-        <li>1 custom-built tool</li>
-        <li>Mobile responsive</li>
-        <li>Branded to your business</li>
-        <li>Deployed & live in 48 hours</li>
-        <li>30 days of bug fixes</li>
+        <li>Custom design, mobile responsive</li>
+        <li>Click-to-call + contact form</li>
+        <li>Photo gallery</li>
+        <li>SEO optimized</li>
+        <li>48-hour delivery</li>
+        <li>30 days free edits</li>
       </ul>
       <a class="pricing-btn outline" href="tel:+15623731027">Get Started</a>
     </div>
     <div class="pricing-card featured">
       <div class="pricing-popular">Most Popular</div>
-      <div class="pricing-name">Growth</div>
-      <div class="pricing-desc">Tool + analytics + ongoing support</div>
-      <div class="pricing-amount">$297<span>/mo</span></div>
+      <div class="pricing-name">Business Site</div>
+      <div class="pricing-desc">Full website with lead capture + content</div>
+      <div class="pricing-amount">$1,200<span> one-time</span></div>
       <ul class="pricing-features">
-        <li>Everything in Starter</li>
-        <li>Analytics dashboard</li>
-        <li>Unlimited updates & improvements</li>
-        <li>Priority support</li>
-        <li>New feature requests monthly</li>
+        <li>Up to 5 pages</li>
+        <li>Lead capture forms</li>
+        <li>Google Analytics</li>
+        <li>Blog / portfolio section</li>
+        <li>Bilingual EN/ES</li>
+        <li>Social media integration</li>
+        <li>60 days free edits</li>
       </ul>
       <a class="pricing-btn primary" href="tel:+15623731027">Let's Talk</a>
     </div>
     <div class="pricing-card">
-      <div class="pricing-name">Enterprise</div>
-      <div class="pricing-desc">Full system build + dedicated support</div>
-      <div class="pricing-amount">$997<span>+/mo</span></div>
+      <div class="pricing-name">Website + Marketing</div>
+      <div class="pricing-desc">Everything managed. Leads on autopilot.</div>
+      <div class="pricing-amount">$497<span>/mo</span></div>
       <ul class="pricing-features">
-        <li>Everything in Growth</li>
-        <li>Multiple tools & integrations</li>
-        <li>Multi-agent support</li>
-        <li>Custom admin portal</li>
-        <li>Dedicated engineering partner</li>
+        <li>Everything in Business Site</li>
+        <li>Facebook + Instagram ads</li>
+        <li>Social media management</li>
+        <li>Monthly content calendar</li>
+        <li>Analytics reporting</li>
+        <li>Unlimited updates</li>
       </ul>
-      <a class="pricing-btn outline" href="tel:+15623731027">Contact Me</a>
+      <a class="pricing-btn outline" href="tel:+15623731027">Contact Us</a>
     </div>
+  </div>
+
+  <div style="text-align:center; margin-top:24px;">
+    <p style="font-size:13px; color:var(--text-dim);">Also available: AI Tools from $500 · SEO from $299 · CRM from $297/mo · E-Commerce $1,500 · <a href="/elevationai/shop.html" style="color:var(--neon-cyan); text-decoration:none;">View all packages →</a></p>
+    <p style="font-size:12px; color:var(--text-dim); margin-top:8px;">Payment plans: 50/50 or 40/30/30 · Bundles save 15-25%</p>
   </div>
 </section>
 
@@ -1118,7 +1337,7 @@
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">What industries do you work with?</div>
-      <div class="faq-a">I specialize in mortgage lending and real estate, but my tools work for any industry that needs client-facing pages, calculators, or admin dashboards.</div>
+      <div class="faq-a">All of them. Contractors, realtors, barbers, restaurants, auto detailers, photographers, pool services, fitness, med spas — I've got 18+ live demos ready. If your business needs clients, I can build systems that bring them in.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Can I make changes after it's built?</div>
@@ -1163,9 +1382,15 @@
       <div class="form-field">
         <label>Industry</label>
         <select name="industry" id="industrySelect" onchange="toggleOtherIndustry()">
-          <option value="Mortgage">Mortgage / Lending</option>
+          <option value="Contractor">Contractor / Construction</option>
           <option value="Real Estate">Real Estate</option>
-          <option value="Finance">Finance / Insurance</option>
+          <option value="Restaurant">Restaurant / Food</option>
+          <option value="Auto">Auto Detailing / Car Wash</option>
+          <option value="Salon">Salon / Barbershop</option>
+          <option value="Photography">Photography / Videography</option>
+          <option value="Fitness">Fitness / Personal Training</option>
+          <option value="Mortgage">Mortgage / Lending</option>
+          <option value="Cleaning">Cleaning / Home Services</option>
           <option value="Other">Other</option>
         </select>
       </div>
@@ -1185,8 +1410,8 @@
 <!-- CTA -->
 <section class="cta-section fade-in" id="contact">
   <div class="section-label">// let's work</div>
-  <h2 class="cta-title">Ready to Upgrade Your Business?</h2>
-  <p class="cta-sub">I build fast, I ship fast, and I don't waste your time. Tell me what you need and I'll tell you exactly how I'd build it.</p>
+  <h2 class="cta-title">Ready to <span class="accent-text">Get More Clients?</span></h2>
+  <p class="cta-sub">I build growth systems that generate leads, book appointments, and drive revenue — in 48 hours. Tell me about your business and I'll show you what's possible.</p>
   <div class="hero-ctas">
     <a class="btn-primary" href="tel:+15623731027">Call Me — (562) 373-1027</a>
     <a class="btn-secondary" href="mailto:sabino.sanchez7@gmail.com">Email Me</a>
