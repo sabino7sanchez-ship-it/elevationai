@@ -59,8 +59,42 @@ a{text-decoration:none;color:inherit}
 <div class="hero">
   <h1>Live <span>Industry Demos</span></h1>
   <p>Every demo is a fully built website you can send directly to a prospect. Click any card to view it live.</p>
-  <div class="count">20 DEMOS • 20 INDUSTRIES • ALL LIVE</div>
+  <div class="count" id="demoCount">20 DEMOS • 20 INDUSTRIES • ALL LIVE</div>
 </div>
+
+<!-- CTA BANNER -->
+<div style="max-width:1200px;margin:0 auto 20px;padding:0 20px;">
+  <div style="background:linear-gradient(135deg,rgba(0,240,255,.08),rgba(0,255,136,.08));border:1px solid rgba(0,240,255,.2);border-radius:12px;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+    <div>
+      <div style="font-size:17px;font-weight:800;">Want one of these for YOUR business?</div>
+      <div style="font-size:13px;color:var(--text2);margin-top:4px;">Custom-built in 48 hours. Starting at $599. All industries.</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="/booking.html" style="padding:10px 22px;background:var(--cyan);color:#000;border-radius:8px;font-size:13px;font-weight:700;">Book Free Demo</a>
+      <a href="tel:+15623731027" style="padding:10px 22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--text);border-radius:8px;font-size:13px;font-weight:600;">(562) 373-1027</a>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH + FILTER -->
+<div style="max-width:1200px;margin:0 auto 16px;padding:0 20px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+  <input type="text" id="searchInput" placeholder="Search demos..." oninput="filterDemos()" style="flex:1;min-width:200px;padding:10px 16px;background:rgba(15,17,23,.9);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;font-family:var(--font);outline:none;">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;" id="filterBtns">
+    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn" onclick="setFilter('home',this)">Home Services</button>
+    <button class="filter-btn" onclick="setFilter('food',this)">Food & Bev</button>
+    <button class="filter-btn" onclick="setFilter('auto',this)">Auto</button>
+    <button class="filter-btn" onclick="setFilter('beauty',this)">Beauty</button>
+    <button class="filter-btn" onclick="setFilter('pro',this)">Professional</button>
+    <button class="filter-btn" onclick="setFilter('events',this)">Events</button>
+  </div>
+</div>
+
+<style>
+.filter-btn{padding:6px 14px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font);transition:.2s}
+.filter-btn:hover,.filter-btn.active{background:rgba(0,240,255,.1);border-color:rgba(0,240,255,.3);color:var(--cyan)}
+.card[data-hidden="true"]{display:none!important}
+</style>
 
 <div class="section-label">Real Client Sites</div>
 <div class="grid">
@@ -92,7 +126,7 @@ a{text-decoration:none;color:inherit}
 
 <div class="section-label">Industry Demos — Send to Any Prospect</div>
 <div class="grid">
-  <a href="/demos/autoshop/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/autoshop/" target="_blank" rel="noopener" class="card" data-cat="auto" data-name="auto detailing car wash">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/autoshop/',this)">Copy Link</button>
     <div class="card-icon">🚗</div>
     <div class="card-title">Auto Detailing / Car Wash</div>
@@ -100,7 +134,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">GALLERY</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/restaurant/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/restaurant/" target="_blank" rel="noopener" class="card" data-cat="food" data-name="restaurant">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/restaurant/',this)">Copy Link</button>
     <div class="card-icon">🍽</div>
     <div class="card-title">Restaurant</div>
@@ -108,7 +142,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">MENU</span><span class="tag">ORDERS</span><span class="tag">GALLERY</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/barbershop/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/barbershop/" target="_blank" rel="noopener" class="card" data-cat="beauty" data-name="barbershop">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/barbershop/',this)">Copy Link</button>
     <div class="card-icon">💈</div>
     <div class="card-title">Barbershop</div>
@@ -116,7 +150,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">GALLERY</span><span class="tag">REVIEWS</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/realestate/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/realestate/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="real estate">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/realestate/',this)">Copy Link</button>
     <div class="card-icon">🏠</div>
     <div class="card-title">Real Estate</div>
@@ -124,7 +158,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">LEAD CAPTURE</span><span class="tag">LISTINGS</span><span class="tag">BOOKING</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/fitness/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/fitness/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="fitness personal trainer">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/fitness/',this)">Copy Link</button>
     <div class="card-icon">💪</div>
     <div class="card-title">Fitness / Personal Trainer</div>
@@ -132,7 +166,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">SCHEDULING</span><span class="tag">PACKAGES</span><span class="tag">PAYMENTS</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/trucking/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/trucking/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="trucking freight">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/trucking/',this)">Copy Link</button>
     <div class="card-icon">🚛</div>
     <div class="card-title">Trucking / Freight</div>
@@ -140,7 +174,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">FREIGHT</span><span class="tag">PDF</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/insurance/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/insurance/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="insurance">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/insurance/',this)">Copy Link</button>
     <div class="card-icon">🛡</div>
     <div class="card-title">Insurance</div>
@@ -148,7 +182,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">COMPARISON</span><span class="tag">3 CARRIERS</span><span class="tag">SHAREABLE</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/plumbing/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/plumbing/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="plumbing hvac">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/plumbing/',this)">Copy Link</button>
     <div class="card-icon">🔧</div>
     <div class="card-title">Plumbing / HVAC</div>
@@ -156,7 +190,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">ESTIMATES</span><span class="tag">EMERGENCY</span><span class="tag">24/7</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/nailsalon/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/nailsalon/" target="_blank" rel="noopener" class="card" data-cat="beauty" data-name="nail salon">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/nailsalon/',this)">Copy Link</button>
     <div class="card-icon">💅</div>
     <div class="card-title">Nail Salon</div>
@@ -164,7 +198,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">GALLERY</span><span class="tag">PRICING</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/tattoo/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/tattoo/" target="_blank" rel="noopener" class="card" data-cat="beauty" data-name="tattoo shop">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/tattoo/',this)">Copy Link</button>
     <div class="card-icon">🎨</div>
     <div class="card-title">Tattoo Shop</div>
@@ -172,7 +206,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">PORTFOLIO</span><span class="tag">CONSULTATION</span><span class="tag">WALK-INS</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/foodtruck/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/foodtruck/" target="_blank" rel="noopener" class="card" data-cat="food" data-name="food truck">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/foodtruck/',this)">Copy Link</button>
     <div class="card-icon">🌮</div>
     <div class="card-title">Food Truck</div>
@@ -180,7 +214,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">MENU</span><span class="tag">LOCATION</span><span class="tag">CATERING</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/photography/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/photography/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="photography">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/photography/',this)">Copy Link</button>
     <div class="card-icon">📸</div>
     <div class="card-title">Photography</div>
@@ -188,7 +222,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">PORTFOLIO</span><span class="tag">PACKAGES</span><span class="tag">BOOKING</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/medspa/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/medspa/" target="_blank" rel="noopener" class="card" data-cat="beauty" data-name="med spa">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/medspa/',this)">Copy Link</button>
     <div class="card-icon">💉</div>
     <div class="card-title">Med Spa</div>
@@ -196,7 +230,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">TREATMENTS</span><span class="tag">BEFORE/AFTER</span><span class="tag">BOOKING</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/cleaning/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/cleaning/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="cleaning service">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/cleaning/',this)">Copy Link</button>
     <div class="card-icon">🧹</div>
     <div class="card-title">Cleaning Service</div>
@@ -204,7 +238,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">ADD-ONS</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/moving/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/moving/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="moving company">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/moving/',this)">Copy Link</button>
     <div class="card-icon">📦</div>
     <div class="card-title">Moving Company</div>
@@ -212,7 +246,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">PACKING</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/roofing/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/roofing/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="roofing">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/roofing/',this)">Copy Link</button>
     <div class="card-icon">🏗</div>
     <div class="card-title">Roofing</div>
@@ -220,7 +254,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">INSPECTIONS</span><span class="tag">GALLERY</span><span class="tag">FINANCING</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/catering/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/catering/" target="_blank" rel="noopener" class="card" data-cat="food" data-name="catering">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/catering/',this)">Copy Link</button>
     <div class="card-icon">🍱</div>
     <div class="card-title">Catering</div>
@@ -228,7 +262,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">EVENT QUOTE</span><span class="tag">MENUS</span><span class="tag">BOOKING</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/djevents/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/djevents/" target="_blank" rel="noopener" class="card" data-cat="events" data-name="dj events">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/djevents/',this)">Copy Link</button>
     <div class="card-icon">🎧</div>
     <div class="card-title">DJ / Events</div>
@@ -236,7 +270,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">PACKAGES</span><span class="tag">GALLERY</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/pool-service/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/pool-service/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="pool service">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/pool-service/',this)">Copy Link</button>
     <div class="card-icon">🏊</div>
     <div class="card-title">Pool Service</div>
@@ -244,7 +278,7 @@ a{text-decoration:none;color:inherit}
     <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BILINGUAL</span><span class="tag">6 SERVICES</span></div>
     <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
   </a>
-  <a href="/demos/collision/" target="_blank" rel="noopener" class="card">
+  <a href="/demos/collision/" target="_blank" rel="noopener" class="card" data-cat="auto" data-name="collision auto body">
     <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sanchezelevationai.com/demos/collision/',this)">Copy Link</button>
     <div class="card-icon">🔧</div>
     <div class="card-title">Collision / Auto Body</div>
@@ -259,6 +293,33 @@ a{text-decoration:none;color:inherit}
 </footer>
 
 <script>
+// Search + Filter
+let activeFilter = 'all';
+function setFilter(cat, btn) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterDemos();
+}
+function filterDemos() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase();
+  const grids = document.querySelectorAll('.grid');
+  let visible = 0;
+  grids.forEach(grid => {
+    grid.querySelectorAll('.card').forEach(card => {
+      const name = (card.getAttribute('data-name') || '') + ' ' + (card.querySelector('.card-title')?.textContent || '') + ' ' + (card.querySelector('.card-desc')?.textContent || '');
+      const cat = card.getAttribute('data-cat') || '';
+      const matchSearch = !q || name.toLowerCase().includes(q);
+      const matchFilter = activeFilter === 'all' || cat === activeFilter;
+      const show = matchSearch && matchFilter;
+      card.setAttribute('data-hidden', show ? 'false' : 'true');
+      if (show) visible++;
+    });
+  });
+  const countEl = document.getElementById('demoCount');
+  if (countEl) countEl.textContent = visible + ' DEMO' + (visible !== 1 ? 'S' : '') + ' SHOWING';
+}
+
 function copyLink(url, btn) {
   navigator.clipboard.writeText(url).then(() => {
     btn.textContent = 'Copied!';
