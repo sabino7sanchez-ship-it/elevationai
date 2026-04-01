@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allendes Group Inc — Construction & Landscaping | Orange County, CA</title>
+<meta name="description" content="Allendes Group Inc — Premier construction and landscaping contractor in Orange County, CA. Residential and commercial. Licensed, insured. Free estimates. Call (949) 619-0844.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"GeneralContractor","name":"Allendes Group Inc","description":"Premier construction and landscaping contractor in Orange County, CA. Residential and commercial projects.","telephone":"+1-949-619-0844","url":"https://sanchezelevationai.com/clients/allendes/","address":{"@type":"PostalAddress","addressLocality":"Orange County","addressRegion":"CA","addressCountry":"US"},"areaServed":["Irvine","Santa Ana","Anaheim","Costa Mesa","Huntington Beach","Newport Beach","Tustin","Lake Forest","Mission Viejo","Laguna Niguel"],"priceRange":"$$$","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"06:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"07:00","closes":"14:00"}],"sameAs":["https://www.instagram.com/allendes_construction/"]}
+</script>
+<style>
+:root {
+  --bg: #0c0b0a;
+  --bg2: #16140f;
+  --bg3: #1e1b14;
+  --bg4: #262218;
+  --border: #2e2a1f;
+  --border2: #3d3627;
+  --text: #f5f0e8;
+  --text2: #c4b99a;
+  --text3: #8a7f65;
+  --gold: #c9a84c;
+  --gold2: #e0c168;
+  --gold3: #a88930;
+  --gold-g: rgba(201,168,76,.12);
+  --earth: #6b5b3e;
+  --green: #4a7c59;
+  --green-light: #6ba37a;
+  --green-g: rgba(75,124,89,.12);
+  --warm: #d4a574;
+  --cream: #f5efe3;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none;transition:.2s}a:hover{color:var(--gold2)}
+img{max-width:100%;display:block}
+.serif{font-family:'Playfair Display',serif}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(35px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(12,11,10,.93);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(201,168,76,.08)}
+.nav-brand{display:flex;align-items:center;gap:14px}
+.nav-logo{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),var(--gold3));border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:var(--bg)}
+.nav-text h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--cream);letter-spacing:.3px}
+.nav-text p{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:2.5px;font-weight:600}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--text2);font-size:13px;font-weight:500}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{padding:10px 26px;background:var(--gold);color:var(--bg);font-weight:700;font-size:13px;border-radius:6px;border:none;cursor:pointer;transition:.3s;letter-spacing:.3px}
+.nav-cta:hover{background:var(--gold2);color:var(--bg);transform:translateY(-1px);box-shadow:0 4px 20px var(--gold-g)}
+.lang-btn{padding:5px 12px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);font-size:11px;font-weight:700;border-radius:4px;cursor:pointer;font-family:'JetBrains Mono',monospace}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold)}
+.mmb{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:120px 48px 80px;background:linear-gradient(135deg,rgba(12,11,10,.75),rgba(12,11,10,.5),rgba(12,11,10,.85)),url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80') center/cover no-repeat}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:250px;background:linear-gradient(transparent,var(--bg))}
+.hero-inner{max-width:750px;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:30px;font-size:12px;color:var(--gold);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:28px;backdrop-filter:blur(6px)}
+.hero-badge .dot{width:8px;height:8px;background:var(--green-light);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:1.05;margin-bottom:24px;letter-spacing:-1px}
+.hero h1 .shine{background:linear-gradient(135deg,var(--gold),var(--gold2),var(--cream),var(--gold));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite}
+@keyframes shimmer{to{background-position:200% center}}
+.hero-sub{font-size:clamp(1rem,2vw,1.15rem);color:var(--text2);max-width:560px;margin-bottom:36px;line-height:1.8}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:60px}
+.btn-gold{padding:16px 38px;background:var(--gold);color:var(--bg);font-weight:700;font-size:15px;border-radius:8px;border:none;cursor:pointer;transition:.3s;letter-spacing:.3px}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px var(--gold-g)}
+.btn-outline{padding:16px 38px;background:transparent;border:1px solid rgba(245,240,232,.15);color:var(--text);font-weight:600;font-size:15px;border-radius:8px;cursor:pointer;transition:.3s;backdrop-filter:blur(4px)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border-radius:12px;overflow:hidden}
+.stat{background:rgba(245,240,232,.03);backdrop-filter:blur(6px);padding:22px;text-align:center;border:1px solid rgba(245,240,232,.04)}
+.stat-n{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold)}
+.stat-l{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;margin-top:4px;font-weight:600}
+
+/* IMAGE STRIP */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border-radius:16px;overflow:hidden}
+.strip img{width:100%;height:240px;object-fit:cover;transition:transform .6s}
+.strip img:hover{transform:scale(1.06)}
+
+/* SECTIONS */
+section{padding:100px 48px}
+.container{max-width:1200px;margin:0 auto}
+.stag{display:inline-block;padding:6px 16px;background:var(--gold-g);border:1px solid rgba(201,168,76,.15);border-radius:4px;font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.shead h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:16px;line-height:1.15}
+.shead p{color:var(--text2);font-size:16px;max-width:600px;line-height:1.8}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px;transition:.4s;position:relative;overflow:hidden}
+.svc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));opacity:0;transition:.3s}
+.svc:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,0,0,.4)}
+.svc:hover::before{opacity:1}
+.svc-icon{font-size:36px;margin-bottom:14px}
+.svc h3{font-size:18px;font-weight:700;margin-bottom:10px}
+.svc p{color:var(--text2);font-size:14px;line-height:1.7}
+
+/* GALLERY */
+.gal-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-radius:12px;overflow:hidden}
+.gal-item{position:relative;overflow:hidden;aspect-ratio:4/3}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-ov{position:absolute;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:var(--cream);font-size:13px;font-weight:600}
+.ig-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:48px;padding:36px;background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--border);border-radius:16px}
+.ig-cta h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700}
+.ig-cta p{color:var(--text2);font-size:14px;margin-top:6px}
+.ig-btn{padding:14px 28px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff;font-weight:700;font-size:14px;border-radius:8px;border:none;cursor:pointer;white-space:nowrap;transition:.3s}
+.ig-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(253,29,29,.2)}
+
+/* TESTIMONIALS */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.test{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px;transition:.3s;position:relative}
+.test::before{content:'\201C';position:absolute;top:12px;right:24px;font-family:'Playfair Display',serif;font-size:80px;color:rgba(201,168,76,.06);line-height:1}
+.test:hover{border-color:rgba(201,168,76,.25)}
+.test-stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:14px}
+.test-q{color:var(--text2);font-size:15px;line-height:1.8;margin-bottom:20px;font-style:italic}
+.test-a{display:flex;align-items:center;gap:12px}
+.test-av{width:44px;height:44px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--gold);background:var(--gold-g)}
+.test-nm{font-weight:600;font-size:14px}
+.test-lc{font-size:12px;color:var(--text3)}
+
+/* SERVICE AREAS */
+.area-sec{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.areas{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.area{padding:10px 24px;background:var(--bg);border:1px solid var(--border);border-radius:8px;font-size:14px;font-weight:500;color:var(--text2);transition:.2s}
+.area:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ESTIMATE CALCULATOR */
+.est-wrap{max-width:700px;margin:0 auto}
+.est-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:48px;position:relative;overflow:hidden}
+.est-box::before{content:'';position:absolute;top:-80px;right:-80px;width:200px;height:200px;background:radial-gradient(circle,var(--gold-g),transparent);border-radius:50%}
+.est-box h3{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;text-align:center;margin-bottom:8px;position:relative}
+.est-box .sub{text-align:center;color:var(--text3);font-size:14px;margin-bottom:36px;position:relative}
+.fg{margin-bottom:20px;position:relative}
+.fg label{display:block;font-size:12px;font-weight:600;color:var(--text3);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.fg select,.fg input{width:100%;padding:14px 18px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:15px;font-family:'Inter',sans-serif;outline:none;transition:.2s;appearance:none}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238a7f65' viewBox='0 0 16 16'%3E%3Cpath d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.fg select:focus,.fg input:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-g)}
+.fg select option{background:var(--bg2)}
+.est-result{margin-top:28px;padding:28px;background:linear-gradient(135deg,var(--gold-g),rgba(201,168,76,.04));border:1px solid rgba(201,168,76,.15);border-radius:14px;text-align:center;display:none}
+.est-result .label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+.est-result .price{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--gold);margin:10px 0}
+.est-result .detail{font-size:14px;color:var(--text2)}
+.btn-est{width:100%;padding:16px;background:var(--gold);color:var(--bg);font-weight:700;font-size:15px;border:none;border-radius:10px;cursor:pointer;transition:.3s;margin-top:8px;letter-spacing:.3px}
+.btn-est:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px var(--gold-g)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.ci h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:20px}
+.ci-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;color:var(--text2);font-size:15px}
+.ci-icon{width:44px;height:44px;border-radius:10px;background:var(--gold-g);border:1px solid rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cf input,.cf textarea,.cf select{width:100%;padding:14px 18px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:15px;font-family:'Inter',sans-serif;margin-bottom:14px;outline:none;transition:.2s}
+.cf input:focus,.cf textarea:focus,.cf select:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-g)}
+.cf textarea{min-height:110px;resize:vertical}
+.cf button{width:100%;padding:16px;background:var(--gold);color:var(--bg);font-weight:700;font-size:15px;border:none;border-radius:10px;cursor:pointer;transition:.3s}
+.cf button:hover{background:var(--gold2);transform:translateY(-2px)}
+
+/* BILINGUAL */
+.biline{display:flex;gap:6px;font-size:11px;color:var(--text3);margin-top:6px}
+.biline span{padding:2px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;font-weight:600}
+
+/* FOOTER */
+.footer{padding:48px 48px;border-top:1px solid var(--border);text-align:center}
+.footer-brand{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);font-weight:700;margin-bottom:10px}
+.footer-info{color:var(--text3);font-size:13px;line-height:1.8}
+.powered{margin-top:28px;padding-top:28px;border-top:1px solid var(--border);font-size:12px;color:var(--text3)}
+.powered a{color:var(--gold);font-weight:600}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav{padding:0 20px}.nav-links{display:none;position:fixed;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);flex-direction:column;padding:24px;gap:18px;z-index:99}.nav-links.open{display:flex}.mmb{display:block}
+  .hero{padding:120px 20px 80px}.stats{grid-template-columns:repeat(2,1fr)}.svc-grid{grid-template-columns:1fr}.gal{grid-template-columns:1fr 1fr}.test-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.strip{grid-template-columns:1fr 1fr}section{padding:60px 20px}.ig-cta{flex-direction:column;text-align:center}.est-box{padding:28px}
+}
+@media(max-width:500px){.stats{grid-template-columns:1fr 1fr}.gal{grid-template-columns:1fr}.strip{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">A</div>
+    <div class="nav-text"><h2>Allendes Group</h2><p>Construction & Landscaping</p></div>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#services" data-en="Services" data-es="Servicios">Services</a>
+    <a href="#gallery" data-en="Gallery" data-es="Galeria">Gallery</a>
+    <a href="#estimate" data-en="Free Estimate" data-es="Estimacion">Free Estimate</a>
+    <a href="#reviews" data-en="Reviews" data-es="Resenas">Reviews</a>
+    <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+    <button class="lang-btn" onclick="toggleLang()">ES</button>
+    <a href="tel:+19496190844" class="nav-cta">(949) 619-0844</a>
+  </div>
+  <button class="mmb" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="background:linear-gradient(135deg,rgba(12,11,10,.6),rgba(12,11,10,.35),rgba(12,11,10,.7)),url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=85') center/cover no-repeat">
+  <div class="hero-inner rv">
+    <div class="hero-badge"><span class="dot"></span> Licensed & Insured — Orange County, CA</div>
+    <h1>Built to Last.<br><span class="shine">Built by Allendes.</span></h1>
+    <p class="hero-sub" data-en="Orange County's premier construction and landscaping contractor. From custom homes and ADUs to backyard transformations — we build it right the first time. 15+ years. 500+ projects. Bilingual team." data-es="El contratista principal de construccion y paisajismo de Orange County. Desde hogares personalizados y ADUs hasta transformaciones de patios — lo construimos bien desde la primera vez.">Orange County's premier construction and landscaping contractor. From custom homes and ADUs to backyard transformations — we build it right the first time. 15+ years. 500+ projects. Bilingual team.</p>
+    <div class="biline"><span>English</span><span>Espanol</span></div>
+    <div class="hero-ctas" style="margin-top:28px">
+      <a href="#estimate"><button class="btn-gold" data-en="Get Free Estimate" data-es="Estimacion Gratis">Get Free Estimate</button></a>
+      <a href="tel:+19496190844"><button class="btn-outline" data-en="Call (949) 619-0844" data-es="Llamar (949) 619-0844">Call (949) 619-0844</button></a>
+      <a href="https://instagram.com/allendes_construction" target="_blank"><button class="btn-outline" style="border-color:rgba(131,58,180,.4);color:#c77dff">Follow @allendes_construction</button></a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">15+</div><div class="stat-l">Years Experience</div></div>
+      <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Projects Completed</div></div>
+      <div class="stat"><div class="stat-n">4.9★</div><div class="stat-l">Google Rating</div></div>
+      <div class="stat"><div class="stat-n">24hr</div><div class="stat-l">Free Estimates</div></div>
+    </div>
+  </div>
+
+  <!-- FLOATING QUICK NAV -->
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:3;padding:0 48px 0">
+    <div style="display:flex;justify-content:center;gap:4px;flex-wrap:wrap;background:rgba(22,20,15,.9);backdrop-filter:blur(16px);border:1px solid var(--border);border-bottom:none;border-radius:16px 16px 0 0;padding:16px 24px;max-width:900px;margin:0 auto">
+      <a href="#services" style="padding:8px 18px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:12px;font-weight:600;transition:.2s">🏗️ Construction</a>
+      <a href="#services" style="padding:8px 18px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:12px;font-weight:600;transition:.2s">🌿 Landscaping</a>
+      <a href="#services" style="padding:8px 18px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:12px;font-weight:600;transition:.2s">🧱 Hardscape</a>
+      <a href="#services" style="padding:8px 18px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:12px;font-weight:600;transition:.2s">🏠 Remodeling</a>
+      <a href="#estimate" style="padding:8px 18px;background:var(--gold-g);border:1px solid rgba(201,168,76,.2);border-radius:8px;color:var(--gold);font-size:12px;font-weight:700;transition:.2s">📐 Free Estimate</a>
+      <a href="#gallery" style="padding:8px 18px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:12px;font-weight:600;transition:.2s">📸 Gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE STRIP — HIGH QUALITY CONSTRUCTION & LANDSCAPING -->
+<div class="strip">
+  <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=85" alt="Luxury custom home exterior" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=85" alt="Premium kitchen remodel" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=85" alt="Professional landscaping" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=85" alt="Modern home backyard" loading="lazy">
+</div>
+
+<!-- TRUST BAR -->
+<div style="padding:20px 48px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:center">
+  <span style="font-size:13px;color:var(--text3);font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:var(--gold)">&#10003;</span> Licensed & Insured</span>
+  <span style="font-size:13px;color:var(--text3);font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:var(--gold)">&#10003;</span> Free Estimates in 24hrs</span>
+  <span style="font-size:13px;color:var(--text3);font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:var(--gold)">&#10003;</span> Bilingual EN/ES</span>
+  <span style="font-size:13px;color:var(--text3);font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:var(--gold)">&#10003;</span> Residential & Commercial</span>
+  <span style="font-size:13px;color:var(--text3);font-weight:600;display:flex;align-items:center;gap:8px"><span style="color:var(--gold)">&#10003;</span> 15+ Years in OC</span>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="shead rv">
+      <div class="stag" data-en="Our Services" data-es="Nuestros Servicios">Our Services</div>
+      <h2 data-en="Construction & Landscaping Done Right" data-es="Construccion y Paisajismo Hechos Bien">Construction & Landscaping<br>Done Right</h2>
+      <p data-en="From foundations to finish work, hardscape to softscape — one crew, one call, one standard of excellence." data-es="Desde cimientos hasta acabados, hardscape a softscape — un equipo, una llamada, un estandar de excelencia.">From foundations to finish work, hardscape to softscape — one crew, one call, one standard of excellence.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rv"><div class="svc-icon">🏗️</div><h3 data-en="General Construction" data-es="Construccion General">General Construction</h3><p data-en="New builds, additions, renovations, ADUs, and structural work. From framing to finish — we handle every phase with precision and care." data-es="Construcciones nuevas, adiciones, renovaciones, ADUs y trabajo estructural. Del marco al acabado — manejamos cada fase con precision.">New builds, additions, renovations, ADUs, and structural work. From framing to finish — we handle every phase with precision and care.</p></div>
+      <div class="svc rv"><div class="svc-icon">🌿</div><h3 data-en="Landscape Design & Install" data-es="Diseno e Instalacion de Paisajismo">Landscape Design & Install</h3><p data-en="Custom landscape design, drought-tolerant planting, irrigation systems, sod, trees, and seasonal maintenance programs." data-es="Diseno de paisajismo personalizado, plantas tolerantes a la sequia, sistemas de riego, cesped, arboles y mantenimiento estacional.">Custom landscape design, drought-tolerant planting, irrigation systems, sod, trees, and seasonal maintenance programs.</p></div>
+      <div class="svc rv"><div class="svc-icon">🧱</div><h3 data-en="Hardscape & Concrete" data-es="Hardscape y Concreto">Hardscape & Concrete</h3><p data-en="Patios, walkways, retaining walls, driveways, stamped concrete, pavers, and outdoor living spaces built to last." data-es="Patios, caminos, muros de contencion, entradas, concreto estampado, adoquines y espacios de vida al aire libre.">Patios, walkways, retaining walls, driveways, stamped concrete, pavers, and outdoor living spaces built to last.</p></div>
+      <div class="svc rv"><div class="svc-icon">🏠</div><h3 data-en="Remodeling" data-es="Remodelacion">Remodeling</h3><p data-en="Kitchen, bathroom, and whole-home remodels. Modern design, quality materials, on-time completion. Transform your space completely." data-es="Remodelacion de cocina, bano y hogar completo. Diseno moderno, materiales de calidad, terminacion a tiempo.">Kitchen, bathroom, and whole-home remodels. Modern design, quality materials, on-time completion. Transform your space completely.</p></div>
+      <div class="svc rv"><div class="svc-icon">🚧</div><h3 data-en="Fencing & Gates" data-es="Cercas y Portones">Fencing & Gates</h3><p data-en="Wood, vinyl, iron, and chain-link fencing. Custom gates, automatic openers, and privacy solutions for residential and commercial." data-es="Cercas de madera, vinilo, hierro y malla. Portones personalizados, abridores automaticos y soluciones de privacidad.">Wood, vinyl, iron, and chain-link fencing. Custom gates, automatic openers, and privacy solutions for residential and commercial.</p></div>
+      <div class="svc rv"><div class="svc-icon">💧</div><h3 data-en="Drainage & Grading" data-es="Drenaje y Nivelacion">Drainage & Grading</h3><p data-en="French drains, grading, erosion control, and water management. Protect your property from water damage with proper drainage solutions." data-es="Drenes franceses, nivelacion, control de erosion y manejo de agua. Proteja su propiedad del dano por agua.">French drains, grading, erosion control, and water management. Protect your property from water damage with proper drainage solutions.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gal-sec">
+  <div class="container">
+    <div class="shead rv" style="text-align:center"><div class="stag">Our Work</div><h2>Built With Pride</h2><p style="margin:0 auto">Every project is a reflection of our name. Follow <a href="https://instagram.com/allendes_construction" target="_blank">@allendes_construction</a> for daily updates.</p></div>
+    <div class="gal rv">
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=85" alt="Modern luxury home" loading="lazy"><div class="gal-ov">Custom Home Build — Irvine</div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=85" alt="Kitchen remodel" loading="lazy"><div class="gal-ov">Full Kitchen Remodel — Newport Beach</div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1598902108854-d1446677039b?w=800&q=85" alt="Landscaped backyard" loading="lazy"><div class="gal-ov">Landscape Design — Costa Mesa</div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=800&q=85" alt="Outdoor patio" loading="lazy"><div class="gal-ov">Hardscape Patio — Mission Viejo</div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=800&q=85" alt="Backyard pool area" loading="lazy"><div class="gal-ov">Backyard Transformation — Tustin</div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=85" alt="Bathroom remodel" loading="lazy"><div class="gal-ov">Bathroom Renovation — Anaheim</div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800&q=85" alt="Beautiful home front" loading="lazy"><div class="gal-ov">Front Yard Landscaping — Santa Ana</div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=85" alt="Modern living room" loading="lazy"><div class="gal-ov">Living Room Remodel — Lake Forest</div></div>
+      <div class="gal-item"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=85" alt="Dream home" loading="lazy"><div class="gal-ov">ADU Build — Laguna Niguel</div></div>
+    </div>
+    <div class="ig-cta rv">
+      <div><h3>Follow Our Work</h3><p>See daily project updates, before & afters, and behind-the-scenes on Instagram.</p></div>
+      <a href="https://instagram.com/allendes_construction" target="_blank"><button class="ig-btn">Follow @allendes_construction</button></a>
+    </div>
+  </div>
+</section>
+
+<!-- ESTIMATE CALCULATOR -->
+<section id="estimate">
+  <div class="container">
+    <div class="est-wrap">
+      <div class="est-box rv">
+        <h3 data-en="Free Estimate Calculator" data-es="Calculadora de Estimacion">Free Estimate Calculator</h3>
+        <p class="sub" data-en="Get a ballpark estimate in seconds. We'll follow up with an exact quote." data-es="Obtenga una estimacion en segundos. Le daremos una cotizacion exacta.">Get a ballpark estimate in seconds. We'll follow up with an exact quote.</p>
+        <div class="fg"><label>Project Type</label><select id="projType"><option value="landscape">Landscape Design & Install</option><option value="hardscape">Hardscape & Concrete</option><option value="remodel" selected>Remodeling</option><option value="construction">New Construction / ADU</option><option value="fence">Fencing & Gates</option><option value="drainage">Drainage & Grading</option></select></div>
+        <div class="fg"><label>Project Size</label><select id="projSize"><option value="small">Small (under 500 sqft)</option><option value="medium" selected>Medium (500-1,500 sqft)</option><option value="large">Large (1,500-3,000 sqft)</option><option value="xlarge">Extra Large (3,000+ sqft)</option></select></div>
+        <div class="fg"><label>Property Type</label><select id="propType"><option value="residential" selected>Residential</option><option value="commercial">Commercial</option></select></div>
+        <button class="btn-est" onclick="calcEst()" data-en="Calculate Estimate" data-es="Calcular Estimacion">Calculate Estimate</button>
+        <div class="est-result" id="estResult">
+          <div class="label" data-en="Estimated Range" data-es="Rango Estimado">Estimated Range</div>
+          <div class="price" id="estPrice">$0</div>
+          <div class="detail" id="estDetail"></div>
+          <a href="tel:+19496190844"><button class="btn-est" style="margin-top:18px" data-en="Call for Exact Quote — (949) 619-0844" data-es="Llame para Cotizacion — (949) 619-0844">Call for Exact Quote — (949) 619-0844</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="container">
+    <div class="shead rv" style="text-align:center"><div class="stag">Reviews</div><h2 data-en="What Our Clients Say" data-es="Lo Que Dicen Nuestros Clientes">What Our Clients Say</h2></div>
+    <div class="test-grid">
+      <div class="test rv"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q" data-en="Allendes Group completely transformed our backyard. The team was professional, on time, and the quality of work was outstanding. Our neighbors can't stop asking who did it." data-es="Allendes Group transformo completamente nuestro patio trasero. El equipo fue profesional, puntual y la calidad del trabajo fue sobresaliente.">"Allendes Group completely transformed our backyard. The team was professional, on time, and the quality of work was outstanding. Our neighbors can't stop asking who did it."</p><div class="test-a"><div class="test-av">R</div><div><div class="test-nm">Roberto M.</div><div class="test-lc">Irvine, CA</div></div></div></div>
+      <div class="test rv"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q" data-en="We hired them for a full kitchen remodel and it exceeded every expectation. Santiago and his crew were meticulous with every detail. The bilingual communication made everything smooth." data-es="Los contratamos para una remodelacion completa de cocina y supero todas las expectativas. Santiago y su equipo fueron meticulosos con cada detalle.">"We hired them for a full kitchen remodel and it exceeded every expectation. Santiago and his crew were meticulous with every detail. The bilingual communication made everything smooth."</p><div class="test-a"><div class="test-av">L</div><div><div class="test-nm">Lisa T.</div><div class="test-lc">Santa Ana, CA</div></div></div></div>
+      <div class="test rv"><div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="test-q" data-en="Best construction crew in OC. They built our ADU from the ground up — permits, foundation, everything. Finished ahead of schedule. If you need a contractor, this is the one." data-es="El mejor equipo de construccion en OC. Construyeron nuestra ADU desde cero — permisos, cimientos, todo. Terminaron antes de lo programado.">"Best construction crew in OC. They built our ADU from the ground up — permits, foundation, everything. Finished ahead of schedule. If you need a contractor, this is the one."</p><div class="test-a"><div class="test-av">J</div><div><div class="test-nm">James K.</div><div class="test-lc">Costa Mesa, CA</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="area-sec">
+  <div class="container">
+    <div class="shead rv" style="text-align:center"><div class="stag">Service Areas</div><h2 data-en="Serving All of Orange County" data-es="Sirviendo Todo Orange County">Serving All of Orange County</h2></div>
+    <div class="areas rv">
+      <div class="area">Irvine</div><div class="area">Santa Ana</div><div class="area">Anaheim</div><div class="area">Costa Mesa</div><div class="area">Huntington Beach</div><div class="area">Newport Beach</div><div class="area">Tustin</div><div class="area">Lake Forest</div><div class="area">Mission Viejo</div><div class="area">Laguna Niguel</div><div class="area">Fullerton</div><div class="area">Garden Grove</div><div class="area">Orange</div><div class="area">Yorba Linda</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="shead rv" style="text-align:center"><div class="stag">Contact</div><h2 data-en="Get Your Free Estimate" data-es="Obtenga Su Estimacion Gratis">Get Your Free Estimate</h2></div>
+    <div class="contact-grid">
+      <div class="ci rv">
+        <h3 data-en="Let's Build Something Great" data-es="Construyamos Algo Grande">Let's Build Something Great</h3>
+        <div class="ci-row"><div class="ci-icon">📞</div><a href="tel:+19496190844" style="font-size:18px;font-weight:700">(949) 619-0844</a></div>
+        <div class="ci-row"><div class="ci-icon">📍</div><span data-en="Serving all of Orange County, CA" data-es="Sirviendo todo Orange County, CA">Serving all of Orange County, CA</span></div>
+        <div class="ci-row"><div class="ci-icon">🕐</div><span>Mon–Fri 6AM–6PM | Sat 7AM–2PM</span></div>
+        <div class="ci-row"><div class="ci-icon">📸</div><a href="https://instagram.com/allendes_construction" target="_blank">@allendes_construction</a></div>
+        <div style="margin-top:28px;padding:20px;background:var(--gold-g);border:1px solid rgba(201,168,76,.12);border-radius:12px"><p style="font-size:14px;color:var(--text2);line-height:1.7" data-en="Licensed, insured, and bonded. Free estimates within 24 hours. Bilingual team — English and Spanish." data-es="Licenciados, asegurados y afianzados. Estimaciones gratis dentro de 24 horas. Equipo bilingue — ingles y espanol."><strong style="color:var(--gold)">Licensed & Insured.</strong> Free estimates within 24 hours. Bilingual team — English and Spanish.</p></div>
+      </div>
+      <form class="cf rv" action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="NEW LEAD — Allendes Group Inc"><input type="hidden" name="_captcha" value="false">
+        <input type="text" name="name" placeholder="Your Name / Su Nombre" required>
+        <input type="tel" name="phone" placeholder="Phone / Telefono" required>
+        <input type="email" name="email" placeholder="Email">
+        <select name="service"><option value="" disabled selected>Select Service / Seleccionar Servicio</option><option value="Construction">General Construction</option><option value="Landscaping">Landscape Design</option><option value="Hardscape">Hardscape & Concrete</option><option value="Remodeling">Remodeling</option><option value="Fencing">Fencing & Gates</option><option value="Drainage">Drainage</option><option value="Other">Other</option></select>
+        <textarea name="message" placeholder="Tell us about your project / Cuentenos de su proyecto..."></textarea>
+        <button type="submit" data-en="Send Estimate Request" data-es="Enviar Solicitud">Send Estimate Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Allendes Group Inc</div>
+  <div class="footer-info">Construction & Landscaping — Orange County, CA<br>(949) 619-0844 | <a href="https://instagram.com/allendes_construction" target="_blank">@allendes_construction</a><br>Mon–Fri 6AM–6PM | Sat 7AM–2PM</div>
+  <div class="powered">Website by <a href="https://sanchezelevationai.com" target="_blank">Rivven</a> — AI-powered growth systems for businesses in every industry.<br><a href="https://sanchezelevationai.com/booking.html" target="_blank" style="font-size:11px">Want a site like this? Book a free demo.</a></div>
+</footer>
+
+<!-- FLOATING MOBILE CTA -->
+<div id="mobileCta" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;padding:12px 16px;background:rgba(12,11,10,.95);backdrop-filter:blur(16px);border-top:1px solid var(--border);gap:10px">
+  <div style="display:flex;gap:10px">
+    <a href="tel:+19496190844" style="flex:1;padding:14px;background:var(--gold);color:var(--bg);font-weight:700;font-size:14px;border-radius:8px;text-align:center;display:block">Call (949) 619-0844</a>
+    <a href="#estimate" style="flex:1;padding:14px;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-weight:600;font-size:14px;border-radius:8px;text-align:center;display:block">Free Estimate</a>
+  </div>
+</div>
+
+<script>
+// Show floating CTA on scroll
+window.addEventListener('scroll',function(){
+  var c=document.getElementById('mobileCta');
+  if(window.innerWidth<900){c.style.display=window.scrollY>400?'block':'none'}
+});
+
+// Estimate Calculator
+function calcEst(){
+  var base={landscape:[2000,8000],hardscape:[3000,15000],remodel:[5000,25000],construction:[15000,80000],fence:[1500,6000],drainage:[1000,5000]};
+  var sz={small:.6,medium:1,large:1.6,xlarge:2.4};
+  var pt={residential:1,commercial:1.3};
+  var p=document.getElementById('projType').value;
+  var s=document.getElementById('projSize').value;
+  var t=document.getElementById('propType').value;
+  var lo=Math.round(base[p][0]*sz[s]*pt[t]);
+  var hi=Math.round(base[p][1]*sz[s]*pt[t]);
+  document.getElementById('estPrice').textContent='$'+lo.toLocaleString()+' – $'+hi.toLocaleString();
+  document.getElementById('estDetail').textContent=p.charAt(0).toUpperCase()+p.slice(1)+' — Free on-site estimate within 24 hours';
+  var r=document.getElementById('estResult');r.style.display='block';r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+// Bilingual
+var lang='en';function toggleLang(){lang=lang==='en'?'es':'en';document.querySelectorAll('[data-'+lang+']').forEach(function(el){var t=el.getAttribute('data-'+lang);if(t)el.textContent=t})}
+// Scroll Reveal
+var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
+</script>
+</body>
+</html>
