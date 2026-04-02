@@ -51,7 +51,7 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1460548358899377&ev=PageView&noscript=1"/></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -213,6 +213,9 @@ body {
   padding: 120px 24px 80px;
   position: relative;
   overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(10,10,11,0.6) 0%, rgba(10,10,11,0.85) 40%, var(--bg) 100%),
+    url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1920&q=80') center 20%/cover no-repeat;
 }
 .hero::before {
   content: '';
@@ -220,9 +223,8 @@ body {
   top: -50%; left: -50%;
   width: 200%; height: 200%;
   background:
-    radial-gradient(ellipse 700px 400px at 20% 30%, rgba(0,240,255,0.1) 0%, transparent 60%),
-    radial-gradient(ellipse 500px 500px at 80% 20%, rgba(123,97,255,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 400px 600px at 60% 80%, rgba(0,255,136,0.07) 0%, transparent 60%);
+    radial-gradient(ellipse 700px 400px at 20% 30%, rgba(0,240,255,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 80% 20%, rgba(123,97,255,0.04) 0%, transparent 60%);
   animation: meshFloat 20s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
@@ -237,7 +239,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
@@ -271,13 +273,15 @@ body {
 }
 
 .hero h1 {
+  font-family: 'Playfair Display', serif;
   font-size: clamp(38px, 7.5vw, 78px);
   font-weight: 900;
   line-height: 1.04;
-  letter-spacing: -2.5px;
+  letter-spacing: -1.5px;
   margin-bottom: 24px;
   max-width: 860px;
 }
+.section-title, .section-title-lg { font-family: 'Playfair Display', serif; }
 .hero h1 .grad {
   background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-green) 100%);
   -webkit-background-clip: text;
@@ -538,8 +542,12 @@ body {
   transform: translateY(-2px);
 }
 .service-icon {
-  font-size: 24px;
-  margin-bottom: 14px;
+  font-size: 0;
+  width: 32px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+  border-radius: 2px;
+  margin-bottom: 16px;
   display: block;
 }
 .service-title {
@@ -1176,7 +1184,7 @@ body {
 <section class="hero">
   <div class="hero-badge">
     <div class="hero-badge-dot"></div>
-    Available — 3 Spots Left This Month
+    AI-Powered Growth Systems — Rivven
   </div>
 
   <h1>Your Business,<br><span class="grad">Live in 10 Minutes.</span></h1>
@@ -1192,18 +1200,26 @@ body {
   </div>
 
   <div class="hero-trust">
-    <div class="trust-chip"><span class="check">✓</span> Live Preview Before You Pay</div>
-    <div class="trust-chip"><span class="check">✓</span> No Contracts</div>
-    <div class="trust-chip"><span class="check">✓</span> $0 Upfront on Starter</div>
-    <div class="trust-chip"><span class="check">✓</span> 30-Day Support Included</div>
-    <div class="trust-chip"><span class="check">✓</span> Done in 48 Hours</div>
+    <div class="trust-chip"><span class="check" style="color:var(--neon-green);font-weight:700">&#10003;</span> Live Preview Before You Pay</div>
+    <div class="trust-chip"><span class="check" style="color:var(--neon-green);font-weight:700">&#10003;</span> No Contracts</div>
+    <div class="trust-chip"><span class="check" style="color:var(--neon-green);font-weight:700">&#10003;</span> $0 Upfront on Starter</div>
+    <div class="trust-chip"><span class="check" style="color:var(--neon-green);font-weight:700">&#10003;</span> 30-Day Support Included</div>
+    <div class="trust-chip"><span class="check" style="color:var(--neon-green);font-weight:700">&#10003;</span> Done in 48 Hours</div>
   </div>
 </section>
+
+<!-- IMAGE STRIP -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;opacity:.7">
+  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=75" alt="Business analytics" style="width:100%;height:180px;object-fit:cover" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=500&q=75" alt="Team working" style="width:100%;height:180px;object-fit:cover" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&q=75" alt="Modern office" style="width:100%;height:180px;object-fit:cover" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=75" alt="Digital growth" style="width:100%;height:180px;object-fit:cover" loading="lazy">
+</div>
 
 <!-- ── SOCIAL PROOF BAR ── -->
 <div class="proof-bar">
   <div class="proof-item">
-    <span>⭐⭐⭐⭐⭐</span>
+    <span style="color:#FFD700;letter-spacing:2px">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
     <span><strong>5.0</strong> &nbsp;·&nbsp; 5 reviews</span>
   </div>
   <div class="proof-divider"></div>
@@ -1217,7 +1233,7 @@ body {
 </div>
 
 <!-- ── WORK / CASE STUDIES ── -->
-<div style="max-width:1140px; margin:0 auto; padding:96px 24px 0;" id="work">
+<div style="max-width:1140px; margin:0 auto; padding:64px 24px 0;" id="work">
   <div class="fade-in">
     <div class="section-label">// client work</div>
     <h2 class="section-title">Real Clients. Real Results.</h2>
@@ -1225,7 +1241,7 @@ body {
   </div>
 </div>
 
-<div style="max-width:1140px; margin:0 auto; padding:0 24px 96px;">
+<div style="max-width:1140px; margin:0 auto; padding:0 24px 64px;">
   <div class="work-grid fade-in">
 
     <div class="work-card">
@@ -1472,79 +1488,79 @@ body {
 
   <!-- ALL DEMOS GRID -->
   <div style="margin-top:48px">
-    <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;color:var(--cyan)">All 18 Industry Demos</h3>
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px;color:var(--text)">All 20 Industry Demos</h3>
     <p style="color:var(--text-secondary);font-size:14px;margin-bottom:20px">Click any demo to see a fully built site. Send these directly to prospects in that industry.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
       <a href="https://rivven.com/demos/restaurant/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🍽 Restaurant</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Restaurant</div>
         <div style="font-size:11px;color:var(--text-secondary)">Menu + order form + gallery</div>
       </a>
       <a href="https://rivven.com/demos/barbershop/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">💈 Barbershop</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Barbershop</div>
         <div style="font-size:11px;color:var(--text-secondary)">Booking + gallery + pricing</div>
       </a>
       <a href="https://rivven.com/demos/realestate/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🏠 Real Estate</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Real Estate</div>
         <div style="font-size:11px;color:var(--text-secondary)">Lead capture + listings</div>
       </a>
       <a href="https://rivven.com/demos/fitness/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">💪 Fitness</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Fitness</div>
         <div style="font-size:11px;color:var(--text-secondary)">Scheduling + packages</div>
       </a>
       <a href="https://rivven.com/demos/trucking/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🚛 Trucking</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Trucking</div>
         <div style="font-size:11px;color:var(--text-secondary)">Freight quote calculator</div>
       </a>
       <a href="https://rivven.com/demos/insurance/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🛡 Insurance</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Insurance</div>
         <div style="font-size:11px;color:var(--text-secondary)">Policy comparison tool</div>
       </a>
       <a href="https://rivven.com/demos/autoshop/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🚗 Auto Detailing</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Auto Detailing</div>
         <div style="font-size:11px;color:var(--text-secondary)">Quote calc + service menu</div>
       </a>
       <a href="https://rivven.com/demos/plumbing/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🔧 Plumbing</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Plumbing</div>
         <div style="font-size:11px;color:var(--text-secondary)">Estimate tool + emergency CTA</div>
       </a>
       <a href="https://rivven.com/demos/nailsalon/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">💅 Nail Salon</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Nail Salon</div>
         <div style="font-size:11px;color:var(--text-secondary)">Service menu + booking</div>
       </a>
       <a href="https://rivven.com/demos/tattoo/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🎨 Tattoo Shop</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Tattoo Shop</div>
         <div style="font-size:11px;color:var(--text-secondary)">Portfolio + consultation form</div>
       </a>
       <a href="https://rivven.com/demos/foodtruck/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🌮 Food Truck</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Food Truck</div>
         <div style="font-size:11px;color:var(--text-secondary)">Menu + location tracker</div>
       </a>
       <a href="https://rivven.com/demos/photography/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">📸 Photography</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Photography</div>
         <div style="font-size:11px;color:var(--text-secondary)">Portfolio + packages + booking</div>
       </a>
       <a href="https://rivven.com/demos/medspa/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">💉 Med Spa</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Med Spa</div>
         <div style="font-size:11px;color:var(--text-secondary)">Treatments + consultation</div>
       </a>
       <a href="https://rivven.com/demos/cleaning/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🧹 Cleaning</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Cleaning</div>
         <div style="font-size:11px;color:var(--text-secondary)">Quote calculator + booking</div>
       </a>
       <a href="https://rivven.com/demos/moving/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">📦 Moving</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Moving</div>
         <div style="font-size:11px;color:var(--text-secondary)">Instant quote + packing add-ons</div>
       </a>
       <a href="https://rivven.com/demos/roofing/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🏗 Roofing</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Roofing</div>
         <div style="font-size:11px;color:var(--text-secondary)">Free inspection form + gallery</div>
       </a>
       <a href="https://rivven.com/demos/catering/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🍱 Catering</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">Catering</div>
         <div style="font-size:11px;color:var(--text-secondary)">Event quote + menu packages</div>
       </a>
       <a href="https://rivven.com/demos/djevents/" target="_blank" rel="noopener" style="background:rgba(0,240,255,.04);border:1px solid rgba(0,240,255,.12);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--text-primary);transition:.2s;display:block" onmouseover="this.style.borderColor='rgba(0,240,255,.4)'" onmouseout="this.style.borderColor='rgba(0,240,255,.12)'">
-        <div style="font-weight:700;font-size:14px;margin-bottom:2px">🎧 DJ / Events</div>
+        <div style="font-weight:700;font-size:14px;margin-bottom:2px">DJ / Events</div>
         <div style="font-size:11px;color:var(--text-secondary)">Booking + packages + gallery</div>
       </a>
     </div>
@@ -1562,7 +1578,7 @@ body {
 
     <div class="services-grid">
       <div class="service-card">
-        <span class="service-icon">🌐</span>
+        <span class="service-icon" style="font-style:normal;font-size:20px;color:var(--neon-cyan)">&#9672;</span>
         <div class="service-title">Custom Websites</div>
         <div class="service-desc">Professional, mobile-first websites built from scratch. Click-to-call, contact forms, photo galleries, SEO-ready, fully branded to your business. Contractors, detailers, loan officers — any industry.</div>
         <span class="service-tag">LIVE IN PRODUCTION</span>
