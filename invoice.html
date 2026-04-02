@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>SanchezElevationAI — Invoice Generator</title>
+<title>Rivven — Invoice Generator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -315,7 +315,7 @@ body {
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="index.html" class="nav-logo">SanchezElevation<span>AI</span></a>
+  <a href="index.html" class="nav-logo">Rivven</a>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="demos.html">Demos</a>
@@ -450,7 +450,7 @@ body {
       <div class="invoice-paper" id="invoice-paper">
         <div class="inv-header">
           <div class="inv-brand">
-            <h1>SanchezElevationAI</h1>
+            <h1>Rivven</h1>
             <p>Websites, AI Tools &amp; Marketing</p>
             <p>sabino.sanchez7@gmail.com | Southern California</p>
           </div>
@@ -470,7 +470,7 @@ body {
           <div>
             <div class="inv-party-label">From</div>
             <div class="inv-party-name">Sabino Sanchez</div>
-            <div class="inv-party-detail">SanchezElevationAI<br>sanchezelevationai.com</div>
+            <div class="inv-party-detail">Rivven<br>rivven.com</div>
           </div>
         </div>
 
@@ -498,8 +498,8 @@ body {
         </div>
 
         <div class="inv-footer">
-          <p>Thank you for choosing <a href="https://sanchezelevationai.com">SanchezElevationAI</a></p>
-          <p style="margin-top:4px;">Website by SanchezElevationAI</p>
+          <p>Thank you for choosing <a href="https://rivven.com">Rivven</a></p>
+          <p style="margin-top:4px;">Website by Rivven</p>
         </div>
       </div>
 
@@ -508,11 +508,11 @@ body {
         <div style="height:32px"></div>
         <div class="agreement-paper page-break" id="agreement-paper">
           <h2 class="agr-title">Service Agreement</h2>
-          <p class="agr-subtitle">SanchezElevationAI &mdash; Digital Services Contract</p>
+          <p class="agr-subtitle">Rivven &mdash; Digital Services Contract</p>
 
           <div class="agr-section">
             <h3>1. Parties</h3>
-            <p>This agreement is between <strong>Sabino Sanchez / SanchezElevationAI</strong> ("Provider") and <strong id="agrClient">_________</strong> ("Client"), effective as of <strong id="agrDate">_________</strong>.</p>
+            <p>This agreement is between <strong>Sabino Sanchez / Rivven</strong> ("Provider") and <strong id="agrClient">_________</strong> ("Client"), effective as of <strong id="agrDate">_________</strong>.</p>
           </div>
 
           <div class="agr-section">
@@ -537,7 +537,7 @@ body {
 
           <div class="agr-section">
             <h3>6. Ownership &amp; Deliverables</h3>
-            <p>Upon receipt of full payment, the Client shall own all rights to the final delivered website, assets, and code. The Provider retains the right to display the work in their portfolio and include a "Website by SanchezElevationAI" footer credit unless otherwise agreed.</p>
+            <p>Upon receipt of full payment, the Client shall own all rights to the final delivered website, assets, and code. The Provider retains the right to display the work in their portfolio and include a "Website by Rivven" footer credit unless otherwise agreed.</p>
           </div>
 
           <div class="agr-section" id="agrMaintenanceSection">
@@ -820,13 +820,13 @@ function addRow(tbody, desc, amount, suffix, cls) {
 function sendEmail() {
   if (!currentInvoice) return;
   const ci = currentInvoice;
-  const subject = encodeURIComponent(`Invoice ${ci.number} — SanchezElevationAI`);
+  const subject = encodeURIComponent(`Invoice ${ci.number} — Rivven`);
   const body = encodeURIComponent(
     `Hi ${ci.clientName},\n\nPlease find your invoice details below:\n\n` +
     `Invoice: ${ci.number}\nService: ${ci.serviceLabel}\nTotal: $${ci.total.toLocaleString()}\n` +
     `Deposit Due: $${ci.deposit.toLocaleString()}\n\n` +
     `Payment Methods:\nVenmo: @sabino-sanchez\nZelle: sabino.sanchez7@gmail.com\n\n` +
-    `Thank you for choosing SanchezElevationAI!\n— Sabino Sanchez`
+    `Thank you for choosing Rivven!\n— Sabino Sanchez`
   );
   window.open(`mailto:${ci.email}?subject=${subject}&body=${body}`);
 }

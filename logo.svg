@@ -25,11 +25,8 @@
     <path d="M16 66 A30 30 0 0 1 6 44" fill="none" stroke="#7B61FF" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
   </g>
 
-  <!-- Text: Sanchez -->
-  <text x="102" y="48" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="36" font-weight="800" fill="#111117" letter-spacing="-1">Sanchez</text>
-
-  <!-- Text: ElevationAI -->
-  <text x="102" y="74" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="21" font-weight="500" fill="#00D4E6" letter-spacing="2.5">ElevationAI</text>
+  <!-- Text: RIVVEN -->
+  <text x="102" y="62" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="36" font-weight="800" fill="#00D4E6" letter-spacing="2">RIVVEN</text>
 
   <!-- Tagline divider -->
   <line x1="102" y1="82" x2="260" y2="82" stroke="#7B61FF" stroke-width="0.8" opacity="0.45"/>

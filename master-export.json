@@ -1,5 +1,5 @@
 {
-  "project": "ElevationAI-MasterExport",
+  "project": "Rivven-MasterExport",
   "version": "1.0",
   "date": "2026-03-30",
   "owner": "Sabino Sanchez",
@@ -22,7 +22,7 @@
     {
       "name": "Bianca Barbosa Photography",
       "phone": "(333) 504-0034",
-      "site": "sanchezelevationai.com/demos/bianca-photography/",
+      "site": "sanchezrivven.com/demos/bianca-photography/",
       "setup_fee": 0,
       "status": "free_demo",
       "notes": "Portfolio piece, bilingual EN/ES"
@@ -33,7 +33,7 @@
     "vp_sales": {
       "name": "Ever Duarte",
       "role": "VP of Sales Associates",
-      "training": "sanchezelevationai.com/ever-training.html",
+      "training": "sanchezrivven.com/ever-training.html",
       "access_code": "6767"
     },
     "commission_structure": {

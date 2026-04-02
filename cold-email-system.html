@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>ElevationAI - Cold Email Outreach System</title>
+<title>Rivven - Cold Email Outreach System</title>
 <style>
   body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
   @media print{body *{display:none!important}body::after{content:'This document is confidential. Printing is disabled.';display:block;font-size:24px;text-align:center;padding:100px;color:#000}}
@@ -207,7 +207,7 @@
 <body>
 
 <h1>Cold Email Outreach System</h1>
-<p class="subtitle">ElevationAI Internal -- Sequences, Templates, Tracking</p>
+<p class="subtitle">Rivven Internal -- Sequences, Templates, Tracking</p>
 
 <div class="nav-tabs">
   <div class="nav-tab active" data-section="domains">Domain Setup</div>
@@ -303,14 +303,14 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
 
 // === SECTION 1: DOMAIN SETUP CHECKLIST ===
 const checklistSteps = [
-  { title: 'Buy 3-5 outreach domains', desc: 'Examples: tryelevationai.com, getelevationai.com, hirelevationai.com, meetelvationai.com, reachelevationai.com. Keep them brand-adjacent but separate from your main domain.' },
+  { title: 'Buy 3-5 outreach domains', desc: 'Examples: tryrivven.com, getrivven.com, hirrivven.com, meetelvationai.com, reachrivven.com. Keep them brand-adjacent but separate from your main domain.' },
   { title: 'Purchase on Cloudflare Registrar', desc: '$10.44/domain at cost -- no markup. Cloudflare also gives you free DNS management and fast propagation.' },
-  { title: 'Set up email hosting', desc: 'Google Workspace ($6/mo per domain) for best deliverability, or Zoho Mail (free tier) to start lean. Create addresses like sabino@tryelevationai.com.' },
+  { title: 'Set up email hosting', desc: 'Google Workspace ($6/mo per domain) for best deliverability, or Zoho Mail (free tier) to start lean. Create addresses like sabino@tryrivven.com.' },
   { title: 'Configure SPF record', desc: 'Add a TXT record to your DNS: v=spf1 include:_spf.google.com ~all (for Google Workspace). This tells servers your emails are legit.' },
   { title: 'Configure DKIM record', desc: 'In Google Workspace Admin > Apps > Gmail > Authenticate Email. Generate DKIM key and add the TXT record to DNS.' },
   { title: 'Configure DMARC record', desc: 'Add TXT record: _dmarc.yourdomain.com with value v=DMARC1; p=none; rua=mailto:dmarc@yourdomain.com. Start with p=none, move to p=quarantine after 30 days.' },
   { title: 'Warm up domains for 14 days', desc: 'Use Smartlead built-in warmup (included) or Mailwarm ($69/mo). Send 10-20 emails/day between warm accounts, gradually increasing. Do NOT send cold emails during warmup.' },
-  { title: 'NEVER send from sanchezelevationai.com', desc: 'Your main domain is for receiving replies and client communication only. Cold outreach goes through burner domains to protect your sender reputation.' }
+  { title: 'NEVER send from rivven.com', desc: 'Your main domain is for receiving replies and client communication only. Cold outreach goes through burner domains to protect your sender reputation.' }
 ];
 const checklistContainer = document.getElementById('checklist-container');
 const savedChecks = JSON.parse(localStorage.getItem('ea_domain_checklist') || '[]');

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>ElevationAI Analytics | Sabino's Dashboard</title>
+<title>Rivven Analytics | Sabino's Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
@@ -138,7 +138,7 @@ tr:hover td{background:rgba(0,240,255,.03)}
 
 <header class="dash-header">
   <div>
-    <div class="dash-title"><span>ELEVATION</span>AI ANALYTICS</div>
+    <div class="dash-title">RIVVEN ANALYTICS</div>
     <div class="dash-date" id="currentDate"></div>
   </div>
   <div class="dash-mode">OWNER ONLY</div>
@@ -322,8 +322,8 @@ tr:hover td{background:rgba(0,240,255,.03)}
       </thead>
       <tbody>
         <tr>
-          <td>SanchezElevationAI</td>
-          <td><a href="https://sanchezelevationai.com" target="_blank">sanchezelevationai.com</a></td>
+          <td>Rivven</td>
+          <td><a href="https://rivven.com" target="_blank">rivven.com</a></td>
           <td><span class="badge live">LIVE</span></td>
           <td><span class="badge live">YES</span></td>
           <td><span class="badge pending">PLACEHOLDER</span></td>
@@ -360,7 +360,7 @@ tr:hover td{background:rgba(0,240,255,.03)}
     <div class="metric">
       <div class="metric-label">Demo Sites</div>
       <div class="metric-val cyan">18</div>
-      <div class="metric-sub">live on sanchezelevationai.com/demos/</div>
+      <div class="metric-sub">live on rivven.com/demos/</div>
     </div>
     <div class="metric">
       <div class="metric-label">Agent Command Center</div>
@@ -385,7 +385,7 @@ tr:hover td{background:rgba(0,240,255,.03)}
       </thead>
       <tbody>
         <tr>
-          <td>sanchezelevationai.com</td>
+          <td>rivven.com</td>
           <td contenteditable="true">$10.44/yr</td>
           <td>Domain</td>
           <td contenteditable="true">Cloudflare</td>
@@ -478,7 +478,7 @@ tr:hover td{background:rgba(0,240,255,.03)}
       <div class="progress-bar"><div class="progress-fill purple" style="width:7%"></div></div>
     </div>
     <div class="progress-wrap">
-      <div class="progress-label"><span>ElevationAI Work</span><span contenteditable="true" data-key="hours_ai">25h</span></div>
+      <div class="progress-label"><span>Rivven Work</span><span contenteditable="true" data-key="hours_ai">25h</span></div>
       <div class="progress-bar"><div class="progress-fill cyan" style="width:30%"></div></div>
     </div>
     <div class="progress-wrap">
@@ -523,7 +523,7 @@ document.getElementById('currentDate').textContent = new Date().toLocaleDateStri
 // ============================== //
 //  LOCAL STORAGE PERSISTENCE      //
 // ============================== //
-const STORAGE_KEY = 'elevationai_analytics_v1';
+const STORAGE_KEY = 'rivven_analytics_v1';
 
 function loadData(){
   try{
@@ -580,7 +580,7 @@ function exportJSON(){
   const blob = new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `elevationai-analytics-${new Date().toISOString().split('T')[0]}.json`;
+  a.download = `rivven-analytics-${new Date().toISOString().split('T')[0]}.json`;
   a.click();
 }
 

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>ElevationAI CRM — Lead Pipeline Tracker</title>
+<title>Rivven CRM — Lead Pipeline Tracker</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -179,7 +179,7 @@ header .brand span{color:var(--text-dim);font-weight:400;font-size:13px;}
 <div class="app">
   <!-- Header -->
   <header>
-    <a href="index.html" class="brand">ElevationAI <span>/ CRM</span></a>
+    <a href="index.html" class="brand">Rivven <span>/ CRM</span></a>
     <div class="header-actions">
       <button class="btn" onclick="exportData()" title="Export leads to JSON">Export JSON</button>
       <label class="btn" title="Import leads from JSON">Import JSON<input type="file" accept=".json" onchange="importData(event)" style="display:none"></label>
@@ -649,7 +649,7 @@ function exportData(){
   const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = 'elevationai-crm-'+new Date().toISOString().slice(0,10)+'.json';
+  a.href = url; a.download = 'rivven-crm-'+new Date().toISOString().slice(0,10)+'.json';
   a.click(); URL.revokeObjectURL(url);
 }
 

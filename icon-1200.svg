@@ -26,6 +26,6 @@
   <path d="M330 790 A300 300 0 0 1 230 550" fill="none" stroke="#7B61FF" stroke-width="14" opacity="0.6" stroke-linecap="round"/>
 
   <!-- Brand name -->
-  <text x="600" y="1020" text-anchor="middle" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="80" font-weight="800" fill="#FFFFFF" letter-spacing="6">SANCHEZ</text>
-  <text x="600" y="1100" text-anchor="middle" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="52" font-weight="500" fill="#00D4E6" letter-spacing="8">ELEVATION AI</text>
+  <text x="600" y="1020" text-anchor="middle" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="80" font-weight="800" fill="#FFFFFF" letter-spacing="6">RIVVEN</text>
+  <text x="600" y="1100" text-anchor="middle" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="52" font-weight="500" fill="#00D4E6" letter-spacing="8">RIVVEN</text>
 </svg>

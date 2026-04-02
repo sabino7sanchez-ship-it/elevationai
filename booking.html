@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book an Appointment — SanchezElevationAI</title>
-<meta name="description" content="Schedule a free consultation with SanchezElevationAI. We'll review your business, show you a live demo, and build your plan — all in 15 minutes.">
+<title>Book an Appointment — Rivven</title>
+<meta name="description" content="Schedule a free consultation with Rivven. We'll review your business, show you a live demo, and build your plan — all in 15 minutes.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -129,10 +129,10 @@ a{color:var(--cyan);text-decoration:none}
 <body>
 
 <header class="header">
-  <a class="logo" href="https://sanchezelevationai.com">Sanchez<span>ElevationAI</span></a>
+  <a class="logo" href="https://rivven.com">Rivven</a>
   <div class="header-links">
-    <a href="https://sanchezelevationai.com">Home</a>
-    <a href="https://sanchezelevationai.com/demos.html">Demos</a>
+    <a href="https://rivven.com">Home</a>
+    <a href="https://rivven.com/demos.html">Demos</a>
     <a href="tel:+15623731027" style="color:var(--cyan);font-weight:700">(562) 373-1027</a>
   </div>
 </header>
@@ -274,7 +274,7 @@ a{color:var(--cyan);text-decoration:none}
     <div class="confirm-actions">
       <a class="confirm-btn call" href="tel:+15623731027">📞 Call Now Instead</a>
       <a class="confirm-btn cal" href="#" id="calLink" target="_blank">📅 Add to Calendar</a>
-      <a class="confirm-btn share" href="https://sanchezelevationai.com" target="_blank">🌐 View Our Work</a>
+      <a class="confirm-btn share" href="https://rivven.com" target="_blank">🌐 View Our Work</a>
     </div>
   </div>
 </div>
@@ -356,8 +356,8 @@ function renderCalendar() {
     const date = new Date(currentYear, currentMonth, d);
     const isPast = date < today;
     const isToday = date.getTime() === today.getTime();
-    const isSunday = date.getDay() === 0;
-    const disabled = isPast || isSunday;
+    const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+    const disabled = isPast || isWeekend;
     const sel = booking.date === date.toISOString().split('T')[0];
 
     grid.innerHTML += '<div class="date-cell' + (disabled ? ' disabled' : '') + (isToday ? ' today' : '') + (sel ? ' selected' : '') + '" ' + (disabled ? '' : 'onclick="selectDate(\'' + date.toISOString().split('T')[0] + '\',' + d + ')"') + '>' + d + '</div>';
@@ -365,9 +365,17 @@ function renderCalendar() {
 }
 
 function changeMonth(dir) {
-  currentMonth += dir;
-  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
-  if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+  const now = new Date();
+  const newMonth = currentMonth + dir;
+  const newYear = currentYear + (newMonth > 11 ? 1 : newMonth < 0 ? -1 : 0);
+  const adjMonth = newMonth > 11 ? 0 : newMonth < 0 ? 11 : newMonth;
+  // Block navigating to past months
+  if (newYear < now.getFullYear() || (newYear === now.getFullYear() && adjMonth < now.getMonth())) return;
+  // Cap at 3 months forward
+  const maxDate = new Date(now.getFullYear(), now.getMonth() + 3, 1);
+  if (new Date(newYear, adjMonth, 1) >= maxDate) return;
+  currentMonth = adjMonth;
+  currentYear = newYear;
   renderCalendar();
 }
 
@@ -384,15 +392,38 @@ function selectDate(dateStr, day) {
 
 function renderTimes() {
   const grid = document.getElementById('timeGrid');
-  const slots = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM','5:30 PM','6:00 PM','6:30 PM','7:00 PM'];
+  const slots = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM','5:30 PM'];
   grid.innerHTML = '';
+  const now = new Date();
+  const isToday = booking.date === now.toISOString().split('T')[0];
   slots.forEach(s => {
+    // Block past time slots on today's date
+    if (isToday) {
+      const [time, period] = s.split(' ');
+      const [h, m] = time.split(':').map(Number);
+      let hour24 = period === 'PM' && h !== 12 ? h + 12 : (period === 'AM' && h === 12 ? 0 : h);
+      const slotTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour24, m);
+      const bufferTime = new Date(now.getTime() + 30 * 60000); // 30 min buffer
+      if (slotTime <= bufferTime) {
+        grid.innerHTML += '<div class="time-slot unavailable">' + s + '</div>';
+        return;
+      }
+    }
     const sel = booking.time === s;
     grid.innerHTML += '<div class="time-slot' + (sel ? ' selected' : '') + '" onclick="selectTime(\'' + s + '\')">' + s + '</div>';
   });
 }
 
 function selectTime(time) {
+  // Double-check: block past times on today
+  const now = new Date();
+  if (booking.date === now.toISOString().split('T')[0]) {
+    const [t, period] = time.split(' ');
+    const [h, m] = t.split(':').map(Number);
+    let hour24 = period === 'PM' && h !== 12 ? h + 12 : (period === 'AM' && h === 12 ? 0 : h);
+    const slotTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hour24, m);
+    if (slotTime <= new Date(now.getTime() + 30 * 60000)) return;
+  }
   booking.time = time;
   renderTimes();
 }
@@ -424,7 +455,7 @@ async function submitBooking() {
 
   // Google Calendar link
   const startDate = booking.date.replace(/-/g, '');
-  document.getElementById('calLink').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=ElevationAI+Demo+Call&dates=' + startDate + '/' + startDate + '&details=Free+demo+call+with+Sabino+at+ElevationAI.+Phone:+(562)+373-1027';
+  document.getElementById('calLink').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Rivven+Demo+Call&dates=' + startDate + '/' + startDate + '&details=Free+demo+call+with+Sabino+at+Rivven.+Phone:+(562)+373-1027';
 
   nextStep(4);
 
