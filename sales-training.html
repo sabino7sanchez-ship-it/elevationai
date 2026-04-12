@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sales Mastery Training — Sabino's Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+@media print{body *{display:none!important}body::after{content:'This document is confidential. Printing is disabled.';display:block;font-size:24px;text-align:center;padding:100px;color:#000}}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08090d;--bg2:#0f1117;--card:rgba(15,17,23,.9);--border:rgba(0,240,255,.1);--cyan:#00f0ff;--green:#22c55e;--red:#ef4444;--gold:#eab308;--purple:#a855f7;--orange:#f97316;--text:#e8eaed;--text2:#8b949e;--text3:#484f58;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+
+.header{text-align:center;padding:40px 24px 24px;border-bottom:1px solid var(--border)}
+.header h1{font-size:28px;font-weight:900}.header h1 span{color:var(--cyan)}
+.header p{color:var(--text2);font-size:14px;margin-top:6px}
+
+.container{max-width:800px;margin:0 auto;padding:20px}
+.section{margin-bottom:36px}
+.section-num{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:2px;margin-bottom:4px}
+.section-title{font-size:20px;font-weight:900;margin-bottom:12px}
+.section-sub{color:var(--text2);font-size:14px;margin-bottom:16px;line-height:1.7}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:10px}
+.card h3{font-size:15px;font-weight:800;margin-bottom:6px}
+.card p,.card li{font-size:13px;color:var(--text2);line-height:1.8}
+.card ul{list-style:none;padding:0}
+.card li{padding:4px 0;padding-left:16px;position:relative}
+.card li::before{content:'→';position:absolute;left:0;color:var(--cyan)}
+
+.rule-box{background:linear-gradient(135deg,rgba(0,240,255,.06),rgba(168,85,247,.06));border:1px solid rgba(0,240,255,.2);border-radius:12px;padding:20px;margin:10px 0}
+.rule-box h3{color:var(--cyan);font-size:16px;margin-bottom:8px}
+.rule-box p{font-size:14px;color:var(--text);line-height:1.8}
+
+.mistake{border-left:3px solid var(--red);padding:12px 16px;background:rgba(239,68,68,.05);border-radius:0 8px 8px 0;margin:8px 0}
+.mistake .bad{color:var(--red);font-weight:700;font-size:13px;margin-bottom:4px}
+.mistake .good{color:var(--green);font-weight:700;font-size:13px;margin-bottom:4px}
+.mistake p{font-size:13px;color:var(--text2);line-height:1.7}
+
+.framework{display:grid;grid-template-columns:60px 1fr;gap:12px;margin:8px 0;align-items:start}
+.framework-num{font-family:var(--mono);font-size:32px;font-weight:900;color:var(--cyan);text-align:center;line-height:1}
+.framework-content h4{font-size:14px;font-weight:800;margin-bottom:2px}
+.framework-content p{font-size:13px;color:var(--text2);line-height:1.7}
+
+.drill{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;margin:8px 0}
+.drill-title{font-size:13px;font-weight:800;color:var(--gold);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.drill p{font-size:13px;color:var(--text2);line-height:1.7}
+
+.scenario{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:10px 0}
+.scenario-label{font-size:11px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.scenario-q{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px}
+.scenario-a{font-size:13px;color:var(--text2);line-height:1.8;background:var(--bg2);padding:12px;border-radius:8px;position:relative}
+.copy-btn{position:absolute;top:6px;right:6px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);color:var(--cyan);padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;cursor:pointer;font-family:var(--font)}
+
+.metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:12px 0}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.metric-val{font-family:var(--mono);font-size:24px;font-weight:900;color:var(--green)}
+.metric-label{font-size:11px;color:var(--text2);margin-top:2px}
+
+.checklist{list-style:none;padding:0}
+.checklist li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.checklist li::before{content:'';width:20px;height:20px;border:2px solid var(--border);border-radius:4px;flex-shrink:0}
+.checklist li.done::before{background:var(--green);border-color:var(--green)}
+
+.quote{text-align:center;padding:24px;font-family:var(--mono);font-size:15px;color:var(--cyan);font-style:italic;border:1px solid var(--border);border-radius:12px;margin:16px 0}
+
+@media(max-width:600px){.framework{grid-template-columns:40px 1fr}.metric-row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px">
+  <div style="font-size:24px;font-weight:900">🔒</div>
+  <div style="font-size:16px;font-weight:700">Access Code Required</div>
+  <div style="color:var(--text2);font-size:13px">Enter the 4-digit code to view this page</div>
+  <input type="password" id="codeInput" maxlength="4" placeholder="••••" style="width:140px;text-align:center;padding:14px;background:var(--bg2);border:2px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--mono);font-size:24px;letter-spacing:8px;outline:none" onkeyup="checkCode(event)" autofocus>
+  <div id="codeError" style="color:var(--red);font-size:12px;display:none">Wrong code. Try again.</div>
+</div>
+<div id="content" style="display:none">
+
+<header class="header">
+  <h1>Sales <span>Mastery</span></h1>
+  <p>The complete playbook. Read it. Drill it. Close deals.</p>
+</header>
+
+<div class="container">
+
+<!-- ====== MINDSET ====== -->
+<div class="section">
+  <div class="section-num">LESSON 01</div>
+  <div class="section-title">The Sales Mindset</div>
+  <div class="section-sub">Before scripts and tactics — fix how you think about selling.</div>
+
+  <div class="rule-box">
+    <h3>The #1 Truth About Sales</h3>
+    <p>You are not convincing anyone to buy something they don't need. You are HELPING a business owner solve a real problem — they have no online presence, they're losing customers to competitors who do, and you have the solution already built. You're doing them a favor. Act like it.</p>
+  </div>
+
+  <div class="card">
+    <h3>5 Mindset Shifts That Change Everything</h3>
+    <ul>
+      <li><strong>You're a consultant, not a salesman.</strong> You diagnose problems and offer solutions. Doctors don't apologize for prescribing medicine.</li>
+      <li><strong>Rejection is data, not failure.</strong> Every "no" teaches you something. Track WHY they said no and adjust.</li>
+      <li><strong>Price is never the real objection.</strong> When someone says "too expensive," they're really saying "I don't see enough value." Your job is to show the value, not lower the price.</li>
+      <li><strong>The follow-up IS the sale.</strong> 80% of deals close after touch 5-12. Most people quit after touch 1. Your persistence is your superpower.</li>
+      <li><strong>Confidence comes from reps, not talent.</strong> The first 10 pitches will feel awkward. By pitch 50, you'll be closing without thinking. Volume is the teacher.</li>
+    </ul>
+  </div>
+
+  <div class="quote">"The amateur practices until they get it right. The professional practices until they can't get it wrong."</div>
+</div>
+
+<!-- ====== THE FRAMEWORK ====== -->
+<div class="section">
+  <div class="section-num">LESSON 02</div>
+  <div class="section-title">The 5-Step Framework</div>
+  <div class="section-sub">Every successful sale follows this exact flow. Memorize it.</div>
+
+  <div class="framework">
+    <div class="framework-num">1</div>
+    <div class="framework-content">
+      <h4>OPEN — Get attention in 8 seconds</h4>
+      <p>You have 8 seconds before they decide if you're worth listening to. Lead with THEM, not you. Mention something specific about their business. Never start with "Hi, I'm Sabino and I do web design." Start with "Hey, I noticed your business doesn't have a website — you're probably losing customers who Google you."</p>
+    </div>
+  </div>
+
+  <div class="framework">
+    <div class="framework-num">2</div>
+    <div class="framework-content">
+      <h4>QUALIFY — Find the pain</h4>
+      <p>Ask questions. Don't pitch yet. "How do customers find you right now?" "What happens when someone Googles your business?" "How many calls do you think you're missing from people who can't find you online?" The goal: make THEM realize the problem before you offer the solution.</p>
+    </div>
+  </div>
+
+  <div class="framework">
+    <div class="framework-num">3</div>
+    <div class="framework-content">
+      <h4>DEMO — Show, don't tell</h4>
+      <p>This is your nuclear weapon. Pull out your phone. Show them a demo site for their EXACT industry. "Check this out — I already put something together for a business like yours." Let them scroll through it. Watch their face. When their eyes light up, you're 80% there.</p>
+    </div>
+  </div>
+
+  <div class="framework">
+    <div class="framework-num">4</div>
+    <div class="framework-content">
+      <h4>HANDLE — Address every concern</h4>
+      <p>They WILL push back. This is normal and expected. The top 5 objections and how to crush them are in Lesson 5 below. Key principle: agree first, then redirect. "Totally understand. And that's exactly why we do [X]."</p>
+    </div>
+  </div>
+
+  <div class="framework">
+    <div class="framework-num">5</div>
+    <div class="framework-content">
+      <h4>CLOSE — Ask for the business</h4>
+      <p>Most salespeople never actually ASK. They present, they demo, they handle objections... then they say "think about it." No. You say: "Ready to get this going? I can have it live by Friday." Give them TWO options, not one: "Do you want the starter package or the growth package?" Both answers = a sale.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ====== OPENING LINES ====== -->
+<div class="section">
+  <div class="section-num">LESSON 03</div>
+  <div class="section-title">Opening Lines That Work</div>
+  <div class="section-sub">Tested, proven openers for every scenario. Practice these until they're automatic.</div>
+
+  <div class="scenario">
+    <div class="scenario-label">Walking into a business</div>
+    <div class="scenario-q">What do you say first?</div>
+    <div class="scenario-a">"Hey! Love what you guys have going on here. Quick question — do you have a website for the business? [pause] I ask because I actually build websites for [their industry] businesses, and I put together a quick demo of what yours could look like. Can I show you real quick? Takes 30 seconds."</div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-label">Instagram DM</div>
+    <div class="scenario-q">First message to a local business</div>
+    <div class="scenario-a">"Hey [Name], just checked out your page — your work is fire. I noticed you don't have a website linked. I actually put together a quick concept for a [their industry] site — want me to send you the link? No charge, just wanted to show you what's possible."</div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-label">Cold call</div>
+    <div class="scenario-q">First 15 seconds on the phone</div>
+    <div class="scenario-a">"Hey, is this [Business Name]? My name's Sabino with Rivven. I'm not trying to sell you anything on this call — I actually already built a demo of what a website could look like for your business. Would you be open to me texting you the link? It takes 30 seconds to look at."</div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-label">Referral intro</div>
+    <div class="scenario-q">When someone gave you their name</div>
+    <div class="scenario-a">"Hey [Name], [referrer's name] told me I should reach out to you. They said your business is doing great but you might need help with the website side. I just built a site for [referrer's business] and they loved it. Want me to show you what I could do for yours?"</div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-label">Follow-up after no response</div>
+    <div class="scenario-q">Day 3, they haven't replied</div>
+    <div class="scenario-a">"Hey [Name], just following up — did you get a chance to check out that demo? No pressure at all. If you're busy I totally get it. Just want to make sure you saw it because it came out really clean."</div>
+  </div>
+
+  <div class="scenario">
+    <div class="scenario-label">The breakup text</div>
+    <div class="scenario-q">Day 7-10, still nothing</div>
+    <div class="scenario-a">"Hey [Name], I'll stop reaching out — I know you're busy running a business. If you ever want to revisit the website thing, the demo link will stay live. Wishing you the best! 🤝"</div>
+  </div>
+</div>
+
+<!-- ====== QUALIFYING QUESTIONS ====== -->
+<div class="section">
+  <div class="section-num">LESSON 04</div>
+  <div class="section-title">Questions That Sell For You</div>
+  <div class="section-sub">The best salespeople ask better questions. These make the prospect sell THEMSELVES.</div>
+
+  <div class="card">
+    <h3>Discovery Questions (use 3-4 per conversation)</h3>
+    <ul>
+      <li>"How do new customers usually find you right now?"</li>
+      <li>"When someone Googles [their service] in [their city], do you show up?"</li>
+      <li>"What happens when a potential customer can't find you online?"</li>
+      <li>"How much would you say one new customer is worth to your business?"</li>
+      <li>"Have you ever lost a job to a competitor who had a better online presence?"</li>
+      <li>"If you could get 5 more leads a month from your website, what would that mean for your revenue?"</li>
+      <li>"What's your biggest frustration with your current online presence?" (if they have a site)</li>
+      <li>"How are you handling inquiries right now — phone only, or do you have a form?"</li>
+    </ul>
+  </div>
+
+  <div class="rule-box">
+    <h3>The Magic Question</h3>
+    <p>"If I could show you a fully built website for your business right now — for free, no commitment — would you at least want to see it?" This question has a 90%+ yes rate. Nobody turns down free. And once they see it, the demo does the selling for you.</p>
+  </div>
+</div>
+
+<!-- ====== OBJECTION HANDLING ====== -->
+<div class="section">
+  <div class="section-num">LESSON 05</div>
+  <div class="section-title">Objection Handling Mastery</div>
+  <div class="section-sub">Every objection has a response. Memorize these — they will make you money.</div>
+
+  <div class="card">
+    <h3>The Formula: Agree → Bridge → Redirect</h3>
+    <p>Never argue. Always agree first: "I totally understand." Then bridge: "And that's actually why..." Then redirect to value.</p>
+  </div>
+
+  <div class="mistake">
+    <div class="bad">❌ "I can't afford it."</div>
+    <div class="good">✅ Your response:</div>
+    <p>"Totally get it — budget is real. That's actually why we do payment plans. $750 to start, $750 when it goes live. And here's the thing — if your site brings in just ONE new customer, it's already paid for itself. How much is one new job worth to you?"</p>
+  </div>
+
+  <div class="mistake">
+    <div class="bad">❌ "I need to think about it."</div>
+    <div class="good">✅ Your response:</div>
+    <p>"100%, take your time. Can I ask — what specifically do you want to think over? Is it the price, the timing, or something about the site itself? [Let them answer.] Got it. What if we [address their specific concern]? Would that make the decision easier?"</p>
+  </div>
+
+  <div class="mistake">
+    <div class="bad">❌ "I already have a website."</div>
+    <div class="good">✅ Your response:</div>
+    <p>"That's great! I actually looked at it before reaching out. Can I be honest with you? [Pull it up on your phone.] See how it looks on mobile? [Show issues.] Now look at this. [Show your demo.] Which one would YOU call if you were a customer? I can upgrade you to this in 48 hours."</p>
+  </div>
+
+  <div class="mistake">
+    <div class="bad">❌ "My nephew / friend does websites."</div>
+    <div class="good">✅ Your response:</div>
+    <p>"That's awesome — family helping family is the best. Honest question though — are you getting leads from it? Does it show up on Google? Is it mobile-optimized? Because that's really what separates a website from a website that actually makes money. Just compare them side by side and see which one you'd rather represent your business."</p>
+  </div>
+
+  <div class="mistake">
+    <div class="bad">❌ "I don't need a website."</div>
+    <div class="good">✅ Your response:</div>
+    <p>"I hear that a lot. And honestly, you've been successful without one — that says a lot about how good your work is. But think about this: when was the last time YOU looked up a business and they didn't have a website? What did you think? Your customers are thinking the same thing. The businesses in your area that DO have sites are getting the calls that should be going to you."</p>
+  </div>
+
+  <div class="mistake">
+    <div class="bad">❌ "How do I know this is legit?"</div>
+    <div class="good">✅ Your response:</div>
+    <p>"Great question — you should be asking that. Here's our main site. [Show rivven.ai.] Here's a site we built for a construction company that's live right now. [Show Allendes.] And here's a quote tool we built for a mortgage company. [Show West Capital.] Everything is real, live, and working. I can also connect you with those clients if you want a reference."</p>
+  </div>
+
+  <div class="mistake">
+    <div class="bad">❌ "Send me a quote / I'll get back to you."</div>
+    <div class="good">✅ Your response:</div>
+    <p>"Absolutely, I'll send everything over. Quick question before I do — if the price and the timeline work for you, are you ready to move forward? I just want to make sure I'm not sending something that sits in your inbox. [If yes:] Perfect. Our starter is $1,500. I can have it live in 48 hours. Want to lock it in today so I can start?"</p>
+  </div>
+</div>
+
+<!-- ====== CLOSING TECHNIQUES ====== -->
+<div class="section">
+  <div class="section-num">LESSON 06</div>
+  <div class="section-title">Closing Techniques</div>
+  <div class="section-sub">The close isn't a trick — it's a natural next step when you've built enough value.</div>
+
+  <div class="card">
+    <h3>The Assumptive Close (use this 80% of the time)</h3>
+    <p>Don't ask "Do you want to buy?" Ask "Which package works best for you — the starter at $1,500 or the growth at $2,500?" Both answers = a sale. You're not asking IF, you're asking WHICH.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Urgency Close</h3>
+    <p>"I only take on 3-5 new projects per month because I build everything custom. I've got 2 spots left this month. If you want to lock it in, I can start this week and have you live by [day]. Otherwise I can put you on the waitlist for next month."</p>
+  </div>
+
+  <div class="card">
+    <h3>The Summary Close</h3>
+    <p>"So just to recap — you're getting a full professional website, mobile-optimized, with a contact form, click-to-call, SEO setup, and 30 days of support. All for $1,500 with a payment plan option. The demo you just saw is basically what you're getting. Ready to make it official?"</p>
+  </div>
+
+  <div class="card">
+    <h3>The Risk Reversal Close</h3>
+    <p>"Tell you what — if you're not happy with the design direction after the first round, I'll refund your deposit. No questions asked. You literally can't lose. The worst that happens is you get a free demo out of it. Want to get started?"</p>
+  </div>
+
+  <div class="card">
+    <h3>The Silence Close (advanced)</h3>
+    <p>After you state the price or make the ask — STOP TALKING. Don't fill the silence. Let them think. The first person who speaks loses. Count to 10 in your head if you have to. Most people will say yes just to break the silence.</p>
+  </div>
+</div>
+
+<!-- ====== BODY LANGUAGE ====== -->
+<div class="section">
+  <div class="section-num">LESSON 07</div>
+  <div class="section-title">In-Person Sales (Body Language + Energy)</div>
+  <div class="section-sub">55% of communication is body language. 38% is tone. Only 7% is words. Master all three.</div>
+
+  <div class="card">
+    <h3>The Non-Negotiables</h3>
+    <ul>
+      <li><strong>Eye contact.</strong> Look them in the eye when you talk. Not creepy staring — natural, confident eye contact. It builds trust faster than anything you say.</li>
+      <li><strong>Smile first.</strong> Before you say a single word, smile. It disarms people and makes them receptive.</li>
+      <li><strong>Stand tall, take up space.</strong> Don't hunch. Don't cross your arms. Shoulders back, hands visible. You're a professional, not a door-to-door salesman.</li>
+      <li><strong>Mirror their energy.</strong> If they're loud and high-energy, match it. If they're quiet and serious, tone it down. People buy from people who are like them.</li>
+      <li><strong>Use their name.</strong> "John, check this out..." People love hearing their name. Use it 2-3 times in the conversation.</li>
+      <li><strong>Phone demo technique.</strong> Don't hand them your phone — hold it and scroll for them. Tilt it so you're both looking at it together. This creates a collaborative feeling, not a sales feeling.</li>
+      <li><strong>Nod while they talk.</strong> Small nods show you're listening. When you pitch, nod slightly — they'll unconsciously nod back (agreement signal).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== DAILY PRACTICE ====== -->
+<div class="section">
+  <div class="section-num">LESSON 08</div>
+  <div class="section-title">Daily Practice Drills</div>
+  <div class="section-sub">Sales is a muscle. Train it daily or it atrophies.</div>
+
+  <div class="drill">
+    <div class="drill-title">Morning (5 min) — Mirror Drill</div>
+    <p>Stand in front of a mirror. Deliver your 30-second pitch. Watch your face, your hands, your posture. Do it 3 times. By the third time, it should feel natural.</p>
+  </div>
+
+  <div class="drill">
+    <div class="drill-title">Before outreach (5 min) — Objection Rapid Fire</div>
+    <p>Pick 3 random objections from Lesson 5. Practice your response OUT LOUD. Not in your head — out loud. Your mouth needs the muscle memory.</p>
+  </div>
+
+  <div class="drill">
+    <div class="drill-title">During the day — Volume Targets</div>
+    <p>Track these daily. No excuses.</p>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric"><div class="metric-val">10</div><div class="metric-label">Instagram DMs</div></div>
+    <div class="metric"><div class="metric-val">3</div><div class="metric-label">Walk-ins</div></div>
+    <div class="metric"><div class="metric-val">5</div><div class="metric-label">Cold Calls</div></div>
+    <div class="metric"><div class="metric-val">ALL</div><div class="metric-label">Follow-ups</div></div>
+  </div>
+
+  <div class="drill">
+    <div class="drill-title">Evening (5 min) — Debrief</div>
+    <p>Write down: What worked today? What didn't? What objection caught me off guard? How do I handle it next time? One sentence each. This is how you compound skill.</p>
+  </div>
+</div>
+
+<!-- ====== PSYCHOLOGY ====== -->
+<div class="section">
+  <div class="section-num">LESSON 09</div>
+  <div class="section-title">Sales Psychology (The Deep Game)</div>
+  <div class="section-sub">The principles that separate closers from everyone else.</div>
+
+  <div class="card">
+    <h3>Reciprocity</h3>
+    <p>When you give something for free (the demo), people feel obligated to give something back (their time, a meeting, a purchase). This is why demo-first works. You gave before you asked.</p>
+  </div>
+
+  <div class="card">
+    <h3>Loss Aversion</h3>
+    <p>People are 2x more motivated by losing something than gaining something. Don't say "You'll get more customers." Say "You're losing customers every day to competitors who have a website." Frame the cost of NOT buying.</p>
+  </div>
+
+  <div class="card">
+    <h3>Social Proof</h3>
+    <p>"I just built a site for a construction company in OC — they loved it." "We've done sites for restaurants, detailers, and loan officers." Names, industries, and specifics make you real. Vague claims make you a scammer.</p>
+  </div>
+
+  <div class="card">
+    <h3>Anchoring</h3>
+    <p>Always present 3 options. The top price makes the middle feel reasonable. The bottom makes them feel like they're getting a deal. Most people pick the middle. That's where your margin is.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Ikea Effect</h3>
+    <p>When you show them the demo and ask "What would you change?" — now they're CO-CREATING. They feel ownership. They're 3x more likely to buy something they helped shape.</p>
+  </div>
+
+  <div class="card">
+    <h3>Scarcity</h3>
+    <p>"I only take 3-5 projects per month." This is TRUE — you have limited bandwidth. Use it. Scarcity creates urgency. Urgency creates decisions. Never say "I'm available whenever."</p>
+  </div>
+</div>
+
+<!-- ====== YOUR EDGE ====== -->
+<div class="section">
+  <div class="section-num">LESSON 10</div>
+  <div class="section-title">Your Unfair Advantages</div>
+  <div class="section-sub">Use EVERY one of these. They're your weapons.</div>
+
+  <div class="card">
+    <h3>Play these cards every time</h3>
+    <ul>
+      <li><strong>You're 19.</strong> That's not a weakness — it's a story. "I'm 19 and I already have paying clients. Imagine what I'll be doing in 5 years." People root for young entrepreneurs.</li>
+      <li><strong>You build BEFORE you pitch.</strong> No other agency does this. You show a live demo before asking for a dollar. That's insane value and it blows minds.</li>
+      <li><strong>48-hour delivery.</strong> Traditional agencies take 6-8 weeks. You deliver in 2 days. That speed is a competitive moat.</li>
+      <li><strong>Bilingual.</strong> The entire Spanish-speaking market in SoCal has almost ZERO web agencies serving them in their language. You own that market.</li>
+      <li><strong>You're local.</strong> You can walk into their business. Shake their hand. Look them in the eye. That converts 5-10x better than a remote agency.</li>
+      <li><strong>$1,500 vs $10,000.</strong> Big agencies charge $5K-$25K. You deliver the same quality at a fraction of the price because your overhead is zero. Say it: "You get agency quality at freelancer prices."</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== WEEKLY TRACKER ====== -->
+<div class="section">
+  <div class="section-num">TRACKER</div>
+  <div class="section-title">This Week's Sales Checklist</div>
+  <div class="section-sub">Check off each item as you complete it. Reset every Monday.</div>
+
+  <ul class="checklist" id="weeklyChecklist">
+    <li onclick="this.classList.toggle('done')">Mirror drill — practice pitch 3x (Monday morning)</li>
+    <li onclick="this.classList.toggle('done')">Send 10 Instagram DMs to local businesses</li>
+    <li onclick="this.classList.toggle('done')">Walk into 3 businesses in person</li>
+    <li onclick="this.classList.toggle('done')">Make 5 cold calls from Google Maps</li>
+    <li onclick="this.classList.toggle('done')">Follow up with ALL open prospects</li>
+    <li onclick="this.classList.toggle('done')">Practice 3 objection responses out loud</li>
+    <li onclick="this.classList.toggle('done')">Send 1 Loom video to a warm prospect</li>
+    <li onclick="this.classList.toggle('done')">Ask 1 existing client for a referral</li>
+    <li onclick="this.classList.toggle('done')">Post 1 Instagram story showing your work</li>
+    <li onclick="this.classList.toggle('done')">Evening debrief — what worked, what didn't</li>
+  </ul>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:32px;border-top:1px solid var(--border);font-size:12px;color:var(--text2)">
+  Sales Mastery by Rivven | Not for distribution<br>
+  <a href="/sales-toolkit.html">Sales Toolkit</a> · <a href="/booking.html">Booking</a> · <a href="https://rivven.ai">Home</a>
+</footer>
+
+<script>
+// Save checklist state
+document.querySelectorAll('.checklist li').forEach((li, i) => {
+  if(localStorage.getItem('sales_check_'+i)==='done') li.classList.add('done');
+  li.addEventListener('click', () => {
+    localStorage.setItem('sales_check_'+i, li.classList.contains('done')?'done':'');
+  });
+});
+
+// Password gate
+function checkCode(e){
+  const v=document.getElementById('codeInput').value;
+  if(v.length===4){
+    if(v==='6767'){
+      document.getElementById('gate').style.display='none';
+      document.getElementById('content').style.display='block';
+      sessionStorage.setItem('sales_auth','1');
+    } else {
+      document.getElementById('codeError').style.display='block';
+      document.getElementById('codeInput').value='';
+      document.getElementById('codeInput').style.borderColor='var(--red)';
+      setTimeout(()=>{document.getElementById('codeInput').style.borderColor='var(--border)';document.getElementById('codeError').style.display='none'},1500);
+    }
+  }
+}
+// Auto-unlock if already authed this session
+if(sessionStorage.getItem('sales_auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block'}
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&(e.key==='c'||e.key==='u'||e.key==='s'||e.key==='p')){e.preventDefault();return false}
+  if(e.key==='F12'||e.key==='PrintScreen'){e.preventDefault();return false}
+  if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C')){e.preventDefault();return false}
+});
+</script>
+</div><!-- end #content -->
+</body>
+</html>

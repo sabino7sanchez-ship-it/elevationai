@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inkwell Studio — Custom Tattoos · Downtown LA</title>
+  <meta name="description" content="Award-winning custom tattoo studio in Downtown LA. Specializing in fine line, realism, and traditional styles. Book your consultation today." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TattooParlor",
+    "name": "Inkwell Studio",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "847 S Spring St",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "postalCode": "90014",
+      "addressCountry": "US"
+    },
+    "url": "https://inkwellstudiola.com",
+    "priceRange": "$$$",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "11:00", "closes": "20:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "276"
+    },
+    "areaServed": ["Downtown LA","Los Angeles","Hollywood","Silver Lake","Echo Park","Long Beach","Pasadena","Glendale"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111113;
+      --bg3: #16161A;
+      --accent: #FF6B35;
+      --accent-dark: #CC4A1A;
+      --accent-glow: rgba(255, 107, 53, 0.3);
+      --text: #F0EDE8;
+      --text-muted: #8A8580;
+      --text-subtle: #5A5550;
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(255, 107, 53, 0.25);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 8px;
+      --radius-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 11, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s !important;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-cta:hover {
+      background: var(--accent-dark) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px var(--accent-glow);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 1100;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(10, 10, 11, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+    .mobile-menu .mob-cta {
+      margin-top: 12px;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: var(--radius);
+      text-align: center;
+      font-weight: 700;
+      border: none;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 24px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(180, 40, 10, 0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 20% 70%, rgba(255, 107, 53, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 50% at 85% 15%, rgba(100, 20, 5, 0.18) 0%, transparent 50%),
+        linear-gradient(160deg, #0A0A0B 0%, #120a07 40%, #0d0808 70%, #0A0A0B 100%);
+    }
+
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* mesh lines */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 60% 40%, rgba(0,0,0,0.6) 0%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 107, 53, 0.1);
+      border: 1px solid var(--border-accent);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero-headline {
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px var(--accent-glow);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      padding: 15px 32px;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {}
+    .hero-stat-num {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--text);
+      letter-spacing: -1px;
+      font-family: var(--mono);
+    }
+    .hero-stat-num span { color: var(--accent); }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    /* ─── SECTION HELPERS ─── */
+    section { padding: 100px 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.65;
+    }
+
+    .section-header { margin-bottom: 60px; }
+
+    /* ─── ARTISTS ─── */
+    #artists { background: var(--bg2); }
+
+    .artists-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .artist-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .artist-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--border-accent);
+    }
+
+    .artist-photo {
+      height: 280px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .artist-photo.marco {
+      background: linear-gradient(135deg, #1a0a05 0%, #3d1408 30%, #6b2010 60%, #2a0d07 100%);
+    }
+    .artist-photo.sofia {
+      background: linear-gradient(135deg, #050a1a 0%, #0e1f3d 30%, #1a3060 60%, #080f25 100%);
+    }
+    .artist-photo.jake {
+      background: linear-gradient(135deg, #0a0a05 0%, #1f200a 30%, #3a3c0f 60%, #151605 100%);
+    }
+
+    .artist-initials {
+      font-size: 72px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.08);
+      letter-spacing: -4px;
+      font-family: var(--mono);
+      user-select: none;
+    }
+
+    .artist-accent-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .artist-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(10,10,11,0.7);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 10px;
+      font-family: var(--mono);
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      backdrop-filter: blur(8px);
+    }
+
+    .artist-info { padding: 24px; }
+    .artist-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .artist-specialty {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .artist-meta {
+      font-size: 12px;
+      color: var(--text-subtle);
+      font-family: var(--mono);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .artist-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .artist-meta span::before {
+      content: '·';
+      color: var(--accent);
+    }
+    .artist-meta span:first-child::before { display: none; }
+
+    /* ─── GALLERY ─── */
+    #gallery { background: var(--bg); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .gallery-item:nth-child(1) { background: linear-gradient(135deg, #0d0d0d, #1a1a2e, #0d0d0d); }
+    .gallery-item:nth-child(2) { background: linear-gradient(135deg, #0d0d0d, #1a0f0f, #2d1010); }
+    .gallery-item:nth-child(3) { background: linear-gradient(135deg, #0f0d0d, #261208, #3d1e0a); }
+    .gallery-item:nth-child(4) { background: linear-gradient(135deg, #080d12, #0c1a26, #102035); }
+    .gallery-item:nth-child(5) { background: linear-gradient(135deg, #0d0d0d, #1a1520, #251830); }
+    .gallery-item:nth-child(6) { background: linear-gradient(135deg, #0a0d0a, #101a10, #15251a); }
+    .gallery-item:nth-child(7) { background: linear-gradient(135deg, #100d0d, #201515, #301c1c); }
+    .gallery-item:nth-child(8) { background: linear-gradient(135deg, #0d0d0d, #141414, #1c1c1c); }
+    .gallery-item:nth-child(9) { background: linear-gradient(135deg, #0d0808, #1a0f0a, #2a1510); }
+
+    .gallery-pattern {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      opacity: 0.07;
+      user-select: none;
+      font-weight: 900;
+      letter-spacing: -4px;
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(10,10,11,0.8);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 10px;
+      font-size: 10px;
+      font-family: var(--mono);
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 107, 53, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-overlay span {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: var(--mono);
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-item:hover .gallery-label { color: var(--accent); border-color: var(--border-accent); }
+    .gallery-item:hover { border-color: var(--border-accent); }
+
+    /* Decorative SVG line art patterns */
+    .gallery-deco {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* ─── BOOKING / HOW IT WORKS ─── */
+    #booking { background: var(--bg2); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: calc(16.66% + 24px);
+      right: calc(16.66% + 24px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent, var(--accent));
+      opacity: 0.3;
+    }
+
+    .step-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      text-align: center;
+      transition: border-color 0.3s;
+      position: relative;
+    }
+    .step-card:hover { border-color: var(--border-accent); }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 107, 53, 0.1);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .booking-cta {
+      text-align: center;
+    }
+
+    /* ─── FORM ─── */
+    #consult { background: var(--bg); }
+
+    .form-wrap {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: var(--mono);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 14px;
+      color: var(--text);
+      font-family: var(--font);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8580' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-subtle); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-group select option {
+      background: var(--bg2);
+      color: var(--text);
+    }
+
+    .form-submit {
+      margin-top: 8px;
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 18px;
+      border-radius: var(--radius);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.3px;
+    }
+    .form-submit:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px var(--accent-glow);
+    }
+
+    .form-disclaimer {
+      font-size: 11px;
+      color: var(--text-subtle);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--bg2); }
+
+    .faq-list {
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .faq-item.open { border-color: var(--border-accent); }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--font);
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--accent); }
+    .faq-item.open .faq-q { color: var(--accent); }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s, background 0.2s, border-color 0.2s;
+      color: var(--text-muted);
+      font-size: 16px;
+      font-weight: 300;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-a-inner {
+      padding: 0 24px 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ─── REVIEWS ─── */
+    #reviews { background: var(--bg); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .review-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+    }
+
+    .stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .star { color: var(--accent); font-size: 16px; }
+
+    .review-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .review-text::before { content: '\201C'; }
+    .review-text::after { content: '\201D'; }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 107, 53, 0.15);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+    .reviewer-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .reviewer-meta {
+      font-size: 11px;
+      color: var(--text-subtle);
+      font-family: var(--mono);
+    }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--bg2); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-items { display: flex; flex-direction: column; gap: 24px; }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius);
+      background: rgba(255, 107, 53, 0.1);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-text {}
+    .contact-label {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .contact-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .contact-value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-value a:hover { color: var(--accent); }
+
+    .contact-map {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 320px;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .map-placeholder {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .map-pin {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 16px var(--accent));
+    }
+    .map-address {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+
+    /* map bg */
+    .contact-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-left {
+      font-size: 13px;
+      color: var(--text-subtle);
+    }
+    .footer-left strong { color: var(--text); }
+    .footer-credit {
+      font-size: 12px;
+      color: var(--text-subtle);
+    }
+    .footer-credit a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .footer-credit a:hover { opacity: 0.8; }
+
+    /* ─── MOBILE BOTTOM BANNER ─── */
+    .mobile-book-banner {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 990;
+      background: rgba(10, 10, 11, 0.95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mobile-book-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .mobile-book-text strong { color: var(--text); display: block; font-size: 14px; }
+    .mobile-book-btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .mobile-book-btn:hover { background: var(--accent-dark); }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .artists-grid,
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-book-banner { display: flex; }
+      section { padding: 72px 20px; }
+      #hero { padding: 90px 20px 80px; }
+      .hero-stats { gap: 28px; }
+      .form-wrap { padding: 28px 20px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: auto; }
+      body { padding-bottom: 72px; }
+    }
+
+    @media (max-width: 580px) {
+      .artists-grid,
+      .reviews-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 400px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease forwards; }
+    .fade-up-2 { animation: fadeUp 0.6s 0.15s ease both; }
+    .fade-up-3 { animation: fadeUp 0.6s 0.3s ease both; }
+    .fade-up-4 { animation: fadeUp 0.6s 0.45s ease both; }
+
+    /* ─── ACCENT DECORATIVE ELEMENTS ─── */
+    .ink-drop {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, var(--accent), #ff8c5a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Inkwell <span>Studio</span></a>
+    <ul class="nav-links">
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#consult">Book</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#consult" class="nav-cta">Book a Consultation</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#artists" class="mob-link">Artists</a>
+  <a href="#gallery" class="mob-link">Gallery</a>
+  <a href="#booking" class="mob-link">How It Works</a>
+  <a href="#faq" class="mob-link">FAQ</a>
+  <a href="#contact" class="mob-link">Contact</a>
+  <a href="#consult" class="mob-cta">Book a Consultation →</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge fade-up">By Appointment Only</div>
+    <h1 class="hero-headline fade-up-2">Art That Lasts<br/><em>a Lifetime.</em></h1>
+    <p class="hero-sub fade-up-3">Custom tattoos by award-winning artists. Specializing in fine line, realism, and traditional styles in the heart of Downtown LA.</p>
+    <div class="hero-actions fade-up-4">
+      <a href="#consult" class="btn-primary">Book Consultation →</a>
+      <a href="#gallery" class="btn-ghost">View Gallery</a>
+    </div>
+    <div class="hero-stats fade-up-4">
+      <div class="hero-stat">
+        <div class="hero-stat-num">8<span>+</span></div>
+        <div class="hero-stat-label">Years in Business</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3<span>k</span></div>
+        <div class="hero-stat-label">Tattoos Completed</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12<span>+</span></div>
+        <div class="hero-stat-label">Awards Won</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── ARTISTS ─── -->
+<section id="artists">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Meet the Team</p>
+      <h2 class="section-title">The Artists</h2>
+      <p class="section-sub">Each artist brings a distinct vision and mastery of craft, turning your ideas into permanent works of art.</p>
+    </div>
+    <div class="artists-grid">
+
+      <!-- Marco Vega -->
+      <div class="artist-card">
+        <div class="artist-photo marco">
+          <div class="artist-initials">MV</div>
+          <div class="artist-tag">· REALISM ·</div>
+          <div class="artist-accent-line"></div>
+        </div>
+        <div class="artist-info">
+          <h3 class="artist-name">Marco Vega</h3>
+          <p class="artist-specialty">Realism &amp; Portraits</p>
+          <div class="artist-meta">
+            <span>12 Years Experience</span>
+            <span>500+ Portraits</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sofia Reyes -->
+      <div class="artist-card">
+        <div class="artist-photo sofia">
+          <div class="artist-initials">SR</div>
+          <div class="artist-tag">· FINE LINE ·</div>
+          <div class="artist-accent-line"></div>
+        </div>
+        <div class="artist-info">
+          <h3 class="artist-name">Sofia Reyes</h3>
+          <p class="artist-specialty">Fine Line &amp; Botanicals</p>
+          <div class="artist-meta">
+            <span>9 Years Experience</span>
+            <span>Featured in Inked Mag</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jake Torres -->
+      <div class="artist-card">
+        <div class="artist-photo jake">
+          <div class="artist-initials">JT</div>
+          <div class="artist-tag">· TRADITIONAL ·</div>
+          <div class="artist-accent-line"></div>
+        </div>
+        <div class="artist-info">
+          <h3 class="artist-name">Jake Torres</h3>
+          <p class="artist-specialty">Traditional &amp; Neo-Trad</p>
+          <div class="artist-meta">
+            <span>11 Years Experience</span>
+            <span>Convention Winner</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── GALLERY ─── -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Portfolio</p>
+      <h2 class="section-title">Style Gallery</h2>
+      <p class="section-sub">A glimpse into the diversity of work our artists produce. Every piece is one of a kind.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.12">
+            <line x1="20" y1="20" x2="180" y2="180" stroke="#FF6B35" stroke-width="0.5"/>
+            <line x1="180" y1="20" x2="20" y2="180" stroke="#FF6B35" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="60" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="40" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="20" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Fine Line</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.12">
+            <rect x="30" y="30" width="140" height="140" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <rect x="50" y="50" width="100" height="100" fill="none" stroke="#FF6B35" stroke-width="0.5" transform="rotate(15 100 100)"/>
+            <rect x="70" y="70" width="60" height="60" fill="none" stroke="#FF6B35" stroke-width="0.5" transform="rotate(30 100 100)"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Blackwork</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.12">
+            <ellipse cx="100" cy="80" rx="50" ry="65" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <ellipse cx="100" cy="80" rx="35" ry="45" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <line x1="100" y1="15" x2="100" y2="185" stroke="#FF6B35" stroke-width="0.5" opacity="0.5"/>
+            <line x1="50" y1="80" x2="150" y2="80" stroke="#FF6B35" stroke-width="0.5" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Realism</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.15">
+            <polygon points="100,20 180,170 20,170" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <polygon points="100,50 155,155 45,155" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <polygon points="100,80 130,140 70,140" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Traditional</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.12">
+            <path d="M100 30 Q140 60 160 100 Q140 140 100 170 Q60 140 40 100 Q60 60 100 30Z" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <path d="M100 50 Q130 75 145 100 Q130 125 100 150 Q70 125 55 100 Q70 75 100 50Z" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Watercolor</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.13">
+            <polygon points="100,30 130,80 185,80 145,115 160,170 100,135 40,170 55,115 15,80 70,80" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <polygon points="100,55 118,85 155,85 130,105 140,135 100,115 60,135 70,105 45,85 82,85" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Geometric</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.12">
+            <path d="M40 100 Q100 20 160 100 Q100 180 40 100Z" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <path d="M55 100 Q100 40 145 100 Q100 160 55 100Z" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="15" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Neo-Trad</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.12">
+            <line x1="100" y1="30" x2="100" y2="170" stroke="#FF6B35" stroke-width="0.5"/>
+            <line x1="30" y1="100" x2="170" y2="100" stroke="#FF6B35" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="30" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="8" fill="#FF6B35" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Minimalist</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-deco">
+          <svg width="100%" height="100%" viewBox="0 0 200 200" opacity="0.12">
+            <path d="M30 60 Q60 40 90 60 Q120 80 150 60 Q170 50 175 80 Q150 100 120 90 Q90 80 60 95 Q35 108 30 90Z" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+            <path d="M30 110 Q60 90 90 110 Q120 130 150 110 Q170 100 175 130 Q150 150 120 140 Q90 130 60 145 Q35 158 30 140Z" fill="none" stroke="#FF6B35" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="gallery-label">Cover-Up</div>
+        <div class="gallery-overlay"><span>View More</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="booking">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Process</p>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub">We've made the booking process simple, transparent, and built around your vision.</p>
+    </div>
+    <div class="steps-grid">
+
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Submit Consultation Form</h3>
+        <p class="step-desc">Fill out the form below with your idea, style preference, placement, and budget. We'll review within 24–48 hours.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Design Approval</h3>
+        <p class="step-desc">Your chosen artist crafts a custom design based on your brief. We share the concept for your review before booking day.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Get Tattooed</h3>
+        <p class="step-desc">Come in on your appointment day. A non-refundable deposit secures your spot. Sit back and watch the art come to life.</p>
+      </div>
+
+    </div>
+    <div class="booking-cta">
+      <a href="#consult" class="btn-primary" style="font-size:16px; padding: 18px 44px;">Book Now →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── CONSULTATION FORM ─── -->
+<section id="consult">
+  <div class="container">
+    <div class="section-header" style="text-align:center; max-width: 600px; margin: 0 auto 48px;">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Book a Consultation</h2>
+      <p class="section-sub" style="margin: 0 auto;">Tell us about your tattoo vision. We'll reach out within 48 hours to confirm your consult and match you with the right artist.</p>
+    </div>
+    <div class="form-wrap">
+      <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Tattoo Consultation - Inkwell Studio" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Alex Johnson" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(562) 373-1027" required />
+          </div>
+
+          <div class="form-group full">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="artist">Artist Preference</label>
+            <select id="artist" name="artist_preference">
+              <option value="" disabled selected>Select an artist</option>
+              <option value="Marco Vega">Marco Vega — Realism &amp; Portraits</option>
+              <option value="Sofia Reyes">Sofia Reyes — Fine Line &amp; Botanicals</option>
+              <option value="Jake Torres">Jake Torres — Traditional &amp; Neo-Trad</option>
+              <option value="No Preference">No Preference</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="style">Tattoo Style</label>
+            <select id="style" name="tattoo_style">
+              <option value="" disabled selected>Select a style</option>
+              <option>Fine Line</option>
+              <option>Blackwork</option>
+              <option>Realism / Portrait</option>
+              <option>Traditional</option>
+              <option>Neo-Traditional</option>
+              <option>Watercolor</option>
+              <option>Geometric</option>
+              <option>Minimalist</option>
+              <option>Cover-Up</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="placement">Placement</label>
+            <input type="text" id="placement" name="placement" placeholder="e.g. Inner forearm, ribs, shoulder..." />
+          </div>
+
+          <div class="form-group">
+            <label for="size">Approximate Size</label>
+            <select id="size" name="size">
+              <option value="" disabled selected>Select size</option>
+              <option>Small (under 3 inches)</option>
+              <option>Medium (3–6 inches)</option>
+              <option>Large (6–10 inches)</option>
+              <option>Sleeve / Full coverage</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="description">Reference Description</label>
+            <textarea id="description" name="reference_description" placeholder="Describe your tattoo idea in as much detail as possible. Include mood, imagery, symbols, or any reference you have in mind..."></textarea>
+          </div>
+
+          <div class="form-group full">
+            <label for="budget">Budget Range</label>
+            <select id="budget" name="budget_range">
+              <option value="" disabled selected>Select budget</option>
+              <option>$150 – $300</option>
+              <option>$300 – $600</option>
+              <option>$600 – $1,000</option>
+              <option>$1,000 – $2,000</option>
+              <option>$2,000+ (sleeve / large piece)</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <button type="submit" class="form-submit">Send Consultation Request →</button>
+          </div>
+
+        </div>
+      </form>
+      <p class="form-disclaimer">By submitting you agree to be contacted regarding your consultation. A non-refundable deposit is required to book your session. Minimum age: 18 with valid ID.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Questions</p>
+      <h2 class="section-title">FAQ</h2>
+      <p class="section-sub">Everything you need to know before your first visit.</p>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q">
+          What is the minimum age requirement?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            You must be 18 years of age or older to receive a tattoo at Inkwell Studio. A valid, government-issued photo ID is required at the time of your appointment — no exceptions. We do not tattoo minors under any circumstances, even with parental consent.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How much does a tattoo cost?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Pricing depends on size, placement, complexity, and the artist. Our shop minimum is <strong>$150</strong>. Small to medium pieces typically range from $150–$600. Large custom work, sleeves, and cover-ups are quoted individually during your consultation. We believe quality art is a lifelong investment and price accordingly.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          How do I care for my new tattoo?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            After your session, your artist will apply a bandage or saniderm wrap. Keep it on for 24–48 hours, then gently wash with fragrance-free soap. Moisturize twice daily with unscented lotion. Avoid sun exposure, pools, and soaking for at least 2–3 weeks. Peeling is normal — never pick or scratch. Full aftercare instructions are provided with every appointment.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Can I bring my own design or reference images?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Absolutely. We love when clients come prepared with references — they help our artists understand your vision. You can bring images, sketches, mood boards, or Pinterest links. Keep in mind that your artist will adapt references into a unique custom piece rather than copying existing work directly. All designs we create are original to Inkwell Studio.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">
+          Do you accept walk-ins?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Inkwell Studio is <strong>by appointment only</strong>. This allows our artists to dedicate full attention to every client and ensures the highest quality work. Walk-ins cannot be accommodated. Please use the consultation form above to secure your spot — we typically book 2–4 weeks out, so plan ahead.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── REVIEWS ─── -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Client Stories</p>
+      <h2 class="section-title">What People Say</h2>
+    </div>
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">Marco did a hyper-realistic portrait of my grandmother on my forearm. I was blown away at how much it looked like a photograph. Three months healed and the detail hasn't faded at all. Worth every penny and then some.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">DL</div>
+          <div>
+            <div class="reviewer-name">Diana L.</div>
+            <div class="reviewer-meta">Marco Vega · Realism Portrait · Healed 3 Months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">Sofia gave me the most delicate botanical sleeve I've ever seen. She listened to every detail during the consult and the final result surpassed what I had imagined. Even healed, the fine lines are razor sharp. I get stopped on the street weekly.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">CM</div>
+          <div>
+            <div class="reviewer-name">Cass M.</div>
+            <div class="reviewer-meta">Sofia Reyes · Botanical Sleeve · Healed 6 Months</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">Jake did a full traditional chest piece for me after I had a botched cover-up from another shop. He transformed it completely — bold lines, vibrant color, and a design that actually means something to me now. This is the gold standard for neo-trad in LA.</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">RB</div>
+          <div>
+            <div class="reviewer-name">Rafael B.</div>
+            <div class="reviewer-meta">Jake Torres · Neo-Trad Cover-Up · Healed 8 Months</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-items">
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-text">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-text">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">847 S Spring St, Downtown LA, CA 90014</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🗓️</div>
+          <div class="contact-text">
+            <div class="contact-label">Availability</div>
+            <div class="contact-value">By Appointment Only<br/><span style="font-size:13px; color:var(--text-muted); font-weight:400;">Tue – Sat · 10AM – 7PM</span></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📸</div>
+          <div class="contact-text">
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value"><a href="https://instagram.com/inkwellstudio.la" target="_blank" rel="noopener">@inkwellstudio.la</a></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="contact-map">
+        <div class="map-placeholder">
+          <span class="map-pin">📌</span>
+          <div class="map-address">847 S Spring St<br/>Downtown LA, CA 90014</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─── -->
+<div style="background:#111114;border-top:1px solid rgba(255,69,0,0.12);border-bottom:1px solid rgba(255,69,0,0.12);padding:28px 0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;">
+    <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap;text-align:center;">
+      <div><span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:800;color:#FF4500;">12+</span><br><span style="font-size:13px;color:#8A8A96;">Years Tattooing</span></div>
+      <div><span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:800;color:#FF4500;">5,000+</span><br><span style="font-size:13px;color:#8A8A96;">Pieces Completed</span></div>
+      <div><span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:800;color:#FF4500;">5.0</span><br><span style="font-size:13px;color:#8A8A96;">Google Rating</span></div>
+      <div><span style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:800;color:#FF4500;">Licensed</span><br><span style="font-size:13px;color:#8A8A96;">Health Dept. Certified</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── WHY CHOOSE US ─── -->
+<section style="padding:80px 0;background:#0A0A0B;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;">
+    <div style="text-align:center;margin-bottom:40px;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#FF4500;">Why Inkwell Studio</span>
+      <h2 style="font-size:32px;font-weight:800;margin-top:8px;">Custom Art. Clean Studio. No Compromises.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+      <div class="why-card" style="background:#111114;border:1px solid rgba(255,69,0,0.12);border-radius:12px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:10px;">🎨</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:6px;">100% Custom Designs</div>
+        <div style="font-size:13px;color:#8A8A96;line-height:1.6;">No flash, no copies. Every piece is designed from scratch based on your vision and story.</div>
+      </div>
+      <div class="why-card" style="background:#111114;border:1px solid rgba(255,69,0,0.12);border-radius:12px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:10px;">🧪</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Medical-Grade Sterilization</div>
+        <div style="font-size:13px;color:#8A8A96;line-height:1.6;">Autoclave sterilized, single-use needles, disposable everything. Health dept. inspected and certified.</div>
+      </div>
+      <div class="why-card" style="background:#111114;border:1px solid rgba(255,69,0,0.12);border-radius:12px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:10px;">✍️</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Multi-Style Artists</div>
+        <div style="font-size:13px;color:#8A8A96;line-height:1.6;">Fine line, realism, traditional, Japanese, and blackwork. Our artists specialize in what you need.</div>
+      </div>
+      <div class="why-card" style="background:#111114;border:1px solid rgba(255,69,0,0.12);border-radius:12px;padding:28px;">
+        <div style="font-size:28px;margin-bottom:10px;">📋</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Free Consultations</div>
+        <div style="font-size:13px;color:#8A8A96;line-height:1.6;">Come in, discuss your ideas, see the studio, and get a custom quote. No commitment required.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICE AREA ─── -->
+<div style="padding:32px 0;background:#111114;text-align:center;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#FF4500;">Service Area</span>
+    <p style="font-size:13px;color:#8A8A96;font-family:'JetBrains Mono',monospace;margin-top:12px;">Downtown LA &middot; Hollywood &middot; Silver Lake &middot; Echo Park &middot; Long Beach &middot; Pasadena &middot; Glendale &middot; All of LA County</p>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <strong>Inkwell Studio</strong> &middot; &copy; 2026 &middot; 847 S Spring St, Downtown LA
+    </div>
+    <div style="color:#8A8A96;font-size:12px;margin:8px 0;">Tue&ndash;Sat 11AM&ndash;8PM &middot; By Appointment Only &nbsp;&middot;&nbsp; <a href="tel:+15623731027" style="color:#FF4500;">(562) 373-1027</a></div>
+    <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo &rarr;</a></div>
+    <div class="footer-credit">
+      Website by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> &middot; <a href="https://rivven.ai" target="_blank" rel="noopener">rivven.ai</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── MOBILE BOTTOM BANNER ─── -->
+<div class="mobile-book-banner" id="mobile-banner">
+  <div class="mobile-book-text">
+    <strong>Inkwell Studio</strong>
+    By Appointment Only
+  </div>
+  <a href="#consult" class="mobile-book-btn">Book Now →</a>
+  <a href="https://rivven.ai/booking.html" target="_blank" style="padding:10px 14px;font-size:13px;font-weight:700;color:#00f0ff;text-decoration:none;border-left:1px solid rgba(255,255,255,0.15)">🚀 Get My Site</a>
+</div>
+
+<script>
+  /* ─── HAMBURGER ─── */
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobile-menu');
+  const mobLinks = mob.querySelectorAll('a');
+
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+  });
+
+  mobLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      ham.classList.remove('open');
+      mob.classList.remove('open');
+    });
+  });
+
+  /* ─── NAV SCROLL EFFECT ─── */
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(10, 10, 11, 0.97)';
+    } else {
+      nav.style.background = 'rgba(10, 10, 11, 0.88)';
+    }
+  });
+
+  /* ─── FAQ ACCORDION ─── */
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const answer = item.querySelector('.faq-a');
+
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      faqItems.forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = '0';
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ─── SMOOTH SCROLL FOR ALL ANCHOR LINKS ─── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ─── INTERSECTION OBSERVER: Fade in sections ─── */
+  const observerOptions = {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.artist-card, .step-card, .review-card, .gallery-item, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

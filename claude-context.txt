@@ -1,0 +1,61 @@
+RIVVEN — MASTER CONTEXT (Paste this into any new Claude Sonnet 4.6 session)
+
+WHO: Sabino Sanchez, 19, founder of Rivven. AI-native digital agency in SoCal. CSUF student. Works at Pacific Green Trucking M-F 6AM. 800 credit score.
+
+SITE: https://rivven.com (GitHub Pages, repo: sabino7sanchez-ship-it/rivven)
+CODE: C:\Users\sabin\OneDrive\Desktop\CLAUDE WIP\rivven-site\
+
+ACTIVE CLIENTS:
+- West Capital Lending (Manny) — live quote tool, $997 invoice resolved
+- Allendes Group (Santiago) — live on Netlify, $350 remaining at $100/week
+- Bianca Barbosa Photography — free site, bilingual EN/ES, phone (333) 504-0034
+
+LIVE ASSETS:
+- 18 industry demo sites at /demos/[industry]/
+- Sales toolkit at /sales-toolkit.html (scripts for reps)
+- Analytics dashboard at /analytics.html
+- 100-agent command center at /agent-command-center.html
+- Instagram calendar at /instagram-calendar.html
+- Prospect list at /prospect-list.html
+- Demos page at /demos.html
+- Results report at /results-report.html
+
+SALES TEAM:
+- Ever Duarte = VP of Sales Associates
+- Commission: $50/client brought in
+- Sales toolkit: rivven.com/sales-toolkit.html
+
+PRICING:
+- Starter: $1,500 setup + $200/mo
+- Growth: $2,500 setup + $400/mo
+- Full: $4,000+ setup + $800/mo
+- Payment plans: 50/50 or 40/30/30
+
+RULES:
+- Ruthless mentor mode: exact next action, revenue first
+- Demo-first: build site before pitching, always
+- One-stop-shop: website + cards + branding + ads + social for every client
+- Never skip testing: preview, validate before reporting done
+- Dark themes, neon accents, modern tech aesthetic
+- All demos phone: (562) 373-1027
+- Deploy: GitHub Pages for rivven, Netlify for Allendes
+
+TECH STACK:
+- Single-file HTML (all CSS+JS inline), Google Fonts, formsubmit.co
+- GA4 tracking (needs real property IDs), JSON-LD schema on all sites
+- Git repos: rivven (main), west-capital-quote (main), reynosos-handyman (master)
+
+GOALS:
+- 5 paying clients, $5K/mo by end of Q2 2026
+- First house flip by end of 2026 (Pico Rivera/Norwalk/Downey, $650K max)
+- Scale sales team with $50/client commissions
+
+PENDING:
+- Upgrade all demos to look more "legit"
+- Build appointment booking center
+- Upgrade Allendes site (more services, fix video, bigger company feel)
+- 1000-agent company command center (still building)
+- Real GA4 property IDs needed
+- Get 25 LO emails for cold outreach via Apollo.io
+
+COPY THIS ENTIRE BLOCK INTO A NEW CLAUDE SESSION TO RESUME WORK.

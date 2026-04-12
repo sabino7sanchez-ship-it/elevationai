@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fuego Birria Co. — LA/OC's Best Birria Tacos</title>
+  <meta name="description" content="Fuego Birria Co. — Handmade consommé, slow-cooked beef, and quesabirria tacos so good we sell out every night. Serving LA & OC." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "name": "Fuego Birria Co.",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://fuegobirriaco.com",
+    "priceRange": "$",
+    "servesCuisine": "Mexican",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1024"
+    },
+    "areaServed": ["Los Angeles","Orange County","Long Beach","Downey","Whittier","Norwalk","Santa Ana","Anaheim","Fullerton"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0A0A0B;
+      --bg2:       #111114;
+      --bg3:       #18181C;
+      --accent:    #FF4500;
+      --accent2:   #FF6A1A;
+      --accent3:   #FFA040;
+      --gold:      #FFB830;
+      --text:      #F0EDE8;
+      --muted:     #9B9592;
+      --border:    rgba(255,69,0,0.18);
+      --radius:    14px;
+      --font:      'Inter', sans-serif;
+      --mono:      'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY HELPERS
+    ============================================================ */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(255,69,0,0.10);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 5px 14px;
+    }
+
+    .section-heading {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .accent-text { color: var(--accent); }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 20px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,69,0,0.10);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 1160px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo .flame { font-size: 22px; }
+    .nav-logo span.brand-red { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      padding: 24px 20px 32px;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: var(--text);
+    }
+    .mobile-nav a:last-child { border: none; }
+    .mobile-nav .nav-cta {
+      margin-top: 12px;
+      text-align: center;
+      padding: 14px 18px;
+      border-radius: 10px;
+      color: #fff !important;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 20px 80px;
+    }
+
+    /* Gradient mesh background */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 30%, rgba(255,69,0,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 20% 70%, rgba(255,106,26,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 85% 75%, rgba(255,160,64,0.10) 0%, transparent 55%),
+        var(--bg);
+      z-index: 0;
+    }
+
+    /* Animated fire particles */
+    .fire-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      animation: floatUp var(--dur, 4s) var(--delay, 0s) infinite ease-in;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) scale(1);   opacity: 0.8; }
+      80%  { opacity: 0.3; }
+      100% { transform: translateY(-320px) scale(0.3); opacity: 0; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 740px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.5);
+      animation: livePulse 1.8s infinite;
+    }
+    @keyframes livePulse {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+      70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    .hero-headline {
+      font-size: clamp(38px, 7vw, 80px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 19px);
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 26px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 8px 32px rgba(255,69,0,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255,69,0,0.45);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 26px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.10);
+      transform: translateY(-2px);
+    }
+
+    /* Stats strip */
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-stat .num {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--accent);
+      font-family: var(--mono);
+      line-height: 1;
+    }
+    .hero-stat .label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================================
+       SECTION SHARED
+    ============================================================ */
+    section { padding: 80px 0; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    /* ============================================================
+       LIVE LOCATION
+    ============================================================ */
+    #location {
+      background: var(--bg2);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    .location-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .location-tonight {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .loc-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .loc-name {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .loc-sub {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+    .loc-hours {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(34,197,94,0.10);
+      border: 1px solid rgba(34,197,94,0.20);
+      color: #4ade80;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .loc-detail-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* Map embed placeholder */
+    .map-placeholder {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 320px;
+      position: relative;
+    }
+    .map-placeholder iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      opacity: 0.85;
+      filter: saturate(0.6) brightness(0.7);
+    }
+    .map-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(10,10,11,0.85));
+      padding: 24px 20px 20px;
+      pointer-events: none;
+    }
+    .map-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Schedule row */
+    .upcoming-schedule {
+      margin-top: 28px;
+    }
+    .schedule-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin-bottom: 14px;
+    }
+    .schedule-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 14px;
+    }
+    .schedule-row:last-child { border: none; }
+    .sched-day { font-weight: 600; }
+    .sched-loc { color: var(--muted); font-size: 13px; }
+    .sched-status {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .sched-status.open { background: rgba(34,197,94,0.10); color: #4ade80; border: 1px solid rgba(34,197,94,0.20); }
+    .sched-status.soon { background: rgba(255,184,48,0.10); color: var(--gold); border: 1px solid rgba(255,184,48,0.20); }
+    .sched-status.tbd { background: rgba(155,149,146,0.10); color: var(--muted); border: 1px solid rgba(155,149,146,0.20); }
+
+    /* ============================================================
+       MENU
+    ============================================================ */
+    #menu {
+      background: var(--bg);
+    }
+
+    .menu-categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 32px 0 40px;
+    }
+    .cat-btn {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .cat-btn.active, .cat-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .menu-section { display: none; }
+    .menu-section.active { display: block; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .menu-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .menu-card:hover {
+      border-color: var(--border);
+      transform: translateY(-3px);
+    }
+
+    .menu-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .menu-item-name {
+      font-size: 17px;
+      font-weight: 700;
+    }
+    .menu-price {
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+    .menu-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+    .menu-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-family: var(--mono);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 50px;
+      margin-top: 12px;
+    }
+    .menu-tag.bestseller { background: rgba(255,69,0,0.12); color: var(--accent); border: 1px solid var(--border); }
+    .menu-tag.new { background: rgba(255,184,48,0.12); color: var(--gold); border: 1px solid rgba(255,184,48,0.25); }
+    .menu-tag.vegan { background: rgba(74,222,128,0.10); color: #4ade80; border: 1px solid rgba(74,222,128,0.20); }
+
+    .menu-emoji {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* ============================================================
+       CATERING
+    ============================================================ */
+    #catering {
+      background: var(--bg2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .catering-bg-glow {
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,69,0,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .catering-intro {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-top: 16px;
+      margin-bottom: 48px;
+    }
+
+    .catering-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .catering-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      position: relative;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .catering-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(255,69,0,0.07), var(--bg3));
+    }
+    .catering-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .catering-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #fff;
+      padding: 4px 11px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+
+    .catering-pkg-name {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .catering-pkg-price {
+      font-family: var(--mono);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .catering-pkg-price span {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .catering-features {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .catering-feat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .feat-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255,69,0,0.12);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    /* ============================================================
+       CATERING FORM
+    ============================================================ */
+    #catering-form {
+      background: var(--bg);
+    }
+
+    .form-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 48px 40px;
+      max-width: 680px;
+      margin: 48px auto 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .form-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+    .form-input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 9px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      padding: 12px 16px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,69,0,0.15);
+    }
+    .form-input::placeholder { color: rgba(155,149,146,0.5); }
+
+    textarea.form-input { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 6px 28px rgba(255,69,0,0.30);
+    }
+    .form-submit:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(255,69,0,0.40);
+    }
+
+    /* ============================================================
+       REVIEWS
+    ============================================================ */
+    #reviews {
+      background: var(--bg2);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .review-card:hover { border-color: var(--border); }
+
+    .review-source {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .review-source-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .yelp-icon { background: rgba(255,69,0,0.12); }
+    .google-icon { background: rgba(66,133,244,0.12); }
+
+    .review-source-name {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .review-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .review-text strong { color: var(--accent); }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .reviewer-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .reviewer-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .reviewer-meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .review-quote-mark {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 56px;
+      line-height: 1;
+      color: rgba(255,69,0,0.10);
+      font-family: Georgia, serif;
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       SOCIAL / FOLLOW US
+    ============================================================ */
+    #social {
+      background: var(--bg);
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .social-card {
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .social-card:hover {
+      border-color: var(--border);
+      transform: translateY(-4px);
+    }
+
+    .social-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .insta-wrap { background: linear-gradient(135deg, rgba(225,48,108,0.20), rgba(255,100,45,0.20)); border: 1px solid rgba(255,100,45,0.20); }
+    .tiktok-wrap { background: linear-gradient(135deg, rgba(0,0,0,0.40), rgba(255,0,80,0.10)); border: 1px solid rgba(255,0,80,0.15); }
+
+    .social-platform {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .social-handle {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .social-followers {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .social-blurb {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .social-follow-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 22px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      background: rgba(255,69,0,0.08);
+      color: var(--accent);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .social-follow-btn:hover { background: rgba(255,69,0,0.15); transform: scale(1.03); }
+
+    .social-tagline {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .social-tagline strong { color: var(--text); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    #contact {
+      background: var(--bg2);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    .contact-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255,69,0,0.10);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .contact-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .contact-value a { color: var(--accent); transition: color 0.2s; }
+    .contact-value a:hover { color: var(--accent2); }
+
+    .contact-dm-note {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-top: 8px;
+    }
+    .contact-dm-note h4 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .contact-dm-note p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact-social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact-social-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 14px 20px;
+      transition: border-color 0.2s;
+    }
+    .contact-social-link:hover { border-color: var(--border); }
+    .csl-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .csl-ico { font-size: 22px; }
+    .csl-name { font-weight: 600; font-size: 15px; }
+    .csl-handle { font-size: 13px; color: var(--muted); margin-top: 1px; }
+    .csl-arrow { color: var(--muted); font-size: 18px; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px 20px;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-credit {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-credit a { color: var(--accent); transition: color 0.2s; }
+    .footer-credit a:hover { color: var(--accent2); }
+
+    /* ============================================================
+       MOBILE BOTTOM BANNER
+    ============================================================ */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 998;
+      background: rgba(10,10,11,0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255,69,0,0.18);
+      padding: 12px 16px;
+      gap: 10px;
+    }
+    .mobile-cta-bar a {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .mcta-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .mcta-secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--text);
+    }
+
+    /* ============================================================
+       DIVIDER
+    ============================================================ */
+    .fire-divider {
+      text-align: center;
+      padding: 12px 0;
+      font-size: 20px;
+      letter-spacing: 8px;
+      opacity: 0.4;
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+    .fade-up.d1 { animation-delay: 0.1s; }
+    .fade-up.d2 { animation-delay: 0.2s; }
+    .fade-up.d3 { animation-delay: 0.3s; }
+    .fade-up.d4 { animation-delay: 0.4s; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .location-grid { grid-template-columns: 1fr; }
+      .social-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 28px 20px; }
+      .mobile-cta-bar { display: flex; }
+      body { padding-bottom: 76px; }
+      .hero-stats { gap: 20px; }
+    }
+
+    @media (max-width: 480px) {
+      #hero { padding: 90px 16px 60px; }
+      .catering-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="flame">🔥</span>
+        <span>Fuego <span class="brand-red">Birria</span> Co.</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#location">Find Us</a></li>
+        <li><a href="#catering">Catering</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#location" class="nav-cta">📍 Find Our Truck</a></li>
+      </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav drawer -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#menu" onclick="closeMobileNav()">Menu</a>
+    <a href="#location" onclick="closeMobileNav()">Find Us</a>
+    <a href="#catering" onclick="closeMobileNav()">Catering</a>
+    <a href="#contact" onclick="closeMobileNav()">Contact</a>
+    <a href="#location" class="nav-cta" onclick="closeMobileNav()">📍 Find Our Truck Tonight</a>
+  </div>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="fire-particles" id="particles"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="live-badge fade-up d1">
+          <span class="live-dot"></span>
+          🔴 Now Open — Check Location
+        </div>
+        <h1 class="hero-headline fade-up d2">
+          The Birria That<br /><span class="accent-text">Breaks the Internet.</span>
+        </h1>
+        <p class="hero-sub fade-up d3">
+          Handmade consommé, slow-cooked beef, and quesabirria tacos so good we sell out every night. Serving LA &amp; OC.
+        </p>
+        <div class="hero-ctas fade-up d4">
+          <a href="#location" class="btn-primary">📍 See Today's Location</a>
+          <a href="#catering" class="btn-secondary">🎉 Order Catering</a>
+        </div>
+        <div class="hero-stats fade-up d4">
+          <div class="hero-stat">
+            <span class="num">47K+</span>
+            <span class="label">Instagram Followers</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">5★</span>
+            <span class="label">Avg Rating</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">3 Yrs</span>
+            <span class="label">Serving LA/OC</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">Sold Out</span>
+            <span class="label">Every Night</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LIVE LOCATION
+  ============================================================ -->
+  <section id="location">
+    <div class="container">
+      <div class="section-label">
+        <span class="tag">📍 Live Location</span>
+      </div>
+      <h2 class="section-heading">Where Are We <span class="accent-text">Tonight?</span></h2>
+      <div class="location-grid">
+        <!-- Info Card -->
+        <div class="location-card">
+          <div class="loc-hours">
+            <span class="live-dot"></span>
+            Open Now · Closes 11PM
+          </div>
+          <div class="location-tonight">
+            <span class="loc-icon">📍</span>
+            <div>
+              <div class="loc-name">Whittier Narrows Park</div>
+              <div class="loc-sub">Rosemead, CA 91770 · Open 5PM – 11PM</div>
+            </div>
+          </div>
+          <div class="loc-detail-row">🚗 Ample parking — pull up to the north entrance lot</div>
+          <div class="loc-detail-row">📱 DM @fuegobirrisco for exact spot updates</div>
+          <div class="loc-detail-row">💳 Cash + card accepted · Venmo/CashApp OK</div>
+          <div class="upcoming-schedule">
+            <div class="schedule-title">This Week's Schedule</div>
+            <div class="schedule-row">
+              <span class="sched-day">Sun, Mar 29</span>
+              <span class="sched-loc">Whittier Narrows Park, Rosemead</span>
+              <span class="sched-status open">Open</span>
+            </div>
+            <div class="schedule-row">
+              <span class="sched-day">Mon, Mar 30</span>
+              <span class="sched-loc">Uptown Whittier · Greenleaf Ave</span>
+              <span class="sched-status soon">5PM</span>
+            </div>
+            <div class="schedule-row">
+              <span class="sched-day">Tue, Mar 31</span>
+              <span class="sched-loc">Anaheim Packing District</span>
+              <span class="sched-status soon">6PM</span>
+            </div>
+            <div class="schedule-row">
+              <span class="sched-day">Wed, Apr 1</span>
+              <span class="sched-loc">East LA Civic Center</span>
+              <span class="sched-status tbd">TBD</span>
+            </div>
+            <div class="schedule-row">
+              <span class="sched-day">Thu, Apr 2</span>
+              <span class="sched-loc">Long Beach · Retro Row</span>
+              <span class="sched-status soon">6PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Card -->
+        <div class="map-placeholder">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.1847!2d-118.0779!3d34.0522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c5e5db7f5c6d%3A0x5e1e2a3b4c5d6e7f!2sWhittier%20Narrows%20Recreation%20Area!5e0!3m2!1sen!2sus!4v1711000000000"
+            title="Fuego Birria Co. current location — Whittier Narrows Park, Rosemead CA"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+          <div class="map-overlay">
+            <div class="map-label">📍 Tonight: Whittier Narrows Park, Rosemead CA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MENU
+  ============================================================ -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-label">
+        <span class="tag">🌮 The Menu</span>
+      </div>
+      <h2 class="section-heading">Everything Hits <span class="accent-text">Different.</span></h2>
+
+      <div class="menu-categories">
+        <button class="cat-btn active" onclick="showCategory('tacos', this)">🌮 Tacos</button>
+        <button class="cat-btn" onclick="showCategory('plates', this)">🍲 Plates</button>
+        <button class="cat-btn" onclick="showCategory('drinks', this)">🥤 Drinks</button>
+      </div>
+
+      <!-- TACOS -->
+      <div class="menu-section active" id="cat-tacos">
+        <div class="menu-grid">
+          <div class="menu-card">
+            <span class="menu-emoji">🌮</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Birria Taco</div>
+              <div class="menu-price">$4</div>
+            </div>
+            <div class="menu-desc">Slow-cooked beef birria on a handmade corn tortilla, dipped in rich consommé and seared on the griddle. Topped with white onion and fresh cilantro.</div>
+            <span class="menu-tag bestseller">🔥 Bestseller</span>
+          </div>
+          <div class="menu-card">
+            <span class="menu-emoji">🧀</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Quesabirria</div>
+              <div class="menu-price">$6</div>
+            </div>
+            <div class="menu-desc">The one that broke the internet. Oaxacan cheese melted into the consommé-dipped tortilla, packed with tender shredded beef. Comes with a side of consommé for dipping.</div>
+            <span class="menu-tag bestseller">🔥 Most Popular</span>
+          </div>
+          <div class="menu-card">
+            <span class="menu-emoji">🥬</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Veggie Birria</div>
+              <div class="menu-price">$5</div>
+            </div>
+            <div class="menu-desc">Our plant-based take — mushroom, jackfruit and chipotle filling slow-braised in our signature red chile sauce. Same soul, no meat.</div>
+            <span class="menu-tag vegan">🌱 Plant-Based</span>
+          </div>
+        </div>
+        <p style="font-size:13px; color:var(--muted); margin-top:20px; font-family:var(--mono);">
+          * Each taco comes with a small cup of consommé. Extra consommé +$1. Salsa verde or roja on request.
+        </p>
+      </div>
+
+      <!-- PLATES -->
+      <div class="menu-section" id="cat-plates">
+        <div class="menu-grid">
+          <div class="menu-card">
+            <span class="menu-emoji">🥣</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Birria Bowl</div>
+              <div class="menu-price">$13</div>
+            </div>
+            <div class="menu-desc">Cilantro-lime rice, black beans, and a hearty scoop of our slow-cooked birria topped with pickled red onion, crema, and crispy tortilla strips.</div>
+            <span class="menu-tag bestseller">🔥 Fan Favorite</span>
+          </div>
+          <div class="menu-card">
+            <span class="menu-emoji">🍜</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Ramen de Birria</div>
+              <div class="menu-price">$14</div>
+            </div>
+            <div class="menu-desc">LA street fusion at its finest. Japanese-style ramen noodles swimming in our legendary consommé broth, loaded with birria beef, soft egg, and green onion.</div>
+            <span class="menu-tag new">✨ New Item</span>
+          </div>
+          <div class="menu-card">
+            <span class="menu-emoji">👨‍👩‍👧‍👦</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Family Pack ×10</div>
+              <div class="menu-price">$38</div>
+            </div>
+            <div class="menu-desc">10 birria tacos, a full liter of consommé, toppings bar (onion, cilantro, limes), and two salsas. Feeds 3–4 hungry people. Best value on the menu.</div>
+            <span class="menu-tag bestseller">💯 Best Value</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DRINKS -->
+      <div class="menu-section" id="cat-drinks">
+        <div class="menu-grid">
+          <div class="menu-card">
+            <span class="menu-emoji">🍹</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Agua Fresca</div>
+              <div class="menu-price">$3</div>
+            </div>
+            <div class="menu-desc">Rotating daily flavors — tamarind, watermelon-chili, hibiscus, or cucumber-lime. Ask what's fresh. Made in-house every morning.</div>
+          </div>
+          <div class="menu-card">
+            <span class="menu-emoji">🥛</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Horchata</div>
+              <div class="menu-price">$3</div>
+            </div>
+            <div class="menu-desc">Classic creamy rice milk with cinnamon and vanilla. The perfect cool-down after a spicy taco. Lightly sweetened and ice cold.</div>
+            <span class="menu-tag bestseller">🔥 Bestseller</span>
+          </div>
+          <div class="menu-card">
+            <span class="menu-emoji">🍊</span>
+            <div class="menu-card-top">
+              <div class="menu-item-name">Jarritos</div>
+              <div class="menu-price">$2.50</div>
+            </div>
+            <div class="menu-desc">The OG Mexican soda. Mandarin, tamarind, fruit punch, strawberry, and lime. Glass bottle. Old school cool.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CATERING
+  ============================================================ -->
+  <section id="catering">
+    <div class="catering-bg-glow"></div>
+    <div class="container">
+      <div class="section-label">
+        <span class="tag">🎉 Catering</span>
+      </div>
+      <h2 class="section-heading">Book Fuego for <span class="accent-text">Your Event.</span></h2>
+      <p class="catering-intro">
+        Birthdays, quinceañeras, company parties, graduations — we bring the full setup, the consommé, and the hype. Your guests will be talking about it for months.
+      </p>
+
+      <div class="catering-grid">
+        <!-- Package 1 -->
+        <div class="catering-card">
+          <div class="catering-pkg-name">Taco Bar for 25</div>
+          <div class="catering-pkg-price">$350 <span>/ event</span></div>
+          <div class="catering-features">
+            <div class="catering-feat"><span class="feat-check">✓</span> 75 birria or quesabirria tacos</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> 2 gallons consommé</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Full toppings bar setup</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> 2-hour service window</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Compostable plates &amp; napkins</div>
+          </div>
+          <a href="#catering-form" class="btn-secondary" style="text-align:center; justify-content:center;">Get a Quote</a>
+        </div>
+
+        <!-- Package 2 (featured) -->
+        <div class="catering-card featured">
+          <div class="catering-badge">Most Popular</div>
+          <div class="catering-pkg-name">Taco Bar for 50</div>
+          <div class="catering-pkg-price">$650 <span>/ event</span></div>
+          <div class="catering-features">
+            <div class="catering-feat"><span class="feat-check">✓</span> 150 birria or quesabirria tacos</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> 4 gallons consommé</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Full toppings bar + 2 salsas</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> 3-hour service window</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Aguas frescas for all guests</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Setup &amp; breakdown included</div>
+          </div>
+          <a href="#catering-form" class="btn-primary" style="text-align:center; justify-content:center;">Get a Quote</a>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="catering-card">
+          <div class="catering-pkg-name">Full Event 100+</div>
+          <div class="catering-pkg-price">Custom <span>pricing</span></div>
+          <div class="catering-features">
+            <div class="catering-feat"><span class="feat-check">✓</span> Custom taco + plate count</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Full truck on-site option</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Dedicated event staff</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Up to 5 hours of service</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Veggie &amp; gluten-free options</div>
+            <div class="catering-feat"><span class="feat-check">✓</span> Corporate invoicing available</div>
+          </div>
+          <a href="#catering-form" class="btn-secondary" style="text-align:center; justify-content:center;">Let's Talk</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CATERING INQUIRY FORM
+  ============================================================ -->
+  <section id="catering-form">
+    <div class="container">
+      <div class="section-label">
+        <span class="tag">📋 Book Now</span>
+      </div>
+      <h2 class="section-heading" style="text-align:center;">Catering <span class="accent-text">Inquiry</span></h2>
+      <p style="text-align:center; color:var(--muted); font-size:15px; margin-top:12px;">
+        Fill out the form and we'll get back to you within 24 hours with availability and pricing.
+      </p>
+
+      <div class="form-card">
+        <form
+          action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+          method="POST"
+          id="cateringForm">
+          <!-- FormSubmit hidden fields -->
+          <input type="hidden" name="_subject" value="Catering Inquiry - Fuego Birria Co" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://rivven.ai/demos/foodtruck/#thank-you" />
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="f-name">Full Name *</label>
+              <input class="form-input" type="text" id="f-name" name="name" placeholder="Maria Gonzalez" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-phone">Phone Number *</label>
+              <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="(562) 373-1027" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-email">Email Address *</label>
+              <input class="form-input" type="email" id="f-email" name="email" placeholder="maria@example.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-date">Event Date *</label>
+              <input class="form-input" type="date" id="f-date" name="event_date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-guests">Guest Count *</label>
+              <input class="form-input" type="number" id="f-guests" name="guest_count" placeholder="e.g. 50" min="10" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-package">Package Interest</label>
+              <select class="form-input" id="f-package" name="package">
+                <option value="">Select a package...</option>
+                <option value="Taco Bar for 25 ($350)">Taco Bar for 25 — $350</option>
+                <option value="Taco Bar for 50 ($650)">Taco Bar for 50 — $650</option>
+                <option value="Full Event 100+ (Custom)">Full Event 100+ — Custom</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="f-location">Event Location / Address *</label>
+              <input class="form-input" type="text" id="f-location" name="event_location" placeholder="123 Main St, Los Angeles CA 90001" required />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="f-notes">Additional Notes</label>
+              <textarea class="form-input" id="f-notes" name="notes" placeholder="Tell us about your event, any dietary needs, special requests, etc."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="form-submit">
+            🌮 Send Catering Inquiry
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REVIEWS
+  ============================================================ -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-label">
+        <span class="tag">⭐ Reviews</span>
+      </div>
+      <h2 class="section-heading">The People <span class="accent-text">Don't Lie.</span></h2>
+
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-quote-mark">"</div>
+          <div class="review-source">
+            <div class="review-source-icon yelp-icon">⭐</div>
+            <span class="review-source-name">Yelp Review</span>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            I've had birria all over LA and nothing — NOTHING — comes close to Fuego. The <strong>consommé alone</strong> is worth the drive. Rich, deep, complex flavor with a perfect kick of guajillo. I ordered 6 quesabirrias and had zero regrets. This truck needs a permanent spot.
+          </p>
+          <div class="review-author">
+            <div class="reviewer-avatar">CR</div>
+            <div>
+              <div class="reviewer-name">Carlos R.</div>
+              <div class="reviewer-meta">Downey, CA · 47 reviews</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-quote-mark">"</div>
+          <div class="review-source">
+            <div class="review-source-icon google-icon">🔵</div>
+            <span class="review-source-name">Google Review</span>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            Hired Fuego for my sister's quince and 120 guests. Every. Single. Person. came up to me asking who the caterer was. <strong>Portions are insanely generous</strong> — nobody left hungry. The staff was professional and the setup was clean and fast. Already booked them again for my birthday.
+          </p>
+          <div class="review-author">
+            <div class="reviewer-avatar">JM</div>
+            <div>
+              <div class="reviewer-name">Jessica M.</div>
+              <div class="reviewer-meta">Anaheim, CA · 22 reviews</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-quote-mark">"</div>
+          <div class="review-source">
+            <div class="review-source-icon yelp-icon">⭐</div>
+            <span class="review-source-name">Yelp Review</span>
+          </div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">
+            Pulled up at 9PM on a Friday expecting a 20-min wait — totally worth it. The <strong>vibe at this truck is unmatched</strong>: music bumping, the fire from the griddle, the smell of consommé in the air. Tried the Ramen de Birria and honestly my world changed. Best $14 I've ever spent.
+          </p>
+          <div class="review-author">
+            <div class="reviewer-avatar">AT</div>
+            <div>
+              <div class="reviewer-name">Anthony T.</div>
+              <div class="reviewer-meta">Long Beach, CA · 83 reviews</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOCIAL / FOLLOW US
+  ============================================================ -->
+  <section id="social">
+    <div class="container">
+      <div class="section-label">
+        <span class="tag">📱 Follow Along</span>
+      </div>
+      <h2 class="section-heading">Location Drops <span class="accent-text">Daily.</span></h2>
+
+      <div class="social-grid">
+        <!-- Instagram -->
+        <a href="https://instagram.com/fuegobirrisco" target="_blank" rel="noopener" class="social-card">
+          <div class="social-icon-wrap insta-wrap">📸</div>
+          <div class="social-platform">Instagram</div>
+          <div class="social-handle">@fuegobirrisco</div>
+          <div class="social-followers">47.2K Followers</div>
+          <div class="social-blurb">Daily location drops, behind-the-scenes prep, food reels that will have you running to the truck. Follow for real-time updates.</div>
+          <span class="social-follow-btn">Follow on Instagram →</span>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://tiktok.com/@fuegobirrisco" target="_blank" rel="noopener" class="social-card">
+          <div class="social-icon-wrap tiktok-wrap">🎵</div>
+          <div class="social-platform">TikTok</div>
+          <div class="social-handle">@fuegobirrisco</div>
+          <div class="social-followers">112K Followers</div>
+          <div class="social-blurb">Our quesabirria dip video hit 4M views. Catch the full story of the truck, the food, and the LA street food life. New videos every week.</div>
+          <span class="social-follow-btn">Follow on TikTok →</span>
+        </a>
+      </div>
+
+      <p class="social-tagline"><strong>Follow for daily location drops</strong> — we post where we'll be every morning by 10AM.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">
+        <span class="tag">📞 Contact</span>
+      </div>
+      <h2 class="section-heading">Get In <span class="accent-text">Touch.</span></h2>
+
+      <div class="contact-grid">
+        <div>
+          <div class="contact-info-block">
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <div class="contact-label">Phone</div>
+                <div class="contact-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-label">Service Area</div>
+                <div class="contact-value">Los Angeles &amp; Orange County, CA</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📸</div>
+              <div>
+                <div class="contact-label">Instagram</div>
+                <div class="contact-value"><a href="https://instagram.com/fuegobirrisco" target="_blank" rel="noopener">@fuegobirrisco</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-dm-note" style="margin-top:28px;">
+            <h4>🎉 DM for Private Events</h4>
+            <p>Planning a party, wedding, or corporate event? Slide into our DMs on Instagram or text us directly. We love private events and will work with any budget to make it happen.</p>
+          </div>
+        </div>
+
+        <div class="contact-social-links">
+          <a href="https://instagram.com/fuegobirrisco" target="_blank" rel="noopener" class="contact-social-link">
+            <div class="csl-left">
+              <span class="csl-ico">📸</span>
+              <div>
+                <div class="csl-name">Instagram</div>
+                <div class="csl-handle">@fuegobirrisco</div>
+              </div>
+            </div>
+            <span class="csl-arrow">→</span>
+          </a>
+          <a href="https://tiktok.com/@fuegobirrisco" target="_blank" rel="noopener" class="contact-social-link">
+            <div class="csl-left">
+              <span class="csl-ico">🎵</span>
+              <div>
+                <div class="csl-name">TikTok</div>
+                <div class="csl-handle">@fuegobirrisco</div>
+              </div>
+            </div>
+            <span class="csl-arrow">→</span>
+          </a>
+          <a href="tel:+15623731027" class="contact-social-link">
+            <div class="csl-left">
+              <span class="csl-ico">📞</span>
+              <div>
+                <div class="csl-name">Call or Text</div>
+                <div class="csl-handle">(562) 373-1027</div>
+              </div>
+            </div>
+            <span class="csl-arrow">→</span>
+          </a>
+          <a href="#catering-form" class="contact-social-link">
+            <div class="csl-left">
+              <span class="csl-ico">🎉</span>
+              <div>
+                <div class="csl-name">Book Catering</div>
+                <div class="csl-handle">Fill out our inquiry form</div>
+              </div>
+            </div>
+            <span class="csl-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS BAR
+  ============================================================ -->
+  <div style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;">
+    <div class="container">
+      <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap;text-align:center;">
+        <div><span style="font-family:var(--mono);font-size:28px;font-weight:800;color:var(--accent);">5+</span><br><span style="font-size:13px;color:var(--muted);">Years on the Streets</span></div>
+        <div><span style="font-family:var(--mono);font-size:28px;font-weight:800;color:var(--accent);">1,000+</span><br><span style="font-size:13px;color:var(--muted);">5-Star Reviews</span></div>
+        <div><span style="font-family:var(--mono);font-size:28px;font-weight:800;color:var(--accent);">4.9</span><br><span style="font-size:13px;color:var(--muted);">Google Rating</span></div>
+        <div><span style="font-family:var(--mono);font-size:28px;font-weight:800;color:var(--accent);">Health</span><br><span style="font-size:13px;color:var(--muted);">Dept. Certified</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       WHY CHOOSE US
+  ============================================================ -->
+  <section style="padding:80px 0;background:var(--bg);">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:40px;">
+        <span style="font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);">Why Fuego Birria</span>
+        <h2 style="font-size:32px;font-weight:800;margin-top:8px;">What Makes Us Different</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+        <div class="why-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:10px;">🥩</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Slow-Cooked 8+ Hours</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Our beef is slow-braised overnight in a blend of dried chiles and spices. No shortcuts.</div>
+        </div>
+        <div class="why-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:10px;">🧑‍🍳</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Handmade Tortillas Daily</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Fresh masa, pressed and griddled to order. You can taste the difference.</div>
+        </div>
+        <div class="why-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:10px;">📋</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Health Dept. Certified</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Fully permitted, health department inspected, and food handler certified. Safe and legit.</div>
+        </div>
+        <div class="why-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:10px;">🎉</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Catering Available</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Birthdays, weddings, corporate events, and private parties. We bring the heat to you.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICE AREA
+  ============================================================ -->
+  <div style="padding:32px 0;background:var(--bg2);text-align:center;">
+    <div class="container">
+      <span style="font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);">Service Area</span>
+      <p style="font-size:13px;color:var(--muted);font-family:var(--mono);margin-top:12px;">Los Angeles &middot; Orange County &middot; Long Beach &middot; Downey &middot; Whittier &middot; Norwalk &middot; Santa Ana &middot; Anaheim &middot; Fullerton &middot; All of SoCal</p>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span>🔥</span>
+        <span>Fuego <span class="accent-text">Birria</span> Co.</span>
+      </div>
+      <div class="footer-copy">
+        Fuego Birria Co. &copy; 2026 &middot; LA &amp; OC, CA
+      </div>
+      <div style="color:var(--muted);font-size:12px;margin:8px 0;"><a href="tel:+15623731027" style="color:var(--accent);">(562) 373-1027</a> &nbsp;&middot;&nbsp; Wed&ndash;Sun 5PM&ndash;Sold Out &nbsp;&middot;&nbsp; LA &middot; OC &middot; Long Beach &middot; Downey &middot; Whittier</div>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo &rarr;</a></div>
+      <div class="footer-credit">
+        Website by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a>
+        &middot; <a href="https://rivven.ai" target="_blank" rel="noopener">rivven.ai</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MOBILE BOTTOM CTA BAR
+  ============================================================ -->
+  <div class="mobile-cta-bar">
+    <a href="#location" class="mcta-primary">📍 Find Our Truck</a>
+    <a href="#catering-form" class="mcta-secondary">🎉 Catering</a>
+    <a href="https://rivven.ai/booking.html" target="_blank" style="flex:1;text-align:center;padding:10px 6px;font-size:13px;font-weight:700;color:#00f0ff;text-decoration:none;border-left:1px solid rgba(255,255,255,0.1)">🚀 Get My Site</a>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS (no external JS)
+  ============================================================ -->
+  <script>
+    // --- Hamburger toggle ---
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav    = document.getElementById('mobileNav');
+
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+
+    function closeMobileNav() {
+      hamburgerBtn.classList.remove('open');
+      mobileNav.classList.remove('open');
+    }
+
+    // Close mobile nav on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+        closeMobileNav();
+      }
+    });
+
+    // --- Menu category tabs ---
+    function showCategory(id, btn) {
+      document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('cat-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // --- Fire particles ---
+    (function spawnParticles() {
+      const container = document.getElementById('particles');
+      if (!container) return;
+      const colors = ['#FF4500', '#FF6A1A', '#FFA040', '#FFB830'];
+      for (let i = 0; i < 22; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.cssText = [
+          'left:' + (Math.random() * 100) + '%',
+          'bottom:' + (Math.random() * 30) + '%',
+          '--dur:' + (3 + Math.random() * 4) + 's',
+          '--delay:' + (Math.random() * 5) + 's',
+          'background:' + colors[Math.floor(Math.random() * colors.length)],
+          'width:' + (2 + Math.random() * 5) + 'px',
+          'height:' + (2 + Math.random() * 5) + 'px',
+          'opacity:0'
+        ].join(';');
+        container.appendChild(p);
+      }
+    })();
+
+    // --- Navbar scroll opacity ---
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        nav.style.background = 'rgba(10,10,11,0.97)';
+      } else {
+        nav.style.background = 'rgba(10,10,11,0.88)';
+      }
+    }, { passive: true });
+
+    // --- Smooth scroll for all anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // --- Intersection observer for subtle card entrance ---
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.menu-card, .catering-card, .review-card, .social-card, .location-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.2s';
+        observer.observe(el);
+      });
+    }
+  </script>
+</body>
+</html>

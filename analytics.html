@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Rivven Analytics | Sabino's Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+@media print{body *{display:none!important}body::after{content:'This document is confidential. Printing is disabled.';display:block;font-size:24px;text-align:center;padding:100px;color:#000}}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#08090d;--bg2:#0f1117;--bg3:#161922;--card:rgba(15,17,23,.85);
+--border:rgba(0,240,255,.1);--cyan:#00f0ff;--green:#22c55e;--red:#ef4444;
+--yellow:#eab308;--purple:#a855f7;--pink:#ec4899;--orange:#f97316;
+--text:#e8eaed;--text2:#8b949e;--text3:#484f58;
+--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;min-height:100dvh}
+a{color:var(--cyan);text-decoration:none}
+
+/* HEADER */
+.dash-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;position:sticky;top:0;background:rgba(8,9,13,.95);backdrop-filter:blur(20px);z-index:100}
+.dash-title{font-size:18px;font-weight:800;letter-spacing:1px}
+.dash-title span{color:var(--cyan)}
+.dash-date{font-family:var(--mono);font-size:13px;color:var(--text2)}
+.dash-mode{font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3);font-weight:600}
+
+/* LAYOUT */
+.dash-grid{max-width:1400px;margin:0 auto;padding:20px}
+.section{margin-bottom:28px}
+.section-title{font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:3px;height:16px;background:var(--cyan);border-radius:2px}
+
+/* METRIC CARDS */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;transition:.2s}
+.metric:hover{border-color:rgba(0,240,255,.3)}
+.metric-label{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.metric-val{font-family:var(--mono);font-size:28px;font-weight:800}
+.metric-val.green{color:var(--green)}
+.metric-val.red{color:var(--red)}
+.metric-val.cyan{color:var(--cyan)}
+.metric-val.yellow{color:var(--yellow)}
+.metric-val.purple{color:var(--purple)}
+.metric-sub{font-size:11px;color:var(--text3);margin-top:4px;font-family:var(--mono)}
+
+/* TABLES */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:10px 12px;border-bottom:2px solid var(--border);color:var(--text2);font-size:11px;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04);white-space:nowrap}
+tr:hover td{background:rgba(0,240,255,.03)}
+.badge{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:600;display:inline-block}
+.badge.live{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+.badge.pending{background:rgba(234,179,8,.15);color:var(--yellow);border:1px solid rgba(234,179,8,.25)}
+.badge.overdue{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.25)}
+.badge.paid{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.25)}
+.badge.demo{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid rgba(168,85,247,.25)}
+
+/* PROGRESS BARS */
+.progress-wrap{margin:12px 0}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.progress-bar{height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;transition:.5s}
+.progress-fill.green{background:linear-gradient(90deg,var(--green),#4ade80)}
+.progress-fill.cyan{background:linear-gradient(90deg,var(--cyan),#67e8f9)}
+.progress-fill.yellow{background:linear-gradient(90deg,var(--yellow),#facc15)}
+.progress-fill.purple{background:linear-gradient(90deg,var(--purple),#c084fc)}
+.progress-fill.red{background:linear-gradient(90deg,var(--red),#f87171)}
+
+/* CHART (simple bar) */
+.bar-chart{display:flex;align-items:flex-end;gap:6px;height:120px;padding:12px 0}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.bar{width:100%;border-radius:4px 4px 0 0;min-height:4px;transition:.3s}
+.bar-label{font-size:9px;color:var(--text3);font-family:var(--mono)}
+.bar-val{font-size:10px;color:var(--text2);font-family:var(--mono)}
+
+/* OUTREACH TRACKER */
+.outreach-row{display:grid;grid-template-columns:1fr 80px 80px 80px;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;align-items:center}
+.outreach-row.header{color:var(--text2);font-size:11px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid var(--border)}
+.outreach-num{font-family:var(--mono);font-weight:600;text-align:center}
+
+/* GOALS */
+.goal-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:10px}
+.goal-title{font-size:14px;font-weight:700;margin-bottom:8px}
+.goal-detail{font-size:12px;color:var(--text2)}
+
+/* EDITABLE */
+[contenteditable]{outline:none;border-bottom:1px dashed rgba(0,240,255,.2);padding-bottom:1px}
+[contenteditable]:focus{border-bottom-color:var(--cyan);background:rgba(0,240,255,.05)}
+
+/* NOTES */
+.notes-area{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;font-family:var(--mono);font-size:13px;color:var(--text);min-height:80px;width:100%;resize:vertical}
+
+/* SAVE BAR */
+.save-bar{position:fixed;bottom:0;left:0;right:0;padding:12px 24px;background:rgba(8,9,13,.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;z-index:100}
+.save-btn{background:var(--cyan);color:#000;border:none;padding:10px 24px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font)}
+.save-btn:hover{opacity:.9}
+.save-status{font-size:12px;color:var(--text2);font-family:var(--mono)}
+.export-btn{background:transparent;color:var(--cyan);border:1px solid rgba(0,240,255,.3);padding:8px 16px;border-radius:8px;font-weight:600;font-size:12px;cursor:pointer;font-family:var(--font)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric-val{font-size:22px}
+  .dash-header{padding:14px 16px}
+  .dash-grid{padding:14px}
+  table{font-size:12px}
+  td,th{padding:8px}
+}
+@media(max-width:480px){
+  .metrics{grid-template-columns:1fr 1fr}
+  .metric{padding:12px}
+}
+
+@media print{
+  body{background:#fff;color:#000}
+  .save-bar{display:none}
+  .dash-header{background:#fff;border-bottom:2px solid #000}
+  .metric,.goal-card{border:1px solid #ccc}
+  .metric-val{color:#000!important}
+  .badge{border:1px solid #666!important}
+}
+</style>
+</head>
+<body>
+<!-- PASSWORD GATE -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#08090d;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;font-family:'Inter',sans-serif;color:#e8eaed">
+  <div style="font-size:24px;font-weight:900">🔒</div>
+  <div style="font-size:16px;font-weight:700">Access Code Required</div>
+  <div style="color:#8b949e;font-size:13px">Enter the 4-digit code</div>
+  <input type="password" id="codeInput" maxlength="4" placeholder="••••" style="width:140px;text-align:center;padding:14px;background:#0f1117;border:2px solid rgba(0,240,255,.1);border-radius:10px;color:#e8eaed;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:8px;outline:none" onkeyup="checkCode()" autofocus>
+  <div id="codeError" style="color:#ef4444;font-size:12px;display:none">Wrong code.</div>
+</div>
+<div id="content" style="display:none">
+
+<header class="dash-header">
+  <div>
+    <div class="dash-title">RIVVEN ANALYTICS</div>
+    <div class="dash-date" id="currentDate"></div>
+  </div>
+  <div class="dash-mode">OWNER ONLY</div>
+</header>
+
+<div class="dash-grid">
+
+<!-- ============ REVENUE OVERVIEW ============ -->
+<div class="section">
+  <div class="section-title">Revenue Overview</div>
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label">Total Earned</div>
+      <div class="metric-val green" contenteditable="true" data-key="totalEarned">$100</div>
+      <div class="metric-sub">all time</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Outstanding</div>
+      <div class="metric-val yellow" contenteditable="true" data-key="outstanding">$1,347</div>
+      <div class="metric-sub">owed to you</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Pipeline</div>
+      <div class="metric-val cyan" contenteditable="true" data-key="pipeline">$2,600</div>
+      <div class="metric-sub">potential deals</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">MRR</div>
+      <div class="metric-val purple" contenteditable="true" data-key="mrr">$100</div>
+      <div class="metric-sub">monthly recurring</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Goal: Monthly</div>
+      <div class="metric-val cyan" contenteditable="true" data-key="monthlyGoal">$5,000</div>
+      <div class="metric-sub">target</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Active Clients</div>
+      <div class="metric-val green" contenteditable="true" data-key="activeClients">2</div>
+      <div class="metric-sub">paying</div>
+    </div>
+  </div>
+
+  <!-- Revenue progress to goal -->
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Revenue vs $5K Goal</span>
+      <span id="revPct">2%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill green" id="revBar" style="width:2%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CLIENTS ============ -->
+<div class="section">
+  <div class="section-title">Client Breakdown</div>
+  <div class="table-wrap">
+    <table id="clientTable">
+      <thead>
+        <tr><th>Client</th><th>Status</th><th>Setup Fee</th><th>Monthly</th><th>Paid</th><th>Owed</th><th>Next Action</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>West Capital (Manny)</strong></td>
+          <td><span class="badge live">LIVE</span></td>
+          <td contenteditable="true">$997</td>
+          <td contenteditable="true">$0</td>
+          <td contenteditable="true">$0</td>
+          <td contenteditable="true">$997</td>
+          <td contenteditable="true">Invoice resolved</td>
+        </tr>
+        <tr>
+          <td><strong>Allendes Group (Santiago)</strong></td>
+          <td><span class="badge live">LIVE</span></td>
+          <td contenteditable="true">$500</td>
+          <td contenteditable="true">$100</td>
+          <td contenteditable="true">$150</td>
+          <td contenteditable="true">$350</td>
+          <td contenteditable="true">$100 due Apr 4</td>
+        </tr>
+        <tr>
+          <td><strong>Reynoso's (Raul)</strong></td>
+          <td><span class="badge pending">PENDING</span></td>
+          <td contenteditable="true">$599</td>
+          <td contenteditable="true">$0</td>
+          <td contenteditable="true">$0</td>
+          <td contenteditable="true">$599</td>
+          <td contenteditable="true">Call (310) 291-6004</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button onclick="addClientRow()" style="margin-top:10px;background:transparent;color:var(--cyan);border:1px dashed rgba(0,240,255,.3);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font)">+ Add Client</button>
+</div>
+
+<!-- ============ WEEKLY REVENUE CHART ============ -->
+<div class="section">
+  <div class="section-title">Weekly Revenue (Editable)</div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px">
+    <div class="bar-chart" id="weeklyChart"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px" id="weekInputs"></div>
+  </div>
+</div>
+
+<!-- ============ OUTREACH TRACKER ============ -->
+<div class="section">
+  <div class="section-title">Outreach This Week</div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:4px 0;overflow:hidden">
+    <div class="outreach-row header">
+      <span>Channel</span><span>Sent</span><span>Replies</span><span>Calls</span>
+    </div>
+    <div class="outreach-row">
+      <span>Instagram DMs</span>
+      <span class="outreach-num" contenteditable="true" data-key="ig_sent">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="ig_replies">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="ig_calls">0</span>
+    </div>
+    <div class="outreach-row">
+      <span>Cold Email</span>
+      <span class="outreach-num" contenteditable="true" data-key="email_sent">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="email_replies">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="email_calls">0</span>
+    </div>
+    <div class="outreach-row">
+      <span>LinkedIn</span>
+      <span class="outreach-num" contenteditable="true" data-key="li_sent">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="li_replies">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="li_calls">0</span>
+    </div>
+    <div class="outreach-row">
+      <span>Loom Videos</span>
+      <span class="outreach-num" contenteditable="true" data-key="loom_sent">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="loom_replies">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="loom_calls">0</span>
+    </div>
+    <div class="outreach-row">
+      <span>Referrals</span>
+      <span class="outreach-num" contenteditable="true" data-key="ref_sent">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="ref_replies">0</span>
+      <span class="outreach-num" contenteditable="true" data-key="ref_calls">0</span>
+    </div>
+    <div class="outreach-row" style="border-top:2px solid var(--border);font-weight:700">
+      <span>TOTAL</span>
+      <span class="outreach-num" id="outTotal_sent">0</span>
+      <span class="outreach-num" id="outTotal_replies">0</span>
+      <span class="outreach-num" id="outTotal_calls">0</span>
+    </div>
+  </div>
+
+  <!-- Outreach goals -->
+  <div class="metrics" style="margin-top:12px">
+    <div class="metric">
+      <div class="metric-label">Reply Rate</div>
+      <div class="metric-val cyan" id="replyRate">0%</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Call Rate</div>
+      <div class="metric-val green" id="callRate">0%</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Close Rate</div>
+      <div class="metric-val purple" contenteditable="true" data-key="closeRate">0%</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Target: DMs/Week</div>
+      <div class="metric-val yellow">150</div>
+      <div class="metric-sub">20-30/day</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SITE PERFORMANCE ============ -->
+<div class="section">
+  <div class="section-title">Live Sites</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Site</th><th>URL</th><th>Status</th><th>Schema</th><th>GA4</th><th>Speed</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rivven</td>
+          <td><a href="https://rivven.ai" target="_blank">rivven.ai</a></td>
+          <td><span class="badge live">LIVE</span></td>
+          <td><span class="badge live">YES</span></td>
+          <td><span class="badge pending">PLACEHOLDER</span></td>
+          <td contenteditable="true" data-key="speed_elevation">--</td>
+        </tr>
+        <tr>
+          <td>West Capital Quote</td>
+          <td><a href="https://sabino7sanchez-ship-it.github.io/west-capital-quote/" target="_blank">GitHub Pages</a></td>
+          <td><span class="badge live">LIVE</span></td>
+          <td><span class="badge live">YES</span></td>
+          <td><span class="badge pending">PLACEHOLDER</span></td>
+          <td contenteditable="true" data-key="speed_wc">--</td>
+        </tr>
+        <tr>
+          <td>Reynoso's Handyman</td>
+          <td><a href="https://sabino7sanchez-ship-it.github.io/reynosos-handyman/" target="_blank">GitHub Pages</a></td>
+          <td><span class="badge live">LIVE</span></td>
+          <td><span class="badge live">YES</span></td>
+          <td><span class="badge pending">PLACEHOLDER</span></td>
+          <td contenteditable="true" data-key="speed_rey">--</td>
+        </tr>
+        <tr>
+          <td>Allendes Construction</td>
+          <td><a href="https://allendes-construction.netlify.app" target="_blank">Netlify</a></td>
+          <td><span class="badge live">LIVE</span></td>
+          <td><span class="badge live">YES</span></td>
+          <td><span class="badge pending">PLACEHOLDER</span></td>
+          <td contenteditable="true" data-key="speed_all">--</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="metrics" style="margin-top:12px">
+    <div class="metric">
+      <div class="metric-label">Demo Sites</div>
+      <div class="metric-val cyan">18</div>
+      <div class="metric-sub">live on rivven.ai/demos/</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Agent Command Center</div>
+      <div class="metric-val purple">100</div>
+      <div class="metric-sub">agents deployed</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Total Pages Built</div>
+      <div class="metric-val green" contenteditable="true" data-key="totalPages">26</div>
+      <div class="metric-sub">sites + demos + tools</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ EXPENSES ============ -->
+<div class="section">
+  <div class="section-title">Monthly Expenses</div>
+  <div class="table-wrap">
+    <table id="expenseTable">
+      <thead>
+        <tr><th>Item</th><th>Cost</th><th>Category</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>rivven.ai</td>
+          <td contenteditable="true">$10.44/yr</td>
+          <td>Domain</td>
+          <td contenteditable="true">Cloudflare</td>
+        </tr>
+        <tr>
+          <td>GitHub Pages</td>
+          <td>$0</td>
+          <td>Hosting</td>
+          <td>Free tier</td>
+        </tr>
+        <tr>
+          <td>Netlify</td>
+          <td>$0</td>
+          <td>Hosting</td>
+          <td>Free tier (Allendes)</td>
+        </tr>
+        <tr>
+          <td>Claude Pro</td>
+          <td contenteditable="true">$20/mo</td>
+          <td>AI Tools</td>
+          <td contenteditable="true">Main dev tool</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button onclick="addExpenseRow()" style="margin-top:10px;background:transparent;color:var(--cyan);border:1px dashed rgba(0,240,255,.3);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font)">+ Add Expense</button>
+  <div class="metrics" style="margin-top:12px">
+    <div class="metric">
+      <div class="metric-label">Total Monthly</div>
+      <div class="metric-val red" contenteditable="true" data-key="totalExpenses">$20.87</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Profit Margin</div>
+      <div class="metric-val green" id="profitMargin">--</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GOALS & MILESTONES ============ -->
+<div class="section">
+  <div class="section-title">Goals & Milestones</div>
+
+  <div class="goal-card">
+    <div class="goal-title">5 Paying Clients</div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>2 of 5</span><span>40%</span></div>
+      <div class="progress-bar"><div class="progress-fill cyan" style="width:40%"></div></div>
+    </div>
+    <div class="goal-detail" contenteditable="true">Allendes + West Capital. Need 3 more. Raul close + 2 from outreach.</div>
+  </div>
+
+  <div class="goal-card">
+    <div class="goal-title">$5,000/month Revenue</div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>$100 of $5,000</span><span>2%</span></div>
+      <div class="progress-bar"><div class="progress-fill green" style="width:2%"></div></div>
+    </div>
+    <div class="goal-detail" contenteditable="true">Need Growth tier clients at $1K-2K/mo. 3-5 clients at this tier hits the goal.</div>
+  </div>
+
+  <div class="goal-card">
+    <div class="goal-title">First House Flip</div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>Researching</span><span>5%</span></div>
+      <div class="progress-bar"><div class="progress-fill purple" style="width:5%"></div></div>
+    </div>
+    <div class="goal-detail" contenteditable="true">Target: Pico Rivera/Norwalk/Downey. Max $650K, $100K reno, $300-400/sqft. 800 credit score. Need cash reserves first.</div>
+  </div>
+
+  <div class="goal-card">
+    <div class="goal-title">100 Instagram DMs Sent</div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span id="dmProgress">0 of 100</span><span id="dmPct">0%</span></div>
+      <div class="progress-bar"><div class="progress-fill yellow" id="dmBar" style="width:0%"></div></div>
+    </div>
+    <div class="goal-detail" contenteditable="true">Goal: 100 DMs in first 2 weeks. 10/day minimum.</div>
+  </div>
+</div>
+
+<!-- ============ TIME TRACKER ============ -->
+<div class="section">
+  <div class="section-title">Weekly Time Allocation</div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px">
+    <div class="progress-wrap">
+      <div class="progress-label"><span>Pacific Green Trucking (M-F 6AM)</span><span contenteditable="true" data-key="hours_trucking">40h</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:48%;background:var(--text3)"></div></div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>CSUF (Tue/Thu 4-7PM)</span><span contenteditable="true" data-key="hours_csuf">6h</span></div>
+      <div class="progress-bar"><div class="progress-fill purple" style="width:7%"></div></div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>Rivven Work</span><span contenteditable="true" data-key="hours_ai">25h</span></div>
+      <div class="progress-bar"><div class="progress-fill cyan" style="width:30%"></div></div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>Outreach / Sales</span><span contenteditable="true" data-key="hours_sales">5h</span></div>
+      <div class="progress-bar"><div class="progress-fill green" style="width:6%"></div></div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>Sleep / Personal</span><span contenteditable="true" data-key="hours_sleep">~7h/day</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:42%;background:rgba(255,255,255,.08)"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NOTES ============ -->
+<div class="section">
+  <div class="section-title">Quick Notes</div>
+  <textarea class="notes-area" id="quickNotes" placeholder="Type anything here... strategy ideas, follow-up reminders, wins, lessons learned..."></textarea>
+</div>
+
+</div><!-- end dash-grid -->
+
+<!-- SAVE BAR -->
+<div class="save-bar">
+  <div>
+    <button class="save-btn" onclick="saveAll()">Save Dashboard</button>
+    <span class="save-status" id="saveStatus">Auto-saves to browser</span>
+  </div>
+  <div style="display:flex;gap:8px">
+    <button class="export-btn" onclick="exportJSON()">Export JSON</button>
+    <button class="export-btn" onclick="window.print()">Print / PDF</button>
+  </div>
+</div>
+
+<div style="height:70px"></div><!-- spacer for save bar -->
+
+<script>
+// ============================== //
+//  DATE                           //
+// ============================== //
+document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'}) + ' | ' + new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+
+// ============================== //
+//  LOCAL STORAGE PERSISTENCE      //
+// ============================== //
+const STORAGE_KEY = 'rivven_analytics_v1';
+
+function loadData(){
+  try{
+    const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if(!d) return;
+
+    // Restore contenteditable fields
+    document.querySelectorAll('[data-key]').forEach(el=>{
+      if(d[el.dataset.key] !== undefined) el.textContent = d[el.dataset.key];
+    });
+
+    // Restore notes
+    if(d.quickNotes) document.getElementById('quickNotes').value = d.quickNotes;
+
+    // Restore weekly chart
+    if(d.weeklyRevenue){
+      weeklyData = d.weeklyRevenue;
+    }
+
+    // Restore outreach totals
+    calcOutreach();
+  }catch(e){console.error('Load error:',e)}
+}
+
+function saveAll(){
+  const d = {};
+
+  // Save contenteditable fields
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    d[el.dataset.key] = el.textContent;
+  });
+
+  // Save notes
+  d.quickNotes = document.getElementById('quickNotes').value;
+
+  // Save weekly chart
+  d.weeklyRevenue = weeklyData;
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
+
+  const s = document.getElementById('saveStatus');
+  s.textContent = 'Saved!';
+  s.style.color = 'var(--green)';
+  setTimeout(()=>{s.textContent='Auto-saves to browser';s.style.color=''},2000);
+}
+
+function exportJSON(){
+  const d = {};
+  document.querySelectorAll('[data-key]').forEach(el=>{d[el.dataset.key]=el.textContent});
+  d.quickNotes = document.getElementById('quickNotes').value;
+  d.weeklyRevenue = weeklyData;
+  d.exportDate = new Date().toISOString();
+
+  const blob = new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `rivven-analytics-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+}
+
+// ============================== //
+//  WEEKLY CHART                   //
+// ============================== //
+let weeklyData = [0,0,0,0,0,0,0,0,0,0,0,0];
+const weekLabels = ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'];
+
+function renderChart(){
+  const chart = document.getElementById('weeklyChart');
+  const inputs = document.getElementById('weekInputs');
+  const max = Math.max(...weeklyData, 500);
+
+  chart.innerHTML = '';
+  inputs.innerHTML = '';
+
+  weeklyData.forEach((val,i)=>{
+    const pct = max > 0 ? (val/max)*100 : 0;
+    const col = document.createElement('div');
+    col.className = 'bar-col';
+    col.innerHTML = `
+      <div class="bar-val">$${val}</div>
+      <div class="bar" style="height:${Math.max(pct,3)}%;background:${val>0?'var(--cyan)':'rgba(255,255,255,.06)'}"></div>
+      <div class="bar-label">${weekLabels[i]}</div>
+    `;
+    chart.appendChild(col);
+
+    const inp = document.createElement('input');
+    inp.type='number';inp.value=val;inp.min=0;
+    inp.style.cssText='width:60px;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:4px 6px;border-radius:6px;font-size:11px;font-family:var(--mono);text-align:center';
+    inp.placeholder=weekLabels[i];
+    inp.addEventListener('input',()=>{weeklyData[i]=parseInt(inp.value)||0;renderChart()});
+    inputs.appendChild(inp);
+  });
+}
+
+// ============================== //
+//  OUTREACH CALC                  //
+// ============================== //
+function calcOutreach(){
+  const channels = ['ig','email','li','loom','ref'];
+  let totalSent=0, totalReplies=0, totalCalls=0;
+
+  channels.forEach(ch=>{
+    const s = parseInt(document.querySelector(`[data-key="${ch}_sent"]`)?.textContent)||0;
+    const r = parseInt(document.querySelector(`[data-key="${ch}_replies"]`)?.textContent)||0;
+    const c = parseInt(document.querySelector(`[data-key="${ch}_calls"]`)?.textContent)||0;
+    totalSent+=s; totalReplies+=r; totalCalls+=c;
+  });
+
+  document.getElementById('outTotal_sent').textContent = totalSent;
+  document.getElementById('outTotal_replies').textContent = totalReplies;
+  document.getElementById('outTotal_calls').textContent = totalCalls;
+  document.getElementById('replyRate').textContent = totalSent>0 ? Math.round((totalReplies/totalSent)*100)+'%' : '0%';
+  document.getElementById('callRate').textContent = totalSent>0 ? Math.round((totalCalls/totalSent)*100)+'%' : '0%';
+
+  // Update DM goal
+  const igSent = parseInt(document.querySelector('[data-key="ig_sent"]')?.textContent)||0;
+  const pct = Math.min(Math.round((igSent/100)*100),100);
+  document.getElementById('dmProgress').textContent = `${igSent} of 100`;
+  document.getElementById('dmPct').textContent = pct+'%';
+  document.getElementById('dmBar').style.width = pct+'%';
+}
+
+// ============================== //
+//  ADD ROWS                       //
+// ============================== //
+function addClientRow(){
+  const tbody = document.getElementById('clientTable').querySelector('tbody');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td contenteditable="true"><strong>New Client</strong></td>
+    <td><span class="badge pending">PENDING</span></td>
+    <td contenteditable="true">$0</td>
+    <td contenteditable="true">$0</td>
+    <td contenteditable="true">$0</td>
+    <td contenteditable="true">$0</td>
+    <td contenteditable="true">--</td>
+  `;
+  tbody.appendChild(tr);
+}
+
+function addExpenseRow(){
+  const tbody = document.getElementById('expenseTable').querySelector('tbody');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td contenteditable="true">New item</td>
+    <td contenteditable="true">$0</td>
+    <td contenteditable="true">--</td>
+    <td contenteditable="true">--</td>
+  `;
+  tbody.appendChild(tr);
+}
+
+// ============================== //
+//  AUTOSAVE + INIT                //
+// ============================== //
+
+// Recalc outreach on any edit
+document.addEventListener('input', function(e){
+  if(e.target.matches('[data-key*="_sent"],[data-key*="_replies"],[data-key*="_calls"]')){
+    calcOutreach();
+  }
+});
+
+// Auto-save every 30 seconds
+setInterval(saveAll, 30000);
+
+// Load + render
+loadData();
+renderChart();
+calcOutreach();
+</script>
+</div><!-- end #content -->
+<script>
+function checkCode(){var v=document.getElementById('codeInput').value;if(v.length===4){if(v==='6767'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block';sessionStorage.setItem('ea_auth','1')}else{document.getElementById('codeError').style.display='block';document.getElementById('codeInput').value='';document.getElementById('codeInput').style.borderColor='#ef4444';setTimeout(function(){document.getElementById('codeInput').style.borderColor='rgba(0,240,255,.1)';document.getElementById('codeError').style.display='none'},1500)}}}
+if(sessionStorage.getItem('ea_auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block'}
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&(e.key==='c'||e.key==='u'||e.key==='s'||e.key==='p')){e.preventDefault();return false}
+  if(e.key==='F12'||e.key==='PrintScreen'){e.preventDefault();return false}
+  if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C')){e.preventDefault();return false}
+});
+</script>
+</body>
+</html>

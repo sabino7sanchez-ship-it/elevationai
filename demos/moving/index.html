@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swift Movers LA — Moving Day, Made Easy</title>
+  <meta name="description" content="Swift Movers LA — Professional local and long-distance moving services in Los Angeles. Licensed & insured, background-checked movers. Free estimates." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MovingCompany",
+    "name": "Swift Movers LA",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://swiftmoversla.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "07:00", "closes": "20:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "567"
+    },
+    "areaServed": ["Los Angeles","Long Beach","Burbank","Glendale","Pasadena","Torrance","Santa Monica","Anaheim","Irvine","Riverside"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111113;
+      --bg3: #18181B;
+      --bg4: #1E1E22;
+      --orange: #FF6B35;
+      --orange-dim: #CC5528;
+      --orange-glow: rgba(255, 107, 53, 0.15);
+      --orange-glow-strong: rgba(255, 107, 53, 0.25);
+      --text: #F4F4F5;
+      --text-muted: #A1A1AA;
+      --text-dim: #71717A;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-orange: rgba(255, 107, 53, 0.3);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow-orange: 0 0 40px rgba(255, 107, 53, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== SCROLLBAR ========== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--orange-dim); border-radius: 3px; }
+
+    /* ========== NAV ========== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 11, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--orange);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--text-muted); font-weight: 400; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      transition: background 0.2s, transform 0.1s !important;
+    }
+
+    .nav-cta:hover { background: #e55a2b !important; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(10, 10, 11, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 5%;
+      z-index: 999;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--orange); }
+
+    .mobile-menu .m-cta {
+      background: var(--orange);
+      color: #fff !important;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600 !important;
+      border-bottom: none !important;
+      margin-top: 0.5rem;
+    }
+
+    /* ========== SECTIONS ========== */
+    section { padding: 100px 5%; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin-bottom: 3rem;
+    }
+
+    /* ========== HERO ========== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 30%, rgba(255, 107, 53, 0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(255, 107, 53, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(255, 107, 53, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange-glow);
+      border: 1px solid var(--border-orange);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--orange);
+      margin-bottom: 1.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    h1 {
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 .accent { color: var(--orange); }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange);
+      color: #fff;
+      padding: 0.875rem 1.75rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(255, 107, 53, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #e55a2b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 107, 53, 0.45);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      padding: 0.875rem 1.75rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--orange);
+      background: var(--orange-glow);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {}
+    .hero-stat .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .hero-stat .lbl {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ========== SERVICES ========== */
+    #services { background: var(--bg2); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--border-orange);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(255, 107, 53, 0.12);
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-emoji {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .service-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--orange);
+      font-weight: 600;
+      background: var(--orange-glow);
+      border: 1px solid var(--border-orange);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    /* ========== CALCULATOR ========== */
+    #calculator { background: var(--bg); }
+
+    .calc-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .calc-form {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+
+    .calc-form h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .form-group select,
+    .form-group input {
+      width: 100%;
+      background: var(--bg4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A1A1AA' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .form-group select:focus,
+    .form-group input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px var(--orange-glow);
+    }
+
+    .form-group select option { background: var(--bg4); }
+
+    .calc-result {
+      background: var(--bg3);
+      border: 1px solid var(--border-orange);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: sticky;
+      top: 88px;
+    }
+
+    .calc-result h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .result-line:last-of-type { border-bottom: none; }
+
+    .result-line .r-label { color: var(--text-muted); }
+    .result-line .r-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .result-total {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 2px solid var(--border-orange);
+    }
+
+    .result-total .r-label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .result-total .r-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--orange);
+    }
+
+    .result-disclaimer {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-top: 1rem;
+      line-height: 1.5;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .calc-cta-btn {
+      width: 100%;
+      margin-top: 1.25rem;
+      padding: 0.875rem;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .calc-cta-btn:hover {
+      background: #e55a2b;
+      transform: translateY(-1px);
+    }
+
+    .result-zero {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    .result-zero .icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+
+    /* ========== WHY SWIFT ========== */
+    #why { background: var(--bg2); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .why-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .why-card:hover {
+      border-color: var(--border-orange);
+      transform: translateY(-3px);
+    }
+
+    .why-icon {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .why-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ========== REVIEWS ========== */
+    #reviews { background: var(--bg); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color 0.3s;
+    }
+
+    .review-card:hover { border-color: var(--border-orange); }
+
+    .stars {
+      color: #FBBF24;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--orange-glow);
+      border: 1px solid var(--border-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .review-author-info .name {
+      font-size: 0.875rem;
+      font-weight: 700;
+    }
+
+    .review-author-info .location {
+      font-size: 0.775rem;
+      color: var(--text-dim);
+    }
+
+    .review-badge {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--orange);
+      background: var(--orange-glow);
+      border: 1px solid var(--border-orange);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* ========== QUOTE FORM ========== */
+    #quote-form { background: var(--bg2); }
+
+    .qform-wrapper {
+      max-width: 680px;
+    }
+
+    .qform {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+    }
+
+    .qform-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .qform .form-group input,
+    .qform .form-group select,
+    .qform .form-group textarea {
+      width: 100%;
+      background: var(--bg4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .qform .form-group select {
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A1A1AA' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .qform .form-group input:focus,
+    .qform .form-group select:focus,
+    .qform .form-group textarea:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px var(--orange-glow);
+    }
+
+    .qform .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .qform .form-group select option { background: var(--bg4); }
+
+    .qform-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(255,107,53,0.3);
+    }
+
+    .qform-submit:hover {
+      background: #e55a2b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255,107,53,0.4);
+    }
+
+    .form-privacy {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+
+    /* ========== CONTACT ========== */
+    #contact { background: var(--bg); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-info-block h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .contact-item-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item-val {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .contact-item-val a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    .license-block {
+      background: var(--bg3);
+      border: 1px solid var(--border-orange);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .license-block h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .license-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .license-item:last-child { border-bottom: none; }
+    .license-item span:first-child { color: var(--text-muted); }
+    .license-item span:last-child {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .service-area-block {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .service-area-block h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .area-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .area-tag {
+      font-size: 0.775rem;
+      background: var(--bg4);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      color: var(--text-muted);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-left {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .footer-left strong { color: var(--text-muted); }
+
+    .footer-right {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .footer-right a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-right a:hover { text-decoration: underline; }
+
+    /* ========== MOBILE BOTTOM BANNER ========== */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(10, 10, 11, 0.97);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border);
+      padding: 0.75rem 5%;
+      z-index: 990;
+      gap: 0.75rem;
+    }
+
+    .mobile-cta-bar a {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .mcb-call {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .mcb-quote {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ========== DIVIDERS ========== */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .calc-wrapper { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .calc-result { position: static; }
+    }
+
+    @media (max-width: 700px) {
+      section { padding: 80px 5%; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { gap: 1.5rem; }
+      .qform-row { grid-template-columns: 1fr; }
+      .mobile-cta-bar { display: flex; }
+      footer { padding-bottom: 5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Swift Movers<span>.LA</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#calculator">Quote</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#quote-form" class="nav-cta">Get Free Quote</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mob-link">Services</a>
+    <a href="#calculator" class="mob-link">Quote Calculator</a>
+    <a href="#reviews" class="mob-link">Reviews</a>
+    <a href="#contact" class="mob-link">Contact</a>
+    <a href="#quote-form" class="mob-link m-cta">Get Free Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-mesh"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">Licensed &amp; Insured &nbsp;·&nbsp; Free Estimates</div>
+      <h1>Moving Day.<br><span class="accent">Made Easy.</span></h1>
+      <p class="hero-sub">Local and long-distance moves handled by professional, background-checked movers. Fast, careful, and affordable.</p>
+      <div class="hero-ctas">
+        <a href="#quote-form" class="btn-primary">📦 Get Free Quote</a>
+        <a href="tel:+15623731027" class="btn-secondary">📞 Call Now: (562) 373-1027</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">2,400+</div>
+          <div class="lbl">Moves Completed</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">4.9★</div>
+          <div class="lbl">Average Rating</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">10+</div>
+          <div class="lbl">Years in LA</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">$0</div>
+          <div class="lbl">Hidden Fees</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What We Do</div>
+    <div class="divider"></div>
+    <h2>Full-Service Moving Solutions</h2>
+    <p class="section-sub">From a studio apartment to a full office relocation — we handle everything with care, speed, and zero surprises.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-emoji">🏠</span>
+        <h3>Local Move</h3>
+        <p>Same-day local moves across Los Angeles and surrounding cities. Our team arrives on time and works fast — so you're settled by sundown.</p>
+        <span class="service-price">From $250 · Same-Day Available</span>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">🚛</span>
+        <h3>Long Distance</h3>
+        <p>Moving beyond LA? We handle inter-state and cross-California moves with GPS tracking, blanket-wrapped furniture, and real-time updates.</p>
+        <span class="service-price">From $750 · Tracking Included</span>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">🏢</span>
+        <h3>Apartment Move</h3>
+        <p>Tight hallways, no elevator? No problem. Our crew is trained for high-rise and complex apartment moves in DTLA, WeHo, and beyond.</p>
+        <span class="service-price">From $300 · High-Rise Friendly</span>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">💼</span>
+        <h3>Office Relocation</h3>
+        <p>Minimize downtime with a weekend or after-hours office move. We pack, label, and reassemble your workspace at the new location.</p>
+        <span class="service-price">From $600 · After-Hours Scheduling</span>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">📦</span>
+        <h3>Packing Services</h3>
+        <p>Let our crew handle packing using professional materials — fragile items double-wrapped, electronics padded, labels on every box.</p>
+        <span class="service-price">From $150 · All Materials Included</span>
+      </div>
+      <div class="service-card">
+        <span class="service-emoji">🗄️</span>
+        <h3>Storage Solutions</h3>
+        <p>Need a place to put your items between moves? We partner with secure, climate-controlled storage facilities across Los Angeles County.</p>
+        <span class="service-price">From $99/mo · Climate-Controlled</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="calculator">
+    <div class="section-label">Instant Pricing</div>
+    <div class="divider"></div>
+    <h2>Moving Quote Calculator</h2>
+    <p class="section-sub">Get a real estimate in seconds. No email required — just fill in the details below.</p>
+    <div class="calc-wrapper">
+      <div class="calc-form">
+        <h3>📋 Tell Us About Your Move</h3>
+        <div class="form-group">
+          <label for="moveType">Move Type</label>
+          <select id="moveType">
+            <option value="local">Local (within LA County)</option>
+            <option value="longdistance">Long Distance</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="homeSize">Home Size</label>
+          <select id="homeSize">
+            <option value="studio">Studio</option>
+            <option value="1br">1 Bedroom</option>
+            <option value="2br">2 Bedrooms</option>
+            <option value="3br">3 Bedrooms</option>
+            <option value="4br">4 Bedrooms</option>
+            <option value="5br">5+ Bedrooms</option>
+          </select>
+        </div>
+        <div class="form-group" id="distanceGroup" style="display:none;">
+          <label for="distance">Distance (miles)</label>
+          <input type="number" id="distance" min="0" max="3000" placeholder="e.g. 150" value="" />
+        </div>
+        <div class="form-group">
+          <label for="moveDate">Moving Date</label>
+          <select id="moveDate">
+            <option value="0">Weekday (Mon–Thu)</option>
+            <option value="75">Weekend (Fri–Sun) +$75</option>
+            <option value="150">Holiday +$150</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="packing">Packing Service</label>
+          <select id="packing">
+            <option value="0">No Packing (DIY)</option>
+            <option value="150">Partial Packing (fragile only) +$150</option>
+            <option value="300">Full Packing Service +$300</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-result" id="calcResult">
+        <h3>💰 Your Estimate</h3>
+        <div id="resultContent">
+          <div class="result-zero">
+            <span class="icon">🚛</span>
+            Your quote will appear here.<br>All fields update the total in real time.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SWIFT -->
+  <section id="why">
+    <div class="section-label">Why Swift</div>
+    <div class="divider"></div>
+    <h2>The Swift Movers Difference</h2>
+    <p class="section-sub">We built this company on trust. Here's what sets us apart from the other guys.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🔒</span>
+        <h3>No Hidden Fees</h3>
+        <p>What we quote is what you pay. No surprise fuel surcharges, no stair fees buried in fine print. Ever.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">📜</span>
+        <h3>Fully Licensed CPUC</h3>
+        <p>CPUC License #MTR0192847. We're fully bonded, insured, and compliant with all California moving regulations.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">👔</span>
+        <h3>Free Wardrobe Boxes</h3>
+        <p>Every move includes free wardrobe boxes for your hanging clothes — kept clean and wrinkle-free in transit.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⏰</span>
+        <h3>On-Time Guarantee</h3>
+        <p>We show up when we say we will. If we're late, you get 10% off your final bill — no questions asked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="section-label">Customer Reviews</div>
+    <div class="divider"></div>
+    <h2>Trusted by LA Renters &amp; Homeowners</h2>
+    <p class="section-sub">Don't take our word for it — here's what our customers say after moving day.</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"I've moved 4 times in LA and this was by far the smoothest. They showed up 10 minutes early, wrapped everything without being asked, and had us out in under 3 hours. No damage, no drama. Absolute pros."</p>
+        <div class="review-author">
+          <div class="review-avatar">👩</div>
+          <div class="review-author-info">
+            <div class="name">Marissa T.</div>
+            <div class="location">Silver Lake → Echo Park</div>
+          </div>
+          <span class="review-badge">Verified</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Used them for a long-distance move from LA to San Diego. They packed my kitchen in an hour flat, and everything arrived in perfect condition. Pricing was totally fair and matched the quote. 10/10 would use again."</p>
+        <div class="review-author">
+          <div class="review-avatar">👨</div>
+          <div class="review-author-info">
+            <div class="name">Derek L.</div>
+            <div class="location">Torrance → San Diego</div>
+          </div>
+          <span class="review-badge">Verified</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Moved from a 3-bedroom house and was dreading it. Swift made it feel easy. The crew was respectful of our stuff, super fast, and even helped reassemble the beds. The free wardrobe boxes were a nice surprise too!"</p>
+        <div class="review-author">
+          <div class="review-avatar">👩‍👧</div>
+          <div class="review-author-info">
+            <div class="name">Claudia &amp; Family</div>
+            <div class="location">Downey → Norwalk</div>
+          </div>
+          <span class="review-badge">Verified</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section id="quote-form">
+    <div class="section-label">Request a Quote</div>
+    <div class="divider"></div>
+    <h2>Get Your Free Moving Quote</h2>
+    <p class="section-sub">Fill out the form and we'll reach out within 2 hours with a detailed estimate — no commitment required.</p>
+    <div class="qform-wrapper">
+      <form class="qform" action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Moving Quote - Swift Movers LA" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="https://rivven.ai/demos/moving/#thank-you" />
+
+        <div class="qform-row">
+          <div class="form-group">
+            <label for="fname">Full Name *</label>
+            <input type="text" id="fname" name="Full Name" placeholder="Maria Garcia" required />
+          </div>
+          <div class="form-group">
+            <label for="fphone">Phone Number *</label>
+            <input type="tel" id="fphone" name="Phone" placeholder="(562) 373-1027" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="femail">Email Address *</label>
+          <input type="email" id="femail" name="Email" placeholder="maria@email.com" required />
+        </div>
+
+        <div class="qform-row">
+          <div class="form-group">
+            <label for="ffrom">Moving From (City) *</label>
+            <input type="text" id="ffrom" name="Moving From" placeholder="Los Angeles, CA" required />
+          </div>
+          <div class="form-group">
+            <label for="fto">Moving To (City) *</label>
+            <input type="text" id="fto" name="Moving To" placeholder="Long Beach, CA" required />
+          </div>
+        </div>
+
+        <div class="qform-row">
+          <div class="form-group">
+            <label for="fdate">Desired Move Date *</label>
+            <input type="date" id="fdate" name="Move Date" required />
+          </div>
+          <div class="form-group">
+            <label for="fsize">Home Size *</label>
+            <select id="fsize" name="Home Size" required>
+              <option value="">Select size…</option>
+              <option>Studio</option>
+              <option>1 Bedroom</option>
+              <option>2 Bedrooms</option>
+              <option>3 Bedrooms</option>
+              <option>4 Bedrooms</option>
+              <option>5+ Bedrooms</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fspecial">Special Items / Notes</label>
+          <textarea id="fspecial" name="Special Items" placeholder="Piano, pool table, antiques, elevator access, storage needed, etc."></textarea>
+        </div>
+
+        <button type="submit" class="qform-submit">📨 Send Quote Request — It's Free</button>
+        <p class="form-privacy">🔒 Your info is private. We never share or sell your data.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get In Touch</div>
+    <div class="divider"></div>
+    <h2>Contact Swift Movers LA</h2>
+    <p class="section-sub">Ready to book or have questions? Reach out — we respond fast.</p>
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <h3>Contact Information</h3>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-val"><a href="tel:+15623731027">(562) 373-1027</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <div class="contact-item-label">Location</div>
+            <div class="contact-item-val">Los Angeles, CA 90001</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🕐</span>
+          <div>
+            <div class="contact-item-label">Hours</div>
+            <div class="contact-item-val">Mon–Sun · 7:00 AM – 8:00 PM</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-val"><a href="mailto:moves@swiftmoversla.com">moves@swiftmoversla.com</a></div>
+          </div>
+        </div>
+
+        <div class="license-block">
+          <h4>Licensing &amp; Insurance</h4>
+          <div class="license-item"><span>CPUC License</span><span>#MTR0192847</span></div>
+          <div class="license-item"><span>DOT Number</span><span>#US2847561</span></div>
+          <div class="license-item"><span>Insurance</span><span>Fully Bonded + Insured</span></div>
+          <div class="license-item"><span>Background Checks</span><span>All Crew Members</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="service-area-block">
+          <h4>🗺️ Service Area — All of SoCal</h4>
+          <div class="area-tags">
+            <span class="area-tag">Los Angeles</span>
+            <span class="area-tag">Long Beach</span>
+            <span class="area-tag">Burbank</span>
+            <span class="area-tag">Glendale</span>
+            <span class="area-tag">Pasadena</span>
+            <span class="area-tag">Torrance</span>
+            <span class="area-tag">Inglewood</span>
+            <span class="area-tag">Santa Monica</span>
+            <span class="area-tag">Culver City</span>
+            <span class="area-tag">West Hollywood</span>
+            <span class="area-tag">Van Nuys</span>
+            <span class="area-tag">Anaheim</span>
+            <span class="area-tag">Santa Ana</span>
+            <span class="area-tag">Irvine</span>
+            <span class="area-tag">Ontario</span>
+            <span class="area-tag">Riverside</span>
+            <span class="area-tag">San Bernardino</span>
+            <span class="area-tag">Downey</span>
+            <span class="area-tag">Compton</span>
+            <span class="area-tag">+ All of SoCal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;">
+    <div class="container">
+      <div style="display:flex;justify-content:center;gap:48px;flex-wrap:wrap;text-align:center;">
+        <div><span style="font-family:var(--mono);font-size:28px;font-weight:800;color:var(--accent);">10+</span><br><span style="font-size:13px;color:var(--muted);">Years Moving LA</span></div>
+        <div><span style="font-family:var(--mono);font-size:28px;font-weight:800;color:var(--accent);">8,000+</span><br><span style="font-size:13px;color:var(--muted);">Moves Completed</span></div>
+        <div><span style="font-family:var(--mono);font-size:28px;font-weight:800;color:var(--accent);">4.9</span><br><span style="font-size:13px;color:var(--muted);">Google Rating</span></div>
+        <div><span style="font-family:var(--mono);font-size:28px;font-weight:800;color:var(--accent);">Licensed</span><br><span style="font-size:13px;color:var(--muted);">CPUC &amp; DOT</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <section style="padding:80px 0;background:var(--bg);">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:40px;">
+        <span style="font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);">Why Swift Movers</span>
+        <h2 style="font-size:32px;font-weight:800;margin-top:8px;">Moving Done Right, Every Time</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+        <div class="why-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:10px;">🛡️</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Licensed &amp; Insured</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">CPUC licensed, DOT registered, fully bonded and insured. Your belongings are protected.</div>
+        </div>
+        <div class="why-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:10px;">🔒</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Background-Checked Crew</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Every mover passes a thorough background check. Trustworthy people in your home.</div>
+        </div>
+        <div class="why-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:10px;">💰</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Flat-Rate Pricing</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">No hidden fees, no hourly surprises. Get a flat-rate quote before we start.</div>
+        </div>
+        <div class="why-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:10px;">📦</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">Free Packing Materials</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.6;">Boxes, tape, blankets, and shrink wrap included with every full-service move.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <strong>Swift Movers LA</strong> &copy; 2026 &nbsp;&middot;&nbsp; CPUC #MTR0192847 &middot; DOT #US2847561
+    </div>
+    <div style="color:var(--muted);font-size:12px;margin:8px 0;">7 Days a Week &middot; 7AM&ndash;8PM &nbsp;&middot;&nbsp; <a href="tel:+15623731027" style="color:var(--accent);">(562) 373-1027</a> &nbsp;&middot;&nbsp; All of SoCal</div>
+    <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo &rarr;</a></div>
+    <div class="footer-right">
+      Website by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> &nbsp;&middot;&nbsp; <a href="https://rivven.ai" target="_blank" rel="noopener">rivven.ai</a>
+    </div>
+  </footer>
+
+  <!-- MOBILE CTA BAR -->
+  <div class="mobile-cta-bar">
+    <a href="tel:+15623731027" class="mcb-call">📞 Call Now</a>
+    <a href="#quote-form" class="mcb-quote">📦 Free Quote</a>
+    <a href="https://rivven.ai/booking.html" target="_blank" style="flex:1;text-align:center;padding:10px 6px;font-size:13px;font-weight:700;color:#00f0ff;text-decoration:none;border-left:1px solid rgba(255,255,255,0.1)">🚀 Get My Site</a>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // ===== HAMBURGER =====
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mob-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ===== CALCULATOR =====
+    const RATE = 125; // $125/hr
+
+    const BASE_HOURS = {
+      studio: 2,
+      '1br': 3,
+      '2br': 5,
+      '3br': 7,
+      '4br': 9,
+      '5br': 11
+    };
+
+    const moveTypeEl  = document.getElementById('moveType');
+    const homeSizeEl  = document.getElementById('homeSize');
+    const distanceEl  = document.getElementById('distance');
+    const moveDateEl  = document.getElementById('moveDate');
+    const packingEl   = document.getElementById('packing');
+    const distGroup   = document.getElementById('distanceGroup');
+    const resultEl    = document.getElementById('resultContent');
+
+    function formatCurrency(n) {
+      return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    function calcQuote() {
+      const moveType    = moveTypeEl.value;
+      const homeSize    = homeSizeEl.value;
+      const distance    = parseFloat(distanceEl.value) || 0;
+      const dateFee     = parseInt(moveDateEl.value) || 0;
+      const packingFee  = parseInt(packingEl.value) || 0;
+
+      const baseHours   = BASE_HOURS[homeSize] || 2;
+      const laborCost   = baseHours * RATE;
+
+      let distanceFee   = 0;
+      if (moveType === 'longdistance') {
+        distanceFee = distance * 2.50;
+      }
+
+      const subtotal    = laborCost + distanceFee + dateFee + packingFee;
+      const rangeLow    = Math.round(subtotal * 0.9 / 25) * 25;
+      const rangeHigh   = Math.round(subtotal * 1.1 / 25) * 25;
+
+      let distRow = '';
+      if (moveType === 'longdistance') {
+        distRow = `
+          <div class="result-line">
+            <span class="r-label">Distance Fee (${distance} mi × $2.50)</span>
+            <span class="r-val">${formatCurrency(distanceFee)}</span>
+          </div>`;
+      }
+
+      let dateRow = '';
+      if (dateFee > 0) {
+        const dateLabel = dateFee === 75 ? 'Weekend Surcharge' : 'Holiday Surcharge';
+        dateRow = `
+          <div class="result-line">
+            <span class="r-label">${dateLabel}</span>
+            <span class="r-val">+${formatCurrency(dateFee)}</span>
+          </div>`;
+      }
+
+      let packRow = '';
+      if (packingFee > 0) {
+        const packLabel = packingFee === 150 ? 'Partial Packing Add-On' : 'Full Packing Add-On';
+        packRow = `
+          <div class="result-line">
+            <span class="r-label">${packLabel}</span>
+            <span class="r-val">+${formatCurrency(packingFee)}</span>
+          </div>`;
+      }
+
+      resultEl.innerHTML = `
+        <div class="result-line">
+          <span class="r-label">Hourly Rate</span>
+          <span class="r-val">${formatCurrency(RATE)}/hr</span>
+        </div>
+        <div class="result-line">
+          <span class="r-label">Estimated Hours</span>
+          <span class="r-val">${baseHours} hrs</span>
+        </div>
+        <div class="result-line">
+          <span class="r-label">Labor Cost</span>
+          <span class="r-val">${formatCurrency(laborCost)}</span>
+        </div>
+        ${distRow}
+        ${dateRow}
+        ${packRow}
+        <div class="result-line result-total" style="display:flex;justify-content:space-between;align-items:center;margin-top:1.25rem;padding-top:1.25rem;border-top:2px solid var(--border-orange);">
+          <span class="r-label" style="font-size:.875rem;font-weight:700;color:var(--text);">Estimated Total</span>
+          <span class="r-val" style="font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--orange);">${formatCurrency(rangeLow)} – ${formatCurrency(rangeHigh)}</span>
+        </div>
+        <p class="result-disclaimer">* Estimate range based on your selections. Final price confirmed after visual assessment. No obligation.</p>
+        <button class="calc-cta-btn" onclick="document.getElementById('quote-form').scrollIntoView({behavior:'smooth'})">📩 Get Official Quote</button>
+      `;
+    }
+
+    // Toggle distance field
+    moveTypeEl.addEventListener('change', () => {
+      if (moveTypeEl.value === 'longdistance') {
+        distGroup.style.display = 'block';
+      } else {
+        distGroup.style.display = 'none';
+        distanceEl.value = '';
+      }
+      calcQuote();
+    });
+
+    homeSizeEl.addEventListener('change', calcQuote);
+    distanceEl.addEventListener('input', calcQuote);
+    moveDateEl.addEventListener('change', calcQuote);
+    packingEl.addEventListener('change', calcQuote);
+
+    // Run on load
+    calcQuote();
+
+    // ===== NAV SCROLL EFFECT =====
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 20) {
+        nav.style.borderBottomColor = 'rgba(255,255,255,0.1)';
+      } else {
+        nav.style.borderBottomColor = 'rgba(255,255,255,0.08)';
+      }
+    });
+
+    // ===== MIN DATE FOR QUOTE FORM =====
+    const dateInput = document.getElementById('fdate');
+    if (dateInput) {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+    }
+
+    // ── Scroll Animations (IntersectionObserver) ──
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.service-card, .review-card, .contact-item, .why-card, .area-tag').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      fadeObserver.observe(el);
+    });
+  </script>
+</body>
+</html>

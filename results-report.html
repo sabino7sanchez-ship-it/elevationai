@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Performance Report — Rivven</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================
+     CSS VARIABLES & BASE
+  ============================ */
+  :root {
+    --bg: #0A0A0B;
+    --surface: #111113;
+    --surface2: #18181C;
+    --border: #1E1E24;
+    --border2: #2A2A33;
+    --cyan: #00D4FF;
+    --cyan-dim: rgba(0, 212, 255, 0.12);
+    --cyan-glow: rgba(0, 212, 255, 0.06);
+    --text: #F0F0F2;
+    --text-muted: #6B6B80;
+    --text-dim: #9999AA;
+    --green: #00FF88;
+    --green-dim: rgba(0, 255, 136, 0.1);
+    --red: #FF4466;
+    --yellow: #FFD700;
+    --font: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================
+     EDIT MODE TOOLBAR
+  ============================ */
+  #toolbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 11, 0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border2);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-brand {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--cyan);
+    letter-spacing: 0.1em;
+    margin-right: auto;
+    font-weight: 700;
+  }
+
+  .btn {
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .btn-primary {
+    background: var(--cyan);
+    color: #0A0A0B;
+  }
+  .btn-primary:hover { background: #33DDFF; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: var(--surface2);
+    color: var(--text-dim);
+    border: 1px solid var(--border2);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--cyan); background: var(--cyan-dim); }
+
+  .btn-success {
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid rgba(0,255,136,0.2);
+  }
+  .btn-success:hover { background: rgba(0,255,136,0.2); }
+
+  .mode-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .mode-badge.edit { background: rgba(255,212,0,0.12); color: var(--yellow); border: 1px solid rgba(255,212,0,0.2); }
+  .mode-badge.preview { background: var(--green-dim); color: var(--green); border: 1px solid rgba(0,255,136,0.2); }
+
+  /* ============================
+     MAIN REPORT WRAPPER
+  ============================ */
+  #report-wrap {
+    padding-top: 64px;
+    padding-bottom: 60px;
+  }
+
+  .report {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ============================
+     EDITABLE FIELD STYLES
+  ============================ */
+  body.edit-mode [contenteditable],
+  body.edit-mode input,
+  body.edit-mode select {
+    outline: none;
+    border-bottom: 1px dashed rgba(0,212,255,0.35) !important;
+    background: transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  body.edit-mode [contenteditable]:hover,
+  body.edit-mode input:hover,
+  body.edit-mode select:hover {
+    border-bottom-color: rgba(0,212,255,0.7) !important;
+    background: var(--cyan-glow) !important;
+  }
+
+  body.edit-mode [contenteditable]:focus,
+  body.edit-mode input:focus,
+  body.edit-mode select:focus {
+    border-bottom-color: var(--cyan) !important;
+    background: var(--cyan-dim) !important;
+  }
+
+  body.preview-mode [contenteditable],
+  body.preview-mode input,
+  body.preview-mode select {
+    border: none !important;
+    background: transparent !important;
+    pointer-events: none;
+  }
+
+  [contenteditable] { outline: none; }
+
+  input, select {
+    font-family: var(--font);
+    color: var(--text);
+    border: none;
+    padding: 2px 4px;
+    border-radius: 3px;
+    -webkit-appearance: none;
+  }
+
+  select option { background: #18181C; color: var(--text); }
+
+  /* ============================
+     HEADER / COVER SECTION
+  ============================ */
+  .report-header {
+    padding: 56px 0 40px;
+    border-bottom: 1px solid var(--border2);
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .report-logo-block {}
+
+  .report-logo {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cyan);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .report-logo .dot { color: var(--text-muted); }
+
+  .report-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: var(--mono);
+    margin-bottom: 0;
+  }
+
+  .report-meta {
+    text-align: right;
+  }
+
+  .report-meta-line {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .report-meta-line span.label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .report-meta-line input,
+  .report-meta-line [contenteditable],
+  .report-meta-line select {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    text-align: right;
+    min-width: 140px;
+  }
+
+  .report-period-display {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cyan);
+    background: var(--cyan-dim);
+    border: 1px solid rgba(0,212,255,0.2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  /* ============================
+     SECTION STRUCTURE
+  ============================ */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cyan);
+    background: var(--cyan-dim);
+    border: 1px solid rgba(0,212,255,0.15);
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* ============================
+     EXEC SUMMARY — STAT BOXES
+  ============================ */
+  .exec-summary-intro {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+
+  .exec-summary-intro strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 680px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .stat-box {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 20px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+    opacity: 0.6;
+  }
+
+  .stat-box-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-family: var(--mono);
+  }
+
+  .stat-box-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat-box-value input {
+    width: 100%;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    padding: 0;
+  }
+
+  .stat-box-delta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stat-box-delta input {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--green);
+    width: 80px;
+  }
+
+  .stat-box-delta .arrow { font-size: 10px; }
+
+  /* ============================
+     TRAFFIC SECTION
+  ============================ */
+  .traffic-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 620px) {
+    .traffic-grid { grid-template-columns: 1fr; }
+  }
+
+  .traffic-card {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .traffic-card-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .metric-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .metric-row:last-child { border-bottom: none; }
+
+  .metric-label {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .metric-value {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .metric-value input {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    width: 90px;
+    text-align: right;
+  }
+
+  /* Traffic Source Bars */
+  .source-rows { margin-top: 4px; }
+
+  .source-row {
+    margin-bottom: 12px;
+  }
+
+  .source-row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .source-name {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .source-name input {
+    font-size: 13px;
+    color: var(--text);
+    width: 120px;
+  }
+
+  .source-pct {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cyan);
+  }
+
+  .source-pct input {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cyan);
+    width: 50px;
+    text-align: right;
+  }
+
+  .source-bar-wrap {
+    height: 5px;
+    background: var(--border2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .source-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--cyan), rgba(0,212,255,0.5));
+    transition: width 0.5s ease;
+  }
+
+  /* Split Bar (New vs Returning, Mobile vs Desktop) */
+  .split-bar-container {
+    margin-top: 8px;
+  }
+
+  .split-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .split-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .split-label input {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    width: 45px;
+    text-align: center;
+  }
+
+  .split-label.left input { color: var(--cyan); }
+  .split-label.right input { color: var(--text-dim); }
+
+  .split-bar {
+    height: 8px;
+    border-radius: 4px;
+    background: var(--border2);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .split-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyan), rgba(0,212,255,0.5));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  /* ============================
+     LEADS TABLE
+  ============================ */
+  .leads-table-wrap {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--border2);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+
+  thead th {
+    background: var(--surface2);
+    padding: 10px 14px;
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border2);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  body.edit-mode tbody tr:hover { background: var(--surface2); }
+
+  tbody td {
+    padding: 9px 14px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  tbody td input {
+    font-size: 13px;
+    color: var(--text);
+    width: 100%;
+    min-width: 60px;
+  }
+
+  .status-select {
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--mono);
+    padding: 3px 8px;
+    border-radius: 4px;
+    width: 100%;
+    min-width: 80px;
+  }
+
+  .status-new { color: var(--cyan); background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.2); }
+  .status-contacted { color: var(--yellow); background: rgba(255,212,0,0.1); border: 1px solid rgba(255,212,0,0.2); }
+  .status-closed { color: var(--green); background: var(--green-dim); border: 1px solid rgba(0,255,136,0.2); }
+
+  .leads-footer {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .leads-stat {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 12px 18px;
+    min-width: 140px;
+  }
+
+  .leads-stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .leads-stat-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .leads-stat-value input {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+    width: 60px;
+  }
+
+  .leads-stat-value.cyan { color: var(--cyan); }
+  .leads-stat-value.green { color: var(--green); }
+
+  /* ============================
+     REVENUE / ROI SECTION
+  ============================ */
+  .roi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .roi-grid { grid-template-columns: 1fr; }
+  }
+
+  .roi-card {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .roi-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .roi-row:last-child { border-bottom: none; }
+
+  .roi-label {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .roi-value {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .roi-value input {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    width: 100px;
+    text-align: right;
+  }
+
+  .roi-value.auto { color: var(--green); }
+  .roi-value.cyan { color: var(--cyan); }
+
+  .roi-highlight-card {
+    background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(0,255,136,0.05));
+    border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .roi-highlight-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .roi-highlight-number {
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--cyan);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 8px;
+  }
+
+  .roi-highlight-sub {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-top: 8px;
+  }
+
+  .roi-highlight-dollar {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--green);
+    margin-top: 12px;
+    font-family: var(--mono);
+  }
+
+  /* ============================
+     TOP PAGES
+  ============================ */
+  .pages-table {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .pages-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+
+  .pages-row:last-child { border-bottom: none; }
+
+  .pages-row.header {
+    background: var(--surface2);
+  }
+
+  .pages-cell {
+    padding: 11px 16px;
+    font-size: 13px;
+  }
+
+  .pages-row.header .pages-cell {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .pages-cell input {
+    font-size: 13px;
+    color: var(--text);
+    width: 100%;
+  }
+
+  .pages-cell.visits-cell {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--cyan);
+  }
+
+  .pages-cell.visits-cell input {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--cyan);
+  }
+
+  /* ============================
+     WHAT WE DID / GOALS
+  ============================ */
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 14px 16px;
+    transition: border-color 0.2s;
+  }
+
+  .checklist-item:hover { border-color: rgba(0,212,255,0.2); }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--green-dim);
+    border: 1.5px solid rgba(0,255,136,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .check-icon svg { width: 10px; height: 10px; }
+
+  .checklist-item input {
+    font-size: 14px;
+    color: var(--text);
+    flex: 1;
+    line-height: 1.5;
+  }
+
+  .goals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .goal-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+
+  .goal-num {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--cyan);
+    width: 28px;
+    flex-shrink: 0;
+    opacity: 0.4;
+  }
+
+  .goal-item input {
+    font-size: 14px;
+    color: var(--text);
+    flex: 1;
+  }
+
+  /* ============================
+     CTA FOOTER
+  ============================ */
+  .report-cta {
+    margin-top: 48px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(0,255,136,0.04));
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+  }
+
+  .cta-headline {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .cta-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  .cta-contact {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-item {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyan);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: var(--cyan-dim);
+    border: 1px solid rgba(0,212,255,0.2);
+  }
+
+  .report-footer {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .footer-brand span { color: var(--cyan); }
+
+  .footer-confidential {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--surface2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+  }
+
+  /* ============================
+     TOAST
+  ============================ */
+  #toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--surface2);
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 2000;
+  }
+
+  #toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============================
+     PRINT CSS
+  ============================ */
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F8F9FA;
+      --surface2: #F0F2F5;
+      --border: #E2E6EA;
+      --border2: #D0D6DF;
+      --text: #0D0D0E;
+      --text-muted: #5C636E;
+      --text-dim: #3D4148;
+      --cyan: #0077AA;
+      --cyan-dim: rgba(0, 119, 170, 0.08);
+      --cyan-glow: rgba(0, 119, 170, 0.04);
+      --green: #007A3D;
+      --green-dim: rgba(0, 122, 61, 0.08);
+    }
+
+    body { background: #fff !important; color: #000 !important; }
+
+    #toolbar { display: none !important; }
+    #toast { display: none !important; }
+
+    #report-wrap { padding-top: 0 !important; }
+
+    .report { max-width: 100%; padding: 0 32px; }
+
+    .report-header { padding: 24px 0 20px; }
+
+    .stat-box, .traffic-card, .roi-card, .leads-stat,
+    .pages-table, .checklist-item, .goal-item, .roi-highlight-card, .report-cta {
+      border: 1px solid #D0D6DF !important;
+      background: #F8F9FA !important;
+    }
+
+    .stat-box::before { background: linear-gradient(90deg, #0077AA, transparent); }
+
+    .section { page-break-inside: avoid; }
+    .section.leads-section { page-break-before: auto; }
+
+    input, select, [contenteditable] {
+      border: none !important;
+      background: transparent !important;
+      pointer-events: none;
+    }
+
+    .status-new { color: #0077AA !important; background: rgba(0,119,170,0.1) !important; }
+    .status-contacted { color: #7A6000 !important; background: rgba(122,96,0,0.1) !important; }
+    .status-closed { color: #007A3D !important; background: rgba(0,122,61,0.1) !important; }
+
+    .roi-highlight-number { color: #0077AA !important; }
+    .roi-highlight-dollar { color: #007A3D !important; }
+    .leads-stat-value.cyan { color: #0077AA !important; }
+    .leads-stat-value.green { color: #007A3D !important; }
+    .source-pct input { color: #0077AA !important; }
+
+    .report-logo { color: #0077AA !important; }
+    .report-period-display { color: #0077AA !important; background: rgba(0,119,170,0.08) !important; }
+
+    .cta-item { color: #0077AA !important; background: rgba(0,119,170,0.08) !important; }
+
+    thead th { background: #E8ECF0 !important; }
+    .pages-row.header { background: #E8ECF0 !important; }
+
+    h1, h2, h3 { page-break-after: avoid; }
+    table { page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body class="edit-mode">
+
+<!-- TOOLBAR -->
+<div id="toolbar">
+  <div class="toolbar-brand">SEA / REPORT BUILDER</div>
+  <span class="mode-badge edit" id="mode-badge">EDIT MODE</span>
+  <button class="btn btn-primary" onclick="generateReport()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    Generate Report
+  </button>
+  <button class="btn btn-ghost" onclick="editReport()" id="edit-btn" style="display:none">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+    Edit Report
+  </button>
+  <button class="btn btn-success" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print / Save PDF
+  </button>
+  <button class="btn btn-ghost" onclick="copyLink()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    Copy Link
+  </button>
+</div>
+
+<!-- TOAST -->
+<div id="toast">Link copied to clipboard</div>
+
+<!-- REPORT WRAPPER -->
+<div id="report-wrap">
+<div class="report" id="report">
+
+  <!-- ========================
+       HEADER
+  ========================= -->
+  <div class="report-header">
+    <div class="report-logo-block">
+      <div class="report-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--cyan)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Rivven
+      </div>
+      <div class="report-title">Monthly Performance Report</div>
+    </div>
+
+    <div class="report-meta">
+      <div class="report-meta-line">
+        <span class="label">Client</span>
+        <input type="text" id="client-name" value="John Martinez" style="font-weight:700;" />
+      </div>
+      <div class="report-meta-line">
+        <span class="label">Business</span>
+        <input type="text" id="business-name" value="Martinez Roofing Co." />
+      </div>
+      <div class="report-meta-line">
+        <span class="label">Period</span>
+        <select id="report-month" onchange="updatePeriod()">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March" selected>March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+        <select id="report-year" onchange="updatePeriod()" style="width:70px;">
+          <option value="2025">2025</option>
+          <option value="2026" selected>2026</option>
+          <option value="2027">2027</option>
+        </select>
+      </div>
+      <div class="report-meta-line" style="margin-top:4px;">
+        <span class="label">Generated</span>
+        <span id="generated-date" style="font-size:13px;color:var(--text-muted);font-family:var(--mono);"></span>
+      </div>
+      <div style="text-align:right;margin-top:8px;">
+        <span class="report-period-display" id="period-display">March 2026 Report</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       01 — EXECUTIVE SUMMARY
+  ========================= -->
+  <div class="section" id="section-exec">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Executive Summary</span>
+    </div>
+    <p class="exec-summary-intro">This month, your website and digital presence generated the following results:</p>
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="stat-box-label">Total Visitors</div>
+        <div class="stat-box-value"><input type="text" id="stat-visitors" value="1,247" /></div>
+        <div class="stat-box-delta">
+          <span class="arrow">▲</span>
+          <input type="text" id="stat-visitors-delta" value="+18% vs last mo." />
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Form Leads</div>
+        <div class="stat-box-value"><input type="text" id="stat-leads" value="34" oninput="calcROI()" /></div>
+        <div class="stat-box-delta">
+          <span class="arrow">▲</span>
+          <input type="text" id="stat-leads-delta" value="+22% vs last mo." />
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Phone Calls</div>
+        <div class="stat-box-value"><input type="text" id="stat-calls" value="12" /></div>
+        <div class="stat-box-delta">
+          <span class="arrow">▲</span>
+          <input type="text" id="stat-calls-delta" value="+8% vs last mo." />
+        </div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-box-label">Est. Revenue</div>
+        <div class="stat-box-value"><input type="text" id="stat-revenue" value="$68,000" /></div>
+        <div class="stat-box-delta">
+          <span class="arrow">▲</span>
+          <input type="text" id="stat-revenue-delta" value="+31% vs last mo." />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       02 — TRAFFIC REPORT
+  ========================= -->
+  <div class="section" id="section-traffic">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Traffic Report</span>
+    </div>
+    <div class="traffic-grid">
+      <!-- Left Card: Visits + Sources -->
+      <div class="traffic-card">
+        <div class="traffic-card-title">Visits & Sources</div>
+        <div class="metric-row">
+          <span class="metric-label">Total Website Visits</span>
+          <span class="metric-value"><input type="text" value="1,247" style="color:var(--cyan);" /></span>
+        </div>
+        <div class="metric-row">
+          <span class="metric-label">Avg. Time on Site</span>
+          <span class="metric-value"><input type="text" value="2m 38s" /></span>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="traffic-card-title" style="margin-bottom:12px;">Top Traffic Sources</div>
+          <div class="source-rows" id="source-rows">
+            <div class="source-row">
+              <div class="source-row-top">
+                <span class="source-name"><input type="text" class="src-name" value="Google Search" /></span>
+                <span class="source-pct"><input type="number" class="src-pct" value="54" min="0" max="100" oninput="updateSourceBars()" />%</span>
+              </div>
+              <div class="source-bar-wrap"><div class="source-bar-fill" style="width:54%;"></div></div>
+            </div>
+            <div class="source-row">
+              <div class="source-row-top">
+                <span class="source-name"><input type="text" class="src-name" value="Direct / Referral" /></span>
+                <span class="source-pct"><input type="number" class="src-pct" value="28" min="0" max="100" oninput="updateSourceBars()" />%</span>
+              </div>
+              <div class="source-bar-wrap"><div class="source-bar-fill" style="width:28%;"></div></div>
+            </div>
+            <div class="source-row">
+              <div class="source-row-top">
+                <span class="source-name"><input type="text" class="src-name" value="Social Media" /></span>
+                <span class="source-pct"><input type="number" class="src-pct" value="18" min="0" max="100" oninput="updateSourceBars()" />%</span>
+              </div>
+              <div class="source-bar-wrap"><div class="source-bar-fill" style="width:18%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Card: Audience -->
+      <div class="traffic-card">
+        <div class="traffic-card-title">Audience Breakdown</div>
+
+        <div style="margin-bottom:18px;">
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">New vs. Returning Visitors</div>
+          <div class="split-bar-container">
+            <div class="split-bar-labels">
+              <span class="split-label left">
+                <input type="number" id="new-pct" value="72" min="0" max="100" oninput="updateSplits()" />% New
+              </span>
+              <span class="split-label right">
+                <input type="number" id="ret-pct" value="28" min="0" max="100" oninput="updateSplits()" />% Returning
+              </span>
+            </div>
+            <div class="split-bar">
+              <div class="split-bar-fill" id="new-bar" style="width:72%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">Mobile vs. Desktop</div>
+          <div class="split-bar-container">
+            <div class="split-bar-labels">
+              <span class="split-label left">
+                <input type="number" id="mobile-pct" value="68" min="0" max="100" oninput="updateSplits()" />% Mobile
+              </span>
+              <span class="split-label right">
+                <input type="number" id="desktop-pct" value="32" min="0" max="100" oninput="updateSplits()" />% Desktop
+              </span>
+            </div>
+            <div class="split-bar">
+              <div class="split-bar-fill" id="mobile-bar" style="width:68%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;">
+          <div class="metric-row">
+            <span class="metric-label">Bounce Rate</span>
+            <span class="metric-value"><input type="text" value="42%" /></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Pages per Visit</span>
+            <span class="metric-value"><input type="text" value="3.1" /></span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">Conversion Rate</span>
+            <span class="metric-value" style="color:var(--green);"><input type="text" value="2.7%" style="color:var(--green);" /></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       03 — LEADS TABLE
+  ========================= -->
+  <div class="section leads-section" id="section-leads">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Leads Generated</span>
+    </div>
+    <div class="leads-table-wrap">
+      <table id="leads-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Lead Name</th>
+            <th>Contact</th>
+            <th>Source</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="leads-tbody">
+          <!-- JS fills 10 rows -->
+        </tbody>
+      </table>
+    </div>
+    <div class="leads-footer">
+      <div class="leads-stat">
+        <div class="leads-stat-label">Total Leads</div>
+        <div class="leads-stat-value cyan" id="total-leads-count">0</div>
+      </div>
+      <div class="leads-stat">
+        <div class="leads-stat-label">Leads Closed</div>
+        <div class="leads-stat-value green"><input type="number" id="leads-closed" value="8" min="0" oninput="calcCloseRate()" style="color:var(--green);" /></div>
+      </div>
+      <div class="leads-stat">
+        <div class="leads-stat-label">Close Rate</div>
+        <div class="leads-stat-value" id="close-rate-display" style="color:var(--yellow);">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       04 — REVENUE IMPACT
+  ========================= -->
+  <div class="section" id="section-revenue">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Revenue Impact</span>
+    </div>
+    <div class="roi-grid">
+      <div class="roi-card">
+        <div class="roi-row">
+          <span class="roi-label">Leads Generated</span>
+          <span class="roi-value auto" id="roi-leads-display">—</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Average Job Value</span>
+          <span class="roi-value">$<input type="number" id="avg-job-value" value="2000" min="0" oninput="calcROI()" /></span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Est. Revenue from Leads</span>
+          <span class="roi-value auto green" id="est-revenue">$—</span>
+        </div>
+        <div class="roi-row">
+          <span class="roi-label">Your Investment This Month</span>
+          <span class="roi-value">$<input type="number" id="investment" value="500" min="0" oninput="calcROI()" /></span>
+        </div>
+        <div class="roi-row" style="border-top: 2px solid rgba(0,212,255,0.2); margin-top: 4px; padding-top: 12px;">
+          <span class="roi-label" style="font-weight:700;color:var(--text);">Your ROI</span>
+          <span class="roi-value cyan" id="roi-pct" style="font-size:22px;">—</span>
+        </div>
+      </div>
+
+      <div class="roi-highlight-card">
+        <div class="roi-highlight-label">Return on Investment</div>
+        <div class="roi-highlight-number" id="roi-big">—</div>
+        <div class="roi-highlight-sub">ROI this month</div>
+        <div class="roi-highlight-dollar" id="roi-per-dollar">For every $1 spent → $—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       05 — TOP PAGES
+  ========================= -->
+  <div class="section" id="section-pages">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">Top Performing Pages</span>
+    </div>
+    <div class="pages-table">
+      <div class="pages-row header">
+        <div class="pages-cell">Page</div>
+        <div class="pages-cell">Visits</div>
+        <div class="pages-cell">Primary Action Taken</div>
+      </div>
+      <div class="pages-row">
+        <div class="pages-cell"><input type="text" value="Homepage" /></div>
+        <div class="pages-cell visits-cell"><input type="text" value="624" /></div>
+        <div class="pages-cell"><input type="text" value="Clicked 'Get Free Quote' button" /></div>
+      </div>
+      <div class="pages-row">
+        <div class="pages-cell"><input type="text" value="/services" /></div>
+        <div class="pages-cell visits-cell"><input type="text" value="318" /></div>
+        <div class="pages-cell"><input type="text" value="Submitted contact form" /></div>
+      </div>
+      <div class="pages-row">
+        <div class="pages-cell"><input type="text" value="/contact" /></div>
+        <div class="pages-cell visits-cell"><input type="text" value="201" /></div>
+        <div class="pages-cell"><input type="text" value="Submitted contact form / phone click" /></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       06 — WHAT WE DID
+  ========================= -->
+  <div class="section" id="section-work">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <span class="section-title">What We Did This Month</span>
+    </div>
+    <div class="checklist" id="work-checklist">
+      <div class="checklist-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <input type="text" value="Launched updated homepage with new hero section and CTA button — increased click-through rate." />
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <input type="text" value="Added 5-star Google review widget to homepage — boosted trust signals and form conversion." />
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <input type="text" value="Optimized site speed — load time reduced from 4.2s to 1.8s on mobile." />
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <input type="text" value="Published 2 SEO blog posts targeting local search terms — now ranking on page 1 for 3 keywords." />
+      </div>
+      <div class="checklist-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <input type="text" value="Integrated Google Analytics 4 + call tracking — full lead attribution now active." />
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       07 — NEXT MONTH GOALS
+  ========================= -->
+  <div class="section" id="section-goals">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <span class="section-title">Next Month Goals</span>
+    </div>
+    <div class="goals-list">
+      <div class="goal-item">
+        <div class="goal-num">01</div>
+        <input type="text" value="Launch Google Ads campaign targeting [City] + service keywords — target 50+ additional leads." />
+      </div>
+      <div class="goal-item">
+        <div class="goal-num">02</div>
+        <input type="text" value="Build out dedicated service landing pages for each offering — improve SEO + lead quality." />
+      </div>
+      <div class="goal-item">
+        <div class="goal-num">03</div>
+        <input type="text" value="Set up automated email follow-up for all new form submissions — reduce response time to under 2 minutes." />
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       CTA + FOOTER
+  ========================= -->
+  <div class="report-cta">
+    <div class="cta-headline">Want to scale these results even further?</div>
+    <div class="cta-sub">Let's talk about adding paid ads, SEO, and automations to your package.</div>
+    <div class="cta-contact">
+      <a class="cta-item" href="tel:5623731027">(562) 373-1027</a>
+      <a class="cta-item" href="mailto:sabino.sanchez7@gmail.com">sabino.sanchez7@gmail.com</a>
+      <a class="cta-item" href="https://rivven.ai">rivven.ai</a>
+    </div>
+  </div>
+
+  <div class="report-footer">
+    <div class="footer-brand">
+      <span>Rivven</span> — Digital Growth Agency
+    </div>
+    <div class="footer-confidential">Confidential Client Report</div>
+  </div>
+
+</div><!-- /report -->
+</div><!-- /report-wrap -->
+
+<script>
+  /* ==========================
+     INIT
+  ========================== */
+  const defaultLeads = [
+    ['03/04', 'Carlos Vega', '(714) 555-0112', 'Google', 'closed'],
+    ['03/07', 'Maria Reyes', '(562) 555-0284', 'Website Form', 'closed'],
+    ['03/09', 'Tony Gutierrez', '(310) 555-0391', 'Google', 'contacted'],
+    ['03/11', 'Sandra Kim', '(949) 555-0488', 'Referral', 'closed'],
+    ['03/14', 'Daniel Lopez', '(714) 555-0577', 'Google', 'new'],
+    ['03/16', 'Jessica Wong', '(626) 555-0663', 'Social Media', 'contacted'],
+    ['03/19', 'Mike Torres', '(562) 555-0741', 'Google', 'closed'],
+    ['03/21', '', '', '', 'new'],
+    ['03/25', '', '', '', 'new'],
+    ['03/28', '', '', '', 'new'],
+  ];
+
+  function buildLeadsTable() {
+    const tbody = document.getElementById('leads-tbody');
+    tbody.innerHTML = '';
+    defaultLeads.forEach((row, i) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="color:var(--text-muted);font-family:var(--mono);font-size:11px;">${i+1}</td>
+        <td><input type="text" class="lead-date" value="${row[0]}" /></td>
+        <td><input type="text" class="lead-name" value="${row[1]}" oninput="calcLeadCount()" /></td>
+        <td><input type="text" class="lead-contact" value="${row[2]}" /></td>
+        <td><input type="text" class="lead-source" value="${row[3]}" /></td>
+        <td>
+          <select class="status-select status-${row[4]}" onchange="this.className='status-select status-'+this.value; calcLeadCount();">
+            <option value="new" ${row[4]==='new'?'selected':''}>New</option>
+            <option value="contacted" ${row[4]==='contacted'?'selected':''}>Contacted</option>
+            <option value="closed" ${row[4]==='closed'?'selected':''}>Closed</option>
+          </select>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+    calcLeadCount();
+  }
+
+  function calcLeadCount() {
+    const names = document.querySelectorAll('.lead-name');
+    let count = 0;
+    names.forEach(n => { if (n.value.trim()) count++; });
+    document.getElementById('total-leads-count').textContent = count;
+    document.getElementById('roi-leads-display').textContent = count;
+    calcROI();
+    calcCloseRate();
+  }
+
+  function calcCloseRate() {
+    const total = parseInt(document.getElementById('total-leads-count').textContent) || 0;
+    const closed = parseInt(document.getElementById('leads-closed').value) || 0;
+    const rate = total > 0 ? Math.round((closed / total) * 100) : 0;
+    document.getElementById('close-rate-display').textContent = rate + '%';
+  }
+
+  function calcROI() {
+    const leads = parseInt(document.getElementById('total-leads-count').textContent) || 0;
+    const avgJob = parseFloat(document.getElementById('avg-job-value').value) || 0;
+    const invest = parseFloat(document.getElementById('investment').value) || 1;
+    const revenue = leads * avgJob;
+    const roi = invest > 0 ? Math.round((revenue / invest) * 100) : 0;
+    const perDollar = invest > 0 ? (revenue / invest).toFixed(2) : '0.00';
+
+    document.getElementById('est-revenue').textContent = '$' + revenue.toLocaleString();
+    document.getElementById('roi-pct').textContent = roi.toLocaleString() + '%';
+    document.getElementById('roi-big').textContent = roi.toLocaleString() + '%';
+    document.getElementById('roi-per-dollar').textContent = `For every $1 spent → $${perDollar}`;
+    document.getElementById('stat-revenue').value = '$' + revenue.toLocaleString();
+  }
+
+  function updateSourceBars() {
+    const pcts = document.querySelectorAll('.src-pct');
+    const bars = document.querySelectorAll('.source-bar-fill');
+    pcts.forEach((input, i) => {
+      const val = Math.min(100, Math.max(0, parseFloat(input.value) || 0));
+      if (bars[i]) bars[i].style.width = val + '%';
+    });
+  }
+
+  function updateSplits() {
+    const newPct = Math.min(100, Math.max(0, parseFloat(document.getElementById('new-pct').value) || 0));
+    const mobilePct = Math.min(100, Math.max(0, parseFloat(document.getElementById('mobile-pct').value) || 0));
+    document.getElementById('new-bar').style.width = newPct + '%';
+    document.getElementById('mobile-bar').style.width = mobilePct + '%';
+  }
+
+  function updatePeriod() {
+    const month = document.getElementById('report-month').value;
+    const year = document.getElementById('report-year').value;
+    document.getElementById('period-display').textContent = month + ' ' + year + ' Report';
+  }
+
+  /* ==========================
+     MODE SWITCHING
+  ========================== */
+  function generateReport() {
+    document.body.classList.remove('edit-mode');
+    document.body.classList.add('preview-mode');
+    document.getElementById('mode-badge').textContent = 'PREVIEW';
+    document.getElementById('mode-badge').className = 'mode-badge preview';
+    document.querySelector('.btn-primary').style.display = 'none';
+    document.getElementById('edit-btn').style.display = 'inline-flex';
+  }
+
+  function editReport() {
+    document.body.classList.remove('preview-mode');
+    document.body.classList.add('edit-mode');
+    document.getElementById('mode-badge').textContent = 'EDIT MODE';
+    document.getElementById('mode-badge').className = 'mode-badge edit';
+    document.querySelector('.btn-primary').style.display = 'inline-flex';
+    document.getElementById('edit-btn').style.display = 'none';
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    });
+  }
+
+  /* ==========================
+     AUTO-GENERATED DATE
+  ========================== */
+  function setGeneratedDate() {
+    const d = new Date();
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    document.getElementById('generated-date').textContent = d.toLocaleDateString('en-US', options);
+  }
+
+  /* ==========================
+     BOOT
+  ========================== */
+  buildLeadsTable();
+  setGeneratedDate();
+  calcROI();
+  updateSourceBars();
+  updateSplits();
+  updatePeriod();
+</script>
+</body>
+</html>

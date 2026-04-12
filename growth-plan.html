@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Rivven — Road to 100 Employees</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+@media print{body *{display:none!important}body::after{content:'This document is confidential. Printing is disabled.';display:block;font-size:24px;text-align:center;padding:100px;color:#000}}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08090d;--bg2:#0f1117;--card:rgba(15,17,23,.9);--border:rgba(0,240,255,.1);--cyan:#00f0ff;--green:#22c55e;--red:#ef4444;--gold:#eab308;--purple:#a855f7;--orange:#f97316;--text:#e8eaed;--text2:#8b949e;--text3:#484f58;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+a{color:var(--cyan);text-decoration:none}
+
+.header{text-align:center;padding:48px 24px 32px;border-bottom:1px solid var(--border)}
+.header h1{font-size:clamp(28px,5vw,42px);font-weight:900;line-height:1.2}.header h1 span{color:var(--cyan)}
+.header p{color:var(--text2);font-size:15px;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto}
+.header-stat{margin-top:16px;font-family:var(--mono);font-size:14px;color:var(--green);display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,.1);padding:6px 16px;border-radius:20px;border:1px solid rgba(34,197,94,.25)}
+
+.container{max-width:900px;margin:0 auto;padding:24px}
+
+.phase{margin-bottom:48px;position:relative;padding-left:28px}
+.phase::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.phase-dot{position:absolute;left:0;top:4px;width:18px;height:18px;border-radius:50%;border:2px solid var(--cyan);background:var(--bg);z-index:1}
+.phase-dot.done{background:var(--green);border-color:var(--green)}
+.phase-dot.active{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 12px rgba(0,240,255,.4)}
+.phase-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--cyan);margin-bottom:4px}
+.phase-title{font-size:22px;font-weight:900;margin-bottom:4px}
+.phase-timeline{font-size:12px;color:var(--text3);margin-bottom:12px;font-family:var(--mono)}
+.phase-desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:16px}
+
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:12px 0}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.metric-val{font-family:var(--mono);font-size:22px;font-weight:900}.metric-val.green{color:var(--green)}.metric-val.cyan{color:var(--cyan)}.metric-val.gold{color:var(--gold)}.metric-val.purple{color:var(--purple)}.metric-val.orange{color:var(--orange)}
+.metric-label{font-size:10px;color:var(--text2);margin-top:2px;text-transform:uppercase;letter-spacing:1px}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:10px}
+.card h3{font-size:15px;font-weight:800;margin-bottom:8px}
+.card p,.card li{font-size:13px;color:var(--text2);line-height:1.8}
+.card ul{list-style:none;padding:0}
+.card li{padding:4px 0;padding-left:16px;position:relative}
+.card li::before{content:'→';position:absolute;left:0;color:var(--cyan)}
+
+.hire-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.hire-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px}
+.hire-card h4{font-size:14px;font-weight:800;margin-bottom:4px}
+.hire-card .salary{font-family:var(--mono);color:var(--green);font-size:13px;font-weight:700}
+.hire-card p{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.6}
+
+.org-chart{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0;text-align:center}
+.org-level{margin:8px 0}
+.org-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.org-roles{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.org-role{background:var(--bg2);border:1px solid var(--border);padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600}
+.org-role.you{border-color:var(--cyan);color:var(--cyan)}
+.org-role.hired{border-color:var(--green);color:var(--green)}
+.org-role.future{border-color:var(--text3);color:var(--text3)}
+
+.revenue-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.revenue-table th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);color:var(--cyan);font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.revenue-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.04)}
+.revenue-table .total{font-weight:900;color:var(--green);border-top:2px solid var(--green)}
+
+.warning{background:rgba(234,179,8,.06);border:1px solid rgba(234,179,8,.2);border-radius:10px;padding:16px;margin:12px 0}
+.warning h4{color:var(--gold);font-size:14px;margin-bottom:6px}
+.warning p{font-size:13px;color:var(--text2);line-height:1.7}
+
+@media(max-width:600px){.hire-grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<!-- PASSWORD GATE -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:#08090d;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;font-family:'Inter',sans-serif;color:#e8eaed">
+  <div style="font-size:24px;font-weight:900">🔒</div>
+  <div style="font-size:16px;font-weight:700">Access Code Required</div>
+  <div style="color:#8b949e;font-size:13px">Enter the 4-digit code</div>
+  <input type="password" id="codeInput" maxlength="4" placeholder="••••" style="width:140px;text-align:center;padding:14px;background:#0f1117;border:2px solid rgba(0,240,255,.1);border-radius:10px;color:#e8eaed;font-family:'JetBrains Mono',monospace;font-size:24px;letter-spacing:8px;outline:none" onkeyup="checkCode()" autofocus>
+  <div id="codeError" style="color:#ef4444;font-size:12px;display:none">Wrong code.</div>
+</div>
+<div id="content" style="display:none">
+
+<header class="header">
+  <h1>Road to <span>100 Employees</span></h1>
+  <p>The realistic, step-by-step scaling plan from solo founder to 100-person agency. Every phase has clear revenue targets, hiring milestones, and systems to build.</p>
+  <div class="header-stat">📍 Current: Phase 1 — Solo + Sales Reps</div>
+</header>
+
+<div class="container">
+
+<!-- ====== PHASE 1 ====== -->
+<div class="phase">
+  <div class="phase-dot active"></div>
+  <div class="phase-label">PHASE 1 — YOU ARE HERE</div>
+  <div class="phase-title">Solo Founder + Commission Reps</div>
+  <div class="phase-timeline">Month 1-3 | Target: $5K-$10K/mo</div>
+  <div class="phase-desc">You build everything. Sales reps bring leads on commission ($50/client). No fixed costs except tools. This is the validation phase — prove the model works before hiring anyone full-time.</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-val green">2</div><div class="metric-label">Employees</div></div>
+    <div class="metric"><div class="metric-val cyan">$5K</div><div class="metric-label">Target MRR</div></div>
+    <div class="metric"><div class="metric-val gold">5-10</div><div class="metric-label">Clients</div></div>
+    <div class="metric"><div class="metric-val purple">90%</div><div class="metric-label">Margin</div></div>
+  </div>
+
+  <div class="card">
+    <h3>Team (2 people)</h3>
+    <ul>
+      <li><strong>You (Sabino)</strong> — CEO, developer, designer, project manager, everything</li>
+      <li><strong>Ever Duarte</strong> — VP Sales Associates, $50/client commission</li>
+      <li><strong>3-5 commission reps</strong> — $50/client, recruited via join.html</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Milestones to Complete Before Phase 2</h3>
+    <ul>
+      <li>Close 5 paying clients ($1,500+ each)</li>
+      <li>Hit $5,000/month in revenue (recurring + one-time)</li>
+      <li>Collect 10+ Google/Yelp reviews from clients</li>
+      <li>Have 3+ case studies with real results</li>
+      <li>Build a 30-day cash reserve ($5K savings)</li>
+      <li>Ever closes 5+ clients independently</li>
+    </ul>
+  </div>
+
+  <div class="warning">
+    <h4>Do NOT hire full-time until you hit $10K/month consistently for 2 months.</h4>
+    <p>Fixed payroll with inconsistent revenue kills businesses. Commission reps have zero risk. Use them until the revenue is predictable.</p>
+  </div>
+</div>
+
+<!-- ====== PHASE 2 ====== -->
+<div class="phase">
+  <div class="phase-dot"></div>
+  <div class="phase-label">PHASE 2</div>
+  <div class="phase-title">First 5 Hires — Core Team</div>
+  <div class="phase-timeline">Month 4-8 | Target: $15K-$25K/mo</div>
+  <div class="phase-desc">Revenue is predictable. Time to hire your first real employees. Focus: remove yourself from delivery so you can focus 100% on sales and growth.</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-val green">5-8</div><div class="metric-label">Employees</div></div>
+    <div class="metric"><div class="metric-val cyan">$20K</div><div class="metric-label">Target MRR</div></div>
+    <div class="metric"><div class="metric-val gold">15-25</div><div class="metric-label">Clients</div></div>
+    <div class="metric"><div class="metric-val purple">65%</div><div class="metric-label">Margin</div></div>
+  </div>
+
+  <div class="hire-grid">
+    <div class="hire-card">
+      <h4>1. Junior Web Developer</h4>
+      <div class="salary">$3,000-$4,000/mo (contractor)</div>
+      <p>Takes over site builds. You hand them designs and specs, they build. Frees you from 20+ hrs/week of coding. Hire from Philippines/Latin America for cost efficiency.</p>
+    </div>
+    <div class="hire-card">
+      <h4>2. Sales Manager (Ever promoted)</h4>
+      <div class="salary">$2,000/mo base + $50/client override</div>
+      <p>Ever manages 5-10 commission reps. He trains them, tracks performance, and handles first-touch outreach. You only join closing calls.</p>
+    </div>
+    <div class="hire-card">
+      <h4>3. Virtual Assistant</h4>
+      <div class="salary">$800-$1,200/mo (offshore)</div>
+      <p>Handles: client onboarding, invoice follow-ups, social media posting, email responses, calendar management, lead data entry into CRM.</p>
+    </div>
+    <div class="hire-card">
+      <h4>4. Content Creator (Part-Time)</h4>
+      <div class="salary">$1,500-$2,000/mo (contractor)</div>
+      <p>Creates Instagram Reels, TikToks, client showcase videos, before/after content. Content = free leads at scale.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Revenue Model at 20 Clients</h3>
+    <table class="revenue-table">
+      <tr><th>Revenue Stream</th><th>Clients</th><th>Avg Price</th><th>Monthly</th></tr>
+      <tr><td>Setup fees (one-time)</td><td>4 new/mo</td><td>$2,000</td><td>$8,000</td></tr>
+      <tr><td>Monthly maintenance</td><td>20 active</td><td>$300</td><td>$6,000</td></tr>
+      <tr><td>Add-on services</td><td>5</td><td>$500</td><td>$2,500</td></tr>
+      <tr class="total"><td>Total Monthly Revenue</td><td></td><td></td><td>$16,500</td></tr>
+      <tr><td>Payroll + tools</td><td></td><td></td><td>-$7,500</td></tr>
+      <tr class="total"><td>Monthly Profit</td><td></td><td></td><td>$9,000</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ====== PHASE 3 ====== -->
+<div class="phase">
+  <div class="phase-dot"></div>
+  <div class="phase-label">PHASE 3</div>
+  <div class="phase-title">Department Leads — 15 People</div>
+  <div class="phase-timeline">Month 9-14 | Target: $40K-$60K/mo</div>
+  <div class="phase-desc">You're no longer building anything. You're running a company. Hire department leads who manage their own teams. Your job: sales, strategy, and client relationships.</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-val green">12-18</div><div class="metric-label">Employees</div></div>
+    <div class="metric"><div class="metric-val cyan">$50K</div><div class="metric-label">Target MRR</div></div>
+    <div class="metric"><div class="metric-val gold">40-60</div><div class="metric-label">Clients</div></div>
+    <div class="metric"><div class="metric-val purple">55%</div><div class="metric-label">Margin</div></div>
+  </div>
+
+  <div class="hire-grid">
+    <div class="hire-card">
+      <h4>5. Head of Development</h4>
+      <div class="salary">$5,000-$7,000/mo</div>
+      <p>Manages 3-4 junior devs. Reviews all sites before launch. Sets coding standards. You never touch code again.</p>
+    </div>
+    <div class="hire-card">
+      <h4>6. Head of Marketing</h4>
+      <div class="salary">$4,000-$6,000/mo</div>
+      <p>Runs client ad campaigns, SEO, social media management. Manages content creator + VA. This is a profit center — clients pay $500-$2K/mo for marketing.</p>
+    </div>
+    <div class="hire-card">
+      <h4>7. Client Success Manager</h4>
+      <div class="salary">$3,000-$4,000/mo</div>
+      <p>Handles all client communication post-sale. Onboarding, check-ins, upsells, retention. Clients never leave because they feel taken care of.</p>
+    </div>
+    <div class="hire-card">
+      <h4>8. 2 More Junior Devs</h4>
+      <div class="salary">$2,500-$3,500/mo each</div>
+      <p>Build capacity. 3 devs can handle 15-20 active builds simultaneously. Head of Dev assigns and reviews.</p>
+    </div>
+    <div class="hire-card">
+      <h4>9. 5 More Sales Reps</h4>
+      <div class="salary">$50-$100/client commission</div>
+      <p>Ever manages them all. Commission goes up to $100/client for top performers. Team of 10 reps bringing 20-30 leads/week.</p>
+    </div>
+    <div class="hire-card">
+      <h4>10. Bookkeeper</h4>
+      <div class="salary">$1,000-$1,500/mo (part-time)</div>
+      <p>Tracks revenue, expenses, invoices, tax prep. At $50K/mo you NEED professional bookkeeping or you'll drown in tax season.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>New Revenue Streams to Add</h3>
+    <ul>
+      <li><strong>GoHighLevel white-label CRM</strong> — $197-$497/mo per client. You resell GHL as "Rivven Platform." Costs you ~$500/mo for unlimited sub-accounts.</li>
+      <li><strong>Google/Meta Ads management</strong> — $500-$2,000/mo per client. Head of Marketing runs campaigns. Ad spend is separate (client pays directly to Google/Meta).</li>
+      <li><strong>SEO retainers</strong> — $500-$1,500/mo. 6-month minimum contracts. Recurring revenue gold.</li>
+      <li><strong>AI chatbot / receptionist</strong> — $150-$400/mo per client. Install Tidio or custom bot. Almost zero marginal cost.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== PHASE 4 ====== -->
+<div class="phase">
+  <div class="phase-dot"></div>
+  <div class="phase-label">PHASE 4</div>
+  <div class="phase-title">Full Agency — 30 People</div>
+  <div class="phase-timeline">Month 15-24 | Target: $100K-$150K/mo</div>
+  <div class="phase-desc">Rivven is a real agency with departments, processes, and a management layer. You're the CEO — your job is vision, partnerships, and high-ticket sales.</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-val green">25-35</div><div class="metric-label">Employees</div></div>
+    <div class="metric"><div class="metric-val cyan">$120K</div><div class="metric-label">Target MRR</div></div>
+    <div class="metric"><div class="metric-val gold">80-120</div><div class="metric-label">Clients</div></div>
+    <div class="metric"><div class="metric-val purple">45%</div><div class="metric-label">Margin</div></div>
+  </div>
+
+  <div class="org-chart">
+    <div class="org-level">
+      <div class="org-title">CEO</div>
+      <div class="org-roles"><span class="org-role you">Sabino Sanchez</span></div>
+    </div>
+    <div class="org-level">
+      <div class="org-title">Department Heads</div>
+      <div class="org-roles">
+        <span class="org-role hired">VP Sales (Ever)</span>
+        <span class="org-role future">Head of Dev</span>
+        <span class="org-role future">Head of Marketing</span>
+        <span class="org-role future">Head of Client Success</span>
+        <span class="org-role future">Head of Operations</span>
+      </div>
+    </div>
+    <div class="org-level">
+      <div class="org-title">Teams</div>
+      <div class="org-roles">
+        <span class="org-role future">10 Sales Reps</span>
+        <span class="org-role future">6 Developers</span>
+        <span class="org-role future">4 Marketers</span>
+        <span class="org-role future">3 Account Managers</span>
+        <span class="org-role future">2 Designers</span>
+        <span class="org-role future">2 VAs</span>
+        <span class="org-role future">1 Bookkeeper</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Revenue at 100 Clients</h3>
+    <table class="revenue-table">
+      <tr><th>Revenue Stream</th><th>Clients</th><th>Avg Price</th><th>Monthly</th></tr>
+      <tr><td>Setup fees</td><td>10 new/mo</td><td>$2,500</td><td>$25,000</td></tr>
+      <tr><td>Monthly maintenance</td><td>100 active</td><td>$350</td><td>$35,000</td></tr>
+      <tr><td>Ads management</td><td>30</td><td>$800</td><td>$24,000</td></tr>
+      <tr><td>SEO retainers</td><td>20</td><td>$750</td><td>$15,000</td></tr>
+      <tr><td>CRM/AI tools</td><td>40</td><td>$250</td><td>$10,000</td></tr>
+      <tr><td>Social media mgmt</td><td>25</td><td>$400</td><td>$10,000</td></tr>
+      <tr class="total"><td>Total Monthly Revenue</td><td></td><td></td><td>$119,000</td></tr>
+      <tr><td>Payroll (30 people)</td><td></td><td></td><td>-$55,000</td></tr>
+      <tr><td>Tools + overhead</td><td></td><td></td><td>-$5,000</td></tr>
+      <tr class="total"><td>Monthly Profit</td><td></td><td></td><td>$59,000</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ====== PHASE 5 ====== -->
+<div class="phase">
+  <div class="phase-dot"></div>
+  <div class="phase-label">PHASE 5</div>
+  <div class="phase-title">Scale Machine — 50 People</div>
+  <div class="phase-timeline">Year 2-3 | Target: $200K-$350K/mo</div>
+  <div class="phase-desc">Open a second market (San Diego, Inland Empire, or nationwide). Productize services into SaaS. Hire a COO to run day-to-day so you can focus on vision.</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-val green">40-55</div><div class="metric-label">Employees</div></div>
+    <div class="metric"><div class="metric-val cyan">$250K</div><div class="metric-label">Target MRR</div></div>
+    <div class="metric"><div class="metric-val gold">200+</div><div class="metric-label">Clients</div></div>
+    <div class="metric"><div class="metric-val purple">40%</div><div class="metric-label">Margin</div></div>
+  </div>
+
+  <div class="card">
+    <h3>New at This Stage</h3>
+    <ul>
+      <li><strong>COO hire</strong> — $8K-$12K/mo. Runs the entire operation. You only handle CEO-level decisions, partnerships, and culture.</li>
+      <li><strong>Second market launch</strong> — San Diego or go remote/nationwide. Clone the SoCal playbook.</li>
+      <li><strong>SaaS product</strong> — Package your best tools (quote generators, booking systems) as a product other agencies can license.</li>
+      <li><strong>Office space</strong> — Co-working or small office in OC. Creates legitimacy, team culture, and a place to bring clients.</li>
+      <li><strong>HR/People Ops</strong> — At 50 people you need real HR. Benefits, onboarding, performance reviews, culture events.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== PHASE 6 ====== -->
+<div class="phase">
+  <div class="phase-dot"></div>
+  <div class="phase-label">PHASE 6</div>
+  <div class="phase-title">100 Employees — The Vision</div>
+  <div class="phase-timeline">Year 3-5 | Target: $500K+/mo</div>
+  <div class="phase-desc">Rivven is a recognized brand. Multiple offices or fully remote. Enterprise clients. Acquisition opportunities. You're 22-24 years old running a $6M+/year company.</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="metric-val green">100</div><div class="metric-label">Employees</div></div>
+    <div class="metric"><div class="metric-val cyan">$500K+</div><div class="metric-label">Monthly Revenue</div></div>
+    <div class="metric"><div class="metric-val gold">500+</div><div class="metric-label">Clients</div></div>
+    <div class="metric"><div class="metric-val purple">35%</div><div class="metric-label">Margin ($2M+ profit/yr)</div></div>
+  </div>
+
+  <div class="org-chart">
+    <div class="org-level">
+      <div class="org-title">C-Suite</div>
+      <div class="org-roles">
+        <span class="org-role you">CEO (Sabino)</span>
+        <span class="org-role future">COO</span>
+        <span class="org-role future">CTO</span>
+        <span class="org-role future">CMO</span>
+        <span class="org-role future">CFO</span>
+      </div>
+    </div>
+    <div class="org-level">
+      <div class="org-title">VPs & Directors</div>
+      <div class="org-roles">
+        <span class="org-role hired">VP Sales (Ever)</span>
+        <span class="org-role future">VP Development</span>
+        <span class="org-role future">VP Marketing</span>
+        <span class="org-role future">VP Client Success</span>
+        <span class="org-role future">VP Product</span>
+        <span class="org-role future">Director HR</span>
+        <span class="org-role future">Director Finance</span>
+      </div>
+    </div>
+    <div class="org-level">
+      <div class="org-title">Departments (100 total)</div>
+      <div class="org-roles">
+        <span class="org-role future">Sales (25)</span>
+        <span class="org-role future">Development (20)</span>
+        <span class="org-role future">Marketing (15)</span>
+        <span class="org-role future">Client Success (15)</span>
+        <span class="org-role future">Design (8)</span>
+        <span class="org-role future">Operations (7)</span>
+        <span class="org-role future">Product (5)</span>
+        <span class="org-role future">Finance/HR (5)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Revenue at 500 Clients</h3>
+    <table class="revenue-table">
+      <tr><th>Revenue Stream</th><th>Monthly</th></tr>
+      <tr><td>Setup fees (25 new/mo × $3,000)</td><td>$75,000</td></tr>
+      <tr><td>Monthly maintenance (500 × $350)</td><td>$175,000</td></tr>
+      <tr><td>Ads management (150 × $1,000)</td><td>$150,000</td></tr>
+      <tr><td>SEO retainers (80 × $800)</td><td>$64,000</td></tr>
+      <tr><td>CRM/AI SaaS (200 × $300)</td><td>$60,000</td></tr>
+      <tr><td>Social media (100 × $400)</td><td>$40,000</td></tr>
+      <tr class="total"><td>Total Monthly Revenue</td><td>$564,000</td></tr>
+      <tr><td>Payroll (100 people)</td><td>-$280,000</td></tr>
+      <tr><td>Office + tools + overhead</td><td>-$35,000</td></tr>
+      <tr class="total"><td>Monthly Profit</td><td>$249,000</td></tr>
+      <tr class="total"><td>Annual Profit</td><td>$2,988,000</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Exit Options at This Scale</h3>
+    <ul>
+      <li><strong>Keep and run</strong> — $3M+/yr profit. You're 24 making more than 99% of people.</li>
+      <li><strong>Sell the agency</strong> — Digital agencies sell for 3-5x annual profit. That's $9M-$15M exit.</li>
+      <li><strong>Spin off the SaaS</strong> — If you productize your tools, SaaS companies sell for 8-12x ARR.</li>
+      <li><strong>Franchise the model</strong> — License the Rivven system to operators in other markets. $2K/mo per franchise.</li>
+      <li><strong>Flip houses with the profits</strong> — Your original goal. At $250K/mo profit, you can buy properties with cash.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== RULES ====== -->
+<div style="margin-top:48px">
+  <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--cyan);margin-bottom:8px">THE RULES</div>
+  <div style="font-size:20px;font-weight:900;margin-bottom:16px">Non-Negotiable Scaling Principles</div>
+
+  <div class="card">
+    <h3>1. Revenue Before Hiring</h3>
+    <p>Never hire based on projected revenue. Only hire when current revenue DEMANDS it. The revenue comes first, the hire follows. Not the other way around.</p>
+  </div>
+  <div class="card">
+    <h3>2. Contractors Before Full-Time</h3>
+    <p>Every role starts as a contractor (1099). If they perform for 3 months, convert to full-time (W-2). This protects you from bad hires.</p>
+  </div>
+  <div class="card">
+    <h3>3. Offshore for Execution, Local for Sales</h3>
+    <p>Developers, VAs, content creators: hire from Philippines, Latin America, Eastern Europe. Save 60-70% on labor. Sales reps: ALWAYS local. In-person closing is your edge.</p>
+  </div>
+  <div class="card">
+    <h3>4. Every Hire Must Generate 3x Their Cost</h3>
+    <p>A $4K/mo developer should enable $12K/mo in revenue. A $2K/mo sales manager should bring in $6K+. If they don't, the hire was wrong.</p>
+  </div>
+  <div class="card">
+    <h3>5. Systemize Before You Scale</h3>
+    <p>If only YOU can do a task, you can't hire for it. Document every process: how to build a site, how to onboard a client, how to run an ad campaign. SOPs first, then delegation.</p>
+  </div>
+  <div class="card">
+    <h3>6. Cash Reserve = 3 Months of Payroll</h3>
+    <p>Before adding any employee, you must have 3 months of their salary in the bank. At 100 employees ($280K/mo payroll), that's $840K cash reserve. Build it gradually.</p>
+  </div>
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:32px;border-top:1px solid var(--border);font-size:12px;color:var(--text2)">
+  Rivven Growth Plan | For Sabino's eyes only<br>
+  <a href="https://rivven.ai">rivven.ai</a>
+</footer>
+</div><!-- end #content -->
+<script>
+function checkCode(){var v=document.getElementById('codeInput').value;if(v.length===4){if(v==='6767'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block';sessionStorage.setItem('ea_auth','1')}else{document.getElementById('codeError').style.display='block';document.getElementById('codeInput').value='';document.getElementById('codeInput').style.borderColor='#ef4444';setTimeout(function(){document.getElementById('codeInput').style.borderColor='rgba(0,240,255,.1)';document.getElementById('codeError').style.display='none'},1500)}}}
+if(sessionStorage.getItem('ea_auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('content').style.display='block'}
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey&&(e.key==='c'||e.key==='u'||e.key==='s'||e.key==='p')){e.preventDefault();return false}
+  if(e.key==='F12'||e.key==='PrintScreen'){e.preventDefault();return false}
+  if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='J'||e.key==='C')){e.preventDefault();return false}
+});
+</script>
+</body>
+</html>

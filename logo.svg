@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 100" width="380" height="100">
+  <!-- Icon: S + upward arrow circuit mark -->
+  <g transform="translate(12, 10)">
+    <!-- Outer circuit ring -->
+    <circle cx="40" cy="40" r="36" fill="none" stroke="#00D4E6" stroke-width="1.8" opacity="0.35"/>
+
+    <!-- Circuit nodes -->
+    <circle cx="40" cy="4" r="2.5" fill="#00D4E6" opacity="0.7"/>
+    <circle cx="76" cy="40" r="2.5" fill="#00D4E6" opacity="0.7"/>
+    <circle cx="40" cy="76" r="2.5" fill="#00D4E6" opacity="0.7"/>
+    <circle cx="4" cy="40" r="2.5" fill="#7B61FF" opacity="0.7"/>
+
+    <!-- Abstract S path -->
+    <path d="M28 58 C28 58, 28 48, 40 48 C52 48, 52 42, 40 42 C28 42, 28 32, 40 32"
+          fill="none" stroke="#00D4E6" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Upward arrow -->
+    <path d="M40 32 L40 14" fill="none" stroke="#00D4E6" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M33 21 L40 14 L47 21" fill="none" stroke="#00D4E6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Pulse dot -->
+    <circle cx="40" cy="11" r="3.5" fill="#00D4E6"/>
+
+    <!-- Purple accent arc -->
+    <path d="M16 66 A30 30 0 0 1 6 44" fill="none" stroke="#7B61FF" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Text: RIVVEN -->
+  <text x="102" y="62" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="36" font-weight="800" fill="#00D4E6" letter-spacing="2">RIVVEN</text>
+
+  <!-- Tagline divider -->
+  <line x1="102" y1="82" x2="260" y2="82" stroke="#7B61FF" stroke-width="0.8" opacity="0.45"/>
+
+  <!-- Tagline -->
+  <text x="102" y="94" font-family="'Inter', 'SF Pro Display', 'Segoe UI', system-ui, sans-serif" font-size="8.5" font-weight="400" fill="#666680" letter-spacing="3.5">WEB DESIGN &amp; AI TOOLS</text>
+</svg>

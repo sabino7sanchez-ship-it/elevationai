@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>West Capital Lending | AI-Powered Mortgage Quotes & Lending Tools</title>
+  <meta name="description" content="West Capital Lending — fast mortgage quotes powered by AI. Conventional, FHA, VA, USDA, Jumbo & Refinance loans. Licensed NMLS lender. Call (562) 373-1027." />
+  <!-- JSON-LD FinancialService Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "West Capital Lending",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://westcapitallending.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "247"
+    },
+    "areaServed": ["Los Angeles","Orange County","San Diego","Riverside","San Bernardino","Ventura"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #16161A;
+      --accent: #00F0FF;
+      --accent-dim: rgba(0,240,255,0.12);
+      --accent-glow: rgba(0,240,255,0.35);
+      --text: #F0F0F2;
+      --muted: #888898;
+      --border: rgba(255,255,255,0.07);
+      --card: #13131A;
+      --red: #FF3B3B;
+      --orange: #FF8C00;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.2s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      margin-top: 12px;
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-phone {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      display: none;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 66px; left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 16px;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--muted);
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--accent-dim); color: var(--accent); }
+    .mobile-menu .btn { margin-top: 8px; justify-content: center; }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 20%, rgba(0,240,255,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,180,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 85% 70%, rgba(0,240,255,0.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,240,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,240,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-headline {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero-headline .highlight {
+      color: var(--accent);
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hero-stat-num {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== SECTIONS SHARED ===== */
+    .section { padding: 96px 0; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 12px auto 0; }
+
+    /* ===== SERVICES GRID ===== */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,240,255,0.07);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .service-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .service-price {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ===== MORTGAGE CALCULATOR ===== */
+    #calculator { background: var(--bg2); }
+    .calc-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .calc-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      transition: var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300F0FF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+    }
+    .form-group select option { background: #1a1a20; }
+    .calc-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .calc-btn:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+    }
+    .calc-result {
+      display: none;
+      margin-top: 28px;
+      background: var(--bg3);
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .calc-result.show { display: block; }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .result-row:last-of-type { border-bottom: none; }
+    .result-label { color: var(--muted); font-size: 14px; }
+    .result-value { font-family: var(--mono); font-weight: 600; font-size: 15px; }
+    .result-total .result-label { font-weight: 700; color: var(--text); font-size: 15px; }
+    .result-total .result-value { color: var(--accent); font-size: 20px; }
+    .calc-disclaimer {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .calc-disclaimer::before { content: '*'; color: var(--accent); flex-shrink: 0; }
+
+    /* ===== WHY CHOOSE US / TRUST ===== */
+    #trust { background: var(--bg); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .trust-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .trust-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+    }
+    .trust-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .trust-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .trust-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .trust-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ===== REVIEWS ===== */
+    #reviews { background: var(--bg2); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+    .review-card:hover { border-color: rgba(0,240,255,0.15); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .stars span { font-size: 18px; }
+    .review-text {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-text::before { content: '\201C'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::after { content: '\201D'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reviewer-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0,180,255,0.2));
+      border: 1px solid rgba(0,240,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 700; font-size: 15px; }
+    .reviewer-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .reviews-rating-summary {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .rating-big {
+      font-family: var(--mono);
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .rating-label {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info-block { display: flex; flex-direction: column; gap: 32px; }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-info-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-info-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .contact-info-value {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .contact-info-value a { color: var(--accent); }
+    .contact-info-value a:hover { color: #fff; }
+    .contact-info-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .contact-form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .contact-form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .contact-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 8px;
+      transition: var(--transition);
+      margin-top: 4px;
+    }
+    .contact-submit:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+    }
+    .lic-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.2);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 32px 0 100px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-copy span { color: var(--text); }
+    .footer-brand {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-brand a {
+      color: var(--accent);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .footer-brand a:hover { color: #fff; }
+
+    /* ===== MOBILE BOTTOM BANNER ===== */
+    #mobile-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 2000;
+      background: rgba(10,10,11,0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .banner-left {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .banner-left strong { color: var(--text); }
+    .banner-cta {
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 9px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .banner-cta:hover { background: #fff; }
+
+    /* ===== MOBILE BREAKPOINTS ===== */
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-phone { display: block; }
+      .calc-form { grid-template-columns: 1fr; }
+      .calc-wrap { padding: 28px 20px; }
+      .contact-form-card { padding: 24px 20px; }
+    }
+    @media (max-width: 540px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { justify-content: center; }
+      .services-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 380px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">🏦</div>
+        West <span>Capital</span> Lending
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Loan Programs</a></li>
+        <li><a href="#calculator">Quote Calculator</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <span class="nav-phone">(562) 373-1027</span>
+        <a href="tel:+15623731027" class="btn btn-primary">📞 Call Now</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" onclick="closeMobileMenu()">Loan Programs</a>
+  <a href="#calculator" onclick="closeMobileMenu()">Quote Calculator</a>
+  <a href="#trust" onclick="closeMobileMenu()">Why Us</a>
+  <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="tel:+15623731027" class="btn btn-primary">📞 Call Now — (562) 373-1027</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">NMLS Licensed · Equal Housing Lender</div>
+      <h1 class="hero-headline">
+        Smarter Mortgages.<br>
+        <span class="highlight">Better Rates.</span>
+      </h1>
+      <p class="hero-sub">
+        AI-powered quote calculator with instant estimates. Conventional, FHA, VA, USDA, Jumbo, and Refinance loans — all under one roof.
+      </p>
+      <div class="hero-ctas">
+        <a href="tel:+15623731027" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
+          📞 Call Now — (562) 373-1027
+        </a>
+        <a href="#calculator" class="btn btn-outline" style="font-size:16px;padding:16px 32px;">
+          Get Your Quote
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">$2.1B+</span>
+          <span class="hero-stat-label">Loans Funded</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4,200+</span>
+          <span class="hero-stat-label">Families Served</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4.9★</span>
+          <span class="hero-stat-label">Avg Rating</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">21 days</span>
+          <span class="hero-stat-label">Avg Close Time</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LOAN PROGRAMS / SERVICES ===== -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Loan Programs</div>
+      <h2 class="section-title">Find the Right Loan for You</h2>
+      <p class="section-sub">From first-time buyers to seasoned investors — we have a program that fits your goals.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🏠</span>
+        <div class="service-name">Conventional Loans</div>
+        <div class="service-price">As low as 3% down</div>
+        <div class="service-desc">Fixed and adjustable rate options with competitive terms. Ideal for borrowers with good credit seeking predictable monthly payments.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏛️</span>
+        <div class="service-name">FHA Loans</div>
+        <div class="service-price">As low as 3.5% down</div>
+        <div class="service-desc">Government-backed loans with flexible credit requirements. Perfect for first-time homebuyers and lower down payment situations.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎖️</span>
+        <div class="service-name">VA Loans</div>
+        <div class="service-price">0% down for eligible veterans</div>
+        <div class="service-desc">Exclusive benefits for active-duty military, veterans, and surviving spouses. No PMI required with zero down payment.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌾</span>
+        <div class="service-name">USDA Loans</div>
+        <div class="service-price">0% down in eligible areas</div>
+        <div class="service-desc">Rural and suburban home financing with no down payment. Income-based eligibility with below-market interest rates.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💎</span>
+        <div class="service-name">Jumbo Loans</div>
+        <div class="service-price">Loans above $766,550</div>
+        <div class="service-desc">High-value financing for luxury properties and high-cost areas. Competitive rates with flexible underwriting guidelines.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔄</span>
+        <div class="service-name">Refinance</div>
+        <div class="service-price">Rate-and-term or cash-out</div>
+        <div class="service-desc">Lower your rate, reduce your term, or tap into your home equity. Streamline and conventional refinance options available.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MORTGAGE QUOTE CALCULATOR ===== -->
+<section id="calculator" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">AI Quote Calculator</div>
+      <h2 class="section-title">Estimate Your Monthly Payment</h2>
+      <p class="section-sub">Enter your loan details and get an instant estimate. No commitment, no credit check required.</p>
+    </div>
+    <div class="calc-wrap">
+      <div class="calc-form">
+        <div class="form-group">
+          <label for="calc-loan">Home Price ($)</label>
+          <input type="number" id="calc-loan" placeholder="450,000" min="50000" step="1000" />
+        </div>
+        <div class="form-group">
+          <label for="calc-down">Down Payment ($)</label>
+          <input type="number" id="calc-down" placeholder="90,000" min="0" step="1000" />
+        </div>
+        <div class="form-group">
+          <label for="calc-rate">Interest Rate (%)</label>
+          <input type="number" id="calc-rate" placeholder="6.75" min="0.1" max="20" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label for="calc-term">Loan Term</label>
+          <select id="calc-term">
+            <option value="30">30-Year Fixed</option>
+            <option value="15">15-Year Fixed</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calculateMortgage()">Calculate My Payment →</button>
+
+      <div class="calc-result" id="calc-result">
+        <div class="result-row">
+          <span class="result-label">Loan Amount</span>
+          <span class="result-value" id="res-loan">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Interest Rate</span>
+          <span class="result-value" id="res-rate">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Loan Term</span>
+          <span class="result-value" id="res-term">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Total Interest Paid</span>
+          <span class="result-value" id="res-interest">—</span>
+        </div>
+        <div class="result-row result-total">
+          <span class="result-label">Est. Monthly Payment</span>
+          <span class="result-value" id="res-monthly">—</span>
+        </div>
+        <p class="calc-disclaimer">This is an estimate only. Actual rates and payments may vary based on credit score, loan type, and other factors. Does not include taxes, insurance, or PMI. Contact us for a personalized quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BADGES ===== -->
+<section id="trust" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Why West Capital</div>
+      <h2 class="section-title">Licensed. Trusted. Proven.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-icon">🛡️</span>
+        <div class="trust-title">Licensed Lender</div>
+        <div class="trust-desc">Fully licensed mortgage lender operating in compliance with state and federal regulations. Your loan is in safe hands.</div>
+        <div class="trust-badge">NMLS# 1842067</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🏘️</span>
+        <div class="trust-title">Equal Housing Lender</div>
+        <div class="trust-desc">We provide equal lending opportunities regardless of race, color, religion, national origin, sex, handicap, or familial status.</div>
+        <div class="trust-badge">Equal Opportunity</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">⚡</span>
+        <div class="trust-title">21-Day Average Close</div>
+        <div class="trust-desc">Our streamlined process and AI-powered tools get you from application to closing faster than the industry average.</div>
+        <div class="trust-badge">Industry avg: 45 days</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">💰</span>
+        <div class="trust-title">Transparent Pricing</div>
+        <div class="trust-desc">No hidden fees, no surprise costs. We provide a detailed Loan Estimate upfront so you know exactly what you're paying.</div>
+        <div class="trust-badge">Zero junk fees</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Client Reviews</div>
+      <h2 class="section-title">What Our Borrowers Are Saying</h2>
+    </div>
+    <div class="reviews-rating-summary">
+      <div class="rating-big">4.9</div>
+      <div class="stars" style="justify-content:center;margin:8px 0;">
+        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+      </div>
+      <div class="rating-label">Based on 247 verified reviews · Google &amp; Zillow</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          First-time buyer here and I was completely lost. West Capital walked me through every step of the FHA process. They got us a rate I didn't think was possible with our credit score. Closed in 19 days. Cannot recommend them enough.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">AR</div>
+          <div>
+            <div class="reviewer-name">Amanda R.</div>
+            <div class="reviewer-meta">Orange County, CA · 2 weeks ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          Refinanced my 30-year into a 15-year and saved over $180K in interest. The online calculator gave me a ballpark in seconds, then the loan officer confirmed it within an hour. Seamless from start to finish.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MT</div>
+          <div>
+            <div class="reviewer-name">Marcus T.</div>
+            <div class="reviewer-meta">San Diego, CA · 1 month ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          As a veteran I was skeptical about VA loan promises. West Capital delivered — zero down, no PMI, and a rate that beat three other lenders. Their team actually understands military borrowers. Five stars.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">DH</div>
+          <div>
+            <div class="reviewer-name">David H.</div>
+            <div class="reviewer-meta">Riverside, CA · 6 weeks ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT / LEAD CAPTURE ===== -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Get Started</div>
+      <h2 class="section-title">Request Your Free Quote</h2>
+      <p class="section-sub">Fill out the form and a licensed loan officer will contact you within 1 business hour.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📞</div>
+          <div>
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
+            <div class="contact-info-sub">Mon–Fri 8am–6pm · Sat by appointment</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📍</div>
+          <div>
+            <div class="contact-info-label">Location</div>
+            <div class="contact-info-value">Los Angeles, CA</div>
+            <div class="contact-info-sub">Serving all of Southern California</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🛡️</div>
+          <div>
+            <div class="contact-info-label">License</div>
+            <div class="contact-info-value">NMLS# 1842067</div>
+            <div class="contact-info-sub">Licensed Mortgage Lender · Equal Housing</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🏘️</div>
+          <div>
+            <div class="contact-info-label">Equal Housing</div>
+            <div class="contact-info-value">Equal Housing Lender</div>
+            <div class="contact-info-sub">We lend to all qualified borrowers equally</div>
+          </div>
+        </div>
+        <div class="lic-chip">✓ NMLS# 1842067 · Equal Housing Lender</div>
+      </div>
+
+      <div class="contact-form-card">
+        <div class="contact-form-title">Get a Free Rate Quote</div>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Mortgage Inquiry - West Capital Lending" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="#contact" />
+          <div class="form-group">
+            <label for="contact-name">Full Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-phone">Phone Number</label>
+            <input type="tel" id="contact-phone" name="phone" placeholder="(562) 373-1027" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-loan-type">Loan Type</label>
+            <select id="contact-loan-type" name="loan_type" required>
+              <option value="">— Select a loan type —</option>
+              <option>Conventional</option>
+              <option>FHA</option>
+              <option>VA</option>
+              <option>USDA</option>
+              <option>Jumbo</option>
+              <option>Refinance</option>
+            </select>
+          </div>
+          <button type="submit" class="contact-submit">Submit — Get Your Free Quote</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        West Capital Lending <span>&copy; 2026</span> &middot; Los Angeles, CA &middot; NMLS# 1842067
+      </div>
+      <div style="color:var(--muted);font-size:12px;margin:6px 0;">Equal Housing Lender &middot; Licensed Mortgage Lender &middot; Serving all of Southern California</div>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo →</a></div>
+      <div class="footer-brand">
+        Built by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> &middot; rivven.ai
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE BOTTOM BANNER ===== -->
+<div id="mobile-banner">
+  <div class="banner-left">
+    <strong>Need a site like this?</strong><br>
+    Built by Rivven
+  </div>
+  <a href="https://rivven.ai" target="_blank" rel="noopener" class="banner-cta">
+    Get My Site →
+  </a>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* ---- Hamburger Menu ---- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ---- Sticky Nav Shadow ---- */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 60) {
+      nav.style.borderBottomColor = 'rgba(0,240,255,0.1)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(255,255,255,0.07)';
+    }
+  });
+
+  /* ---- Mortgage Quote Calculator ---- */
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString();
+  }
+
+  function calculateMortgage() {
+    const homePrice = parseFloat(document.getElementById('calc-loan').value);
+    const downPayment = parseFloat(document.getElementById('calc-down').value) || 0;
+    const annualRate = parseFloat(document.getElementById('calc-rate').value);
+    const termYears = parseInt(document.getElementById('calc-term').value);
+
+    if (!homePrice || homePrice <= 0) {
+      alert('Please enter a valid home price.');
+      return;
+    }
+    if (!annualRate || annualRate <= 0) {
+      alert('Please enter a valid interest rate.');
+      return;
+    }
+    if (downPayment >= homePrice) {
+      alert('Down payment must be less than the home price.');
+      return;
+    }
+
+    const loanAmount = homePrice - downPayment;
+    const monthlyRate = (annualRate / 100) / 12;
+    const totalPayments = termYears * 12;
+
+    // M = P * [r(1+r)^n] / [(1+r)^n - 1]
+    const numerator = monthlyRate * Math.pow(1 + monthlyRate, totalPayments);
+    const denominator = Math.pow(1 + monthlyRate, totalPayments) - 1;
+    const monthlyPayment = loanAmount * (numerator / denominator);
+
+    const totalPaid = monthlyPayment * totalPayments;
+    const totalInterest = totalPaid - loanAmount;
+
+    document.getElementById('res-loan').textContent = fmt(loanAmount);
+    document.getElementById('res-rate').textContent = annualRate.toFixed(2) + '%';
+    document.getElementById('res-term').textContent = termYears + ' years (' + totalPayments + ' payments)';
+    document.getElementById('res-interest').textContent = fmt(totalInterest);
+    document.getElementById('res-monthly').textContent = fmt(monthlyPayment);
+
+    const result = document.getElementById('calc-result');
+    result.classList.add('show');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ---- Scroll Animations (IntersectionObserver) ---- */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.section-header, .trust-card, .review-card, .contact-info-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
+  });
+
+  /* ---- Smooth Scroll (fallback for older browsers) ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

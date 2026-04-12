@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Command Center — Rivven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0A0A0B;--bg2:#111113;--bg3:#1A1A1E;--bg4:#222228;
+--cyan:#00F0FF;--green:#00FF88;--purple:#7B61FF;--gold:#FFD700;--orange:#FF6B35;
+--text:#E8E8EC;--text2:#9898A0;--text3:#5C5C66;
+--border:#2A2A32;--border2:#3A3A44;
+--radius:12px;--radius2:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+::selection{background:var(--cyan);color:var(--bg)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--cyan)}
+
+/* GRID BACKGROUND */
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+background-image:
+  linear-gradient(rgba(0,240,255,.03) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(0,240,255,.03) 1px,transparent 1px);
+background-size:60px 60px}
+.grid-bg::after{content:'';position:absolute;inset:0;
+background:radial-gradient(ellipse at 50% 0%,rgba(0,240,255,.06) 0%,transparent 60%)}
+
+/* SCANLINE */
+@keyframes scanline{0%{top:-100%}100%{top:200%}}
+.scanline{position:fixed;top:-100%;left:0;width:100%;height:2px;z-index:1;pointer-events:none;
+background:linear-gradient(90deg,transparent,rgba(0,240,255,.15),transparent);
+animation:scanline 8s linear infinite}
+
+.container{position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:0 24px}
+
+/* HEADER */
+.header{padding:40px 0 24px;text-align:center;position:relative}
+.header-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;
+background:rgba(0,240,255,.06);border:1px solid rgba(0,240,255,.15);border-radius:100px;
+font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+color:var(--cyan);margin-bottom:20px}
+.header-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);
+animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 4px var(--green)}50%{opacity:.4;box-shadow:none}}
+.header h1{font-family:'JetBrains Mono',monospace;font-size:clamp(28px,5vw,56px);font-weight:800;
+letter-spacing:-1px;line-height:1.1;
+background:linear-gradient(135deg,#fff 0%,var(--cyan) 50%,#fff 100%);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+margin-bottom:12px}
+.header-sub{font-size:14px;color:var(--text2);font-weight:400;letter-spacing:.5px}
+.header-sub span{color:var(--cyan);font-weight:600}
+
+/* ACTIVATE BAR */
+.activate-bar{display:flex;justify-content:center;align-items:center;gap:16px;margin:24px 0 8px;flex-wrap:wrap}
+.activate-btn{display:inline-flex;align-items:center;gap:8px;
+padding:10px 24px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:12px;
+font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:default;
+background:linear-gradient(135deg,rgba(0,240,255,.12),rgba(0,240,255,.04));
+border:1px solid rgba(0,240,255,.25);color:var(--cyan);position:relative;overflow:hidden}
+.activate-btn::before{content:'';position:absolute;inset:0;
+background:linear-gradient(90deg,transparent,rgba(0,240,255,.08),transparent);
+animation:shimmer 3s linear infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.activate-btn svg{width:14px;height:14px}
+
+/* STATS BAR */
+.stats-bar{display:flex;justify-content:center;gap:8px;margin:20px 0 32px;flex-wrap:wrap}
+.stat-chip{padding:5px 14px;border-radius:100px;font-size:11px;font-weight:600;
+font-family:'JetBrains Mono',monospace;letter-spacing:.5px;border:1px solid;opacity:.8}
+.stat-chip.revenue{color:var(--green);border-color:rgba(0,255,136,.2);background:rgba(0,255,136,.05)}
+.stat-chip.dev{color:var(--cyan);border-color:rgba(0,240,255,.2);background:rgba(0,240,255,.05)}
+.stat-chip.content{color:var(--purple);border-color:rgba(123,97,255,.2);background:rgba(123,97,255,.05)}
+.stat-chip.client{color:var(--gold);border-color:rgba(255,215,0,.2);background:rgba(255,215,0,.05)}
+.stat-chip.research{color:var(--orange);border-color:rgba(255,107,53,.2);background:rgba(255,107,53,.05)}
+
+/* SEARCH + FILTERS */
+.controls{margin-bottom:32px}
+.search-wrap{position:relative;max-width:600px;margin:0 auto 20px}
+.search-wrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--text3)}
+.search-input{width:100%;padding:14px 16px 14px 46px;
+background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);
+font-family:'Inter',sans-serif;font-size:15px;color:var(--text);outline:none;
+transition:border-color .2s,box-shadow .2s}
+.search-input::placeholder{color:var(--text3)}
+.search-input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,240,255,.1)}
+.search-count{position:absolute;right:16px;top:50%;transform:translateY(-50%);
+font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)}
+
+.filter-tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.filter-tab{padding:8px 20px;border-radius:100px;font-size:13px;font-weight:500;
+border:1px solid var(--border);background:transparent;color:var(--text2);
+cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.filter-tab:hover{border-color:var(--text3);color:var(--text)}
+.filter-tab.active{background:var(--cyan);color:var(--bg);border-color:var(--cyan);font-weight:600}
+.filter-tab[data-dept="revenue"].active{background:var(--green);border-color:var(--green)}
+.filter-tab[data-dept="development"].active{background:var(--cyan);border-color:var(--cyan)}
+.filter-tab[data-dept="content"].active{background:var(--purple);border-color:var(--purple)}
+.filter-tab[data-dept="client"].active{background:var(--gold);border-color:var(--gold);color:#000}
+.filter-tab[data-dept="research"].active{background:var(--orange);border-color:var(--orange)}
+
+/* GRID */
+.agents-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;
+padding-bottom:80px}
+
+/* AGENT CARD */
+.agent-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);
+padding:20px;position:relative;overflow:hidden;
+transition:transform .2s,border-color .2s,box-shadow .2s}
+.agent-card:hover{transform:translateY(-2px);border-color:var(--border2);
+box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;
+transition:opacity .2s}
+.agent-card:hover::before{opacity:1}
+.agent-card[data-dept="revenue"]::before{background:var(--green)}
+.agent-card[data-dept="development"]::before{background:var(--cyan)}
+.agent-card[data-dept="content"]::before{background:var(--purple)}
+.agent-card[data-dept="client"]::before{background:var(--gold)}
+.agent-card[data-dept="research"]::before{background:var(--orange)}
+
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.agent-num{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+padding:3px 8px;border-radius:4px;letter-spacing:.5px}
+.agent-num.revenue{color:var(--green);background:rgba(0,255,136,.08)}
+.agent-num.development{color:var(--cyan);background:rgba(0,240,255,.08)}
+.agent-num.content{color:var(--purple);background:rgba(123,97,255,.08)}
+.agent-num.client{color:var(--gold);background:rgba(255,215,0,.08)}
+.agent-num.research{color:var(--orange);background:rgba(255,107,53,.08)}
+
+.dept-tag{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;
+padding:3px 8px;border-radius:4px;border:1px solid}
+.dept-tag.revenue{color:var(--green);border-color:rgba(0,255,136,.25)}
+.dept-tag.development{color:var(--cyan);border-color:rgba(0,240,255,.25)}
+.dept-tag.content{color:var(--purple);border-color:rgba(123,97,255,.25)}
+.dept-tag.client{color:var(--gold);border-color:rgba(255,215,0,.25)}
+.dept-tag.research{color:var(--orange);border-color:rgba(255,107,53,.25)}
+
+.agent-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
+.agent-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px}
+
+.copy-btn{width:100%;padding:10px;border-radius:var(--radius2);
+font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
+letter-spacing:.5px;text-transform:uppercase;cursor:pointer;
+border:1px solid var(--border);background:var(--bg3);color:var(--text2);
+transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.copy-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,240,255,.05)}
+.copy-btn:active{transform:scale(.97)}
+.copy-btn.copied{background:rgba(0,255,136,.1);border-color:var(--green);color:var(--green)}
+.copy-btn svg{width:14px;height:14px}
+
+/* NO RESULTS */
+.no-results{text-align:center;padding:60px 20px;display:none}
+.no-results h3{font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--text3);margin-bottom:8px}
+.no-results p{font-size:14px;color:var(--text3)}
+
+/* FOOTER */
+.footer{text-align:center;padding:40px 0;border-top:1px solid var(--border);margin-top:40px}
+.footer p{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;z-index:1000;
+padding:12px 20px;border-radius:var(--radius2);
+background:var(--bg3);border:1px solid var(--green);color:var(--green);
+font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
+transform:translateY(80px);opacity:0;transition:all .3s ease;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .container{padding:0 12px}
+  .header{padding:24px 0 16px}
+  .header h1{font-size:28px}
+  .agents-grid{grid-template-columns:1fr;gap:12px}
+  .stats-bar{gap:4px}
+  .stat-chip{font-size:10px;padding:4px 10px}
+  .filter-tabs{gap:4px}
+  .filter-tab{padding:6px 14px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="scanline"></div>
+
+<div class="container">
+  <header class="header">
+    <div class="header-badge"><span class="dot"></span> Rivven &middot; 100 Agents Active</div>
+    <h1>AGENT COMMAND CENTER</h1>
+    <p class="header-sub">Deploy specialized AI agents on demand. Click <span>Copy Prompt</span>, paste into Claude, execute.</p>
+  </header>
+
+  <div class="activate-bar">
+    <div class="activate-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      ALL SYSTEMS OPERATIONAL
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <span class="stat-chip revenue">20 Revenue</span>
+    <span class="stat-chip dev">20 Development</span>
+    <span class="stat-chip content">20 Content</span>
+    <span class="stat-chip client">20 Client Success</span>
+    <span class="stat-chip research">20 Research</span>
+  </div>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search agents by name or keyword...">
+      <span class="search-count" id="searchCount">100 agents</span>
+    </div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-dept="all">All</button>
+      <button class="filter-tab" data-dept="revenue">Revenue</button>
+      <button class="filter-tab" data-dept="development">Development</button>
+      <button class="filter-tab" data-dept="content">Content</button>
+      <button class="filter-tab" data-dept="client">Client Success</button>
+      <button class="filter-tab" data-dept="research">Research</button>
+    </div>
+  </div>
+
+  <div class="agents-grid" id="agentsGrid"></div>
+  <div class="no-results" id="noResults">
+    <h3>NO AGENTS FOUND</h3>
+    <p>Try a different search term or filter.</p>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2026 Rivven &middot; Agent Command Center v1.0</p>
+  </footer>
+</div>
+
+<div class="toast" id="toast">Prompt copied to clipboard</div>
+
+<script>
+const AGENTS = [
+// ===== REVENUE DEPARTMENT #001-#020 =====
+{id:"001",name:"Cold Email Writer",dept:"revenue",desc:"Writes 3 personalized cold email variations for any business type",prompt:`You are a cold email specialist for Rivven. Write 3 cold email variations targeting [BUSINESS TYPE] in [CITY]. Each email should: have a subject line under 8 words, open with a specific observation about their business, present the demo site as already built, include a single clear CTA. Tone: confident, peer-to-peer, not salesy. Sign off as Sabino Sanchez, (562) 373-1027, rivven.ai`},
+{id:"002",name:"Instagram DM Writer",dept:"revenue",desc:"Writes cold DMs that get replies from local businesses on Instagram",prompt:`Write 3 Instagram DM variations to send to @[HANDLE] — a [BUSINESS TYPE] in [CITY]. I already built them a free demo site. The DMs should be under 4 lines, feel personal not spammy, mention I noticed something specific about their account, and drop the demo link naturally. End with a soft CTA. Sign: Sabino, Rivven`},
+{id:"003",name:"LinkedIn Outreach Writer",dept:"revenue",desc:"Writes LinkedIn connection requests and follow-up messages for loan officers",prompt:`Write a LinkedIn connection request message (under 300 chars) and a 3-message follow-up sequence targeting [LOAN OFFICER / ROLE] at [COMPANY TYPE]. Context: I build AI quote tools and branded websites for LOs. First message: connection request. Message 2 (day 3): value drop — mention the quote tool. Message 3 (day 7): demo offer. Keep it professional but human. Sign as Sabino Sanchez, Rivven.`},
+{id:"004",name:"Proposal Generator",dept:"revenue",desc:"Generates a full professional proposal for any client",prompt:`Generate a professional proposal for [CLIENT NAME] at [BUSINESS NAME]. Services requested: [LIST SERVICES]. Investment: [PRICE]. Timeline: [DAYS]. Format: Executive Summary, Scope of Work (detailed bullet points), Timeline, Investment + Payment Options, What's Included, What's Not Included, Next Steps. Tone: confident agency, not freelancer. Include Rivven branding. Make it look like a $5K agency wrote it.`},
+{id:"005",name:"Pricing Strategist",dept:"revenue",desc:"Determines the right price and pitch for any prospect",prompt:`Analyze this prospect and recommend the right pricing strategy: Business: [NAME], Industry: [INDUSTRY], Current web presence: [DESCRIBE], Monthly revenue estimate: [ROUGH ESTIMATE], Services they need: [LIST]. Recommend: exact price, payment plan option, which services to bundle, what to offer free to close, what the anchor price should be. Give me a 1-sentence pitch I can text them right now.`},
+{id:"006",name:"Objection Handler",dept:"revenue",desc:"Writes responses to the 10 most common sales objections",prompt:`The prospect said: '[EXACT OBJECTION]'. They are a [BUSINESS TYPE] and I'm pitching them [SERVICE] for [PRICE]. Write 3 response options: 1) A short text/DM reply, 2) A slightly longer email reply, 3) A voicemail script. All should acknowledge the objection, reframe value, and move toward a close. Don't be desperate. Sign as Sabino.`},
+{id:"007",name:"Follow-Up Sequence Builder",dept:"revenue",desc:"Builds a 5-touch follow-up sequence for any prospect",prompt:`Build a 5-touch follow-up sequence for a prospect who [STATUS: saw demo / asked about price / went quiet / said not now]. Business type: [TYPE]. Last touchpoint: [DESCRIBE]. Sequence: Touch 1 (day 1): [channel], Touch 2 (day 3): [channel], Touch 3 (day 7): [channel], Touch 4 (day 14): [channel], Touch 5 (day 30): [channel]. Each touch: subject line (if email), body (under 100 words), CTA. Make them progressively shorter and more direct.`},
+{id:"008",name:"Demo Site Brief Writer",dept:"revenue",desc:"Creates a complete brief for building a new industry demo site",prompt:`Create a complete demo site brief for a [BUSINESS TYPE] in [CITY/REGION]. Include: business name (make it realistic for the area), color palette, hero headline, 6 services with prices, 3 fake reviews with realistic names, contact info, and a list of the 5 features that would most impress a real owner in this industry. Format as a build brief I can hand off immediately.`},
+{id:"009",name:"Client Closer",dept:"revenue",desc:"Writes the perfect closing message after a demo call",prompt:`Write a closing message to send [CLIENT NAME] at [BUSINESS] after our demo call. They liked [WHAT THEY LIKED], hesitated on [HESITATION]. Offer: [PACKAGE + PRICE]. Write: 1 text version (under 5 lines), 1 email version (under 200 words). Both should create mild urgency, reinforce the specific value they cared about, and end with a clear action step. Not pushy. Confident.`},
+{id:"010",name:"Upsell Script Writer",dept:"revenue",desc:"Writes upsell pitches for existing clients",prompt:`Write an upsell pitch for [CLIENT NAME] who currently has [CURRENT SERVICE]. I want to pitch them [NEW SERVICE] for [PRICE]. Context: [ANY RECENT WINS/RESULTS]. Write: 1 text message upsell, 1 email upsell, 1 in-person/call talking points. Lead with results from current work. Make the upgrade feel like a natural next step, not a sales pitch.`},
+{id:"011",name:"Referral Request Writer",dept:"revenue",desc:"Asks happy clients for referrals without being awkward",prompt:`Write a referral request message for [CLIENT NAME] at [BUSINESS]. They've been a client for [TIME] and [RESULT/WIN]. Write: 1 casual text asking for referrals, 1 more formal email with a referral incentive offer ($100 off for them, $100 credit for the referral). Make it feel natural, like you're asking a friend. Include a specific ask: 'Do you know any [INDUSTRY TYPE] who could use this?'`},
+{id:"012",name:"Case Study Builder",dept:"revenue",desc:"Turns client results into a compelling case study",prompt:`Build a case study for [CLIENT NAME / BUSINESS TYPE]. Before: [THEIR SITUATION BEFORE]. What I built: [DESCRIBE THE WORK]. Results: [METRICS/OUTCOMES]. Format: 1-page case study with sections: The Challenge, The Solution, What Was Built, The Results (with 3 specific metrics), Client Quote (make it realistic). Also write a 3-sentence social media version. Make it feel like a real agency case study.`},
+{id:"013",name:"Testimonial Request Writer",dept:"revenue",desc:"Gets authentic testimonials from clients",prompt:`Write 3 variations of a testimonial request for [CLIENT NAME]. They're [DESCRIBE RELATIONSHIP + RESULT]. Variation 1: casual text. Variation 2: email with specific prompts to guide what they write. Variation 3: voice memo script they can record. Each should make it dead easy for them to respond. Include the specific questions: 'What were you doing before? What changed? Would you recommend this?'`},
+{id:"014",name:"Contract Generator",dept:"revenue",desc:"Generates a simple client contract for any service",prompt:`Generate a simple but professional service contract for: Client: [NAME + BUSINESS], Service: [DESCRIBE], Investment: [AMOUNT + PAYMENT TERMS], Timeline: [DELIVERY DATE], Revisions: [NUMBER], What's included, What's not included, Kill fee: 50% if cancelled after work begins. Include: plain English, no legal jargon. Parties: Rivven (Sabino Sanchez) and [CLIENT]. Format for easy digital signing.`},
+{id:"015",name:"Invoice Creator",dept:"revenue",desc:"Creates a professional invoice for any project",prompt:`Create a professional invoice for: Client: [NAME + BUSINESS + EMAIL], Service: [ITEMIZED LIST], Amount: [TOTAL], Due: [DATE], Payment methods: Venmo @sabino-sanchez7 / Zelle (562) 373-1027 / Cash. Invoice number: [DATE-001 format]. Include Rivven branding. Late fee: 10% after 14 days. Thank you note at bottom. Format as clean HTML or text I can copy.`},
+{id:"016",name:"Payment Follow-Up Writer",dept:"revenue",desc:"Follows up on unpaid invoices without being awkward",prompt:`Write a payment follow-up for [CLIENT NAME] who owes [AMOUNT] for [SERVICE]. Invoice was sent [DAYS] ago. Tone: friendly but firm. Write: 1 casual text (day 3), 1 firmer email (day 7), 1 final notice (day 14). Each gets progressively more direct. Never desperate. Keep the relationship intact. Payment: Venmo @sabino-sanchez7.`},
+{id:"017",name:"Discovery Call Script",dept:"revenue",desc:"A complete script for first calls with new prospects",prompt:`Create a discovery call script for a 20-minute call with [PROSPECT NAME] at [BUSINESS TYPE]. They found me through [SOURCE]. Script sections: Opener (2 min), Their current situation (5 min, 4 key questions), Pain points (3 min), Demo walkthrough (5 min), Close (5 min). Include exact questions to ask, what to listen for, and the exact words to transition to the close. End with the exact sentence to use when stating the price.`},
+{id:"018",name:"Pitch Deck Creator",dept:"revenue",desc:"Creates a 10-slide pitch for agency partnerships or investors",prompt:`Create a 10-slide pitch deck outline for Rivven. Audience: [PARTNER / INVESTOR / ENTERPRISE CLIENT]. Slides: 1) Problem, 2) Solution, 3) How it works, 4) Results/case studies, 5) Services + pricing, 6) Traction (clients, revenue), 7) Market opportunity, 8) Why Sabino, 9) What we need / the ask, 10) Next steps. For each slide: headline, 3 bullet points, visual suggestion. Make it aggressive and data-forward.`},
+{id:"019",name:"ROI Calculator Script",dept:"revenue",desc:"Calculates and presents ROI for any client",prompt:`Calculate ROI for [CLIENT NAME] at [BUSINESS]. Investment in my services: [AMOUNT]. Context: [WHAT I BUILT]. Estimate: Monthly visitors the site could generate (based on industry avg), % who become leads, % who close, avg job value. Show: Monthly revenue potential, Annual revenue potential, ROI multiple (revenue / investment), Payback period. Present it as a one-paragraph pitch I can text them right now.`},
+{id:"020",name:"Competitor Research Agent",dept:"revenue",desc:"Researches what competitors are charging and offering",prompt:`Research web design and digital marketing agencies in [CITY/REGION] targeting [INDUSTRY]. Find: top 5 competitors, their pricing (if public), their service offerings, their weaknesses based on reviews, and what they're NOT offering that Sabino could. Also find: what the businesses in this industry are currently paying for marketing. Output: competitive positioning statement + 3 angles Sabino can use to win against these agencies.`},
+
+// ===== DEVELOPMENT DEPARTMENT #021-#040 =====
+{id:"021",name:"Website Builder Brief",dept:"development",desc:"Creates complete specs for any client website build",prompt:`Create a complete website build spec for [BUSINESS NAME] in [INDUSTRY]. Include: pages needed, sections for each page, copy tone, color palette (give hex codes), font recommendations, features required (forms/booking/gallery/calculator), SEO keywords to target, mobile priorities, and estimated build time. Format as a brief I can execute immediately. Business details: [ANY INFO PROVIDED].`},
+{id:"022",name:"Landing Page Optimizer",dept:"development",desc:"Rewrites any landing page for maximum conversion",prompt:`Rewrite this landing page for maximum conversion: [PASTE CURRENT COPY OR DESCRIBE THE PAGE]. Apply: 5-second rule (immediate clarity on value), social proof above fold, one primary CTA, remove all jargon, add urgency without being fake, mobile-first copy length. Deliver: new headline, subheadline, hero section copy, 3 trust signals, CTA button text, and the first 3 sections fully rewritten.`},
+{id:"023",name:"Quote Tool Builder Brief",dept:"development",desc:"Specs out a custom quote/calculator tool for any industry",prompt:`Design a quote calculator tool for [BUSINESS TYPE]. Include: input fields needed (what does the user select/enter?), calculation logic (how should the price be determined?), output format (what does the result look like?), additional features (PDF export / share link / email capture), and the UI layout. Make the calculator logic realistic for this industry. Deliver a complete build brief I can code from.`},
+{id:"024",name:"SEO Content Plan",dept:"development",desc:"Creates a 90-day SEO content plan for any client site",prompt:`Create a 90-day SEO content plan for [BUSINESS NAME] in [INDUSTRY] serving [LOCATION]. Include: 10 target keywords with monthly search volume estimates, 12 blog post ideas (one per week), meta title and description for the homepage, schema markup recommendations, Google Business Profile optimization checklist, and 3 local citation sources to submit to. Make it actionable — I should be able to hand this to the client and have them execute it.`},
+{id:"025",name:"Performance Audit Agent",dept:"development",desc:"Audits any website for speed, SEO, and conversion issues",prompt:`Conduct a performance audit for [URL or DESCRIBE THE SITE]. Check: Page load issues (what's likely slow based on what I built), SEO basics (title tags, meta descriptions, h1s, image alt text), conversion issues (is the CTA clear? is there friction?), mobile issues, missing trust signals, broken links or forms, and Core Web Vitals risks. Output: Priority 1 (fix today), Priority 2 (fix this week), Priority 3 (nice to have). Be specific.`},
+{id:"026",name:"Schema Markup Generator",dept:"development",desc:"Generates LocalBusiness schema markup for any client",prompt:`Generate complete LocalBusiness JSON-LD schema markup for: Business Name: [NAME], Industry/Type: [TYPE], Address: [ADDRESS], Phone: [PHONE], Website: [URL], Hours: [HOURS], Services: [LIST], Price Range: [$$/$$$], Social profiles: [LIST]. Also generate: FAQPage schema for their top 5 FAQ questions, and Service schema for their top 3 services. Format as ready-to-paste HTML script tags.`},
+{id:"027",name:"Google Business Profile Optimizer",dept:"development",desc:"Writes a complete optimized Google Business Profile",prompt:`Write a fully optimized Google Business Profile for [BUSINESS NAME]. Include: Business description (750 chars max, keyword-rich but natural), 10 services to add with descriptions, 5 post ideas for the first month, photo categories to upload, Q&A to pre-populate (5 questions + answers), response template for positive reviews, response template for negative reviews. Also: list the 10 most important local citations to submit to.`},
+{id:"028",name:"Email Automation Builder",dept:"development",desc:"Builds a complete email automation sequence for any business",prompt:`Build a 7-email welcome + nurture sequence for [BUSINESS NAME] in [INDUSTRY]. Trigger: new lead signs up / fills out form. Emails: 1 (immediate): Welcome + what to expect. 2 (day 1): Most common question answered. 3 (day 3): Social proof / case study. 4 (day 5): FAQ + objection handling. 5 (day 7): Soft pitch. 6 (day 10): Urgency / limited availability. 7 (day 14): Final CTA or breakup email. Subject lines, preview text, and body for each.`},
+{id:"029",name:"Chatbot Script Builder",dept:"development",desc:"Writes a complete chatbot conversation script for any business",prompt:`Write a complete chatbot conversation script for [BUSINESS NAME] in [INDUSTRY]. Include: greeting message, main menu (4-5 options), FAQ responses (top 8 questions + answers), lead capture flow (when and how to ask for name/phone/email), appointment booking flow, 'talk to a human' escalation, and out-of-hours message. Tone: [FRIENDLY/PROFESSIONAL]. Make it feel human, not robotic.`},
+{id:"030",name:"Accessibility Checker",dept:"development",desc:"Reviews code for accessibility issues and fixes them",prompt:`Review this HTML for accessibility issues and provide fixes: [PASTE CODE OR DESCRIBE SITE]. Check: alt text on all images, ARIA labels on buttons/icons, color contrast ratios, keyboard navigation, form labels, focus states, semantic HTML structure, skip navigation link. Output: list of issues found + exact code fixes for each one. Prioritize: anything that affects screen readers first.`},
+{id:"031",name:"Mobile UX Reviewer",dept:"development",desc:"Reviews any page for mobile UX issues",prompt:`Review this page for mobile UX issues: [URL or describe the page]. Check: tap target sizes (min 44x44px), text readability without zooming, form usability on mobile, image loading on slow connections, sticky elements that block content, horizontal scrolling issues, CTA visibility above fold on mobile. Output: specific fixes with CSS/HTML code where applicable.`},
+{id:"032",name:"Color Palette Generator",dept:"development",desc:"Generates a complete brand color system for any business",prompt:`Generate a complete brand color system for [BUSINESS NAME] in [INDUSTRY]. Provide: Primary brand color (hex), Secondary color, Accent/CTA color, Background color (light mode), Background color (dark mode), Text colors (primary, secondary, muted), Success/Error/Warning colors. For each color: the hex code, when to use it, and what emotion it conveys. Also provide: the CSS custom properties block ready to paste, and a 1-line rationale for each color choice.`},
+{id:"033",name:"Typography System Builder",dept:"development",desc:"Creates a complete typography system for any brand",prompt:`Create a complete typography system for [BUSINESS NAME / INDUSTRY]. Include: heading font (Google Fonts), body font (Google Fonts), monospace font if needed. For each: the Google Fonts import URL, CSS custom properties, and usage rules (when to use each weight/size). Provide: a complete CSS typography scale (h1-h6, body, small, caption) with font-size, line-height, letter-spacing, and font-weight for each. Also: mobile typography adjustments.`},
+{id:"034",name:"Component Library Brief",dept:"development",desc:"Defines reusable UI components for a client site",prompt:`Design a reusable component library for [BUSINESS TYPE] sites. List and describe: Button variations (primary, secondary, ghost, danger), Card types (service card, review card, team card, pricing card), Form elements (input, select, textarea, checkbox), Navigation (desktop nav, mobile hamburger, breadcrumbs), Sections (hero, CTA banner, stats bar, trust badges). For each component: HTML structure, CSS class names, and any JS behavior needed.`},
+{id:"035",name:"Animation Spec Writer",dept:"development",desc:"Defines scroll animations and micro-interactions for any site",prompt:`Write animation specifications for [SITE TYPE / INDUSTRY]. Define: hero entrance animation, scroll-triggered fade-ins (what triggers, what animates, timing), hover states for cards/buttons, loading states, form success/error animations, counter animations for stats, and any parallax effects. For each: CSS/JS approach, duration, easing, and whether it should be disabled for users who prefer reduced motion. Keep performance in mind.`},
+{id:"036",name:"GitHub Deployment Guide",dept:"development",desc:"Step-by-step deployment guide for any client site",prompt:`Write a complete GitHub Pages deployment guide for [SITE NAME] at [REPO NAME]. Include: initial repo setup steps, how to push the site live, how to connect a custom domain (with exact DNS records for Cloudflare), how to enable HTTPS, how to push updates (daily workflow), common errors and fixes. Format as a numbered checklist Sabino can follow in under 10 minutes. Include the exact git commands.`},
+{id:"037",name:"Netlify Deployment Guide",dept:"development",desc:"Deploys any site to Netlify with custom domain",prompt:`Write a complete Netlify deployment guide for [SITE NAME]. Include: drag-and-drop deploy steps, how to set up auto-deploy from GitHub, custom domain setup (exact DNS records), form handling setup (Netlify Forms vs formsubmit.co), environment variables if needed, and how to roll back a bad deploy. Also: Netlify CLI commands for deploying from terminal. Format as a numbered checklist.`},
+{id:"038",name:"Image Optimization Guide",dept:"development",desc:"Optimizes all images for any client site",prompt:`Create an image optimization checklist for [SITE NAME]. Current images: [DESCRIBE OR LIST]. For each image type (hero, gallery, thumbnails, icons): recommended dimensions, file format (WebP vs JPEG vs PNG vs SVG), compression target (file size), lazy loading implementation, srcset for responsive images, and alt text formula. Also provide: the exact HTML code for a properly optimized responsive image tag.`},
+{id:"039",name:"Form Integration Builder",dept:"development",desc:"Sets up any form with the right backend and notifications",prompt:`Set up a form integration for [BUSINESS NAME]. Form fields: [LIST]. Needs to: send to [EMAIL], [send SMS notification? Y/N], [add to CRM? Y/N]. Options: formsubmit.co (free), Netlify Forms (free), Web3Forms (free). Recommend the best option and provide: the exact HTML form code, any hidden fields needed, success redirect URL, email notification setup steps, and how to test it works. Include spam protection.`},
+{id:"040",name:"API Integration Spec",dept:"development",desc:"Specs out any third-party API integration for a client tool",prompt:`Spec out an API integration for [WHAT IT SHOULD DO] for [BUSINESS TYPE]. APIs to consider: [Google Maps / Calendly / Stripe / Twilio / SendGrid / other]. For each: what it does, free tier limits, authentication method, the specific endpoint needed, and a code example of the API call. Recommend the simplest stack to achieve [GOAL] and provide the exact implementation steps.`},
+
+// ===== CONTENT DEPARTMENT #041-#060 =====
+{id:"041",name:"Blog Post Writer",dept:"content",desc:"Writes SEO-optimized blog posts for any client",prompt:`Write a 1,200-word SEO blog post for [BUSINESS NAME] in [INDUSTRY] targeting the keyword '[KEYWORD]'. Structure: H1 (include keyword), intro (hook + what they'll learn), 4-5 H2 sections, conclusion with CTA to contact [BUSINESS NAME]. Tone: [PROFESSIONAL/CONVERSATIONAL]. Include: meta title (under 60 chars), meta description (under 160 chars), 3 internal link suggestions, 1 CTA at the end. Write for [LOCATION] audience.`},
+{id:"042",name:"Instagram Caption Writer",dept:"content",desc:"Writes high-engagement Instagram captions for any business",prompt:`Write 5 Instagram captions for [BUSINESS NAME] in [INDUSTRY]. Post ideas: [DESCRIBE 5 POSTS or use industry-appropriate ideas]. For each caption: hook line (first 2 lines must stop the scroll), body (value/story/proof), CTA, 15 relevant hashtags. Tone: [DESCRIBE]. Mix: 2 educational, 2 social proof, 1 behind-the-scenes. Keep captions under 150 words each.`},
+{id:"043",name:"TikTok Script Writer",dept:"content",desc:"Writes viral TikTok scripts for small businesses",prompt:`Write 3 TikTok scripts for [BUSINESS NAME] in [INDUSTRY]. Each script: hook (first 3 seconds — what makes someone stop scrolling), script body (under 60 seconds when spoken), text overlays to show on screen, suggested audio type, and CTA at end. Formats: 1 'day in the life', 1 'before vs after', 1 'common mistake in [INDUSTRY]'. Make them feel native to TikTok — not an ad.`},
+{id:"044",name:"YouTube Script Writer",dept:"content",desc:"Writes YouTube video scripts optimized for retention",prompt:`Write a YouTube video script for [BUSINESS NAME / CHANNEL]. Video topic: [TOPIC]. Target length: [MINUTES]. Structure: Hook (30 sec, tease the payoff), Intro (30 sec, who you are + what video covers), Main content (divided into clear chapters), CTA (subscribe, comment, related video). Include: chapter timestamps, B-roll suggestions, and on-screen text suggestions. SEO: title, description (first 150 chars crucial), tags, thumbnail concept.`},
+{id:"045",name:"Email Newsletter Writer",dept:"content",desc:"Writes monthly email newsletters for any client",prompt:`Write a monthly email newsletter for [BUSINESS NAME] for [MONTH]. Sections: 1) Attention-grabbing subject line + preview text, 2) Personal note from [OWNER NAME] (2-3 sentences), 3) Main value piece (tip, how-to, or industry news — 150 words), 4) Promotion/offer (if applicable), 5) Customer spotlight or testimonial, 6) CTA. Keep total under 400 words. Tone: [FRIENDLY/PROFESSIONAL]. Avoid spam trigger words.`},
+{id:"046",name:"Facebook Ad Copy Writer",dept:"content",desc:"Writes converting Facebook and Instagram ad copy",prompt:`Write 3 Facebook/Instagram ad variations for [BUSINESS NAME] promoting [OFFER/SERVICE]. For each ad: Primary text (under 125 chars for mobile), Headline (under 40 chars), Description (under 30 chars), CTA button text. Ad formats: 1 problem/solution, 1 social proof/testimonial style, 1 direct offer. Target audience: [DESCRIBE]. Include: what image/video to use with each ad, and the URL + UTM parameters to track clicks.`},
+{id:"047",name:"Google Ad Copy Writer",dept:"content",desc:"Writes Google Search ad campaigns for any business",prompt:`Write a Google Search ad campaign for [BUSINESS NAME] in [INDUSTRY] serving [LOCATION]. Keywords to target: [LIST or have me suggest]. For each keyword group: 3 headline variations (30 chars each), 2 description variations (90 chars each), display URL path, and negative keywords to exclude. Also: recommended bid strategy, daily budget suggestion based on [MONTHLY BUDGET], and expected click volume estimate.`},
+{id:"048",name:"Website Copywriter",dept:"content",desc:"Rewrites any page's copy to convert better",prompt:`Rewrite the copy for [PAGE TYPE: homepage/about/services/contact] for [BUSINESS NAME]. Current copy: [PASTE EXISTING OR DESCRIBE]. Apply: customer-first language (benefits not features), specific social proof, clear headline hierarchy, SEO keywords woven in naturally, trust signals, and a compelling CTA. Deliver: H1, H2s, all body copy, button text, and meta description. Make every sentence earn its place.`},
+{id:"049",name:"Product Description Writer",dept:"content",desc:"Writes compelling product/service descriptions",prompt:`Write product/service descriptions for [BUSINESS NAME]. Services to describe: [LIST 5-8 SERVICES]. For each: a 2-sentence short description (for cards/menus), a 100-word long description (for service pages), key benefits (3 bullet points), and pricing presentation language. Tone: [INDUSTRY APPROPRIATE]. Focus on outcomes, not features. What does the customer's life look like after getting this service?`},
+{id:"050",name:"About Page Writer",dept:"content",desc:"Writes compelling About/Bio pages for any business owner",prompt:`Write an About page for [BUSINESS OWNER NAME] at [BUSINESS NAME]. Key facts: [AGE, BACKGROUND, WHY THEY STARTED, NOTABLE ACHIEVEMENTS, PERSONAL DETAILS THEY WANT TO SHARE]. Tone: authentic, not corporate. Structure: hook (most interesting/relatable thing about them), their story (problem they solved), their mission, their results, their personal side (builds trust), CTA. Also write a short 2-sentence bio for social media use.`},
+{id:"051",name:"FAQ Generator",dept:"content",desc:"Generates comprehensive FAQs for any business",prompt:`Generate 15 FAQ questions and answers for [BUSINESS NAME] in [INDUSTRY]. Cover: pricing questions, process questions, timeline questions, what makes you different, common concerns/objections, trust/credibility questions, and practical how-it-works questions. Make the answers: direct, specific, and convert skeptical visitors into inquiries. Format as FAQ schema-ready HTML. Also identify the 3 most important FAQs to feature prominently on the homepage.`},
+{id:"052",name:"Press Release Writer",dept:"content",desc:"Writes press releases for client milestones and launches",prompt:`Write a press release for [BUSINESS NAME] announcing [NEWS/MILESTONE]. Format: Headline (newsy, specific), Subheadline, Dateline, Lead paragraph (5 Ws), Body (2-3 paragraphs with quotes), Boilerplate about [BUSINESS], Media contact info. Quote from [OWNER NAME] should sound authentic, not corporate. Distribution targets: local news, industry publications, Google My Business post version, social media version. Keep under 500 words.`},
+{id:"053",name:"LinkedIn Post Writer",dept:"content",desc:"Writes high-performing LinkedIn posts for any professional",prompt:`Write 5 LinkedIn posts for [NAME] at [BUSINESS/ROLE]. Topics: [LIST or use: 1 industry insight, 1 client win, 1 lesson learned, 1 controversial take, 1 behind-the-scenes]. Format: Hook line (no 'I am excited to announce'), short paragraphs (2-3 lines max), value-first body, engagement question at end. No hashtag spam. Tone: direct and confident. Optimal length: 150-300 words. These should build personal brand AND generate inbound leads.`},
+{id:"054",name:"SMS Campaign Writer",dept:"content",desc:"Writes SMS marketing campaigns for any business",prompt:`Write an SMS campaign for [BUSINESS NAME] promoting [OFFER]. Campaign: 1 announcement text (day 1), 1 reminder text (day 3), 1 last chance text (day 5). Each SMS: under 160 chars (1 SMS), business name first, clear offer, CTA, opt-out instruction (STOP to opt out). Also write: a reactivation SMS for lapsed customers, and an appointment reminder template. All must comply with TCPA — include consent language where needed.`},
+{id:"055",name:"Video Script Writer",dept:"content",desc:"Writes 60-90 second promotional video scripts",prompt:`Write a 60-90 second promotional video script for [BUSINESS NAME]. Style: [TESTIMONIAL / EXPLAINER / BRAND STORY / DEMO]. Script sections: Hook (5 sec), Problem (10 sec), Solution (15 sec), Proof (15 sec), CTA (10 sec). Include: voiceover text, on-screen text suggestions, B-roll shot list, music mood suggestion. The script should work as: a website homepage video, an Instagram Reel, and a YouTube pre-roll ad. Deliver 2 variations.`},
+{id:"056",name:"Cold Email Sequence \u2014 5 Touch",dept:"content",desc:"Full 5-email cold outreach sequence for any industry",prompt:`Write a complete 5-email cold outreach sequence targeting [ROLE/TITLE] at [BUSINESS TYPE] in [LOCATION]. I offer [SERVICE]. Email 1 (day 1): Personalized intro + value prop. Email 2 (day 3): Useful insight/tip relevant to their industry. Email 3 (day 5): Demo/case study. Email 4 (day 8): Different angle / address likely objection. Email 5 (day 12): Breakup email. Each email: subject line, preview text, body (under 150 words), CTA. Make them sound human — not automated.`},
+{id:"057",name:"Review Response Writer",dept:"content",desc:"Writes responses to Google reviews for any business",prompt:`Write review response templates for [BUSINESS NAME]. Create: 5 responses for 5-star reviews (vary the tone/length), 3 responses for 4-star reviews (thank + address the gap), 3 responses for negative reviews (de-escalate, take offline, show accountability). Also: a review request script to text/email happy customers. All responses should reinforce the brand, be specific enough to seem personal, and help SEO (include business name + service + location naturally).`},
+{id:"058",name:"Offer Creator",dept:"content",desc:"Creates irresistible limited-time offers for any business",prompt:`Create 3 limited-time offer structures for [BUSINESS NAME] to run this month. Each offer: headline, what's included, what's free/discounted, the real value vs offer price, deadline, who it's for, how to claim it, urgency mechanism (why act now). Formats: 1 introductory offer for new clients, 1 bundle deal, 1 referral offer. For each: write the Instagram post, the email announcement, and the in-person pitch. Offers should be real value, not fake discounts.`},
+{id:"059",name:"Brand Voice Guide",dept:"content",desc:"Creates a brand voice and tone guide for any business",prompt:`Create a brand voice guide for [BUSINESS NAME] in [INDUSTRY]. Include: 3 brand personality traits with explanations, tone for different contexts (website vs social vs email vs in-person), vocabulary to use and avoid, example sentences showing the voice in action, how to write headlines, how to handle complaints publicly, and a 1-page quick reference card. This guide should make it easy for anyone (or Claude) to write consistently in [BUSINESS NAME]'s voice.`},
+{id:"060",name:"Content Calendar Builder",dept:"content",desc:"Builds a 30-day content calendar for any business",prompt:`Build a 30-day social media content calendar for [BUSINESS NAME] in [INDUSTRY]. Platforms: [IG / TikTok / LinkedIn / Facebook — pick relevant ones]. For each day: platform, post type (Reel/photo/carousel/story), topic, caption hook, hashtag set. Content mix: 40% educational, 30% social proof, 20% behind-the-scenes, 10% direct offer. Also include: 4 Reel ideas with full scripts, 2 email newsletter topics, and 1 blog post idea. Make it executable without a big team.`},
+
+// ===== CLIENT SUCCESS DEPARTMENT #061-#080 =====
+{id:"061",name:"Monthly Report Generator",dept:"client",desc:"Fills in a monthly performance report for any client",prompt:`Generate a monthly performance report narrative for [CLIENT NAME] at [BUSINESS]. Data provided: [PASTE METRICS OR DESCRIBE]. Write: an executive summary paragraph (3-4 sentences, highlight wins), a traffic section narrative, a leads section narrative, an ROI statement, 3 wins for the month, 1-2 areas to improve, and 3 goals for next month. Tone: confident agency reporting to a client. Make the numbers sound impressive but accurate. End with: 'Questions? Call Sabino at (562) 373-1027.'`},
+{id:"062",name:"Client Onboarding Checklist",dept:"client",desc:"Creates a complete onboarding checklist for any new client",prompt:`Create a client onboarding checklist for [CLIENT NAME] who just signed for [SERVICE] at [PRICE]. Include: documents to collect (logo files, photos, login credentials, brand colors, content), questions to ask in the kickoff call, what Sabino delivers and when (timeline), what the client is responsible for, communication expectations (response time, how to send feedback), payment schedule reminder, and a welcome message to send Day 1. Format: a clean checklist Sabino sends to new clients.`},
+{id:"063",name:"Project Tracker",dept:"client",desc:"Creates a project timeline and milestone tracker",prompt:`Create a project timeline for [PROJECT NAME] for [CLIENT]. Service: [DESCRIBE]. Start date: [DATE]. Deadline: [DATE]. Create: day-by-day or milestone-based timeline, what Sabino does at each stage, what the client approves, review/revision windows, final delivery checklist, and post-launch tasks. Format: a clear timeline I can share with the client to set expectations. Include: what happens if client is late providing feedback (timeline shifts).`},
+{id:"064",name:"Scope Document Writer",dept:"client",desc:"Writes a clear scope of work that prevents scope creep",prompt:`Write a Scope of Work document for [PROJECT] for [CLIENT]. Clearly define: what IS included (specific deliverables, number of pages/sections, features, revisions allowed), what is NOT included (what costs extra, what requires separate agreement), assumptions (client provides X by Y date), change order policy (how additional requests are priced), and acceptance criteria (what 'done' looks like). Format: clean, easy to read, protects Sabino without sounding adversarial.`},
+{id:"065",name:"Client Check-In Script",dept:"client",desc:"Scripts for weekly/monthly client check-in calls",prompt:`Write a 15-minute client check-in call script for [CLIENT NAME] at [BUSINESS]. Current project status: [DESCRIBE]. Topics to cover: progress update (what's done, what's in progress), blockers or questions, any wins/metrics to share, next steps and timeline, any upsell opportunity to plant a seed for. Include: the exact opening line, transition phrases between topics, how to end the call with clear next actions, and a post-call summary email template.`},
+{id:"066",name:"Feedback Request Script",dept:"client",desc:"Asks clients for specific actionable feedback",prompt:`Write a feedback request for [CLIENT NAME] at [BUSINESS]. We just delivered [WHAT WAS DELIVERED]. Ask for feedback on: design, functionality, copy, anything they want changed. Format: 1 text version (casual), 1 email version (structured with specific questions). The email should have: 3 specific questions about the deliverable, a rating scale (1-5) for overall satisfaction, and an open field for anything else. Make it easy to reply — no more than 2 minutes to complete.`},
+{id:"067",name:"Meeting Notes Template",dept:"client",desc:"Creates structured meeting notes for any client call",prompt:`Create meeting notes template and fill it in for a call with [CLIENT NAME] at [BUSINESS] on [DATE]. Topics discussed: [LIST WHAT WAS COVERED]. Format: Date/attendees, Key decisions made (bullet points), Action items (who does what by when), Questions to follow up on, Next meeting date. Also write: the follow-up email to send within 1 hour of the call that summarizes what was decided and confirms next steps. Keep it under 200 words.`},
+{id:"068",name:"Revision Handler",dept:"client",desc:"Manages client revision requests professionally",prompt:`Write a response to this revision request from [CLIENT NAME]: '[PASTE THEIR REQUEST]'. Context: [WHAT WAS ALREADY AGREED / WHAT REVISIONS REMAIN]. Response should: acknowledge their feedback positively, clarify what you'll change, note if anything is outside scope (and how to handle it), give a realistic timeline, and keep the relationship positive. If it's in scope: just confirm and execute. If it's out of scope: be direct but not defensive.`},
+{id:"069",name:"Delivery Email Writer",dept:"client",desc:"Writes the perfect project delivery email",prompt:`Write a project delivery email for [CLIENT NAME] at [BUSINESS]. Delivering: [WHAT WAS BUILT]. Live URL: [URL]. Include: a brief summary of what was built, how to use/access it, how to test it (what to click/check), next steps (DNS setup / final payment / launch), how to request changes (within the revision window), how to reach Sabino after the project. Tone: proud of the work, professional, sets clear expectations. End with an ask for a Google review.`},
+{id:"070",name:"Client Education Writer",dept:"client",desc:"Creates educational content to help clients understand their tools",prompt:`Write a user guide for [CLIENT NAME] explaining how to use [TOOL/WEBSITE]. Assume zero technical knowledge. Cover: how to access it, the most important things to know, common tasks they'll perform (step by step), what to do if something looks wrong, how to send Sabino a change request, and FAQs. Format: numbered steps with clear headers. Include screenshots descriptions (describe where buttons are). Keep it under 1 page — they won't read more than that.`},
+{id:"071",name:"Renewal Pitch Writer",dept:"client",desc:"Pitches contract renewals and ongoing retainers",prompt:`Write a renewal pitch for [CLIENT NAME] whose [CURRENT SERVICE] contract ends [DATE]. Results so far: [DESCRIBE]. Pitch them on renewing/upgrading to [NEW SERVICE/RETAINER] for [PRICE]. Write: 1 text version (casual, reference results), 1 email version (professional, with results metrics). Lead with the ROI of staying vs starting over with someone else. Include a limited-time renewal incentive. Make saying yes feel obvious.`},
+{id:"072",name:"Upgrade Pitch Writer",dept:"client",desc:"Pitches additional services to existing clients",prompt:`Write an upgrade pitch for [CLIENT NAME] who has [CURRENT SERVICE]. I want to add [NEW SERVICE] for [PRICE/MO]. Context: [THEIR CURRENT RESULTS / SITUATION]. Write: 1 casual text pitch (under 5 lines), 1 email pitch (under 200 words). Lead with: what problem the new service solves for them specifically. Use their business context. Avoid: generic upsell language. Make it feel like a natural conversation, not a sales pitch.`},
+{id:"073",name:"Cancellation Handler",dept:"client",desc:"Responds to client cancellation requests",prompt:`[CLIENT NAME] wants to cancel [SERVICE] because: '[THEIR REASON]'. Write 3 response options: 1) Save the relationship (address their concern, offer a solution), 2) Graceful offboarding (keep the relationship positive for referrals), 3) Win-back (if they leave, this is how you get them back in 3 months). For each: the exact message to send, tone guidance, and what to offer (discount, pause, downgrade). Never beg. Stay professional.`},
+{id:"074",name:"Client Success Report Card",dept:"client",desc:"Creates a quarterly business health report for clients",prompt:`Create a Quarterly Business Report for [CLIENT NAME] at [BUSINESS]. Metrics from this quarter: [PASTE DATA]. Report sections: Business Growth Score (A-F grade with reasoning), Website Performance, Lead Generation, Social Media Growth, Quick Wins (3 things that worked), Opportunities (3 things to improve), Next Quarter Roadmap (3 specific goals with tactics). Format: clean, visual, executive-level. Should make the client feel the relationship is worth every dollar.`},
+{id:"075",name:"Support Response Library",dept:"client",desc:"Builds a library of support response templates",prompt:`Build a support response library for Rivven. Create templates for: 1) I'll look into that and get back to you today, 2) That change will take X hours / days, 3) That's outside the original scope — here's how to add it, 4) The site is loading slowly — here's why and the fix, 5) I made a mistake — here's what I'm doing to fix it, 6) Your invoice is due reminder, 7) We're all wrapped up — here's the final delivery. Each: formal email version + casual text version.`},
+{id:"076",name:"NPS Survey Creator",dept:"client",desc:"Creates Net Promoter Score surveys for any business",prompt:`Create an NPS survey for [CLIENT NAME] to send to their customers. Include: the standard NPS question (0-10 likelihood to recommend), 2 follow-up questions for promoters (9-10), 2 follow-up questions for detractors (0-6), and a final open comment field. Also write: the email/SMS to send the survey, how to calculate and interpret the score, and a response script for both high and low scores. Keep the survey under 5 questions total — completion rate drops fast.`},
+{id:"077",name:"Partnership Agreement Template",dept:"client",desc:"Creates a simple partnership/referral agreement",prompt:`Create a simple referral partnership agreement between Rivven and [PARTNER NAME / BUSINESS]. Terms: [PARTNER] refers clients, Sabino pays [%] commission or [$] flat fee per closed deal. Include: payment timing (on receipt of client payment), what qualifies as a referral, how long the referral window lasts, how payments are made, confidentiality clause, and how to terminate. Keep it simple — 1 page max. Plain English, no legal jargon.`},
+{id:"078",name:"Client Interview Script",dept:"client",desc:"Interviews clients for case studies and testimonials",prompt:`Write an interview script to use with [CLIENT NAME] for a case study. The interview should take 15-20 minutes and uncover: their situation before working with Sabino (the pain), why they chose Rivven, what the experience was like, the specific results (numbers if possible), and what they'd say to others considering this service. Questions should feel conversational, not like a survey. Include: how to record consent, how to use the answers to build a written case study.`},
+{id:"079",name:"Client Gift/Appreciation Script",dept:"client",desc:"Creates thoughtful client appreciation messages",prompt:`Write a client appreciation message for [CLIENT NAME] at [BUSINESS] on the occasion of [MILESTONE: 1 year anniversary / project completion / referral / holiday]. Type: [text / email / handwritten note]. Personalize it with: [ANY DETAILS YOU KNOW ABOUT THEM]. Keep it genuine — not corporate. Should make them feel like a person, not a contract. If applicable, include a small gesture (referral offer, exclusive first look at a new service). Under 100 words.`},
+{id:"080",name:"Churn Prevention Agent",dept:"client",desc:"Identifies at-risk clients and creates retention plans",prompt:`Analyze this client situation and create a retention plan: Client: [NAME], Service: [SERVICE + PRICE], Status: [DESCRIBE — late payment / stopped responding / complained / reduced scope]. Risk level: [HIGH / MEDIUM]. Create: 1 immediate action to take today, a 30-day re-engagement plan (weekly touchpoints), what concession (if any) to offer, and the signs that this client is NOT worth saving. Be direct — not every client is worth fighting for.`},
+
+// ===== RESEARCH DEPARTMENT #081-#100 =====
+{id:"081",name:"Market Research Agent",dept:"research",desc:"Researches any local market for digital services opportunity",prompt:`Research the digital marketing opportunity in [CITY/REGION] for [INDUSTRY]. Find: estimated number of businesses in this industry in the area, what % likely have poor/no websites (use Yelp/Google Maps as proxy), average revenue of businesses in this industry, what they currently spend on marketing, and which platforms they're most active on. Output: market size estimate, top 10 specific businesses to target first (find real ones), and the best angle to approach each one.`},
+{id:"082",name:"Competitor Analysis Agent",dept:"research",desc:"Deep analysis of competing web/marketing agencies",prompt:`Analyze the competitive landscape for a web/digital marketing agency in [CITY] targeting small businesses. Research: top 5 competitors (find real ones on Google), their pricing (look at their sites), their reviews (what do clients love/hate), their weaknesses, and what they're NOT offering. Also: what do the top performing agencies in larger markets (LA, NYC, Miami) offer that local agencies don't? Output: 3 specific positioning angles Sabino should use to differentiate.`},
+{id:"083",name:"Prospect Research Agent",dept:"research",desc:"Researches a specific prospect before an outreach or call",prompt:`Research this prospect before I reach out: Business: [NAME], Owner: [NAME if known], Location: [CITY], Industry: [TYPE]. Find: their current website (describe quality 1-10), their Google reviews (rating, count, recent), their social media presence (active? follower count?), any recent news about the business, what they sell and at what price point, obvious digital problems I can solve. Output: a 5-bullet brief + a personalized opener line for my first DM/email.`},
+{id:"084",name:"Industry Trend Watcher",dept:"research",desc:"Finds what's trending in any industry to use in outreach",prompt:`Find the top 5 current trends in [INDUSTRY] that small business owners are talking about right now. For each trend: what it is, why it matters to a [CITY] business owner, and how I can tie my services (websites, AI tools, SEO, social media) to this trend. Output: 5 trend-based outreach angles I can use in cold emails/DMs this week. Also: the biggest fear/pain point in this industry right now that my services directly solve.`},
+{id:"085",name:"Pricing Research Agent",dept:"research",desc:"Researches what the market charges for any service",prompt:`Research current market pricing for [SERVICE TYPE] for small businesses in [REGION]. Find: low-end pricing (Fiverr/freelancers), mid-market pricing (local agencies), high-end pricing (premium agencies). For each tier: what's included, typical client profile, and the value proposition. Output: where Rivven should price [SERVICE], the 3 best competitive angles, and the exact pricing language to use when presenting the price (anchoring, framing, payment plans).`},
+{id:"086",name:"Keyword Research Agent",dept:"research",desc:"Finds the best SEO keywords for any client",prompt:`Research SEO keywords for [BUSINESS NAME] in [INDUSTRY] serving [LOCATION]. Find: 10 high-intent keywords (ready-to-buy searches), 10 local keywords (include city/neighborhood), 5 long-tail keywords (lower competition, specific intent), 5 question keywords (FAQ/featured snippet opportunities). For each: estimated monthly searches, competition level (low/med/high), and whether it's a good fit. Output: a prioritized keyword list with a 90-day content plan to rank for the top 10.`},
+{id:"087",name:"Local Citation Audit",dept:"research",desc:"Finds where a business needs to be listed online",prompt:`Create a local citation checklist for [BUSINESS NAME] in [INDUSTRY] at [ADDRESS]. List the 20 most important directories to be listed on: Google Business Profile, Yelp, Facebook, BBB, industry-specific directories, local chamber, Nextdoor, Apple Maps, Bing Places, etc. For each: the URL to claim/create the listing, what information to include, and what photos to upload. Identify any that already exist by searching [BUSINESS NAME + CITY]. Priority order: most traffic first.`},
+{id:"088",name:"Social Media Audit Agent",dept:"research",desc:"Audits any business's social media presence",prompt:`Audit the social media presence for [BUSINESS NAME]. Platforms to check: Instagram (@[HANDLE] if known), Facebook, TikTok, LinkedIn, YouTube. For each active platform: follower count (estimate), posting frequency, content quality (1-10), engagement rate (estimate), bio optimization, link in bio usage. For inactive/missing platforms: should they be there? Overall grade (A-F). Top 3 quick wins to improve their presence this week. This audit becomes the opening line of my pitch to them.`},
+{id:"089",name:"Technology Stack Advisor",dept:"research",desc:"Recommends the best tech stack for any client project",prompt:`Recommend the best technology stack for [PROJECT TYPE] for [BUSINESS TYPE]. Options to evaluate: hosting (GitHub Pages / Netlify / Cloudflare Pages / Vercel), forms (formsubmit / Web3Forms / Netlify Forms), booking (Calendly / Cal.com / Square Appointments), payments (Stripe / Square / PayPal), CRM (GoHighLevel / HubSpot Free / Airtable), analytics (GA4 / Plausible / Umami). For each category: recommend the best free option AND the best paid option, with reasoning. Optimize for: lowest cost + easiest for Sabino to maintain.`},
+{id:"090",name:"Grant & Funding Researcher",dept:"research",desc:"Finds grants and funding opportunities for client businesses",prompt:`Research grants, loans, and funding opportunities for [BUSINESS NAME] in [INDUSTRY] in [STATE/CITY]. Find: federal small business grants, state-specific programs, local chamber/city grants, industry-specific funding, and SBA programs. For each: eligibility requirements, amount available, application deadline (if applicable), and how hard it is to apply (easy/medium/hard). This becomes a value-add service Sabino can offer to clients — helping them find money to pay for his services.`},
+{id:"091",name:"Partnership Scout",dept:"research",desc:"Finds potential referral partners for Sabino's agency",prompt:`Find potential referral partnership opportunities for Rivven in [CITY/REGION]. Target partners: accountants/CPAs (work with small businesses), business attorneys, commercial real estate brokers, insurance agents, SBDC/SCORE advisors, business coaches, equipment suppliers, industry associations. For each type: how many in the area, how to approach them, what to offer (% referral fee or reciprocal referrals), and a sample partnership pitch. Goal: build 5 referral sources that each send 1-2 clients/month.`},
+{id:"092",name:"Event & Networking Finder",dept:"research",desc:"Finds networking events to generate leads",prompt:`Find networking and lead generation events for Sabino in [CITY/REGION] for [MONTH]. Search for: local chamber of commerce events, BNI chapters, industry-specific meetups, small business expos, Rotary clubs, Hispanic/Latin business associations, real estate investor meetups, mortgage broker associations. For each event: date, location, cost, typical attendees, and why it's a good fit for Rivven. Also: what to bring (business cards, laptop for live demos), what to say in a 30-second intro.`},
+{id:"093",name:"Press Coverage Finder",dept:"research",desc:"Finds media opportunities to get Sabino's story covered",prompt:`Find press and media coverage opportunities for Rivven in [CITY/REGION]. Angles: 19-year-old entrepreneur building AI agency, first-generation college student, SoCal small business success story. Research: local newspapers (digital + print), local TV stations, business journals, podcast opportunities, college/university publications (CSUF), and social media influencers who cover young entrepreneurs. For each: contact info if available, pitch angle, and the email subject line to use. Output a ready-to-send press pitch.`},
+{id:"094",name:"Review Monitoring Setup",dept:"research",desc:"Sets up a system to monitor and respond to reviews",prompt:`Create a review monitoring and response system for [BUSINESS NAME]. Set up: Google Alerts for '[BUSINESS NAME]', Yelp notification settings, Facebook review notifications, and a weekly check routine. Also: response templates for new positive reviews (5 variations so they don't all sound the same), escalation process for negative reviews (screenshot, respond, take offline), and a monthly review request campaign (who to ask, how, when). Goal: get from [CURRENT RATING/COUNT] to 4.8+ with 50+ reviews in 90 days.`},
+{id:"095",name:"Brand Mention Tracker",dept:"research",desc:"Sets up monitoring for brand mentions across the web",prompt:`Create a brand monitoring setup for [BUSINESS NAME] and Rivven. Tools to use (free): Google Alerts (exact keywords to track), Social Mention, TalkWalker Alerts. Keywords to monitor: business name variations, owner name, key service terms + location. Set up: weekly digest process, how to respond to positive mentions (amplify), how to respond to negative mentions (address), and how to use positive mentions as social proof content. Output: the exact Google Alert strings to create.`},
+{id:"096",name:"Traffic Analysis Agent",dept:"research",desc:"Analyzes website traffic data and finds opportunities",prompt:`Analyze this website traffic data for [BUSINESS NAME]: [PASTE GA4 DATA OR DESCRIBE]. Identify: top landing pages and why, high bounce rate pages and likely causes, traffic sources driving the most conversions, pages with high traffic but low conversion (opportunity), mobile vs desktop performance gap, and search queries bringing people to the site. Output: 3 quick wins to implement this week, 3 medium-term improvements, and 1 strategic recommendation for the next 90 days.`},
+{id:"097",name:"Conversion Optimizer",dept:"research",desc:"Identifies and fixes conversion blockers on any page",prompt:`Identify conversion blockers on [URL or describe the page]. Check: is the value proposition clear in 5 seconds?, is there a clear primary CTA above the fold?, are there too many competing CTAs?, is the form too long?, is social proof visible early?, is the page slow (affecting mobile conversions)?, is the phone number prominently displayed?, are there trust signals (reviews, guarantees, credentials)?. Output: prioritized list of changes with expected conversion impact. Give me the 3 changes that will move the needle most.`},
+{id:"098",name:"A/B Test Planner",dept:"research",desc:"Plans split tests to improve any page's performance",prompt:`Plan 3 A/B tests for [PAGE URL or DESCRIPTION] for [BUSINESS NAME]. For each test: what to test (headline / CTA / layout / image / form / social proof), the hypothesis (why this will improve conversion), how to run it (free tools: Google Optimize / VWO Free / manual URL split), success metric, minimum sample size needed, and estimated time to statistical significance. Prioritize tests by potential impact. Also: what NOT to test right now (low traffic = don't split it).`},
+{id:"099",name:"Business Intelligence Agent",dept:"research",desc:"Pulls together all data into a business health snapshot",prompt:`Create a business health snapshot for Rivven as of [DATE]. Compile: current clients (active, names, monthly revenue from each), pipeline (prospects in discussion, estimated close value), monthly recurring revenue (MRR), one-time project revenue this month, outstanding invoices, monthly expenses (tools, subscriptions), net profit this month, demos built (count), sites live (count), and a 30-60-90 day revenue projection. Output: a one-page snapshot Sabino can review in 5 minutes to know exactly where his business stands.`},
+{id:"100",name:"Growth Strategy Agent",dept:"research",desc:"Builds a quarterly growth plan for Rivven",prompt:`Build a 90-day growth strategy for Rivven. Current state: [DESCRIBE: clients, revenue, team size]. Goal: [REVENUE TARGET] in 90 days. Strategy: Month 1 (Foundation — close X clients, build Y demos, establish Z partnerships), Month 2 (Scale — launch outreach campaign, GoHighLevel white-label, first retainer client), Month 3 (Compound — referral system live, 2nd income stream, VA/contractor hired). Each month: specific weekly actions, revenue targets, KPIs to hit. Make it aggressive but achievable for a 19-year-old solo operator.`}
+];
+
+const DEPT_LABELS={revenue:"Revenue",development:"Development",content:"Content",client:"Client Success",research:"Research"};
+
+const grid=document.getElementById('agentsGrid');
+const searchInput=document.getElementById('searchInput');
+const searchCount=document.getElementById('searchCount');
+const filterTabs=document.getElementById('filterTabs');
+const noResults=document.getElementById('noResults');
+const toast=document.getElementById('toast');
+let activeDept='all';
+
+function createCard(a){
+const card=document.createElement('div');
+card.className='agent-card';
+card.dataset.dept=a.dept;
+card.dataset.name=a.name.toLowerCase();
+card.dataset.desc=a.desc.toLowerCase();
+card.dataset.id=a.id;
+card.innerHTML=`
+<div class="card-top">
+  <span class="agent-num ${a.dept}">#${a.id}</span>
+  <span class="dept-tag ${a.dept}">${DEPT_LABELS[a.dept]}</span>
+</div>
+<div class="agent-name">${a.name}</div>
+<div class="agent-desc">${a.desc}</div>
+<button class="copy-btn" onclick="copyPrompt(this,'${a.id}')">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+  Copy Prompt
+</button>`;
+return card;
+}
+
+function render(){
+grid.innerHTML='';
+const q=searchInput.value.toLowerCase().trim();
+let count=0;
+AGENTS.forEach(a=>{
+  if(activeDept!=='all'&&a.dept!==activeDept)return;
+  if(q){
+    const haystack=(a.name+' '+a.desc+' '+a.dept+' '+DEPT_LABELS[a.dept]).toLowerCase();
+    if(!haystack.includes(q))return;
+  }
+  grid.appendChild(createCard(a));
+  count++;
+});
+searchCount.textContent=count+' agent'+(count!==1?'s':'');
+noResults.style.display=count===0?'block':'none';
+}
+
+function copyPrompt(btn,id){
+const agent=AGENTS.find(a=>a.id===id);
+if(!agent)return;
+navigator.clipboard.writeText(agent.prompt).then(()=>{
+  btn.classList.add('copied');
+  btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+  showToast(agent.name+' prompt copied');
+  setTimeout(()=>{
+    btn.classList.remove('copied');
+    btn.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Prompt`;
+  },2000);
+});
+}
+
+function showToast(msg){
+toast.textContent=msg;
+toast.classList.add('show');
+setTimeout(()=>toast.classList.remove('show'),2500);
+}
+
+searchInput.addEventListener('input',render);
+
+filterTabs.addEventListener('click',e=>{
+if(!e.target.classList.contains('filter-tab'))return;
+filterTabs.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+e.target.classList.add('active');
+activeDept=e.target.dataset.dept;
+render();
+});
+
+// Keyboard shortcut: / to focus search
+document.addEventListener('keydown',e=>{
+if(e.key==='/'&&document.activeElement!==searchInput){
+  e.preventDefault();
+  searchInput.focus();
+}
+});
+
+render();
+</script>
+</body>
+</html>

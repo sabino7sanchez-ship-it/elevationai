@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Edge Landscaping | Professional Landscaping & Lawn Care</title>
+  <meta name="description" content="Professional landscaping & lawn care in Los Angeles. Lawn maintenance, tree trimming, sprinkler systems, patio & hardscape, garden design, sod installation. Call (562) 373-1027." />
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Green Edge Landscaping",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://greenedgelandscaping.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "287"
+    },
+    "areaServed": ["Los Angeles","Long Beach","Burbank","Glendale","Pasadena","Torrance","Downey","Norwalk","Whittier","Compton"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #16161A;
+      --accent: #00F0FF;
+      --accent-dim: rgba(0,240,255,0.12);
+      --accent-glow: rgba(0,240,255,0.35);
+      --text: #F0F0F2;
+      --muted: #888898;
+      --border: rgba(255,255,255,0.07);
+      --card: #13131A;
+      --green: #34D399;
+      --green-dim: rgba(52,211,153,0.12);
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.2s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      margin-top: 12px;
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ===== LANGUAGE TOGGLE ===== */
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-left: 12px;
+    }
+    .lang-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      background: transparent;
+      transition: var(--transition);
+      letter-spacing: 0.04em;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #000;
+    }
+    .lang-btn:hover:not(.active) { color: var(--text); }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-phone {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      display: none;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 66px; left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 16px;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--muted);
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--accent-dim); color: var(--accent); }
+    .mobile-menu .btn { margin-top: 8px; justify-content: center; }
+    .mobile-menu .lang-toggle { margin: 8px 16px 0; align-self: flex-start; }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 20%, rgba(0,240,255,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,180,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 85% 70%, rgba(0,240,255,0.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,240,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,240,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-headline {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero-headline .highlight {
+      color: var(--accent);
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hero-stat-num {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== SECTIONS SHARED ===== */
+    .section { padding: 96px 0; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 12px auto 0; }
+
+    /* ===== SERVICES GRID ===== */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,240,255,0.07);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .service-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .service-price {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ===== GALLERY ===== */
+    #gallery { background: var(--bg2); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .gallery-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .gallery-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,240,255,0.07);
+    }
+    .gallery-visual {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 72px;
+      background: linear-gradient(135deg, var(--bg3), var(--card));
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(19,19,26,0.9) 100%);
+    }
+    .gallery-info {
+      padding: 20px 24px;
+    }
+    .gallery-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .gallery-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .gallery-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    #trust { background: var(--bg); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .trust-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .trust-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+    }
+    .trust-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .trust-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .trust-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .trust-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ===== REVIEWS ===== */
+    #reviews { background: var(--bg2); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+    .review-card:hover { border-color: rgba(0,240,255,0.15); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .stars span { font-size: 18px; }
+    .review-text {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-text::before { content: '\201C'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::after { content: '\201D'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reviewer-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0,180,255,0.2));
+      border: 1px solid rgba(0,240,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 700; font-size: 15px; }
+    .reviewer-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .reviews-rating-summary {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .rating-big {
+      font-family: var(--mono);
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .rating-label {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* ===== BOOKING ===== */
+    #booking { background: var(--bg); }
+    .booking-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .booking-icon { font-size: 48px; margin-bottom: 20px; }
+    .booking-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .booking-desc {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+    .booking-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 40px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 17px;
+      border-radius: 8px;
+      transition: var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .booking-btn:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .booking-note {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info-block { display: flex; flex-direction: column; gap: 32px; }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-info-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-info-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .contact-info-value {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .contact-info-value a { color: var(--accent); }
+    .contact-info-value a:hover { color: #fff; }
+    .contact-info-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .contact-form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .contact-form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      transition: var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300F0FF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+    }
+    .form-group select option { background: #1a1a20; }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .contact-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 8px;
+      transition: var(--transition);
+      margin-top: 4px;
+    }
+    .contact-submit:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 32px 0 100px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-copy span { color: var(--text); }
+    .footer-brand {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-brand a {
+      color: var(--accent);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .footer-brand a:hover { color: #fff; }
+
+    /* ===== MOBILE BOTTOM BANNER ===== */
+    #mobile-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 2000;
+      background: rgba(10,10,11,0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .banner-left {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .banner-left strong { color: var(--text); }
+    .banner-cta {
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 9px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .banner-cta:hover { background: #fff; }
+
+    /* ===== BILINGUAL HIDDEN ===== */
+    [data-lang-es] { display: none; }
+    body.lang-es [data-lang-en] { display: none; }
+    body.lang-es [data-lang-es] { display: block; }
+    body.lang-es span[data-lang-es],
+    body.lang-es a[data-lang-es],
+    body.lang-es div[data-lang-es],
+    body.lang-es p[data-lang-es],
+    body.lang-es h1[data-lang-es],
+    body.lang-es h2[data-lang-es] { display: block; }
+    body.lang-es .hero-badge[data-lang-es],
+    body.lang-es .hero-ctas[data-lang-es] { display: inline-flex; }
+    body.lang-es .hero-stats[data-lang-es] { display: flex; }
+    body.lang-es .services-grid[data-lang-es],
+    body.lang-es .reviews-grid[data-lang-es],
+    body.lang-es .gallery-grid[data-lang-es],
+    body.lang-es .trust-grid[data-lang-es] { display: grid; }
+    body.lang-es .contact-grid[data-lang-es] { display: grid; }
+    body.lang-es .hero-ctas[data-lang-es] { display: flex; }
+
+    /* ===== MOBILE BREAKPOINTS ===== */
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-phone { display: block; }
+      .contact-form-card { padding: 24px 20px; }
+      .booking-wrap { padding: 28px 20px; }
+    }
+    @media (max-width: 540px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { justify-content: center; }
+      .services-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 380px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">🌿</div>
+        Green <span>Edge</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services" data-lang-en>Services</a><a href="#services" data-lang-es>Servicios</a></li>
+        <li><a href="#gallery" data-lang-en>Gallery</a><a href="#gallery" data-lang-es>Galeria</a></li>
+        <li><a href="#reviews" data-lang-en>Reviews</a><a href="#reviews" data-lang-es>Resenas</a></li>
+        <li><a href="#booking" data-lang-en>Book Now</a><a href="#booking" data-lang-es>Reservar</a></li>
+        <li><a href="#contact" data-lang-en>Contact</a><a href="#contact" data-lang-es>Contacto</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <span class="nav-phone">(562) 373-1027</span>
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" onclick="setLang('es')">ES</button>
+        </div>
+        <a href="tel:+15623731027" class="btn btn-primary">📞 <span data-lang-en>Call Now</span><span data-lang-es>Llamar</span></a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" onclick="closeMobileMenu()"><span data-lang-en>Services</span><span data-lang-es>Servicios</span></a>
+  <a href="#gallery" onclick="closeMobileMenu()"><span data-lang-en>Gallery</span><span data-lang-es>Galeria</span></a>
+  <a href="#reviews" onclick="closeMobileMenu()"><span data-lang-en>Reviews</span><span data-lang-es>Resenas</span></a>
+  <a href="#booking" onclick="closeMobileMenu()"><span data-lang-en>Book Now</span><span data-lang-es>Reservar</span></a>
+  <a href="#contact" onclick="closeMobileMenu()"><span data-lang-en>Contact</span><span data-lang-es>Contacto</span></a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+  </div>
+  <a href="tel:+15623731027" class="btn btn-primary">📞 (562) 373-1027</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+
+      <!-- EN -->
+      <div data-lang-en class="hero-badge">Free Estimates · Licensed & Insured</div>
+      <h1 data-lang-en class="hero-headline">
+        Your Yard,<br>
+        <span class="highlight">Perfected.</span>
+      </h1>
+      <p data-lang-en class="hero-sub">
+        Professional landscaping and lawn care across Los Angeles. From weekly mowing to full outdoor transformations — we bring your vision to life.
+      </p>
+      <div data-lang-en class="hero-ctas">
+        <a href="tel:+15623731027" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
+          📞 Call Now — (562) 373-1027
+        </a>
+        <a href="#booking" class="btn btn-outline" style="font-size:16px;padding:16px 32px;">
+          Book a Free Consultation
+        </a>
+      </div>
+      <div data-lang-en class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">10+</span>
+          <span class="hero-stat-label">Years in LA</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3,200+</span>
+          <span class="hero-stat-label">Projects Done</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4.9★</span>
+          <span class="hero-stat-label">Avg Rating</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label">Satisfaction</span>
+        </div>
+      </div>
+
+      <!-- ES -->
+      <div data-lang-es class="hero-badge">Estimaciones Gratis · Con Licencia y Seguro</div>
+      <h1 data-lang-es class="hero-headline">
+        Tu Jardin,<br>
+        <span class="highlight">Perfecto.</span>
+      </h1>
+      <p data-lang-es class="hero-sub">
+        Paisajismo profesional y mantenimiento de jardines en todo Los Angeles. Desde corte semanal hasta transformaciones completas de exteriores.
+      </p>
+      <div data-lang-es class="hero-ctas">
+        <a href="tel:+15623731027" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
+          📞 Llamar — (562) 373-1027
+        </a>
+        <a href="#booking" class="btn btn-outline" style="font-size:16px;padding:16px 32px;">
+          Reservar Consulta Gratis
+        </a>
+      </div>
+      <div data-lang-es class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">10+</span>
+          <span class="hero-stat-label">Anos en LA</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3,200+</span>
+          <span class="hero-stat-label">Proyectos</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4.9★</span>
+          <span class="hero-stat-label">Calificacion</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label">Satisfaccion</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section">
+  <div class="container">
+
+    <!-- EN -->
+    <div data-lang-en class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Professional Landscaping Services</h2>
+      <p class="section-sub">From routine lawn care to complete outdoor renovations — expert results every time.</p>
+    </div>
+    <div data-lang-en class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🌱</span>
+        <div class="service-name">Lawn Maintenance</div>
+        <div class="service-price">Starting at $45/visit</div>
+        <div class="service-desc">Weekly and bi-weekly mowing, edging, blowing, and fertilization. Keep your lawn looking sharp year-round with our reliable service.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌳</span>
+        <div class="service-name">Tree Trimming</div>
+        <div class="service-price">Starting at $150</div>
+        <div class="service-desc">Professional pruning, shaping, and removal of dead branches. We handle trees of all sizes safely and cleanly.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💧</span>
+        <div class="service-name">Sprinkler Systems</div>
+        <div class="service-price">Starting at $200</div>
+        <div class="service-desc">Installation, repair, and seasonal adjustment of irrigation systems. Smart controller upgrades to save water and money.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧱</span>
+        <div class="service-name">Patio & Hardscape</div>
+        <div class="service-price">Starting at $500</div>
+        <div class="service-desc">Custom patios, walkways, retaining walls, and fire pits built with pavers, flagstone, or concrete to transform your outdoor space.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌺</span>
+        <div class="service-name">Garden Design</div>
+        <div class="service-price">Starting at $300</div>
+        <div class="service-desc">Custom flower beds, native plant landscapes, and drought-tolerant designs. We create beautiful, low-maintenance gardens.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏡</span>
+        <div class="service-name">Sod Installation</div>
+        <div class="service-price">Starting at $1.50/sq ft</div>
+        <div class="service-desc">Full lawn replacement with premium sod varieties. Includes ground prep, grading, and post-install care instructions.</div>
+      </div>
+    </div>
+
+    <!-- ES -->
+    <div data-lang-es class="section-header">
+      <div class="section-label">Nuestros Servicios</div>
+      <h2 class="section-title">Servicios Profesionales de Paisajismo</h2>
+      <p class="section-sub">Desde mantenimiento de rutina hasta renovaciones completas de exteriores.</p>
+    </div>
+    <div data-lang-es class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🌱</span>
+        <div class="service-name">Mantenimiento de Cesped</div>
+        <div class="service-price">Desde $45/visita</div>
+        <div class="service-desc">Corte semanal y quincenal, bordeado, soplado y fertilizacion. Mantenga su cesped impecable todo el ano.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌳</span>
+        <div class="service-name">Poda de Arboles</div>
+        <div class="service-price">Desde $150</div>
+        <div class="service-desc">Poda profesional, formacion y eliminacion de ramas muertas. Manejamos arboles de todos los tamanos de forma segura.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💧</span>
+        <div class="service-name">Sistemas de Riego</div>
+        <div class="service-price">Desde $200</div>
+        <div class="service-desc">Instalacion, reparacion y ajuste estacional de sistemas de riego. Controladores inteligentes para ahorrar agua y dinero.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧱</span>
+        <div class="service-name">Patio y Hardscape</div>
+        <div class="service-price">Desde $500</div>
+        <div class="service-desc">Patios personalizados, caminos, muros de contencion y fogatas construidos con adoquines, piedra o concreto.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🌺</span>
+        <div class="service-name">Diseno de Jardines</div>
+        <div class="service-price">Desde $300</div>
+        <div class="service-desc">Jardines de flores, paisajes con plantas nativas y disenos tolerantes a la sequia. Jardines hermosos y de bajo mantenimiento.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏡</span>
+        <div class="service-name">Instalacion de Cesped</div>
+        <div class="service-price">Desde $1.50/pie cuadrado</div>
+        <div class="service-desc">Reemplazo completo de cesped con variedades premium. Incluye preparacion del terreno, nivelacion e instrucciones de cuidado.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="section">
+  <div class="container">
+
+    <div data-lang-en class="section-header centered">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Recent Project Showcases</h2>
+      <p class="section-sub">A look at some of the outdoor transformations we've completed across Los Angeles.</p>
+    </div>
+    <div data-lang-en class="gallery-grid">
+      <div class="gallery-card">
+        <div class="gallery-visual">🌿</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Complete Lawn Renovation</div>
+          <div class="gallery-meta">Pasadena, CA — 4,500 sq ft</div>
+          <div class="gallery-tag">Sod + Irrigation</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">🧱</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Modern Paver Patio</div>
+          <div class="gallery-meta">Burbank, CA — 800 sq ft</div>
+          <div class="gallery-tag">Hardscape</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">🌺</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Drought-Tolerant Garden</div>
+          <div class="gallery-meta">Long Beach, CA — Front yard</div>
+          <div class="gallery-tag">Garden Design</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">🌳</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Backyard Tree Shaping</div>
+          <div class="gallery-meta">Glendale, CA — 6 trees</div>
+          <div class="gallery-tag">Tree Trimming</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">💧</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Smart Sprinkler Install</div>
+          <div class="gallery-meta">Torrance, CA — Full property</div>
+          <div class="gallery-tag">Irrigation</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">🔥</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Fire Pit & Seating Area</div>
+          <div class="gallery-meta">Downey, CA — Custom build</div>
+          <div class="gallery-tag">Hardscape + Design</div>
+        </div>
+      </div>
+    </div>
+
+    <div data-lang-es class="section-header centered">
+      <div class="section-label">Nuestro Trabajo</div>
+      <h2 class="section-title">Proyectos Recientes</h2>
+      <p class="section-sub">Un vistazo a las transformaciones de exteriores que hemos completado en Los Angeles.</p>
+    </div>
+    <div data-lang-es class="gallery-grid">
+      <div class="gallery-card">
+        <div class="gallery-visual">🌿</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Renovacion Completa de Cesped</div>
+          <div class="gallery-meta">Pasadena, CA — 4,500 pies cuadrados</div>
+          <div class="gallery-tag">Cesped + Riego</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">🧱</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Patio Moderno con Adoquines</div>
+          <div class="gallery-meta">Burbank, CA — 800 pies cuadrados</div>
+          <div class="gallery-tag">Hardscape</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">🌺</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Jardin Tolerante a la Sequia</div>
+          <div class="gallery-meta">Long Beach, CA — Jardin frontal</div>
+          <div class="gallery-tag">Diseno de Jardin</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">🌳</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Formacion de Arboles</div>
+          <div class="gallery-meta">Glendale, CA — 6 arboles</div>
+          <div class="gallery-tag">Poda de Arboles</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">💧</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Riego Inteligente</div>
+          <div class="gallery-meta">Torrance, CA — Propiedad completa</div>
+          <div class="gallery-tag">Irrigacion</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual">🔥</div>
+        <div class="gallery-info">
+          <div class="gallery-title">Fogata y Area de Descanso</div>
+          <div class="gallery-meta">Downey, CA — Construccion personalizada</div>
+          <div class="gallery-tag">Hardscape + Diseno</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="trust" class="section">
+  <div class="container">
+
+    <div data-lang-en class="section-header centered">
+      <div class="section-label">Why Green Edge</div>
+      <h2 class="section-title">Built on Trust. Backed by Results.</h2>
+    </div>
+    <div data-lang-en class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-icon">🛡️</span>
+        <div class="trust-title">Licensed & Insured</div>
+        <div class="trust-desc">Fully licensed and insured landscaping contractor. Your property is protected on every project we take on.</div>
+        <div class="trust-badge">Fully Insured</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🌎</span>
+        <div class="trust-title">Bilingual Team</div>
+        <div class="trust-desc">Our crew speaks English and Spanish fluently. Clear communication from estimate to final walkthrough.</div>
+        <div class="trust-badge">English + Espanol</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">💰</span>
+        <div class="trust-title">Free Estimates</div>
+        <div class="trust-desc">Every project starts with a free on-site consultation. Written quotes with no hidden fees or surprise charges.</div>
+        <div class="trust-badge">No surprises</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🏆</span>
+        <div class="trust-title">10+ Years Experience</div>
+        <div class="trust-desc">Over 3,200 projects completed across LA County. Residential and commercial landscaping you can count on.</div>
+        <div class="trust-badge">Since 2015</div>
+      </div>
+    </div>
+
+    <div data-lang-es class="section-header centered">
+      <div class="section-label">Por Que Green Edge</div>
+      <h2 class="section-title">Confianza y Resultados Garantizados.</h2>
+    </div>
+    <div data-lang-es class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-icon">🛡️</span>
+        <div class="trust-title">Con Licencia y Seguro</div>
+        <div class="trust-desc">Contratista de paisajismo con licencia y seguro completo. Su propiedad esta protegida en cada proyecto.</div>
+        <div class="trust-badge">Asegurado</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🌎</span>
+        <div class="trust-title">Equipo Bilingue</div>
+        <div class="trust-desc">Nuestro equipo habla ingles y espanol con fluidez. Comunicacion clara desde el presupuesto hasta la entrega.</div>
+        <div class="trust-badge">English + Espanol</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">💰</span>
+        <div class="trust-title">Estimaciones Gratis</div>
+        <div class="trust-desc">Cada proyecto comienza con una consulta gratuita en sitio. Cotizaciones por escrito sin cargos ocultos.</div>
+        <div class="trust-badge">Sin sorpresas</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🏆</span>
+        <div class="trust-title">10+ Anos de Experiencia</div>
+        <div class="trust-desc">Mas de 3,200 proyectos completados en el condado de LA. Paisajismo residencial y comercial de confianza.</div>
+        <div class="trust-badge">Desde 2015</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" class="section">
+  <div class="container">
+
+    <div data-lang-en class="section-header centered">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">What Our Clients Are Saying</h2>
+    </div>
+    <div data-lang-es class="section-header centered">
+      <div class="section-label">Resenas de Clientes</div>
+      <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+    </div>
+
+    <div class="reviews-rating-summary">
+      <div class="rating-big">4.9</div>
+      <div class="stars" style="justify-content:center;margin:8px 0;">
+        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+      </div>
+      <div data-lang-en class="rating-label">Based on 287 verified reviews · Google & Yelp</div>
+      <div data-lang-es class="rating-label">Basado en 287 resenas verificadas · Google y Yelp</div>
+    </div>
+
+    <div data-lang-en class="reviews-grid">
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          Green Edge completely transformed our backyard. The patio, plants, and new sod look incredible. The crew was professional, on time, and cleaned everything up perfectly. Best landscaping company we've ever worked with.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SR</div>
+          <div>
+            <div class="reviewer-name">Sandra R.</div>
+            <div class="reviewer-meta">Pasadena, CA · 2 weeks ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          We switched to Green Edge for our weekly lawn care and the difference is night and day. Our yard has never looked this good. They also fixed our sprinkler system that two other companies couldn't figure out. Highly recommend.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MT</div>
+          <div>
+            <div class="reviewer-name">Michael T.</div>
+            <div class="reviewer-meta">Long Beach, CA · 1 month ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          I loved that the team spoke Spanish — made it so much easier to explain exactly what I wanted for my garden. The drought-tolerant design they created is beautiful and saves us money on water every month. Thank you Green Edge!
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">LG</div>
+          <div>
+            <div class="reviewer-name">Lucia G.</div>
+            <div class="reviewer-meta">Downey, CA · 3 weeks ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-lang-es class="reviews-grid">
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          Green Edge transformo completamente nuestro patio trasero. El patio, las plantas y el cesped nuevo se ven increibles. El equipo fue profesional, puntual y limpio todo perfectamente.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SR</div>
+          <div>
+            <div class="reviewer-name">Sandra R.</div>
+            <div class="reviewer-meta">Pasadena, CA · Hace 2 semanas</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          Cambiamos a Green Edge para nuestro mantenimiento semanal y la diferencia es enorme. Nuestro jardin nunca se ha visto tan bien. Tambien arreglaron nuestro sistema de riego que otras companias no pudieron.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MT</div>
+          <div>
+            <div class="reviewer-name">Michael T.</div>
+            <div class="reviewer-meta">Long Beach, CA · Hace 1 mes</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text">
+          Me encanto que el equipo hablara espanol — fue mucho mas facil explicar lo que queria para mi jardin. El diseno tolerante a la sequia que crearon es hermoso y nos ahorra dinero en agua cada mes.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">LG</div>
+          <div>
+            <div class="reviewer-name">Lucia G.</div>
+            <div class="reviewer-meta">Downey, CA · Hace 3 semanas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section id="booking" class="section">
+  <div class="container">
+    <div data-lang-en class="section-header centered">
+      <div class="section-label">Schedule Online</div>
+      <h2 class="section-title">Book Your Free Consultation</h2>
+      <p class="section-sub">Pick a time that works for you. We'll discuss your project and provide a free estimate.</p>
+    </div>
+    <div data-lang-es class="section-header centered">
+      <div class="section-label">Reservar en Linea</div>
+      <h2 class="section-title">Reserve Su Consulta Gratuita</h2>
+      <p class="section-sub">Elija un horario que le funcione. Hablaremos de su proyecto y le daremos un presupuesto gratis.</p>
+    </div>
+    <div class="booking-wrap">
+      <div class="booking-icon">📅</div>
+      <div data-lang-en class="booking-title">Pick a Date & Time</div>
+      <div data-lang-es class="booking-title">Elija Fecha y Hora</div>
+      <p data-lang-en class="booking-desc">
+        Choose a 30-minute window for a phone or video consultation. We'll go over your landscaping goals and give you a detailed quote — no obligation.
+      </p>
+      <p data-lang-es class="booking-desc">
+        Elija una ventana de 30 minutos para una consulta por telefono o video. Revisaremos sus metas de paisajismo y le daremos una cotizacion detallada — sin compromiso.
+      </p>
+      <a href="https://calendly.com/sabino-sanchez7/30min" target="_blank" rel="noopener" class="booking-btn">
+        📅 <span data-lang-en>Book on Calendly</span><span data-lang-es>Reservar en Calendly</span>
+      </a>
+      <p data-lang-en class="booking-note">Free · No obligation · 30-minute consultation</p>
+      <p data-lang-es class="booking-note">Gratis · Sin compromiso · Consulta de 30 minutos</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <div class="container">
+
+    <div data-lang-en class="section-header">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Request a Free Estimate</h2>
+      <p class="section-sub">We'll get back to you within a few hours. Service available across all of LA County.</p>
+    </div>
+    <div data-lang-es class="section-header">
+      <div class="section-label">Contactenos</div>
+      <h2 class="section-title">Solicite una Estimacion Gratis</h2>
+      <p class="section-sub">Le responderemos en pocas horas. Servicio disponible en todo el condado de LA.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📞</div>
+          <div>
+            <div class="contact-info-label" data-lang-en>Phone</div>
+            <div class="contact-info-label" data-lang-es>Telefono</div>
+            <div class="contact-info-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
+            <div data-lang-en class="contact-info-sub">Mon–Sat 7AM–6PM</div>
+            <div data-lang-es class="contact-info-sub">Lun–Sab 7AM–6PM</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📍</div>
+          <div>
+            <div class="contact-info-label" data-lang-en>Location</div>
+            <div class="contact-info-label" data-lang-es>Ubicacion</div>
+            <div class="contact-info-value">Los Angeles, CA</div>
+            <div data-lang-en class="contact-info-sub">Service area: All of LA County</div>
+            <div data-lang-es class="contact-info-sub">Area de servicio: Todo el condado de LA</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🕐</div>
+          <div>
+            <div class="contact-info-label" data-lang-en>Hours</div>
+            <div class="contact-info-label" data-lang-es>Horario</div>
+            <div data-lang-en class="contact-info-value">Mon–Sat, 7AM – 6PM</div>
+            <div data-lang-es class="contact-info-value">Lun–Sab, 7AM – 6PM</div>
+            <div data-lang-en class="contact-info-sub">Free estimates available 7 days a week</div>
+            <div data-lang-es class="contact-info-sub">Estimaciones gratis disponibles los 7 dias</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🌎</div>
+          <div>
+            <div class="contact-info-label" data-lang-en>Languages</div>
+            <div class="contact-info-label" data-lang-es>Idiomas</div>
+            <div class="contact-info-value">English & Espanol</div>
+            <div data-lang-en class="contact-info-sub">Bilingual team — communicate in your preferred language</div>
+            <div data-lang-es class="contact-info-sub">Equipo bilingue — comuniquese en su idioma preferido</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <div data-lang-en class="contact-form-title">Send a Service Request</div>
+        <div data-lang-es class="contact-form-title">Enviar Solicitud de Servicio</div>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Landscaping Request - Green Edge" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="#contact" />
+          <div class="form-group">
+            <label for="contact-name" data-lang-en>Full Name</label>
+            <label for="contact-name" data-lang-es>Nombre Completo</label>
+            <input type="text" id="contact-name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-phone" data-lang-en>Phone Number</label>
+            <label for="contact-phone" data-lang-es>Numero de Telefono</label>
+            <input type="tel" id="contact-phone" name="phone" placeholder="(562) 373-1027" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-service" data-lang-en>Service Needed</label>
+            <label for="contact-service" data-lang-es>Servicio Necesitado</label>
+            <select id="contact-service" name="service" required>
+              <option value="" data-lang-en>— Select a service —</option>
+              <option value="Lawn Maintenance">Lawn Maintenance</option>
+              <option value="Tree Trimming">Tree Trimming</option>
+              <option value="Sprinkler Systems">Sprinkler Systems</option>
+              <option value="Patio & Hardscape">Patio & Hardscape</option>
+              <option value="Garden Design">Garden Design</option>
+              <option value="Sod Installation">Sod Installation</option>
+              <option value="Other">Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-desc" data-lang-en>Describe Your Project</label>
+            <label for="contact-desc" data-lang-es>Describa Su Proyecto</label>
+            <textarea id="contact-desc" name="description" placeholder="E.g. New sod for front yard, patio installation, weekly lawn maintenance..."></textarea>
+          </div>
+          <button type="submit" class="contact-submit">
+            <span data-lang-en>Send Request — Free Estimate</span>
+            <span data-lang-es>Enviar Solicitud — Estimacion Gratis</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE AREA ===== -->
+<section style="padding:72px 0;text-align:center;">
+  <div class="container">
+    <div data-lang-en class="section-label">Service Area</div>
+    <div data-lang-es class="section-label">Area de Servicio</div>
+    <h2 data-lang-en class="section-title" style="margin-bottom:12px;">Serving All of LA County</h2>
+    <h2 data-lang-es class="section-title" style="margin-bottom:12px;">Servimos Todo el Condado de LA</h2>
+    <p data-lang-en class="section-sub" style="max-width:540px;margin:0 auto 28px;">Professional landscaping services across Los Angeles County. Our crews are always nearby and ready.</p>
+    <p data-lang-es class="section-sub" style="max-width:540px;margin:0 auto 28px;">Servicios profesionales de paisajismo en todo el condado de Los Angeles. Nuestros equipos siempre estan cerca.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:750px;margin:0 auto;">
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Los Angeles</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Long Beach</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Burbank</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Glendale</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Pasadena</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Torrance</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Downey</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Norwalk</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Whittier</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Compton</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Santa Monica</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Inglewood</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        Green Edge Landscaping <span>&copy; 2026</span> · Los Angeles, CA
+      </div>
+      <div style="color:var(--muted);font-size:12px;margin:6px 0;">Mon–Sat 7AM–6PM · Licensed & Insured · Bilingual Team · Serving all of LA County</div>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo &rarr;</a></div>
+      <div class="footer-brand">
+        Built by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> · rivven.ai
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE BOTTOM BANNER ===== -->
+<div id="mobile-banner">
+  <div class="banner-left">
+    <strong>Need a site like this?</strong><br>
+    Built by Rivven
+  </div>
+  <a href="https://rivven.ai" target="_blank" rel="noopener" class="banner-cta">
+    Get My Site &rarr;
+  </a>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* ---- Language Toggle ---- */
+  function setLang(lang) {
+    if (lang === 'es') {
+      document.body.classList.add('lang-es');
+      document.documentElement.lang = 'es';
+    } else {
+      document.body.classList.remove('lang-es');
+      document.documentElement.lang = 'en';
+    }
+    // Update toggle buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
+    });
+  }
+
+  /* ---- Hamburger Menu ---- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ---- Sticky Nav Shadow ---- */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 60) {
+      nav.style.borderBottomColor = 'rgba(0,240,255,0.1)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(255,255,255,0.07)';
+    }
+  });
+
+  /* ---- Scroll Animations (IntersectionObserver) ---- */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.section-header, .trust-card, .review-card, .gallery-card, .contact-info-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
+  });
+
+  /* ---- Smooth Scroll (fallback for older browsers) ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        closeMobileMenu();
+        const navH = document.getElementById('nav').offsetHeight;
+        const top  = target.getBoundingClientRect().top + window.pageYOffset - navH - 16;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

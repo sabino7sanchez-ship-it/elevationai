@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="60" height="60">
+  <!-- Outer circuit ring -->
+  <circle cx="30" cy="30" r="26" fill="none" stroke="#00D4E6" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Circuit nodes -->
+  <circle cx="30" cy="4" r="2.2" fill="#00D4E6" opacity="0.7"/>
+  <circle cx="56" cy="30" r="2.2" fill="#00D4E6" opacity="0.7"/>
+  <circle cx="30" cy="56" r="2.2" fill="#00D4E6" opacity="0.7"/>
+  <circle cx="4" cy="30" r="2.2" fill="#7B61FF" opacity="0.7"/>
+
+  <!-- Abstract S path -->
+  <path d="M22 44 C22 44, 22 36, 30 36 C38 36, 38 31, 30 31 C22 31, 22 23, 30 23"
+        fill="none" stroke="#00D4E6" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Upward arrow -->
+  <path d="M30 23 L30 10" fill="none" stroke="#00D4E6" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M24 16 L30 10 L36 16" fill="none" stroke="#00D4E6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Pulse dot -->
+  <circle cx="30" cy="8" r="3" fill="#00D4E6"/>
+
+  <!-- Purple accent arc -->
+  <path d="M14 50 A22 22 0 0 1 6 32" fill="none" stroke="#7B61FF" stroke-width="2" opacity="0.6" stroke-linecap="round"/>
+</svg>

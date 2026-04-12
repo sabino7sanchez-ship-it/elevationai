@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rivven University — 20 Knowledge Tracks</title>
+<meta name="description" content="Sabino's personal university: 20 structured knowledge tracks covering finance, business, tech, industries, and life skills. 200+ topics with progress tracking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ====== RESET & BASE ====== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08090d;--bg2:#0e1017;--bg3:#141722;--bg4:#1a1e2e;
+  --border:#1e2235;--border2:#2a2f45;
+  --text:#eef0f6;--text2:#a0a6be;--text3:#6b7194;
+  --cyan:#00f0ff;--green:#00ff88;--purple:#7b61ff;--orange:#ff6b35;
+  --cyan-g:rgba(0,240,255,.12);--green-g:rgba(0,255,136,.12);
+  --purple-g:rgba(123,97,255,.12);--orange-g:rgba(255,107,53,.12);
+  --sidebar-w:280px;
+  --radius:10px;
+}
+html{scroll-behavior:smooth;font-size:15px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:var(--cyan);text-decoration:none;transition:color .2s}
+a:hover{color:var(--green)}
+code,.mono{font-family:'JetBrains Mono',monospace}
+::selection{background:var(--cyan);color:var(--bg)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ====== SIDEBAR ====== */
+.sidebar{
+  position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;
+  background:var(--bg2);border-right:1px solid var(--border);
+  overflow-y:auto;z-index:100;padding:20px 0;
+  transition:transform .3s ease;
+}
+.sidebar-header{padding:12px 20px 20px;border-bottom:1px solid var(--border)}
+.sidebar-header h2{font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sidebar-header p{font-size:.7rem;color:var(--text3);margin-top:2px;font-family:'JetBrains Mono',monospace}
+.sidebar-overall{padding:12px 20px;border-bottom:1px solid var(--border)}
+.sidebar-overall .bar-outer{height:6px;background:var(--bg);border-radius:3px;margin-top:6px}
+.sidebar-overall .bar-inner{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--cyan),var(--green));transition:width .4s ease}
+.sidebar-overall .stat{font-size:.72rem;color:var(--text2);margin-top:4px;font-family:'JetBrains Mono',monospace}
+.sidebar-search{padding:10px 16px}
+.sidebar-search input{
+  width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;
+  color:var(--text);padding:8px 10px 8px 32px;font-size:.8rem;outline:none;
+  transition:border-color .2s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%236b7194' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:10px center;
+}
+.sidebar-search input:focus{border-color:var(--cyan)}
+.sidebar-nav{list-style:none;padding:8px 0}
+.sidebar-cat{padding:10px 20px 4px;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3)}
+.sidebar-link{
+  display:flex;align-items:center;gap:8px;padding:7px 20px;font-size:.78rem;color:var(--text2);
+  cursor:pointer;transition:all .15s;border-left:3px solid transparent;
+}
+.sidebar-link:hover,.sidebar-link.active{color:var(--text);background:var(--bg);border-left-color:var(--cyan)}
+.sidebar-link .num{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text3);min-width:18px}
+.sidebar-link .prog-dot{width:8px;height:8px;border-radius:50%;margin-left:auto;flex-shrink:0}
+.prog-dot.empty{border:1.5px solid var(--border2)}
+.prog-dot.partial{background:var(--orange)}
+.prog-dot.full{background:var(--green)}
+
+/* ====== MOBILE TOGGLE ====== */
+.mobile-toggle{
+  display:none;position:fixed;top:12px;left:12px;z-index:200;
+  background:var(--bg2);border:1px solid var(--border);border-radius:8px;
+  color:var(--text);width:40px;height:40px;cursor:pointer;
+  font-size:1.2rem;align-items:center;justify-content:center;
+}
+
+/* ====== MAIN CONTENT ====== */
+.main{margin-left:var(--sidebar-w);min-height:100vh;padding:30px 40px 80px}
+.main-header{max-width:900px;margin-bottom:40px}
+.main-header h1{font-size:2.2rem;font-weight:900;margin-bottom:6px}
+.main-header h1 span{background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.main-header p{color:var(--text2);font-size:.95rem;max-width:700px}
+
+/* ====== DAILY LEARNING ====== */
+.daily-card{
+  background:linear-gradient(135deg,var(--cyan-g),var(--green-g));
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px 28px;margin-bottom:40px;max-width:900px;position:relative;overflow:hidden;
+}
+.daily-card::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle,var(--cyan-g),transparent);border-radius:50%}
+.daily-card .label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.daily-card h3{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+.daily-card p{color:var(--text2);font-size:.85rem}
+.daily-card .daily-btn{
+  display:inline-block;margin-top:12px;padding:8px 20px;border-radius:6px;
+  background:var(--bg);border:1px solid var(--border);color:var(--cyan);
+  font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;
+}
+.daily-card .daily-btn:hover{background:var(--cyan);color:var(--bg);border-color:var(--cyan)}
+
+/* ====== CATEGORY SECTION ====== */
+.category-section{margin-bottom:48px;max-width:900px}
+.category-title{
+  font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.15em;
+  padding-bottom:10px;margin-bottom:20px;border-bottom:1px solid var(--border);
+}
+.cat-finance .category-title{color:var(--green)}
+.cat-business .category-title{color:var(--cyan)}
+.cat-tech .category-title{color:var(--purple)}
+.cat-industries .category-title{color:var(--orange)}
+.cat-life .category-title{color:#f472b6}
+
+/* ====== TRACK CARD (ACCORDION) ====== */
+.track{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);
+  margin-bottom:12px;overflow:hidden;transition:border-color .2s;
+}
+.track:hover{border-color:var(--border2)}
+.track-header{
+  display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;
+  user-select:none;transition:background .15s;
+}
+.track-header:hover{background:var(--bg3)}
+.track-num{
+  font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;
+  color:var(--text3);min-width:24px;
+}
+.track-info{flex:1;min-width:0}
+.track-info h3{font-size:.95rem;font-weight:700;margin-bottom:1px}
+.track-info p{font-size:.72rem;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track-progress{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.track-progress .bar{width:80px;height:5px;background:var(--bg);border-radius:3px;overflow:hidden}
+.track-progress .bar-fill{height:100%;border-radius:3px;transition:width .4s ease}
+.cat-finance .bar-fill{background:var(--green)}
+.cat-business .bar-fill{background:var(--cyan)}
+.cat-tech .bar-fill{background:var(--purple)}
+.cat-industries .bar-fill{background:var(--orange)}
+.cat-life .bar-fill{background:#f472b6}
+.track-progress .pct{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text3);min-width:30px;text-align:right}
+.track-chevron{
+  width:20px;height:20px;color:var(--text3);transition:transform .3s;flex-shrink:0;
+}
+.track.open .track-chevron{transform:rotate(180deg)}
+
+/* ====== TRACK BODY ====== */
+.track-body{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;
+}
+.track.open .track-body{max-height:5000px}
+.track-inner{padding:0 20px 20px}
+
+.section-label{
+  font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--text3);margin:16px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--border);
+}
+.section-label:first-child{margin-top:0}
+
+/* Why it matters */
+.track-why{color:var(--text2);font-size:.82rem;margin-bottom:4px;padding:0 4px}
+
+/* Concepts checklist */
+.concept-list{list-style:none}
+.concept-item{
+  display:flex;align-items:flex-start;gap:10px;padding:6px 4px;
+  border-radius:6px;transition:background .15s;
+}
+.concept-item:hover{background:var(--bg3)}
+.concept-item input[type="checkbox"]{
+  appearance:none;-webkit-appearance:none;width:18px;height:18px;
+  border:2px solid var(--border2);border-radius:4px;cursor:pointer;
+  flex-shrink:0;margin-top:1px;position:relative;transition:all .2s;
+}
+.concept-item input[type="checkbox"]:checked{
+  background:var(--cyan);border-color:var(--cyan);
+}
+.concept-item input[type="checkbox"]:checked::after{
+  content:'';position:absolute;top:2px;left:5px;width:4px;height:8px;
+  border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(45deg);
+}
+.concept-item label{font-size:.82rem;color:var(--text2);cursor:pointer;line-height:1.4}
+.concept-item input:checked+label{color:var(--text3);text-decoration:line-through}
+
+/* Resources */
+.resource-list{list-style:none}
+.resource-item{padding:5px 4px}
+.resource-item a{font-size:.82rem;display:inline-flex;align-items:center;gap:6px}
+.resource-item a::before{content:'';display:inline-block;width:4px;height:4px;background:var(--cyan);border-radius:50%;flex-shrink:0}
+
+/* Actions */
+.action-list{list-style:none;counter-reset:act}
+.action-item{
+  counter-increment:act;padding:6px 4px;font-size:.82rem;color:var(--text2);
+  display:flex;gap:8px;
+}
+.action-item::before{
+  content:counter(act);font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  font-weight:700;color:var(--cyan);background:var(--cyan-g);
+  width:20px;height:20px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;margin-top:1px;
+}
+
+/* ====== PRINT ====== */
+@media print{
+  .sidebar,.mobile-toggle{display:none!important}
+  .main{margin-left:0!important;padding:20px!important}
+  .track-body{max-height:none!important}
+  .track{break-inside:avoid;page-break-inside:avoid}
+  body{background:#fff;color:#000}
+  .track{background:#f9f9f9;border:1px solid #ccc}
+  .concept-item label,.track-why,.action-item,.resource-item a{color:#333}
+  .daily-card{background:#f0faf5;border:1px solid #ccc}
+}
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .mobile-toggle{display:flex}
+  .main{margin-left:0;padding:20px 16px 80px}
+  .main-header h1{font-size:1.6rem}
+  .track-progress .bar{width:50px}
+}
+@media(max-width:500px){
+  .track-header{padding:12px 14px;gap:10px}
+  .track-info h3{font-size:.85rem}
+  .track-inner{padding:0 14px 16px}
+}
+
+/* ====== SEARCH HIGHLIGHT ====== */
+.search-hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- MOBILE TOGGLE -->
+<button class="mobile-toggle" id="mobileToggle" aria-label="Toggle sidebar">&#9776;</button>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h2>Rivven University</h2>
+    <p>v1.0 &mdash; 20 Tracks</p>
+  </div>
+  <div class="sidebar-overall">
+    <div class="bar-outer"><div class="bar-inner" id="overallBar" style="width:0%"></div></div>
+    <div class="stat" id="overallStat">0 of 0 topics completed</div>
+  </div>
+  <div class="sidebar-search">
+    <input type="text" id="searchInput" placeholder="Search topics...">
+  </div>
+  <nav>
+    <ul class="sidebar-nav" id="sidebarNav"></ul>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="main" id="mainContent">
+  <div class="main-header">
+    <h1><span>Rivven</span> University</h1>
+    <p>Your structured curriculum to master finance, business, technology, industries, and life skills. Check off topics as you learn. All progress saves automatically.</p>
+  </div>
+
+  <!-- ABOUT SABINO -->
+  <div class="about-section" style="background:linear-gradient(135deg,var(--cyan-g),var(--purple-g));border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:36px;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,var(--purple-g),transparent);border-radius:50%;"></div>
+    <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+      <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--green));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900;color:var(--bg);flex-shrink:0;">S</div>
+      <div style="flex:1;min-width:260px;">
+        <div style="font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);margin-bottom:6px;font-family:'JetBrains Mono',monospace;">About the Founder</div>
+        <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">Sabino Sanchez <span style="font-size:.8rem;color:var(--text3);font-weight:400;">// 19, CSUF Student, Founder</span></h3>
+        <p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-bottom:12px;">
+          Founder of <strong style="color:var(--cyan);">Rivven</strong> — building AI-powered growth systems that help businesses worldwide get more clients, generate more leads, and make more money. Every industry. Every size. Every language.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-bottom:16px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--text2);"><span style="color:var(--cyan);">&#9656;</span> 20+ industry demos built</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--text2);"><span style="color:var(--green);">&#9656;</span> 12 active service lines</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--text2);"><span style="color:var(--purple);">&#9656;</span> 48-hour builds, bilingual EN/ES</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--text2);"><span style="color:var(--orange);">&#9656;</span> Serves ALL industries worldwide</div>
+        </div>
+        <div style="font-size:.78rem;color:var(--text3);line-height:1.6;margin-bottom:12px;">
+          <strong style="color:var(--text2);">Mission:</strong> Help businesses grow, get more clients, and make more money using AI-powered systems.<br>
+          <strong style="color:var(--text2);">Goals:</strong> $100K in 60 days &bull; 100 employees in 3-5 years &bull; Worldwide scale.<br>
+          <strong style="color:var(--text2);">Values:</strong> Ship fast. Think 10x. Automate everything. Revenue first.
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="https://rivven.ai" target="_blank" style="padding:6px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-size:.75rem;font-weight:600;color:var(--cyan);transition:all .2s;">rivven.ai</a>
+          <a href="https://rivven.ai/demos.html" target="_blank" style="padding:6px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-size:.75rem;font-weight:600;color:var(--green);transition:all .2s;">View 20+ Demos</a>
+          <a href="https://rivven.ai/booking.html" target="_blank" style="padding:6px 16px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-size:.75rem;font-weight:600;color:var(--purple);transition:all .2s;">Book a Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAILY LEARNING -->
+  <div class="daily-card" id="dailyCard">
+    <div class="label">Daily Learning</div>
+    <h3 id="dailyTitle">Loading...</h3>
+    <p id="dailyDesc"></p>
+    <button class="daily-btn" id="dailyBtn">Jump to Track</button>
+  </div>
+
+  <!-- TRACKS INJECTED BY JS -->
+  <div id="tracksContainer"></div>
+</main>
+
+<script>
+/* ============================================================
+   TRACK DATA — 20 tracks, 200+ topics
+   ============================================================ */
+const TRACKS = [
+  // ===== MONEY & FINANCE =====
+  {
+    id:'personal-finance', num:1, title:'Personal Finance', cat:'finance',
+    why:'The foundation of everything. You can\'t build wealth if you bleed money. An 800 credit score is a weapon -- learn to use it.',
+    concepts:[
+      'The 50/30/20 budgeting rule and how to customize it',
+      'Compound interest: the 8th wonder of the world',
+      'Emergency fund: 3-6 months of expenses in a HYSA',
+      'Tax optimization: standard vs itemized deductions',
+      '401(k) vs Roth IRA vs Traditional IRA -- which when',
+      'Credit score mechanics: utilization, age, inquiries',
+      'Debt avalanche vs debt snowball payoff strategies',
+      'Insurance types: health, auto, umbrella, renters',
+      'Net worth tracking and why it matters monthly',
+      'Dollar cost averaging into index funds',
+      'HYSA vs CD vs money market accounts',
+      'How to read your tax return (1040, Schedule C)'
+    ],
+    resources:[
+      {title:'Investopedia Personal Finance',url:'https://www.investopedia.com/personal-finance-4427760'},
+      {title:'Khan Academy Finance',url:'https://www.khanacademy.org/economics-finance-domain/core-finance'},
+      {title:'r/personalfinance Wiki',url:'https://www.reddit.com/r/personalfinance/wiki/index'},
+      {title:'The Money Guy Show (YouTube)',url:'https://www.youtube.com/@TheMoneyGuyShow'}
+    ],
+    actions:[
+      'Set up a budget tracker (spreadsheet or YNAB) and categorize last month\'s spending',
+      'Open a high-yield savings account and automate $50/week transfer',
+      'Pull your free credit report from annualcreditreport.com and review every line'
+    ]
+  },
+  {
+    id:'stock-market', num:2, title:'Stock Market', cat:'finance',
+    why:'The stock market is the greatest long-term wealth builder in history. S&P 500 averages 10% annually. Learn to not panic-sell.',
+    concepts:[
+      'How stocks work: ownership, dividends, capital gains',
+      'ETFs vs individual stocks vs mutual funds',
+      'Index funds: why Buffett recommends S&P 500',
+      'Reading a stock chart: candlesticks, volume, moving averages',
+      'Fundamental analysis: P/E ratio, EPS, revenue growth',
+      'Dollar cost averaging vs lump sum investing',
+      'Options basics: calls, puts, strike price, expiration',
+      'Market orders vs limit orders vs stop losses',
+      'Bull vs bear markets and historical cycles',
+      'Tax-loss harvesting and wash sale rules',
+      'Dividend investing and DRIP programs',
+      'How brokerage accounts work (taxable vs retirement)'
+    ],
+    resources:[
+      {title:'Investopedia Stock Market',url:'https://www.investopedia.com/stocks-4427785'},
+      {title:'Khan Academy Stocks & Bonds',url:'https://www.khanacademy.org/economics-finance-domain/core-finance/stock-and-bonds'},
+      {title:'The Plain Bagel (YouTube)',url:'https://www.youtube.com/@ThePlainBagel'},
+      {title:'Coursera Financial Markets (Yale)',url:'https://www.coursera.org/learn/financial-markets-global'}
+    ],
+    actions:[
+      'Open a brokerage account (Fidelity or Schwab) and buy $50 of VTI or VOO',
+      'Paper trade 5 stock picks for 30 days and track results',
+      'Read one company\'s 10-K filing on SEC.gov'
+    ]
+  },
+  {
+    id:'crypto-defi', num:3, title:'Crypto & DeFi', cat:'finance',
+    why:'Whether you invest or not, you need to understand blockchain technology. It powers smart contracts, DeFi, and tokenized assets.',
+    concepts:[
+      'Bitcoin fundamentals: proof of work, halvings, scarcity',
+      'Ethereum: smart contracts, gas fees, EVM',
+      'DeFi protocols: Uniswap, Aave, Compound',
+      'Yield farming and liquidity pools',
+      'Staking: proof of stake and validator rewards',
+      'NFTs: current state, use cases beyond art',
+      'CEX vs DEX: Coinbase vs Uniswap',
+      'Wallet security: hardware wallets, seed phrases',
+      'Stablecoins: USDC, USDT, DAI -- how they maintain peg',
+      'Layer 2 solutions: Arbitrum, Optimism, Base',
+      'Crypto tax reporting requirements',
+      'Risk management: position sizing, not investing rent money'
+    ],
+    resources:[
+      {title:'Investopedia Cryptocurrency',url:'https://www.investopedia.com/cryptocurrency-4427699'},
+      {title:'Whiteboard Crypto (YouTube)',url:'https://www.youtube.com/@WhiteboardCrypto'},
+      {title:'Ethereum.org Learn',url:'https://ethereum.org/en/learn/'},
+      {title:'CoinDesk Learn',url:'https://www.coindesk.com/learn/'}
+    ],
+    actions:[
+      'Set up a hardware wallet (Ledger or Trezor) and transfer a small amount of crypto',
+      'Use a testnet faucet to practice sending transactions on Ethereum Sepolia',
+      'Read the Bitcoin whitepaper (9 pages)'
+    ]
+  },
+  {
+    id:'real-estate', num:4, title:'Real Estate Investing', cat:'finance',
+    why:'Real estate builds generational wealth through leverage, appreciation, cash flow, tax benefits, and equity. This is the game plan.',
+    concepts:[
+      'Wholesaling: finding deals, assigning contracts',
+      'House flipping: ARV, rehab costs, 70% rule',
+      'BRRRR method: Buy, Rehab, Rent, Refinance, Repeat',
+      'Rental property cash flow analysis',
+      'REITs: invest in real estate without buying property',
+      'Commercial real estate: office, retail, industrial, multifamily',
+      '1031 exchange: defer capital gains taxes',
+      'Cap rate: net operating income / purchase price',
+      'Cash-on-cash return vs total ROI',
+      'Property management: self-manage vs hire PM',
+      'ADUs and house hacking for first-time buyers',
+      'Hard money lenders vs conventional financing',
+      'Comparative market analysis (CMA) basics',
+      'Title, escrow, and closing process'
+    ],
+    resources:[
+      {title:'BiggerPockets Guides',url:'https://www.biggerpockets.com/guides'},
+      {title:'Investopedia Real Estate',url:'https://www.investopedia.com/real-estate-4427761'},
+      {title:'BiggerPockets Podcast',url:'https://www.biggerpockets.com/podcast'},
+      {title:'Wholesale Guide (Your own)',url:'./wholesale-guide.html'},
+      {title:'Khan Academy Housing',url:'https://www.khanacademy.org/economics-finance-domain/core-finance/housing'}
+    ],
+    actions:[
+      'Analyze 3 properties on Zillow using the 1% rule and cash-on-cash return',
+      'Join BiggerPockets and read the Ultimate Beginner\'s Guide',
+      'Drive 5 neighborhoods in your target area and note property conditions'
+    ]
+  },
+  {
+    id:'business-finance', num:5, title:'Business Finance', cat:'finance',
+    why:'Every business either grows or dies by its numbers. If you can\'t read a P&L, you\'re flying blind.',
+    concepts:[
+      'Profit & Loss statement: revenue, COGS, gross margin, net income',
+      'Cash flow statement: operating, investing, financing',
+      'Balance sheet: assets, liabilities, equity',
+      'Unit economics: CAC, LTV, payback period',
+      'Pricing strategy: cost-plus, value-based, competitive',
+      'Revenue forecasting: top-down vs bottom-up',
+      'Break-even analysis',
+      'Working capital and runway calculations',
+      'Business credit: DUNS number, Net-30 accounts',
+      'Gross margin vs net margin targets by industry',
+      'Invoice factoring and lines of credit',
+      'Financial modeling basics in spreadsheets'
+    ],
+    resources:[
+      {title:'Investopedia Corporate Finance',url:'https://www.investopedia.com/corporate-finance-4689788'},
+      {title:'Khan Academy Accounting',url:'https://www.khanacademy.org/economics-finance-domain/core-finance/accounting-and-financial-stateme'},
+      {title:'HubSpot Business Finance',url:'https://blog.hubspot.com/sales/business-finance'},
+      {title:'Coursera Finance for Non-Finance',url:'https://www.coursera.org/learn/finance-for-non-finance'}
+    ],
+    actions:[
+      'Create a simple P&L for Rivven covering last 3 months',
+      'Calculate your current CAC and LTV for client acquisition',
+      'Apply for a business DUNS number at dnb.com'
+    ]
+  },
+
+  // ===== BUSINESS & ENTREPRENEURSHIP =====
+  {
+    id:'sales-negotiation', num:6, title:'Sales & Negotiation', cat:'business',
+    why:'Nothing happens until someone sells something. This is the #1 skill for making money. Period.',
+    concepts:[
+      'SPIN Selling: Situation, Problem, Implication, Need-Payoff',
+      'The Challenger Sale methodology',
+      'Objection handling: feel-felt-found framework',
+      'Body language: mirroring, open posture, eye contact',
+      'Closing techniques: assumptive, urgency, trial close',
+      'Pricing psychology: anchoring, decoy effect, charm pricing',
+      'B2B vs B2C selling differences',
+      'Discovery calls: asking the right questions',
+      'Follow-up cadence: the fortune is in the follow-up',
+      'Cold calling and cold email frameworks',
+      'Building rapport in the first 30 seconds',
+      'Handling "I need to think about it"',
+      'Negotiation: BATNA, ZOPA, first-offer advantage'
+    ],
+    resources:[
+      {title:'HubSpot Sales Blog',url:'https://blog.hubspot.com/sales'},
+      {title:'Coursera Sales Training',url:'https://www.coursera.org/learn/sales-training-techniques-for-a-human-centric-sales-process'},
+      {title:'Alex Hormozi (YouTube)',url:'https://www.youtube.com/@AlexHormozi'},
+      {title:'Chris Voss MasterClass Preview',url:'https://www.masterclass.com/classes/chris-voss-teaches-the-art-of-negotiation'}
+    ],
+    actions:[
+      'Record yourself doing a 60-second pitch for Rivven and critique it',
+      'Call 3 businesses this week with a prepared discovery script',
+      'Read "Never Split the Difference" summary and practice mirroring in conversations'
+    ]
+  },
+  {
+    id:'marketing', num:7, title:'Marketing', cat:'business',
+    why:'Marketing is how you get attention. Attention is the most valuable asset in business. Learn to capture it at scale.',
+    concepts:[
+      'Digital marketing funnel: awareness, interest, decision, action',
+      'SEO: on-page, off-page, technical, local SEO',
+      'Paid ads: Google Ads, Meta Ads, retargeting',
+      'Content marketing: blog, video, podcast strategy',
+      'Social media marketing: platform selection, posting cadence',
+      'Email marketing: list building, sequences, deliverability',
+      'Sales funnels: landing page, lead magnet, nurture, offer',
+      'Copywriting: headlines, CTAs, AIDA framework',
+      'Brand building: positioning, voice, visual identity',
+      'Analytics: Google Analytics 4, UTM parameters, attribution',
+      'A/B testing: what to test, statistical significance',
+      'Referral marketing and word-of-mouth strategies',
+      'Influencer marketing basics'
+    ],
+    resources:[
+      {title:'HubSpot Marketing Blog',url:'https://blog.hubspot.com/marketing'},
+      {title:'Google Digital Marketing Course',url:'https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing'},
+      {title:'Moz SEO Learning Center',url:'https://moz.com/learn/seo'},
+      {title:'Coursera Digital Marketing (Illinois)',url:'https://www.coursera.org/specializations/digital-marketing'}
+    ],
+    actions:[
+      'Audit your Rivven website using Google PageSpeed and fix top 3 issues',
+      'Set up Google Business Profile if not already done',
+      'Write 3 social media posts using the PAS framework (Problem, Agitate, Solution)'
+    ]
+  },
+  {
+    id:'leadership', num:8, title:'Leadership & Management', cat:'business',
+    why:'You can\'t scale past yourself without leading others. Learning to delegate is learning to multiply your output.',
+    concepts:[
+      'Hiring: writing job descriptions, interviewing, evaluating culture fit',
+      'Firing: documentation, performance plans, having the conversation',
+      'Delegation: what to delegate, SOPs, trust-but-verify',
+      'OKRs: Objectives and Key Results framework',
+      'Team culture: values, norms, psychological safety',
+      'Difficult conversations: SBI feedback model',
+      'Performance reviews: continuous feedback vs annual',
+      'Scaling from solo to team: first hire decisions',
+      'Meeting management: agendas, action items, async vs sync',
+      'Remote team management and communication tools',
+      'Servant leadership vs command-and-control',
+      'Time management: Eisenhower matrix, time blocking'
+    ],
+    resources:[
+      {title:'Y Combinator Startup School',url:'https://www.startupschool.org/'},
+      {title:'Harvard Business Review Leadership',url:'https://hbr.org/topic/leadership'},
+      {title:'Paul Graham Essays',url:'https://www.paulgraham.com/articles.html'},
+      {title:'Coursera Leadership (Michigan)',url:'https://www.coursera.org/specializations/leading-people-teams'}
+    ],
+    actions:[
+      'Write an SOP for your most repeated task (e.g., client onboarding)',
+      'Set 3 OKRs for Q2 2026 for Rivven',
+      'Read "The E-Myth Revisited" summary -- work ON the business, not IN it'
+    ]
+  },
+  {
+    id:'legal-contracts', num:9, title:'Legal & Contracts', cat:'business',
+    why:'One bad contract can destroy everything you built. Protect yourself before you need to.',
+    concepts:[
+      'LLC vs S-Corp vs C-Corp: when to use each',
+      'Operating agreements and bylaws',
+      'Contracts: offer, acceptance, consideration, breach',
+      'IP protection: trademarks, copyrights, trade secrets',
+      'Employment law in California: at-will, AB5, meal breaks',
+      'Non-competes vs non-solicitation (CA bans non-competes)',
+      'Liability and business insurance: general liability, E&O',
+      'Trademark registration: USPTO process',
+      'Terms of service and privacy policy for websites',
+      'Independent contractor agreements',
+      'NDA basics and when to use them',
+      'When to hire a lawyer vs use templates'
+    ],
+    resources:[
+      {title:'Investopedia Business Law',url:'https://www.investopedia.com/terms/b/business-law.asp'},
+      {title:'SBA Business Guide',url:'https://www.sba.gov/business-guide'},
+      {title:'Nolo Legal Encyclopedia',url:'https://www.nolo.com/legal-encyclopedia'},
+      {title:'LegalZoom Learning Center',url:'https://www.legalzoom.com/articles'}
+    ],
+    actions:[
+      'Review your current Rivven client contract for missing clauses',
+      'Register "Rivven" or "Rivven" trademark search on USPTO.gov',
+      'Create a standard NDA template for client projects'
+    ]
+  },
+  {
+    id:'accounting-tax', num:10, title:'Accounting & Tax', cat:'business',
+    why:'The IRS is your silent business partner. Learn to legally minimize what you owe and keep more of what you earn.',
+    concepts:[
+      'Bookkeeping basics: double-entry, chart of accounts',
+      'Quarterly estimated taxes: when and how to pay',
+      'Business write-offs: home office, mileage, equipment, software',
+      '1099 vs W-2: classification rules',
+      'S-Corp tax advantages: reasonable salary + distributions',
+      'Depreciation: Section 179, bonus depreciation',
+      'Hiring a CPA vs DIY (when it\'s worth the cost)',
+      'Sales tax collection and nexus rules',
+      'QBI deduction (20% pass-through deduction)',
+      'Accounting software: QuickBooks, Wave, FreshBooks',
+      'Year-end tax planning strategies',
+      'Audit triggers and how to avoid them'
+    ],
+    resources:[
+      {title:'Investopedia Tax Guide',url:'https://www.investopedia.com/taxes-4427724'},
+      {title:'IRS Small Business Center',url:'https://www.irs.gov/businesses/small-businesses-self-employed'},
+      {title:'Bench Accounting Blog',url:'https://bench.co/blog/'},
+      {title:'Khan Academy Taxes',url:'https://www.khanacademy.org/economics-finance-domain/core-finance/taxes-topic'}
+    ],
+    actions:[
+      'Set up a separate business bank account if you haven\'t already',
+      'Track all business expenses for the next 30 days using a spreadsheet',
+      'Calculate your quarterly estimated tax payment for Q2'
+    ]
+  },
+
+  // ===== TECHNOLOGY =====
+  {
+    id:'web-dev', num:11, title:'Web Development', cat:'tech',
+    why:'You already build sites. Now go deeper. React, databases, APIs, and performance optimization separate amateurs from pros.',
+    concepts:[
+      'HTML/CSS/JS mastery: semantic HTML, Flexbox, Grid, ES6+',
+      'React fundamentals: components, state, hooks, JSX',
+      'Next.js: SSR, SSG, API routes, file-based routing',
+      'Databases: SQL vs NoSQL, PostgreSQL, Firebase, Supabase',
+      'REST APIs: endpoints, methods, status codes, authentication',
+      'Git & GitHub: branching, PRs, merge conflicts, CI/CD',
+      'Performance optimization: Core Web Vitals, lazy loading, CDN',
+      'Accessibility: WCAG, ARIA labels, keyboard navigation',
+      'CSS frameworks: Tailwind CSS, responsive design patterns',
+      'Deployment: Netlify, Vercel, GitHub Pages, DNS management',
+      'TypeScript basics: types, interfaces, generics',
+      'Testing: unit tests, integration tests, end-to-end',
+      'Package managers: npm, pnpm, dependency management'
+    ],
+    resources:[
+      {title:'MDN Web Docs',url:'https://developer.mozilla.org/en-US/'},
+      {title:'freeCodeCamp',url:'https://www.freecodecamp.org/'},
+      {title:'The Odin Project',url:'https://www.theodinproject.com/'},
+      {title:'Next.js Documentation',url:'https://nextjs.org/docs'},
+      {title:'Fireship (YouTube)',url:'https://www.youtube.com/@Fireship'}
+    ],
+    actions:[
+      'Build a small React app (todo list or calculator) and deploy to Vercel',
+      'Read the Next.js "Getting Started" docs and scaffold a project',
+      'Set up a Supabase project and connect it to a frontend'
+    ]
+  },
+  {
+    id:'ai-ml', num:12, title:'AI & Machine Learning', cat:'tech',
+    why:'AI is the biggest shift since the internet. Understanding how it works gives you an unfair advantage in every industry.',
+    concepts:[
+      'How LLMs work: transformers, tokens, attention mechanism',
+      'Prompt engineering: system prompts, few-shot, chain-of-thought',
+      'Fine-tuning: when and how to customize models',
+      'RAG systems: retrieval-augmented generation architecture',
+      'AI agents: tool use, multi-step reasoning, planning',
+      'Computer vision: image classification, object detection',
+      'Voice AI: speech-to-text, text-to-speech, real-time processing',
+      'AI business applications: chatbots, copilots, automation',
+      'Model evaluation: accuracy, precision, recall, hallucination rates',
+      'Embedding models and vector databases',
+      'OpenAI API, Anthropic API, and open-source models',
+      'Ethics: bias, privacy, job displacement, regulation',
+      'Building AI-powered products and features'
+    ],
+    resources:[
+      {title:'Coursera Machine Learning (Andrew Ng)',url:'https://www.coursera.org/learn/machine-learning'},
+      {title:'Anthropic Research',url:'https://www.anthropic.com/research'},
+      {title:'OpenAI Cookbook',url:'https://cookbook.openai.com/'},
+      {title:'3Blue1Brown Neural Networks (YouTube)',url:'https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi'},
+      {title:'fast.ai Practical Deep Learning',url:'https://www.fast.ai/'}
+    ],
+    actions:[
+      'Build a simple RAG system using an API and a few documents',
+      'Take the first 3 lessons of Andrew Ng\'s Machine Learning course',
+      'Experiment with different prompting techniques on Claude or GPT'
+    ]
+  },
+  {
+    id:'automation', num:13, title:'Automation & No-Code', cat:'tech',
+    why:'Automate the boring stuff. Every hour you save through automation is an hour you can sell or invest.',
+    concepts:[
+      'Zapier: triggers, actions, multi-step zaps, filters',
+      'Make.com (Integromat): visual automation builder',
+      'n8n: self-hosted automation, more control',
+      'Airtable: relational database for non-developers',
+      'Notion: workspace, databases, templates, API',
+      'GoHighLevel: CRM, funnels, automation for agencies',
+      'API integrations: webhooks, OAuth, API keys',
+      'Building without code: Webflow, Bubble, Softr',
+      'Google Apps Script for Sheets/Docs automation',
+      'Cron jobs and scheduled tasks',
+      'Data syncing between platforms',
+      'When to code vs when to no-code'
+    ],
+    resources:[
+      {title:'Zapier Learning Center',url:'https://zapier.com/learn/'},
+      {title:'Make.com Academy',url:'https://www.make.com/en/academy'},
+      {title:'Airtable Guides',url:'https://airtable.com/guides'},
+      {title:'GoHighLevel Documentation',url:'https://help.gohighlevel.com/'}
+    ],
+    actions:[
+      'Create a Zapier zap that sends you a Slack/email notification when a form is submitted',
+      'Build a client CRM in Airtable with status tracking',
+      'Automate one repetitive task you do weekly'
+    ]
+  },
+  {
+    id:'cybersecurity', num:14, title:'Cybersecurity', cat:'tech',
+    why:'You handle client data and money. One breach destroys trust permanently. Security isn\'t optional.',
+    concepts:[
+      'Password management: password managers, unique passwords',
+      '2FA/MFA: TOTP apps vs SMS vs hardware keys',
+      'Phishing: recognizing attacks, social engineering',
+      'VPNs: how they work, when to use them',
+      'SSL/TLS: HTTPS, certificate management',
+      'OWASP Top 10: XSS, SQL injection, CSRF, etc.',
+      'Protecting client data: encryption at rest and in transit',
+      'Business security: access control, principle of least privilege',
+      'Backup strategies: 3-2-1 rule',
+      'Incident response: what to do when breached',
+      'Secure coding practices for web developers',
+      'Privacy regulations: CCPA, GDPR basics'
+    ],
+    resources:[
+      {title:'OWASP Top 10',url:'https://owasp.org/www-project-top-ten/'},
+      {title:'Cybersecurity & Infrastructure Agency',url:'https://www.cisa.gov/cybersecurity'},
+      {title:'Coursera Cybersecurity (Google)',url:'https://www.coursera.org/professional-certificates/google-cybersecurity'},
+      {title:'Have I Been Pwned',url:'https://haveibeenpwned.com/'}
+    ],
+    actions:[
+      'Set up a password manager (Bitwarden or 1Password) and migrate all passwords',
+      'Enable 2FA on every important account (email, bank, GitHub, hosting)',
+      'Run your email through haveibeenpwned.com and change any compromised passwords'
+    ]
+  },
+
+  // ===== INDUSTRIES =====
+  {
+    id:'construction-re', num:15, title:'Construction & Real Estate', cat:'industries',
+    why:'Your #1 client segment. Know their world better than they do and they\'ll trust you with their money.',
+    concepts:[
+      'General contracting: licensing (CSLB in CA), bonding, insurance',
+      'Permits: building, electrical, plumbing, when they\'re required',
+      'Bidding: cost estimation, markup, competitive bids',
+      'Project management: timelines, subcontractor coordination',
+      'Residential vs commercial construction differences',
+      'ADUs: California regulations, costs, ROI',
+      'Zoning: residential, commercial, mixed-use, variances',
+      'Lien law: mechanic\'s liens, stop notices, bond claims',
+      'Construction software: Buildertrend, Procore basics',
+      'Lead generation for contractors: Google LSA, Yelp, referrals',
+      'Estimating materials and labor costs',
+      'Change orders and scope creep management'
+    ],
+    resources:[
+      {title:'CSLB California Licensing',url:'https://www.cslb.ca.gov/'},
+      {title:'BiggerPockets Construction',url:'https://www.biggerpockets.com/blog/category/construction'},
+      {title:'Coursera Construction Management',url:'https://www.coursera.org/learn/construction-management'},
+      {title:'Procore Learning',url:'https://learn.procore.com/'}
+    ],
+    actions:[
+      'Interview Santiago (Allendes Construction) about his biggest business pain points',
+      'Learn the top 5 CSLB license classifications and what each covers',
+      'Research Google Local Service Ads for contractors in your area'
+    ]
+  },
+  {
+    id:'healthcare-medspa', num:16, title:'Healthcare & Med Spa', cat:'industries',
+    why:'Healthcare is a $4.3 trillion industry. Med spas are booming. Know the regulations and you can sell confidently.',
+    concepts:[
+      'HIPAA compliance: what it requires for websites and marketing',
+      'Medical marketing regulations: FDA, FTC guidelines',
+      'Patient acquisition: Google Ads for medical, doctor referrals',
+      'Insurance billing basics: CPT codes, ICD-10, claims',
+      'Wellness industry trends: IV therapy, peptides, aesthetics',
+      'Med spa services: Botox, fillers, laser, body contouring',
+      'Provider credentialing and scope of practice',
+      'Online reviews and reputation management in healthcare',
+      'Telehealth platforms and virtual consultations',
+      'Patient intake forms and consent management',
+      'HIPAA-compliant email and messaging solutions',
+      'Medical SEO: E-E-A-T, health content requirements'
+    ],
+    resources:[
+      {title:'HHS HIPAA Basics',url:'https://www.hhs.gov/hipaa/for-professionals/index.html'},
+      {title:'American Med Spa Association',url:'https://www.americanmedspa.org/'},
+      {title:'Coursera Health Informatics',url:'https://www.coursera.org/specializations/health-informatics'},
+      {title:'PatientPop Blog',url:'https://www.patientpop.com/blog/'}
+    ],
+    actions:[
+      'Read the HIPAA website requirements checklist',
+      'Visit 3 local med spa websites and note what they do well/poorly',
+      'Create a "HIPAA-Compliant Website" checklist you can offer as a lead magnet'
+    ]
+  },
+  {
+    id:'food-restaurant', num:17, title:'Food & Restaurant', cat:'industries',
+    why:'Everyone eats. Restaurants have brutal margins (3-5%) and desperately need better marketing and tech.',
+    concepts:[
+      'Health department permits and food handler certifications',
+      'Food cost percentage: target 28-32% of menu price',
+      'Menu engineering: stars, plowhorses, dogs, puzzles',
+      'POS systems: Toast, Square, Clover comparison',
+      'Delivery platforms: DoorDash, UberEats, Grubhub -- commission rates',
+      'Franchise vs independent: pros, cons, FDD',
+      'Restaurant marketing: Google Business, Yelp, Instagram food photography',
+      'Kitchen operations: prep lists, inventory management, FIFO',
+      'Labor cost management: scheduling, cross-training',
+      'Ghost kitchens and virtual restaurant concepts',
+      'Liquor licensing and regulations',
+      'Restaurant accounting: daily sales tracking, prime cost'
+    ],
+    resources:[
+      {title:'National Restaurant Association',url:'https://restaurant.org/'},
+      {title:'Toast Restaurant Blog',url:'https://pos.toasttab.com/blog'},
+      {title:'Coursera Food & Beverage Management',url:'https://www.coursera.org/learn/food-beverage-management'},
+      {title:'Restaurant365 Resources',url:'https://www.restaurant365.com/resources/'}
+    ],
+    actions:[
+      'Visit a local restaurant and ask the owner what tech/marketing they use',
+      'Learn how Toast POS works (watch a demo video)',
+      'Calculate the food cost percentage for a sample menu item'
+    ]
+  },
+  {
+    id:'automotive', num:18, title:'Automotive', cat:'industries',
+    why:'Cars are the second biggest purchase people make. Dealerships, detailing, aftermarket -- massive money in this space.',
+    concepts:[
+      'Dealership operations: F&I, inventory management, floor plans',
+      'Auto detailing as a business: pricing, packages, mobile vs shop',
+      'Aftermarket parts: performance, cosmetic, installation',
+      'Fleet management: maintenance schedules, GPS tracking, fuel cards',
+      'EV trends: charging infrastructure, incentives, market shift',
+      'Used car market: wholesale auctions, Carfax, pricing guides',
+      'Auto repair shop operations: bays, lifts, ASE certification',
+      'Automotive marketing: VDPs, lead forms, conquest campaigns',
+      'Extended warranties and service contracts',
+      'DMV regulations: dealer licensing, title transfers',
+      'Automotive SEO: inventory pages, model-specific content'
+    ],
+    resources:[
+      {title:'Automotive News',url:'https://www.autonews.com/'},
+      {title:'NADA Dealership Guide',url:'https://www.nada.org/'},
+      {title:'International Detailing Association',url:'https://www.the-ida.com/'},
+      {title:'Coursera Supply Chain (Auto)',url:'https://www.coursera.org/learn/supply-chain-management'}
+    ],
+    actions:[
+      'Research what a full mobile detailing setup costs to start',
+      'Visit an auto dealership website and critique their lead capture flow',
+      'Learn the difference between ceramic coating, PPF, and traditional wax'
+    ]
+  },
+  {
+    id:'logistics-trucking', num:19, title:'Logistics & Trucking', cat:'industries',
+    why:'You work at Pacific Green Trucking. Understanding the industry you\'re in makes you more valuable -- and opens business opportunities.',
+    concepts:[
+      'Freight brokering: matching shippers with carriers, margins',
+      'DOT compliance: HOS rules, ELD mandate, drug testing',
+      'CDL requirements: Class A, B, endorsements, training',
+      'Fleet management: maintenance, insurance, driver retention',
+      'Last-mile delivery: Amazon DSP, FedEx routes, gig delivery',
+      'Supply chain basics: procurement, warehousing, distribution',
+      'Trucking authority: MC number, BOC-3 filing',
+      'Fuel optimization: routes, idle reduction, fuel cards',
+      'Load boards: DAT, Truckstop, Amazon Relay',
+      'Owner-operator vs company driver economics',
+      'Freight factoring: getting paid faster',
+      'FMCSA regulations and safety ratings'
+    ],
+    resources:[
+      {title:'FMCSA Regulations',url:'https://www.fmcsa.dot.gov/'},
+      {title:'FreightWaves',url:'https://www.freightwaves.com/'},
+      {title:'DAT Load Board',url:'https://www.dat.com/'},
+      {title:'Trucking Truth',url:'https://www.thetruckingtruth.com/'},
+      {title:'Coursera Supply Chain',url:'https://www.coursera.org/specializations/supply-chain-management'}
+    ],
+    actions:[
+      'Ask Pacific Green how they manage dispatch and find loads',
+      'Research what it takes to get your own trucking authority (MC number)',
+      'Calculate the cost per mile for a typical Class 8 truck'
+    ]
+  },
+
+  // ===== LIFE SKILLS =====
+  {
+    id:'communication', num:20, title:'Communication & Public Speaking', cat:'life',
+    why:'Every dollar you make comes through communication. Master this and you master influence, sales, leadership, and relationships.',
+    concepts:[
+      'Elevator pitch: 30-second, 60-second, and 2-minute versions',
+      'Storytelling: hero\'s journey, problem-solution-result',
+      'Active listening: paraphrasing, clarifying, not interrupting',
+      'Presentation skills: structure, slides, delivery, stage presence',
+      'Networking: approaching strangers, follow-up, adding value first',
+      'Professional email writing: subject lines, brevity, CTAs',
+      'Conflict resolution: I-statements, de-escalation, finding common ground',
+      'Nonverbal communication: posture, gestures, facial expressions',
+      'Phone and video call etiquette',
+      'Asking better questions: open-ended, probing, Socratic',
+      'Giving and receiving feedback gracefully',
+      'Writing persuasive proposals and pitches'
+    ],
+    resources:[
+      {title:'Coursera Public Speaking (Washington)',url:'https://www.coursera.org/learn/public-speaking'},
+      {title:'TED Talks Official Channel',url:'https://www.youtube.com/@TED'},
+      {title:'Harvard Business Review Communication',url:'https://hbr.org/topic/communication'},
+      {title:'Toastmasters International',url:'https://www.toastmasters.org/'}
+    ],
+    actions:[
+      'Write your 30-second Rivven elevator pitch and practice it 10 times',
+      'Record a 3-minute video explaining what you do and review your delivery',
+      'Find a local Toastmasters meeting and attend as a guest'
+    ]
+  }
+];
+
+const CATEGORIES = [
+  {id:'finance', label:'Money & Finance', tracks:[1,2,3,4,5]},
+  {id:'business', label:'Business & Entrepreneurship', tracks:[6,7,8,9,10]},
+  {id:'tech', label:'Technology', tracks:[11,12,13,14]},
+  {id:'industries', label:'Industries', tracks:[15,16,17,18,19]},
+  {id:'life', label:'Life Skills', tracks:[20]}
+];
+
+/* ============================================================
+   STATE MANAGEMENT
+   ============================================================ */
+const STORAGE_KEY = 'rivven-university-progress';
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e) { return {}; }
+}
+function saveProgress(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+let progress = loadProgress();
+
+function isChecked(trackId, idx) {
+  return progress[trackId] && progress[trackId][idx];
+}
+function toggleCheck(trackId, idx) {
+  if (!progress[trackId]) progress[trackId] = {};
+  progress[trackId][idx] = !progress[trackId][idx];
+  saveProgress(progress);
+  updateAllProgress();
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+function render() {
+  const container = document.getElementById('tracksContainer');
+  const nav = document.getElementById('sidebarNav');
+  let html = '';
+  let navHtml = '';
+
+  CATEGORIES.forEach(cat => {
+    html += `<div class="category-section cat-${cat.id}" id="cat-${cat.id}">`;
+    html += `<div class="category-title">${cat.label}</div>`;
+    navHtml += `<li class="sidebar-cat">${cat.label}</li>`;
+
+    cat.tracks.forEach(num => {
+      const t = TRACKS.find(tr => tr.num === num);
+      if (!t) return;
+      const totalConcepts = t.concepts.length;
+
+      // Nav link
+      navHtml += `<li class="sidebar-link" data-track="${t.id}" onclick="scrollToTrack('${t.id}')">
+        <span class="num">${String(t.num).padStart(2,'0')}</span>
+        <span>${t.title}</span>
+        <span class="prog-dot empty" id="dot-${t.id}"></span>
+      </li>`;
+
+      // Track card
+      html += `<div class="track" id="track-${t.id}" data-search="${t.title.toLowerCase()} ${t.concepts.join(' ').toLowerCase()}">
+        <div class="track-header" onclick="toggleTrack('${t.id}')">
+          <span class="track-num">${String(t.num).padStart(2,'0')}</span>
+          <div class="track-info">
+            <h3>${t.title}</h3>
+            <p>${t.why.substring(0, 80)}...</p>
+          </div>
+          <div class="track-progress">
+            <div class="bar"><div class="bar-fill" id="bar-${t.id}" style="width:0%"></div></div>
+            <span class="pct" id="pct-${t.id}">0%</span>
+          </div>
+          <svg class="track-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-body">
+          <div class="track-inner">
+            <div class="section-label">Why It Matters</div>
+            <p class="track-why">${t.why}</p>
+
+            <div class="section-label">Key Concepts (${totalConcepts})</div>
+            <ul class="concept-list">
+              ${t.concepts.map((c, i) => `
+                <li class="concept-item">
+                  <input type="checkbox" id="cb-${t.id}-${i}" ${isChecked(t.id, i) ? 'checked' : ''} onchange="toggleCheck('${t.id}',${i})">
+                  <label for="cb-${t.id}-${i}">${c}</label>
+                </li>
+              `).join('')}
+            </ul>
+
+            <div class="section-label">Top Resources</div>
+            <ul class="resource-list">
+              ${t.resources.map(r => `
+                <li class="resource-item"><a href="${r.url}" target="_blank" rel="noopener">${r.title}</a></li>
+              `).join('')}
+            </ul>
+
+            <div class="section-label">Action Items This Week</div>
+            <ul class="action-list">
+              ${t.actions.map(a => `<li class="action-item">${a}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>`;
+    });
+
+    html += `</div>`;
+  });
+
+  container.innerHTML = html;
+  nav.innerHTML = navHtml;
+  updateAllProgress();
+  setupDaily();
+}
+
+/* ============================================================
+   PROGRESS UPDATES
+   ============================================================ */
+function getTrackProgress(trackId) {
+  const t = TRACKS.find(tr => tr.id === trackId);
+  if (!t) return {checked:0, total:0};
+  let checked = 0;
+  t.concepts.forEach((_, i) => { if (isChecked(trackId, i)) checked++; });
+  return {checked, total: t.concepts.length};
+}
+
+function updateAllProgress() {
+  let totalChecked = 0, totalAll = 0;
+
+  TRACKS.forEach(t => {
+    const {checked, total} = getTrackProgress(t.id);
+    totalChecked += checked;
+    totalAll += total;
+
+    const pct = total > 0 ? Math.round((checked / total) * 100) : 0;
+    const barEl = document.getElementById('bar-' + t.id);
+    const pctEl = document.getElementById('pct-' + t.id);
+    const dotEl = document.getElementById('dot-' + t.id);
+
+    if (barEl) barEl.style.width = pct + '%';
+    if (pctEl) pctEl.textContent = pct + '%';
+    if (dotEl) {
+      dotEl.className = 'prog-dot ' + (pct === 0 ? 'empty' : pct === 100 ? 'full' : 'partial');
+    }
+  });
+
+  document.getElementById('overallBar').style.width = (totalAll > 0 ? (totalChecked / totalAll * 100) : 0) + '%';
+  document.getElementById('overallStat').textContent = `${totalChecked} of ${totalAll} topics completed`;
+}
+
+/* ============================================================
+   ACCORDION
+   ============================================================ */
+function toggleTrack(id) {
+  const el = document.getElementById('track-' + id);
+  if (el) el.classList.toggle('open');
+}
+function scrollToTrack(id) {
+  const el = document.getElementById('track-' + id);
+  if (el) {
+    el.classList.add('open');
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  // Close mobile sidebar
+  document.getElementById('sidebar').classList.remove('open');
+}
+
+/* ============================================================
+   DAILY LEARNING
+   ============================================================ */
+function setupDaily() {
+  // Pick a topic based on today's date that hasn't been completed
+  const today = new Date();
+  const dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
+
+  // Find unchecked topics
+  let unchecked = [];
+  TRACKS.forEach(t => {
+    t.concepts.forEach((c, i) => {
+      if (!isChecked(t.id, i)) unchecked.push({trackId: t.id, idx: i, concept: c, trackTitle: t.title});
+    });
+  });
+
+  if (unchecked.length === 0) {
+    document.getElementById('dailyTitle').textContent = 'All topics completed!';
+    document.getElementById('dailyDesc').textContent = 'You have mastered all 200+ topics. Time to go deeper.';
+    document.getElementById('dailyBtn').style.display = 'none';
+    return;
+  }
+
+  const pick = unchecked[dayOfYear % unchecked.length];
+  document.getElementById('dailyTitle').textContent = pick.concept;
+  document.getElementById('dailyDesc').textContent = `From: ${pick.trackTitle}`;
+  document.getElementById('dailyBtn').onclick = () => scrollToTrack(pick.trackId);
+}
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  render();
+
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    document.querySelectorAll('.track').forEach(el => {
+      const searchText = el.getAttribute('data-search') || '';
+      el.classList.toggle('search-hidden', q.length > 0 && !searchText.includes(q));
+    });
+    // Also hide empty category sections
+    document.querySelectorAll('.category-section').forEach(sec => {
+      const visible = sec.querySelectorAll('.track:not(.search-hidden)').length;
+      sec.classList.toggle('search-hidden', q.length > 0 && visible === 0);
+    });
+  });
+
+  // Mobile toggle
+  document.getElementById('mobileToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+  });
+
+  // Close sidebar on outside click (mobile)
+  document.addEventListener('click', (e) => {
+    const sb = document.getElementById('sidebar');
+    const tog = document.getElementById('mobileToggle');
+    if (window.innerWidth <= 900 && sb.classList.contains('open') && !sb.contains(e.target) && !tog.contains(e.target)) {
+      sb.classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>

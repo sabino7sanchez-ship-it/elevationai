@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bianca Barbosa Photography | Portraits, Events & Lifestyle</title>
+<meta name="description" content="Bianca Barbosa Photography — capturing authentic moments through portraits, events, and lifestyle photography. Southern California. Book your session today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0c0a09;--bg2:#161412;--bg3:#1e1b18;--card:rgba(22,20,18,.9);--gold:#d4a574;--gold-light:#e8c9a0;--gold-dim:rgba(212,165,116,.15);--gold-border:rgba(212,165,116,.25);--cream:#faf5ef;--text:#f5f0ea;--text2:#a8a098;--text3:#6b6560;--heading:'Playfair Display',Georgia,serif;--body:'Lato',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--bg)}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 28px;height:64px;display:flex;justify-content:space-between;align-items:center;background:rgba(12,10,9,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav-logo{font-family:var(--heading);font-size:18px;color:var(--gold);text-decoration:none;font-weight:600}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{font-size:13px;color:var(--text2);text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--bg)!important;padding:8px 20px!important;border-radius:4px!important;font-weight:700!important}
+.lang-toggle{background:none;border:1px solid var(--gold-border);color:var(--gold);padding:5px 12px;border-radius:4px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--body);letter-spacing:.5px;transition:.2s}
+.lang-toggle:hover{background:var(--gold-dim)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--gold);transition:.3s}
+
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 80px;background:radial-gradient(ellipse at 30% 20%,rgba(212,165,116,.08),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(212,165,116,.05),transparent 50%),var(--bg)}
+.hero-pre{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero h1{font-family:var(--heading);font-size:clamp(36px,7vw,72px);font-weight:400;line-height:1.15;margin-bottom:20px;color:var(--cream)}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:17px;color:var(--text2);max-width:520px;margin:0 auto 36px;font-weight:300;line-height:1.8}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-family:var(--body);font-size:14px;font-weight:700;text-decoration:none;border:none;cursor:pointer;letter-spacing:.5px;transition:.3s}
+.btn-gold{background:var(--gold);color:var(--bg);border-radius:4px}.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--gold-border);border-radius:4px}.btn-outline:hover{background:var(--gold-dim)}
+
+.section{padding:96px 24px;max-width:1100px;margin:0 auto}
+.section-label{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.section-title{font-family:var(--heading);font-size:clamp(28px,4vw,42px);font-weight:400;margin-bottom:16px;color:var(--cream)}
+.section-sub{color:var(--text2);font-size:16px;max-width:600px;margin-bottom:48px;font-weight:300;line-height:1.8}
+.divider{width:48px;height:1px;background:var(--gold);margin:48px auto}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-text p{color:var(--text2);font-size:15px;margin-bottom:16px;font-weight:300;line-height:1.9}
+.about-text p strong{color:var(--gold);font-weight:700}
+.about-img{aspect-ratio:3/4;background:linear-gradient(135deg,var(--bg3),rgba(212,165,116,.1));border-radius:8px;border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:64px}
+.about-stats{display:flex;gap:32px;margin-top:32px}
+.stat-val{font-family:var(--heading);font-size:32px;color:var(--gold)}
+.stat-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;margin-top:2px}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gallery-item{aspect-ratio:1;background:var(--bg3);border-radius:4px;overflow:hidden;position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.03);transition:.3s}
+.gallery-item:hover{transform:scale(1.02);border-color:var(--gold-border)}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:36px;color:rgba(212,165,116,.2);background:linear-gradient(135deg,var(--bg2),var(--bg3))}
+.gallery-placeholder span{font-size:11px;color:var(--text3);margin-top:8px;letter-spacing:1px;text-transform:uppercase}
+.gallery-overlay{position:absolute;inset:0;background:rgba(12,10,9,.7);opacity:0;transition:.3s;display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:var(--heading);font-size:18px;font-style:italic}
+.gallery-item:hover .gallery-overlay{opacity:1}
+
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service-card{background:var(--card);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:36px 28px;text-align:center;transition:.3s;position:relative;overflow:hidden}
+.service-card:hover{border-color:var(--gold-border);transform:translateY(-3px)}
+.service-card.featured{border-color:var(--gold-border)}
+.service-card.featured::before{content:attr(data-badge);position:absolute;top:12px;right:-28px;background:var(--gold);color:var(--bg);font-size:10px;font-weight:700;padding:4px 32px;transform:rotate(45deg);letter-spacing:1px}
+.service-name{font-family:var(--heading);font-size:22px;color:var(--cream);margin-bottom:8px}
+.service-price{font-size:36px;font-weight:900;color:var(--gold);margin-bottom:4px}
+.service-price span{font-size:14px;font-weight:400;color:var(--text3)}
+.service-desc{font-size:13px;color:var(--text3);margin-bottom:24px;font-style:italic}
+.service-list{list-style:none;text-align:left;margin-bottom:28px}
+.service-list li{font-size:13px;color:var(--text2);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:8px}
+.service-list li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.service-btn{display:block;width:100%;padding:12px;background:transparent;border:1px solid var(--gold-border);color:var(--gold);font-family:var(--body);font-size:13px;font-weight:700;border-radius:4px;cursor:pointer;transition:.3s;text-decoration:none;text-align:center}
+.service-btn:hover{background:var(--gold);color:var(--bg)}
+.service-card.featured .service-btn{background:var(--gold);color:var(--bg)}.service-card.featured .service-btn:hover{background:var(--gold-light)}
+
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.test-card{background:var(--card);border:1px solid rgba(255,255,255,.04);border-radius:8px;padding:28px;position:relative}
+.test-card::before{content:'\201C';font-family:var(--heading);font-size:48px;color:var(--gold-dim);position:absolute;top:12px;left:20px;line-height:1}
+.test-text{font-size:14px;color:var(--text2);font-style:italic;line-height:1.8;margin-bottom:16px;margin-top:20px}
+.test-author{font-size:13px;font-weight:700;color:var(--cream)}.test-role{font-size:11px;color:var(--text3)}.test-stars{color:var(--gold);font-size:13px;margin-top:8px}
+
+.ig-section{text-align:center;padding:80px 24px;background:linear-gradient(180deg,var(--bg),rgba(212,165,116,.03),var(--bg))}
+.ig-handle{font-family:var(--heading);font-size:28px;color:var(--gold);margin-bottom:12px}
+.ig-text{color:var(--text2);font-size:15px;margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto}
+.ig-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;background:linear-gradient(135deg,#833AB4,#E1306C,#F77737);color:#fff;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:.3s}
+.ig-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(225,48,108,.3)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact-info h3{font-family:var(--heading);font-size:24px;color:var(--cream);margin-bottom:16px}
+.contact-info p{color:var(--text2);font-size:14px;margin-bottom:24px;line-height:1.8}
+.contact-detail{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.contact-detail a{color:var(--gold);text-decoration:none;font-size:14px;font-weight:600}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:4px;color:var(--text);font-family:var(--body);font-size:14px;transition:.2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold-border)}
+.form-group textarea{min-height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{width:100%;padding:14px;background:var(--gold);color:var(--bg);border:none;font-family:var(--body);font-size:14px;font-weight:700;border-radius:4px;cursor:pointer;transition:.3s}.form-submit:hover{background:var(--gold-light)}
+
+.footer{text-align:center;padding:48px 24px;border-top:1px solid rgba(255,255,255,.04);color:var(--text3);font-size:12px}
+.footer a{color:var(--gold);text-decoration:none}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px}
+.footer-links a{color:var(--text2);font-size:12px;text-decoration:none;letter-spacing:1px;text-transform:uppercase}.footer-links a:hover{color:var(--gold)}
+
+.float-cta{position:fixed;bottom:20px;right:20px;z-index:99;display:flex;gap:10px}
+.float-btn{padding:12px 20px;border-radius:50px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.4);transition:.3s}.float-btn:hover{transform:translateY(-2px)}
+.float-call{background:var(--gold);color:var(--bg)}.float-book{background:var(--bg2);color:var(--gold);border:1px solid var(--gold-border)}
+
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}.fade-up.visible{opacity:1;transform:translateY(0)}
+.mobile-menu{position:fixed;top:0;right:-100%;width:280px;height:100%;background:var(--bg);border-left:1px solid rgba(255,255,255,.05);z-index:200;padding:80px 28px;transition:.3s;display:flex;flex-direction:column;gap:20px}
+.mobile-menu.open{right:0}
+.mobile-menu a{font-size:16px;color:var(--text);text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-family:var(--heading)}.mobile-menu a:hover{color:var(--gold)}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:199;opacity:0;pointer-events:none;transition:.3s}.menu-overlay.open{opacity:1;pointer-events:auto}
+
+[data-lang="es"]{display:none}
+.es [data-lang="en"]{display:none}
+.es [data-lang="es"]{display:block}
+.es span[data-lang="en"]{display:none}
+.es span[data-lang="es"]{display:inline}
+.es a[data-lang="en"]{display:none}
+.es a[data-lang="es"]{display:inline-flex}
+.es div[data-lang="en"]{display:none}
+.es div[data-lang="es"]{display:block}
+.es li[data-lang="en"]{display:none}
+.es li[data-lang="es"]{display:flex}
+.es option[data-lang="en"]{display:none}
+.es option[data-lang="es"]{display:block}
+
+@media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}.about-grid,.contact-grid{grid-template-columns:1fr}.services-grid,.test-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(2,1fr)}.gallery-item:nth-child(1){grid-column:span 2}.about-img{display:none}.section{padding:64px 20px}}
+@media(max-width:480px){.gallery-grid{grid-template-columns:1fr 1fr}.gallery-item:nth-child(1){grid-column:span 1;grid-row:span 1}.form-row{grid-template-columns:1fr}.float-cta{left:16px;right:16px}.float-btn{flex:1;text-align:center}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="nav-logo" href="#">Bianca Barbosa</a>
+  <div class="nav-links">
+    <a href="#about"><span data-lang="en">About</span><span data-lang="es">Sobre Mi</span></a>
+    <a href="#portfolio"><span data-lang="en">Portfolio</span><span data-lang="es">Portafolio</span></a>
+    <a href="#services"><span data-lang="en">Services</span><span data-lang="es">Servicios</span></a>
+    <a href="#contact"><span data-lang="en">Contact</span><span data-lang="es">Contacto</span></a>
+    <button class="lang-toggle" onclick="toggleLang()">EN / ES</button>
+    <a class="nav-cta" href="#contact"><span data-lang="en">Book a Session</span><span data-lang="es">Reservar</span></a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="lang-toggle" onclick="toggleLang()" style="align-self:flex-start;margin-bottom:8px">EN / ES</button>
+  <a href="#about" onclick="toggleMenu()"><span data-lang="en">About</span><span data-lang="es">Sobre Mi</span></a>
+  <a href="#portfolio" onclick="toggleMenu()"><span data-lang="en">Portfolio</span><span data-lang="es">Portafolio</span></a>
+  <a href="#services" onclick="toggleMenu()"><span data-lang="en">Services</span><span data-lang="es">Servicios</span></a>
+  <a href="#contact" onclick="toggleMenu()"><span data-lang="en">Contact</span><span data-lang="es">Contacto</span></a>
+  <a href="tel:+13335040034" style="color:var(--gold)">(333) 504-0034</a>
+  <a href="https://instagram.com/photo_biancabarbosa" target="_blank" style="color:#E1306C">@photo_biancabarbosa</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pre">
+    <span data-lang="en">Southern California Photographer</span>
+    <span data-lang="es">Fotografia en el Sur de California</span>
+  </div>
+  <h1>
+    <span data-lang="en">Capturing Moments<br>That Become <em>Memories</em></span>
+    <span data-lang="es">Capturando Momentos<br>Que Se Vuelven <em>Recuerdos</em></span>
+  </h1>
+  <p class="hero-sub">
+    <span data-lang="en">Portraits, events, and lifestyle photography that feels natural, looks stunning, and tells your story the way it deserves to be told.</span>
+    <span data-lang="es">Retratos, eventos y fotografia de estilo de vida que se siente natural, se ve increible y cuenta tu historia como merece ser contada.</span>
+  </p>
+  <div class="hero-btns">
+    <a class="btn btn-gold" href="#contact" data-lang="en">Book Your Session</a>
+    <a class="btn btn-gold" href="#contact" data-lang="es">Reserva Tu Sesion</a>
+    <a class="btn btn-outline" href="#portfolio" data-lang="en">View Portfolio</a>
+    <a class="btn btn-outline" href="#portfolio" data-lang="es">Ver Portafolio</a>
+    <a class="btn btn-outline" href="tel:+13335040034">Llamar (333) 504-0034</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="section fade-up" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-label">
+        <span data-lang="en">About Me</span>
+        <span data-lang="es">Sobre Mi</span>
+      </div>
+      <h2 class="section-title">
+        <span data-lang="en">Hi, I'm Bianca.</span>
+        <span data-lang="es">Hola, soy Bianca.</span>
+      </h2>
+      <p data-lang="en">I'm a <strong>Southern California-based photographer</strong> who believes every person, every family, and every moment has a story worth capturing beautifully.</p>
+      <p data-lang="es">Soy una <strong>fotografa del Sur de California</strong> que cree que cada persona, cada familia y cada momento tiene una historia que merece ser capturada con belleza.</p>
+      <p data-lang="en">My style blends <strong>natural light</strong> with authentic emotion. I don't do stiff, overly posed sessions. I capture the laugh right before the smile, the glance that says everything, the in-between moments that become your favorites.</p>
+      <p data-lang="es">Mi estilo mezcla la <strong>luz natural</strong> con emociones autenticas. No hago sesiones tiesas ni forzadas. Capturo la risa antes de la sonrisa, la mirada que lo dice todo, esos momentos entre momentos que se vuelven tus favoritos.</p>
+      <p data-lang="en">Whether it's a <strong>portrait session</strong>, a <strong>family milestone</strong>, an <strong>event</strong>, or a <strong>brand shoot</strong>, I bring the same dedication: make it real, make it beautiful, make it yours.</p>
+      <p data-lang="es">Ya sea una <strong>sesion de retratos</strong>, un <strong>momento familiar</strong>, un <strong>evento</strong> o una <strong>sesion para tu marca</strong>, traigo la misma dedicacion: hacerlo real, hacerlo bonito, hacerlo tuyo.</p>
+      <div class="about-stats">
+        <div><div class="stat-val">500+</div><div class="stat-label"><span data-lang="en">Sessions Shot</span><span data-lang="es">Sesiones</span></div></div>
+        <div><div class="stat-val">5</div><div class="stat-label"><span data-lang="en">Years Experience</span><span data-lang="es">Anos de Exp.</span></div></div>
+        <div><div class="stat-val">5.0</div><div class="stat-label"><span data-lang="en">Client Rating</span><span data-lang="es">Calificacion</span></div></div>
+      </div>
+    </div>
+    <div class="about-img">📷</div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<div class="section fade-up" id="portfolio">
+  <div class="section-label"><span data-lang="en">Portfolio</span><span data-lang="es">Portafolio</span></div>
+  <h2 class="section-title"><span data-lang="en">Recent Work</span><span data-lang="es">Trabajo Reciente</span></h2>
+  <p class="section-sub"><span data-lang="en">A glimpse into sessions, events, and creative shoots.</span><span data-lang="es">Una mirada a sesiones, eventos y proyectos creativos.</span></p>
+  <div class="gallery-grid">
+    <div class="gallery-item"><div class="gallery-placeholder">📸<span data-lang="en">Portrait Session</span><span data-lang="es">Retratos</span></div><div class="gallery-overlay"><span data-lang="en">View</span><span data-lang="es">Ver</span></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">👨‍👩‍👧<span data-lang="en">Family</span><span data-lang="es">Familia</span></div><div class="gallery-overlay"><span data-lang="en">View</span><span data-lang="es">Ver</span></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">🎉<span data-lang="en">Event</span><span data-lang="es">Evento</span></div><div class="gallery-overlay"><span data-lang="en">View</span><span data-lang="es">Ver</span></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">🌅<span>Golden Hour</span></div><div class="gallery-overlay"><span data-lang="en">View</span><span data-lang="es">Ver</span></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">💍<span data-lang="en">Engagement</span><span data-lang="es">Compromiso</span></div><div class="gallery-overlay"><span data-lang="en">View</span><span data-lang="es">Ver</span></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">👶<span data-lang="en">Newborn</span><span data-lang="es">Recien Nacido</span></div><div class="gallery-overlay"><span data-lang="en">View</span><span data-lang="es">Ver</span></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">🏢<span>Brand/Headshot</span></div><div class="gallery-overlay"><span data-lang="en">View</span><span data-lang="es">Ver</span></div></div>
+    <div class="gallery-item"><div class="gallery-placeholder">🎓<span data-lang="en">Graduation</span><span data-lang="es">Graduacion</span></div><div class="gallery-overlay"><span data-lang="en">View</span><span data-lang="es">Ver</span></div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<div class="section fade-up" id="services">
+  <div class="section-label"><span data-lang="en">Services & Pricing</span><span data-lang="es">Servicios y Precios</span></div>
+  <h2 class="section-title"><span data-lang="en">Choose Your Package</span><span data-lang="es">Elige Tu Paquete</span></h2>
+  <p class="section-sub"><span data-lang="en">Every package includes a pre-shoot consultation, professional editing, and an online gallery.</span><span data-lang="es">Cada paquete incluye consulta previa, edicion profesional y galeria en linea.</span></p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-name"><span data-lang="en">Essential</span><span data-lang="es">Esencial</span></div>
+      <div class="service-price">$300 <span data-lang="en">/ session</span><span data-lang="es">/ sesion</span></div>
+      <div class="service-desc"><span data-lang="en">Headshots & mini sessions</span><span data-lang="es">Retratos y mini sesiones</span></div>
+      <ul class="service-list">
+        <li data-lang="en">1-hour session</li><li data-lang="es">Sesion de 1 hora</li>
+        <li data-lang="en">1 location</li><li data-lang="es">1 ubicacion</li>
+        <li data-lang="en">20 edited photos</li><li data-lang="es">20 fotos editadas</li>
+        <li data-lang="en">Online gallery</li><li data-lang="es">Galeria en linea</li>
+        <li data-lang="en">2 outfit changes</li><li data-lang="es">2 cambios de ropa</li>
+        <li data-lang="en">Delivered in 7 days</li><li data-lang="es">Entrega en 7 dias</li>
+      </ul>
+      <a class="service-btn" href="#contact"><span data-lang="en">Book Essential</span><span data-lang="es">Reservar Esencial</span></a>
+    </div>
+    <div class="service-card featured" data-badge="MOST POPULAR">
+      <div class="service-name">Premium</div>
+      <div class="service-price">$600 <span data-lang="en">/ session</span><span data-lang="es">/ sesion</span></div>
+      <div class="service-desc"><span data-lang="en">Families, couples & events</span><span data-lang="es">Familias, parejas y eventos</span></div>
+      <ul class="service-list">
+        <li data-lang="en">2-hour session</li><li data-lang="es">Sesion de 2 horas</li>
+        <li data-lang="en">Up to 2 locations</li><li data-lang="es">Hasta 2 ubicaciones</li>
+        <li data-lang="en">50 edited photos</li><li data-lang="es">50 fotos editadas</li>
+        <li data-lang="en">Online gallery + print rights</li><li data-lang="es">Galeria + derechos de impresion</li>
+        <li data-lang="en">Unlimited outfit changes</li><li data-lang="es">Cambios de ropa ilimitados</li>
+        <li data-lang="en">5 premium prints (8x10)</li><li data-lang="es">5 impresiones premium (8x10)</li>
+        <li data-lang="en">Delivered in 5 days</li><li data-lang="es">Entrega en 5 dias</li>
+      </ul>
+      <a class="service-btn" href="#contact"><span data-lang="en">Book Premium</span><span data-lang="es">Reservar Premium</span></a>
+    </div>
+    <div class="service-card">
+      <div class="service-name"><span data-lang="en">Luxury</span><span data-lang="es">Lujo</span></div>
+      <div class="service-price">$1,200 <span data-lang="en">/ session</span><span data-lang="es">/ sesion</span></div>
+      <div class="service-desc"><span data-lang="en">Full experience for milestones</span><span data-lang="es">La experiencia completa</span></div>
+      <ul class="service-list">
+        <li data-lang="en">4-hour session</li><li data-lang="es">Sesion de 4 horas</li>
+        <li data-lang="en">Multiple locations</li><li data-lang="es">Multiples ubicaciones</li>
+        <li data-lang="en">100+ edited photos</li><li data-lang="es">100+ fotos editadas</li>
+        <li data-lang="en">Custom 20-page album</li><li data-lang="es">Album personalizado de 20 paginas</li>
+        <li data-lang="en">10 prints + 1 canvas</li><li data-lang="es">10 impresiones + 1 canvas</li>
+        <li data-lang="en">Second photographer</li><li data-lang="es">Segundo fotografo</li>
+        <li data-lang="en">Same-day preview (10 photos)</li><li data-lang="es">Vista previa el mismo dia (10 fotos)</li>
+        <li data-lang="en">Delivered in 3 days</li><li data-lang="es">Entrega en 3 dias</li>
+      </ul>
+      <a class="service-btn" href="#contact"><span data-lang="en">Book Luxury</span><span data-lang="es">Reservar Lujo</span></a>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<div class="section fade-up">
+  <div class="section-label"><span data-lang="en">Kind Words</span><span data-lang="es">Opiniones</span></div>
+  <h2 class="section-title"><span data-lang="en">What Clients Say</span><span data-lang="es">Lo Que Dicen Mis Clientes</span></h2>
+  <div class="test-grid" style="margin-top:36px">
+    <div class="test-card">
+      <div class="test-text" data-lang="en">Bianca made my family feel so comfortable. The kids were laughing and playing, and she captured the most beautiful, natural photos we've ever had. Worth every penny.</div>
+      <div class="test-text" data-lang="es">Bianca hizo que mi familia se sintiera super comoda. Los ninos estaban riendo y jugando, y ella capturo las fotos mas bonitas y naturales que hemos tenido. Vale cada peso.</div>
+      <div class="test-author">Jessica M.</div>
+      <div class="test-role"><span data-lang="en">Family Session</span><span data-lang="es">Sesion Familiar</span></div>
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    </div>
+    <div class="test-card">
+      <div class="test-text" data-lang="en">I needed new headshots for my business and Bianca nailed it in under an hour. Professional, fast, and the edits were stunning. I've gotten so many compliments.</div>
+      <div class="test-text" data-lang="es">Necesitaba nuevas fotos para mi negocio y Bianca se las avento en menos de una hora. Profesional, rapida y las ediciones quedaron bien chingonas. Me han llovido los cumplidos.</div>
+      <div class="test-author">David R.</div>
+      <div class="test-role"><span data-lang="en">Brand Headshots</span><span data-lang="es">Fotos de Marca</span></div>
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    </div>
+    <div class="test-card">
+      <div class="test-text" data-lang="en">We booked Bianca for our engagement photos and they turned out absolutely dreamy. She found the most incredible golden hour spots. Can't wait for her to shoot our wedding!</div>
+      <div class="test-text" data-lang="es">Contratamos a Bianca para nuestras fotos de compromiso y quedaron de ensueno. Encontro los mejores spots para la hora dorada. Ya queremos que nos tome las fotos de la boda!</div>
+      <div class="test-author">Sarah & Mike</div>
+      <div class="test-role"><span data-lang="en">Engagement Session</span><span data-lang="es">Sesion de Compromiso</span></div>
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    </div>
+  </div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="ig-section fade-up">
+  <div class="section-label" style="text-align:center"><span data-lang="en">Follow Along</span><span data-lang="es">Sigueme</span></div>
+  <div class="ig-handle">@photo_biancabarbosa</div>
+  <div class="ig-text"><span data-lang="en">See behind-the-scenes, recent sessions, and daily inspiration on Instagram.</span><span data-lang="es">Mira detras de camaras, sesiones recientes e inspiracion diaria en Instagram.</span></div>
+  <a class="ig-btn" href="https://instagram.com/photo_biancabarbosa" target="_blank"><span data-lang="en">Follow on Instagram</span><span data-lang="es">Seguir en Instagram</span></a>
+</div>
+
+<!-- CONTACT -->
+<div class="section fade-up" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-label"><span data-lang="en">Get in Touch</span><span data-lang="es">Contactame</span></div>
+      <h3><span data-lang="en">Ready to Book?</span><span data-lang="es">Lista Para Reservar?</span></h3>
+      <p data-lang="en">Fill out the form and I'll get back to you within 24 hours. Or call me directly.</p>
+      <p data-lang="es">Llena el formulario y te contesto en menos de 24 horas. O llamame directo, con confianza.</p>
+      <div class="contact-detail"><span>📞</span><a href="tel:+13335040034">(333) 504-0034</a></div>
+      <div class="contact-detail"><span>📧</span><a href="mailto:biancabarbosaphoto@gmail.com">biancabarbosaphoto@gmail.com</a></div>
+      <div class="contact-detail"><span>📍</span><span style="color:var(--text2);font-size:14px">Southern California</span></div>
+      <div class="contact-detail"><span>📸</span><a href="https://instagram.com/photo_biancabarbosa" target="_blank">@photo_biancabarbosa</a></div>
+    </div>
+    <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Booking Request — Bianca Barbosa Photography">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="form-row">
+        <div class="form-group"><label><span data-lang="en">Name</span><span data-lang="es">Nombre</span></label><input type="text" name="name" required placeholder=""></div>
+        <div class="form-group"><label><span data-lang="en">Email</span><span data-lang="es">Correo</span></label><input type="email" name="email" required placeholder=""></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label><span data-lang="en">Session Type</span><span data-lang="es">Tipo de Sesion</span></label>
+          <select name="session_type" required id="sessionSelect">
+            <option value="" data-lang="en">Select...</option>
+            <option value="" data-lang="es">Seleccionar...</option>
+            <option value="Portrait" data-lang="en">Portrait</option><option value="Retrato" data-lang="es">Retrato</option>
+            <option value="Family" data-lang="en">Family</option><option value="Familia" data-lang="es">Familia</option>
+            <option value="Couples / Engagement" data-lang="en">Couples / Engagement</option><option value="Parejas / Compromiso" data-lang="es">Parejas / Compromiso</option>
+            <option value="Event" data-lang="en">Event</option><option value="Evento" data-lang="es">Evento</option>
+            <option value="Brand / Headshots" data-lang="en">Brand / Headshots</option><option value="Marca / Retratos" data-lang="es">Marca / Retratos</option>
+            <option value="Graduation" data-lang="en">Graduation</option><option value="Graduacion" data-lang="es">Graduacion</option>
+            <option value="Newborn / Maternity" data-lang="en">Newborn / Maternity</option><option value="Bebe / Maternidad" data-lang="es">Bebe / Maternidad</option>
+            <option value="XV Anos" data-lang="es">XV Anos / Quinceanera</option>
+            <option value="Bautizo" data-lang="es">Bautizo</option>
+            <option value="Other" data-lang="en">Other</option><option value="Otro" data-lang="es">Otro</option>
+          </select>
+        </div>
+        <div class="form-group"><label><span data-lang="en">Preferred Date</span><span data-lang="es">Fecha Preferida</span></label><input type="date" name="preferred_date"></div>
+      </div>
+      <div class="form-group"><label><span data-lang="en">Your Vision</span><span data-lang="es">Tu Vision</span></label><textarea name="message" id="visionField"></textarea></div>
+      <button type="submit" class="form-submit"><span data-lang="en">Send Booking Request</span><span data-lang="es">Enviar Solicitud</span></button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links"><a href="https://instagram.com/photo_biancabarbosa" target="_blank">Instagram</a><a href="tel:+13335040034"><span data-lang="en">Call</span><span data-lang="es">Llamar</span></a><a href="mailto:biancabarbosaphoto@gmail.com">Email</a></div>
+  <p>&copy; 2026 Bianca Barbosa Photography.</p>
+  <p style="margin-top:8px">Website by <a href="https://rivven.ai" target="_blank">Rivven</a></p>
+</footer>
+
+<div class="float-cta">
+  <a class="float-btn float-call" href="tel:+13335040034">📞 <span data-lang="en">Call</span><span data-lang="es">Llamar</span></a>
+  <a class="float-btn float-book" href="#contact"><span data-lang="en">Book Now</span><span data-lang="es">Reservar</span></a>
+</div>
+
+<script>
+let currentLang = 'en';
+
+function toggleLang(){
+  currentLang = currentLang === 'en' ? 'es' : 'en';
+  document.body.classList.toggle('es', currentLang === 'es');
+  document.documentElement.lang = currentLang;
+  document.title = currentLang === 'es'
+    ? 'Bianca Barbosa Fotografia | Retratos, Eventos y Estilo de Vida'
+    : 'Bianca Barbosa Photography | Portraits, Events & Lifestyle';
+
+  // Update placeholders
+  const vision = document.getElementById('visionField');
+  vision.placeholder = currentLang === 'es'
+    ? 'Ideas de lugar, numero de personas, pedidos especiales...'
+    : 'Location ideas, number of people, special requests...';
+
+  // Update badge
+  document.querySelector('.featured').dataset.badge = currentLang === 'es' ? 'MAS POPULAR' : 'MOST POPULAR';
+
+  // Save preference
+  localStorage.setItem('bianca_lang', currentLang);
+}
+
+// Default to Spanish, allow switch to English
+if(localStorage.getItem('bianca_lang') !== 'en') toggleLang();
+
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.getElementById('menuOverlay').classList.toggle('open');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('open')?'hidden':''}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{document.querySelector('.nav').style.background=window.scrollY>100?'rgba(12,10,9,.97)':'rgba(12,10,9,.9)'});
+</script>
+</body>
+</html>

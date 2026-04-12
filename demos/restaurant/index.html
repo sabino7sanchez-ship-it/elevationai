@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Verde Kitchen — Authentic Mexican, Los Angeles</title>
+  <meta name="description" content="Casa Verde Kitchen — Authentic Mexican flavors made fresh daily. Dine in, takeout, and catering in Los Angeles, CA." />
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Casa Verde Kitchen",
+    "servesCuisine": "Mexican",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4721 Cesar Chavez Ave",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "postalCode": "90022",
+      "addressCountry": "US"
+    },
+    "url": "https://casaverdekitchen.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "10:00",
+      "closes": "22:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "285"
+    },
+    "areaServed": ["Los Angeles","East LA","Boyle Heights","Monterey Park","Alhambra","Pasadena"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #18181C;
+      --accent: #FF6B35;
+      --accent-dim: rgba(255, 107, 53, 0.15);
+      --accent-glow: rgba(255, 107, 53, 0.35);
+      --red: #E63946;
+      --yellow: #FFB703;
+      --text: #FAFAFA;
+      --text-muted: #8A8A96;
+      --text-dim: #3A3A44;
+      --border: rgba(255,255,255,0.07);
+      --radius: 14px;
+      --radius-sm: 8px;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* ─── NAV ────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 10, 11, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--red));
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); background: var(--accent-dim); }
+
+    .btn-order-nav {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 9px 20px !important;
+      border-radius: var(--radius-sm) !important;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      transition: opacity 0.2s, transform 0.15s !important;
+    }
+
+    .btn-order-nav:hover { opacity: 0.88; transform: translateY(-1px); background: var(--accent) !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border: none;
+      background: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s;
+    }
+
+    .mobile-menu a:hover { background: var(--accent-dim); }
+
+    .mobile-menu .btn-order-nav {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 20%, rgba(255,107,53,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(230,57,70,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(255,183,3,0.12) 0%, transparent 55%),
+        var(--bg);
+      z-index: 0;
+    }
+
+    /* Mesh grid overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(255,107,53,0.3);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #FAFAFA 30%, rgba(255,183,3,0.9) 70%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 30px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px var(--accent-glow);
+      font-family: var(--font);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(255,107,53,0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      font-family: var(--font);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-family: var(--mono);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--text-muted), transparent);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── ABOUT STRIP ────────────────────────────── */
+    .about-strip {
+      padding: 0 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-strip-inner {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 10px 20px;
+    }
+
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 4px 14px;
+      white-space: nowrap;
+    }
+
+    .chip::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .chip + .chip {
+      border-left: 1px solid var(--border);
+    }
+
+    /* ─── SECTIONS COMMON ────────────────────────── */
+    section {
+      padding: 96px 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 480px;
+    }
+
+    .section-header {
+      margin-bottom: 56px;
+    }
+
+    /* ─── MENU ───────────────────────────────────── */
+    #menu { background: var(--bg2); }
+
+    .menu-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .menu-tab {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.5px;
+    }
+
+    .menu-tab.active, .menu-tab:hover {
+      background: var(--accent-dim);
+      border-color: rgba(255,107,53,0.4);
+      color: var(--accent);
+    }
+
+    .menu-category { display: none; }
+    .menu-category.active { display: grid; }
+
+    .menu-grid {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .menu-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--red));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .menu-item:hover {
+      border-color: rgba(255,107,53,0.3);
+      transform: translateY(-3px);
+    }
+
+    .menu-item:hover::before { opacity: 1; }
+
+    .menu-item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .menu-item-name {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .menu-item-price {
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .menu-item-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ─── ORDER FORM ─────────────────────────────── */
+    #order { background: var(--bg); }
+
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .order-info h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .order-info p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    .order-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .order-feature:last-child { border-bottom: none; }
+
+    .order-feature-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-dim);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .order-form {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-dim); }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+      background: rgba(255,107,53,0.04);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      letter-spacing: -0.2px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255,107,53,0.5);
+    }
+
+    /* ─── GALLERY ────────────────────────────────── */
+    #gallery { background: var(--bg2); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      position: relative;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-card:nth-child(1) .gallery-bg {
+      background: linear-gradient(135deg, #FF6B35 0%, #E63946 50%, #C1121F 100%);
+    }
+    .gallery-card:nth-child(2) .gallery-bg {
+      background: linear-gradient(135deg, #FFB703 0%, #FF6B35 60%, #E63946 100%);
+    }
+    .gallery-card:nth-child(3) .gallery-bg {
+      background: linear-gradient(135deg, #E63946 0%, #FF6B35 40%, #FFB703 100%);
+    }
+    .gallery-card:nth-child(4) .gallery-bg {
+      background: linear-gradient(135deg, #C1121F 0%, #E63946 40%, #FF6B35 80%, #FFB703 100%);
+    }
+
+    .gallery-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.4s;
+    }
+
+    .gallery-card:hover { transform: scale(1.02); }
+    .gallery-card:hover .gallery-bg { transform: scale(1.06); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+
+    .gallery-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .gallery-sublabel {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      font-family: var(--mono);
+      margin-top: 2px;
+    }
+
+    /* Geometric overlay shapes */
+    .gallery-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);
+    }
+
+    /* ─── REVIEWS ────────────────────────────────── */
+    #reviews { background: var(--bg); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .review-card:hover {
+      border-color: rgba(255,107,53,0.2);
+      transform: translateY(-3px);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .review-stars span {
+      color: var(--yellow);
+      font-size: 16px;
+    }
+
+    .review-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .review-text::before { content: '\201C'; color: var(--accent); font-size: 20px; }
+    .review-text::after { content: '\201D'; color: var(--accent); font-size: 20px; }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .review-avatar.a1 { background: linear-gradient(135deg, var(--accent), var(--red)); }
+    .review-avatar.a2 { background: linear-gradient(135deg, var(--yellow), var(--accent)); }
+    .review-avatar.a3 { background: linear-gradient(135deg, var(--red), #8B0000); }
+
+    .review-name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .review-source {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ─── CONTACT ────────────────────────────────── */
+    #contact { background: var(--bg2); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(255,107,53,0.2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-item-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-item-value a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-item-value a:hover { text-decoration: underline; }
+
+    .contact-map {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .contact-map-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,107,53,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,53,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    .map-pin {
+      position: relative;
+      z-index: 1;
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--accent), var(--red));
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .map-pin::after {
+      content: '📍';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(45deg);
+      font-size: 22px;
+    }
+
+    .map-address-card {
+      position: relative;
+      z-index: 1;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 16px 24px;
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+
+    .map-address-card p { font-size: 14px; color: var(--text-muted); }
+    .map-address-card strong { color: var(--text); font-size: 15px; }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .footer-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--red));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-credit {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .footer-credit a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-credit a:hover { text-decoration: underline; }
+
+    /* ─── MOBILE BOTTOM BANNER ───────────────────── */
+    .mobile-banner {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 998;
+      background: rgba(10,10,11,0.96);
+      border-top: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      padding: 10px 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .mobile-banner-text {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.3px;
+    }
+
+    .mobile-banner a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .mobile-banner-close {
+      position: absolute;
+      right: 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 4px;
+    }
+
+    /* ─── DIVIDER ────────────────────────────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 auto;
+      max-width: 1100px;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .order-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 72px 20px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .menu-grid { grid-template-columns: 1fr; }
+      .mobile-banner { display: flex; }
+      body { padding-bottom: 56px; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .chip + .chip { border-left: none; }
+      .about-strip-inner { border-radius: var(--radius); flex-direction: column; gap: 0; }
+      .chip { border-top: 1px solid var(--border); }
+      .chip:first-child { border-top: none; }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
+    .stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+    .stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.19s; }
+    .stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.26s; }
+
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─────────────────────────────────────────── -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🌿</div>
+      <span class="nav-logo-text">Casa Verde Kitchen</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about-strip">About</a></li>
+      <li><a href="#order">Order</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#order" class="btn-order-nav">Order Now</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu" onclick="closeMobileMenu()">Menu</a>
+    <a href="#about-strip" onclick="closeMobileMenu()">About</a>
+    <a href="#order" onclick="closeMobileMenu()">Order</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+    <a href="#order" class="btn-order-nav" onclick="closeMobileMenu()">Order Now →</a>
+  </div>
+
+  <!-- ─── HERO ─────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Now Open — Dine In &amp; Takeout</div>
+      <h1>Authentic Mexican Flavor,<br>Made Fresh Daily.</h1>
+      <p class="hero-sub">Dine in, takeout, or catering — we bring the fiesta to you.</p>
+      <div class="hero-ctas">
+        <a href="#menu" class="btn-primary">View Menu</a>
+        <a href="#order" class="btn-secondary">Order Online →</a>
+      </div>
+    </div>
+    <div class="hero-scroll">Scroll</div>
+  </section>
+
+  <!-- ─── ABOUT STRIP ──────────────────────────────────── -->
+  <div id="about-strip" style="padding: 0 24px 0; display:flex; justify-content:center; margin-bottom: -48px; position: relative; z-index: 2;">
+    <div class="about-strip-inner fade-up stagger">
+      <div class="chip">Est. 2019</div>
+      <div class="chip">Family Owned</div>
+      <div class="chip">Los Angeles, CA</div>
+    </div>
+  </div>
+
+  <!-- ─── MENU ─────────────────────────────────────────── -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-tag">// Our Menu</p>
+        <h2 class="section-title">Fresh From the Kitchen</h2>
+        <p class="section-sub">Every dish made to order with authentic recipes and locally sourced ingredients.</p>
+      </div>
+
+      <div class="menu-tabs">
+        <button class="menu-tab active" onclick="switchTab('tacos', this)">🌮 Tacos</button>
+        <button class="menu-tab" onclick="switchTab('burritos', this)">🌯 Burritos</button>
+        <button class="menu-tab" onclick="switchTab('drinks', this)">🥤 Drinks</button>
+      </div>
+
+      <!-- TACOS -->
+      <div class="menu-category menu-grid active stagger" id="cat-tacos">
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Carne Asada</span>
+            <span class="menu-item-price">$3.75</span>
+          </div>
+          <p class="menu-item-desc">Grilled skirt steak, fresh cilantro, diced white onion, salsa verde, lime on corn tortilla.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Al Pastor</span>
+            <span class="menu-item-price">$3.50</span>
+          </div>
+          <p class="menu-item-desc">Slow-marinated pork with dried chiles and achiote, charred pineapple, cotija, salsa roja.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Birria de Res</span>
+            <span class="menu-item-price">$4.50</span>
+          </div>
+          <p class="menu-item-desc">Braised beef birria, oaxacan cheese, dipped & fried crispy, consomé on the side.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Camarones</span>
+            <span class="menu-item-price">$4.75</span>
+          </div>
+          <p class="menu-item-desc">Sautéed jumbo shrimp, chipotle crema, shredded purple cabbage, avocado, pickled jalapeño.</p>
+        </div>
+      </div>
+
+      <!-- BURRITOS -->
+      <div class="menu-category menu-grid" id="cat-burritos">
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Burrito California</span>
+            <span class="menu-item-price">$13.50</span>
+          </div>
+          <p class="menu-item-desc">Carne asada, french fries, guacamole, pico de gallo, sour cream in a giant flour tortilla.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Wet Birria Burrito</span>
+            <span class="menu-item-price">$15.00</span>
+          </div>
+          <p class="menu-item-desc">Birria de res, beans, rice, oaxacan cheese, smothered in red consomé with fresh garnish.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Veggie Burrito</span>
+            <span class="menu-item-price">$11.50</span>
+          </div>
+          <p class="menu-item-desc">Black beans, roasted peppers, seasoned rice, corn, avocado, salsa fresca, vegan queso.</p>
+        </div>
+      </div>
+
+      <!-- DRINKS -->
+      <div class="menu-category menu-grid" id="cat-drinks">
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Agua de Horchata</span>
+            <span class="menu-item-price">$4.00</span>
+          </div>
+          <p class="menu-item-desc">Classic rice milk with cinnamon and vanilla, lightly sweetened, served over ice.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Agua de Jamaica</span>
+            <span class="menu-item-price">$4.00</span>
+          </div>
+          <p class="menu-item-desc">Hibiscus flower agua fresca, refreshingly tart with a touch of agave and lime juice.</p>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Michelada</span>
+            <span class="menu-item-price">$7.50</span>
+          </div>
+          <p class="menu-item-desc">Mexican lager, clamato, lime, hot sauce, Worcestershire, tajín rim — the classic.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── ORDER FORM ───────────────────────────────────── -->
+  <section id="order">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-tag">// Place an Order</p>
+        <h2 class="section-title">Ready to Eat?</h2>
+        <p class="section-sub">Submit your order below and we'll confirm by phone within minutes.</p>
+      </div>
+
+      <div class="order-grid">
+        <div class="order-info fade-up">
+          <h3>Fast. Fresh. Easy.</h3>
+          <p>Skip the line — place your order online and pick it up hot. We also take catering inquiries for events, parties, and office lunches.</p>
+          <div class="order-feature">
+            <div class="order-feature-icon">⏱️</div>
+            <span>Average pickup ready in 15–20 minutes</span>
+          </div>
+          <div class="order-feature">
+            <div class="order-feature-icon">🎉</div>
+            <span>Catering for events of 10–500 guests</span>
+          </div>
+          <div class="order-feature">
+            <div class="order-feature-icon">📞</div>
+            <span>Confirmation call within 5 minutes</span>
+          </div>
+          <div class="order-feature">
+            <div class="order-feature-icon">💳</div>
+            <span>Cash, card, Venmo, Zelle accepted</span>
+          </div>
+        </div>
+
+        <div class="order-form fade-up">
+          <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Order - Casa Verde Kitchen" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://rivven.ai/demos/restaurant/#thank-you" />
+
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Maria García" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(562) 373-1027" required />
+            </div>
+
+            <div class="form-group">
+              <label for="order-details">Order Details</label>
+              <textarea id="order-details" name="order_details" placeholder="e.g. 3x Al Pastor tacos, 1x Burrito California, 2x Horchata..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="pickup-time">Preferred Pickup Time</label>
+              <input type="text" id="pickup-time" name="pickup_time" placeholder="e.g. Today at 6:30 PM" />
+            </div>
+
+            <button type="submit" class="btn-submit">Send Order Request →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY ──────────────────────────────────────── -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-tag">// Gallery</p>
+        <h2 class="section-title">Made to Look as Good<br>as It Tastes</h2>
+      </div>
+
+      <div class="gallery-grid stagger">
+        <div class="gallery-card">
+          <div class="gallery-bg"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-label">Birria Tacos</div>
+            <div class="gallery-sublabel">Dipped &amp; Crispy</div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-bg"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-label">Al Pastor</div>
+            <div class="gallery-sublabel">From the Trompo</div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-bg"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-label">Wet Burrito</div>
+            <div class="gallery-sublabel">Smothered in Consomé</div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-bg"></div>
+          <div class="gallery-overlay">
+            <div class="gallery-label">Aguas Frescas</div>
+            <div class="gallery-sublabel">Horchata &amp; Jamaica</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATS ──────────────────────────────────────────── -->
+  <div style="padding:48px 24px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;">
+      <div class="fade-up">
+        <div style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--accent);">5+</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Years Serving LA</div>
+      </div>
+      <div class="fade-up">
+        <div style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--accent);">4.8 ★</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Google Rating</div>
+      </div>
+      <div class="fade-up">
+        <div style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--accent);">285+</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">5-Star Reviews</div>
+      </div>
+      <div class="fade-up">
+        <div style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--accent);">500+</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Catering Events</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── WHY CHOOSE US ────────────────────────────────── -->
+  <section id="why-us" style="padding:80px 24px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-header fade-up" style="text-align:center;margin-bottom:48px;">
+        <p class="section-tag">// Why Casa Verde</p>
+        <h2 class="section-title">Why Customers Keep Coming Back</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;">
+        <div class="fade-up" style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:12px;">🔥</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Made Fresh Daily</div>
+          <div style="color:var(--text-muted);font-size:14px;line-height:1.6;">Every dish is prepared from scratch using authentic family recipes. No frozen, no microwaved, no shortcuts.</div>
+        </div>
+        <div class="fade-up" style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:12px;">👨‍👩‍👧‍👦</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Family Owned & Operated</div>
+          <div style="color:var(--text-muted);font-size:14px;line-height:1.6;">Since 2019, Casa Verde has been a family affair. You're not a customer number here — you're family.</div>
+        </div>
+        <div class="fade-up" style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:12px;">🎉</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Catering for Any Event</div>
+          <div style="color:var(--text-muted);font-size:14px;line-height:1.6;">From office lunches to quinceañeras, we cater 10–500 guests with full setup and service options.</div>
+        </div>
+        <div class="fade-up" style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;">
+          <div style="font-size:28px;margin-bottom:12px;">⭐</div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:8px;">4.8 Stars on Google</div>
+          <div style="color:var(--text-muted);font-size:14px;line-height:1.6;">Hundreds of real 5-star reviews from loyal customers across LA. The food speaks for itself.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── REVIEWS ──────────────────────────────────────── -->
+  <section id="reviews">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-tag">// Reviews</p>
+        <h2 class="section-title">What LA is Saying</h2>
+        <p class="section-sub">Real customers. Real flavors. Real love for the food.</p>
+      </div>
+
+      <div class="reviews-grid stagger">
+        <div class="review-card">
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">The birria tacos are absolutely unreal. I drove from Pasadena just to get them and I'd do it again every weekend. The consomé alone is worth the trip.</p>
+          <div class="review-author">
+            <div class="review-avatar a1">JR</div>
+            <div>
+              <div class="review-name">Jessica Romero</div>
+              <div class="review-source">Google · 2 weeks ago</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">We used Casa Verde for our office catering and they knocked it out of the park. 80 people, everyone was happy, and we had compliments for days. Highly recommend.</p>
+          <div class="review-author">
+            <div class="review-avatar a2">DM</div>
+            <div>
+              <div class="review-name">Daniel Morales</div>
+              <div class="review-source">Yelp · 1 month ago</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="review-text">Family owned and it shows. Every dish tastes like it was made with actual love. The al pastor with the charred pineapple is my go-to every Friday night.</p>
+          <div class="review-author">
+            <div class="review-avatar a3">AT</div>
+            <div>
+              <div class="review-name">Ana Torres</div>
+              <div class="review-source">Instagram · 3 weeks ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ──────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header fade-up">
+        <p class="section-tag">// Find Us</p>
+        <h2 class="section-title">Come Visit Us</h2>
+        <p class="section-sub">We're open every day. Come hungry.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-details stagger">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <div class="contact-item-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-item-label">Address</div>
+              <div class="contact-item-value">4721 Cesar Chavez Ave<br>Los Angeles, CA 90022</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕙</div>
+            <div>
+              <div class="contact-item-label">Hours</div>
+              <div class="contact-item-value">Mon – Sun: 10:00 AM – 10:00 PM</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📸</div>
+            <div>
+              <div class="contact-item-label">Instagram</div>
+              <div class="contact-item-value"><a href="https://instagram.com/casaverdekitchen" target="_blank">@casaverdekitchen</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map fade-up">
+          <div class="contact-map-bg"></div>
+          <div class="map-pin"></div>
+          <div class="map-address-card">
+            <strong>Casa Verde Kitchen</strong>
+            <p>4721 Cesar Chavez Ave, Los Angeles, CA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICE AREA ─────────────────────────────────── -->
+  <section style="padding:64px 24px;text-align:center;">
+    <div style="max-width:800px;margin:0 auto;">
+      <p class="section-tag fade-up">// Service Area</p>
+      <h2 class="section-title fade-up" style="margin-bottom:12px;">Serving All of East Los Angeles & Beyond</h2>
+      <p class="section-sub fade-up" style="margin:0 auto 28px;max-width:540px;">Dine in, take out, or let us cater your next event. We serve customers from all across LA County.</p>
+      <div class="fade-up" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+        <span style="background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">East LA</span>
+        <span style="background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Boyle Heights</span>
+        <span style="background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Monterey Park</span>
+        <span style="background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Alhambra</span>
+        <span style="background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Pasadena</span>
+        <span style="background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Downtown LA</span>
+        <span style="background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">El Monte</span>
+        <span style="background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Whittier</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ───────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#home" class="footer-logo">
+        <div class="footer-logo-icon">🌿</div>
+        Casa Verde Kitchen
+      </a>
+      <p style="color:var(--text-muted);font-size:13px;margin:8px 0;">Open Daily 10AM–10PM · 4721 Cesar Chavez Ave, Los Angeles, CA · Dine In, Takeout & Catering</p>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo →</a></div>
+      <p class="footer-copy">Casa Verde Kitchen © 2026 &nbsp;·&nbsp; Website by <a href="https://rivven.ai" target="_blank" style="color:var(--accent);text-decoration:none;">Rivven</a> &nbsp;·&nbsp; <a href="https://rivven.ai" target="_blank" style="color:var(--accent);text-decoration:none;">rivven.ai</a></p>
+    </div>
+  </footer>
+
+  <!-- ─── MOBILE BOTTOM BANNER ─────────────────────────── -->
+  <div class="mobile-banner" id="mobileBanner">
+    <span class="mobile-banner-text">Website by Rivven &mdash; <a href="https://rivven.ai" target="_blank">Get yours: rivven.ai</a></span>
+    <button class="mobile-banner-close" onclick="document.getElementById('mobileBanner').style.display='none'" aria-label="Close">&times;</button>
+  </div>
+
+  <!-- ─── JS ───────────────────────────────────────────── -->
+  <script>
+    // Hamburger toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      hamburgerBtn.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobileMenu() {
+      hamburgerBtn.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    // Menu tab switcher
+    function switchTab(category, btn) {
+      document.querySelectorAll('.menu-category').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.menu-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('cat-' + category).classList.add('active');
+      btn.classList.add('active');
+
+      // Re-trigger stagger animation
+      const grid = document.getElementById('cat-' + category);
+      grid.classList.remove('visible');
+      setTimeout(() => grid.classList.add('visible'), 10);
+    }
+
+    // Scroll animations (IntersectionObserver)
+    const observerOptions = {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up, .stagger').forEach(el => observer.observe(el));
+
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Sticky nav shadow on scroll
+    const navEl = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navEl.style.background = 'rgba(10,10,11,0.97)';
+      } else {
+        navEl.style.background = 'rgba(10,10,11,0.85)';
+      }
+    }, { passive: true });
+
+    // Trigger initial visible elements
+    document.querySelectorAll('.fade-up, .stagger').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('visible');
+      }
+    });
+  </script>
+</body>
+</html>

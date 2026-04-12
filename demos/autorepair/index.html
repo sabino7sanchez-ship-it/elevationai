@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JC Customz Collision Center — Auto Body Repair, Custom Paint & Collision in Bellflower, CA</title>
+<meta name="description" content="JC Customz Collision Center — Bellflower's premier auto body shop. Expert collision repair, custom paint, insurance claims handled A-Z, 24/7 towing. 4.7★ rated. Call (562) 373-1027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"AutoBodyShop",
+  "name":"JC Customz Collision Center",
+  "description":"Expert collision repair, custom paint, body work, and insurance claims in Bellflower, CA. All dealer parts, no cutting corners. 4.7 star rating.",
+  "url":"https://rivven.ai/demos/collision/",
+  "telephone":"+1-562-373-1027",
+  "address":{"@type":"PostalAddress","streetAddress":"9241 Sonrisa St","addressLocality":"Bellflower","addressRegion":"CA","postalCode":"90706","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":"33.8817","longitude":"-118.1282"},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"09:00","closes":"14:00"}],
+  "priceRange":"$$",
+  "areaServed":["Bellflower","Long Beach","Downey","Lakewood","Cerritos","Norwalk","Compton","Paramount"],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"28"},
+  "sameAs":["https://www.instagram.com/khriz_jc/"]
+}
+</script>
+<style>
+:root {
+  --bg: #0c0c0e;
+  --bg2: #141416;
+  --bg3: #1c1c20;
+  --bg4: #242428;
+  --border: #2a2a30;
+  --border2: #38383f;
+  --text: #f5f5f7;
+  --text2: #b0b0b8;
+  --text3: #78788a;
+  --gold: #d4a853;
+  --gold-light: #e8c97a;
+  --gold-dark: #a07d30;
+  --gold-glow: rgba(212,168,83,.15);
+  --red: #c0392b;
+  --red-glow: rgba(192,57,43,.12);
+  --silver: #c0c0c8;
+  --white: #ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
+a { color:var(--gold); text-decoration:none; transition:.2s; }
+a:hover { color:var(--gold-light); }
+img { max-width:100%; display:block; }
+
+/* ANIMATIONS */
+.reveal { opacity:0; transform:translateY(40px); transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
+.reveal.vis { opacity:1; transform:translateY(0); }
+.reveal-left { opacity:0; transform:translateX(-40px); transition: opacity .7s ease, transform .7s ease; }
+.reveal-left.vis { opacity:1; transform:translateX(0); }
+
+/* NAV */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:0 40px; height:70px;
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(12,12,14,.92); backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid rgba(212,168,83,.1);
+}
+.nav-brand { display:flex; align-items:center; gap:12px; }
+.nav-brand-text { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; color:var(--gold); letter-spacing:.5px; }
+.nav-brand-sub { font-size:10px; color:var(--text3); text-transform:uppercase; letter-spacing:2px; font-weight:600; }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a { color:var(--text2); font-size:13px; font-weight:500; letter-spacing:.3px; }
+.nav-links a:hover { color:var(--gold); }
+.nav-cta {
+  padding:10px 24px; background:var(--gold); color:var(--bg);
+  font-size:13px; font-weight:700; border-radius:6px; border:none;
+  cursor:pointer; transition:.3s; letter-spacing:.3px;
+}
+.nav-cta:hover { background:var(--gold-light); transform:translateY(-1px); box-shadow:0 4px 20px var(--gold-glow); color:var(--bg); }
+.lang-btn { padding:6px 14px; background:var(--bg3); border:1px solid var(--border); color:var(--text3); font-size:11px; font-weight:700; border-radius:4px; cursor:pointer; font-family:'JetBrains Mono',monospace; }
+.lang-btn:hover { border-color:var(--gold); color:var(--gold); }
+.mmb { display:none; background:none; border:none; color:var(--text); font-size:24px; cursor:pointer; }
+
+/* HERO */
+.hero {
+  min-height:100vh; position:relative; display:flex; align-items:center;
+  padding:120px 40px 80px;
+  background:
+    linear-gradient(135deg, rgba(12,12,14,.7) 0%, rgba(12,12,14,.4) 50%, rgba(12,12,14,.8) 100%),
+    url('https://images.unsplash.com/photo-1619405399517-d7fce0f13302?w=1920&q=80') center/cover no-repeat;
+}
+.hero::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:200px;
+  background:linear-gradient(transparent, var(--bg));
+}
+.hero-inner { max-width:700px; position:relative; z-index:2; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 18px; background:rgba(212,168,83,.1); border:1px solid rgba(212,168,83,.25);
+  border-radius:30px; font-size:12px; color:var(--gold); font-weight:600;
+  letter-spacing:.5px; text-transform:uppercase; margin-bottom:28px;
+  backdrop-filter:blur(8px);
+}
+.hero-badge .dot { width:8px; height:8px; background:var(--gold); border-radius:50%; animation:glow 2s infinite; }
+@keyframes glow { 0%,100%{box-shadow:0 0 4px var(--gold)} 50%{box-shadow:0 0 12px var(--gold)} }
+.hero h1 {
+  font-family:'Playfair Display',serif; font-size:clamp(3rem,7vw,5.5rem);
+  font-weight:700; line-height:1.05; margin-bottom:20px; letter-spacing:-1px;
+}
+.hero h1 .shine {
+  background:linear-gradient(135deg, var(--gold), var(--gold-light), var(--white), var(--gold));
+  background-size:200% auto;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation:shimmer 3s linear infinite;
+}
+@keyframes shimmer { to { background-position:200% center; } }
+.hero-sub {
+  font-size:clamp(1rem,2vw,1.15rem); color:var(--text2); max-width:550px;
+  margin-bottom:36px; line-height:1.8;
+}
+.hero-ctas { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:56px; }
+.btn-gold {
+  padding:16px 36px; background:var(--gold); color:var(--bg);
+  font-weight:700; font-size:15px; border-radius:8px; border:none;
+  cursor:pointer; transition:.3s; letter-spacing:.3px;
+}
+.btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 30px var(--gold-glow); }
+.btn-outline {
+  padding:16px 36px; background:transparent; border:1px solid rgba(255,255,255,.2);
+  color:var(--text); font-weight:600; font-size:15px; border-radius:8px;
+  cursor:pointer; transition:.3s; backdrop-filter:blur(4px);
+}
+.btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+
+/* STATS */
+.stats-row {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:2px;
+  border-radius:12px; overflow:hidden;
+}
+.stat-box {
+  background:rgba(255,255,255,.04); backdrop-filter:blur(8px);
+  padding:20px; text-align:center; border:1px solid rgba(255,255,255,.06);
+}
+.stat-num { font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--gold); }
+.stat-label { font-size:11px; color:var(--text3); text-transform:uppercase; letter-spacing:1.5px; margin-top:4px; font-weight:600; }
+
+/* SECTIONS */
+section { padding:100px 40px; }
+.container { max-width:1200px; margin:0 auto; }
+.section-head { margin-bottom:56px; }
+.section-tag {
+  display:inline-block; padding:6px 16px; background:var(--gold-glow);
+  border:1px solid rgba(212,168,83,.2); border-radius:4px;
+  font-size:11px; font-weight:700; color:var(--gold); text-transform:uppercase;
+  letter-spacing:1.5px; margin-bottom:16px;
+}
+.section-head h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); font-weight:700; margin-bottom:16px; line-height:1.15; }
+.section-head p { color:var(--text2); font-size:16px; max-width:600px; line-height:1.7; }
+
+/* IMAGE STRIP */
+.image-strip {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:4px;
+  border-radius:16px; overflow:hidden; margin-bottom:0;
+}
+.image-strip img { width:100%; height:220px; object-fit:cover; transition:transform .5s; }
+.image-strip img:hover { transform:scale(1.05); }
+
+/* SERVICES */
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.service-card {
+  background:var(--bg2); border:1px solid var(--border); border-radius:16px;
+  padding:32px; transition:.4s; position:relative; overflow:hidden;
+}
+.service-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light)); opacity:0; transition:.3s;
+}
+.service-card:hover { border-color:var(--gold); transform:translateY(-6px); box-shadow:0 16px 50px rgba(0,0,0,.4); }
+.service-card:hover::before { opacity:1; }
+.service-icon { font-size:36px; margin-bottom:16px; }
+.service-card h3 { font-size:18px; font-weight:700; margin-bottom:10px; }
+.service-card p { color:var(--text2); font-size:14px; line-height:1.7; margin-bottom:20px; }
+.service-price { font-family:'JetBrains Mono',monospace; font-size:18px; font-weight:700; color:var(--gold); }
+
+/* GALLERY */
+.gallery-section { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.gallery-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; border-radius:12px; overflow:hidden; }
+.gallery-item { position:relative; overflow:hidden; aspect-ratio:4/3; }
+.gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.4,0,.2,1); }
+.gallery-item:hover img { transform:scale(1.08); }
+.gallery-overlay {
+  position:absolute; bottom:0; left:0; right:0; padding:16px 20px;
+  background:linear-gradient(transparent, rgba(0,0,0,.85));
+  color:var(--text); font-size:13px; font-weight:600;
+}
+
+/* QUOTE CALCULATOR */
+.quote-wrap { max-width:700px; margin:0 auto; }
+.quote-box {
+  background:var(--bg2); border:1px solid var(--border); border-radius:20px;
+  padding:48px; position:relative; overflow:hidden;
+}
+.quote-box::before {
+  content:''; position:absolute; top:-100px; right:-100px; width:250px; height:250px;
+  background:radial-gradient(circle, var(--gold-glow), transparent); border-radius:50%;
+}
+.quote-box h3 { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; text-align:center; margin-bottom:8px; position:relative; }
+.quote-box .sub { text-align:center; color:var(--text3); font-size:14px; margin-bottom:36px; position:relative; }
+.form-group { margin-bottom:20px; position:relative; }
+.form-group label { display:block; font-size:12px; font-weight:600; color:var(--text3); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px; }
+.form-group select, .form-group input {
+  width:100%; padding:14px 18px; background:var(--bg); border:1px solid var(--border);
+  border-radius:10px; color:var(--text); font-size:15px; font-family:'Inter',sans-serif;
+  outline:none; transition:.2s; appearance:none;
+}
+.form-group select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2378788a' viewBox='0 0 16 16'%3E%3Cpath d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; }
+.form-group select:focus, .form-group input:focus { border-color:var(--gold); box-shadow:0 0 0 3px var(--gold-glow); }
+.form-group select option { background:var(--bg2); }
+.quote-result {
+  margin-top:28px; padding:28px; background:linear-gradient(135deg, var(--gold-glow), rgba(212,168,83,.06));
+  border:1px solid rgba(212,168,83,.2); border-radius:14px; text-align:center; display:none;
+}
+.quote-result .label { font-size:11px; color:var(--text3); text-transform:uppercase; letter-spacing:1.5px; font-weight:700; }
+.quote-result .price { font-family:'Playfair Display',serif; font-size:48px; font-weight:700; color:var(--gold); margin:10px 0; }
+.quote-result .detail { font-size:14px; color:var(--text2); }
+.btn-quote {
+  width:100%; padding:16px; background:var(--gold); color:var(--bg);
+  font-weight:700; font-size:15px; border:none; border-radius:10px;
+  cursor:pointer; transition:.3s; margin-top:8px; letter-spacing:.3px;
+}
+.btn-quote:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 30px var(--gold-glow); }
+
+/* TESTIMONIALS */
+.testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.test-card {
+  background:var(--bg2); border:1px solid var(--border); border-radius:16px;
+  padding:32px; transition:.3s; position:relative;
+}
+.test-card::before { content:'"'; position:absolute; top:16px; right:24px; font-family:'Playfair Display',serif; font-size:80px; color:rgba(212,168,83,.08); line-height:1; }
+.test-card:hover { border-color:rgba(212,168,83,.3); }
+.test-stars { color:var(--gold); font-size:14px; letter-spacing:2px; margin-bottom:16px; }
+.test-quote { color:var(--text2); font-size:15px; line-height:1.8; margin-bottom:20px; font-style:italic; }
+.test-author { display:flex; align-items:center; gap:12px; }
+.test-avatar {
+  width:44px; height:44px; border-radius:50%; border:2px solid var(--gold);
+  display:flex; align-items:center; justify-content:center; font-weight:700;
+  font-size:16px; color:var(--gold); background:var(--gold-glow);
+}
+.test-name { font-weight:600; font-size:14px; }
+.test-loc { font-size:12px; color:var(--text3); }
+
+/* SERVICE AREAS */
+.areas-section { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.areas-flex { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.area-chip {
+  padding:10px 22px; background:var(--bg); border:1px solid var(--border);
+  border-radius:8px; font-size:14px; font-weight:500; color:var(--text2);
+  transition:.2s; cursor:default;
+}
+.area-chip:hover { border-color:var(--gold); color:var(--gold); }
+
+/* CONTACT */
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.contact-info h3 { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; margin-bottom:20px; }
+.contact-item { display:flex; align-items:center; gap:14px; margin-bottom:18px; color:var(--text2); font-size:15px; }
+.contact-item .ci-icon {
+  width:44px; height:44px; border-radius:10px; background:var(--gold-glow);
+  border:1px solid rgba(212,168,83,.15); display:flex; align-items:center;
+  justify-content:center; font-size:18px; flex-shrink:0;
+}
+.contact-form input, .contact-form textarea, .contact-form select {
+  width:100%; padding:14px 18px; background:var(--bg2); border:1px solid var(--border);
+  border-radius:10px; color:var(--text); font-size:15px; font-family:'Inter',sans-serif;
+  margin-bottom:14px; outline:none; transition:.2s;
+}
+.contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus { border-color:var(--gold); box-shadow:0 0 0 3px var(--gold-glow); }
+.contact-form textarea { min-height:110px; resize:vertical; }
+.contact-form button {
+  width:100%; padding:16px; background:var(--gold); color:var(--bg);
+  font-weight:700; font-size:15px; border:none; border-radius:10px;
+  cursor:pointer; transition:.3s; letter-spacing:.3px;
+}
+.contact-form button:hover { background:var(--gold-light); transform:translateY(-2px); }
+
+/* IG CTA */
+.ig-banner {
+  padding:40px; background:linear-gradient(135deg, var(--bg3), var(--bg2));
+  border:1px solid var(--border); border-radius:16px; display:flex;
+  align-items:center; justify-content:space-between; gap:24px; margin-top:48px;
+}
+.ig-banner h3 { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; }
+.ig-banner p { color:var(--text2); font-size:14px; margin-top:6px; }
+.ig-btn {
+  padding:14px 28px; background:linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color:#fff; font-weight:700; font-size:14px; border-radius:8px; border:none;
+  cursor:pointer; white-space:nowrap; transition:.3s;
+}
+.ig-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(253,29,29,.2); }
+
+/* FOOTER */
+.footer {
+  padding:48px 40px; border-top:1px solid var(--border); text-align:center;
+}
+.footer-brand { font-family:'Playfair Display',serif; font-size:20px; color:var(--gold); font-weight:700; margin-bottom:10px; }
+.footer-info { color:var(--text3); font-size:13px; line-height:1.8; }
+.powered { margin-top:28px; padding-top:28px; border-top:1px solid var(--border); font-size:12px; color:var(--text3); }
+.powered a { color:var(--gold); font-weight:600; }
+
+/* RESPONSIVE */
+@media(max-width:900px) {
+  .nav { padding:0 20px; }
+  .nav-links { display:none; position:fixed; top:70px; left:0; right:0; background:var(--bg); border-bottom:1px solid var(--border); flex-direction:column; padding:24px; gap:18px; z-index:99; }
+  .nav-links.open { display:flex; }
+  .mmb { display:block; }
+  .hero { padding:120px 20px 80px; }
+  .stats-row { grid-template-columns:repeat(2,1fr); }
+  .services-grid { grid-template-columns:1fr; }
+  .gallery-grid { grid-template-columns:1fr 1fr; }
+  .testimonials-grid { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; }
+  .image-strip { grid-template-columns:1fr 1fr; }
+  section { padding:60px 20px; }
+  .ig-banner { flex-direction:column; text-align:center; }
+  .quote-box { padding:28px; }
+}
+@media(max-width:500px) {
+  .stats-row { grid-template-columns:1fr 1fr; }
+  .gallery-grid { grid-template-columns:1fr; }
+  .image-strip { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div>
+      <div class="nav-brand-text">JC Customz</div>
+      <div class="nav-brand-sub">Collision Center</div>
+    </div>
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#services" data-en="Services" data-es="Servicios">Services</a>
+    <a href="#gallery" data-en="Gallery" data-es="Galeria">Gallery</a>
+    <a href="#estimate" data-en="Free Estimate" data-es="Estimacion">Free Estimate</a>
+    <a href="#reviews" data-en="Reviews" data-es="Resenas">Reviews</a>
+    <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+    <button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button>
+    <a href="tel:+15623731027" class="nav-cta">Call (562) 373-1027</a>
+  </div>
+  <button class="mmb" onclick="document.getElementById('navLinks').classList.toggle('open')">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner reveal">
+    <div class="hero-badge"><span class="dot"></span> Bellflower, CA — Insurance Claims Welcome</div>
+    <h1>Collision Repair.<br><span class="shine">Custom Built.</span></h1>
+    <p class="hero-sub">Premium collision repair, custom paint, and body work by Bellflower's most trusted shop. OEM parts only. No shortcuts. Insurance handled start to finish. Your car leaves looking better than before the accident.</p>
+    <div class="hero-ctas">
+      <a href="#estimate"><button class="btn-gold">Get Free Estimate</button></a>
+      <a href="tel:+15623731027"><button class="btn-outline">Call (562) 373-1027</button></a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">4.7★</div><div class="stat-label">Google Rating</div></div>
+      <div class="stat-box"><div class="stat-num">144K</div><div class="stat-label">IG Followers</div></div>
+      <div class="stat-box"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-box"><div class="stat-num">24/7</div><div class="stat-label">Towing Available</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE STRIP -->
+<div class="image-strip">
+  <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Luxury car front" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80" alt="Shiny sports car" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=80" alt="Custom car detail" loading="lazy">
+  <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&q=80" alt="Yellow sports car" loading="lazy">
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">Our Services</div>
+      <h2>From Fender Benders<br>to Full Custom Builds</h2>
+      <p>Whatever happened to your ride — we make it look better than before. OEM parts. Factory finish. No cutting corners.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🔧</div>
+        <h3>Collision Repair</h3>
+        <p>Full collision repair using all dealer/OEM parts. Frame straightening, panel replacement, structural repair. Your car will look factory-new — guaranteed.</p>
+        <div class="service-price">Insurance Covered</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🎨</div>
+        <h3>Custom Paint & Body</h3>
+        <p>Custom paint jobs, perfect color matching, candy paint, matte finishes, vinyl wraps, and complete body kits. Make your car one of a kind.</p>
+        <div class="service-price">Starting at $1,500</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📋</div>
+        <h3>Insurance Claims A-Z</h3>
+        <p>We handle your insurance claim from the first call to the final detail. All major carriers accepted. No stress, no hassle — we deal with the adjusters.</p>
+        <div class="service-price">All Carriers Accepted</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💎</div>
+        <h3>Dent & Scratch Repair</h3>
+        <p>Paintless dent removal, deep scratch repair, bumper restoration, and precision touch-ups. Fast turnaround, flawless finish.</p>
+        <div class="service-price">Starting at $150</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚛</div>
+        <h3>24/7 Towing Service</h3>
+        <p>Accident just happened? We'll tow your car straight to our shop — day or night. Fast response, reliable operators, zero stress.</p>
+        <div class="service-price">Call Anytime</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">✨</div>
+        <h3>Detailing & Ceramic Coat</h3>
+        <p>Post-repair detailing, ceramic coating, paint correction, and showroom-quality interior cleaning. Your car leaves looking brand new.</p>
+        <div class="service-price">Starting at $200</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery-section">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;">
+      <div class="section-tag">Our Work</div>
+      <h2>See the JC Customz Standard</h2>
+      <p style="margin:0 auto;">Every car that leaves our shop is a reflection of our reputation. Follow <a href="https://instagram.com/khriz_jc" target="_blank">@khriz_jc</a> for daily work.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&q=80" alt="Red sports car detail" loading="lazy">
+        <div class="gallery-overlay">Custom Candy Paint</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&q=80" alt="Black luxury car" loading="lazy">
+        <div class="gallery-overlay">Full Collision Restore</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80" alt="Classic car restoration" loading="lazy">
+        <div class="gallery-overlay">Classic Restoration</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&q=80" alt="Sports car side view" loading="lazy">
+        <div class="gallery-overlay">Body Kit + Ceramic</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600&q=80" alt="Luxury sedan" loading="lazy">
+        <div class="gallery-overlay">Insurance Claim — Complete</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&q=80" alt="Premium car front" loading="lazy">
+        <div class="gallery-overlay">Premium Detail + Paint Correction</div>
+      </div>
+    </div>
+
+    <!-- IG BANNER -->
+    <div class="ig-banner reveal">
+      <div>
+        <h3>Follow Our Work on Instagram</h3>
+        <p>144K+ followers watching us transform cars daily. See before & afters, custom builds, and shop life.</p>
+      </div>
+      <a href="https://instagram.com/khriz_jc" target="_blank"><button class="ig-btn">Follow @khriz_jc</button></a>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE CALCULATOR -->
+<section id="estimate">
+  <div class="container">
+    <div class="quote-wrap">
+      <div class="quote-box reveal">
+        <h3>Free Estimate Calculator</h3>
+        <p class="sub">Get a ballpark estimate in seconds. We'll follow up with an exact quote.</p>
+        <div class="form-group"><label>Type of Damage</label><select id="dmgType"><option value="minor">Minor — Dent, Scratch, Scuff</option><option value="moderate" selected>Moderate — Panel Damage, Bumper</option><option value="major">Major — Collision, Frame Damage</option><option value="custom">Custom — Paint, Body Kit, Wrap</option></select></div>
+        <div class="form-group"><label>Vehicle Type</label><select id="vehType"><option value="sedan">Sedan / Coupe</option><option value="suv">SUV / Truck</option><option value="luxury">Luxury / Exotic</option></select></div>
+        <div class="form-group"><label>Insurance Claim?</label><select id="insured"><option value="yes">Yes — Insurance is covering it</option><option value="no">No — Paying out of pocket</option></select></div>
+        <button class="btn-quote" onclick="calcEstimate()">Get My Estimate</button>
+        <div class="quote-result" id="qResult">
+          <div class="label">Estimated Range</div>
+          <div class="price" id="qPrice">$0</div>
+          <div class="detail" id="qDetail"></div>
+          <a href="tel:+15623731027"><button class="btn-quote" style="margin-top:18px;">Call for Exact Quote — (562) 373-1027</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;">
+      <div class="section-tag">Reviews</div>
+      <h2>What Our Customers Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"A great shop. My car was hit and needed insurance repair. Chris took care of everything and had the car looking great again. Very honest and hard working. I won't go anywhere else."</p>
+        <div class="test-author"><div class="test-avatar">M</div><div><div class="test-name">Michael R.</div><div class="test-loc">Bellflower, CA</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"They use all dealer parts with no cutting corners. My car looks factory-new after a bad accident. If you want quality body work from people who actually care, this is the place."</p>
+        <div class="test-author"><div class="test-avatar">S</div><div><div class="test-name">Sarah L.</div><div class="test-loc">Lakewood, CA</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-quote">"Chris and his team are the real deal. Got my custom paint done and it looks insane. 144K followers on Instagram for a reason — these guys are artists, not just mechanics."</p>
+        <div class="test-author"><div class="test-avatar">D</div><div><div class="test-name">Danny G.</div><div class="test-loc">Downey, CA</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="areas-section">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;">
+      <div class="section-tag">Service Areas</div>
+      <h2>Serving Southeast LA & Beyond</h2>
+    </div>
+    <div class="areas-flex reveal">
+      <div class="area-chip">Bellflower</div><div class="area-chip">Long Beach</div><div class="area-chip">Downey</div>
+      <div class="area-chip">Lakewood</div><div class="area-chip">Cerritos</div><div class="area-chip">Norwalk</div>
+      <div class="area-chip">Compton</div><div class="area-chip">Paramount</div><div class="area-chip">Artesia</div>
+      <div class="area-chip">South Gate</div><div class="area-chip">Whittier</div><div class="area-chip">La Mirada</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;">
+      <div class="section-tag">Contact</div>
+      <h2>Get Your Free Estimate</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h3>Bring It In or<br>We'll Tow It</h3>
+        <div class="contact-item"><div class="ci-icon">📞</div><a href="tel:+15623731027" style="font-size:18px;font-weight:700;">(562) 373-1027</a></div>
+        <div class="contact-item"><div class="ci-icon">📍</div><span>9241 Sonrisa St, Bellflower, CA 90706</span></div>
+        <div class="contact-item"><div class="ci-icon">🕐</div><span>Mon–Fri 8AM–6PM &nbsp;|&nbsp; Sat 9AM–2PM</span></div>
+        <div class="contact-item"><div class="ci-icon">📸</div><a href="https://instagram.com/khriz_jc" target="_blank">@khriz_jc — 144K followers</a></div>
+        <div style="margin-top:28px;padding:20px;background:var(--gold-glow);border:1px solid rgba(212,168,83,.15);border-radius:12px;">
+          <p style="font-size:14px;color:var(--text2);line-height:1.7;"><strong style="color:var(--gold);">Insurance claim?</strong> We handle EVERYTHING — from the first call to the final detail. All carriers accepted. Just call us and we take it from there.</p>
+        </div>
+      </div>
+      <form class="contact-form reveal" action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="NEW LEAD — JC Customz Collision Center">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <input type="email" name="email" placeholder="Email (optional)">
+        <select name="service">
+          <option value="" disabled selected>What do you need?</option>
+          <option value="Collision Repair">Collision Repair</option>
+          <option value="Custom Paint">Custom Paint / Body Work</option>
+          <option value="Insurance Claim">Insurance Claim</option>
+          <option value="Dent Repair">Dent / Scratch Repair</option>
+          <option value="Towing">24/7 Towing</option>
+          <option value="Detailing">Detailing / Ceramic Coat</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your vehicle and what happened..."></textarea>
+        <button type="submit">Send Estimate Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">JC Customz Collision Center</div>
+  <div class="footer-info">
+    9241 Sonrisa St, Bellflower, CA 90706<br>
+    (562) 373-1027 &nbsp;|&nbsp; <a href="https://instagram.com/khriz_jc" target="_blank">@khriz_jc</a><br>
+    Mon–Fri 8AM–6PM &nbsp;|&nbsp; Sat 9AM–2PM
+  </div>
+  <div class="powered">
+    Website by <a href="https://rivven.ai" target="_blank">Rivven</a> — AI-powered websites for businesses in every industry.
+    <br><a href="https://rivven.ai/booking.html" target="_blank" style="font-size:11px;">Want a site like this? Book a free demo.</a>
+  </div>
+</footer>
+
+<script>
+// Estimate Calculator
+function calcEstimate() {
+  const dmg = {minor:[150,500], moderate:[800,2500], major:[2500,8000], custom:[1500,6000]};
+  const veh = {sedan:1, suv:1.3, luxury:1.8};
+  const d = document.getElementById('dmgType').value;
+  const v = document.getElementById('vehType').value;
+  const ins = document.getElementById('insured').value;
+  const low = Math.round(dmg[d][0] * veh[v]);
+  const high = Math.round(dmg[d][1] * veh[v]);
+  document.getElementById('qPrice').textContent = '$' + low.toLocaleString() + ' – $' + high.toLocaleString();
+  document.getElementById('qDetail').textContent = ins === 'yes' ? 'Insurance claim — we handle everything with your carrier' : 'Out of pocket — flexible payment options available';
+  const r = document.getElementById('qResult');
+  r.style.display = 'block';
+  r.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+// Bilingual Toggle
+let lang = 'en';
+function toggleLang() {
+  lang = lang === 'en' ? 'es' : 'en';
+  document.getElementById('langToggle').textContent = lang === 'en' ? 'ES' : 'EN';
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    const t = el.getAttribute('data-' + lang);
+    if (t) el.textContent = t;
+  });
+}
+
+// Scroll Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold: 0.08, rootMargin: '0px 0px -60px 0px'});
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

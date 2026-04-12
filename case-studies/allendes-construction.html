@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allendes Construction Case Study | Rivven</title>
+    <meta name="description" content="How Rivven built a bilingual website with smart call routing for Allendes Group Inc in one night. Construction & Landscaping case study.">
+    <meta name="author" content="Sabino Sanchez">
+    <link rel="canonical" href="https://rivven.ai/case-studies/allendes-construction.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Allendes Construction Case Study — Bilingual Site with Smart Routing Built in One Night",
+        "description": "How Rivven built a bilingual website with smart call routing for Allendes Group Inc in one night.",
+        "author": {
+            "@type": "Person",
+            "name": "Sabino Sanchez",
+            "url": "https://rivven.ai"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Rivven",
+            "url": "https://rivven.ai"
+        },
+        "datePublished": "2026-03-30",
+        "dateModified": "2026-03-30",
+        "image": "https://rivven.ai/case-studies/og-allendes.jpg",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://rivven.ai/case-studies/allendes-construction.html"
+        }
+    }
+    </script>
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0A0A0B;
+            --bg-card: #111113;
+            --bg-card-hover: #161618;
+            --bg-elevated: #1A1A1D;
+            --neon-cyan: #00F0FF;
+            --neon-green: #00FF88;
+            --neon-cyan-dim: rgba(0, 240, 255, 0.15);
+            --neon-green-dim: rgba(0, 255, 136, 0.15);
+            --text-primary: #F5F5F7;
+            --text-secondary: #A1A1AA;
+            --text-muted: #71717A;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-accent: rgba(0, 240, 255, 0.2);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            --font-display: 'Playfair Display', Georgia, serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 3px; }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); }
+            50% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.3); }
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 11, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            padding: 0.75rem 2rem;
+            background: rgba(10, 10, 11, 0.95);
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-back:hover {
+            color: var(--neon-cyan);
+        }
+
+        .nav-back svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-back:hover svg {
+            transform: translateX(-3px);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.5rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            color: #000;
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.3);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 6rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(0, 240, 255, 0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(0, 255, 136, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.25rem;
+            background: var(--neon-cyan-dim);
+            border: 1px solid var(--border-accent);
+            border-radius: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--neon-cyan);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--neon-cyan);
+            animation: pulse-glow 2s infinite;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .hero-meta-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .hero-meta-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .hero-result {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .hero-result em {
+            color: var(--neon-green);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* ===== SECTION LAYOUT ===== */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+            border-radius: 2px;
+            margin-bottom: 2rem;
+        }
+
+        /* ===== CHALLENGE & SOLUTION ===== */
+        .content-block p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .content-block strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .highlight-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .highlight-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-list li:hover {
+            border-color: var(--border-accent);
+            background: var(--bg-card-hover);
+            transform: translateX(4px);
+        }
+
+        .highlight-list .icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-green);
+            font-size: 1.1rem;
+        }
+
+        /* ===== STATS ===== */
+        .stats-section {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 240, 255, 0.08);
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 0.75rem;
+            line-height: 1;
+        }
+
+        .stat-card:nth-child(2) .stat-value {
+            color: var(--neon-green);
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== TESTIMONIAL ===== */
+        .testimonial-section {
+            text-align: center;
+        }
+
+        .testimonial-card {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            position: relative;
+            animation: pulse-glow 4s infinite;
+        }
+
+        .testimonial-quote-mark {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--neon-cyan);
+        }
+
+        .testimonial-role {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* ===== BEFORE / AFTER ===== */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-card {
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .comparison-card.before {
+            background: linear-gradient(135deg, rgba(255, 59, 48, 0.05), var(--bg-card));
+            border-color: rgba(255, 59, 48, 0.15);
+        }
+
+        .comparison-card.after {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), var(--bg-card));
+            border-color: rgba(0, 255, 136, 0.15);
+        }
+
+        .comparison-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .before .comparison-label {
+            background: rgba(255, 59, 48, 0.12);
+            color: #FF6B6B;
+        }
+
+        .after .comparison-label {
+            background: rgba(0, 255, 136, 0.12);
+            color: var(--neon-green);
+        }
+
+        .comparison-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .comparison-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .comparison-list .icon {
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        .before .comparison-list .icon { color: #FF6B6B; }
+        .after .comparison-list .icon { color: var(--neon-green); }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-title span {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            background-size: 200% 200%;
+            animation: gradient-shift 4s ease infinite;
+            color: #000;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--border-accent);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--neon-cyan-dim);
+            border-color: var(--neon-cyan);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-text a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-text a:hover {
+            color: var(--neon-green);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-cta {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 7rem 1.25rem 4rem;
+                min-height: auto;
+            }
+
+            .hero-meta {
+                gap: 1.25rem;
+            }
+
+            .section {
+                padding: 4rem 1.25rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .comparison-card {
+                padding: 2rem;
+            }
+
+            .testimonial-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav" id="nav">
+        <a href="/case-studies/" class="nav-back">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Case Studies
+        </a>
+        <a href="/booking.html" class="nav-cta">Book a Demo</a>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-content">
+            <div class="hero-badge fade-up">Case Study</div>
+            <h1 class="hero-title fade-up stagger-1">
+                Allendes Construction<br><span>Case Study</span>
+            </h1>
+            <div class="hero-meta fade-up stagger-2">
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Client</span>
+                    <span class="hero-meta-value">Allendes Group Inc</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Industry</span>
+                    <span class="hero-meta-value">Construction & Landscaping</span>
+                </div>
+                <div class="hero-meta-item">
+                    <span class="hero-meta-label">Timeline</span>
+                    <span class="hero-meta-value">One Night</span>
+                </div>
+            </div>
+            <p class="hero-result fade-up stagger-3">
+                Bilingual site with <em>smart call routing</em> &mdash; built and delivered in a single night.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== THE CHALLENGE ===== -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-label fade-up">01 &mdash; The Challenge</div>
+            <div class="section-divider fade-up stagger-1"></div>
+            <h2 class="section-title fade-up stagger-2">Zero Online Presence in a Bilingual Market</h2>
+            <div class="content-block">
+                <p class="fade-up stagger-3">
+                    Santiago T. runs <strong>Allendes Group Inc</strong>, a construction and landscaping company serving a deeply bilingual community across Southern California. Despite delivering quality work on the ground, they had <strong>zero digital footprint</strong>. No website. No Google presence. Nothing for potential clients to find when searching online.
+                </p>
+                <p class="fade-up stagger-4">
+                    The challenge ran deeper than just visibility. Their team included two reps &mdash; one English-speaking, one Spanish-speaking &mdash; and there was <strong>no system to route incoming calls</strong> to the right person based on the caller's language. Leads were being lost, confused, or handed off awkwardly. The entire bilingual market was going unserved.
+                </p>
+                <ul class="highlight-list fade-up stagger-5">
+                    <li>
+                        <span class="icon">&#10007;</span>
+                        <span>No website or digital presence of any kind</span>
+                    </li>
+                    <li>
+                        <span class="icon">&#10007;</span>
+                        <span>Zero Google visibility &mdash; potential clients could not find them</span>
+                    </li>
+                    <li>
+                        <span class="icon">&#10007;</span>
+                        <span>Bilingual market (EN/ES) completely unserved online</span>
+                    </li>
+                    <li>
+                        <span class="icon">&#10007;</span>
+                        <span>Two reps speaking different languages with no call routing</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== THE SOLUTION ===== -->
+    <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="section-inner">
+            <div class="section-label fade-up">02 &mdash; The Solution</div>
+            <div class="section-divider fade-up stagger-1"></div>
+            <h2 class="section-title fade-up stagger-2">Full Bilingual System &mdash; Built in One Night</h2>
+            <div class="content-block">
+                <p class="fade-up stagger-3">
+                    We designed and deployed a <strong>complete bilingual website</strong> with a seamless EN/ES language toggle that let visitors browse the entire site in their preferred language. Every piece of content, every call-to-action, every service description &mdash; available in both English and Spanish.
+                </p>
+                <p class="fade-up stagger-4">
+                    The real power was in the <strong>smart call routing system</strong>. When a visitor on the English version calls or messages, they reach the English-speaking rep. Spanish visitors connect directly to the Spanish-speaking rep. No confusion, no handoffs, no lost leads.
+                </p>
+                <ul class="highlight-list">
+                    <li class="fade-up stagger-1">
+                        <span class="icon">&#10003;</span>
+                        <span><strong>Full bilingual website</strong> with EN/ES language toggle across every page</span>
+                    </li>
+                    <li class="fade-up stagger-2">
+                        <span class="icon">&#10003;</span>
+                        <span><strong>Dual-rep phone routing</strong> &mdash; English calls to one rep, Spanish to another</span>
+                    </li>
+                    <li class="fade-up stagger-3">
+                        <span class="icon">&#10003;</span>
+                        <span><strong>WhatsApp integration</strong> for both languages with direct rep routing</span>
+                    </li>
+                    <li class="fade-up stagger-4">
+                        <span class="icon">&#10003;</span>
+                        <span><strong>GA4 analytics</strong> tracking every call, form submission, and user interaction</span>
+                    </li>
+                    <li class="fade-up stagger-5">
+                        <span class="icon">&#10003;</span>
+                        <span><strong>Complete service gallery</strong> with professional project showcase</span>
+                    </li>
+                    <li class="fade-up">
+                        <span class="icon">&#10003;</span>
+                        <span><strong>JSON-LD structured data</strong> for enhanced search engine visibility</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESULTS ===== -->
+    <section class="section stats-section">
+        <div class="section-inner">
+            <div class="section-label fade-up" style="text-align:center;">03 &mdash; The Results</div>
+            <div class="section-divider fade-up stagger-1" style="margin:0 auto 2rem;"></div>
+            <h2 class="section-title fade-up stagger-2" style="text-align:center;">Immediate Impact, Zero Downtime</h2>
+            <div class="stats-grid">
+                <div class="stat-card fade-up stagger-1">
+                    <div class="stat-value">Same Night</div>
+                    <div class="stat-label">Built & Delivered</div>
+                    <div class="stat-desc">Full website from zero to live in hours</div>
+                </div>
+                <div class="stat-card fade-up stagger-2">
+                    <div class="stat-value">Bilingual</div>
+                    <div class="stat-label">EN / ES Toggle</div>
+                    <div class="stat-desc">Complete content in both languages</div>
+                </div>
+                <div class="stat-card fade-up stagger-3">
+                    <div class="stat-value">Smart Routing</div>
+                    <div class="stat-label">Dual-Rep System</div>
+                    <div class="stat-desc">Right language, right rep, every time</div>
+                </div>
+            </div>
+            <div class="content-block" style="margin-top: 3rem; text-align: center;">
+                <p class="fade-up" style="max-width: 700px; margin: 0 auto;">
+                    A professional online presence was established overnight. Bilingual lead capture went active immediately. Every interaction &mdash; calls, WhatsApp messages, form submissions &mdash; is tracked through GA4, giving Allendes Group complete visibility into their digital pipeline for the first time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIAL ===== -->
+    <section class="section testimonial-section">
+        <div class="section-inner">
+            <div class="testimonial-card fade-up">
+                <div class="testimonial-quote-mark">&ldquo;</div>
+                <p class="testimonial-text">
+                    We needed a bilingual site that could route calls to the right person based on language. He built it in one night with WhatsApp integration and analytics. Incredible.
+                </p>
+                <div class="testimonial-author">Santiago T.</div>
+                <div class="testimonial-role">Allendes Group Inc &mdash; Construction & Landscaping</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BEFORE / AFTER ===== -->
+    <section class="section" style="background: var(--bg-card); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="section-inner">
+            <div class="section-label fade-up">04 &mdash; Before & After</div>
+            <div class="section-divider fade-up stagger-1"></div>
+            <h2 class="section-title fade-up stagger-2">The Transformation</h2>
+            <div class="comparison-grid">
+                <div class="comparison-card before fade-left">
+                    <div class="comparison-label">Before</div>
+                    <ul class="comparison-list">
+                        <li>
+                            <span class="icon">&#10007;</span>
+                            <span>Completely invisible online &mdash; zero search results</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#10007;</span>
+                            <span>Bilingual market entirely missed</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#10007;</span>
+                            <span>No lead capture or contact forms</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#10007;</span>
+                            <span>Calls routed randomly, leads lost in handoffs</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#10007;</span>
+                            <span>No analytics or visibility into customer behavior</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="comparison-card after fade-right">
+                    <div class="comparison-label">After</div>
+                    <ul class="comparison-list">
+                        <li>
+                            <span class="icon">&#10003;</span>
+                            <span>Professional bilingual website live and indexed</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#10003;</span>
+                            <span>Full EN/ES content serving both language markets</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#10003;</span>
+                            <span>WhatsApp + forms capturing leads in both languages</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#10003;</span>
+                            <span>Smart routing sends every caller to the right rep</span>
+                        </li>
+                        <li>
+                            <span class="icon">&#10003;</span>
+                            <span>GA4 tracking every interaction and conversion</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="section cta-section">
+        <div class="cta-inner">
+            <div class="section-label fade-up" style="text-align:center;">Ready?</div>
+            <h2 class="cta-title fade-up stagger-1">
+                Want results <span>like these?</span>
+            </h2>
+            <p class="cta-desc fade-up stagger-2">
+                We build revenue-generating digital systems for businesses in every industry. Bilingual, AI-powered, analytics-driven &mdash; and delivered fast.
+            </p>
+            <div class="cta-buttons fade-up stagger-3">
+                <a href="/booking.html" class="btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                    </svg>
+                    Book a Free Demo
+                </a>
+                <a href="tel:+15623731027" class="btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                    </svg>
+                    (562) 373-1027
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p class="footer-text">
+            Powered by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> &mdash; Building Revenue-Generating Digital Systems
+        </p>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // IntersectionObserver for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -60px 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Nav scroll effect
+            const nav = document.getElementById('nav');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+            }, { passive: true });
+        });
+    </script>
+
+</body>
+</html>

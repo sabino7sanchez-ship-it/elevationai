@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summit Roofing Co. | San Fernando Valley, CA — Licensed Roofing Contractor</title>
+  <meta name="description" content="Summit Roofing Co. — San Fernando Valley's trusted roofing contractor. New roofs, repairs, re-roofing, flat roofs, gutters, and storm damage restoration. Licensed, insured, and financing available. Lic# C-39 892341." />
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RoofingContractor",
+    "name": "Summit Roofing Co.",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Fernando Valley",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://summitroofingco.com",
+    "priceRange": "$$$",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "19:00" }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "248"
+    },
+    "areaServed": ["Chatsworth","Northridge","Van Nuys","Burbank","Glendale","Reseda","Canoga Park","Thousand Oaks","Woodland Hills"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #18181d;
+      --accent: #FF4500;
+      --accent-light: #FF6A33;
+      --accent-glow: rgba(255,69,0,0.18);
+      --accent-glow-strong: rgba(255,69,0,0.35);
+      --text: #F0EEE8;
+      --text-muted: #8A8A96;
+      --text-dim: #5A5A66;
+      --border: rgba(255,69,0,0.12);
+      --border-light: rgba(255,255,255,0.06);
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', sans-serif;
+      --radius: 10px;
+      --radius-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-bottom: 72px;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── SELECTION ── */
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--mono); font-size: 11px; font-weight: 500;
+      color: var(--accent); background: var(--accent-glow);
+      border: 1px solid rgba(255,69,0,0.3);
+      padding: 5px 12px; border-radius: 99px; letter-spacing: 0.04em;
+    }
+    .tag::before { content: ''; display: inline-block; width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.7);} }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #fff; font-family: var(--sans);
+      font-size: 15px; font-weight: 700; padding: 14px 28px;
+      border-radius: var(--radius); border: none; cursor: pointer;
+      text-decoration: none; transition: all 0.2s ease;
+      letter-spacing: 0.01em; white-space: nowrap;
+    }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); box-shadow: 0 8px 28px var(--accent-glow-strong); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--text); font-family: var(--sans);
+      font-size: 15px; font-weight: 600; padding: 13px 28px;
+      border-radius: var(--radius); border: 1.5px solid rgba(255,255,255,0.2);
+      cursor: pointer; text-decoration: none; transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    .section-label {
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 12px; display: block;
+    }
+    .section-title { font-size: clamp(28px,5vw,44px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
+    .section-sub { font-size: 17px; color: var(--text-muted); max-width: 580px; line-height: 1.7; }
+
+    .divider { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin: 20px 0 28px; }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,10,11,0.92); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+    #nav.scrolled { background: rgba(10,10,11,0.98); border-bottom-color: var(--border); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; gap: 20px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px; background: var(--accent);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-name { font-size: 16px; font-weight: 800; color: var(--text); letter-spacing: -0.01em; }
+    .nav-logo-sub { font-size: 10px; font-family: var(--mono); color: var(--text-muted); letter-spacing: 0.06em; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-links a {
+      color: var(--text-muted); font-size: 14px; font-weight: 500;
+      text-decoration: none; padding: 8px 12px; border-radius: 6px;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    .nav-cta { font-size: 13px !important; font-weight: 700 !important; padding: 9px 18px !important; background: var(--accent); color: #fff !important; border-radius: 8px !important; }
+    .nav-cta:hover { background: var(--accent-light) !important; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: rgba(10,10,11,0.98); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); z-index: 999;
+      padding: 20px; flex-direction: column; gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text-muted); font-size: 16px; font-weight: 500;
+      text-decoration: none; padding: 14px 16px; border-radius: 8px;
+      transition: all 0.2s; border-bottom: 1px solid var(--border-light);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--accent); background: var(--accent-glow); }
+    .mobile-menu .mobile-cta { background: var(--accent); color: #fff !important; margin-top: 8px; text-align: center; font-weight: 700; }
+
+    @media(max-width:860px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 0 80px; position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(255,69,0,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 20% 70%, rgba(255,69,0,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 80% at 50% 50%, rgba(20,10,5,0.9) 0%, transparent 100%),
+        linear-gradient(160deg, #0A0A0B 0%, #1a0a04 50%, #0A0A0B 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,69,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,69,0,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: 99px;
+    }
+    .hero-badge-dot { width: 8px; height: 8px; background: #22C55E; border-radius: 50%; animation: pulse-dot 2s ease-in-out infinite; }
+    .hero-badge span { font-family: var(--mono); font-size: 12px; color: var(--text-muted); letter-spacing: 0.04em; }
+    .hero-badge .sep { color: var(--text-dim); }
+    .hero-title {
+      font-size: clamp(38px,7vw,78px); font-weight: 900;
+      line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-sub { font-size: clamp(16px,2.5vw,20px); color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; max-width: 600px; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+    .hero-stats {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      padding-top: 36px; border-top: 1px solid var(--border-light);
+    }
+    .hero-stat-item { display: flex; flex-direction: column; }
+    .hero-stat-num { font-size: 28px; font-weight: 800; color: var(--text); }
+    .hero-stat-num span { color: var(--accent); }
+    .hero-stat-label { font-size: 12px; font-family: var(--mono); color: var(--text-muted); letter-spacing: 0.04em; margin-top: 2px; }
+
+    /* ── EMERGENCY BANNER ── */
+    #emergency {
+      background: linear-gradient(90deg, #2a0800, #3d0d00, #2a0800);
+      border-top: 1px solid rgba(255,69,0,0.4);
+      border-bottom: 1px solid rgba(255,69,0,0.4);
+      padding: 16px 0;
+    }
+    .emergency-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; flex-wrap: wrap; text-align: center;
+    }
+    .emergency-inner span { font-size: 15px; font-weight: 600; color: var(--text); }
+    .emergency-inner a { color: var(--accent); font-weight: 800; text-decoration: none; font-size: 16px; }
+    .emergency-inner a:hover { color: var(--accent-light); }
+    .emergency-pill {
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 99px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    /* ── SERVICES ── */
+    #services { padding: 96px 0; }
+    .services-header { text-align: center; margin-bottom: 60px; }
+    .services-header .section-sub { margin: 0 auto; }
+    .services-header .divider { margin: 20px auto 0; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 20px;
+    }
+    .service-card {
+      background: var(--bg2); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 32px;
+      transition: all 0.3s ease; position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .service-card:hover { border-color: var(--border); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+    .service-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .service-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+    .service-warranty {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 11px; color: var(--accent);
+      background: var(--accent-glow); border: 1px solid rgba(255,69,0,0.25);
+      padding: 4px 10px; border-radius: 99px;
+    }
+
+    /* ── ROOF TYPES ── */
+    #roof-types { padding: 0 0 96px; }
+    .roof-types-header { text-align: center; margin-bottom: 60px; }
+    .roof-types-header .section-sub { margin: 0 auto; }
+    .roof-types-header .divider { margin: 20px auto 0; }
+    .roof-types-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px;
+    }
+    .roof-type-card {
+      background: var(--bg2); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .roof-type-card:hover { border-color: var(--border); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
+    .roof-type-visual {
+      height: 120px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    .roof-type-visual .rtype-icon { font-size: 48px; z-index: 1; position: relative; }
+    .rtype-bg-1 { background: linear-gradient(135deg, #1a1014 0%, #2d1520 100%); }
+    .rtype-bg-2 { background: linear-gradient(135deg, #0d1a14 0%, #15302a 100%); }
+    .rtype-bg-3 { background: linear-gradient(135deg, #0d0f1a 0%, #151830 100%); }
+    .rtype-bg-4 { background: linear-gradient(135deg, #1a1400 0%, #2d2400 100%); }
+    .roof-type-body { padding: 24px; }
+    .roof-type-name { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .roof-type-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+    .roof-type-meta { display: flex; justify-content: space-between; align-items: flex-end; }
+    .roof-type-warranty { font-family: var(--mono); font-size: 11px; color: var(--accent); }
+    .roof-type-price { font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
+    .roof-type-badge {
+      display: inline-block; font-family: var(--mono); font-size: 10px;
+      background: var(--accent); color: #fff; padding: 2px 8px; border-radius: 99px;
+      margin-bottom: 8px; letter-spacing: 0.04em;
+    }
+
+    /* ── GALLERY ── */
+    #gallery { padding: 0 0 96px; }
+    .gallery-header { text-align: center; margin-bottom: 60px; }
+    .gallery-header .section-sub { margin: 0 auto; }
+    .gallery-header .divider { margin: 20px auto 0; }
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap: 20px;
+    }
+    .gallery-card {
+      border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid var(--border-light); background: var(--bg2);
+      transition: all 0.3s ease; cursor: pointer; position: relative;
+    }
+    .gallery-card:hover { border-color: var(--border); transform: translateY(-3px); box-shadow: 0 20px 56px rgba(0,0,0,0.5); }
+    .gallery-visual {
+      height: 220px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gallery-visual .g-icon { font-size: 52px; z-index: 1; position: relative; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.5)); }
+    .g-bg-1 { background: linear-gradient(135deg, #1a0f08 0%, #3a1a05 60%, #1a0804 100%); }
+    .g-bg-2 { background: linear-gradient(135deg, #080e1a 0%, #0d1f3a 60%, #060d1a 100%); }
+    .g-bg-3 { background: linear-gradient(135deg, #1a0a0a 0%, #3d1010 60%, #1a0808 100%); }
+    .g-bg-4 { background: linear-gradient(135deg, #0a100a 0%, #142014 60%, #081008 100%); }
+    .g-bg-5 { background: linear-gradient(135deg, #100d14 0%, #22183a 60%, #100d14 100%); }
+    .g-bg-6 { background: linear-gradient(135deg, #141008 0%, #2e2010 60%, #141008 100%); }
+    .gallery-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .gallery-before-after {
+      display: flex; gap: 6px;
+    }
+    .before-tag, .after-tag {
+      font-family: var(--mono); font-size: 10px; font-weight: 600;
+      padding: 3px 8px; border-radius: 4px; letter-spacing: 0.04em;
+    }
+    .before-tag { background: rgba(255,255,255,0.15); color: var(--text-muted); }
+    .after-tag { background: var(--accent); color: #fff; }
+    .gallery-info { padding: 18px 20px; }
+    .gallery-label { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .gallery-meta { font-size: 12px; font-family: var(--mono); color: var(--text-muted); }
+
+    /* ── REVIEWS ── */
+    #reviews { padding: 0 0 96px; background: linear-gradient(180deg, transparent, rgba(255,69,0,0.03) 50%, transparent 100%); }
+    .reviews-header { text-align: center; margin-bottom: 60px; }
+    .reviews-header .section-sub { margin: 0 auto; }
+    .reviews-header .divider { margin: 20px auto 0; }
+    .reviews-agg {
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+      margin-bottom: 48px; flex-wrap: wrap;
+    }
+    .reviews-score { font-size: 64px; font-weight: 900; color: var(--text); line-height: 1; }
+    .reviews-score-right { display: flex; flex-direction: column; gap: 4px; }
+    .stars-row { display: flex; gap: 3px; }
+    .star { color: #FFB800; font-size: 22px; }
+    .reviews-count { font-size: 13px; color: var(--text-muted); font-family: var(--mono); }
+    .reviews-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 20px;
+    }
+    .review-card {
+      background: var(--bg2); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 28px;
+      transition: all 0.3s ease;
+    }
+    .review-card:hover { border-color: var(--border); transform: translateY(-2px); }
+    .review-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .review-text { font-size: 15px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 12px; }
+    .review-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .av-1 { background: linear-gradient(135deg, #FF4500, #FF6A33); }
+    .av-2 { background: linear-gradient(135deg, #7C3AED, #A855F7); }
+    .av-3 { background: linear-gradient(135deg, #0EA5E9, #38BDF8); }
+    .review-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .review-location { font-size: 12px; font-family: var(--mono); color: var(--text-dim); margin-top: 2px; }
+    .review-platform { font-size: 11px; font-family: var(--mono); color: var(--accent); margin-top: 2px; }
+
+    /* ── INSPECTION FORM ── */
+    #inspection { padding: 0 0 96px; }
+    .inspection-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .inspection-left { position: sticky; top: 100px; }
+    .inspection-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+    .inspection-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; color: var(--text-muted); line-height: 1.5;
+    }
+    .inspection-list li::before {
+      content: '✓'; color: var(--accent); font-weight: 800; font-size: 16px;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .trust-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .trust-badge {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--bg3); border: 1px solid var(--border-light);
+      padding: 8px 14px; border-radius: 8px; font-size: 12px;
+      font-family: var(--mono); color: var(--text-muted);
+    }
+    .trust-badge span:first-child { font-size: 16px; }
+
+    .form-card {
+      background: var(--bg2); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 36px;
+    }
+    .form-title { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .form-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+    .form-group label { font-size: 13px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.01em; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg3); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); color: var(--text);
+      font-family: var(--sans); font-size: 15px; padding: 12px 14px;
+      outline: none; transition: border-color 0.2s; width: 100%;
+      -webkit-appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8A96' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer;
+    }
+    .form-group select option { background: #1a1a22; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-note { font-size: 12px; color: var(--text-dim); text-align: center; margin-top: 12px; font-family: var(--mono); }
+    .form-submit { width: 100%; justify-content: center; font-size: 16px; padding: 16px; margin-top: 4px; }
+
+    @media(max-width:860px) {
+      .inspection-inner { grid-template-columns: 1fr; gap: 40px; }
+      .inspection-left { position: static; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── CONTACT ── */
+    #contact { padding: 0 0 96px; }
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px; margin-top: 48px;
+    }
+    .contact-card {
+      background: var(--bg2); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 28px; transition: all 0.3s;
+    }
+    .contact-card:hover { border-color: var(--border); transform: translateY(-2px); }
+    .contact-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .contact-label { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .contact-value { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .contact-sub { font-size: 13px; color: var(--text-muted); }
+    .contact-main-cta { margin-top: 48px; text-align: center; }
+    .contact-main-cta a { font-size: clamp(28px,5vw,48px); font-weight: 900; color: var(--accent); text-decoration: none; display: block; transition: color 0.2s; letter-spacing: -0.02em; }
+    .contact-main-cta a:hover { color: var(--accent-light); }
+    .contact-main-sub { font-size: 15px; color: var(--text-muted); margin-top: 8px; font-family: var(--mono); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border-light);
+      padding: 32px 0;
+    }
+    .footer-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left { font-size: 14px; color: var(--text-muted); }
+    .footer-left strong { color: var(--text); }
+    .footer-right { font-size: 13px; font-family: var(--mono); color: var(--text-dim); }
+    .footer-right a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .footer-right a:hover { color: var(--accent-light); }
+    .footer-lic { font-size: 12px; font-family: var(--mono); color: var(--text-dim); text-align: center; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-light); }
+
+    /* ── MOBILE BOTTOM BANNER ── */
+    #mobile-cta-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+      display: none; align-items: stretch;
+      background: rgba(10,10,11,0.96); backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border);
+    }
+    #mobile-cta-bar a {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 10px; font-size: 14px; font-weight: 700;
+      text-decoration: none; transition: background 0.2s;
+    }
+    #mobile-cta-bar .m-call { background: var(--accent); color: #fff; border-right: 1px solid rgba(255,255,255,0.1); }
+    #mobile-cta-bar .m-call:hover { background: var(--accent-light); }
+    #mobile-cta-bar .m-inspect { background: transparent; color: var(--text); border: none; }
+    #mobile-cta-bar .m-inspect:hover { background: rgba(255,255,255,0.05); }
+    @media(max-width:640px) { #mobile-cta-bar { display: flex; } }
+
+    /* ── SECTION TRANSITIONS ── */
+    section { transition: opacity 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:640px) {
+      .hero-stats { gap: 20px; }
+      .form-card { padding: 24px; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .contact-main-cta a { font-size: 28px; }
+    }
+
+    /* ── TRUSTED BAR ── */
+    #trust-bar { padding: 32px 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); background: var(--bg2); }
+    .trust-bar-inner { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; }
+    .trust-item-icon { font-size: 22px; }
+    .trust-item-text { display: flex; flex-direction: column; }
+    .trust-item-name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .trust-item-sub { font-size: 11px; font-family: var(--mono); color: var(--text-dim); }
+    .trust-sep { width: 1px; height: 36px; background: var(--border-light); }
+    @media(max-width:640px) { .trust-sep { display: none; } }
+
+    /* ── WHY SUMMIT ── */
+    #why-summit { padding: 96px 0 0; }
+    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .why-right { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .why-card {
+      background: var(--bg2); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 24px; transition: all 0.3s;
+    }
+    .why-card:hover { border-color: var(--border); transform: translateY(-2px); }
+    .why-card-icon { font-size: 28px; margin-bottom: 10px; }
+    .why-card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .why-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    @media(max-width:860px) {
+      .why-inner { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media(max-width:480px) {
+      .why-right { grid-template-columns: 1fr; }
+    }
+
+    /* ── FINANCING ── */
+    .financing-bar {
+      background: linear-gradient(90deg, var(--bg2), var(--bg3), var(--bg2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap; margin-top: 64px;
+    }
+    .financing-bar-left { display: flex; align-items: center; gap: 16px; }
+    .financing-icon { font-size: 36px; }
+    .financing-text h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .financing-text p { font-size: 14px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     NAV
+══════════════════════════════ -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Summit Roofing Co. Home">
+        <div class="nav-logo-icon">🏠</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Summit Roofing</span>
+          <span class="nav-logo-sub">SAN FERNANDO VALLEY</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#inspection" class="nav-cta">Free Inspection</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#reviews" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#inspection" class="mobile-cta" onclick="closeMobile()">Schedule Free Inspection →</a>
+</div>
+
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        <span>Licensed Contractor #892341</span>
+        <span class="sep">·</span>
+        <span>A+ BBB Rating</span>
+      </div>
+      <h1 class="hero-title">Your Roof.<br><span>Done Right.</span><br>Guaranteed.</h1>
+      <p class="hero-sub">New roofs, repairs, and re-roofing for residential and commercial properties in the San Fernando Valley. Licensed, insured, and financing available.</p>
+      <div class="hero-ctas">
+        <a href="#inspection" class="btn-primary">Schedule Free Inspection →</a>
+        <a href="#services" class="btn-outline">View Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">2,<span>400</span>+</span>
+          <span class="hero-stat-label">ROOFS COMPLETED</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">18<span>+</span></span>
+          <span class="hero-stat-label">YEARS IN BUSINESS</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">$<span>0</span></span>
+          <span class="hero-stat-label">INSPECTION COST</span>
+        </div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">24<span>/7</span></span>
+          <span class="hero-stat-label">EMERGENCY SERVICE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     EMERGENCY BANNER
+══════════════════════════════ -->
+<div id="emergency">
+  <div class="container">
+    <div class="emergency-inner">
+      <span class="emergency-pill">EMERGENCY</span>
+      <span>🚨 Storm Damage? Call <a href="tel:+15623731027">(562) 373-1027</a> — Emergency Tarping Available 24/7</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TRUST BAR
+══════════════════════════════ -->
+<div id="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <span class="trust-item-icon">⭐</span>
+        <div class="trust-item-text">
+          <span class="trust-item-name">A+ BBB Rating</span>
+          <span class="trust-item-sub">Accredited Business</span>
+        </div>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-item-icon">🛡️</span>
+        <div class="trust-item-text">
+          <span class="trust-item-name">Fully Licensed</span>
+          <span class="trust-item-sub">C-39 Lic# 892341</span>
+        </div>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-item-icon">✅</span>
+        <div class="trust-item-text">
+          <span class="trust-item-name">Fully Insured</span>
+          <span class="trust-item-sub">$2M Liability Coverage</span>
+        </div>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-item-icon">💳</span>
+        <div class="trust-item-text">
+          <span class="trust-item-name">Financing Available</span>
+          <span class="trust-item-sub">0% interest options</span>
+        </div>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-item-icon">🏆</span>
+        <div class="trust-item-text">
+          <span class="trust-item-name">GAF Certified</span>
+          <span class="trust-item-sub">Master Elite Contractor</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     WHY SUMMIT
+══════════════════════════════ -->
+<section id="why-summit">
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-left">
+        <span class="section-label">Why Summit Roofing</span>
+        <h2 class="section-title">The San Fernando Valley's Most Trusted Roofer</h2>
+        <div class="divider"></div>
+        <p class="section-sub">We've been protecting homes and businesses across LA and Ventura counties since 2007. No subcontractors. No shortcuts. Just expert roofing done right — on time and on budget.</p>
+        <br>
+        <p style="font-size:14px;color:var(--text-dim);font-family:var(--mono);">Serving: Chatsworth · Northridge · Van Nuys · Burbank · Glendale · Reseda · Canoga Park · Thousand Oaks · Woodland Hills · and all of LA + Ventura Counties</p>
+      </div>
+      <div class="why-right">
+        <div class="why-card">
+          <div class="why-card-icon">🔨</div>
+          <div class="why-card-title">W-2 Employees Only</div>
+          <div class="why-card-desc">No subcontractors. Our trained, background-checked crew handles every job start to finish.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🌧️</div>
+          <div class="why-card-title">Weathertight Guarantee</div>
+          <div class="why-card-desc">We back every installation with our signature no-leak warranty — or we come back and fix it, free.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">📋</div>
+          <div class="why-card-title">Permit-Pulled Every Time</div>
+          <div class="why-card-desc">We pull all required city permits. Your project is code-compliant and protects your home's value.</div>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon">🧹</div>
+          <div class="why-card-title">Full Cleanup Included</div>
+          <div class="why-card-desc">Magnetic nail sweep, debris removal, and a spotless yard — every single project. No surprises.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SERVICES
+══════════════════════════════ -->
+<section id="services" style="padding-top:96px;">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label">Our Services</span>
+      <h2 class="section-title">Everything Your Roof Needs</h2>
+      <div class="divider"></div>
+      <p class="section-sub">From minor repairs to full commercial installs — Summit handles it all with the same level of precision and warranty protection.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🏗️</span>
+        <div class="service-title">New Roof Installation</div>
+        <div class="service-desc">Full tear-off and installation of new roofing systems. We work with all major materials — asphalt, tile, metal, and flat roofing. Free detailed estimate provided before any work begins.</div>
+        <span class="service-warranty">🛡️ Manufacturer + Labor Warranty</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-title">Roof Repair</div>
+        <div class="service-desc">Leaks, cracked tiles, missing shingles, flashing failures — we diagnose and repair the root cause, not just the symptoms. Same-day and next-day repairs available.</div>
+        <span class="service-warranty">🛡️ 2-Year Repair Warranty</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔄</span>
+        <div class="service-title">Re-Roofing</div>
+        <div class="service-desc">Extend the life of your existing structure with a professional re-roof overlay. Cost-effective alternative to full replacement when the deck is sound. Save up to 30% vs. full tear-off.</div>
+        <span class="service-warranty">🛡️ 15-Year Workmanship Warranty</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏢</span>
+        <div class="service-title">Flat Roof Systems</div>
+        <div class="service-desc">TPO, EPDM, and modified bitumen flat roofing for commercial and residential low-slope applications. Energy-efficient white membrane options available. Ideal for additions and garages.</div>
+        <span class="service-warranty">🛡️ 20-Year System Warranty</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💧</span>
+        <div class="service-title">Gutter Installation</div>
+        <div class="service-desc">Seamless aluminum and copper gutters custom-formed on-site. Gutter guards, downspout extensions, and underground drainage solutions. Protects your foundation and landscaping.</div>
+        <span class="service-warranty">🛡️ Lifetime Gutter Warranty</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">⛈️</span>
+        <div class="service-title">Storm Damage Restoration</div>
+        <div class="service-desc">Emergency tarping, insurance claim documentation, and full restoration after hail, wind, or fallen tree damage. We work directly with all major insurance carriers. 24/7 emergency response.</div>
+        <span class="service-warranty">🛡️ Insurance Claim Assistance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     ROOF TYPES
+══════════════════════════════ -->
+<section id="roof-types">
+  <div class="container">
+    <div class="roof-types-header">
+      <span class="section-label">Roofing Materials</span>
+      <h2 class="section-title">Choose the Right Material</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Every material has different performance, aesthetics, and cost tradeoffs. We'll help you choose what's right for your home and budget.</p>
+    </div>
+    <div class="roof-types-grid">
+      <div class="roof-type-card">
+        <div class="roof-type-visual rtype-bg-1"><span class="rtype-icon">🏠</span></div>
+        <div class="roof-type-body">
+          <span class="roof-type-badge">MOST POPULAR</span>
+          <div class="roof-type-name">Asphalt Shingles</div>
+          <div class="roof-type-desc">The trusted standard for California homes. Excellent value, wide color selection, and proven durability in heat and wind.</div>
+          <div class="roof-type-meta">
+            <span class="roof-type-warranty">⏱ 25–30 yr warranty</span>
+            <span class="roof-type-price">From $9,500</span>
+          </div>
+        </div>
+      </div>
+      <div class="roof-type-card">
+        <div class="roof-type-visual rtype-bg-2"><span class="rtype-icon">🏛️</span></div>
+        <div class="roof-type-body">
+          <span class="roof-type-badge" style="background:#7C3AED;">PREMIUM</span>
+          <div class="roof-type-name">Tile Roofing</div>
+          <div class="roof-type-desc">Concrete and clay tile — the signature look of Southern California. Extremely durable, fire-resistant, and adds significant curb appeal and home value.</div>
+          <div class="roof-type-meta">
+            <span class="roof-type-warranty">⏱ 50 yr warranty</span>
+            <span class="roof-type-price">From $18,000</span>
+          </div>
+        </div>
+      </div>
+      <div class="roof-type-card">
+        <div class="roof-type-visual rtype-bg-3"><span class="rtype-icon">⚡</span></div>
+        <div class="roof-type-body">
+          <span class="roof-type-badge" style="background:#0EA5E9;">MODERN</span>
+          <div class="roof-type-name">Metal Roofing</div>
+          <div class="roof-type-desc">Standing seam and corrugated metal systems. Energy-efficient, incredibly durable, and compatible with solar panel installation. The last roof you'll ever need.</div>
+          <div class="roof-type-meta">
+            <span class="roof-type-warranty">⏱ Lifetime warranty</span>
+            <span class="roof-type-price">From $22,000</span>
+          </div>
+        </div>
+      </div>
+      <div class="roof-type-card">
+        <div class="roof-type-visual rtype-bg-4"><span class="rtype-icon">🏢</span></div>
+        <div class="roof-type-body">
+          <span class="roof-type-badge" style="background:#16A34A;">COMMERCIAL</span>
+          <div class="roof-type-name">Flat / TPO Systems</div>
+          <div class="roof-type-desc">Thermoplastic polyolefin membrane roofing for flat and low-slope applications. White reflective surface lowers cooling costs. Ideal for commercial buildings and additions.</div>
+          <div class="roof-type-meta">
+            <span class="roof-type-warranty">⏱ 20 yr warranty</span>
+            <span class="roof-type-price">From $6,500</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     GALLERY
+══════════════════════════════ -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <span class="section-label">Project Gallery</span>
+      <h2 class="section-title">Our Work Speaks for Itself</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Recent projects across the San Fernando Valley and surrounding communities — before and after.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <div class="gallery-visual g-bg-1">
+          <span class="g-icon">🏛️</span>
+          <div class="gallery-overlay">
+            <div class="gallery-before-after">
+              <span class="before-tag">BEFORE</span>
+              <span class="after-tag">AFTER</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-label">Tile Re-Roof</div>
+          <div class="gallery-meta">Chatsworth, CA · 2,800 sqft · Concrete Tile</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual g-bg-2">
+          <span class="g-icon">🏠</span>
+          <div class="gallery-overlay">
+            <div class="gallery-before-after">
+              <span class="before-tag">BEFORE</span>
+              <span class="after-tag">AFTER</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-label">Shingle Installation</div>
+          <div class="gallery-meta">Northridge, CA · 1,950 sqft · GAF Timberline HDZ</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual g-bg-3">
+          <span class="g-icon">⛈️</span>
+          <div class="gallery-overlay">
+            <div class="gallery-before-after">
+              <span class="before-tag">BEFORE</span>
+              <span class="after-tag">AFTER</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-label">Storm Damage Repair</div>
+          <div class="gallery-meta">Van Nuys, CA · Insurance Claim · Wind Damage</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual g-bg-4">
+          <span class="g-icon">🏢</span>
+          <div class="gallery-overlay">
+            <div class="gallery-before-after">
+              <span class="before-tag">BEFORE</span>
+              <span class="after-tag">AFTER</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-label">Flat Roof — TPO System</div>
+          <div class="gallery-meta">Burbank, CA · 4,200 sqft · Commercial Building</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual g-bg-5">
+          <span class="g-icon">💧</span>
+          <div class="gallery-overlay">
+            <div class="gallery-before-after">
+              <span class="before-tag">BEFORE</span>
+              <span class="after-tag">AFTER</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-label">Gutter System</div>
+          <div class="gallery-meta">Woodland Hills, CA · Seamless Aluminum + Guards</div>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <div class="gallery-visual g-bg-6">
+          <span class="g-icon">🏗️</span>
+          <div class="gallery-overlay">
+            <div class="gallery-before-after">
+              <span class="before-tag">BEFORE</span>
+              <span class="after-tag">AFTER</span>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-info">
+          <div class="gallery-label">Commercial Roof</div>
+          <div class="gallery-meta">Canoga Park, CA · Metal Standing Seam · 6,000 sqft</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     REVIEWS
+══════════════════════════════ -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <span class="section-label">Customer Reviews</span>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Over 800 verified five-star reviews across Google, Yelp, and the BBB.</p>
+    </div>
+    <div class="reviews-agg">
+      <span class="reviews-score">4.9</span>
+      <div class="reviews-score-right">
+        <div class="stars-row">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <span class="reviews-count">Based on 847 reviews · Google · Yelp · BBB</span>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"Summit replaced our entire tile roof after years of small leaks patched by other companies. The quality of work is night and day. They pulled permits, kept us informed every day, and the crew was professional and respectful of our property. Not a single nail left behind — immaculate cleanup. Worth every penny."</p>
+        <div class="review-author">
+          <div class="review-avatar av-1">M</div>
+          <div>
+            <div class="review-name">Maria & Carlos T.</div>
+            <div class="review-location">Chatsworth, CA</div>
+            <div class="review-platform">⭐ Google Review · Verified</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"We had a serious storm in January and Summit was out the next morning with emergency tarps. Full restoration was done within two weeks. They handled everything with our insurance company directly — I barely had to do anything. The repair held through the rest of the rainy season without a single issue. The workmanship warranty gave us real peace of mind."</p>
+        <div class="review-author">
+          <div class="review-avatar av-2">D</div>
+          <div>
+            <div class="review-name">David R.</div>
+            <div class="review-location">Northridge, CA</div>
+            <div class="review-platform">⭐ Yelp Review · Verified</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        </div>
+        <p class="review-text">"Used Summit for a full shingle replacement on our commercial property in Burbank. Three bids came in — Summit was middle of the road on price but blew the others away on detail and warranties. Job was done in four days, no callbacks needed, and our property manager said it was the cleanest crew she's seen in 15 years of managing buildings. Will be using them for our second location."</p>
+        <div class="review-author">
+          <div class="review-avatar av-3">J</div>
+          <div>
+            <div class="review-name">Jennifer K.</div>
+            <div class="review-location">Burbank, CA</div>
+            <div class="review-platform">⭐ BBB Review · Verified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     FREE INSPECTION FORM
+══════════════════════════════ -->
+<section id="inspection">
+  <div class="container">
+    <div class="inspection-inner">
+      <div class="inspection-left">
+        <span class="section-label">Free Roof Inspection</span>
+        <h2 class="section-title">Get a Free Inspection — No Pressure. No Obligation.</h2>
+        <div class="divider"></div>
+        <p style="font-size:16px;color:var(--text-muted);line-height:1.7;margin-bottom:24px;">Our certified roof inspectors will assess your roof's condition, document any issues, and give you a clear, written estimate — completely free of charge.</p>
+        <ul class="inspection-list">
+          <li>Full roof inspection + photo documentation</li>
+          <li>Written estimate with line-item pricing</li>
+          <li>Storm and insurance damage assessment</li>
+          <li>Honest recommendation — repair vs. replace</li>
+          <li>No high-pressure sales tactics, ever</li>
+          <li>Response within 24 hours, usually same day</li>
+        </ul>
+        <div class="trust-badges">
+          <span class="trust-badge"><span>🛡️</span> Lic# C-39 892341</span>
+          <span class="trust-badge"><span>✅</span> Fully Insured</span>
+          <span class="trust-badge"><span>⭐</span> A+ BBB</span>
+          <span class="trust-badge"><span>💳</span> Financing Available</span>
+        </div>
+      </div>
+      <div class="inspection-right">
+        <div class="form-card">
+          <div class="form-title">Schedule Your Free Inspection</div>
+          <div class="form-subtitle">Typically scheduled within 48 hours. No spam, no sales calls.</div>
+          <form action="https://formsubmit.co/sabino.sanchez7@gmail.com" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Roof Inspection Request - Summit Roofing" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name *</label>
+                <input type="text" id="fname" name="first_name" placeholder="Maria" required autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name *</label>
+                <input type="text" id="lname" name="last_name" placeholder="Torres" required autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(562) 373-1027" required autocomplete="tel" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="address">Property Address *</label>
+              <input type="text" id="address" name="property_address" placeholder="123 Main St, Northridge, CA 91325" required autocomplete="street-address" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="roof-age">Approximate Roof Age</label>
+                <select id="roof-age" name="roof_age">
+                  <option value="" disabled selected>Select age</option>
+                  <option value="0-5">0–5 years</option>
+                  <option value="5-10">5–10 years</option>
+                  <option value="10-15">10–15 years</option>
+                  <option value="15-20">15–20 years</option>
+                  <option value="20-25">20–25 years</option>
+                  <option value="25+">25+ years</option>
+                  <option value="unknown">Not sure</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="issue">Primary Issue</label>
+                <select id="issue" name="primary_issue">
+                  <option value="" disabled selected>Select issue</option>
+                  <option value="no-issues">No Issues — Routine Inspection</option>
+                  <option value="leak">Active Leak</option>
+                  <option value="missing-shingles">Missing / Damaged Shingles</option>
+                  <option value="storm-damage">Storm Damage</option>
+                  <option value="full-replacement">Looking for Full Replacement</option>
+                  <option value="gutters">Gutter Issues</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" name="notes" placeholder="Any other details about your roof, timeline, or specific concerns..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary form-submit">Request Free Inspection →</button>
+            <p class="form-note">🔒 Your information is private and will never be sold or shared. We respond within 24 hours.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="financing-bar">
+      <div class="financing-bar-left">
+        <span class="financing-icon">💳</span>
+        <div class="financing-text">
+          <h3>Financing Available — 0% Interest Options</h3>
+          <p>Don't let budget hold back your roof. We offer flexible financing through GreenSky and Synchrony Home with approvals in minutes. Ask us at your free inspection.</p>
+        </div>
+      </div>
+      <a href="#inspection" class="btn-primary" style="flex-shrink:0;">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     CONTACT
+══════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label">Contact Us</span>
+    <h2 class="section-title">Ready to Get Started?</h2>
+    <div class="divider"></div>
+    <div class="contact-main-cta">
+      <a href="tel:+15623731027">(562) 373-1027</a>
+      <p class="contact-main-sub">Call or text any time · 24/7 emergency line</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="contact-icon">📞</span>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value"><a href="tel:+15623731027" style="color:var(--text);text-decoration:none;">(562) 373-1027</a></div>
+        <div class="contact-sub">Mon–Sat 7AM–7PM · 24/7 Emergency</div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-icon">📍</span>
+        <div class="contact-label">Service Area</div>
+        <div class="contact-value">San Fernando Valley, CA</div>
+        <div class="contact-sub">Serving all of LA &amp; Ventura Counties</div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-icon">🛡️</span>
+        <div class="contact-label">License</div>
+        <div class="contact-value">C-39 #892341</div>
+        <div class="contact-sub">CSLB Licensed &amp; Fully Insured</div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-icon">💳</span>
+        <div class="contact-label">Financing</div>
+        <div class="contact-value">Available Now</div>
+        <div class="contact-sub">0% interest · Approvals in minutes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     SERVICE AREA
+══════════════════════════════ -->
+<section style="padding:72px 0;text-align:center;">
+  <div class="container">
+    <span class="section-label">Service Area</span>
+    <h2 class="section-title" style="margin-bottom:12px;">Protecting Roofs Across LA & Ventura Counties</h2>
+    <p class="section-sub" style="max-width:560px;margin:0 auto 28px;">From the San Fernando Valley to the coast — Summit serves homeowners and businesses throughout the region.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:750px;margin:0 auto;">
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Chatsworth</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Northridge</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Van Nuys</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Burbank</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Glendale</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Woodland Hills</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Thousand Oaks</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Reseda</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Canoga Park</span>
+      <span style="background:var(--accent-glow);border:1px solid rgba(255,69,0,0.3);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Simi Valley</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>Summit Roofing Co.</strong> © 2026 · San Fernando Valley, CA · CSLB Lic# C-39 892341
+      </div>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo →</a></div>
+      <div class="footer-right">
+        Website by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> · <a href="https://rivven.ai" target="_blank" rel="noopener">rivven.ai</a>
+      </div>
+    </div>
+    <div style="color:var(--text-muted);font-size:12px;margin:8px 0;text-align:center;">Mon–Sat 7AM–7PM · 24/7 Emergency Line · Free Inspections · Financing Available</div>
+    <p class="footer-lic">Summit Roofing Co. is a licensed roofing contractor in the state of California (CSLB License C-39 #892341). All work is performed by W-2 employees and backed by manufacturer and labor warranties. Serving Los Angeles and Ventura Counties since 2007.</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════
+     MOBILE BOTTOM BANNER
+══════════════════════════════ -->
+<div id="mobile-cta-bar" role="banner" aria-label="Mobile quick actions">
+  <a href="tel:+15623731027" class="m-call">📞 Call Now</a>
+  <a href="#inspection" class="m-inspect">Free Inspection →</a>
+  <a href="https://rivven.ai/booking.html" target="_blank" style="flex:1;text-align:center;padding:12px 6px;font-size:13px;font-weight:700;color:#00f0ff;text-decoration:none;border-left:1px solid rgba(255,255,255,0.1)">🚀 Get My Site</a>
+</div>
+
+<!-- ══════════════════════════════
+     INLINE JS (no external deps)
+══════════════════════════════ -->
+<script>
+  // ── Hamburger ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    const spans = hamburger.querySelectorAll('span');
+    if (isOpen) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  });
+
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  }
+
+  // ── Sticky nav scroll class ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // ── Smooth scroll for anchor links ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ── Scroll Animations (IntersectionObserver) ──
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.service-card, .why-card, .review-card, .contact-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
+  });
+
+  // ── Form feedback ──
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', e => {
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+    });
+  }
+</script>
+</body>
+</html>

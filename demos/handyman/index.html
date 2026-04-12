@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProFix Handyman | Reliable Handyman Services in Los Angeles</title>
+  <meta name="description" content="Professional handyman services in LA County. Furniture assembly, drywall repair, painting, plumbing fixes, electrical, pressure washing & more. Call (562) 373-1027." />
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "ProFix Handyman",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://profixhandyman.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "19:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "247"
+    },
+    "areaServed": ["Los Angeles","Long Beach","Burbank","Glendale","Pasadena","Torrance","Downey","Norwalk","Whittier","Compton"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #16161A;
+      --accent: #00F0FF;
+      --accent-dim: rgba(0,240,255,0.12);
+      --accent-glow: rgba(0,240,255,0.35);
+      --text: #F0F0F2;
+      --muted: #888898;
+      --border: rgba(255,255,255,0.07);
+      --card: #13131A;
+      --red: #FF3B3B;
+      --orange: #FF8C00;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.2s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      margin-top: 12px;
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-phone {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      display: none;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 66px; left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 16px;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--muted);
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--accent-dim); color: var(--accent); }
+    .mobile-menu .btn { margin-top: 8px; justify-content: center; }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 20%, rgba(0,240,255,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,180,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 85% 70%, rgba(0,240,255,0.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,240,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,240,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-headline {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero-headline .highlight {
+      color: var(--accent);
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hero-stat-num {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== SECTIONS SHARED ===== */
+    .section { padding: 96px 0; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 12px auto 0; }
+
+    /* ===== SERVICES GRID ===== */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,240,255,0.07);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .service-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .service-price {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ===== QUOTE CALCULATOR ===== */
+    #calculator { background: var(--bg2); }
+    .calc-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .calc-services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .calc-service-item {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+    .calc-service-item:hover {
+      border-color: rgba(0,240,255,0.3);
+    }
+    .calc-service-item.selected {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .calc-service-item input[type="checkbox"] {
+      display: none;
+    }
+    .calc-checkbox {
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+      font-size: 12px;
+      color: transparent;
+    }
+    .calc-service-item.selected .calc-checkbox {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+    .calc-service-info {
+      flex: 1;
+    }
+    .calc-service-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .calc-service-price {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+    .calc-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      transition: var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300F0FF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+    }
+    .form-group select option { background: #1a1a20; }
+    .calc-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: var(--transition);
+      letter-spacing: 0.02em;
+    }
+    .calc-btn:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+    }
+    .calc-result {
+      display: none;
+      margin-top: 28px;
+      background: var(--bg3);
+      border: 1px solid rgba(0,240,255,0.18);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .calc-result.show { display: block; }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .result-row:last-of-type { border-bottom: none; }
+    .result-label { color: var(--muted); font-size: 14px; }
+    .result-value { font-family: var(--mono); font-weight: 600; font-size: 15px; }
+    .result-total .result-label { font-weight: 700; color: var(--text); font-size: 15px; }
+    .result-total .result-value { color: var(--accent); font-size: 20px; }
+    .calc-disclaimer {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .calc-disclaimer::before { content: '*'; color: var(--accent); flex-shrink: 0; }
+
+    /* ===== BEFORE / AFTER ===== */
+    #beforeafter { background: var(--bg); }
+    .ba-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .ba-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .ba-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+    }
+    .ba-display {
+      position: relative;
+      height: 200px;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .ba-state {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .ba-state-emoji {
+      font-size: 64px;
+      margin-bottom: 8px;
+    }
+    .ba-state-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .ba-before .ba-state-label {
+      background: rgba(255,59,59,0.15);
+      color: #FF6B6B;
+    }
+    .ba-after .ba-state-label {
+      background: rgba(0,240,255,0.12);
+      color: var(--accent);
+    }
+    .ba-after {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    .ba-toggle-input { display: none; }
+    .ba-toggle-input:checked ~ .ba-display .ba-before {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    .ba-toggle-input:checked ~ .ba-display .ba-after {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .ba-bottom {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ba-title {
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .ba-toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      user-select: none;
+    }
+    .ba-toggle-track {
+      width: 44px; height: 24px;
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      position: relative;
+      transition: var(--transition);
+    }
+    .ba-toggle-track::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 16px; height: 16px;
+      background: var(--muted);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    .ba-toggle-input:checked ~ .ba-bottom .ba-toggle-track {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+    .ba-toggle-input:checked ~ .ba-bottom .ba-toggle-track::after {
+      transform: translateX(20px);
+      background: var(--accent);
+    }
+    .ba-toggle-input:checked ~ .ba-bottom .ba-toggle-text::after {
+      content: 'After';
+    }
+    .ba-toggle-text::after {
+      content: 'Before';
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    #trust { background: var(--bg2); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .trust-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .trust-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+    }
+    .trust-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .trust-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .trust-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .trust-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ===== REVIEWS ===== */
+    #reviews { background: var(--bg); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+    .review-card:hover { border-color: rgba(0,240,255,0.15); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .stars span { font-size: 18px; }
+    .review-text {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-text::before { content: '\201C'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::after { content: '\201D'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reviewer-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0,180,255,0.2));
+      border: 1px solid rgba(0,240,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 700; font-size: 15px; }
+    .reviewer-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .reviews-rating-summary {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .rating-big {
+      font-family: var(--mono);
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .rating-label {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info-block { display: flex; flex-direction: column; gap: 32px; }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-info-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-info-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .contact-info-value {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .contact-info-value a { color: var(--accent); }
+    .contact-info-value a:hover { color: #fff; }
+    .contact-info-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .contact-form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .contact-form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .contact-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 8px;
+      transition: var(--transition);
+      margin-top: 4px;
+    }
+    .contact-submit:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 32px 0 100px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-copy span { color: var(--text); }
+    .footer-brand {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-brand a {
+      color: var(--accent);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .footer-brand a:hover { color: #fff; }
+
+    /* ===== MOBILE BOTTOM BANNER ===== */
+    #mobile-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 2000;
+      background: rgba(10,10,11,0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .banner-left {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .banner-left strong { color: var(--text); }
+    .banner-cta {
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 9px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .banner-cta:hover { background: #fff; }
+
+    /* ===== MOBILE BREAKPOINTS ===== */
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-phone { display: block; }
+      .calc-services-grid { grid-template-columns: 1fr; }
+      .calc-options { grid-template-columns: 1fr; }
+      .calc-wrap { padding: 28px 20px; }
+      .contact-form-card { padding: 24px 20px; }
+    }
+    @media (max-width: 540px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { justify-content: center; }
+      .services-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 380px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">🔨</div>
+        Pro<span>Fix</span> Handyman
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#calculator">Quote</a></li>
+        <li><a href="#beforeafter">Before/After</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <span class="nav-phone">(562) 373-1027</span>
+        <a href="tel:+15623731027" class="btn btn-primary">Call Now</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#calculator" onclick="closeMobileMenu()">Get a Quote</a>
+  <a href="#beforeafter" onclick="closeMobileMenu()">Before/After</a>
+  <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="tel:+15623731027" class="btn btn-primary">Call Now — (562) 373-1027</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Serving LA County 7 Days a Week</div>
+      <h1 class="hero-headline">
+        One Call Fixes<br>
+        <span class="highlight">Everything.</span>
+      </h1>
+      <p class="hero-sub">
+        From drywall patches to full room makeovers — ProFix Handyman handles it all with upfront pricing, licensed pros, and same-week scheduling.
+      </p>
+      <div class="hero-ctas">
+        <a href="tel:+15623731027" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
+          Call Now — (562) 373-1027
+        </a>
+        <a href="#calculator" class="btn btn-outline" style="font-size:16px;padding:16px 32px;">
+          Get an Instant Quote
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">10+</span>
+          <span class="hero-stat-label">Years in LA</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3,200+</span>
+          <span class="hero-stat-label">Jobs Completed</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4.8★</span>
+          <span class="hero-stat-label">Avg Rating</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">Same Week</span>
+          <span class="hero-stat-label">Scheduling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Handyman Services for Every Room</h2>
+      <p class="section-sub">No job too small, no project too complex. Flat-rate pricing with no hidden fees.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🪑</span>
+        <div class="service-name">Furniture Assembly</div>
+        <div class="service-price">Starting at $75</div>
+        <div class="service-desc">IKEA, Wayfair, Amazon — we assemble it all. Desks, shelves, beds, patio furniture, and more. Fast, clean, and level every time.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧱</span>
+        <div class="service-name">Drywall Repair</div>
+        <div class="service-price">Starting at $95</div>
+        <div class="service-desc">Holes, cracks, water damage, and texture matching. We patch, skim, sand, and prime so the wall looks like nothing ever happened.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎨</span>
+        <div class="service-name">Painting</div>
+        <div class="service-price">Starting at $150</div>
+        <div class="service-desc">Interior and exterior painting for accent walls, full rooms, trim, and cabinets. Proper prep, premium paint, clean edges.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">Plumbing Fixes</div>
+        <div class="service-price">Starting at $85</div>
+        <div class="service-desc">Leaky faucets, running toilets, garbage disposals, and slow drains. Quick fixes that prevent bigger problems down the line.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💡</span>
+        <div class="service-name">Electrical</div>
+        <div class="service-price">Starting at $90</div>
+        <div class="service-desc">Light fixture installs, ceiling fans, outlet replacements, dimmer switches, and smart home device setup. Safe and up to code.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🚪</span>
+        <div class="service-name">Door & Window Repair</div>
+        <div class="service-price">Starting at $110</div>
+        <div class="service-desc">Sticking doors, broken hinges, weatherstripping, screen replacement, and lock installs. We fix what opens and closes.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💦</span>
+        <div class="service-name">Pressure Washing</div>
+        <div class="service-price">Starting at $120</div>
+        <div class="service-desc">Driveways, patios, siding, fences, and walkways. Professional-grade equipment removes years of grime in hours.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🛠️</span>
+        <div class="service-name">General Repairs</div>
+        <div class="service-price">Starting at $65</div>
+        <div class="service-desc">TV mounting, shelf hanging, caulking, grouting, tile repair, weatherproofing — if it's broken or needs installing, we handle it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE CALCULATOR ===== -->
+<section id="calculator" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Instant Quote</div>
+      <h2 class="section-title">Build Your Custom Quote</h2>
+      <p class="section-sub">Pick the services you need, choose your options, and get an instant estimate. No commitment required.</p>
+    </div>
+    <div class="calc-wrap">
+      <label style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:14px;">Select Services</label>
+      <div class="calc-services-grid" id="calc-services">
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="furniture" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Furniture Assembly</div>
+            <div class="calc-service-price">$75 - $200</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="drywall" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Drywall Repair</div>
+            <div class="calc-service-price">$95 - $350</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="painting" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Painting</div>
+            <div class="calc-service-price">$150 - $600</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="plumbing" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Plumbing Fixes</div>
+            <div class="calc-service-price">$85 - $300</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="electrical" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Electrical</div>
+            <div class="calc-service-price">$90 - $350</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="doors" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Door & Window Repair</div>
+            <div class="calc-service-price">$110 - $400</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="pressure" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Pressure Washing</div>
+            <div class="calc-service-price">$120 - $450</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="general" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">General Repairs</div>
+            <div class="calc-service-price">$65 - $250</div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-options">
+        <div class="form-group">
+          <label for="calc-property">Property Type</label>
+          <select id="calc-property">
+            <option value="1">Residential</option>
+            <option value="1.3">Commercial (+30%)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="calc-timeline">Timeline</label>
+          <select id="calc-timeline">
+            <option value="0">Standard (within 1 week)</option>
+            <option value="50">Priority (1-2 days, +$50)</option>
+            <option value="100">Rush (next day, +$100)</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calculateQuote()">Get My Instant Quote</button>
+
+      <div class="calc-result" id="calc-result">
+        <div class="result-row">
+          <span class="result-label">Selected Services</span>
+          <span class="result-value" id="res-services">--</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Base Estimate Range</span>
+          <span class="result-value" id="res-base">--</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Timeline Fee</span>
+          <span class="result-value" id="res-timeline">--</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Property Adjustment</span>
+          <span class="result-value" id="res-property">--</span>
+        </div>
+        <div class="result-row result-total">
+          <span class="result-label">Total Estimate Range</span>
+          <span class="result-value" id="res-total">--</span>
+        </div>
+        <p class="calc-disclaimer">Final price confirmed after on-site walkthrough. No surprise charges. Written quote provided before any work begins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE / AFTER ===== -->
+<section id="beforeafter" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Before & After Transformations</h2>
+      <p class="section-sub">Toggle each card to see the transformation. Real results from real LA County homes.</p>
+    </div>
+    <div class="ba-grid">
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba1" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">🕳️</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">✨</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Drywall Patch & Paint</div>
+          <label class="ba-toggle-label" for="ba1">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba2" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">🚪</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🏠</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Front Door Replacement</div>
+          <label class="ba-toggle-label" for="ba2">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba3" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">😰</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🎨</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Full Room Repaint</div>
+          <label class="ba-toggle-label" for="ba3">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba4" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">🟤</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🌟</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Driveway Pressure Wash</div>
+          <label class="ba-toggle-label" for="ba4">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba5" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">📦</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🪑</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">IKEA Furniture Assembly</div>
+          <label class="ba-toggle-label" for="ba5">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba6" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">💧</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🚿</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Bathroom Faucet Upgrade</div>
+          <label class="ba-toggle-label" for="ba6">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="trust" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Why ProFix</div>
+      <h2 class="section-title">Your Home. Our Priority.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-icon">🛡️</span>
+        <div class="trust-title">Licensed & Insured</div>
+        <div class="trust-desc">Fully licensed and insured for your protection. Every technician is background-checked and trained.</div>
+        <div class="trust-badge">Bonded & Insured</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">💰</span>
+        <div class="trust-title">Upfront Pricing</div>
+        <div class="trust-desc">You see the price before we start. No hourly surprises, no hidden materials markup. What we quote is what you pay.</div>
+        <div class="trust-badge">Written quotes always</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">📅</span>
+        <div class="trust-title">Same-Week Scheduling</div>
+        <div class="trust-desc">Book online or call and we'll have someone at your door within the week. Priority and rush options available.</div>
+        <div class="trust-badge">Usually 2-3 days</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🏆</span>
+        <div class="trust-title">10+ Years Experience</div>
+        <div class="trust-desc">Over 3,200 jobs completed across LA County. Residential and commercial. We've fixed it all and seen it all.</div>
+        <div class="trust-badge">Since 2015</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Customer Reviews</div>
+      <h2 class="section-title">What LA Homeowners Are Saying</h2>
+    </div>
+    <div class="reviews-rating-summary">
+      <div class="rating-big">4.8</div>
+      <div class="stars" style="justify-content:center;margin:8px 0;">
+        <span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span>
+      </div>
+      <div class="rating-label">Based on 247 verified reviews &middot; Google &amp; Yelp</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars"><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span></div>
+        <p class="review-text">
+          Had a long honey-do list that I kept putting off — drywall patches, a squeaky door, and a ceiling fan install. ProFix knocked it all out in one visit. The tech was punctual, friendly, and left everything spotless. Will absolutely call again.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SL</div>
+          <div>
+            <div class="reviewer-name">Sarah L.</div>
+            <div class="reviewer-meta">Pasadena, CA &middot; 2 weeks ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span></div>
+        <p class="review-text">
+          I ordered a massive IKEA wardrobe and had zero interest in assembling it myself. Called ProFix on Monday, they came out Wednesday. Two hours later it was done perfectly — sturdy, level, and anchored to the wall. Saved me an entire weekend of frustration.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">KC</div>
+          <div>
+            <div class="reviewer-name">Kevin C.</div>
+            <div class="reviewer-meta">Long Beach, CA &middot; 1 month ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span></div>
+        <p class="review-text">
+          We needed our entire living room repainted before a family event. ProFix gave us a flat quote over the phone, showed up on time, taped everything off properly, and the finished result looks incredible. Fair price, great work, no mess.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">TP</div>
+          <div>
+            <div class="reviewer-name">Teresa P.</div>
+            <div class="reviewer-meta">Burbank, CA &middot; 3 weeks ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Request a Free Estimate</h2>
+      <p class="section-sub">Tell us what you need and we'll get back to you within a few hours with a quote.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#128222;</div>
+          <div>
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
+            <div class="contact-info-sub">Mon-Sat 7 AM - 7 PM</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#128205;</div>
+          <div>
+            <div class="contact-info-label">Location</div>
+            <div class="contact-info-value">Los Angeles, CA</div>
+            <div class="contact-info-sub">Service area: All of LA County</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#128336;</div>
+          <div>
+            <div class="contact-info-label">Hours</div>
+            <div class="contact-info-value">Mon - Sat, 7 AM - 7 PM</div>
+            <div class="contact-info-sub">Same-week scheduling on most jobs</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#9989;</div>
+          <div>
+            <div class="contact-info-label">Guarantee</div>
+            <div class="contact-info-value">Satisfaction Guaranteed</div>
+            <div class="contact-info-sub">If you're not happy, we come back and make it right — free</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <div class="contact-form-title">Send a Service Request</div>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Handyman Request - ProFix" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="#contact" />
+          <div class="form-group">
+            <label for="contact-name">Full Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-phone">Phone Number</label>
+            <input type="tel" id="contact-phone" name="phone" placeholder="(562) 373-1027" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-service">Service Needed</label>
+            <select id="contact-service" name="service" required>
+              <option value="">-- Select a service --</option>
+              <option>Furniture Assembly</option>
+              <option>Drywall Repair</option>
+              <option>Painting</option>
+              <option>Plumbing Fixes</option>
+              <option>Electrical</option>
+              <option>Door & Window Repair</option>
+              <option>Pressure Washing</option>
+              <option>General Repairs</option>
+              <option>Multiple Services / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-desc">Describe the Job</label>
+            <textarea id="contact-desc" name="description" placeholder="E.g. Need 3 holes patched in bedroom wall, a ceiling fan installed, and a leaky kitchen faucet fixed..."></textarea>
+          </div>
+          <button type="submit" class="contact-submit">Send Request — Free Estimate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE AREA ===== -->
+<section style="padding:72px 0;text-align:center;">
+  <div class="container">
+    <div class="section-label">Service Area</div>
+    <h2 class="section-title" style="margin-bottom:12px;">Serving All of LA County</h2>
+    <p class="section-sub" style="max-width:540px;margin:0 auto 28px;">We dispatch skilled handymen across Los Angeles County. Your neighborhood is covered.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:750px;margin:0 auto;">
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Los Angeles</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Long Beach</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Burbank</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Glendale</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Pasadena</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Torrance</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Downey</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Norwalk</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Whittier</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Compton</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Santa Monica</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Inglewood</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        ProFix Handyman <span>&copy; 2026</span> &middot; Los Angeles, CA
+      </div>
+      <div style="color:var(--muted);font-size:12px;margin:6px 0;">Mon-Sat 7AM-7PM &middot; Licensed & Insured &middot; Serving all of LA County</div>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo &rarr;</a></div>
+      <div class="footer-brand">
+        Built by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE BOTTOM BANNER ===== -->
+<div id="mobile-banner">
+  <div class="banner-left">
+    <strong>Need a site like this?</strong><br>
+    Built by Rivven
+  </div>
+  <a href="https://rivven.ai" target="_blank" rel="noopener" class="banner-cta">
+    Get My Site &rarr;
+  </a>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* ---- Hamburger Menu ---- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ---- Sticky Nav Shadow ---- */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 60) {
+      nav.style.borderBottomColor = 'rgba(0,240,255,0.1)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(255,255,255,0.07)';
+    }
+  });
+
+  /* ---- Quote Calculator ---- */
+  const servicePrices = {
+    furniture:  { low: 75,  high: 200 },
+    drywall:    { low: 95,  high: 350 },
+    painting:   { low: 150, high: 600 },
+    plumbing:   { low: 85,  high: 300 },
+    electrical: { low: 90,  high: 350 },
+    doors:      { low: 110, high: 400 },
+    pressure:   { low: 120, high: 450 },
+    general:    { low: 65,  high: 250 },
+  };
+
+  function toggleCalcService(el) {
+    const cb = el.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    el.classList.toggle('selected', cb.checked);
+  }
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString();
+  }
+
+  function calculateQuote() {
+    const checked = document.querySelectorAll('#calc-services input[type="checkbox"]:checked');
+    if (checked.length === 0) {
+      alert('Please select at least one service.');
+      return;
+    }
+
+    let totalLow = 0;
+    let totalHigh = 0;
+    let count = 0;
+
+    checked.forEach(cb => {
+      const svc = servicePrices[cb.value];
+      if (svc) {
+        totalLow += svc.low;
+        totalHigh += svc.high;
+        count++;
+      }
+    });
+
+    const propMult = parseFloat(document.getElementById('calc-property').value);
+    const timelineFee = parseFloat(document.getElementById('calc-timeline').value);
+
+    const adjLow = totalLow * propMult;
+    const adjHigh = totalHigh * propMult;
+
+    const finalLow = adjLow + timelineFee;
+    const finalHigh = adjHigh + timelineFee;
+
+    document.getElementById('res-services').textContent = count + ' service' + (count > 1 ? 's' : '') + ' selected';
+    document.getElementById('res-base').textContent = fmt(totalLow) + ' \u2013 ' + fmt(totalHigh);
+    document.getElementById('res-timeline').textContent = timelineFee === 0 ? 'None' : '+' + fmt(timelineFee);
+    document.getElementById('res-property').textContent = propMult === 1 ? 'None' : '+30% applied';
+    document.getElementById('res-total').textContent = fmt(finalLow) + ' \u2013 ' + fmt(finalHigh);
+
+    const result = document.getElementById('calc-result');
+    result.classList.add('show');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ---- Scroll Animations (IntersectionObserver) ---- */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.section-header, .trust-card, .review-card, .contact-info-item, .ba-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
+  });
+
+  /* ---- Smooth Scroll (fallback for older browsers) ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
