@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProFlow Plumbing | Fast Plumbing Fixes in Los Angeles</title>
-  <meta name="description" content="Licensed, bonded & insured plumbing in LA County. 24/7 emergency service, drain cleaning, water heaters, leak repair. Call (562) 373-1027." />
+  <title>ProFix Handyman | Reliable Handyman Services in Los Angeles</title>
+  <meta name="description" content="Professional handyman services in LA County. Furniture assembly, drywall repair, painting, plumbing fixes, electrical, pressure washing & more. Call (562) 373-1027." />
   <!-- JSON-LD LocalBusiness Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Plumber",
-    "name": "ProFlow Plumbing",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "ProFix Handyman",
     "telephone": "+1-562-373-1027",
     "address": {
       "@type": "PostalAddress",
@@ -18,18 +18,18 @@
       "addressRegion": "CA",
       "addressCountry": "US"
     },
-    "url": "https://proflowplumbing.com",
+    "url": "https://profixhandyman.com",
     "priceRange": "$$",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "19:00"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "312"
+      "ratingValue": "4.8",
+      "reviewCount": "247"
     },
     "areaServed": ["Los Angeles","Long Beach","Burbank","Glendale","Pasadena","Torrance","Downey","Norwalk","Whittier","Compton"]
   }
@@ -339,36 +339,6 @@
       letter-spacing: 0.08em;
     }
 
-    /* ===== EMERGENCY STRIP ===== */
-    #emergency {
-      background: linear-gradient(90deg, #1a0606, #1f0c00, #1a0606);
-      border-top: 1px solid rgba(255,59,59,0.25);
-      border-bottom: 1px solid rgba(255,59,59,0.25);
-      padding: 16px 0;
-    }
-    .emergency-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      text-align: center;
-      flex-wrap: wrap;
-    }
-    .emergency-inner p {
-      font-weight: 700;
-      font-size: 16px;
-      color: #FF6B6B;
-      letter-spacing: 0.01em;
-    }
-    .emergency-inner a {
-      font-family: var(--mono);
-      font-weight: 700;
-      color: #FF3B3B;
-      text-decoration: underline;
-      font-size: 17px;
-    }
-    .emergency-inner a:hover { color: #fff; }
-
     /* ===== SECTIONS SHARED ===== */
     .section { padding: 96px 0; }
     .section-header { margin-bottom: 56px; }
@@ -379,7 +349,7 @@
     #services { background: var(--bg); }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 20px;
     }
     .service-card {
@@ -430,7 +400,7 @@
       line-height: 1.65;
     }
 
-    /* ===== ESTIMATE CALCULATOR ===== */
+    /* ===== QUOTE CALCULATOR ===== */
     #calculator { background: var(--bg2); }
     .calc-wrap {
       background: var(--card);
@@ -440,7 +410,63 @@
       max-width: 720px;
       margin: 0 auto;
     }
-    .calc-form {
+    .calc-services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .calc-service-item {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+    .calc-service-item:hover {
+      border-color: rgba(0,240,255,0.3);
+    }
+    .calc-service-item.selected {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .calc-service-item input[type="checkbox"] {
+      display: none;
+    }
+    .calc-checkbox {
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition);
+      font-size: 12px;
+      color: transparent;
+    }
+    .calc-service-item.selected .calc-checkbox {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+    .calc-service-info {
+      flex: 1;
+    }
+    .calc-service-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .calc-service-price {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      margin-top: 2px;
+    }
+    .calc-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
@@ -533,8 +559,130 @@
     }
     .calc-disclaimer::before { content: '*'; color: var(--accent); flex-shrink: 0; }
 
+    /* ===== BEFORE / AFTER ===== */
+    #beforeafter { background: var(--bg); }
+    .ba-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .ba-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .ba-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+    }
+    .ba-display {
+      position: relative;
+      height: 200px;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .ba-state {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .ba-state-emoji {
+      font-size: 64px;
+      margin-bottom: 8px;
+    }
+    .ba-state-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .ba-before .ba-state-label {
+      background: rgba(255,59,59,0.15);
+      color: #FF6B6B;
+    }
+    .ba-after .ba-state-label {
+      background: rgba(0,240,255,0.12);
+      color: var(--accent);
+    }
+    .ba-after {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    .ba-toggle-input { display: none; }
+    .ba-toggle-input:checked ~ .ba-display .ba-before {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    .ba-toggle-input:checked ~ .ba-display .ba-after {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .ba-bottom {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ba-title {
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .ba-toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      user-select: none;
+    }
+    .ba-toggle-track {
+      width: 44px; height: 24px;
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 100px;
+      position: relative;
+      transition: var(--transition);
+    }
+    .ba-toggle-track::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 16px; height: 16px;
+      background: var(--muted);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    .ba-toggle-input:checked ~ .ba-bottom .ba-toggle-track {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+    }
+    .ba-toggle-input:checked ~ .ba-bottom .ba-toggle-track::after {
+      transform: translateX(20px);
+      background: var(--accent);
+    }
+    .ba-toggle-input:checked ~ .ba-bottom .ba-toggle-text::after {
+      content: 'After';
+    }
+    .ba-toggle-text::after {
+      content: 'Before';
+    }
+
     /* ===== WHY CHOOSE US ===== */
-    #trust { background: var(--bg); }
+    #trust { background: var(--bg2); }
     .trust-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -579,7 +727,7 @@
     }
 
     /* ===== REVIEWS ===== */
-    #reviews { background: var(--bg2); }
+    #reviews { background: var(--bg); }
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -606,8 +754,8 @@
       margin-bottom: 20px;
       font-style: italic;
     }
-    .review-text::before { content: '"'; color: var(--accent); font-style: normal; font-size: 20px; }
-    .review-text::after { content: '"'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::before { content: '\201C'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::after { content: '\201D'; color: var(--accent); font-style: normal; font-size: 20px; }
     .reviewer {
       display: flex;
       align-items: center;
@@ -644,7 +792,7 @@
     }
 
     /* ===== CONTACT ===== */
-    #contact { background: var(--bg); }
+    #contact { background: var(--bg2); }
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -716,22 +864,10 @@
       background: #fff;
       box-shadow: 0 0 28px var(--accent-glow);
     }
-    .lic-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(0,240,255,0.2);
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--accent);
-    }
 
     /* ===== FOOTER ===== */
     footer {
-      background: var(--bg2);
+      background: var(--bg);
       border-top: 1px solid var(--border);
       padding: 32px 0 100px;
     }
@@ -799,7 +935,8 @@
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       .nav-phone { display: block; }
-      .calc-form { grid-template-columns: 1fr; }
+      .calc-services-grid { grid-template-columns: 1fr; }
+      .calc-options { grid-template-columns: 1fr; }
       .calc-wrap { padding: 28px 20px; }
       .contact-form-card { padding: 24px 20px; }
     }
@@ -809,6 +946,7 @@
       .services-grid { grid-template-columns: 1fr; }
       .trust-grid { grid-template-columns: 1fr 1fr; }
       .reviews-grid { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: 1fr; }
       .footer-inner { flex-direction: column; text-align: center; }
     }
     @media (max-width: 380px) {
@@ -823,20 +961,21 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <div class="nav-logo-icon">🔧</div>
-        Pro<span>Flow</span> Plumbing
+        <div class="nav-logo-icon">🔨</div>
+        Pro<span>Fix</span> Handyman
       </a>
 
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
-        <li><a href="#emergency">Emergency</a></li>
+        <li><a href="#calculator">Quote</a></li>
+        <li><a href="#beforeafter">Before/After</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
 
       <div class="nav-cta">
         <span class="nav-phone">(562) 373-1027</span>
-        <a href="tel:+15623731027" class="btn btn-primary">📞 Call Now</a>
+        <a href="tel:+15623731027" class="btn btn-primary">Call Now</a>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -849,11 +988,11 @@
 <!-- Mobile Nav Menu -->
 <div class="mobile-menu" id="mobile-menu">
   <a href="#services" onclick="closeMobileMenu()">Services</a>
-  <a href="#emergency" onclick="closeMobileMenu()">Emergency</a>
-  <a href="#calculator" onclick="closeMobileMenu()">Get Estimate</a>
+  <a href="#calculator" onclick="closeMobileMenu()">Get a Quote</a>
+  <a href="#beforeafter" onclick="closeMobileMenu()">Before/After</a>
   <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-  <a href="tel:+15623731027" class="btn btn-primary">📞 Call Now — (562) 373-1027</a>
+  <a href="tel:+15623731027" class="btn btn-primary">Call Now — (562) 373-1027</a>
 </div>
 
 <!-- ===== HERO ===== -->
@@ -862,161 +1001,363 @@
   <div class="hero-grid"></div>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge">Available 24/7 · Emergency Service</div>
+      <div class="hero-badge">Serving LA County 7 Days a Week</div>
       <h1 class="hero-headline">
-        Fast Plumbing Fixes.<br>
-        <span class="highlight">No Surprises.</span>
+        One Call Fixes<br>
+        <span class="highlight">Everything.</span>
       </h1>
       <p class="hero-sub">
-        Licensed, bonded, and insured. Serving LA County for 15+ years with upfront pricing and same-day availability.
+        From drywall patches to full room makeovers — ProFix Handyman handles it all with upfront pricing, licensed pros, and same-week scheduling.
       </p>
       <div class="hero-ctas">
         <a href="tel:+15623731027" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
-          📞 Call Now — (562) 373-1027
+          Call Now — (562) 373-1027
         </a>
         <a href="#calculator" class="btn btn-outline" style="font-size:16px;padding:16px 32px;">
-          Get a Free Quote
+          Get an Instant Quote
         </a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="hero-stat-num">15+</span>
+          <span class="hero-stat-num">10+</span>
           <span class="hero-stat-label">Years in LA</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num">4,800+</span>
+          <span class="hero-stat-num">3,200+</span>
           <span class="hero-stat-label">Jobs Completed</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num">4.9★</span>
+          <span class="hero-stat-num">4.8★</span>
           <span class="hero-stat-label">Avg Rating</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num">60 min</span>
-          <span class="hero-stat-label">Avg Response</span>
+          <span class="hero-stat-num">Same Week</span>
+          <span class="hero-stat-label">Scheduling</span>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ===== EMERGENCY STRIP ===== -->
-<div id="emergency">
-  <div class="container">
-    <div class="emergency-inner">
-      <p>🚨 Plumbing Emergency? Call <a href="tel:+15623731027">(562) 373-1027</a> — We Answer 24/7</p>
-    </div>
-  </div>
-</div>
 
 <!-- ===== SERVICES ===== -->
 <section id="services" class="section">
   <div class="container">
     <div class="section-header">
       <div class="section-label">What We Do</div>
-      <h2 class="section-title">Expert Plumbing Services</h2>
-      <p class="section-sub">From clogged drains to full pipe replacements — fast, clean, done right.</p>
+      <h2 class="section-title">Handyman Services for Every Room</h2>
+      <p class="section-sub">No job too small, no project too complex. Flat-rate pricing with no hidden fees.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
-        <span class="service-icon">🌀</span>
-        <div class="service-name">Drain Cleaning</div>
-        <div class="service-price">Starting at $89</div>
-        <div class="service-desc">Hydro-jetting and snake clearing for kitchen, bath, and floor drains. Same-day appointments available across LA County.</div>
+        <span class="service-icon">🪑</span>
+        <div class="service-name">Furniture Assembly</div>
+        <div class="service-price">Starting at $75</div>
+        <div class="service-desc">IKEA, Wayfair, Amazon — we assemble it all. Desks, shelves, beds, patio furniture, and more. Fast, clean, and level every time.</div>
       </div>
       <div class="service-card">
-        <span class="service-icon">🔥</span>
-        <div class="service-name">Water Heater Install</div>
-        <div class="service-price">Starting at $450</div>
-        <div class="service-desc">Traditional tank and tankless water heater installation. All major brands. Removal of old unit included in most installs.</div>
+        <span class="service-icon">🧱</span>
+        <div class="service-name">Drywall Repair</div>
+        <div class="service-price">Starting at $95</div>
+        <div class="service-desc">Holes, cracks, water damage, and texture matching. We patch, skim, sand, and prime so the wall looks like nothing ever happened.</div>
       </div>
       <div class="service-card">
-        <span class="service-icon">💧</span>
-        <div class="service-name">Leak Repair</div>
+        <span class="service-icon">🎨</span>
+        <div class="service-name">Painting</div>
+        <div class="service-price">Starting at $150</div>
+        <div class="service-desc">Interior and exterior painting for accent walls, full rooms, trim, and cabinets. Proper prep, premium paint, clean edges.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-name">Plumbing Fixes</div>
+        <div class="service-price">Starting at $85</div>
+        <div class="service-desc">Leaky faucets, running toilets, garbage disposals, and slow drains. Quick fixes that prevent bigger problems down the line.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💡</span>
+        <div class="service-name">Electrical</div>
+        <div class="service-price">Starting at $90</div>
+        <div class="service-desc">Light fixture installs, ceiling fans, outlet replacements, dimmer switches, and smart home device setup. Safe and up to code.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🚪</span>
+        <div class="service-name">Door & Window Repair</div>
+        <div class="service-price">Starting at $110</div>
+        <div class="service-desc">Sticking doors, broken hinges, weatherstripping, screen replacement, and lock installs. We fix what opens and closes.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💦</span>
+        <div class="service-name">Pressure Washing</div>
         <div class="service-price">Starting at $120</div>
-        <div class="service-desc">Precision detection and repair of slab leaks, pipe leaks, and fixture leaks. Electronic leak detection available.</div>
+        <div class="service-desc">Driveways, patios, siding, fences, and walkways. Professional-grade equipment removes years of grime in hours.</div>
       </div>
       <div class="service-card">
-        <span class="service-icon">🔩</span>
-        <div class="service-name">Pipe Replacement</div>
-        <div class="service-price">Starting at $350</div>
-        <div class="service-desc">Full and partial repiping in copper or PEX. Older galvanized or cast iron pipe upgrades handled with minimal wall damage.</div>
-      </div>
-      <div class="service-card">
-        <span class="service-icon">🏗️</span>
-        <div class="service-name">Sewer Line Service</div>
-        <div class="service-price">Starting at $275</div>
-        <div class="service-desc">Camera inspection, hydro-jetting, and trenchless sewer line repair. We diagnose before we dig — always.</div>
-      </div>
-      <div class="service-card">
-        <span class="service-icon">🛁</span>
-        <div class="service-name">Bathroom Remodel</div>
-        <div class="service-price">Starting at $800</div>
-        <div class="service-desc">Toilet, sink, shower, and tub plumbing rough-in and finish work. Coordinated with your tile and vanity install schedule.</div>
+        <span class="service-icon">🛠️</span>
+        <div class="service-name">General Repairs</div>
+        <div class="service-price">Starting at $65</div>
+        <div class="service-desc">TV mounting, shelf hanging, caulking, grouting, tile repair, weatherproofing — if it's broken or needs installing, we handle it.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ESTIMATE CALCULATOR ===== -->
+<!-- ===== QUOTE CALCULATOR ===== -->
 <section id="calculator" class="section">
   <div class="container">
     <div class="section-header centered">
-      <div class="section-label">Instant Estimate</div>
-      <h2 class="section-title">Get a Free Cost Estimate</h2>
-      <p class="section-sub">Fill in 3 fields and see your range in seconds. No commitment, no spam.</p>
+      <div class="section-label">Instant Quote</div>
+      <h2 class="section-title">Build Your Custom Quote</h2>
+      <p class="section-sub">Pick the services you need, choose your options, and get an instant estimate. No commitment required.</p>
     </div>
     <div class="calc-wrap">
-      <div class="calc-form">
-        <div class="form-group">
-          <label for="calc-service">Service Type</label>
-          <select id="calc-service">
-            <option value="">— Select a service —</option>
-            <option value="drain">Drain Cleaning</option>
-            <option value="heater">Water Heater Install</option>
-            <option value="leak">Leak Repair</option>
-            <option value="pipe">Pipe Replacement</option>
-            <option value="sewer">Sewer Line Service</option>
-            <option value="bathroom">Bathroom Remodel</option>
-          </select>
+      <label style="font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:14px;">Select Services</label>
+      <div class="calc-services-grid" id="calc-services">
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="furniture" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Furniture Assembly</div>
+            <div class="calc-service-price">$75 - $200</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="calc-urgency">Urgency</label>
-          <select id="calc-urgency">
-            <option value="0">Standard (3–5 days)</option>
-            <option value="75">Same Day (+$75)</option>
-            <option value="150">Emergency 24/7 (+$150)</option>
-          </select>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="drywall" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Drywall Repair</div>
+            <div class="calc-service-price">$95 - $350</div>
+          </div>
         </div>
-        <div class="form-group full">
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="painting" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Painting</div>
+            <div class="calc-service-price">$150 - $600</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="plumbing" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Plumbing Fixes</div>
+            <div class="calc-service-price">$85 - $300</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="electrical" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Electrical</div>
+            <div class="calc-service-price">$90 - $350</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="doors" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Door & Window Repair</div>
+            <div class="calc-service-price">$110 - $400</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="pressure" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">Pressure Washing</div>
+            <div class="calc-service-price">$120 - $450</div>
+          </div>
+        </div>
+        <div class="calc-service-item" onclick="toggleCalcService(this)">
+          <input type="checkbox" value="general" />
+          <div class="calc-checkbox">&#10003;</div>
+          <div class="calc-service-info">
+            <div class="calc-service-name">General Repairs</div>
+            <div class="calc-service-price">$65 - $250</div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-options">
+        <div class="form-group">
           <label for="calc-property">Property Type</label>
           <select id="calc-property">
             <option value="1">Residential</option>
-            <option value="1.35">Commercial (+35%)</option>
+            <option value="1.3">Commercial (+30%)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="calc-timeline">Timeline</label>
+          <select id="calc-timeline">
+            <option value="0">Standard (within 1 week)</option>
+            <option value="50">Priority (1-2 days, +$50)</option>
+            <option value="100">Rush (next day, +$100)</option>
           </select>
         </div>
       </div>
-      <button class="calc-btn" onclick="calculateEstimate()">Calculate My Estimate →</button>
+      <button class="calc-btn" onclick="calculateQuote()">Get My Instant Quote</button>
 
       <div class="calc-result" id="calc-result">
         <div class="result-row">
-          <span class="result-label">Base Estimate Range</span>
-          <span class="result-value" id="res-base">—</span>
+          <span class="result-label">Selected Services</span>
+          <span class="result-value" id="res-services">--</span>
         </div>
         <div class="result-row">
-          <span class="result-label">Urgency Fee</span>
-          <span class="result-value" id="res-urgency">—</span>
+          <span class="result-label">Base Estimate Range</span>
+          <span class="result-value" id="res-base">--</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Timeline Fee</span>
+          <span class="result-value" id="res-timeline">--</span>
         </div>
         <div class="result-row">
           <span class="result-label">Property Adjustment</span>
-          <span class="result-value" id="res-property">—</span>
+          <span class="result-value" id="res-property">--</span>
         </div>
         <div class="result-row result-total">
           <span class="result-label">Total Estimate Range</span>
-          <span class="result-value" id="res-total">—</span>
+          <span class="result-value" id="res-total">--</span>
         </div>
-        <p class="calc-disclaimer">Actual price confirmed on-site inspection. No surprise charges — ever. Final quote provided in writing before any work begins.</p>
+        <p class="calc-disclaimer">Final price confirmed after on-site walkthrough. No surprise charges. Written quote provided before any work begins.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE / AFTER ===== -->
+<section id="beforeafter" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Before & After Transformations</h2>
+      <p class="section-sub">Toggle each card to see the transformation. Real results from real LA County homes.</p>
+    </div>
+    <div class="ba-grid">
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba1" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">🕳️</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">✨</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Drywall Patch & Paint</div>
+          <label class="ba-toggle-label" for="ba1">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba2" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">🚪</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🏠</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Front Door Replacement</div>
+          <label class="ba-toggle-label" for="ba2">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba3" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">😰</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🎨</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Full Room Repaint</div>
+          <label class="ba-toggle-label" for="ba3">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba4" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">🟤</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🌟</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Driveway Pressure Wash</div>
+          <label class="ba-toggle-label" for="ba4">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba5" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">📦</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🪑</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">IKEA Furniture Assembly</div>
+          <label class="ba-toggle-label" for="ba5">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <input type="checkbox" class="ba-toggle-input" id="ba6" />
+        <div class="ba-display">
+          <div class="ba-state ba-before">
+            <div class="ba-state-emoji">💧</div>
+            <span class="ba-state-label">Before</span>
+          </div>
+          <div class="ba-state ba-after">
+            <div class="ba-state-emoji">🚿</div>
+            <span class="ba-state-label">After</span>
+          </div>
+        </div>
+        <div class="ba-bottom">
+          <div class="ba-title">Bathroom Faucet Upgrade</div>
+          <label class="ba-toggle-label" for="ba6">
+            <span class="ba-toggle-text"></span>
+            <div class="ba-toggle-track"></div>
+          </label>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1025,33 +1366,33 @@
 <section id="trust" class="section">
   <div class="container">
     <div class="section-header centered">
-      <div class="section-label">Why ProFlow</div>
-      <h2 class="section-title">Built on Trust. Backed by Results.</h2>
+      <div class="section-label">Why ProFix</div>
+      <h2 class="section-title">Your Home. Our Priority.</h2>
     </div>
     <div class="trust-grid">
       <div class="trust-card">
         <span class="trust-icon">🛡️</span>
-        <div class="trust-title">Licensed & Bonded</div>
-        <div class="trust-desc">Fully licensed with the California Contractors State License Board. You're protected on every job.</div>
-        <div class="trust-badge">Lic# C-36 847392</div>
-      </div>
-      <div class="trust-card">
-        <span class="trust-icon">⚡</span>
-        <div class="trust-title">Same-Day Service</div>
-        <div class="trust-desc">We dispatch within 60 minutes across LA County. No waiting days — plumbing problems don't wait.</div>
-        <div class="trust-badge">Avg 60 min response</div>
+        <div class="trust-title">Licensed & Insured</div>
+        <div class="trust-desc">Fully licensed and insured for your protection. Every technician is background-checked and trained.</div>
+        <div class="trust-badge">Bonded & Insured</div>
       </div>
       <div class="trust-card">
         <span class="trust-icon">💰</span>
         <div class="trust-title">Upfront Pricing</div>
-        <div class="trust-desc">You get a written quote before the wrench turns. No hidden fees, no "we'll figure it out" surprises.</div>
-        <div class="trust-badge">Written quote always</div>
+        <div class="trust-desc">You see the price before we start. No hourly surprises, no hidden materials markup. What we quote is what you pay.</div>
+        <div class="trust-badge">Written quotes always</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">📅</span>
+        <div class="trust-title">Same-Week Scheduling</div>
+        <div class="trust-desc">Book online or call and we'll have someone at your door within the week. Priority and rush options available.</div>
+        <div class="trust-badge">Usually 2-3 days</div>
       </div>
       <div class="trust-card">
         <span class="trust-icon">🏆</span>
-        <div class="trust-title">15+ Years Experience</div>
-        <div class="trust-desc">Over 4,800 jobs completed in LA County. We've seen every pipe problem imaginable — and fixed them all.</div>
-        <div class="trust-badge">Since 2009</div>
+        <div class="trust-title">10+ Years Experience</div>
+        <div class="trust-desc">Over 3,200 jobs completed across LA County. Residential and commercial. We've fixed it all and seen it all.</div>
+        <div class="trust-badge">Since 2015</div>
       </div>
     </div>
   </div>
@@ -1065,49 +1406,49 @@
       <h2 class="section-title">What LA Homeowners Are Saying</h2>
     </div>
     <div class="reviews-rating-summary">
-      <div class="rating-big">4.9</div>
+      <div class="rating-big">4.8</div>
       <div class="stars" style="justify-content:center;margin:8px 0;">
-        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+        <span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span>
       </div>
-      <div class="rating-label">Based on 312 verified reviews · Google &amp; Yelp</div>
+      <div class="rating-label">Based on 247 verified reviews &middot; Google &amp; Yelp</div>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
-        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <div class="stars"><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span></div>
         <p class="review-text">
-          Had a burst pipe at 11 PM on a Sunday. Called ProFlow and they were at my house in under 45 minutes. The tech was professional, explained everything clearly, and the price was exactly what they quoted over the phone. Couldn't be more relieved.
+          Had a long honey-do list that I kept putting off — drywall patches, a squeaky door, and a ceiling fan install. ProFix knocked it all out in one visit. The tech was punctual, friendly, and left everything spotless. Will absolutely call again.
         </p>
         <div class="reviewer">
-          <div class="reviewer-avatar">MR</div>
+          <div class="reviewer-avatar">SL</div>
           <div>
-            <div class="reviewer-name">Maria R.</div>
-            <div class="reviewer-meta">Los Angeles, CA · 3 weeks ago</div>
+            <div class="reviewer-name">Sarah L.</div>
+            <div class="reviewer-meta">Pasadena, CA &middot; 2 weeks ago</div>
           </div>
         </div>
       </div>
       <div class="review-card">
-        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <div class="stars"><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span></div>
         <p class="review-text">
-          Got three quotes for a water heater replacement. ProFlow wasn't the cheapest but they were the most transparent — showed me exactly what parts cost and why. Install was done same day, clean, no mess left behind. Worth every dollar.
+          I ordered a massive IKEA wardrobe and had zero interest in assembling it myself. Called ProFix on Monday, they came out Wednesday. Two hours later it was done perfectly — sturdy, level, and anchored to the wall. Saved me an entire weekend of frustration.
         </p>
         <div class="reviewer">
-          <div class="reviewer-avatar">JT</div>
+          <div class="reviewer-avatar">KC</div>
           <div>
-            <div class="reviewer-name">James T.</div>
-            <div class="reviewer-meta">Burbank, CA · 1 month ago</div>
+            <div class="reviewer-name">Kevin C.</div>
+            <div class="reviewer-meta">Long Beach, CA &middot; 1 month ago</div>
           </div>
         </div>
       </div>
       <div class="review-card">
-        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <div class="stars"><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span><span>&#11088;</span></div>
         <p class="review-text">
-          My kitchen drain had been backing up for weeks. ProFlow hydro-jetted the main line and did a camera inspection — found a root intrusion I didn't even know about. Fixed it same day. The pricing was super fair for the work they did.
+          We needed our entire living room repainted before a family event. ProFix gave us a flat quote over the phone, showed up on time, taped everything off properly, and the finished result looks incredible. Fair price, great work, no mess.
         </p>
         <div class="reviewer">
-          <div class="reviewer-avatar">DK</div>
+          <div class="reviewer-avatar">TP</div>
           <div>
-            <div class="reviewer-name">Diana K.</div>
-            <div class="reviewer-meta">Long Beach, CA · 2 months ago</div>
+            <div class="reviewer-name">Teresa P.</div>
+            <div class="reviewer-meta">Burbank, CA &middot; 3 weeks ago</div>
           </div>
         </div>
       </div>
@@ -1120,21 +1461,21 @@
   <div class="container">
     <div class="section-header">
       <div class="section-label">Get In Touch</div>
-      <h2 class="section-title">Request a Free Inspection</h2>
-      <p class="section-sub">Available same-day across all of LA County. We'll call you back within 15 minutes.</p>
+      <h2 class="section-title">Request a Free Estimate</h2>
+      <p class="section-sub">Tell us what you need and we'll get back to you within a few hours with a quote.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info-block">
         <div class="contact-info-item">
-          <div class="contact-info-icon">📞</div>
+          <div class="contact-info-icon">&#128222;</div>
           <div>
             <div class="contact-info-label">Phone</div>
             <div class="contact-info-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
-            <div class="contact-info-sub">Answered 24/7 — including holidays</div>
+            <div class="contact-info-sub">Mon-Sat 7 AM - 7 PM</div>
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-info-icon">📍</div>
+          <div class="contact-info-icon">&#128205;</div>
           <div>
             <div class="contact-info-label">Location</div>
             <div class="contact-info-value">Los Angeles, CA</div>
@@ -1142,22 +1483,21 @@
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-info-icon">🕐</div>
+          <div class="contact-info-icon">&#128336;</div>
           <div>
             <div class="contact-info-label">Hours</div>
-            <div class="contact-info-value">24 / 7 / 365</div>
-            <div class="contact-info-sub">Emergency calls answered immediately</div>
+            <div class="contact-info-value">Mon - Sat, 7 AM - 7 PM</div>
+            <div class="contact-info-sub">Same-week scheduling on most jobs</div>
           </div>
         </div>
         <div class="contact-info-item">
-          <div class="contact-info-icon">🛡️</div>
+          <div class="contact-info-icon">&#9989;</div>
           <div>
-            <div class="contact-info-label">License</div>
-            <div class="contact-info-value">C-36 Plumbing Contractor</div>
-            <div class="contact-info-sub">CSLB Lic# 847392 · Bonded & Insured</div>
+            <div class="contact-info-label">Guarantee</div>
+            <div class="contact-info-value">Satisfaction Guaranteed</div>
+            <div class="contact-info-sub">If you're not happy, we come back and make it right — free</div>
           </div>
         </div>
-        <div class="lic-chip">✓ Verified: CSLB Lic# C-36 847392</div>
       </div>
 
       <div class="contact-form-card">
@@ -1167,12 +1507,12 @@
           action="https://formsubmit.co/sabino.sanchez7@gmail.com"
           method="POST"
         >
-          <input type="hidden" name="_subject" value="Plumbing Request - ProFlow" />
+          <input type="hidden" name="_subject" value="Handyman Request - ProFix" />
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://rivven.ai/demos/plumbing/#thank-you" />
+          <input type="hidden" name="_next" value="#contact" />
           <div class="form-group">
             <label for="contact-name">Full Name</label>
-            <input type="text" id="contact-name" name="name" placeholder="Maria Rodriguez" required />
+            <input type="text" id="contact-name" name="name" placeholder="John Smith" required />
           </div>
           <div class="form-group">
             <label for="contact-phone">Phone Number</label>
@@ -1181,21 +1521,23 @@
           <div class="form-group">
             <label for="contact-service">Service Needed</label>
             <select id="contact-service" name="service" required>
-              <option value="">— Select a service —</option>
-              <option>Drain Cleaning</option>
-              <option>Water Heater Install</option>
-              <option>Leak Repair</option>
-              <option>Pipe Replacement</option>
-              <option>Sewer Line Service</option>
-              <option>Bathroom Remodel</option>
-              <option>Other / Not Sure</option>
+              <option value="">-- Select a service --</option>
+              <option>Furniture Assembly</option>
+              <option>Drywall Repair</option>
+              <option>Painting</option>
+              <option>Plumbing Fixes</option>
+              <option>Electrical</option>
+              <option>Door & Window Repair</option>
+              <option>Pressure Washing</option>
+              <option>General Repairs</option>
+              <option>Multiple Services / Not Sure</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="contact-desc">Describe the Issue</label>
-            <textarea id="contact-desc" name="description" placeholder="E.g. Kitchen sink backing up, slow drain in master bath, water heater not heating..."></textarea>
+            <label for="contact-desc">Describe the Job</label>
+            <textarea id="contact-desc" name="description" placeholder="E.g. Need 3 holes patched in bedroom wall, a ceiling fan installed, and a leaky kitchen faucet fixed..."></textarea>
           </div>
-          <button type="submit" class="contact-submit">Send Request — We'll Call in 15 Min</button>
+          <button type="submit" class="contact-submit">Send Request — Free Estimate</button>
         </form>
       </div>
     </div>
@@ -1206,8 +1548,8 @@
 <section style="padding:72px 0;text-align:center;">
   <div class="container">
     <div class="section-label">Service Area</div>
-    <h2 class="section-title" style="margin-bottom:12px;">Serving All of LA County — 24/7</h2>
-    <p class="section-sub" style="max-width:540px;margin:0 auto 28px;">Fast dispatch anywhere in Los Angeles County. Our plumbers are always nearby and ready to respond.</p>
+    <h2 class="section-title" style="margin-bottom:12px;">Serving All of LA County</h2>
+    <p class="section-sub" style="max-width:540px;margin:0 auto 28px;">We dispatch skilled handymen across Los Angeles County. Your neighborhood is covered.</p>
     <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:750px;margin:0 auto;">
       <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Los Angeles</span>
       <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Long Beach</span>
@@ -1230,12 +1572,12 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-copy">
-        ProFlow Plumbing <span>© 2026</span> · Los Angeles, CA · CSLB Lic# C-36 847392
+        ProFix Handyman <span>&copy; 2026</span> &middot; Los Angeles, CA
       </div>
-      <div style="color:var(--muted);font-size:12px;margin:6px 0;">Open 24/7/365 · Emergency calls answered immediately · Licensed, Bonded & Insured · Serving all of LA County</div>
-      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo →</a></div>
+      <div style="color:var(--muted);font-size:12px;margin:6px 0;">Mon-Sat 7AM-7PM &middot; Licensed & Insured &middot; Serving all of LA County</div>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo &rarr;</a></div>
       <div class="footer-brand">
-        Website by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> · rivven.ai
+        Built by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a>
       </div>
     </div>
   </div>
@@ -1248,7 +1590,7 @@
     Built by Rivven
   </div>
   <a href="https://rivven.ai" target="_blank" rel="noopener" class="banner-cta">
-    Get My Site →
+    Get My Site &rarr;
   </a>
 </div>
 
@@ -1278,47 +1620,62 @@
     }
   });
 
-  /* ---- Estimate Calculator ---- */
+  /* ---- Quote Calculator ---- */
   const servicePrices = {
-    drain:    { low: 89,  high: 250,  name: 'Drain Cleaning' },
-    heater:   { low: 450, high: 900,  name: 'Water Heater Install' },
-    leak:     { low: 120, high: 450,  name: 'Leak Repair' },
-    pipe:     { low: 350, high: 1200, name: 'Pipe Replacement' },
-    sewer:    { low: 275, high: 850,  name: 'Sewer Line Service' },
-    bathroom: { low: 800, high: 2500, name: 'Bathroom Remodel' },
+    furniture:  { low: 75,  high: 200 },
+    drywall:    { low: 95,  high: 350 },
+    painting:   { low: 150, high: 600 },
+    plumbing:   { low: 85,  high: 300 },
+    electrical: { low: 90,  high: 350 },
+    doors:      { low: 110, high: 400 },
+    pressure:   { low: 120, high: 450 },
+    general:    { low: 65,  high: 250 },
   };
+
+  function toggleCalcService(el) {
+    const cb = el.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+    el.classList.toggle('selected', cb.checked);
+  }
 
   function fmt(n) {
     return '$' + Math.round(n).toLocaleString();
   }
 
-  function calculateEstimate() {
-    const serviceKey  = document.getElementById('calc-service').value;
-    const urgencyFee  = parseFloat(document.getElementById('calc-urgency').value);
-    const propMult    = parseFloat(document.getElementById('calc-property').value);
-
-    if (!serviceKey) {
-      alert('Please select a service type.');
+  function calculateQuote() {
+    const checked = document.querySelectorAll('#calc-services input[type="checkbox"]:checked');
+    if (checked.length === 0) {
+      alert('Please select at least one service.');
       return;
     }
 
-    const svc     = servicePrices[serviceKey];
-    const baseLow  = svc.low;
-    const baseHigh = svc.high;
+    let totalLow = 0;
+    let totalHigh = 0;
+    let count = 0;
 
-    const adjLow  = baseLow  * propMult;
-    const adjHigh = baseHigh * propMult;
+    checked.forEach(cb => {
+      const svc = servicePrices[cb.value];
+      if (svc) {
+        totalLow += svc.low;
+        totalHigh += svc.high;
+        count++;
+      }
+    });
 
-    const totalLow  = adjLow  + urgencyFee;
-    const totalHigh = adjHigh + urgencyFee;
+    const propMult = parseFloat(document.getElementById('calc-property').value);
+    const timelineFee = parseFloat(document.getElementById('calc-timeline').value);
 
-    const urgencyLabels = { 0: 'None (Standard)', 75: '+$75 Same Day', 150: '+$150 Emergency' };
-    const propLabels    = { 1: 'None (Residential)', 1.35: '+35% (Commercial)' };
+    const adjLow = totalLow * propMult;
+    const adjHigh = totalHigh * propMult;
 
-    document.getElementById('res-base').textContent     = fmt(baseLow) + ' – ' + fmt(baseHigh);
-    document.getElementById('res-urgency').textContent  = urgencyFee === 0 ? 'None' : '+' + fmt(urgencyFee);
-    document.getElementById('res-property').textContent = propMult === 1 ? 'None' : '+35% applied';
-    document.getElementById('res-total').textContent    = fmt(totalLow) + ' – ' + fmt(totalHigh);
+    const finalLow = adjLow + timelineFee;
+    const finalHigh = adjHigh + timelineFee;
+
+    document.getElementById('res-services').textContent = count + ' service' + (count > 1 ? 's' : '') + ' selected';
+    document.getElementById('res-base').textContent = fmt(totalLow) + ' \u2013 ' + fmt(totalHigh);
+    document.getElementById('res-timeline').textContent = timelineFee === 0 ? 'None' : '+' + fmt(timelineFee);
+    document.getElementById('res-property').textContent = propMult === 1 ? 'None' : '+30% applied';
+    document.getElementById('res-total').textContent = fmt(finalLow) + ' \u2013 ' + fmt(finalHigh);
 
     const result = document.getElementById('calc-result');
     result.classList.add('show');
@@ -1336,7 +1693,7 @@
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll('.section-header, .trust-card, .review-card, .contact-info-item').forEach(el => {
+  document.querySelectorAll('.section-header, .trust-card, .review-card, .contact-info-item, .ba-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(24px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -1349,10 +1706,7 @@
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        closeMobileMenu();
-        const navH = document.getElementById('nav').offsetHeight;
-        const top  = target.getBoundingClientRect().top + window.pageYOffset - navH - 16;
-        window.scrollTo({ top, behavior: 'smooth' });
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });

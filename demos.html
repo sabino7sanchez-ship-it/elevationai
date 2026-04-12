@@ -3,337 +3,1425 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Demos — Rivven</title>
-<meta name="description" content="20 live industry demos built by Rivven. Send any demo directly to a prospect. Restaurant, auto detailing, trucking, real estate, fitness, and more.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Demo Gallery — 22 Live Industry Sites | Rivven</title>
+<meta name="description" content="22 fully functional demo websites across 20+ industries. Pool service, construction, restaurants, auto detailing, real estate and more. Built in 48 hours starting at $599.">
+<link rel="canonical" href="https://rivven.com/demos.html">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#08090d;--card:rgba(15,17,23,.9);--border:rgba(0,240,255,.1);--cyan:#00f0ff;--text:#e8eaed;--text2:#8b949e;--font:'Inter',sans-serif}
-body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
-a{text-decoration:none;color:inherit}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
 
-.header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.logo{font-size:18px;font-weight:800;letter-spacing:1px}
-.logo span{color:var(--cyan)}
-.back{color:var(--cyan);font-size:13px;font-weight:600}
+:root {
+  --bg: #0A0A0B;
+  --bg-card: #111113;
+  --bg-card-hover: #18181B;
+  --border: #222225;
+  --text: #FAFAFA;
+  --text-dim: #71717A;
+  --text-mid: #A1A1AA;
+  --neon-cyan: #00F0FF;
+  --neon-green: #00FF88;
+  --neon-purple: #7B61FF;
+  --glow-cyan: rgba(0,240,255,0.15);
+  --glow-green: rgba(0,255,136,0.15);
+  --glow-purple: rgba(123,97,255,0.15);
+}
 
-.hero{text-align:center;padding:48px 20px 24px}
-.hero h1{font-size:clamp(24px,5vw,36px);font-weight:900;margin-bottom:8px}
-.hero h1 span{color:var(--cyan)}
-.hero p{color:var(--text2);font-size:15px;max-width:500px;margin:0 auto}
-.count{display:inline-block;margin-top:12px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);border-radius:20px;padding:6px 16px;font-size:13px;font-weight:700;color:var(--cyan)}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-.grid{max-width:1200px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;transition:.25s;display:flex;flex-direction:column;cursor:pointer;position:relative;overflow:hidden}
-.card:hover{border-color:rgba(0,240,255,.4);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,240,255,.08)}
-.card-icon{font-size:28px;margin-bottom:8px}
-.card-title{font-size:17px;font-weight:800;margin-bottom:4px}
-.card-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:12px;flex:1}
-.card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.tag{font-size:10px;padding:3px 8px;border-radius:6px;background:rgba(0,240,255,.08);color:var(--cyan);border:1px solid rgba(0,240,255,.15);font-weight:600}
-.card-link{display:inline-flex;align-items:center;gap:6px;color:var(--cyan);font-weight:700;font-size:13px;padding:8px 0;border-top:1px solid rgba(255,255,255,.05)}
-.card-link svg{width:14px;height:14px;fill:currentColor;transition:.2s}
-.card:hover .card-link svg{transform:translateX(3px)}
+/* ── TOP CTA BANNER ── */
+.top-banner {
+  background: var(--neon-cyan);
+  color: #0A0A0B;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  position: relative;
+  z-index: 200;
+}
+.top-banner.hidden { display: none; }
+.top-banner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #0A0A0B;
+  color: var(--neon-cyan);
+  padding: 5px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.top-banner a:hover { opacity: 0.85; }
+.banner-dismiss {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(10,10,11,0.6);
+  font-size: 18px;
+  line-height: 1;
+  padding: 4px;
+}
+.banner-dismiss:hover { color: #0A0A0B; }
 
-.copy-btn{position:absolute;top:12px;right:12px;background:rgba(0,240,255,.1);border:1px solid rgba(0,240,255,.2);color:var(--cyan);font-size:11px;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:var(--font);font-weight:600;transition:.2s}
-.copy-btn:hover{background:rgba(0,240,255,.2)}
+/* ── NAV ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10,10,11,0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--text-dim); font-weight: 400; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.nav-link {
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-phone {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  padding: 6px 12px;
+}
+.nav-cta {
+  padding: 8px 18px;
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover {
+  background: var(--neon-cyan);
+  color: var(--bg);
+  box-shadow: 0 0 20px var(--glow-cyan);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-mid);
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10,10,11,0.97);
+  z-index: 150;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-size: 20px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.mobile-nav a:hover { color: var(--neon-cyan); }
+.mobile-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 28px;
+  cursor: pointer;
+}
 
-.section-label{max-width:1200px;margin:32px auto 8px;padding:0 20px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text2)}
+/* ── HERO ── */
+.hero {
+  padding: 80px 32px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, var(--glow-cyan) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--neon-green);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(30px, 5.5vw, 58px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 span { color: var(--neon-cyan); }
+.hero-sub {
+  font-size: clamp(15px, 2vw, 17px);
+  color: var(--text-mid);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+.hero-counter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 28px;
+  background: var(--bg-card);
+}
+.counter-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+}
+.counter-label {
+  font-size: 14px;
+  color: var(--text-mid);
+}
 
-.footer{text-align:center;padding:40px 20px;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:40px}
+/* ── STICKY SEARCH BAR ── */
+.search-bar-wrapper {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 32px;
+  transition: all 0.3s;
+  z-index: 90;
+}
+.search-bar-wrapper.is-sticky {
+  position: sticky;
+  top: 57px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.search-row {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+}
+.search-input-wrap svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dim);
+  pointer-events: none;
+}
+.search-input {
+  width: 100%;
+  padding: 10px 14px 10px 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: border 0.2s;
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 3px var(--glow-cyan);
+}
+.search-input::placeholder { color: var(--text-dim); }
+.filter-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.pill {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.pill:hover { border-color: var(--text-mid); color: var(--text); }
+.pill.active {
+  background: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  color: #0A0A0B;
+}
+.sort-select {
+  padding: 8px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-mid);
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%2371717A' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+.sort-select:focus { outline: none; border-color: var(--neon-cyan); }
+.sort-select option { background: var(--bg-card); color: var(--text); }
+.results-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+  margin-left: auto;
+}
+.results-count span { color: var(--neon-cyan); font-weight: 700; }
 
-@media(max-width:600px){.grid{grid-template-columns:1fr;padding:12px}}
+/* ── GRID ── */
+.grid-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 32px 80px;
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.empty-state {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 24px;
+}
+.empty-state-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+}
+.empty-state-sub {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.empty-state-sub a {
+  color: var(--neon-cyan);
+  text-decoration: none;
+}
+
+/* ── DEMO CARD ── */
+.demo-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  opacity: 0;
+  transform: translateY(28px);
+  cursor: default;
+}
+.demo-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.demo-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 28px var(--glow-cyan), 0 8px 32px rgba(0,0,0,0.4);
+}
+.demo-card.hidden-card { display: none; }
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+.category-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.cat-home { background: rgba(0,255,136,0.12); color: var(--neon-green); border: 1px solid rgba(0,255,136,0.25); }
+.cat-auto { background: rgba(0,240,255,0.12); color: var(--neon-cyan); border: 1px solid rgba(0,240,255,0.25); }
+.cat-food { background: rgba(255,160,50,0.12); color: #FFA032; border: 1px solid rgba(255,160,50,0.25); }
+.cat-health { background: rgba(255,80,150,0.12); color: #FF5096; border: 1px solid rgba(255,80,150,0.25); }
+.cat-pro { background: rgba(123,97,255,0.12); color: var(--neon-purple); border: 1px solid rgba(123,97,255,0.25); }
+.cat-creative { background: rgba(255,210,50,0.12); color: #FFD232; border: 1px solid rgba(255,210,50,0.25); }
+.cat-finance { background: rgba(50,200,100,0.12); color: #32C864; border: 1px solid rgba(50,200,100,0.25); }
+
+.card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.card-industry {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+.card-business {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-top: -4px;
+}
+.feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+  flex: 1;
+}
+.feature-pill {
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--text-mid);
+  background: rgba(255,255,255,0.03);
+}
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: 1px solid var(--neon-cyan);
+  border-radius: 8px;
+  color: var(--neon-cyan);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-top: auto;
+}
+.card-cta:hover {
+  background: var(--neon-cyan);
+  color: var(--bg);
+  box-shadow: 0 0 20px var(--glow-cyan);
+}
+
+/* ── CUSTOM DEMO REQUEST ── */
+.custom-section {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 32px;
+}
+.custom-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.custom-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--neon-purple);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+.custom-title {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+.custom-sub {
+  font-size: 15px;
+  color: var(--text-mid);
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+.custom-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+.form-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.form-field input {
+  padding: 11px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  transition: border 0.2s;
+}
+.form-field input:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 0 3px var(--glow-cyan);
+}
+.form-field input::placeholder { color: var(--text-dim); }
+.form-submit {
+  padding: 11px 22px;
+  background: var(--neon-cyan);
+  border: none;
+  border-radius: 8px;
+  color: var(--bg);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.form-submit:hover {
+  box-shadow: 0 0 24px var(--glow-cyan);
+  transform: translateY(-1px);
+}
+.custom-success {
+  display: none;
+  padding: 24px;
+  background: rgba(0,255,136,0.08);
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: 10px;
+  color: var(--neon-green);
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  padding: 40px 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--neon-cyan);
+  font-weight: 700;
+}
+.footer-logo span { color: var(--text-dim); font-weight: 400; }
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--neon-cyan); }
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.footer-copy a { color: var(--neon-cyan); text-decoration: none; }
+
+/* ── SCROLL ANIMATION ── */
+.anim-fade {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.anim-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .demo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 60px 20px 48px; }
+  .search-bar-wrapper { padding: 14px 20px; }
+  .search-row { gap: 10px; }
+  .filter-pills { gap: 5px; }
+  .grid-section { padding: 32px 20px 60px; }
+  .demo-grid { grid-template-columns: 1fr; gap: 14px; }
+  .custom-section { padding: 60px 20px; }
+  .custom-form { grid-template-columns: 1fr; }
+  .footer { padding: 32px 20px; }
+  .top-banner { font-size: 11px; gap: 8px; padding: 10px 44px 10px 20px; }
+  .top-banner a { padding: 4px 10px; font-size: 11px; }
+  .results-count { margin-left: 0; width: 100%; }
+}
+@media (max-width: 480px) {
+  .search-bar-wrapper.is-sticky { top: 52px; }
+}
 </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">RIVVEN DEMOS</div>
-  <div style="display:flex;gap:16px;align-items:center">
-    <a class="back" href="/booking.html" style="background:var(--cyan);color:#000;padding:6px 16px;border-radius:6px;font-weight:700">Book Free Demo</a>
-    <a class="back" href="https://rivven.ai">← Back to Main Site</a>
-  </div>
-</header>
-
-<div class="hero">
-  <h1>Live <span>Industry Demos</span></h1>
-  <p>Every demo is a fully built website you can send directly to a prospect. Click any card to view it live.</p>
-  <div class="count" id="demoCount">20 DEMOS • 20 INDUSTRIES • ALL LIVE</div>
+<!-- TOP BANNER -->
+<div class="top-banner" id="topBanner">
+  <span>🚀 Want a site like these? — Build starts at $599 — 48-hour delivery</span>
+  <a href='/intake'>Book Your Build →</a>
+  <button class="banner-dismiss" onclick="dismissBanner()" aria-label="Dismiss banner">&#x2715;</button>
 </div>
 
-<!-- CTA BANNER -->
-<div style="max-width:1200px;margin:0 auto 20px;padding:0 20px;">
-  <div style="background:linear-gradient(135deg,rgba(0,240,255,.08),rgba(0,255,136,.08));border:1px solid rgba(0,240,255,.2);border-radius:12px;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-    <div>
-      <div style="font-size:17px;font-weight:800;">Want one of these for YOUR business?</div>
-      <div style="font-size:13px;color:var(--text2);margin-top:4px;">Custom-built in 48 hours. Starting at $599. All industries.</div>
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="closeMobileNav()" aria-label="Close menu">&#x2715;</button>
+  <a href='/' onclick='closeMobileNav()'>Home</a>
+  <a href='/shop' onclick='closeMobileNav()'>Shop</a>
+  <a href='/intake' onclick='closeMobileNav()'>Book a Demo</a>
+  <a href="tel:5623731027">(562) 373-1027</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <a class='nav-logo' href='/'>Sanchez<span>_Rivven</span></a>
+  <div class="nav-links">
+    <a class='nav-link' href='/'>Home</a>
+    <a class='nav-link' href='/shop'>Shop</a>
+    <span class="nav-phone">(562) 373-1027</span>
+    <a class='nav-cta' href='/intake'>Book a Demo</a>
+  </div>
+  <button class="hamburger" onclick="openMobileNav()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="heroSection">
+  <div class="hero-label">// live demos</div>
+  <h1>22 Industries. <span>Built. Live.</span> Ready to Show.</h1>
+  <p class="hero-sub">Every demo below is a fully functional website we built as a proof of concept. Click any one, show your clients, or book yours today.</p>
+  <div class="hero-counter">
+    <span class="counter-num">[ 22 ]</span>
+    <span class="counter-label">Demos Available</span>
+  </div>
+</section>
+
+<!-- SEARCH + FILTER BAR -->
+<div class="search-bar-wrapper" id="searchBar">
+  <div class="search-row">
+    <div class="search-input-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input
+        class="search-input"
+        id="searchInput"
+        type="text"
+        placeholder="Search by industry or business type..."
+        autocomplete="off"
+        oninput="handleSearch()"
+      >
     </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;">
-      <a href="/booking.html" style="padding:10px 22px;background:var(--cyan);color:#000;border-radius:8px;font-size:13px;font-weight:700;">Book Free Demo</a>
-      <a href="tel:+15623731027" style="padding:10px 22px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--text);border-radius:8px;font-size:13px;font-weight:600;">(562) 373-1027</a>
+    <div class="filter-pills" id="filterPills">
+      <button class="pill active" data-cat="all" onclick="setCategory('all')">All</button>
+      <button class="pill" data-cat="Home Services" onclick="setCategory('Home Services')">Home Services</button>
+      <button class="pill" data-cat="Auto" onclick="setCategory('Auto')">Auto</button>
+      <button class="pill" data-cat="Food & Bev" onclick="setCategory('Food & Bev')">Food &amp; Bev</button>
+      <button class="pill" data-cat="Health & Beauty" onclick="setCategory('Health & Beauty')">Health &amp; Beauty</button>
+      <button class="pill" data-cat="Professional" onclick="setCategory('Professional')">Professional</button>
+      <button class="pill" data-cat="Creative" onclick="setCategory('Creative')">Creative</button>
+    </div>
+    <select class="sort-select" id="sortSelect" onchange="handleSort()">
+      <option value="default">Newest First</option>
+      <option value="az">A-Z</option>
+      <option value="popular">Most Popular</option>
+    </select>
+    <div class="results-count" id="resultsCount">Showing <span id="countNum">22</span> of 22 demos</div>
+  </div>
+</div>
+
+<!-- DEMO GRID -->
+<div class="grid-section">
+  <div class="demo-grid" id="demoGrid">
+
+    <!-- 1: Pool Service -->
+    <div class="demo-card"
+      data-cat="Home Services"
+      data-industry="pool service"
+      data-business="crystal clear pool service"
+      data-order="1"
+      data-popular="8">
+      <div class="card-top">
+        <span class="category-badge cat-home">Home Services</span>
+        <span class="card-num">#01</span>
+      </div>
+      <div class="card-industry">Pool Service</div>
+      <div class="card-business">Crystal Clear Pool Service</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Quote Calc</span>
+        <span class="feature-pill">Bilingual</span>
+        <span class="feature-pill">JSON-LD</span>
+      </div>
+      <a class="card-cta" href="demos/poolservice/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 2: Construction -->
+    <div class="demo-card"
+      data-cat="Home Services"
+      data-industry="contractor construction"
+      data-business="allendes group inc"
+      data-order="2"
+      data-popular="9">
+      <div class="card-top">
+        <span class="category-badge cat-home">Home Services</span>
+        <span class="card-num">#02</span>
+      </div>
+      <div class="card-industry">Contractor / Construction</div>
+      <div class="card-business">Allendes Group Inc</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Bilingual</span>
+        <span class="feature-pill">WhatsApp</span>
+        <span class="feature-pill">GA4</span>
+      </div>
+      <a class="card-cta" href="demos/construction/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 3: Cleaning -->
+    <div class="demo-card"
+      data-cat="Home Services"
+      data-industry="cleaning service"
+      data-business="clean pro services"
+      data-order="3"
+      data-popular="7">
+      <div class="card-top">
+        <span class="category-badge cat-home">Home Services</span>
+        <span class="card-num">#03</span>
+      </div>
+      <div class="card-industry">Cleaning Service</div>
+      <div class="card-business">Clean Pro Services</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Booking</span>
+        <span class="feature-pill">Bilingual</span>
+      </div>
+      <a class="card-cta" href="demos/cleaning/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 4: Handyman -->
+    <div class="demo-card"
+      data-cat="Home Services"
+      data-industry="handyman"
+      data-business="profix handyman"
+      data-order="4"
+      data-popular="6">
+      <div class="card-top">
+        <span class="category-badge cat-home">Home Services</span>
+        <span class="card-num">#04</span>
+      </div>
+      <div class="card-industry">Handyman</div>
+      <div class="card-business">ProFix Handyman</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Quote Calc</span>
+        <span class="feature-pill">Before/After</span>
+      </div>
+      <a class="card-cta" href="demos/handyman/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 5: Landscaping -->
+    <div class="demo-card"
+      data-cat="Home Services"
+      data-industry="landscaping lawn"
+      data-business="green edge landscaping"
+      data-order="5"
+      data-popular="5">
+      <div class="card-top">
+        <span class="category-badge cat-home">Home Services</span>
+        <span class="card-num">#05</span>
+      </div>
+      <div class="card-industry">Landscaping</div>
+      <div class="card-business">Green Edge Landscaping</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Gallery</span>
+        <span class="feature-pill">Bilingual</span>
+        <span class="feature-pill">Booking</span>
+      </div>
+      <a class="card-cta" href="demos/landscaping/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 6: Plumbing -->
+    <div class="demo-card"
+      data-cat="Home Services"
+      data-industry="plumbing plumber"
+      data-business="fastflow plumbing"
+      data-order="6"
+      data-popular="7">
+      <div class="card-top">
+        <span class="category-badge cat-home">Home Services</span>
+        <span class="card-num">#06</span>
+      </div>
+      <div class="card-industry">Plumbing</div>
+      <div class="card-business">FastFlow Plumbing</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Emergency CTA</span>
+        <span class="feature-pill">24/7</span>
+        <span class="feature-pill">Bilingual</span>
+      </div>
+      <a class="card-cta" href="demos/plumbing/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 7: Auto Detailing -->
+    <div class="demo-card"
+      data-cat="Auto"
+      data-industry="auto detailing car detail"
+      data-business="shine pro detailing"
+      data-order="7"
+      data-popular="10">
+      <div class="card-top">
+        <span class="category-badge cat-auto">Auto</span>
+        <span class="card-num">#07</span>
+      </div>
+      <div class="card-industry">Auto Detailing</div>
+      <div class="card-business">Shine Pro Detailing</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Quote Calc</span>
+        <span class="feature-pill">Before/After</span>
+        <span class="feature-pill">Booking</span>
+      </div>
+      <a class="card-cta" href="demos/autodetailing/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 8: Car Wash -->
+    <div class="demo-card"
+      data-cat="Auto"
+      data-industry="car wash"
+      data-business="aqua car wash"
+      data-order="8"
+      data-popular="6">
+      <div class="card-top">
+        <span class="category-badge cat-auto">Auto</span>
+        <span class="card-num">#08</span>
+      </div>
+      <div class="card-industry">Car Wash</div>
+      <div class="card-business">Aqua Car Wash</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Membership</span>
+        <span class="feature-pill">Pricing</span>
+        <span class="feature-pill">Bilingual</span>
+      </div>
+      <a class="card-cta" href="demos/carwash/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 9: Auto Repair -->
+    <div class="demo-card"
+      data-cat="Auto"
+      data-industry="auto repair mechanic"
+      data-business="trustauto repair"
+      data-order="9"
+      data-popular="7">
+      <div class="card-top">
+        <span class="category-badge cat-auto">Auto</span>
+        <span class="card-num">#09</span>
+      </div>
+      <div class="card-industry">Auto Repair</div>
+      <div class="card-business">TrustAuto Repair</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Online Estimate</span>
+        <span class="feature-pill">Reviews</span>
+      </div>
+      <a class="card-cta" href="demos/autorepair/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 10: Restaurant -->
+    <div class="demo-card"
+      data-cat="Food & Bev"
+      data-industry="restaurant food dining"
+      data-business="fuego kitchen"
+      data-order="10"
+      data-popular="9">
+      <div class="card-top">
+        <span class="category-badge cat-food">Food &amp; Bev</span>
+        <span class="card-num">#10</span>
+      </div>
+      <div class="card-industry">Restaurant</div>
+      <div class="card-business">Fuego Kitchen</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Menu</span>
+        <span class="feature-pill">Reservations</span>
+        <span class="feature-pill">Bilingual</span>
+      </div>
+      <a class="card-cta" href="demos/restaurant/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 11: Food Truck -->
+    <div class="demo-card"
+      data-cat="Food & Bev"
+      data-industry="food truck catering"
+      data-business="street bites"
+      data-order="11"
+      data-popular="5">
+      <div class="card-top">
+        <span class="category-badge cat-food">Food &amp; Bev</span>
+        <span class="card-num">#11</span>
+      </div>
+      <div class="card-industry">Food Truck</div>
+      <div class="card-business">Street Bites</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Location Map</span>
+        <span class="feature-pill">Menu</span>
+        <span class="feature-pill">Social</span>
+      </div>
+      <a class="card-cta" href="demos/foodtruck/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 12: Barbershop -->
+    <div class="demo-card"
+      data-cat="Health & Beauty"
+      data-industry="barbershop barber"
+      data-business="fresh cutz barbershop"
+      data-order="12"
+      data-popular="10">
+      <div class="card-top">
+        <span class="category-badge cat-health">Health &amp; Beauty</span>
+        <span class="card-num">#12</span>
+      </div>
+      <div class="card-industry">Barbershop</div>
+      <div class="card-business">Fresh Cutz Barbershop</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Booking</span>
+        <span class="feature-pill">Gallery</span>
+        <span class="feature-pill">Bilingual</span>
+      </div>
+      <a class="card-cta" href="demos/barbershop/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 13: Salon -->
+    <div class="demo-card"
+      data-cat="Health & Beauty"
+      data-industry="salon hair beauty"
+      data-business="glow beauty salon"
+      data-order="13"
+      data-popular="8">
+      <div class="card-top">
+        <span class="category-badge cat-health">Health &amp; Beauty</span>
+        <span class="card-num">#13</span>
+      </div>
+      <div class="card-industry">Salon</div>
+      <div class="card-business">Glow Beauty Salon</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Booking</span>
+        <span class="feature-pill">Services</span>
+        <span class="feature-pill">Gallery</span>
+      </div>
+      <a class="card-cta" href="demos/salon/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 14: Med Spa -->
+    <div class="demo-card"
+      data-cat="Health & Beauty"
+      data-industry="med spa medspa aesthetic"
+      data-business="luxe med spa"
+      data-order="14"
+      data-popular="7">
+      <div class="card-top">
+        <span class="category-badge cat-health">Health &amp; Beauty</span>
+        <span class="card-num">#14</span>
+      </div>
+      <div class="card-industry">Med Spa</div>
+      <div class="card-business">Luxe Med Spa</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Booking</span>
+        <span class="feature-pill">Before/After</span>
+        <span class="feature-pill">Bilingual</span>
+      </div>
+      <a class="card-cta" href="demos/medspa/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 15: Fitness -->
+    <div class="demo-card"
+      data-cat="Health & Beauty"
+      data-industry="fitness gym personal training"
+      data-business="iron core fitness"
+      data-order="15"
+      data-popular="8">
+      <div class="card-top">
+        <span class="category-badge cat-health">Health &amp; Beauty</span>
+        <span class="card-num">#15</span>
+      </div>
+      <div class="card-industry">Fitness / Personal Training</div>
+      <div class="card-business">Iron Core Fitness</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Class Schedule</span>
+        <span class="feature-pill">Booking</span>
+      </div>
+      <a class="card-cta" href="demos/fitness/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 16: Real Estate -->
+    <div class="demo-card"
+      data-cat="Professional"
+      data-industry="real estate agent realtor homes"
+      data-business="ashley guerrero homes"
+      data-order="16"
+      data-popular="10">
+      <div class="card-top">
+        <span class="category-badge cat-pro">Professional</span>
+        <span class="card-num">#16</span>
+      </div>
+      <div class="card-industry">Real Estate Agent</div>
+      <div class="card-business">Ashley Guerrero Homes</div>
+      <div class="feature-pills">
+        <span class="feature-pill">MLS Search</span>
+        <span class="feature-pill">Bilingual</span>
+        <span class="feature-pill">Lead Capture</span>
+      </div>
+      <a class="card-cta" href="demos/realestate/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 17: Mortgage -->
+    <div class="demo-card"
+      data-cat="Professional"
+      data-industry="mortgage lending loan"
+      data-business="west capital tools"
+      data-order="17"
+      data-popular="9">
+      <div class="card-top">
+        <span class="category-badge cat-pro">Professional</span>
+        <span class="card-num">#17</span>
+      </div>
+      <div class="card-industry">Mortgage / Lending</div>
+      <div class="card-business">West Capital Tools</div>
+      <div class="feature-pills">
+        <span class="feature-pill">AI Quote Calc</span>
+        <span class="feature-pill">Lead Capture</span>
+      </div>
+      <a class="card-cta" href="demos/mortgage/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 18: Insurance -->
+    <div class="demo-card"
+      data-cat="Professional"
+      data-industry="insurance"
+      data-business="shield insurance group"
+      data-order="18"
+      data-popular="6">
+      <div class="card-top">
+        <span class="category-badge cat-pro">Professional</span>
+        <span class="card-num">#18</span>
+      </div>
+      <div class="card-industry">Insurance</div>
+      <div class="card-business">Shield Insurance Group</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Quote Form</span>
+        <span class="feature-pill">Trust Badges</span>
+      </div>
+      <a class="card-cta" href="demos/insurance/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 19: Law Firm -->
+    <div class="demo-card"
+      data-cat="Professional"
+      data-industry="law firm attorney lawyer legal"
+      data-business="vega law group"
+      data-order="19"
+      data-popular="7">
+      <div class="card-top">
+        <span class="category-badge cat-pro">Professional</span>
+        <span class="card-num">#19</span>
+      </div>
+      <div class="card-industry">Law Firm</div>
+      <div class="card-business">Vega Law Group</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Practice Areas</span>
+        <span class="feature-pill">Consultation Form</span>
+      </div>
+      <a class="card-cta" href="demos/lawfirm/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 20: Trucking -->
+    <div class="demo-card"
+      data-cat="Professional"
+      data-industry="trucking logistics freight"
+      data-business="iron horse logistics"
+      data-order="20"
+      data-popular="6">
+      <div class="card-top">
+        <span class="category-badge cat-pro">Professional</span>
+        <span class="card-num">#20</span>
+      </div>
+      <div class="card-industry">Trucking / Logistics</div>
+      <div class="card-business">Iron Horse Logistics</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Load Form</span>
+        <span class="feature-pill">Fleet Info</span>
+      </div>
+      <a class="card-cta" href="demos/trucking/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 21: Photography -->
+    <div class="demo-card"
+      data-cat="Creative"
+      data-industry="photography photographer"
+      data-business="bianca photography"
+      data-order="21"
+      data-popular="8">
+      <div class="card-top">
+        <span class="category-badge cat-creative">Creative</span>
+        <span class="card-num">#21</span>
+      </div>
+      <div class="card-industry">Photography</div>
+      <div class="card-business">Bianca Photography</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Gallery</span>
+        <span class="feature-pill">Bilingual</span>
+        <span class="feature-pill">Booking</span>
+      </div>
+      <a class="card-cta" href="demos/photography/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- 22: Videography -->
+    <div class="demo-card"
+      data-cat="Creative"
+      data-industry="videography video production film"
+      data-business="jay films productions"
+      data-order="22"
+      data-popular="7">
+      <div class="card-top">
+        <span class="category-badge cat-creative">Creative</span>
+        <span class="card-num">#22</span>
+      </div>
+      <div class="card-industry">Videography</div>
+      <div class="card-business">Jay Films Productions</div>
+      <div class="feature-pills">
+        <span class="feature-pill">Portfolio</span>
+        <span class="feature-pill">Showreel</span>
+        <span class="feature-pill">Booking</span>
+      </div>
+      <a class="card-cta" href="demos/videography/" target="_blank" rel="noopener">View Demo →</a>
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-state-title">No demos found for '<span id="emptyQuery"></span>'</div>
+      <div class="empty-state-sub">
+        We don't have that one live yet — <a href="#customSection">Request a custom demo below ↓</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CUSTOM DEMO REQUEST -->
+<div class="custom-section" id="customSection">
+  <div class="custom-inner">
+    <div class="custom-label anim-fade">// custom builds</div>
+    <h2 class="custom-title anim-fade">Don't See Your Industry?</h2>
+    <p class="custom-sub anim-fade">We build demos for any industry in 48 hours. Just ask — no cost, no obligation.</p>
+    <form
+      class="custom-form anim-fade"
+      action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+      method="POST"
+      id="customForm"
+    >
+      <input type="hidden" name="_subject" value="Custom Demo Request">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://rivven.com/demos.html?demo_requested=true">
+      <div class="form-field">
+        <label for="demoIndustry">Industry</label>
+        <input type="text" id="demoIndustry" name="industry" placeholder="e.g. Nail Salon" required>
+      </div>
+      <div class="form-field">
+        <label for="demoName">Your Name</label>
+        <input type="text" id="demoName" name="name" placeholder="First name" required>
+      </div>
+      <div class="form-field">
+        <label for="demoPhone">Phone</label>
+        <input type="tel" id="demoPhone" name="phone" placeholder="(562) 000-0000" required>
+      </div>
+      <button type="submit" class="form-submit">Request It →</button>
+    </form>
+    <div class="custom-success" id="customSuccess">
+      Got it. We'll have a demo ready for you within 48 hours. Check your phone — we may text you to confirm details.
     </div>
   </div>
 </div>
 
-<!-- SEARCH + FILTER -->
-<div style="max-width:1200px;margin:0 auto 16px;padding:0 20px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-  <input type="text" id="searchInput" placeholder="Search demos..." oninput="filterDemos()" style="flex:1;min-width:200px;padding:10px 16px;background:rgba(15,17,23,.9);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14px;font-family:var(--font);outline:none;">
-  <div style="display:flex;gap:6px;flex-wrap:wrap;" id="filterBtns">
-    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
-    <button class="filter-btn" onclick="setFilter('home',this)">Home Services</button>
-    <button class="filter-btn" onclick="setFilter('food',this)">Food & Bev</button>
-    <button class="filter-btn" onclick="setFilter('auto',this)">Auto</button>
-    <button class="filter-btn" onclick="setFilter('beauty',this)">Beauty</button>
-    <button class="filter-btn" onclick="setFilter('pro',this)">Professional</button>
-    <button class="filter-btn" onclick="setFilter('events',this)">Events</button>
-  </div>
-</div>
-
-<style>
-.filter-btn{padding:6px 14px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font);transition:.2s}
-.filter-btn:hover,.filter-btn.active{background:rgba(0,240,255,.1);border-color:rgba(0,240,255,.3);color:var(--cyan)}
-.card[data-hidden="true"]{display:none!important}
-</style>
-
-<div class="section-label">Real Client Sites</div>
-<div class="grid">
-  <a href="https://sabino7sanchez-ship-it.github.io/west-capital-quote/" target="_blank" rel="noopener" class="card">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sabino7sanchez-ship-it.github.io/west-capital-quote/',this)">Copy Link</button>
-    <div class="card-icon">🏦</div>
-    <div class="card-title">West Capital Lending</div>
-    <div class="card-desc">Bilingual mortgage quote generator with 6 loan types, PIN-protected admin, and social sharing. Built for a real loan officer.</div>
-    <div class="card-tags"><span class="tag">REAL CLIENT</span><span class="tag">BILINGUAL</span><span class="tag">QUOTE TOOL</span></div>
-    <div class="card-link">View Live Site <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="https://allendes-construction.netlify.app" target="_blank" rel="noopener" class="card">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://allendes-construction.netlify.app',this)">Copy Link</button>
-    <div class="card-icon">🏗</div>
-    <div class="card-title">Allendes Construction</div>
-    <div class="card-desc">Full business site for a construction + landscaping company with service showcase, contact forms, and professional branding.</div>
-    <div class="card-tags"><span class="tag">REAL CLIENT</span><span class="tag">CONSTRUCTION</span><span class="tag">LIVE</span></div>
-    <div class="card-link">View Live Site <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="https://sabino7sanchez-ship-it.github.io/reynosos-handyman/" target="_blank" rel="noopener" class="card">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://sabino7sanchez-ship-it.github.io/reynosos-handyman/',this)">Copy Link</button>
-    <div class="card-icon">🔨</div>
-    <div class="card-title">Reynoso's Handyman</div>
-    <div class="card-desc">Professional handyman site with click-to-call, photo gallery, contact form, and local SEO optimization for LA area.</div>
-    <div class="card-tags"><span class="tag">REAL CLIENT</span><span class="tag">HANDYMAN</span><span class="tag">LIVE</span></div>
-    <div class="card-link">View Live Site <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-</div>
-
-<div class="section-label">Industry Demos — Send to Any Prospect</div>
-<div class="grid">
-  <a href="/demos/autoshop/" target="_blank" rel="noopener" class="card" data-cat="auto" data-name="auto detailing car wash">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/autoshop/',this)">Copy Link</button>
-    <div class="card-icon">🚗</div>
-    <div class="card-title">Auto Detailing / Car Wash</div>
-    <div class="card-desc">Premium dark-themed site with service menu, instant quote calculator (luxury vs domestic), photo gallery, booking CTA, live open/closed status.</div>
-    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">GALLERY</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/restaurant/" target="_blank" rel="noopener" class="card" data-cat="food" data-name="restaurant">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/restaurant/',this)">Copy Link</button>
-    <div class="card-icon">🍽</div>
-    <div class="card-title">Restaurant</div>
-    <div class="card-desc">Digital menu, online order inquiry form, photo gallery, Google Maps embed, click-to-call. Mobile-first for walk-in and delivery.</div>
-    <div class="card-tags"><span class="tag">MENU</span><span class="tag">ORDERS</span><span class="tag">GALLERY</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/barbershop/" target="_blank" rel="noopener" class="card" data-cat="beauty" data-name="barbershop">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/barbershop/',this)">Copy Link</button>
-    <div class="card-icon">💈</div>
-    <div class="card-title">Barbershop</div>
-    <div class="card-desc">Photo gallery, service menu with pricing, one-tap booking, Instagram feed embed, and Google Review display.</div>
-    <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">GALLERY</span><span class="tag">REVIEWS</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/realestate/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="real estate">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/realestate/',this)">Copy Link</button>
-    <div class="card-icon">🏠</div>
-    <div class="card-title">Real Estate</div>
-    <div class="card-desc">Lead capture with home valuation form, active listings, testimonials, neighborhood guides, Calendly booking.</div>
-    <div class="card-tags"><span class="tag">LEAD CAPTURE</span><span class="tag">LISTINGS</span><span class="tag">BOOKING</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/fitness/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="fitness personal trainer">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/fitness/',this)">Copy Link</button>
-    <div class="card-icon">💪</div>
-    <div class="card-title">Fitness / Personal Trainer</div>
-    <div class="card-desc">Online session scheduling, workout package selector, payment intake, transformation gallery.</div>
-    <div class="card-tags"><span class="tag">SCHEDULING</span><span class="tag">PACKAGES</span><span class="tag">PAYMENTS</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/trucking/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="trucking freight">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/trucking/',this)">Copy Link</button>
-    <div class="card-icon">🚛</div>
-    <div class="card-title">Trucking / Freight</div>
-    <div class="card-desc">Instant freight quote calculator with FTL/LTL/Flatbed/Refrigerated pricing, professional PDF-style output.</div>
-    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">FREIGHT</span><span class="tag">PDF</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/insurance/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="insurance">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/insurance/',this)">Copy Link</button>
-    <div class="card-icon">🛡</div>
-    <div class="card-title">Insurance</div>
-    <div class="card-desc">3-carrier policy comparison tool. Agent enters info, generates side-by-side comparison to text or email to clients.</div>
-    <div class="card-tags"><span class="tag">COMPARISON</span><span class="tag">3 CARRIERS</span><span class="tag">SHAREABLE</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/plumbing/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="plumbing hvac">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/plumbing/',this)">Copy Link</button>
-    <div class="card-icon">🔧</div>
-    <div class="card-title">Plumbing / HVAC</div>
-    <div class="card-desc">Estimate calculator with price ranges, emergency CTA, service area map, reviews, and 24/7 booking.</div>
-    <div class="card-tags"><span class="tag">ESTIMATES</span><span class="tag">EMERGENCY</span><span class="tag">24/7</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/nailsalon/" target="_blank" rel="noopener" class="card" data-cat="beauty" data-name="nail salon">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/nailsalon/',this)">Copy Link</button>
-    <div class="card-icon">💅</div>
-    <div class="card-title">Nail Salon</div>
-    <div class="card-desc">Service menu with pricing, online booking, photo gallery of nail art, reviews showcase, and gift cards.</div>
-    <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">GALLERY</span><span class="tag">PRICING</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/tattoo/" target="_blank" rel="noopener" class="card" data-cat="beauty" data-name="tattoo shop">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/tattoo/',this)">Copy Link</button>
-    <div class="card-icon">🎨</div>
-    <div class="card-title">Tattoo Shop</div>
-    <div class="card-desc">Artist portfolio gallery, consultation request form, aftercare guide, walk-in availability display.</div>
-    <div class="card-tags"><span class="tag">PORTFOLIO</span><span class="tag">CONSULTATION</span><span class="tag">WALK-INS</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/foodtruck/" target="_blank" rel="noopener" class="card" data-cat="food" data-name="food truck">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/foodtruck/',this)">Copy Link</button>
-    <div class="card-icon">🌮</div>
-    <div class="card-title">Food Truck</div>
-    <div class="card-desc">Live menu, location schedule tracker, catering inquiry form, photo gallery, social media integration.</div>
-    <div class="card-tags"><span class="tag">MENU</span><span class="tag">LOCATION</span><span class="tag">CATERING</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/photography/" target="_blank" rel="noopener" class="card" data-cat="pro" data-name="photography">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/photography/',this)">Copy Link</button>
-    <div class="card-icon">📸</div>
-    <div class="card-title">Photography</div>
-    <div class="card-desc">Full portfolio gallery, package pricing, session booking form, client testimonials, and print ordering.</div>
-    <div class="card-tags"><span class="tag">PORTFOLIO</span><span class="tag">PACKAGES</span><span class="tag">BOOKING</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/medspa/" target="_blank" rel="noopener" class="card" data-cat="beauty" data-name="med spa">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/medspa/',this)">Copy Link</button>
-    <div class="card-icon">💉</div>
-    <div class="card-title">Med Spa</div>
-    <div class="card-desc">Treatment menu, before/after gallery, consultation request, patient testimonials, and financing options.</div>
-    <div class="card-tags"><span class="tag">TREATMENTS</span><span class="tag">BEFORE/AFTER</span><span class="tag">BOOKING</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/cleaning/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="cleaning service">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/cleaning/',this)">Copy Link</button>
-    <div class="card-icon">🧹</div>
-    <div class="card-title">Cleaning Service</div>
-    <div class="card-desc">Instant quote calculator with service type, home size, frequency, and add-ons. Online booking integration.</div>
-    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">ADD-ONS</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/moving/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="moving company">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/moving/',this)">Copy Link</button>
-    <div class="card-icon">📦</div>
-    <div class="card-title">Moving Company</div>
-    <div class="card-desc">Instant moving quote with hourly rates, distance pricing, packing add-ons. Book online in 60 seconds.</div>
-    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BOOKING</span><span class="tag">PACKING</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/roofing/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="roofing">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/roofing/',this)">Copy Link</button>
-    <div class="card-icon">🏗</div>
-    <div class="card-title">Roofing</div>
-    <div class="card-desc">Free inspection request form, project gallery, financing options, service area map, emergency repairs.</div>
-    <div class="card-tags"><span class="tag">INSPECTIONS</span><span class="tag">GALLERY</span><span class="tag">FINANCING</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/catering/" target="_blank" rel="noopener" class="card" data-cat="food" data-name="catering">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/catering/',this)">Copy Link</button>
-    <div class="card-icon">🍱</div>
-    <div class="card-title">Catering</div>
-    <div class="card-desc">Event quote builder, menu packages, dietary options, photo gallery, booking for weddings and corporate.</div>
-    <div class="card-tags"><span class="tag">EVENT QUOTE</span><span class="tag">MENUS</span><span class="tag">BOOKING</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/djevents/" target="_blank" rel="noopener" class="card" data-cat="events" data-name="dj events">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/djevents/',this)">Copy Link</button>
-    <div class="card-icon">🎧</div>
-    <div class="card-title">DJ / Events</div>
-    <div class="card-desc">Event booking, package pricing, past event gallery, music genre selection, video showreel embed.</div>
-    <div class="card-tags"><span class="tag">BOOKING</span><span class="tag">PACKAGES</span><span class="tag">GALLERY</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/pool-service/" target="_blank" rel="noopener" class="card" data-cat="home" data-name="pool service">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/pool-service/',this)">Copy Link</button>
-    <div class="card-icon">🏊</div>
-    <div class="card-title">Pool Service</div>
-    <div class="card-desc">Instant quote calculator with pool size, service type, frequency. Weekly cleaning, green pool recovery, equipment repair, remodels.</div>
-    <div class="card-tags"><span class="tag">QUOTE CALC</span><span class="tag">BILINGUAL</span><span class="tag">6 SERVICES</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-  <a href="/demos/collision/" target="_blank" rel="noopener" class="card" data-cat="auto" data-name="collision auto body">
-    <button class="copy-btn" onclick="event.preventDefault();event.stopPropagation();copyLink('https://rivven.ai/demos/collision/',this)">Copy Link</button>
-    <div class="card-icon">🔧</div>
-    <div class="card-title">Collision / Auto Body</div>
-    <div class="card-desc">Damage estimate calculator, insurance claim handling, custom paint, towing, before/after gallery. Bilingual EN/ES.</div>
-    <div class="card-tags"><span class="tag">ESTIMATE CALC</span><span class="tag">INSURANCE</span><span class="tag">BILINGUAL</span></div>
-    <div class="card-link">View Live Demo <svg viewBox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></div>
-  </a>
-</div>
-
+<!-- FOOTER -->
 <footer class="footer">
-  Built by Rivven | <a href="https://rivven.ai">rivven.ai</a> | (562) 373-1027
+  <div class="footer-logo">Sanchez<span>_Rivven</span></div>
+  <div class="footer-links">
+    <a href='/'>Home</a>
+    <a href='/demos'>Demos</a>
+    <a href='/shop'>Shop</a>
+    <a href='/intake'>Book a Demo</a>
+    <a href="tel:5623731027">(562) 373-1027</a>
+  </div>
+  <div class="footer-copy">
+    &copy; 2026 Rivven. Built in Los Angeles. —
+    <a href="/cdn-cgi/l/email-protection#f1829093989f9edf82909f9299948bc6b1969c90989ddf929e9c"><span class="__cf_email__" data-cfemail="582b393a313637762b39363b303d226f183f35393134763b3735">[email&#160;protected]</span></a>
+  </div>
 </footer>
 
+<!-- GOATCOUNTER -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-goatcounter="https://rivven.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 <script>
-// Search + Filter
-let activeFilter = 'all';
-function setFilter(cat, btn) {
-  activeFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  filterDemos();
-}
-function filterDemos() {
-  const q = (document.getElementById('searchInput').value || '').toLowerCase();
-  const grids = document.querySelectorAll('.grid');
-  let visible = 0;
-  grids.forEach(grid => {
-    grid.querySelectorAll('.card').forEach(card => {
-      const name = (card.getAttribute('data-name') || '') + ' ' + (card.querySelector('.card-title')?.textContent || '') + ' ' + (card.querySelector('.card-desc')?.textContent || '');
-      const cat = card.getAttribute('data-cat') || '';
-      const matchSearch = !q || name.toLowerCase().includes(q);
-      const matchFilter = activeFilter === 'all' || cat === activeFilter;
-      const show = matchSearch && matchFilter;
-      card.setAttribute('data-hidden', show ? 'false' : 'true');
-      if (show) visible++;
-    });
-  });
-  const countEl = document.getElementById('demoCount');
-  if (countEl) countEl.textContent = visible + ' DEMO' + (visible !== 1 ? 'S' : '') + ' SHOWING';
+// ── BANNER DISMISS ──
+(function() {
+  if (localStorage.getItem('demoBannerDismissed')) {
+    document.getElementById('topBanner').classList.add('hidden');
+  }
+})();
+function dismissBanner() {
+  localStorage.setItem('demoBannerDismissed', '1');
+  document.getElementById('topBanner').classList.add('hidden');
 }
 
-function copyLink(url, btn) {
-  navigator.clipboard.writeText(url).then(() => {
-    btn.textContent = 'Copied!';
-    btn.style.background = 'rgba(34,197,94,.2)';
-    btn.style.borderColor = 'rgba(34,197,94,.4)';
-    btn.style.color = '#22c55e';
-    setTimeout(() => {
-      btn.textContent = 'Copy Link';
-      btn.style.background = '';
-      btn.style.borderColor = '';
-      btn.style.color = '';
-    }, 2000);
+// ── MOBILE NAV ──
+function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); }
+function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); }
+
+// ── DEMO DATA (mirrors DOM) ──
+const TOTAL = 22;
+let currentCategory = 'all';
+let currentSort = 'default';
+let currentSearch = '';
+
+function getCards() {
+  return Array.from(document.querySelectorAll('.demo-card[data-order]'));
+}
+
+function applyFilters() {
+  const cards = getCards();
+  const q = currentSearch.toLowerCase().trim();
+  let visible = 0;
+
+  cards.forEach(card => {
+    const industry = card.dataset.industry || '';
+    const business = card.dataset.business || '';
+    const cat = card.dataset.cat || '';
+
+    const matchesSearch = !q || industry.includes(q) || business.includes(q);
+    const matchesCat = currentCategory === 'all' || cat === currentCategory;
+
+    if (matchesSearch && matchesCat) {
+      card.classList.remove('hidden-card');
+      visible++;
+    } else {
+      card.classList.add('hidden-card');
+    }
+  });
+
+  // Sort visible cards
+  const grid = document.getElementById('demoGrid');
+  const visibleCards = cards.filter(c => !c.classList.contains('hidden-card'));
+
+  if (currentSort === 'az') {
+    visibleCards.sort((a, b) => {
+      const ia = a.querySelector('.card-industry').textContent.trim();
+      const ib = b.querySelector('.card-industry').textContent.trim();
+      return ia.localeCompare(ib);
+    });
+  } else if (currentSort === 'popular') {
+    visibleCards.sort((a, b) => parseInt(b.dataset.popular) - parseInt(a.dataset.popular));
+  } else {
+    visibleCards.sort((a, b) => parseInt(a.dataset.order) - parseInt(b.dataset.order));
+  }
+
+  // Re-insert sorted cards
+  visibleCards.forEach(c => grid.appendChild(c));
+
+  // Empty state
+  const emptyState = document.getElementById('emptyState');
+  const countEl = document.getElementById('countNum');
+  countEl.textContent = visible;
+
+  if (visible === 0) {
+    emptyState.style.display = 'block';
+    document.getElementById('emptyQuery').textContent = q || currentCategory;
+  } else {
+    emptyState.style.display = 'none';
+  }
+}
+
+function handleSearch() {
+  currentSearch = document.getElementById('searchInput').value;
+  applyFilters();
+}
+
+function setCategory(cat) {
+  currentCategory = cat;
+  document.querySelectorAll('.pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.cat === cat);
+  });
+  applyFilters();
+}
+
+function handleSort() {
+  currentSort = document.getElementById('sortSelect').value;
+  applyFilters();
+}
+
+// ── STICKY SEARCH BAR ──
+const heroSection = document.getElementById('heroSection');
+const searchBar = document.getElementById('searchBar');
+
+const stickyObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      searchBar.classList.add('is-sticky');
+    } else {
+      searchBar.classList.remove('is-sticky');
+    }
+  });
+}, { threshold: 0.1 });
+
+stickyObserver.observe(heroSection);
+
+// ── CARD SCROLL ANIMATIONS ──
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      const card = entry.target;
+      const siblings = Array.from(document.querySelectorAll('.demo-card:not(.hidden-card)'));
+      const visibleIdx = siblings.indexOf(card);
+      setTimeout(() => {
+        card.classList.add('visible');
+      }, (visibleIdx % 3) * 80);
+      cardObserver.unobserve(card);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+function observeCards() {
+  document.querySelectorAll('.demo-card').forEach(card => {
+    cardObserver.observe(card);
   });
 }
+observeCards();
+
+// ── SECTION FADE ANIMATIONS ──
+const fadeObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.anim-fade').forEach((el, i) => {
+  el.style.transitionDelay = (i * 80) + 'ms';
+  fadeObserver.observe(el);
+});
+
+// ── CUSTOM FORM SUCCESS CHECK ──
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('demo_requested') === 'true') {
+    document.getElementById('customSuccess').style.display = 'block';
+    document.getElementById('customForm').style.display = 'none';
+  }
+})();
+
+// ── CUSTOM FORM SUBMIT (inline success) ──
+document.getElementById('customForm').addEventListener('submit', function(e) {
+  // Let formsubmit handle the POST; if JS is enabled, show success after slight delay
+  // (FormSubmit will redirect to the _next URL which reveals the success banner)
+});
 </script>
+
 </body>
 </html>

@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allendes Group Inc | Construction & Landscaping in Los Angeles</title>
+  <meta name="description" content="Allendes Group Inc — licensed construction & landscaping in LA County. Residential builds, remodels, concrete, roofing & hardscaping. Bilingual service. Call (562) 373-1027." />
+  <!-- JSON-LD GeneralContractor Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GeneralContractor",
+    "name": "Allendes Group Inc",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://allendesgroupinc.com",
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "187"
+    },
+    "areaServed": ["Los Angeles","Long Beach","Downey","Norwalk","Whittier","Compton","Torrance","Burbank","Pasadena","Glendale"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #16161A;
+      --accent: #00F0FF;
+      --accent-dim: rgba(0,240,255,0.12);
+      --accent-glow: rgba(0,240,255,0.35);
+      --text: #F0F0F2;
+      --muted: #888898;
+      --border: rgba(255,255,255,0.07);
+      --card: #13131A;
+      --red: #FF3B3B;
+      --orange: #FF8C00;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.2s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      margin-top: 12px;
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe57;
+      box-shadow: 0 0 24px rgba(37,211,102,0.35);
+      transform: translateY(-1px);
+    }
+
+    /* ===== LANG TOGGLE ===== */
+    .lang-btn {
+      padding: 6px 14px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--mono);
+      transition: var(--transition);
+    }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-phone {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      display: none;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 66px; left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 16px;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--muted);
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--accent-dim); color: var(--accent); }
+    .mobile-menu .btn { margin-top: 8px; justify-content: center; }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 20%, rgba(0,240,255,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,180,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 85% 70%, rgba(0,240,255,0.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,240,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,240,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-headline {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero-headline .highlight {
+      color: var(--accent);
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hero-stat-num {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== SECTIONS SHARED ===== */
+    .section { padding: 96px 0; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 12px auto 0; }
+
+    /* ===== SERVICES GRID ===== */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,240,255,0.07);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .service-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .service-price {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    #trust { background: var(--bg2); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .trust-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .trust-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+    }
+    .trust-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .trust-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .trust-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .trust-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ===== REVIEWS ===== */
+    #reviews { background: var(--bg); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+    .review-card:hover { border-color: rgba(0,240,255,0.15); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .stars span { font-size: 18px; }
+    .review-text {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-text::before { content: '\201C'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::after { content: '\201D'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reviewer-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0,180,255,0.2));
+      border: 1px solid rgba(0,240,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 700; font-size: 15px; }
+    .reviewer-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .reviews-rating-summary {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .rating-big {
+      font-family: var(--mono);
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .rating-label {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info-block { display: flex; flex-direction: column; gap: 32px; }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-info-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-info-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .contact-info-value {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .contact-info-value a { color: var(--accent); }
+    .contact-info-value a:hover { color: #fff; }
+    .contact-info-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .contact-form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .contact-form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      transition: var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300F0FF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+    }
+    .form-group select option { background: #1a1a20; }
+    .contact-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 8px;
+      transition: var(--transition);
+      margin-top: 4px;
+    }
+    .contact-submit:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 32px 0 100px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-copy span { color: var(--text); }
+    .footer-brand {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-brand a {
+      color: var(--accent);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .footer-brand a:hover { color: #fff; }
+
+    /* ===== WHATSAPP FAB ===== */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      z-index: 1500;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+
+    /* ===== MOBILE BOTTOM BANNER ===== */
+    #mobile-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 2000;
+      background: rgba(10,10,11,0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .banner-left {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .banner-left strong { color: var(--text); }
+    .banner-cta {
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 9px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .banner-cta:hover { background: #fff; }
+
+    /* ===== MOBILE BREAKPOINTS ===== */
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-phone { display: block; }
+      .contact-form-card { padding: 24px 20px; }
+    }
+    @media (max-width: 540px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { justify-content: center; }
+      .services-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 380px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">&#x1F3D7;</div>
+        Allendes <span>Group</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+        <li><a href="#trust" data-en="Why Us" data-es="Por Que Nosotros">Why Us</a></li>
+        <li><a href="#reviews" data-en="Reviews" data-es="Resenas">Reviews</a></li>
+        <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button>
+        <span class="nav-phone">(562) 373-1027</span>
+        <a href="tel:+15623731027" class="btn btn-primary" data-en="&#x1F4DE; Call Now" data-es="&#x1F4DE; Llamar">&#x1F4DE; Call Now</a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <div style="display:flex;gap:8px;padding:8px 16px;margin-bottom:4px;">
+    <button class="lang-btn" onclick="toggleLang()" id="langToggleMobile">ES</button>
+  </div>
+  <a href="#services" onclick="closeMobileMenu()" data-en="Services" data-es="Servicios">Services</a>
+  <a href="#trust" onclick="closeMobileMenu()" data-en="Why Us" data-es="Por Que Nosotros">Why Us</a>
+  <a href="#reviews" onclick="closeMobileMenu()" data-en="Reviews" data-es="Resenas">Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="tel:+15623731027" class="btn btn-primary" data-en="&#x1F4DE; Call Now &mdash; (562) 373-1027" data-es="&#x1F4DE; Llamar &mdash; (562) 373-1027">&#x1F4DE; Call Now &mdash; (562) 373-1027</a>
+  <a href="https://wa.me/15623731027" target="_blank" rel="noopener" class="btn btn-whatsapp" style="margin-top:4px;">WhatsApp</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge" data-en="Licensed &amp; Insured &middot; Bilingual Service" data-es="Licenciado &amp; Asegurado &middot; Servicio Bilingue">Licensed &amp; Insured &middot; Bilingual Service</div>
+      <h1 class="hero-headline">
+        <span data-en="Quality Construction." data-es="Construccion de Calidad.">Quality Construction.</span><br>
+        <span class="highlight" data-en="Built to Last." data-es="Hecho Para Durar.">Built to Last.</span>
+      </h1>
+      <p class="hero-sub" data-en="Licensed general contractor serving LA County. From new builds and remodels to landscaping and concrete &mdash; we do it all, and we do it right." data-es="Contratista general con licencia sirviendo el condado de LA. Desde construcciones nuevas y remodelaciones hasta paisajismo y concreto &mdash; hacemos todo, y lo hacemos bien.">
+        Licensed general contractor serving LA County. From new builds and remodels to landscaping and concrete &mdash; we do it all, and we do it right.
+      </p>
+      <div class="hero-ctas">
+        <a href="tel:+15623731027" class="btn btn-primary" style="font-size:16px;padding:16px 32px;" data-en="&#x1F4DE; Call Now &mdash; (562) 373-1027" data-es="&#x1F4DE; Llamar &mdash; (562) 373-1027">
+          &#x1F4DE; Call Now &mdash; (562) 373-1027
+        </a>
+        <a href="https://wa.me/15623731027" target="_blank" rel="noopener" class="btn btn-whatsapp" style="font-size:16px;padding:16px 32px;">
+          WhatsApp
+        </a>
+        <a href="#contact" class="btn btn-outline" style="font-size:16px;padding:16px 32px;" data-en="Get a Free Quote" data-es="Cotizacion Gratis">
+          Get a Free Quote
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">10+</span>
+          <span class="hero-stat-label" data-en="Years Experience" data-es="Anos de Experiencia">Years Experience</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">500+</span>
+          <span class="hero-stat-label" data-en="Projects Completed" data-es="Proyectos Completados">Projects Completed</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4.9&#9733;</span>
+          <span class="hero-stat-label" data-en="Avg Rating" data-es="Calificacion">Avg Rating</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">100%</span>
+          <span class="hero-stat-label" data-en="Bilingual" data-es="Bilingue">Bilingual</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label" data-en="What We Do" data-es="Lo Que Hacemos">What We Do</div>
+      <h2 class="section-title" data-en="Construction &amp; Landscaping Services" data-es="Servicios de Construccion &amp; Paisajismo">Construction &amp; Landscaping Services</h2>
+      <p class="section-sub" data-en="From foundation to finish &mdash; residential, commercial, and outdoor projects done right." data-es="Desde los cimientos hasta el acabado &mdash; proyectos residenciales, comerciales y al aire libre bien hechos.">From foundation to finish &mdash; residential, commercial, and outdoor projects done right.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">&#x1F3E0;</span>
+        <div class="service-name" data-en="Residential Construction" data-es="Construccion Residencial">Residential Construction</div>
+        <div class="service-price" data-en="Custom Estimates" data-es="Estimaciones Personalizadas">Custom Estimates</div>
+        <div class="service-desc" data-en="New home builds, room additions, and full structural renovations. We handle permits, framing, and everything in between." data-es="Construccion de casas nuevas, adiciones de cuartos y renovaciones estructurales completas. Manejamos permisos, estructura y todo lo necesario.">New home builds, room additions, and full structural renovations. We handle permits, framing, and everything in between.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#x1F3E2;</span>
+        <div class="service-name" data-en="Commercial Build-Outs" data-es="Construcciones Comerciales">Commercial Build-Outs</div>
+        <div class="service-price" data-en="Custom Estimates" data-es="Estimaciones Personalizadas">Custom Estimates</div>
+        <div class="service-desc" data-en="Tenant improvements, office remodels, and retail build-outs. On-time delivery with minimal disruption to your business." data-es="Mejoras para inquilinos, remodelaciones de oficinas y construcciones para tiendas. Entrega a tiempo con minima interrupcion a su negocio.">Tenant improvements, office remodels, and retail build-outs. On-time delivery with minimal disruption to your business.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#x1F6C1;</span>
+        <div class="service-name" data-en="Kitchen &amp; Bath Remodels" data-es="Remodelacion de Cocina &amp; Bano">Kitchen &amp; Bath Remodels</div>
+        <div class="service-price" data-en="Starting at $5,000" data-es="Desde $5,000">Starting at $5,000</div>
+        <div class="service-desc" data-en="Complete kitchen and bathroom transformations. Cabinets, tile, plumbing fixtures, countertops, and custom finishes." data-es="Transformaciones completas de cocina y bano. Gabinetes, azulejo, plomeria, encimeras y acabados personalizados.">Complete kitchen and bathroom transformations. Cabinets, tile, plumbing fixtures, countertops, and custom finishes.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#x1F333;</span>
+        <div class="service-name" data-en="Landscaping &amp; Hardscaping" data-es="Paisajismo &amp; Hardscaping">Landscaping &amp; Hardscaping</div>
+        <div class="service-price" data-en="Starting at $1,500" data-es="Desde $1,500">Starting at $1,500</div>
+        <div class="service-desc" data-en="Patios, retaining walls, walkways, irrigation systems, sod, plants, and full backyard makeovers." data-es="Patios, muros de contencion, pasillos, sistemas de riego, cesped, plantas y remodelaciones completas de jardines.">Patios, retaining walls, walkways, irrigation systems, sod, plants, and full backyard makeovers.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#x1F9F1;</span>
+        <div class="service-name" data-en="Concrete &amp; Driveways" data-es="Concreto &amp; Entradas">Concrete &amp; Driveways</div>
+        <div class="service-price" data-en="Starting at $2,000" data-es="Desde $2,000">Starting at $2,000</div>
+        <div class="service-desc" data-en="Driveways, sidewalks, foundations, stamped concrete, and decorative flatwork. Poured and finished by experienced crews." data-es="Entradas, aceras, cimientos, concreto estampado y trabajo decorativo. Vaciado y acabado por equipos experimentados.">Driveways, sidewalks, foundations, stamped concrete, and decorative flatwork. Poured and finished by experienced crews.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">&#x1F3D8;&#xFE0F;</span>
+        <div class="service-name" data-en="Roofing &amp; Additions" data-es="Techos &amp; Adiciones">Roofing &amp; Additions</div>
+        <div class="service-price" data-en="Custom Estimates" data-es="Estimaciones Personalizadas">Custom Estimates</div>
+        <div class="service-desc" data-en="Roof repairs, replacements, and new construction roofing. Plus ADU and room additions to expand your living space." data-es="Reparaciones de techos, reemplazos y techos para construccion nueva. Ademas ADU y adiciones de cuartos para ampliar su espacio.">Roof repairs, replacements, and new construction roofing. Plus ADU and room additions to expand your living space.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="trust" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label" data-en="Why Allendes Group" data-es="Por Que Allendes Group">Why Allendes Group</div>
+      <h2 class="section-title" data-en="Built on Trust. Backed by Results." data-es="Construido con Confianza. Respaldado por Resultados.">Built on Trust. Backed by Results.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-icon">&#x1F6E1;&#xFE0F;</span>
+        <div class="trust-title" data-en="Licensed &amp; Insured" data-es="Licenciado &amp; Asegurado">Licensed &amp; Insured</div>
+        <div class="trust-desc" data-en="Fully licensed general contractor. Every project is bonded and insured for your protection." data-es="Contratista general con licencia completa. Cada proyecto esta asegurado para su proteccion.">Fully licensed general contractor. Every project is bonded and insured for your protection.</div>
+        <div class="trust-badge" data-en="Licensed Contractor" data-es="Contratista Licenciado">Licensed Contractor</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">&#x1F30E;</span>
+        <div class="trust-title" data-en="Fully Bilingual" data-es="Completamente Bilingue">Fully Bilingual</div>
+        <div class="trust-desc" data-en="We speak English and Spanish fluently. Clear communication from estimate to final walkthrough." data-es="Hablamos ingles y espanol con fluidez. Comunicacion clara desde la estimacion hasta la entrega final.">We speak English and Spanish fluently. Clear communication from estimate to final walkthrough.</div>
+        <div class="trust-badge">EN / ES</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">&#x1F4B0;</span>
+        <div class="trust-title" data-en="Transparent Pricing" data-es="Precios Transparentes">Transparent Pricing</div>
+        <div class="trust-desc" data-en="Detailed written estimates before work begins. No hidden fees, no surprise charges at the end." data-es="Estimaciones detalladas por escrito antes de comenzar. Sin cargos ocultos, sin sorpresas al final.">Detailed written estimates before work begins. No hidden fees, no surprise charges at the end.</div>
+        <div class="trust-badge" data-en="Written quotes always" data-es="Siempre por escrito">Written quotes always</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">&#x1F3C6;</span>
+        <div class="trust-title" data-en="10+ Years Experience" data-es="10+ Anos de Experiencia">10+ Years Experience</div>
+        <div class="trust-desc" data-en="Over 500 projects completed across LA County. Residential, commercial, and outdoor &mdash; we do it all." data-es="Mas de 500 proyectos completados en el condado de LA. Residencial, comercial y al aire libre &mdash; hacemos de todo.">Over 500 projects completed across LA County. Residential, commercial, and outdoor &mdash; we do it all.</div>
+        <div class="trust-badge" data-en="500+ projects" data-es="500+ proyectos">500+ projects</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label" data-en="Customer Reviews" data-es="Resenas de Clientes">Customer Reviews</div>
+      <h2 class="section-title" data-en="What Our Clients Are Saying" data-es="Lo Que Dicen Nuestros Clientes">What Our Clients Are Saying</h2>
+    </div>
+    <div class="reviews-rating-summary">
+      <div class="rating-big">4.9</div>
+      <div class="stars" style="justify-content:center;margin:8px 0;">
+        <span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span>
+      </div>
+      <div class="rating-label" data-en="Based on 187 verified reviews &middot; Google" data-es="Basado en 187 resenas verificadas &middot; Google">Based on 187 verified reviews &middot; Google</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars"><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span></div>
+        <p class="review-text" data-en="Allendes Group remodeled our entire kitchen and the results are incredible. They stayed on budget, communicated every step of the way, and the crew was respectful of our home. Highly recommend for any remodel project." data-es="Allendes Group remodelo toda nuestra cocina y los resultados son increibles. Se mantuvieron dentro del presupuesto, comunicaron cada paso y el equipo fue respetuoso con nuestro hogar. Altamente recomendados para cualquier proyecto de remodelacion.">
+          Allendes Group remodeled our entire kitchen and the results are incredible. They stayed on budget, communicated every step of the way, and the crew was respectful of our home. Highly recommend for any remodel project.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">CL</div>
+          <div>
+            <div class="reviewer-name">Carmen L.</div>
+            <div class="reviewer-meta">Downey, CA &middot; 2 weeks ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span></div>
+        <p class="review-text" data-en="We hired them to pour a new driveway and build a retaining wall. The concrete work is flawless and the wall looks amazing. What I appreciated most was the bilingual communication &mdash; my parents only speak Spanish and they felt comfortable the whole time." data-es="Los contratamos para vaciar una nueva entrada y construir un muro de contencion. El trabajo de concreto es impecable y el muro se ve increible. Lo que mas aprecie fue la comunicacion bilingue &mdash; mis padres solo hablan espanol y se sintieron comodos todo el tiempo.">
+          We hired them to pour a new driveway and build a retaining wall. The concrete work is flawless and the wall looks amazing. What I appreciated most was the bilingual communication &mdash; my parents only speak Spanish and they felt comfortable the whole time.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">RG</div>
+          <div>
+            <div class="reviewer-name">Roberto G.</div>
+            <div class="reviewer-meta">Long Beach, CA &middot; 1 month ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span><span>&#x2B50;</span></div>
+        <p class="review-text" data-en="They transformed our backyard from a dirt lot into a beautiful patio with pavers, new sod, and a pergola. The landscaping crew was fast and professional. The price was fair and the quality speaks for itself. Already planning our next project with them." data-es="Transformaron nuestro patio trasero de un terreno de tierra a un hermoso patio con adoquines, cesped nuevo y una pergola. El equipo de paisajismo fue rapido y profesional. El precio fue justo y la calidad habla por si misma. Ya estamos planeando nuestro proximo proyecto con ellos.">
+          They transformed our backyard from a dirt lot into a beautiful patio with pavers, new sod, and a pergola. The landscaping crew was fast and professional. The price was fair and the quality speaks for itself. Already planning our next project with them.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SM</div>
+          <div>
+            <div class="reviewer-name">Sandra M.</div>
+            <div class="reviewer-meta">Whittier, CA &middot; 2 months ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label" data-en="Get In Touch" data-es="Contactenos">Get In Touch</div>
+      <h2 class="section-title" data-en="Request a Free Estimate" data-es="Solicite una Estimacion Gratis">Request a Free Estimate</h2>
+      <p class="section-sub" data-en="Tell us about your project and we'll get back to you within 24 hours with a detailed quote." data-es="Cuentenos sobre su proyecto y le responderemos dentro de 24 horas con una cotizacion detallada.">Tell us about your project and we'll get back to you within 24 hours with a detailed quote.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#x1F4DE;</div>
+          <div>
+            <div class="contact-info-label" data-en="Phone" data-es="Telefono">Phone</div>
+            <div class="contact-info-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
+            <div class="contact-info-sub" data-en="Call or text &mdash; we respond fast" data-es="Llame o envie texto &mdash; respondemos rapido">Call or text &mdash; we respond fast</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#x1F4F2;</div>
+          <div>
+            <div class="contact-info-label">WhatsApp</div>
+            <div class="contact-info-value"><a href="https://wa.me/15623731027" target="_blank" rel="noopener">(562) 373-1027</a></div>
+            <div class="contact-info-sub" data-en="Message us anytime on WhatsApp" data-es="Envie mensaje por WhatsApp cuando quiera">Message us anytime on WhatsApp</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#x1F4CD;</div>
+          <div>
+            <div class="contact-info-label" data-en="Location" data-es="Ubicacion">Location</div>
+            <div class="contact-info-value">Los Angeles, CA</div>
+            <div class="contact-info-sub" data-en="Service area: All of LA County" data-es="Area de servicio: Todo el condado de LA">Service area: All of LA County</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#x1F551;</div>
+          <div>
+            <div class="contact-info-label" data-en="Hours" data-es="Horario">Hours</div>
+            <div class="contact-info-value" data-en="Mon &ndash; Sat: 7AM &ndash; 6PM" data-es="Lun &ndash; Sab: 7AM &ndash; 6PM">Mon &ndash; Sat: 7AM &ndash; 6PM</div>
+            <div class="contact-info-sub" data-en="Free estimates available on weekends" data-es="Estimaciones gratis disponibles los fines de semana">Free estimates available on weekends</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <div class="contact-form-title" data-en="Send a Project Request" data-es="Envie una Solicitud de Proyecto">Send a Project Request</div>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Construction Inquiry - Allendes Group Inc" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://allendesgroupinc.com#contact" />
+          <div class="form-group">
+            <label for="contact-name" data-en="Full Name" data-es="Nombre Completo">Full Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="John Doe" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-phone" data-en="Phone Number" data-es="Numero de Telefono">Phone Number</label>
+            <input type="tel" id="contact-phone" name="phone" placeholder="(562) 373-1027" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-service" data-en="Service Needed" data-es="Servicio Necesario">Service Needed</label>
+            <select id="contact-service" name="service" required>
+              <option value="" data-en="&mdash; Select a service &mdash;" data-es="&mdash; Seleccione un servicio &mdash;">&mdash; Select a service &mdash;</option>
+              <option value="Residential Construction" data-en="Residential Construction" data-es="Construccion Residencial">Residential Construction</option>
+              <option value="Commercial Build-Outs" data-en="Commercial Build-Outs" data-es="Construcciones Comerciales">Commercial Build-Outs</option>
+              <option value="Kitchen & Bath Remodels" data-en="Kitchen &amp; Bath Remodels" data-es="Remodelacion de Cocina &amp; Bano">Kitchen &amp; Bath Remodels</option>
+              <option value="Landscaping & Hardscaping" data-en="Landscaping &amp; Hardscaping" data-es="Paisajismo &amp; Hardscaping">Landscaping &amp; Hardscaping</option>
+              <option value="Concrete & Driveways" data-en="Concrete &amp; Driveways" data-es="Concreto &amp; Entradas">Concrete &amp; Driveways</option>
+              <option value="Roofing & Additions" data-en="Roofing &amp; Additions" data-es="Techos &amp; Adiciones">Roofing &amp; Additions</option>
+              <option value="Other" data-en="Other / Not Sure" data-es="Otro / No Estoy Seguro">Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-desc" data-en="Describe Your Project" data-es="Describa Su Proyecto">Describe Your Project</label>
+            <textarea id="contact-desc" name="description" placeholder="E.g. Kitchen remodel, new driveway, backyard landscaping..."></textarea>
+          </div>
+          <button type="submit" class="contact-submit" data-en="Send Request &mdash; Free Estimate" data-es="Enviar Solicitud &mdash; Estimacion Gratis">Send Request &mdash; Free Estimate</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICE AREA ===== -->
+<section style="padding:72px 0;text-align:center;">
+  <div class="container">
+    <div class="section-label" data-en="Service Area" data-es="Area de Servicio">Service Area</div>
+    <h2 class="section-title" style="margin-bottom:12px;" data-en="Serving All of LA County" data-es="Sirviendo Todo el Condado de LA">Serving All of LA County</h2>
+    <p class="section-sub" style="max-width:540px;margin:0 auto 28px;" data-en="Licensed and ready to work across the entire Los Angeles metro area." data-es="Licenciados y listos para trabajar en toda el area metropolitana de Los Angeles.">Licensed and ready to work across the entire Los Angeles metro area.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:750px;margin:0 auto;">
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Los Angeles</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Long Beach</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Downey</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Norwalk</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Whittier</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Compton</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Torrance</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Burbank</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Pasadena</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Glendale</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Santa Monica</span>
+      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Inglewood</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        Allendes Group Inc <span>&copy; 2026</span> &middot; Los Angeles, CA
+      </div>
+      <div style="color:var(--muted);font-size:12px;margin:6px 0;" data-en="Mon&ndash;Sat 7AM&ndash;6PM &middot; Licensed &amp; Insured &middot; Bilingual EN/ES &middot; Serving all of LA County" data-es="Lun&ndash;Sab 7AM&ndash;6PM &middot; Licenciado &amp; Asegurado &middot; Bilingue EN/ES &middot; Sirviendo todo el condado de LA">Mon&ndash;Sat 7AM&ndash;6PM &middot; Licensed &amp; Insured &middot; Bilingual EN/ES &middot; Serving all of LA County</div>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo &rarr;</a></div>
+      <div class="footer-brand">
+        Built by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> &middot; rivven.ai
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== WHATSAPP FAB ===== -->
+<a href="https://wa.me/15623731027" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat on WhatsApp">
+  &#x1F4AC;
+</a>
+
+<!-- ===== MOBILE BOTTOM BANNER ===== -->
+<div id="mobile-banner">
+  <div class="banner-left">
+    <strong>Need a site like this?</strong><br>
+    Built by Rivven
+  </div>
+  <a href="https://rivven.ai" target="_blank" rel="noopener" class="banner-cta">
+    Get My Site &rarr;
+  </a>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* ---- Hamburger Menu ---- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ---- Sticky Nav Shadow ---- */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 60) {
+      nav.style.borderBottomColor = 'rgba(0,240,255,0.1)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(255,255,255,0.07)';
+    }
+  });
+
+  /* ---- Bilingual Toggle ---- */
+  let lang = 'en';
+  function toggleLang() {
+    lang = lang === 'en' ? 'es' : 'en';
+    const label = lang === 'en' ? 'ES' : 'EN';
+    document.getElementById('langToggle').textContent = label;
+    const mobileLangBtn = document.getElementById('langToggleMobile');
+    if (mobileLangBtn) mobileLangBtn.textContent = label;
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const t = el.getAttribute('data-' + lang);
+      if (t) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = t;
+        } else {
+          el.textContent = t;
+        }
+      }
+    });
+    document.documentElement.lang = lang;
+  }
+
+  /* ---- Scroll Animations (IntersectionObserver) ---- */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.section-header, .service-card, .trust-card, .review-card, .contact-info-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
+  });
+
+  /* ---- Smooth Scroll (fallback for older browsers) ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        closeMobileMenu();
+        const navH = document.getElementById('nav').offsetHeight;
+        const top  = target.getBoundingClientRect().top + window.pageYOffset - navH - 16;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

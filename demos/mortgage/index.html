@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProFlow Plumbing | Fast Plumbing Fixes in Los Angeles</title>
-  <meta name="description" content="Licensed, bonded & insured plumbing in LA County. 24/7 emergency service, drain cleaning, water heaters, leak repair. Call (562) 373-1027." />
-  <!-- JSON-LD LocalBusiness Schema -->
+  <title>West Capital Lending | AI-Powered Mortgage Quotes & Lending Tools</title>
+  <meta name="description" content="West Capital Lending — fast mortgage quotes powered by AI. Conventional, FHA, VA, USDA, Jumbo & Refinance loans. Licensed NMLS lender. Call (562) 373-1027." />
+  <!-- JSON-LD FinancialService Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Plumber",
-    "name": "ProFlow Plumbing",
+    "@type": "FinancialService",
+    "name": "West Capital Lending",
     "telephone": "+1-562-373-1027",
     "address": {
       "@type": "PostalAddress",
@@ -18,20 +18,20 @@
       "addressRegion": "CA",
       "addressCountry": "US"
     },
-    "url": "https://proflowplumbing.com",
+    "url": "https://westcapitallending.com",
     "priceRange": "$$",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "312"
+      "reviewCount": "247"
     },
-    "areaServed": ["Los Angeles","Long Beach","Burbank","Glendale","Pasadena","Torrance","Downey","Norwalk","Whittier","Compton"]
+    "areaServed": ["Los Angeles","Orange County","San Diego","Riverside","San Bernardino","Ventura"]
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -339,36 +339,6 @@
       letter-spacing: 0.08em;
     }
 
-    /* ===== EMERGENCY STRIP ===== */
-    #emergency {
-      background: linear-gradient(90deg, #1a0606, #1f0c00, #1a0606);
-      border-top: 1px solid rgba(255,59,59,0.25);
-      border-bottom: 1px solid rgba(255,59,59,0.25);
-      padding: 16px 0;
-    }
-    .emergency-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      text-align: center;
-      flex-wrap: wrap;
-    }
-    .emergency-inner p {
-      font-weight: 700;
-      font-size: 16px;
-      color: #FF6B6B;
-      letter-spacing: 0.01em;
-    }
-    .emergency-inner a {
-      font-family: var(--mono);
-      font-weight: 700;
-      color: #FF3B3B;
-      text-decoration: underline;
-      font-size: 17px;
-    }
-    .emergency-inner a:hover { color: #fff; }
-
     /* ===== SECTIONS SHARED ===== */
     .section { padding: 96px 0; }
     .section-header { margin-bottom: 56px; }
@@ -430,7 +400,7 @@
       line-height: 1.65;
     }
 
-    /* ===== ESTIMATE CALCULATOR ===== */
+    /* ===== MORTGAGE CALCULATOR ===== */
     #calculator { background: var(--bg2); }
     .calc-wrap {
       background: var(--card);
@@ -533,7 +503,7 @@
     }
     .calc-disclaimer::before { content: '*'; color: var(--accent); flex-shrink: 0; }
 
-    /* ===== WHY CHOOSE US ===== */
+    /* ===== WHY CHOOSE US / TRUST ===== */
     #trust { background: var(--bg); }
     .trust-grid {
       display: grid;
@@ -606,8 +576,8 @@
       margin-bottom: 20px;
       font-style: italic;
     }
-    .review-text::before { content: '"'; color: var(--accent); font-style: normal; font-size: 20px; }
-    .review-text::after { content: '"'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::before { content: '\201C'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::after { content: '\201D'; color: var(--accent); font-style: normal; font-size: 20px; }
     .reviewer {
       display: flex;
       align-items: center;
@@ -823,13 +793,13 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <div class="nav-logo-icon">🔧</div>
-        Pro<span>Flow</span> Plumbing
+        <div class="nav-logo-icon">🏦</div>
+        West <span>Capital</span> Lending
       </a>
 
       <ul class="nav-links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#emergency">Emergency</a></li>
+        <li><a href="#services">Loan Programs</a></li>
+        <li><a href="#calculator">Quote Calculator</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -848,9 +818,9 @@
 
 <!-- Mobile Nav Menu -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#services" onclick="closeMobileMenu()">Services</a>
-  <a href="#emergency" onclick="closeMobileMenu()">Emergency</a>
-  <a href="#calculator" onclick="closeMobileMenu()">Get Estimate</a>
+  <a href="#services" onclick="closeMobileMenu()">Loan Programs</a>
+  <a href="#calculator" onclick="closeMobileMenu()">Quote Calculator</a>
+  <a href="#trust" onclick="closeMobileMenu()">Why Us</a>
   <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
   <a href="tel:+15623731027" class="btn btn-primary">📞 Call Now — (562) 373-1027</a>
@@ -862,196 +832,183 @@
   <div class="hero-grid"></div>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge">Available 24/7 · Emergency Service</div>
+      <div class="hero-badge">NMLS Licensed · Equal Housing Lender</div>
       <h1 class="hero-headline">
-        Fast Plumbing Fixes.<br>
-        <span class="highlight">No Surprises.</span>
+        Smarter Mortgages.<br>
+        <span class="highlight">Better Rates.</span>
       </h1>
       <p class="hero-sub">
-        Licensed, bonded, and insured. Serving LA County for 15+ years with upfront pricing and same-day availability.
+        AI-powered quote calculator with instant estimates. Conventional, FHA, VA, USDA, Jumbo, and Refinance loans — all under one roof.
       </p>
       <div class="hero-ctas">
         <a href="tel:+15623731027" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
           📞 Call Now — (562) 373-1027
         </a>
         <a href="#calculator" class="btn btn-outline" style="font-size:16px;padding:16px 32px;">
-          Get a Free Quote
+          Get Your Quote
         </a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="hero-stat-num">15+</span>
-          <span class="hero-stat-label">Years in LA</span>
+          <span class="hero-stat-num">$2.1B+</span>
+          <span class="hero-stat-label">Loans Funded</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num">4,800+</span>
-          <span class="hero-stat-label">Jobs Completed</span>
+          <span class="hero-stat-num">4,200+</span>
+          <span class="hero-stat-label">Families Served</span>
         </div>
         <div class="hero-stat">
           <span class="hero-stat-num">4.9★</span>
           <span class="hero-stat-label">Avg Rating</span>
         </div>
         <div class="hero-stat">
-          <span class="hero-stat-num">60 min</span>
-          <span class="hero-stat-label">Avg Response</span>
+          <span class="hero-stat-num">21 days</span>
+          <span class="hero-stat-label">Avg Close Time</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== EMERGENCY STRIP ===== -->
-<div id="emergency">
-  <div class="container">
-    <div class="emergency-inner">
-      <p>🚨 Plumbing Emergency? Call <a href="tel:+15623731027">(562) 373-1027</a> — We Answer 24/7</p>
-    </div>
-  </div>
-</div>
-
-<!-- ===== SERVICES ===== -->
+<!-- ===== LOAN PROGRAMS / SERVICES ===== -->
 <section id="services" class="section">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Expert Plumbing Services</h2>
-      <p class="section-sub">From clogged drains to full pipe replacements — fast, clean, done right.</p>
+      <div class="section-label">Loan Programs</div>
+      <h2 class="section-title">Find the Right Loan for You</h2>
+      <p class="section-sub">From first-time buyers to seasoned investors — we have a program that fits your goals.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
-        <span class="service-icon">🌀</span>
-        <div class="service-name">Drain Cleaning</div>
-        <div class="service-price">Starting at $89</div>
-        <div class="service-desc">Hydro-jetting and snake clearing for kitchen, bath, and floor drains. Same-day appointments available across LA County.</div>
+        <span class="service-icon">🏠</span>
+        <div class="service-name">Conventional Loans</div>
+        <div class="service-price">As low as 3% down</div>
+        <div class="service-desc">Fixed and adjustable rate options with competitive terms. Ideal for borrowers with good credit seeking predictable monthly payments.</div>
       </div>
       <div class="service-card">
-        <span class="service-icon">🔥</span>
-        <div class="service-name">Water Heater Install</div>
-        <div class="service-price">Starting at $450</div>
-        <div class="service-desc">Traditional tank and tankless water heater installation. All major brands. Removal of old unit included in most installs.</div>
+        <span class="service-icon">🏛️</span>
+        <div class="service-name">FHA Loans</div>
+        <div class="service-price">As low as 3.5% down</div>
+        <div class="service-desc">Government-backed loans with flexible credit requirements. Perfect for first-time homebuyers and lower down payment situations.</div>
       </div>
       <div class="service-card">
-        <span class="service-icon">💧</span>
-        <div class="service-name">Leak Repair</div>
-        <div class="service-price">Starting at $120</div>
-        <div class="service-desc">Precision detection and repair of slab leaks, pipe leaks, and fixture leaks. Electronic leak detection available.</div>
+        <span class="service-icon">🎖️</span>
+        <div class="service-name">VA Loans</div>
+        <div class="service-price">0% down for eligible veterans</div>
+        <div class="service-desc">Exclusive benefits for active-duty military, veterans, and surviving spouses. No PMI required with zero down payment.</div>
       </div>
       <div class="service-card">
-        <span class="service-icon">🔩</span>
-        <div class="service-name">Pipe Replacement</div>
-        <div class="service-price">Starting at $350</div>
-        <div class="service-desc">Full and partial repiping in copper or PEX. Older galvanized or cast iron pipe upgrades handled with minimal wall damage.</div>
+        <span class="service-icon">🌾</span>
+        <div class="service-name">USDA Loans</div>
+        <div class="service-price">0% down in eligible areas</div>
+        <div class="service-desc">Rural and suburban home financing with no down payment. Income-based eligibility with below-market interest rates.</div>
       </div>
       <div class="service-card">
-        <span class="service-icon">🏗️</span>
-        <div class="service-name">Sewer Line Service</div>
-        <div class="service-price">Starting at $275</div>
-        <div class="service-desc">Camera inspection, hydro-jetting, and trenchless sewer line repair. We diagnose before we dig — always.</div>
+        <span class="service-icon">💎</span>
+        <div class="service-name">Jumbo Loans</div>
+        <div class="service-price">Loans above $766,550</div>
+        <div class="service-desc">High-value financing for luxury properties and high-cost areas. Competitive rates with flexible underwriting guidelines.</div>
       </div>
       <div class="service-card">
-        <span class="service-icon">🛁</span>
-        <div class="service-name">Bathroom Remodel</div>
-        <div class="service-price">Starting at $800</div>
-        <div class="service-desc">Toilet, sink, shower, and tub plumbing rough-in and finish work. Coordinated with your tile and vanity install schedule.</div>
+        <span class="service-icon">🔄</span>
+        <div class="service-name">Refinance</div>
+        <div class="service-price">Rate-and-term or cash-out</div>
+        <div class="service-desc">Lower your rate, reduce your term, or tap into your home equity. Streamline and conventional refinance options available.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ESTIMATE CALCULATOR ===== -->
+<!-- ===== MORTGAGE QUOTE CALCULATOR ===== -->
 <section id="calculator" class="section">
   <div class="container">
     <div class="section-header centered">
-      <div class="section-label">Instant Estimate</div>
-      <h2 class="section-title">Get a Free Cost Estimate</h2>
-      <p class="section-sub">Fill in 3 fields and see your range in seconds. No commitment, no spam.</p>
+      <div class="section-label">AI Quote Calculator</div>
+      <h2 class="section-title">Estimate Your Monthly Payment</h2>
+      <p class="section-sub">Enter your loan details and get an instant estimate. No commitment, no credit check required.</p>
     </div>
     <div class="calc-wrap">
       <div class="calc-form">
         <div class="form-group">
-          <label for="calc-service">Service Type</label>
-          <select id="calc-service">
-            <option value="">— Select a service —</option>
-            <option value="drain">Drain Cleaning</option>
-            <option value="heater">Water Heater Install</option>
-            <option value="leak">Leak Repair</option>
-            <option value="pipe">Pipe Replacement</option>
-            <option value="sewer">Sewer Line Service</option>
-            <option value="bathroom">Bathroom Remodel</option>
-          </select>
+          <label for="calc-loan">Home Price ($)</label>
+          <input type="number" id="calc-loan" placeholder="450,000" min="50000" step="1000" />
         </div>
         <div class="form-group">
-          <label for="calc-urgency">Urgency</label>
-          <select id="calc-urgency">
-            <option value="0">Standard (3–5 days)</option>
-            <option value="75">Same Day (+$75)</option>
-            <option value="150">Emergency 24/7 (+$150)</option>
-          </select>
+          <label for="calc-down">Down Payment ($)</label>
+          <input type="number" id="calc-down" placeholder="90,000" min="0" step="1000" />
         </div>
-        <div class="form-group full">
-          <label for="calc-property">Property Type</label>
-          <select id="calc-property">
-            <option value="1">Residential</option>
-            <option value="1.35">Commercial (+35%)</option>
+        <div class="form-group">
+          <label for="calc-rate">Interest Rate (%)</label>
+          <input type="number" id="calc-rate" placeholder="6.75" min="0.1" max="20" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label for="calc-term">Loan Term</label>
+          <select id="calc-term">
+            <option value="30">30-Year Fixed</option>
+            <option value="15">15-Year Fixed</option>
           </select>
         </div>
       </div>
-      <button class="calc-btn" onclick="calculateEstimate()">Calculate My Estimate →</button>
+      <button class="calc-btn" onclick="calculateMortgage()">Calculate My Payment →</button>
 
       <div class="calc-result" id="calc-result">
         <div class="result-row">
-          <span class="result-label">Base Estimate Range</span>
-          <span class="result-value" id="res-base">—</span>
+          <span class="result-label">Loan Amount</span>
+          <span class="result-value" id="res-loan">—</span>
         </div>
         <div class="result-row">
-          <span class="result-label">Urgency Fee</span>
-          <span class="result-value" id="res-urgency">—</span>
+          <span class="result-label">Interest Rate</span>
+          <span class="result-value" id="res-rate">—</span>
         </div>
         <div class="result-row">
-          <span class="result-label">Property Adjustment</span>
-          <span class="result-value" id="res-property">—</span>
+          <span class="result-label">Loan Term</span>
+          <span class="result-value" id="res-term">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Total Interest Paid</span>
+          <span class="result-value" id="res-interest">—</span>
         </div>
         <div class="result-row result-total">
-          <span class="result-label">Total Estimate Range</span>
-          <span class="result-value" id="res-total">—</span>
+          <span class="result-label">Est. Monthly Payment</span>
+          <span class="result-value" id="res-monthly">—</span>
         </div>
-        <p class="calc-disclaimer">Actual price confirmed on-site inspection. No surprise charges — ever. Final quote provided in writing before any work begins.</p>
+        <p class="calc-disclaimer">This is an estimate only. Actual rates and payments may vary based on credit score, loan type, and other factors. Does not include taxes, insurance, or PMI. Contact us for a personalized quote.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== WHY CHOOSE US ===== -->
+<!-- ===== TRUST BADGES ===== -->
 <section id="trust" class="section">
   <div class="container">
     <div class="section-header centered">
-      <div class="section-label">Why ProFlow</div>
-      <h2 class="section-title">Built on Trust. Backed by Results.</h2>
+      <div class="section-label">Why West Capital</div>
+      <h2 class="section-title">Licensed. Trusted. Proven.</h2>
     </div>
     <div class="trust-grid">
       <div class="trust-card">
         <span class="trust-icon">🛡️</span>
-        <div class="trust-title">Licensed & Bonded</div>
-        <div class="trust-desc">Fully licensed with the California Contractors State License Board. You're protected on every job.</div>
-        <div class="trust-badge">Lic# C-36 847392</div>
+        <div class="trust-title">Licensed Lender</div>
+        <div class="trust-desc">Fully licensed mortgage lender operating in compliance with state and federal regulations. Your loan is in safe hands.</div>
+        <div class="trust-badge">NMLS# 1842067</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🏘️</span>
+        <div class="trust-title">Equal Housing Lender</div>
+        <div class="trust-desc">We provide equal lending opportunities regardless of race, color, religion, national origin, sex, handicap, or familial status.</div>
+        <div class="trust-badge">Equal Opportunity</div>
       </div>
       <div class="trust-card">
         <span class="trust-icon">⚡</span>
-        <div class="trust-title">Same-Day Service</div>
-        <div class="trust-desc">We dispatch within 60 minutes across LA County. No waiting days — plumbing problems don't wait.</div>
-        <div class="trust-badge">Avg 60 min response</div>
+        <div class="trust-title">21-Day Average Close</div>
+        <div class="trust-desc">Our streamlined process and AI-powered tools get you from application to closing faster than the industry average.</div>
+        <div class="trust-badge">Industry avg: 45 days</div>
       </div>
       <div class="trust-card">
         <span class="trust-icon">💰</span>
-        <div class="trust-title">Upfront Pricing</div>
-        <div class="trust-desc">You get a written quote before the wrench turns. No hidden fees, no "we'll figure it out" surprises.</div>
-        <div class="trust-badge">Written quote always</div>
-      </div>
-      <div class="trust-card">
-        <span class="trust-icon">🏆</span>
-        <div class="trust-title">15+ Years Experience</div>
-        <div class="trust-desc">Over 4,800 jobs completed in LA County. We've seen every pipe problem imaginable — and fixed them all.</div>
-        <div class="trust-badge">Since 2009</div>
+        <div class="trust-title">Transparent Pricing</div>
+        <div class="trust-desc">No hidden fees, no surprise costs. We provide a detailed Loan Estimate upfront so you know exactly what you're paying.</div>
+        <div class="trust-badge">Zero junk fees</div>
       </div>
     </div>
   </div>
@@ -1061,53 +1018,53 @@
 <section id="reviews" class="section">
   <div class="container">
     <div class="section-header centered">
-      <div class="section-label">Customer Reviews</div>
-      <h2 class="section-title">What LA Homeowners Are Saying</h2>
+      <div class="section-label">Client Reviews</div>
+      <h2 class="section-title">What Our Borrowers Are Saying</h2>
     </div>
     <div class="reviews-rating-summary">
       <div class="rating-big">4.9</div>
       <div class="stars" style="justify-content:center;margin:8px 0;">
         <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
       </div>
-      <div class="rating-label">Based on 312 verified reviews · Google &amp; Yelp</div>
+      <div class="rating-label">Based on 247 verified reviews · Google &amp; Zillow</div>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
         <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
         <p class="review-text">
-          Had a burst pipe at 11 PM on a Sunday. Called ProFlow and they were at my house in under 45 minutes. The tech was professional, explained everything clearly, and the price was exactly what they quoted over the phone. Couldn't be more relieved.
+          First-time buyer here and I was completely lost. West Capital walked me through every step of the FHA process. They got us a rate I didn't think was possible with our credit score. Closed in 19 days. Cannot recommend them enough.
         </p>
         <div class="reviewer">
-          <div class="reviewer-avatar">MR</div>
+          <div class="reviewer-avatar">AR</div>
           <div>
-            <div class="reviewer-name">Maria R.</div>
-            <div class="reviewer-meta">Los Angeles, CA · 3 weeks ago</div>
+            <div class="reviewer-name">Amanda R.</div>
+            <div class="reviewer-meta">Orange County, CA · 2 weeks ago</div>
           </div>
         </div>
       </div>
       <div class="review-card">
         <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
         <p class="review-text">
-          Got three quotes for a water heater replacement. ProFlow wasn't the cheapest but they were the most transparent — showed me exactly what parts cost and why. Install was done same day, clean, no mess left behind. Worth every dollar.
+          Refinanced my 30-year into a 15-year and saved over $180K in interest. The online calculator gave me a ballpark in seconds, then the loan officer confirmed it within an hour. Seamless from start to finish.
         </p>
         <div class="reviewer">
-          <div class="reviewer-avatar">JT</div>
+          <div class="reviewer-avatar">MT</div>
           <div>
-            <div class="reviewer-name">James T.</div>
-            <div class="reviewer-meta">Burbank, CA · 1 month ago</div>
+            <div class="reviewer-name">Marcus T.</div>
+            <div class="reviewer-meta">San Diego, CA · 1 month ago</div>
           </div>
         </div>
       </div>
       <div class="review-card">
         <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
         <p class="review-text">
-          My kitchen drain had been backing up for weeks. ProFlow hydro-jetted the main line and did a camera inspection — found a root intrusion I didn't even know about. Fixed it same day. The pricing was super fair for the work they did.
+          As a veteran I was skeptical about VA loan promises. West Capital delivered — zero down, no PMI, and a rate that beat three other lenders. Their team actually understands military borrowers. Five stars.
         </p>
         <div class="reviewer">
-          <div class="reviewer-avatar">DK</div>
+          <div class="reviewer-avatar">DH</div>
           <div>
-            <div class="reviewer-name">Diana K.</div>
-            <div class="reviewer-meta">Long Beach, CA · 2 months ago</div>
+            <div class="reviewer-name">David H.</div>
+            <div class="reviewer-meta">Riverside, CA · 6 weeks ago</div>
           </div>
         </div>
       </div>
@@ -1115,13 +1072,13 @@
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
+<!-- ===== CONTACT / LEAD CAPTURE ===== -->
 <section id="contact" class="section">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">Get In Touch</div>
-      <h2 class="section-title">Request a Free Inspection</h2>
-      <p class="section-sub">Available same-day across all of LA County. We'll call you back within 15 minutes.</p>
+      <div class="section-label">Get Started</div>
+      <h2 class="section-title">Request Your Free Quote</h2>
+      <p class="section-sub">Fill out the form and a licensed loan officer will contact you within 1 business hour.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info-block">
@@ -1130,7 +1087,7 @@
           <div>
             <div class="contact-info-label">Phone</div>
             <div class="contact-info-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
-            <div class="contact-info-sub">Answered 24/7 — including holidays</div>
+            <div class="contact-info-sub">Mon–Fri 8am–6pm · Sat by appointment</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -1138,89 +1095,65 @@
           <div>
             <div class="contact-info-label">Location</div>
             <div class="contact-info-value">Los Angeles, CA</div>
-            <div class="contact-info-sub">Service area: All of LA County</div>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-info-icon">🕐</div>
-          <div>
-            <div class="contact-info-label">Hours</div>
-            <div class="contact-info-value">24 / 7 / 365</div>
-            <div class="contact-info-sub">Emergency calls answered immediately</div>
+            <div class="contact-info-sub">Serving all of Southern California</div>
           </div>
         </div>
         <div class="contact-info-item">
           <div class="contact-info-icon">🛡️</div>
           <div>
             <div class="contact-info-label">License</div>
-            <div class="contact-info-value">C-36 Plumbing Contractor</div>
-            <div class="contact-info-sub">CSLB Lic# 847392 · Bonded & Insured</div>
+            <div class="contact-info-value">NMLS# 1842067</div>
+            <div class="contact-info-sub">Licensed Mortgage Lender · Equal Housing</div>
           </div>
         </div>
-        <div class="lic-chip">✓ Verified: CSLB Lic# C-36 847392</div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🏘️</div>
+          <div>
+            <div class="contact-info-label">Equal Housing</div>
+            <div class="contact-info-value">Equal Housing Lender</div>
+            <div class="contact-info-sub">We lend to all qualified borrowers equally</div>
+          </div>
+        </div>
+        <div class="lic-chip">✓ NMLS# 1842067 · Equal Housing Lender</div>
       </div>
 
       <div class="contact-form-card">
-        <div class="contact-form-title">Send a Service Request</div>
+        <div class="contact-form-title">Get a Free Rate Quote</div>
         <form
           class="contact-form"
           action="https://formsubmit.co/sabino.sanchez7@gmail.com"
           method="POST"
         >
-          <input type="hidden" name="_subject" value="Plumbing Request - ProFlow" />
+          <input type="hidden" name="_subject" value="Mortgage Inquiry - West Capital Lending" />
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://rivven.ai/demos/plumbing/#thank-you" />
+          <input type="hidden" name="_next" value="#contact" />
           <div class="form-group">
             <label for="contact-name">Full Name</label>
-            <input type="text" id="contact-name" name="name" placeholder="Maria Rodriguez" required />
+            <input type="text" id="contact-name" name="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" name="email" placeholder="john@example.com" required />
           </div>
           <div class="form-group">
             <label for="contact-phone">Phone Number</label>
             <input type="tel" id="contact-phone" name="phone" placeholder="(562) 373-1027" required />
           </div>
           <div class="form-group">
-            <label for="contact-service">Service Needed</label>
-            <select id="contact-service" name="service" required>
-              <option value="">— Select a service —</option>
-              <option>Drain Cleaning</option>
-              <option>Water Heater Install</option>
-              <option>Leak Repair</option>
-              <option>Pipe Replacement</option>
-              <option>Sewer Line Service</option>
-              <option>Bathroom Remodel</option>
-              <option>Other / Not Sure</option>
+            <label for="contact-loan-type">Loan Type</label>
+            <select id="contact-loan-type" name="loan_type" required>
+              <option value="">— Select a loan type —</option>
+              <option>Conventional</option>
+              <option>FHA</option>
+              <option>VA</option>
+              <option>USDA</option>
+              <option>Jumbo</option>
+              <option>Refinance</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="contact-desc">Describe the Issue</label>
-            <textarea id="contact-desc" name="description" placeholder="E.g. Kitchen sink backing up, slow drain in master bath, water heater not heating..."></textarea>
-          </div>
-          <button type="submit" class="contact-submit">Send Request — We'll Call in 15 Min</button>
+          <button type="submit" class="contact-submit">Submit — Get Your Free Quote</button>
         </form>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SERVICE AREA ===== -->
-<section style="padding:72px 0;text-align:center;">
-  <div class="container">
-    <div class="section-label">Service Area</div>
-    <h2 class="section-title" style="margin-bottom:12px;">Serving All of LA County — 24/7</h2>
-    <p class="section-sub" style="max-width:540px;margin:0 auto 28px;">Fast dispatch anywhere in Los Angeles County. Our plumbers are always nearby and ready to respond.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:750px;margin:0 auto;">
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Los Angeles</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Long Beach</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Burbank</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Glendale</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Pasadena</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Torrance</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Downey</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Norwalk</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Whittier</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Compton</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Santa Monica</span>
-      <span style="background:var(--accent-dim);border:1px solid rgba(0,240,255,0.25);color:var(--accent);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;">Inglewood</span>
     </div>
   </div>
 </section>
@@ -1230,12 +1163,12 @@
   <div class="container">
     <div class="footer-inner">
       <div class="footer-copy">
-        ProFlow Plumbing <span>© 2026</span> · Los Angeles, CA · CSLB Lic# C-36 847392
+        West Capital Lending <span>&copy; 2026</span> &middot; Los Angeles, CA &middot; NMLS# 1842067
       </div>
-      <div style="color:var(--muted);font-size:12px;margin:6px 0;">Open 24/7/365 · Emergency calls answered immediately · Licensed, Bonded & Insured · Serving all of LA County</div>
+      <div style="color:var(--muted);font-size:12px;margin:6px 0;">Equal Housing Lender &middot; Licensed Mortgage Lender &middot; Serving all of Southern California</div>
       <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo →</a></div>
       <div class="footer-brand">
-        Website by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> · rivven.ai
+        Built by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> &middot; rivven.ai
       </div>
     </div>
   </div>
@@ -1278,47 +1211,47 @@
     }
   });
 
-  /* ---- Estimate Calculator ---- */
-  const servicePrices = {
-    drain:    { low: 89,  high: 250,  name: 'Drain Cleaning' },
-    heater:   { low: 450, high: 900,  name: 'Water Heater Install' },
-    leak:     { low: 120, high: 450,  name: 'Leak Repair' },
-    pipe:     { low: 350, high: 1200, name: 'Pipe Replacement' },
-    sewer:    { low: 275, high: 850,  name: 'Sewer Line Service' },
-    bathroom: { low: 800, high: 2500, name: 'Bathroom Remodel' },
-  };
-
+  /* ---- Mortgage Quote Calculator ---- */
   function fmt(n) {
     return '$' + Math.round(n).toLocaleString();
   }
 
-  function calculateEstimate() {
-    const serviceKey  = document.getElementById('calc-service').value;
-    const urgencyFee  = parseFloat(document.getElementById('calc-urgency').value);
-    const propMult    = parseFloat(document.getElementById('calc-property').value);
+  function calculateMortgage() {
+    const homePrice = parseFloat(document.getElementById('calc-loan').value);
+    const downPayment = parseFloat(document.getElementById('calc-down').value) || 0;
+    const annualRate = parseFloat(document.getElementById('calc-rate').value);
+    const termYears = parseInt(document.getElementById('calc-term').value);
 
-    if (!serviceKey) {
-      alert('Please select a service type.');
+    if (!homePrice || homePrice <= 0) {
+      alert('Please enter a valid home price.');
+      return;
+    }
+    if (!annualRate || annualRate <= 0) {
+      alert('Please enter a valid interest rate.');
+      return;
+    }
+    if (downPayment >= homePrice) {
+      alert('Down payment must be less than the home price.');
       return;
     }
 
-    const svc     = servicePrices[serviceKey];
-    const baseLow  = svc.low;
-    const baseHigh = svc.high;
+    const loanAmount = homePrice - downPayment;
+    const monthlyRate = (annualRate / 100) / 12;
+    const totalPayments = termYears * 12;
 
-    const adjLow  = baseLow  * propMult;
-    const adjHigh = baseHigh * propMult;
+    // M = P * [r(1+r)^n] / [(1+r)^n - 1]
+    const numerator = monthlyRate * Math.pow(1 + monthlyRate, totalPayments);
+    const denominator = Math.pow(1 + monthlyRate, totalPayments) - 1;
+    const monthlyPayment = loanAmount * (numerator / denominator);
 
-    const totalLow  = adjLow  + urgencyFee;
-    const totalHigh = adjHigh + urgencyFee;
+    const totalPaid = monthlyPayment * totalPayments;
+    const totalInterest = totalPaid - loanAmount;
 
-    const urgencyLabels = { 0: 'None (Standard)', 75: '+$75 Same Day', 150: '+$150 Emergency' };
-    const propLabels    = { 1: 'None (Residential)', 1.35: '+35% (Commercial)' };
-
-    document.getElementById('res-base').textContent     = fmt(baseLow) + ' – ' + fmt(baseHigh);
-    document.getElementById('res-urgency').textContent  = urgencyFee === 0 ? 'None' : '+' + fmt(urgencyFee);
-    document.getElementById('res-property').textContent = propMult === 1 ? 'None' : '+35% applied';
-    document.getElementById('res-total').textContent    = fmt(totalLow) + ' – ' + fmt(totalHigh);
+    document.getElementById('res-loan').textContent = fmt(loanAmount);
+    document.getElementById('res-rate').textContent = annualRate.toFixed(2) + '%';
+    document.getElementById('res-term').textContent = termYears + ' years (' + totalPayments + ' payments)';
+    document.getElementById('res-interest').textContent = fmt(totalInterest);
+    document.getElementById('res-monthly').textContent = fmt(monthlyPayment);
 
     const result = document.getElementById('calc-result');
     result.classList.add('show');
@@ -1349,10 +1282,7 @@
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        closeMobileMenu();
-        const navH = document.getElementById('nav').offsetHeight;
-        const top  = target.getBoundingClientRect().top + window.pageYOffset - navH - 16;
-        window.scrollTo({ top, behavior: 'smooth' });
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     });
   });

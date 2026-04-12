@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aqua Car Wash | Premium Car Wash & Detailing</title>
+  <meta name="description" content="Aqua Car Wash offers premium car wash & detailing services with affordable membership plans. Exterior wash, interior detail, wax & polish. Bilingual service. Call (562) 373-1027." />
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoWash",
+    "name": "Aqua Car Wash",
+    "telephone": "+1-562-373-1027",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "url": "https://aquacarwash.com",
+    "priceRange": "$–$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "07:00",
+      "closes": "20:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "587"
+    },
+    "areaServed": ["Los Angeles","Long Beach","Downey","Norwalk","Whittier","Compton","Lakewood","Cerritos","Bellflower","Paramount"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0A0A0B;
+      --bg2: #111114;
+      --bg3: #16161A;
+      --accent: #00F0FF;
+      --accent-dim: rgba(0,240,255,0.12);
+      --accent-glow: rgba(0,240,255,0.35);
+      --text: #F0F0F2;
+      --muted: #888898;
+      --border: rgba(255,255,255,0.07);
+      --card: #13131A;
+      --red: #FF3B3B;
+      --orange: #FF8C00;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --transition: 0.2s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: var(--font); cursor: pointer; border: none; outline: none; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 17px;
+      margin-top: 12px;
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ===== NAV ===== */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10,10,11,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-phone {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      display: none;
+    }
+    /* Language toggle */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .lang-toggle button {
+      padding: 6px 10px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font);
+    }
+    .lang-toggle button.active {
+      background: var(--accent);
+      color: #000;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 66px; left: 0; right: 0;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      padding: 14px 16px;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--muted);
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--accent-dim); color: var(--accent); }
+    .mobile-menu .btn { margin-top: 8px; justify-content: center; }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 60% 20%, rgba(0,240,255,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,180,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 85% 70%, rgba(0,240,255,0.05) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,240,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,240,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 75%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-headline {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero-headline .highlight {
+      color: var(--accent);
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 52px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .hero-stat-num {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== PROMO STRIP ===== */
+    #promo {
+      background: linear-gradient(90deg, #061a1c, #0a1e22, #061a1c);
+      border-top: 1px solid rgba(0,240,255,0.25);
+      border-bottom: 1px solid rgba(0,240,255,0.25);
+      padding: 16px 0;
+    }
+    .promo-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+    .promo-inner p {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+    }
+    .promo-inner a {
+      font-family: var(--mono);
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: underline;
+      font-size: 17px;
+    }
+    .promo-inner a:hover { color: #fff; }
+
+    /* ===== SECTIONS SHARED ===== */
+    .section { padding: 96px 0; }
+    .section-header { margin-bottom: 56px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 12px auto 0; }
+
+    /* ===== SERVICES GRID ===== */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,240,255,0.07);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .service-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .service-price {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    /* ===== PRICING TABLE ===== */
+    #pricing { background: var(--bg2); }
+    .pricing-table {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .pricing-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .pricing-row:last-child { border-bottom: none; }
+    .pricing-row:hover { background: var(--bg3); }
+    .pricing-row-header {
+      background: var(--bg3);
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      padding: 14px 28px;
+    }
+    .pricing-service {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .pricing-service-icon { font-size: 22px; }
+    .pricing-service-name { font-weight: 600; font-size: 15px; }
+    .pricing-service-time {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .pricing-amount {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    /* ===== MEMBERSHIP PLANS ===== */
+    #membership { background: var(--bg); }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .plan-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .plan-card.featured {
+      border-color: rgba(0,240,255,0.35);
+      box-shadow: 0 0 40px rgba(0,240,255,0.08);
+    }
+    .plan-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    .plan-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,240,255,0.07);
+    }
+    .plan-popular {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--accent);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+    .plan-name {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .plan-price {
+      font-family: var(--mono);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .plan-price small {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .plan-desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .plan-features li {
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .plan-features li::before {
+      content: '\2713';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .plan-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 15px;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .plan-btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .plan-btn-primary:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+    }
+    .plan-btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .plan-btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    #trust { background: var(--bg2); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .trust-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .trust-card:hover {
+      border-color: rgba(0,240,255,0.2);
+      transform: translateY(-3px);
+    }
+    .trust-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .trust-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .trust-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .trust-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ===== REVIEWS ===== */
+    #reviews { background: var(--bg); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+    .review-card:hover { border-color: rgba(0,240,255,0.15); }
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .stars span { font-size: 18px; }
+    .review-text {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-text::before { content: '\201C'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .review-text::after { content: '\201D'; color: var(--accent); font-style: normal; font-size: 20px; }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .reviewer-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0,180,255,0.2));
+      border: 1px solid rgba(0,240,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 700; font-size: 15px; }
+    .reviewer-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .reviews-rating-summary {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .rating-big {
+      font-family: var(--mono);
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .rating-label {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--bg2); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info-block { display: flex; flex-direction: column; gap: 32px; }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contact-info-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .contact-info-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .contact-info-value {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .contact-info-value a { color: var(--accent); }
+    .contact-info-value a:hover { color: #fff; }
+    .contact-info-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .contact-form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .contact-form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .form-group select,
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg3);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      transition: var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300F0FF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    .form-group select:focus,
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+    }
+    .form-group select option { background: #1a1a20; }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .contact-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 8px;
+      transition: var(--transition);
+      margin-top: 4px;
+    }
+    .contact-submit:hover {
+      background: #fff;
+      box-shadow: 0 0 28px var(--accent-glow);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 32px 0 100px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer-copy span { color: var(--text); }
+    .footer-brand {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-brand a {
+      color: var(--accent);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .footer-brand a:hover { color: #fff; }
+
+    /* ===== MOBILE BOTTOM BANNER ===== */
+    #mobile-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 2000;
+      background: rgba(10,10,11,0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .banner-left {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .banner-left strong { color: var(--text); }
+    .banner-cta {
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 9px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .banner-cta:hover { background: #fff; }
+
+    /* ===== MOBILE BREAKPOINTS ===== */
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .nav-phone { display: block; }
+      .contact-form-card { padding: 24px 20px; }
+      .plans-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { justify-content: center; }
+      .services-grid { grid-template-columns: 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 380px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="nav-logo-icon">🚿</div>
+        Aqua <span>Car Wash</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+        <li><a href="#pricing" data-en="Pricing" data-es="Precios">Pricing</a></li>
+        <li><a href="#membership" data-en="Membership" data-es="Membresia">Membership</a></li>
+        <li><a href="#reviews" data-en="Reviews" data-es="Resenas">Reviews</a></li>
+        <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <div class="lang-toggle">
+          <button id="lang-en" class="active" onclick="setLang('en')">EN</button>
+          <button id="lang-es" onclick="setLang('es')">ES</button>
+        </div>
+        <span class="nav-phone">(562) 373-1027</span>
+        <a href="tel:+15623731027" class="btn btn-primary">📞 <span data-en="Call Now" data-es="Llamar">Call Now</span></a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="lang-toggle" style="margin-bottom:8px;width:fit-content;">
+    <button class="mobile-lang-en active" onclick="setLang('en')">EN</button>
+    <button class="mobile-lang-es" onclick="setLang('es')">ES</button>
+  </div>
+  <a href="#services" onclick="closeMobileMenu()" data-en="Services" data-es="Servicios">Services</a>
+  <a href="#pricing" onclick="closeMobileMenu()" data-en="Pricing" data-es="Precios">Pricing</a>
+  <a href="#membership" onclick="closeMobileMenu()" data-en="Membership" data-es="Membresia">Membership</a>
+  <a href="#reviews" onclick="closeMobileMenu()" data-en="Reviews" data-es="Resenas">Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="tel:+15623731027" class="btn btn-primary">📞 <span data-en="Call Now — (562) 373-1027" data-es="Llamar — (562) 373-1027">Call Now — (562) 373-1027</span></a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><span data-en="Open 7 Days a Week" data-es="Abierto 7 Dias a la Semana">Open 7 Days a Week</span> · <span data-en="Membership Available" data-es="Membresia Disponible">Membership Available</span></div>
+      <h1 class="hero-headline">
+        <span data-en="Your Car Deserves" data-es="Tu Auto Merece">Your Car Deserves</span><br>
+        <span class="highlight" data-en="The Best Shine." data-es="El Mejor Brillo.">The Best Shine.</span>
+      </h1>
+      <p class="hero-sub" data-en="Premium car wash and detailing in LA County. Unlimited wash memberships starting at $19.99/mo. Drive in, drive out spotless." data-es="Lavado de autos y detallado premium en el Condado de LA. Membresias de lavado ilimitado desde $19.99/mes. Entra y sal impecable.">
+        Premium car wash and detailing in LA County. Unlimited wash memberships starting at $19.99/mo. Drive in, drive out spotless.
+      </p>
+      <div class="hero-ctas">
+        <a href="#membership" class="btn btn-primary" style="font-size:16px;padding:16px 32px;">
+          <span data-en="View Membership Plans" data-es="Ver Planes de Membresia">View Membership Plans</span>
+        </a>
+        <a href="tel:+15623731027" class="btn btn-outline" style="font-size:16px;padding:16px 32px;">
+          📞 (562) 373-1027
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">10K+</span>
+          <span class="hero-stat-label" data-en="Cars Washed Monthly" data-es="Autos Lavados al Mes">Cars Washed Monthly</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">4.8★</span>
+          <span class="hero-stat-label" data-en="Avg Rating" data-es="Calificacion Prom.">Avg Rating</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">15 min</span>
+          <span class="hero-stat-label" data-en="Express Wash" data-es="Lavado Express">Express Wash</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">2K+</span>
+          <span class="hero-stat-label" data-en="Active Members" data-es="Miembros Activos">Active Members</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROMO STRIP ===== -->
+<div id="promo">
+  <div class="container">
+    <div class="promo-inner">
+      <p>✨ <span data-en="First Wash FREE with Any Membership — " data-es="Primer Lavado GRATIS con Cualquier Membresia — ">First Wash FREE with Any Membership — </span><a href="#membership" data-en="Join Now" data-es="Unete Ahora">Join Now</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label" data-en="What We Offer" data-es="Lo Que Ofrecemos">What We Offer</div>
+      <h2 class="section-title" data-en="Professional Car Wash Services" data-es="Servicios Profesionales de Lavado">Professional Car Wash Services</h2>
+      <p class="section-sub" data-en="From a quick exterior rinse to a full interior detail — we treat every car like it's our own." data-es="Desde un enjuague exterior rapido hasta un detallado interior completo — tratamos cada auto como si fuera nuestro.">From a quick exterior rinse to a full interior detail — we treat every car like it's our own.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🚗</span>
+        <div class="service-name" data-en="Exterior Wash" data-es="Lavado Exterior">Exterior Wash</div>
+        <div class="service-price" data-en="Starting at $12" data-es="Desde $12">Starting at $12</div>
+        <div class="service-desc" data-en="Full exterior hand wash with premium soap, wheel cleaning, tire shine, and spot-free rinse. Your car gleams in under 20 minutes." data-es="Lavado exterior completo a mano con jabon premium, limpieza de rines, brillo de llantas y enjuague sin manchas. Tu auto brilla en menos de 20 minutos.">Full exterior hand wash with premium soap, wheel cleaning, tire shine, and spot-free rinse. Your car gleams in under 20 minutes.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧹</span>
+        <div class="service-name" data-en="Interior Detail" data-es="Detallado Interior">Interior Detail</div>
+        <div class="service-price" data-en="Starting at $45" data-es="Desde $45">Starting at $45</div>
+        <div class="service-desc" data-en="Complete interior vacuum, dashboard wipe, leather conditioning, window cleaning, and air freshener. Deep clean for seats and carpets." data-es="Aspirado interior completo, limpieza de tablero, acondicionamiento de piel, limpieza de vidrios y aromatizante. Limpieza profunda de asientos y alfombras.">Complete interior vacuum, dashboard wipe, leather conditioning, window cleaning, and air freshener. Deep clean for seats and carpets.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✨</span>
+        <div class="service-name" data-en="Full Service" data-es="Servicio Completo">Full Service</div>
+        <div class="service-price" data-en="Starting at $55" data-es="Desde $55">Starting at $55</div>
+        <div class="service-desc" data-en="The best of both worlds — complete exterior wash plus full interior detail. Our most popular option for a like-new feel inside and out." data-es="Lo mejor de ambos mundos — lavado exterior completo mas detallado interior. Nuestra opcion mas popular para sentirse como nuevo por dentro y por fuera.">The best of both worlds — complete exterior wash plus full interior detail. Our most popular option for a like-new feel inside and out.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">⚡</span>
+        <div class="service-name" data-en="Express Wash" data-es="Lavado Express">Express Wash</div>
+        <div class="service-price" data-en="Starting at $8" data-es="Desde $8">Starting at $8</div>
+        <div class="service-desc" data-en="In a rush? Our express tunnel wash gets your car clean in just 15 minutes. Automated wash with hand-dry finish for a perfect result." data-es="Con prisa? Nuestro lavado express en tunel deja tu auto limpio en solo 15 minutos. Lavado automatizado con secado a mano para un resultado perfecto.">In a rush? Our express tunnel wash gets your car clean in just 15 minutes. Automated wash with hand-dry finish for a perfect result.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💎</span>
+        <div class="service-name" data-en="Wax & Polish" data-es="Encerado y Pulido">Wax & Polish</div>
+        <div class="service-price" data-en="Starting at $35" data-es="Desde $35">Starting at $35</div>
+        <div class="service-desc" data-en="Hand-applied carnauba wax and machine polish for a showroom shine. Protects your paint from UV damage and keeps your car looking fresh." data-es="Cera carnauba aplicada a mano y pulido a maquina para un brillo de exhibicion. Protege tu pintura del dano UV y mantiene tu auto luciendo fresco.">Hand-applied carnauba wax and machine polish for a showroom shine. Protects your paint from UV damage and keeps your car looking fresh.</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <div class="service-name" data-en="Engine Clean" data-es="Limpieza de Motor">Engine Clean</div>
+        <div class="service-price" data-en="Starting at $40" data-es="Desde $40">Starting at $40</div>
+        <div class="service-desc" data-en="Safe, thorough engine bay degreasing and steam clean. Removes built-up grime for better cooling and easier maintenance inspections." data-es="Desengrasado y limpieza a vapor del compartimiento del motor, seguro y minucioso. Elimina la grasa acumulada para mejor enfriamiento e inspecciones mas faciles.">Safe, thorough engine bay degreasing and steam clean. Removes built-up grime for better cooling and easier maintenance inspections.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING TABLE ===== -->
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label" data-en="Individual Wash Prices" data-es="Precios de Lavado Individual">Individual Wash Prices</div>
+      <h2 class="section-title" data-en="Single Wash Pricing" data-es="Precios de Lavado Individual">Single Wash Pricing</h2>
+      <p class="section-sub" data-en="No membership required. Drive in anytime for a single wash at these prices." data-es="No se requiere membresia. Ven cuando quieras por un lavado individual a estos precios.">No membership required. Drive in anytime for a single wash at these prices.</p>
+    </div>
+    <div class="pricing-table">
+      <div class="pricing-row pricing-row-header">
+        <span data-en="Service" data-es="Servicio">Service</span>
+        <span data-en="Price" data-es="Precio">Price</span>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">
+          <span class="pricing-service-icon">⚡</span>
+          <div>
+            <div class="pricing-service-name" data-en="Express Wash" data-es="Lavado Express">Express Wash</div>
+            <div class="pricing-service-time" data-en="~15 min · Tunnel wash + hand dry" data-es="~15 min · Lavado en tunel + secado a mano">~15 min · Tunnel wash + hand dry</div>
+          </div>
+        </div>
+        <div class="pricing-amount">$8</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">
+          <span class="pricing-service-icon">🚗</span>
+          <div>
+            <div class="pricing-service-name" data-en="Exterior Wash" data-es="Lavado Exterior">Exterior Wash</div>
+            <div class="pricing-service-time" data-en="~20 min · Hand wash + tire shine" data-es="~20 min · Lavado a mano + brillo de llantas">~20 min · Hand wash + tire shine</div>
+          </div>
+        </div>
+        <div class="pricing-amount">$12</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">
+          <span class="pricing-service-icon">💎</span>
+          <div>
+            <div class="pricing-service-name" data-en="Wax & Polish" data-es="Encerado y Pulido">Wax & Polish</div>
+            <div class="pricing-service-time" data-en="~40 min · Machine polish + carnauba wax" data-es="~40 min · Pulido a maquina + cera carnauba">~40 min · Machine polish + carnauba wax</div>
+          </div>
+        </div>
+        <div class="pricing-amount">$35</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">
+          <span class="pricing-service-icon">🔧</span>
+          <div>
+            <div class="pricing-service-name" data-en="Engine Clean" data-es="Limpieza de Motor">Engine Clean</div>
+            <div class="pricing-service-time" data-en="~30 min · Degrease + steam clean" data-es="~30 min · Desengrasado + vapor">~30 min · Degrease + steam clean</div>
+          </div>
+        </div>
+        <div class="pricing-amount">$40</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">
+          <span class="pricing-service-icon">🧹</span>
+          <div>
+            <div class="pricing-service-name" data-en="Interior Detail" data-es="Detallado Interior">Interior Detail</div>
+            <div class="pricing-service-time" data-en="~45 min · Vacuum, wipe, condition" data-es="~45 min · Aspirado, limpieza, acondicionamiento">~45 min · Vacuum, wipe, condition</div>
+          </div>
+        </div>
+        <div class="pricing-amount">$45</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-service">
+          <span class="pricing-service-icon">✨</span>
+          <div>
+            <div class="pricing-service-name" data-en="Full Service" data-es="Servicio Completo">Full Service</div>
+            <div class="pricing-service-time" data-en="~60 min · Exterior + Interior complete" data-es="~60 min · Exterior + Interior completo">~60 min · Exterior + Interior complete</div>
+          </div>
+        </div>
+        <div class="pricing-amount">$55</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEMBERSHIP PLANS ===== -->
+<section id="membership" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label" data-en="Unlimited Wash Memberships" data-es="Membresias de Lavado Ilimitado">Unlimited Wash Memberships</div>
+      <h2 class="section-title" data-en="Wash Unlimited. Save Big." data-es="Lavado Ilimitado. Ahorra Mas.">Wash Unlimited. Save Big.</h2>
+      <p class="section-sub" data-en="One monthly fee. Unlimited washes. No contracts — cancel anytime." data-es="Una tarifa mensual. Lavados ilimitados. Sin contratos — cancela cuando quieras.">One monthly fee. Unlimited washes. No contracts — cancel anytime.</p>
+    </div>
+    <div class="plans-grid">
+      <!-- Basic -->
+      <div class="plan-card">
+        <div class="plan-name" data-en="Basic" data-es="Basico">Basic</div>
+        <div class="plan-price">$19.99 <small data-en="/mo" data-es="/mes">/mo</small></div>
+        <div class="plan-desc" data-en="Perfect for daily drivers who want a clean car every week." data-es="Perfecto para conductores diarios que quieren un auto limpio cada semana.">Perfect for daily drivers who want a clean car every week.</div>
+        <ul class="plan-features">
+          <li data-en="Unlimited express tunnel washes" data-es="Lavados express en tunel ilimitados">Unlimited express tunnel washes</li>
+          <li data-en="Spot-free rinse included" data-es="Enjuague sin manchas incluido">Spot-free rinse included</li>
+          <li data-en="Tire shine on every wash" data-es="Brillo de llantas en cada lavado">Tire shine on every wash</li>
+          <li data-en="No contracts — cancel anytime" data-es="Sin contratos — cancela cuando quieras">No contracts — cancel anytime</li>
+        </ul>
+        <a href="#contact" class="plan-btn plan-btn-outline" data-en="Get Basic" data-es="Obtener Basico">Get Basic</a>
+      </div>
+      <!-- Premium -->
+      <div class="plan-card featured">
+        <div class="plan-popular" data-en="Most Popular" data-es="Mas Popular">Most Popular</div>
+        <div class="plan-name" data-en="Premium" data-es="Premium">Premium</div>
+        <div class="plan-price">$34.99 <small data-en="/mo" data-es="/mes">/mo</small></div>
+        <div class="plan-desc" data-en="Our best value — exterior hand wash plus interior vacuum every visit." data-es="Nuestro mejor valor — lavado exterior a mano mas aspirado interior en cada visita.">Our best value — exterior hand wash plus interior vacuum every visit.</div>
+        <ul class="plan-features">
+          <li data-en="Unlimited exterior hand washes" data-es="Lavados exteriores a mano ilimitados">Unlimited exterior hand washes</li>
+          <li data-en="Interior vacuum every visit" data-es="Aspirado interior en cada visita">Interior vacuum every visit</li>
+          <li data-en="Dashboard & console wipe" data-es="Limpieza de tablero y consola">Dashboard & console wipe</li>
+          <li data-en="Window cleaning included" data-es="Limpieza de vidrios incluida">Window cleaning included</li>
+          <li data-en="Priority lane — skip the line" data-es="Carril prioritario — salta la fila">Priority lane — skip the line</li>
+        </ul>
+        <a href="#contact" class="plan-btn plan-btn-primary" data-en="Get Premium" data-es="Obtener Premium">Get Premium</a>
+      </div>
+      <!-- Ultimate -->
+      <div class="plan-card">
+        <div class="plan-name" data-en="Ultimate" data-es="Ultimate">Ultimate</div>
+        <div class="plan-price">$49.99 <small data-en="/mo" data-es="/mes">/mo</small></div>
+        <div class="plan-desc" data-en="The complete package — full service wash with wax and interior detail." data-es="El paquete completo — lavado completo con encerado y detallado interior.">The complete package — full service wash with wax and interior detail.</div>
+        <ul class="plan-features">
+          <li data-en="Everything in Premium" data-es="Todo lo del Premium">Everything in Premium</li>
+          <li data-en="Hand wax & polish every visit" data-es="Encerado y pulido a mano en cada visita">Hand wax & polish every visit</li>
+          <li data-en="Full interior detail included" data-es="Detallado interior completo incluido">Full interior detail included</li>
+          <li data-en="Leather conditioning" data-es="Acondicionamiento de piel">Leather conditioning</li>
+          <li data-en="Engine bay rinse (monthly)" data-es="Enjuague de motor (mensual)">Engine bay rinse (monthly)</li>
+          <li data-en="VIP priority — zero wait" data-es="Prioridad VIP — cero espera">VIP priority — zero wait</li>
+        </ul>
+        <a href="#contact" class="plan-btn plan-btn-outline" data-en="Get Ultimate" data-es="Obtener Ultimate">Get Ultimate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="trust" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label" data-en="Why Aqua" data-es="Por Que Aqua">Why Aqua</div>
+      <h2 class="section-title" data-en="Your Car. Our Pride." data-es="Tu Auto. Nuestro Orgullo.">Your Car. Our Pride.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="trust-icon">💧</span>
+        <div class="trust-title" data-en="Eco-Friendly" data-es="Ecologico">Eco-Friendly</div>
+        <div class="trust-desc" data-en="We reclaim and recycle 85% of our water. Biodegradable soaps and zero harmful runoff." data-es="Recuperamos y reciclamos el 85% de nuestra agua. Jabones biodegradables y cero desechos daninos.">We reclaim and recycle 85% of our water. Biodegradable soaps and zero harmful runoff.</div>
+        <div class="trust-badge" data-en="85% water recycled" data-es="85% agua reciclada">85% water recycled</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">⚡</span>
+        <div class="trust-title" data-en="Fast Service" data-es="Servicio Rapido">Fast Service</div>
+        <div class="trust-desc" data-en="Express wash in 15 minutes. Full service in under an hour. We respect your time." data-es="Lavado express en 15 minutos. Servicio completo en menos de una hora. Respetamos tu tiempo.">Express wash in 15 minutes. Full service in under an hour. We respect your time.</div>
+        <div class="trust-badge" data-en="15 min express" data-es="15 min express">15 min express</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🌐</span>
+        <div class="trust-title" data-en="Bilingual Staff" data-es="Personal Bilingue">Bilingual Staff</div>
+        <div class="trust-desc" data-en="Our team speaks English and Spanish fluently. Every customer is welcome and understood." data-es="Nuestro equipo habla ingles y espanol con fluidez. Cada cliente es bienvenido y comprendido.">Our team speaks English and Spanish fluently. Every customer is welcome and understood.</div>
+        <div class="trust-badge" data-en="English & Spanish" data-es="Ingles y Espanol">English & Spanish</div>
+      </div>
+      <div class="trust-card">
+        <span class="trust-icon">🏆</span>
+        <div class="trust-title" data-en="Satisfaction Guaranteed" data-es="Satisfaccion Garantizada">Satisfaction Guaranteed</div>
+        <div class="trust-desc" data-en="Not happy? We'll re-wash your car for free, no questions asked. That's our promise." data-es="No estas satisfecho? Lavamos tu auto de nuevo gratis, sin preguntas. Esa es nuestra promesa.">Not happy? We'll re-wash your car for free, no questions asked. That's our promise.</div>
+        <div class="trust-badge" data-en="100% guarantee" data-es="100% garantia">100% guarantee</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews" class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-label" data-en="Customer Reviews" data-es="Resenas de Clientes">Customer Reviews</div>
+      <h2 class="section-title" data-en="What Our Customers Are Saying" data-es="Lo Que Dicen Nuestros Clientes">What Our Customers Are Saying</h2>
+    </div>
+    <div class="reviews-rating-summary">
+      <div class="rating-big">4.8</div>
+      <div class="stars" style="justify-content:center;margin:8px 0;">
+        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+      </div>
+      <div class="rating-label" data-en="Based on 587 verified reviews · Google & Yelp" data-es="Basado en 587 resenas verificadas · Google y Yelp">Based on 587 verified reviews · Google &amp; Yelp</div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text" data-en="I've been a Premium member for 6 months and my car has never looked better. I come through twice a week and the team always does an amazing job. The priority lane is a game-changer during busy weekends." data-es="He sido miembro Premium por 6 meses y mi auto nunca se ha visto mejor. Vengo dos veces por semana y el equipo siempre hace un trabajo increible. El carril prioritario es un cambio total los fines de semana.">
+          I've been a Premium member for 6 months and my car has never looked better. I come through twice a week and the team always does an amazing job. The priority lane is a game-changer during busy weekends.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">CG</div>
+          <div>
+            <div class="reviewer-name">Carlos G.</div>
+            <div class="reviewer-meta">Long Beach, CA · 2 weeks ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text" data-en="Love that the staff speaks Spanish — my mom doesn't speak English and she felt so comfortable here. They walked her through the membership options and she signed up for the Basic plan. Great customer service." data-es="Me encanta que el personal habla espanol — mi mama no habla ingles y se sintio muy comoda aqui. Le explicaron las opciones de membresia y se inscribio en el plan Basico. Excelente servicio al cliente.">
+          Love that the staff speaks Spanish — my mom doesn't speak English and she felt so comfortable here. They walked her through the membership options and she signed up for the Basic plan. Great customer service.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">AP</div>
+          <div>
+            <div class="reviewer-name">Ana P.</div>
+            <div class="reviewer-meta">Downey, CA · 1 month ago</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars"><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span></div>
+        <p class="review-text" data-en="Got the Ultimate membership as a gift for my wife. She goes every Saturday and says it's the best car wash she's ever been to. The interior detail they do is incredible — dashboard, leather, everything. Worth every penny." data-es="Le regale la membresia Ultimate a mi esposa. Va cada sabado y dice que es el mejor car wash al que ha ido. El detallado interior que hacen es increible — tablero, piel, todo. Vale cada centavo.">
+          Got the Ultimate membership as a gift for my wife. She goes every Saturday and says it's the best car wash she's ever been to. The interior detail they do is incredible — dashboard, leather, everything. Worth every penny.
+        </p>
+        <div class="reviewer">
+          <div class="reviewer-avatar">RN</div>
+          <div>
+            <div class="reviewer-name">Roberto N.</div>
+            <div class="reviewer-meta">Whittier, CA · 2 months ago</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label" data-en="Get In Touch" data-es="Contactanos">Get In Touch</div>
+      <h2 class="section-title" data-en="Schedule a Visit or Join a Plan" data-es="Programa una Visita o Unete a un Plan">Schedule a Visit or Join a Plan</h2>
+      <p class="section-sub" data-en="Questions about membership? Want to book a detail? We'll get back to you within 15 minutes." data-es="Preguntas sobre membresia? Quieres reservar un detallado? Te respondemos en 15 minutos.">Questions about membership? Want to book a detail? We'll get back to you within 15 minutes.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-block">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📞</div>
+          <div>
+            <div class="contact-info-label" data-en="Phone" data-es="Telefono">Phone</div>
+            <div class="contact-info-value"><a href="tel:+15623731027">(562) 373-1027</a></div>
+            <div class="contact-info-sub" data-en="Call or text — we respond fast" data-es="Llama o envia texto — respondemos rapido">Call or text — we respond fast</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📍</div>
+          <div>
+            <div class="contact-info-label" data-en="Location" data-es="Ubicacion">Location</div>
+            <div class="contact-info-value">Los Angeles, CA</div>
+            <div class="contact-info-sub" data-en="Convenient location with easy access" data-es="Ubicacion conveniente con facil acceso">Convenient location with easy access</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🕐</div>
+          <div>
+            <div class="contact-info-label" data-en="Hours" data-es="Horario">Hours</div>
+            <div class="contact-info-value" data-en="7:00 AM — 8:00 PM Daily" data-es="7:00 AM — 8:00 PM Diario">7:00 AM — 8:00 PM Daily</div>
+            <div class="contact-info-sub" data-en="Open 7 days a week including holidays" data-es="Abierto 7 dias a la semana incluyendo festivos">Open 7 days a week including holidays</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🌐</div>
+          <div>
+            <div class="contact-info-label" data-en="Languages" data-es="Idiomas">Languages</div>
+            <div class="contact-info-value" data-en="English & Spanish" data-es="Ingles y Espanol">English & Spanish</div>
+            <div class="contact-info-sub" data-en="Bilingual staff ready to help" data-es="Personal bilingue listo para ayudar">Bilingual staff ready to help</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <div class="contact-form-title" data-en="Send Us a Message" data-es="Envianos un Mensaje">Send Us a Message</div>
+        <form
+          class="contact-form"
+          action="https://formsubmit.co/sabino.sanchez7@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="Aqua Car Wash — New Inquiry" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="#contact" />
+          <div class="form-group">
+            <label for="contact-name" data-en="Full Name" data-es="Nombre Completo">Full Name</label>
+            <input type="text" id="contact-name" name="name" placeholder="Carlos Garcia" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-phone" data-en="Phone Number" data-es="Numero de Telefono">Phone Number</label>
+            <input type="tel" id="contact-phone" name="phone" placeholder="(562) 373-1027" required />
+          </div>
+          <div class="form-group">
+            <label for="contact-service" data-en="Interested In" data-es="Interesado En">Interested In</label>
+            <select id="contact-service" name="service" required>
+              <option value="" data-en="— Select an option —" data-es="— Selecciona una opcion —">— Select an option —</option>
+              <option value="Basic Membership" data-en="Basic Membership — $19.99/mo" data-es="Membresia Basica — $19.99/mes">Basic Membership — $19.99/mo</option>
+              <option value="Premium Membership" data-en="Premium Membership — $34.99/mo" data-es="Membresia Premium — $34.99/mes">Premium Membership — $34.99/mo</option>
+              <option value="Ultimate Membership" data-en="Ultimate Membership — $49.99/mo" data-es="Membresia Ultimate — $49.99/mes">Ultimate Membership — $49.99/mo</option>
+              <option value="Single Wash" data-en="Single Wash Visit" data-es="Visita de Lavado Individual">Single Wash Visit</option>
+              <option value="Full Detail" data-en="Full Detail Service" data-es="Servicio de Detallado Completo">Full Detail Service</option>
+              <option value="Other" data-en="Other / Question" data-es="Otro / Pregunta">Other / Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-desc" data-en="Message" data-es="Mensaje">Message</label>
+            <textarea id="contact-desc" name="message" placeholder="E.g. I want to sign up for the Premium membership, what vehicles are covered?"></textarea>
+          </div>
+          <button type="submit" class="contact-submit" data-en="Send Message — We'll Reply in 15 Min" data-es="Enviar Mensaje — Respondemos en 15 Min">Send Message — We'll Reply in 15 Min</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        Aqua Car Wash <span>&copy; 2026</span> · Los Angeles, CA
+      </div>
+      <div style="color:var(--muted);font-size:12px;margin:6px 0;" data-en="Open 7 Days · 7 AM – 8 PM · Bilingual Staff · Eco-Friendly · Satisfaction Guaranteed" data-es="Abierto 7 Dias · 7 AM – 8 PM · Personal Bilingue · Ecologico · Satisfaccion Garantizada">Open 7 Days · 7 AM – 8 PM · Bilingual Staff · Eco-Friendly · Satisfaction Guaranteed</div>
+      <div style="margin:8px 0"><a href="https://rivven.ai/booking.html" style="color:#00f0ff;font-weight:700;text-decoration:none">Want a site like this? Book a free demo &rarr;</a></div>
+      <div class="footer-brand">
+        Built by <a href="https://rivven.ai" target="_blank" rel="noopener">Rivven</a> · rivven.ai
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MOBILE BOTTOM BANNER ===== -->
+<div id="mobile-banner">
+  <div class="banner-left">
+    <strong>Need a site like this?</strong><br>
+    Built by Rivven
+  </div>
+  <a href="https://rivven.ai" target="_blank" rel="noopener" class="banner-cta">
+    Get My Site &rarr;
+  </a>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* ---- Hamburger Menu ---- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  /* ---- Sticky Nav Shadow ---- */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    if (window.scrollY > 60) {
+      nav.style.borderBottomColor = 'rgba(0,240,255,0.1)';
+    } else {
+      nav.style.borderBottomColor = 'rgba(255,255,255,0.07)';
+    }
+  });
+
+  /* ---- Bilingual Toggle ---- */
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    // Update toggle buttons
+    document.querySelectorAll('#lang-en, .mobile-lang-en').forEach(b => b.classList.toggle('active', lang === 'en'));
+    document.querySelectorAll('#lang-es, .mobile-lang-es').forEach(b => b.classList.toggle('active', lang === 'es'));
+
+    // Update all translatable elements
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (text) {
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          // Skip inputs
+        } else if (el.tagName === 'OPTION') {
+          el.textContent = text;
+        } else if (el.children.length === 0 || el.getAttribute('data-en')) {
+          el.textContent = text;
+        }
+      }
+    });
+  }
+
+  /* ---- Scroll Animations (IntersectionObserver) ---- */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.section-header, .trust-card, .review-card, .contact-info-item, .plan-card, .service-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeObserver.observe(el);
+  });
+
+  /* ---- Smooth Scroll (fallback for older browsers) ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        closeMobileMenu();
+        const navH = document.getElementById('nav').offsetHeight;
+        const top  = target.getBoundingClientRect().top + window.pageYOffset - navH - 16;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
