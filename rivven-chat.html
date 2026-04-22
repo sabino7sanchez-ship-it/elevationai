@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>RIVVEN AI Chat</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --bg: #0A0A0B;
+    --bg-card: #111113;
+    --bg-card-hover: #17171a;
+    --border: #222225;
+    --text: #FAFAFA;
+    --text-dim: #71717A;
+    --text-mid: #A1A1AA;
+    --cyan: #00F0FF;
+    --cyan-dim: #00bcd4;
+    --glow-cyan: rgba(0,240,255,0.15);
+    --green: #00FF88;
+    --red: #FF4D6D;
+  }
+  html, body {
+    background: transparent;
+    font-family: 'Inter', -apple-system, sans-serif;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── CHAT BUBBLE ── */
+  .chat-bubble {
+    position: fixed; bottom: 0; right: 0;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--cyan);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,240,255,0.4);
+    animation: bubblePulse 3s ease-in-out infinite;
+    z-index: 10;
+    border: none;
+  }
+  .chat-bubble svg { width: 26px; height: 26px; fill: #0A0A0B; }
+  @keyframes bubblePulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(0,240,255,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(0,240,255,0.6); }
+  }
+  .chat-bubble.hidden { display: none; }
+
+  /* ── CHAT WINDOW ── */
+  .chat-window {
+    display: none; flex-direction: column;
+    position: fixed; bottom: 0; right: 0;
+    width: 400px; height: 600px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 12px 60px rgba(0,0,0,0.6);
+    z-index: 20;
+    animation: chatSlideIn 0.3s ease;
+  }
+  .chat-window.open { display: flex; }
+  @keyframes chatSlideIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (max-width: 768px) {
+    .chat-window {
+      width: 100vw; height: 100vh;
+      border-radius: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
+    }
+  }
+
+  /* ── HEADER ── */
+  .chat-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .chat-header-title { display: flex; align-items: center; gap: 10px; }
+  .chat-header-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green); animation: dotPulse 2s infinite;
+  }
+  @keyframes dotPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .chat-header-name { font-size: 14px; font-weight: 700; color: var(--text); }
+  .chat-header-status { font-size: 11px; color: var(--text-dim); }
+  .chat-close-btn {
+    background: none; border: none;
+    color: var(--text-dim);
+    font-size: 22px; cursor: pointer; padding: 4px; line-height: 1;
+  }
+  .chat-close-btn:hover { color: var(--text); }
+
+  /* ── MESSAGES AREA ── */
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    animation: msgFadeIn 0.3s ease;
+    word-wrap: break-word;
+  }
+  @keyframes msgFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .msg-bot {
+    align-self: flex-start;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+  }
+  .msg-bot strong { color: var(--text); font-weight: 600; }
+  .msg-user {
+    align-self: flex-end;
+    background: var(--cyan); color: var(--bg);
+    font-weight: 500;
+  }
+  .msg-time { font-size: 9px; color: var(--text-dim); margin-top: 4px; }
+  .msg-user .msg-time { color: rgba(10,10,11,0.55); }
+
+  /* ── ACTION BUTTONS ── */
+  .chat-actions {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 4px;
+    align-self: flex-start; max-width: 100%;
+  }
+  .chat-act-btn {
+    padding: 8px 14px;
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .chat-act-btn:hover {
+    background: var(--cyan);
+    color: var(--bg);
+    box-shadow: 0 0 12px var(--glow-cyan);
+  }
+  .chat-act-btn.primary {
+    background: var(--cyan);
+    color: var(--bg);
+  }
+  .chat-act-btn.primary:hover {
+    background: var(--cyan-dim);
+  }
+
+  /* ── QUICK STARTER CHIPS (on open) ── */
+  .chat-quickstart {
+    display: flex; flex-direction: column; gap: 6px;
+    margin-top: 4px;
+    align-self: flex-start; max-width: 100%;
+  }
+  .chat-quick-chip {
+    padding: 9px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+  }
+  .chat-quick-chip:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: var(--bg-card-hover);
+  }
+
+  /* ── TYPING INDICATOR ── */
+  .typing-indicator {
+    display: flex; align-items: center; gap: 4px;
+    padding: 10px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    align-self: flex-start; max-width: 60px;
+  }
+  .typing-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--text-dim);
+    animation: typingBounce 1.4s ease-in-out infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-6px); }
+  }
+
+  /* ── INPUT AREA ── */
+  .chat-input-area {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-card);
+    flex-shrink: 0;
+  }
+  .chat-input {
+    flex: 1;
+    padding: 10px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text); font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+  }
+  .chat-input:focus { border-color: var(--cyan); }
+  .chat-input::placeholder { color: var(--text-dim); }
+  .chat-input:disabled { opacity: 0.5; cursor: not-allowed; }
+  .chat-send-btn {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: var(--cyan);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: box-shadow 0.2s;
+  }
+  .chat-send-btn:hover { box-shadow: 0 0 15px var(--glow-cyan); }
+  .chat-send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .chat-send-btn svg { width: 18px; height: 18px; fill: #0A0A0B; }
+
+  /* ── INLINE LEAD FORM ── */
+  .chat-lead-form {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-top: 4px;
+    align-self: flex-start; max-width: 100%;
+    padding: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .chat-lead-form input {
+    padding: 9px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text); font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    width: 240px;
+  }
+  .chat-lead-form input:focus { border-color: var(--cyan); }
+  .chat-lead-form input::placeholder { color: var(--text-dim); }
+  .chat-lead-form button {
+    padding: 10px;
+    background: var(--cyan); color: var(--bg);
+    border: none; border-radius: 6px;
+    font-size: 13px; font-weight: 700;
+    cursor: pointer; font-family: 'Inter', sans-serif;
+  }
+  .chat-lead-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── FOOTNOTE ── */
+  .chat-footer-note {
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-dim);
+    padding: 6px 16px 8px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .chat-footer-note a { color: var(--cyan); text-decoration: none; }
+
+  /* ── LINKS INSIDE BOT MESSAGES ── */
+  .msg-bot a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+  .msg-bot a:hover { text-decoration: underline; }
+
+  /* ── ERROR BANNER ── */
+  .chat-error-banner {
+    background: rgba(255, 77, 109, 0.1);
+    border: 1px solid var(--red);
+    color: var(--red);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    margin: 8px 16px;
+    display: none;
+  }
+  .chat-error-banner.show { display: block; }
+</style>
+</head>
+<body>
+
+<!-- CHAT BUBBLE -->
+<button class="chat-bubble" id="chatBubble" onclick="openChat()" aria-label="Open chat">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+</button>
+
+<!-- CHAT WINDOW -->
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-header-title">
+      <div class="chat-header-dot"></div>
+      <div>
+        <div class="chat-header-name">RIVVEN AI</div>
+        <div class="chat-header-status" id="chatStatus">Online</div>
+      </div>
+    </div>
+    <button class="chat-close-btn" onclick="closeChat()" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="chat-error-banner" id="chatError"></div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-area">
+    <input class="chat-input" id="chatInput" type="text"
+           placeholder="Ask me anything about your business…"
+           autocomplete="off"
+           onkeydown="if(event.key==='Enter')sendUserMsg()">
+    <button class="chat-send-btn" onclick="sendUserMsg()" aria-label="Send">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+  <div class="chat-footer-note">
+    Powered by Claude · <a href="/contact.html" target="_blank">Prefer a human?</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // ════════════════════════════════════════════════════════════════
+  // STATE
+  // ════════════════════════════════════════════════════════════════
+  var SESSION_KEY = 'rivven_chat_session_v1';
+  var HISTORY_KEY = 'rivven_chat_history_v1';
+  var MAX_HISTORY_CLIENT = 20;
+
+  var chatOpen = false;
+  var sending  = false;
+
+  // Session ID — persisted in localStorage so the conversation survives
+  // page reloads + browser navigations.
+  var sessionId = (function(){
+    try {
+      var existing = localStorage.getItem(SESSION_KEY);
+      if (existing) return existing;
+    } catch (_) {}
+    var fresh = 'rv_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 10);
+    try { localStorage.setItem(SESSION_KEY, fresh); } catch (_) {}
+    return fresh;
+  })();
+
+  // Conversation history — last N message pairs, sent with every request
+  // so the bot remembers what the visitor said earlier.
+  var history = (function(){
+    try {
+      var raw = sessionStorage.getItem(HISTORY_KEY);
+      if (raw) return JSON.parse(raw) || [];
+    } catch (_) {}
+    return [];
+  })();
+
+  function saveHistory(){
+    try {
+      sessionStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(-MAX_HISTORY_CLIENT)));
+    } catch (_) {}
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  // DOM HELPERS
+  // ════════════════════════════════════════════════════════════════
+  var messagesEl = document.getElementById('chatMessages');
+  var inputEl    = document.getElementById('chatInput');
+  var sendEl     = document.querySelector('.chat-send-btn');
+  var errorEl    = document.getElementById('chatError');
+  var statusEl   = document.getElementById('chatStatus');
+
+  function getTimestamp(){
+    var n = new Date();
+    var h = n.getHours(); var m = n.getMinutes();
+    var a = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    m = m < 10 ? '0' + m : m;
+    return h + ':' + m + ' ' + a;
+  }
+
+  function scrollToBottom(){
+    setTimeout(function(){ messagesEl.scrollTop = messagesEl.scrollHeight; }, 50);
+  }
+
+  function escapeHtml(s){
+    if (typeof s !== 'string') return '';
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Light markdown: **bold** and \n → <br>. NO inline HTML allowed.
+  function renderBotText(text){
+    var safe = escapeHtml(text || '');
+    safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    safe = safe.replace(/\n/g, '<br>');
+    return safe;
+  }
+
+  function showTyping(){
+    var typing = document.createElement('div');
+    typing.className = 'typing-indicator';
+    typing.id = 'typingIndicator';
+    typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    messagesEl.appendChild(typing);
+    scrollToBottom();
+    return typing;
+  }
+
+  function hideTyping(node){
+    if (node && node.parentNode) node.parentNode.removeChild(node);
+    else {
+      var t = document.getElementById('typingIndicator');
+      if (t && t.parentNode) t.parentNode.removeChild(t);
+    }
+  }
+
+  function addBotBubble(html){
+    var msg = document.createElement('div');
+    msg.className = 'msg msg-bot';
+    msg.innerHTML = html + '<div class="msg-time">' + getTimestamp() + '</div>';
+    messagesEl.appendChild(msg);
+    scrollToBottom();
+    return msg;
+  }
+
+  function addUserBubble(text){
+    var msg = document.createElement('div');
+    msg.className = 'msg msg-user';
+    msg.innerHTML = escapeHtml(text) + '<div class="msg-time">' + getTimestamp() + '</div>';
+    messagesEl.appendChild(msg);
+    scrollToBottom();
+    return msg;
+  }
+
+  function clearActionsBelow(){
+    // Remove any pending action button rows + forms — when user types
+    // something new, the old suggestions are stale.
+    var nodes = messagesEl.querySelectorAll('.chat-actions, .chat-lead-form, .chat-quickstart');
+    for (var i = 0; i < nodes.length; i++) nodes[i].parentNode.removeChild(nodes[i]);
+  }
+
+  function showError(text){
+    errorEl.textContent = text;
+    errorEl.classList.add('show');
+    setTimeout(function(){ errorEl.classList.remove('show'); }, 5000);
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  // ACTION RENDERING
+  // ════════════════════════════════════════════════════════════════
+  function renderActions(actions){
+    if (!Array.isArray(actions) || actions.length === 0) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'chat-actions';
+    for (var i = 0; i < actions.length; i++) {
+      var a = actions[i];
+      if (!a || !a.type || !a.label) continue;
+      var btn = document.createElement('button');
+      btn.className = 'chat-act-btn' + (i === 0 ? ' primary' : '');
+      btn.textContent = a.label;
+      (function(action){
+        btn.onclick = function(){
+          handleAction(action);
+        };
+      })(a);
+      wrap.appendChild(btn);
+    }
+    messagesEl.appendChild(wrap);
+    scrollToBottom();
+  }
+
+  function handleAction(a){
+    // Treat clicking the button as a user intent; echo it in the chat.
+    addUserBubble(a.label);
+
+    switch (a.type) {
+      case 'open_url':
+      case 'show_pricing':
+      case 'run_audit':
+        if (a.url) {
+          window.open(a.url, '_blank', 'noopener');
+          // Also tell the model the user clicked through, so the follow-up stays grounded.
+          sendToServer('[User clicked: ' + a.label + ' → ' + a.url + ']', { suppressUserBubble: true });
+        }
+        break;
+      case 'capture_lead':
+        renderLeadForm(a.context || 'general');
+        break;
+      case 'request_callback':
+        renderCallbackForm();
+        break;
+      case 'text_sabino':
+        if (a.url) {
+          window.location.href = a.url;
+        } else {
+          addBotBubble(renderBotText("Tap to text Sabino directly. If you're on desktop, shoot him an email at " + CONTACT_EMAIL + "."));
+        }
+        break;
+      default:
+        // Unknown action type — just note it server-side for observation.
+        sendToServer('[User clicked unknown action: ' + a.label + ']', { suppressUserBubble: true });
+    }
+  }
+
+  var CONTACT_EMAIL = 'sabino.sanchez7@gmail.com';
+
+  // ════════════════════════════════════════════════════════════════
+  // LEAD FORMS
+  // ════════════════════════════════════════════════════════════════
+  function renderLeadForm(context){
+    var form = document.createElement('div');
+    form.className = 'chat-lead-form';
+    form.innerHTML =
+      '<input type="text" id="leadName" placeholder="Your name" autocomplete="name">' +
+      '<input type="tel" id="leadPhone" placeholder="Phone number" autocomplete="tel">' +
+      '<input type="email" id="leadEmail" placeholder="Email address" autocomplete="email">' +
+      '<button type="button" id="leadSubmit">Send</button>';
+    messagesEl.appendChild(form);
+    scrollToBottom();
+    document.getElementById('leadSubmit').onclick = function(){
+      submitLeadForm(context);
+    };
+  }
+
+  function renderCallbackForm(){
+    var form = document.createElement('div');
+    form.className = 'chat-lead-form';
+    form.innerHTML =
+      '<input type="text" id="cbName" placeholder="Your name" autocomplete="name">' +
+      '<input type="tel" id="cbPhone" placeholder="Phone number" autocomplete="tel">' +
+      '<button type="button" id="cbSubmit">Request callback</button>';
+    messagesEl.appendChild(form);
+    scrollToBottom();
+    document.getElementById('cbSubmit').onclick = submitCallbackForm;
+  }
+
+  function submitLeadForm(context){
+    var name  = (document.getElementById('leadName')  || {}).value || '';
+    var phone = (document.getElementById('leadPhone') || {}).value || '';
+    var email = (document.getElementById('leadEmail') || {}).value || '';
+    if (!name || !phone || !email) {
+      addBotBubble(renderBotText('Please fill in all three so we can reach you.'));
+      return;
+    }
+    var btn = document.getElementById('leadSubmit');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    submitWeb3Forms({
+      subject: 'RIVVEN Chat Lead: ' + name,
+      name: name, phone: phone, email: email,
+      source: 'AI Chat Widget — context: ' + context,
+      session_id: sessionId
+    }).finally(function(){
+      var forms = messagesEl.querySelectorAll('.chat-lead-form');
+      for (var i = 0; i < forms.length; i++) forms[i].parentNode.removeChild(forms[i]);
+      addUserBubble(name + ' · ' + phone + ' · ' + email);
+      // Send structured lead info to the bot so it can acknowledge + keep the flow going.
+      sendToServer('My info: name=' + name + ', phone=' + phone + ', email=' + email + '. I\'m ready to move forward.', { suppressUserBubble: true });
+    });
+  }
+
+  function submitCallbackForm(){
+    var name  = (document.getElementById('cbName')  || {}).value || '';
+    var phone = (document.getElementById('cbPhone') || {}).value || '';
+    if (!name || !phone) {
+      addBotBubble(renderBotText('Please enter a name and phone.'));
+      return;
+    }
+    var btn = document.getElementById('cbSubmit');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    submitWeb3Forms({
+      subject: 'RIVVEN Chat Callback: ' + name,
+      name: name, phone: phone,
+      source: 'AI Chat Widget — callback request',
+      session_id: sessionId
+    }).finally(function(){
+      var forms = messagesEl.querySelectorAll('.chat-lead-form');
+      for (var i = 0; i < forms.length; i++) forms[i].parentNode.removeChild(forms[i]);
+      addUserBubble(name + ' · ' + phone);
+      sendToServer('I want a callback. Name: ' + name + ', phone: ' + phone + '.', { suppressUserBubble: true });
+    });
+  }
+
+  function submitWeb3Forms(data){
+    var fd = new FormData();
+    fd.append('access_key', '5fff5983-1fc1-421b-96a1-6652dd3c496b');
+    fd.append('from_name', 'RIVVEN AI Chat Widget');
+    for (var k in data) {
+      if (Object.prototype.hasOwnProperty.call(data, k)) fd.append(k, data[k]);
+    }
+    return fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+      .catch(function(){ /* swallow — bot will still acknowledge */ });
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  // API CALL
+  // ════════════════════════════════════════════════════════════════
+  function sendToServer(userText, opts){
+    opts = opts || {};
+    if (sending) return;
+    sending = true;
+    if (inputEl)  inputEl.disabled = true;
+    if (sendEl)   sendEl.disabled = true;
+    statusEl.textContent = 'Typing…';
+
+    clearActionsBelow();
+    if (!opts.suppressUserBubble) addUserBubble(userText);
+    var typing = showTyping();
+
+    // Track history BEFORE the call so the server sees it
+    history.push({ role: 'user', content: userText });
+    saveHistory();
+
+    var payload = {
+      session_id: sessionId,
+      message: userText,
+      history: history.slice(-MAX_HISTORY_CLIENT, -1), // exclude the one we just pushed
+      meta: {
+        page: (window.parent && window.parent.location) ? window.parent.location.pathname : location.pathname,
+        referrer: document.referrer || '',
+        ts: new Date().toISOString()
+      }
+    };
+
+    // Figure out API base. When this widget loads as an iframe on
+    // rivven.ai, relative paths work — but during local dev the iframe
+    // lives on the same origin, so relative is safest everywhere.
+    var apiUrl = '/.netlify/functions/chat';
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res){
+      if (!res.ok) throw new Error('http ' + res.status);
+      return res.json();
+    })
+    .then(function(data){
+      hideTyping(typing);
+      var replyText = (data && data.reply) || 'Let me get Sabino on this — he\'ll text back soon.';
+      var actions   = (data && Array.isArray(data.actions)) ? data.actions : [];
+
+      addBotBubble(renderBotText(replyText));
+      renderActions(actions);
+
+      history.push({ role: 'assistant', content: replyText });
+      saveHistory();
+
+      if (data && data.session_id) {
+        sessionId = data.session_id;
+        try { localStorage.setItem(SESSION_KEY, sessionId); } catch (_) {}
+      }
+    })
+    .catch(function(err){
+      hideTyping(typing);
+      console.warn('chat api failed:', err && err.message);
+      addBotBubble(renderBotText(
+        "My brain hiccuped — but Sabino's still here. Drop your name + phone and he'll text you back within the hour, or <a href=\"mailto:" + CONTACT_EMAIL + "\">email him directly</a>."
+      ));
+      renderActions([
+        { type: 'request_callback', label: 'Request a callback' },
+        { type: 'open_url', label: 'Open contact page', url: '/contact.html' }
+      ]);
+      showError('Connection hiccup. Your message is saved — try again in a sec.');
+    })
+    .then(function(){
+      sending = false;
+      if (inputEl) { inputEl.disabled = false; inputEl.focus(); }
+      if (sendEl)  sendEl.disabled = false;
+      statusEl.textContent = 'Online';
+    });
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  // USER INPUT
+  // ════════════════════════════════════════════════════════════════
+  window.sendUserMsg = function(){
+    var text = (inputEl.value || '').trim();
+    if (!text) return;
+    inputEl.value = '';
+    sendToServer(text);
+  };
+
+  // ════════════════════════════════════════════════════════════════
+  // OPENING FLOW — one natural invite, with 3 quick-start chips
+  // ════════════════════════════════════════════════════════════════
+  function startConversation(){
+    var hour = new Date().getHours();
+    var greeting = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+
+    var typing = showTyping();
+    setTimeout(function(){
+      hideTyping(typing);
+      addBotBubble(renderBotText(
+        greeting + ". I\u2019m RIVVEN\u2019s AI \u2014 I\u2019ll actually help, not just hand you a menu. What do you do, and what\u2019s the bottleneck?"
+      ));
+
+      // Three quick-start chips that prime common conversations. User can
+      // also just type — no menu-gating.
+      var q = document.createElement('div');
+      q.className = 'chat-quickstart';
+      var chips = [
+        'I need a website for my business',
+        'I need AI agents / automation',
+        'I want to see pricing + a free audit'
+      ];
+      for (var i = 0; i < chips.length; i++) {
+        var b = document.createElement('button');
+        b.className = 'chat-quick-chip';
+        b.textContent = chips[i];
+        (function(t){
+          b.onclick = function(){
+            q.parentNode && q.parentNode.removeChild(q);
+            sendToServer(t);
+          };
+        })(chips[i]);
+        q.appendChild(b);
+      }
+      messagesEl.appendChild(q);
+      scrollToBottom();
+    }, 600);
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  // OPEN / CLOSE
+  // ════════════════════════════════════════════════════════════════
+  window.openChat = function(){
+    chatOpen = true;
+    document.getElementById('chatBubble').classList.add('hidden');
+    document.getElementById('chatWindow').classList.add('open');
+    if (window.parent !== window) {
+      try { window.parent.postMessage('rivven-chat-open', '*'); } catch (_) {}
+    }
+    if (messagesEl.children.length === 0) {
+      startConversation();
+    }
+    setTimeout(function(){ inputEl.focus(); }, 350);
+  };
+
+  window.closeChat = function(){
+    chatOpen = false;
+    document.getElementById('chatWindow').classList.remove('open');
+    document.getElementById('chatBubble').classList.remove('hidden');
+    if (window.parent !== window) {
+      try { window.parent.postMessage('rivven-chat-close', '*'); } catch (_) {}
+    }
+  };
+
+  // Keyboard shortcut: Escape closes
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && chatOpen) closeChat();
+  });
+})();
+</script>
+
+<!--
+  ============================================================
+  EMBED CODE — Drop on any page (same as the old widget):
+
+  <iframe src="/rivven-chat.html" id="rivven-chat"
+    style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;border:none;z-index:9999;"
+    allow="clipboard-write"></iframe>
+
+  <script>
+  window.addEventListener('message', function(e) {
+    var iframe = document.getElementById('rivven-chat');
+    if (!iframe) return;
+    if (e.data === 'rivven-chat-open') {
+      iframe.style.width = '400px';
+      iframe.style.height = '600px';
+      if (window.innerWidth <= 768) {
+        iframe.style.width = '100%'; iframe.style.height = '100%';
+        iframe.style.bottom = '0';   iframe.style.right = '0';
+      }
+    } else if (e.data === 'rivven-chat-close') {
+      iframe.style.width = '60px'; iframe.style.height = '60px';
+      iframe.style.bottom = '20px'; iframe.style.right = '20px';
+    }
+  });
+  </script>
+  ============================================================
+-->
+
+</body>
+</html>

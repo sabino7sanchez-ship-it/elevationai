@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Command Center — Rivven Admin</title>
+<meta name="description" content="Rivven admin command center. Restricted access.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://rivven.ai/portal/admin.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+  :root{--bg:#0A0A0B;--bg-card:#111113;--bg-card-hover:#18181B;--bg-card-deep:#0F0F11;--border:#222225;--border-hover:#2E2E33;--text:#FAFAFA;--text-dim:#71717A;--text-mid:#A1A1AA;--neon-cyan:#00F0FF;--neon-green:#00FF88;--neon-purple:#7B61FF;--neon-orange:#FF8800;--neon-red:#FF4455;--neon-yellow:#FFD700;--glow-purple:rgba(123,97,255,0.15)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;overflow-x:hidden}
+
+  .sidebar{width:260px;background:var(--bg-card);border-right:1px solid var(--border);padding:24px 16px;position:fixed;top:0;left:0;bottom:0;display:flex;flex-direction:column;gap:4px;z-index:50;overflow-y:auto}
+  .sidebar-brand{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--neon-purple);text-decoration:none;padding:8px 12px;margin-bottom:16px;letter-spacing:-0.5px}
+  .sidebar-brand span{color:var(--text-dim);font-weight:400}
+  .admin-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 6px;background:rgba(123,97,255,0.15);color:var(--neon-purple);border:1px solid var(--neon-purple);border-radius:4px;letter-spacing:1.5px;margin-left:6px}
+  .sidebar-section{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;padding:16px 12px 6px}
+  .nav-link{display:flex;align-items:center;gap:10px;padding:9px 12px;color:var(--text-mid);text-decoration:none;font-size:13px;font-weight:500;border-radius:8px;transition:all 0.15s;cursor:pointer;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+  .nav-link:hover{background:var(--bg-card-hover);color:var(--text)}
+  .nav-link.active{background:rgba(123,97,255,0.08);color:var(--neon-purple);border:1px solid rgba(123,97,255,0.2)}
+  .nav-link .dot{width:6px;height:6px;border-radius:50%;background:var(--text-dim);flex-shrink:0}
+  .nav-link.active .dot{background:var(--neon-purple);box-shadow:0 0 8px var(--neon-purple)}
+  .nav-link .badge{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 5px;background:var(--bg-card-deep);color:var(--text-dim);border-radius:4px}
+  .nav-link .badge.hot{background:rgba(255,68,85,0.1);color:var(--neon-red)}
+  .nav-link .badge.new{background:rgba(0,255,136,0.1);color:var(--neon-green)}
+  .sidebar-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--border);padding:12px 0 0}
+  .user-pill{display:flex;align-items:center;gap:10px;padding:10px;background:var(--bg-card-hover);border-radius:10px;font-size:13px}
+  .user-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--neon-purple),var(--neon-cyan));display:flex;align-items:center;justify-content:center;color:var(--bg);font-weight:700;font-size:13px;flex-shrink:0}
+  .user-info{overflow:hidden;flex:1}
+  .user-name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}
+  .user-role{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--neon-purple);text-transform:uppercase;letter-spacing:1.5px}
+  .logout-btn{width:100%;margin-top:8px;padding:8px 12px;background:transparent;color:var(--text-dim);border:1px solid var(--border);border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:inherit}
+  .logout-btn:hover{border-color:var(--neon-red);color:var(--neon-red)}
+
+  main{margin-left:260px;flex:1;padding:28px 32px;max-width:calc(100% - 260px)}
+  .topbar{display:flex;justify-content:space-between;align-items:start;margin-bottom:24px;gap:20px;flex-wrap:wrap}
+  .page-title{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1}
+  .page-title .italic{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--neon-purple)}
+  .page-sub{font-size:13px;color:var(--text-mid);margin-top:6px}
+  .top-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn-cta{padding:10px 16px;background:var(--neon-purple);color:var(--bg);border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;border:none;cursor:pointer;transition:all 0.2s;font-family:inherit}
+  .btn-cta:hover{box-shadow:0 0 24px var(--glow-purple)}
+  .btn-ghost{padding:10px 14px;background:transparent;color:var(--text-mid);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;transition:all 0.15s;font-family:inherit}
+  .btn-ghost:hover{border-color:var(--neon-purple);color:var(--neon-purple)}
+
+  .kpi-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px}
+  .kpi{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:border-color 0.2s;position:relative;overflow:hidden}
+  .kpi:hover{border-color:var(--border-hover)}
+  .kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--neon-purple);opacity:0.6}
+  .kpi.green::before{background:var(--neon-green)}
+  .kpi.cyan::before{background:var(--neon-cyan)}
+  .kpi.orange::before{background:var(--neon-orange)}
+  .kpi.red::before{background:var(--neon-red)}
+  .kpi.yellow::before{background:var(--neon-yellow)}
+  .kpi-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+  .kpi-val{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;line-height:1;margin-bottom:4px}
+  .kpi-delta{font-size:10px;color:var(--neon-green);font-family:'JetBrains Mono',monospace}
+  .kpi-delta.down{color:var(--neon-red)}
+  .kpi-delta.warn{color:var(--neon-orange)}
+
+  .grid-2{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:14px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
+  .grid-equal{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px}
+  .card-title{font-size:14px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+  .card-title .italic{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--neon-purple)}
+  .card-sub{font-size:11px;color:var(--text-dim);margin-bottom:16px;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px}
+  .card-link{margin-left:auto;font-size:11px;color:var(--neon-cyan);text-decoration:none;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+  .card-link:hover{text-decoration:underline}
+
+  .data-table{width:100%;border-collapse:collapse;font-size:12px}
+  .data-table th{text-align:left;padding:8px 8px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-bottom:1px solid var(--border)}
+  .data-table td{padding:10px 8px;border-bottom:1px solid var(--border);vertical-align:middle}
+  .data-table tr:hover td{background:var(--bg-card-hover)}
+  .data-table tr:last-child td{border-bottom:none}
+  .cell-mono{font-family:'JetBrains Mono',monospace;font-size:11px}
+
+  .dot-green,.dot-orange,.dot-red,.dot-purple,.dot-cyan{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+  .dot-green{background:var(--neon-green);box-shadow:0 0 8px var(--neon-green);animation:pulse 2s infinite}
+  .dot-orange{background:var(--neon-orange);box-shadow:0 0 8px var(--neon-orange)}
+  .dot-red{background:var(--neon-red);box-shadow:0 0 8px var(--neon-red);animation:pulse 1.5s infinite}
+  .dot-purple{background:var(--neon-purple)}
+  .dot-cyan{background:var(--neon-cyan)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+  .chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+  .chip.hot{background:rgba(255,68,85,0.08);color:var(--neon-red);border:1px solid rgba(255,68,85,0.3)}
+  .chip.warm{background:rgba(255,136,0,0.08);color:var(--neon-orange);border:1px solid rgba(255,136,0,0.3)}
+  .chip.cold{background:rgba(113,113,122,0.08);color:var(--text-mid);border:1px solid var(--border)}
+  .chip.active{background:rgba(0,255,136,0.08);color:var(--neon-green);border:1px solid rgba(0,255,136,0.3)}
+  .chip.paid{background:rgba(0,255,136,0.08);color:var(--neon-green);border:1px solid rgba(0,255,136,0.3)}
+  .chip.due{background:rgba(255,136,0,0.08);color:var(--neon-orange);border:1px solid rgba(255,136,0,0.3)}
+  .chip.overdue{background:rgba(255,68,85,0.08);color:var(--neon-red);border:1px solid rgba(255,68,85,0.3)}
+  .chip.new{background:rgba(0,240,255,0.08);color:var(--neon-cyan);border:1px solid rgba(0,240,255,0.3)}
+
+  .row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:12px}
+  .row:last-child{border-bottom:none}
+  .row-label{color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;min-width:140px;flex-shrink:0}
+  .row-val{font-weight:600;flex:1;display:flex;align-items:center;gap:6px}
+
+  .kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .kanban-col{background:var(--bg-card-deep);border:1px solid var(--border);border-radius:10px;padding:12px;min-height:200px}
+  .kanban-col-head{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;display:flex;align-items:center;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  .kanban-col-head .count{margin-left:auto;background:var(--bg-card-hover);padding:2px 6px;border-radius:4px;font-size:9px;color:var(--text-mid)}
+  .task{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:10px;margin-bottom:8px;cursor:pointer;transition:all 0.15s}
+  .task:hover{border-color:var(--neon-purple);transform:translateY(-1px)}
+  .task-title{font-size:12px;font-weight:600;margin-bottom:4px;line-height:1.3}
+  .task-meta{display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-dim);flex-wrap:wrap}
+  .task.prio-high{border-left:3px solid var(--neon-red)}
+  .task.prio-mid{border-left:3px solid var(--neon-orange)}
+  .task.prio-low{border-left:3px solid var(--neon-cyan)}
+
+  .schedule-day{margin-bottom:16px}
+  .schedule-head{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+  .schedule-head.today{color:var(--neon-purple)}
+  .schedule-item{display:grid;grid-template-columns:72px 1fr auto;gap:12px;align-items:center;padding:8px 0;font-size:12px;border-bottom:1px dashed var(--border)}
+  .schedule-item:last-child{border-bottom:none}
+  .schedule-time{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);font-weight:600}
+  .schedule-evt{font-weight:500}
+  .schedule-tag{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:1px}
+
+  .view{display:none}
+  .view.active{display:block;animation:fadeIn 0.25s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+  .health-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .health{background:var(--bg-card-deep);padding:12px;border-radius:8px;border:1px solid var(--border)}
+  .health-name{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+  .health-status{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+
+  .progress{height:6px;background:var(--bg-card-deep);border-radius:3px;overflow:hidden;margin-top:6px}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--neon-purple),var(--neon-cyan));border-radius:3px;transition:width 0.4s}
+
+  .alert{padding:14px;border-radius:10px;margin-bottom:10px;display:flex;gap:12px;align-items:start}
+  .alert-red{background:rgba(255,68,85,0.08);border:1px solid rgba(255,68,85,0.3)}
+  .alert-orange{background:rgba(255,136,0,0.08);border:1px solid rgba(255,136,0,0.3)}
+  .alert-green{background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.3)}
+  .alert-icon{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;flex-shrink:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+  .alert-red .alert-icon{background:var(--neon-red);color:var(--bg)}
+  .alert-orange .alert-icon{background:var(--neon-orange);color:var(--bg)}
+  .alert-green .alert-icon{background:var(--neon-green);color:var(--bg)}
+  .alert-body{flex:1}
+  .alert-head{font-weight:700;font-size:12px;margin-bottom:2px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1.5px}
+  .alert-red .alert-head{color:var(--neon-red)}
+  .alert-orange .alert-head{color:var(--neon-orange)}
+  .alert-green .alert-head{color:var(--neon-green)}
+  .alert-text{font-size:12px;color:var(--text);line-height:1.5}
+
+  input[type=text],input[type=email],input[type=date],select,textarea{width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:inherit}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--neon-purple)}
+
+  .guard{display:flex;align-items:center;justify-content:center;min-height:100vh;width:100%;text-align:center;padding:24px}
+  .guard-content{max-width:420px}
+  .guard h2{font-family:'Playfair Display',serif;font-style:italic;font-size:30px;margin-bottom:10px}
+  .guard p{color:var(--text-mid);margin-bottom:20px;line-height:1.6}
+  .guard a{color:var(--neon-purple);text-decoration:none;font-weight:700}
+
+  @media (max-width: 1200px){ .kpi-row{grid-template-columns:repeat(3,1fr)} }
+  @media (max-width: 900px){ .sidebar{transform:translateX(-100%);transition:transform 0.3s} .sidebar.open{transform:translateX(0)} main{margin-left:0;padding:18px 14px;max-width:100%} .kpi-row{grid-template-columns:repeat(2,1fr)} .grid-2,.grid-3,.grid-equal,.kanban{grid-template-columns:1fr} .health-grid{grid-template-columns:1fr} }
+
+  /* ========= LIVE ACTIVITY FEED ========= */
+  :root{--gold:#F5C518;--gold-glow:rgba(245,197,24,0.35)}
+  .activity-tabs{display:flex;gap:4px;margin-bottom:12px;padding:4px;background:var(--bg-card-deep);border:1px solid var(--border);border-radius:10px;flex-wrap:wrap}
+  .activity-tab{padding:6px 12px;background:transparent;border:1px solid transparent;color:var(--text-mid);border-radius:7px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all 0.15s}
+  .activity-tab:hover{color:var(--text)}
+  .activity-tab.active{background:rgba(245,197,24,0.08);border-color:var(--gold);color:var(--gold)}
+  .activity-list{display:flex;flex-direction:column;gap:6px;max-height:620px;overflow-y:auto}
+  .activity-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;padding:10px 12px;background:var(--bg-card-deep);border:1px solid var(--border);border-radius:8px;font-size:12px;align-items:start;transition:border-color 0.15s}
+  .activity-row:hover{border-color:var(--border-hover)}
+  .activity-actor-ico{font-size:16px;line-height:1.2;width:26px;height:26px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border-radius:50%;border:1px solid var(--border);flex-shrink:0}
+  .activity-main{min-width:0;overflow:hidden}
+  .activity-line1{display:flex;align-items:center;gap:6px;margin-bottom:2px;flex-wrap:wrap}
+  .activity-type{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:1px}
+  .activity-type.call{background:rgba(245,197,24,0.12);color:var(--gold)}
+  .activity-type.stage_change{background:rgba(0,240,255,0.1);color:var(--neon-cyan)}
+  .activity-type.lead_qualified{background:rgba(0,255,136,0.1);color:var(--neon-green)}
+  .activity-type.dm,.activity-type.email{background:rgba(123,97,255,0.1);color:var(--neon-purple)}
+  .activity-type.payment{background:rgba(0,255,136,0.15);color:var(--neon-green)}
+  .activity-type.deploy,.activity-type.system{background:rgba(113,113,122,0.12);color:var(--text-mid)}
+  .activity-type.demo_sent,.activity-type.meeting_booked{background:rgba(255,136,0,0.1);color:var(--neon-orange)}
+  .activity-subject{font-weight:700;color:var(--text);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}
+  .activity-outcome{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mid);text-transform:uppercase;letter-spacing:0.5px}
+  .activity-notes{font-size:11px;color:var(--text-dim);line-height:1.4;margin-top:2px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .activity-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);white-space:nowrap;align-self:start}
+  .activity-empty{text-align:center;padding:40px 20px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8}
+  .activity-empty a{color:var(--gold);text-decoration:none;font-weight:700}
+  .activity-empty a:hover{text-decoration:underline}
+  .activity-foot{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;display:flex;justify-content:space-between;align-items:center;color:var(--text-dim)}
+  .activity-foot a{color:var(--gold);text-decoration:none}
+  .activity-foot a:hover{text-decoration:underline}
+  .activity-live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--neon-green);box-shadow:0 0 8px var(--neon-green);animation:pulse 2s infinite;margin-right:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<div id="app" style="display:none;width:100%">
+
+<aside class="sidebar">
+  <a href="../index.html" class="sidebar-brand">Rivven<span>_Command</span><span class="admin-badge">Admin</span></a>
+
+  <div class="sidebar-section">Overview</div>
+  <button class="nav-link active" data-view="dashboard"><span class="dot"></span>Dashboard</button>
+  <button class="nav-link" data-view="schedule"><span class="dot"></span>Schedule<span class="badge new">Today</span></button>
+  <button class="nav-link" data-view="planner"><span class="dot"></span>Planner<span class="badge">12</span></button>
+
+  <div class="sidebar-section">Revenue</div>
+  <button class="nav-link" data-view="pipeline"><span class="dot"></span>Pipeline<span class="badge hot">4</span></button>
+  <button class="nav-link" data-view="clients"><span class="dot"></span>Clients<span class="badge">1</span></button>
+  <button class="nav-link" data-view="finance"><span class="dot"></span>Finance</button>
+  <button class="nav-link" data-view="sprint"><span class="dot"></span>Sprint<span class="badge">20/60</span></button>
+
+  <div class="sidebar-section">Operations</div>
+  <button class="nav-link" data-view="team"><span class="dot"></span>Team</button>
+  <button class="nav-link" data-view="sites"><span class="dot"></span>Sites<span class="badge new">39</span></button>
+  <button class="nav-link" data-view="content"><span class="dot"></span>Content</button>
+  <button class="nav-link" data-view="ops"><span class="dot"></span>System Ops</button>
+
+  <div class="sidebar-section">Intel</div>
+  <button class="nav-link" data-view="intel"><span class="dot"></span>Market Intel</button>
+  <button class="nav-link" data-view="research"><span class="dot"></span>Research</button>
+  <button class="nav-link" data-view="chats"><span class="dot"></span>AI Chats<span class="badge new">Live</span></button>
+
+  <div class="sidebar-section">Quick Access</div>
+  <a class="nav-link" href="/today.html"><span class="dot"></span>Dial Queue<span class="badge new">Live</span></a>
+  <a class="nav-link" href="/activity.html"><span class="dot"></span>Activity Feed</a>
+  <a class="nav-link" href="/lead-generator.html"><span class="dot"></span>Lead Generator</a>
+  <a class="nav-link" href="/daily-standup.html"><span class="dot"></span>Daily Standup<span class="badge new">New</span></a>
+  <a class="nav-link" href="/portal/team.html"><span class="dot"></span>Team Portal (Jessica)</a>
+  <a class="nav-link" href="/portal/mercury-checklist.html"><span class="dot"></span>Mercury Checklist<span class="badge hot">19</span></a>
+  <a class="nav-link" href="/trippy-phase2.html"><span class="dot"></span>Trippy Phase 2</a>
+
+  <div class="sidebar-foot">
+    <div class="user-pill">
+      <div class="user-avatar" id="userInitial">S</div>
+      <div class="user-info">
+        <div class="user-name" id="userName">Sabino</div>
+        <div class="user-role">Admin · Operator</div>
+      </div>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">Sign Out</button>
+  </div>
+</aside>
+
+<main>
+
+<!-- DASHBOARD -->
+<div class="view active" id="dashboard">
+  <div class="topbar">
+    <div>
+      <h1 class="page-title">Command <span class="italic">Center</span></h1>
+      <p class="page-sub">Good <span id="greetTime">morning</span>, <span id="fname">Sabino</span>. Sprint Day 20/60 · <span id="currentDate"></span>.</p>
+    </div>
+    <div class="top-actions">
+      <button class="btn-ghost" onclick="showView('planner')">+ Task</button>
+      <button class="btn-ghost" onclick="showView('schedule')">Today →</button>
+      <button class="btn-cta" onclick="showView('pipeline')">Pipeline →</button>
+    </div>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi green"><div class="kpi-lbl">MRR</div><div class="kpi-val" style="color:var(--neon-green)">$0</div><div class="kpi-delta warn">retainer queued</div></div>
+    <div class="kpi cyan"><div class="kpi-lbl">Cash-in · Apr</div><div class="kpi-val" style="color:var(--neon-cyan)">$400</div><div class="kpi-delta">$200 collectible</div></div>
+    <div class="kpi"><div class="kpi-lbl">Active clients</div><div class="kpi-val" style="color:var(--neon-purple)">1</div><div class="kpi-delta">+4 hot prospects</div></div>
+    <div class="kpi orange"><div class="kpi-lbl">Pipeline $</div><div class="kpi-val" style="color:var(--neon-orange)">$5,700</div><div class="kpi-delta">5 active deals</div></div>
+    <div class="kpi red"><div class="kpi-lbl">Overdue</div><div class="kpi-val" style="color:var(--neon-red)">$50</div><div class="kpi-delta down">Trippy · 3d late</div></div>
+    <div class="kpi yellow"><div class="kpi-lbl">Sprint</div><div class="kpi-val" style="color:var(--neon-yellow)">$400</div><div class="kpi-delta warn">of $100K</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <div class="card-title">Active <span class="italic">alerts</span><span class="chip hot" style="margin-left:8px" id="alertChipCount">4</span></div>
+    <a id="priorityAlert" href="today.html" class="alert alert-gold-priority" style="text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(245,197,24,0.16),rgba(245,197,24,0.06));border:1px solid rgba(245,197,24,0.5);padding:16px;border-radius:10px;margin-bottom:10px;display:flex;gap:12px;align-items:start;box-shadow:0 4px 18px rgba(245,197,24,0.18);transition:all 0.15s">
+      <div class="alert-icon" style="background:var(--neon-yellow);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0">&#127919;</div>
+      <div class="alert-body" style="flex:1">
+        <div class="alert-head" style="color:var(--neon-yellow);font-weight:800;font-size:13px;margin-bottom:2px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1.5px">TODAY'S TOP ACTION</div>
+        <div class="alert-text" id="priorityText" style="font-size:14px;color:var(--text);line-height:1.5;font-weight:600">Dial 5 prospects · Collect Trippy $50</div>
+      </div>
+      <div style="color:var(--neon-yellow);font-size:16px;font-weight:700;align-self:center">&rarr;</div>
+    </a>
+    <div class="alert alert-red"><div class="alert-icon">!</div><div class="alert-body"><div class="alert-head">Trippy · $50 overdue · 3 days</div><div class="alert-text">Send Plan A text today · $150 due Fri Apr 25 · after $200 collected, pitch Phase 2 ads retainer ($297-497/mo).</div></div></div>
+    <div class="alert alert-orange"><div class="alert-icon">◎</div><div class="alert-body"><div class="alert-head">Mercury Bank · Not Opened</div><div class="alert-text">Stripe income still routing to personal. EIN 42-1937875 + LLC Doc# ready. ~10 min online app today.</div></div></div>
+    <div class="alert alert-green"><div class="alert-icon">✓</div><div class="alert-body"><div class="alert-head">Jessica · Day 1 Live</div><div class="alert-text">First hire launched 9:00am PT · 5 practice dials · IG blocks done · contract signed. Tomorrow: power-dial block 9:30-12:30.</div></div></div>
+  </div>
+
+  <!-- REVENUE HERO CTA STRIP -->
+  <div class="revenue-cta-strip" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px">
+    <a href="/invoices/trippy.html" class="rev-cta rev-cta-red" style="background:linear-gradient(135deg,rgba(255,68,85,0.12),rgba(255,68,85,0.04));border:1px solid rgba(255,68,85,0.4);border-radius:12px;padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:4px;transition:all 0.15s;min-height:88px">
+      <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--neon-red);text-transform:uppercase;letter-spacing:1.5px;font-weight:700">COLLECT · Overdue</div>
+      <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-0.5px">&#128176; Collect Trippy $50</div>
+      <div style="font-size:11px;color:var(--text-mid)">Send Plan A text · 3d late</div>
+    </a>
+    <a href="/today.html" class="rev-cta rev-cta-cyan" style="background:linear-gradient(135deg,rgba(0,240,255,0.12),rgba(0,240,255,0.04));border:1px solid rgba(0,240,255,0.4);border-radius:12px;padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:4px;transition:all 0.15s;min-height:88px">
+      <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--neon-cyan);text-transform:uppercase;letter-spacing:1.5px;font-weight:700">DIAL · Sprint floor</div>
+      <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-0.5px">&#127919; 5 Dials Now</div>
+      <div style="font-size:11px;color:var(--text-mid)">Queue is loaded · openers ready</div>
+    </a>
+    <a href="/demos.html" class="rev-cta rev-cta-purple" style="background:linear-gradient(135deg,rgba(123,97,255,0.12),rgba(123,97,255,0.04));border:1px solid rgba(123,97,255,0.4);border-radius:12px;padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:4px;transition:all 0.15s;min-height:88px">
+      <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--neon-purple);text-transform:uppercase;letter-spacing:1.5px;font-weight:700">PITCH · Pablo Wed</div>
+      <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-0.5px">&#128202; Show Pablo Demos</div>
+      <div style="font-size:11px;color:var(--text-mid)">32 industry demos live</div>
+    </a>
+    <a href="/mission-v3/sabino/GOOGLE_ADS_500_PLAN.md" target="_blank" class="rev-cta rev-cta-gold" style="background:linear-gradient(135deg,rgba(245,197,24,0.14),rgba(245,197,24,0.04));border:1px solid rgba(245,197,24,0.45);border-radius:12px;padding:16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:4px;transition:all 0.15s;min-height:88px">
+      <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--neon-yellow);text-transform:uppercase;letter-spacing:1.5px;font-weight:700">SCALE · Ads credit</div>
+      <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-0.5px">&#128200; Run Ads $500 Plan</div>
+      <div style="font-size:11px;color:var(--text-mid)">Free Google credit · audit-first</div>
+    </a>
+  </div>
+  <style>
+    .rev-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,0.35)}
+    #priorityAlert:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(245,197,24,0.28)}
+    @media(max-width:920px){.revenue-cta-strip{grid-template-columns:repeat(2,1fr) !important}}
+    @media(max-width:520px){.revenue-cta-strip{grid-template-columns:1fr !important}}
+  </style>
+  <script>
+    // Dynamic priority from localStorage (rivven.today.priority)
+    (function(){
+      try {
+        var stored = localStorage.getItem('rivven.today.priority');
+        if (stored && stored.trim()){
+          var el = document.getElementById('priorityText');
+          if (el) el.textContent = stored.trim();
+        }
+      } catch(e){}
+    })();
+  </script>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Today <span class="italic">— Mon Apr 20</span><a href="#" class="card-link" onclick="event.preventDefault();showView('schedule')">Full →</a></div>
+      <div class="card-sub">// Next 6 blocks</div>
+      <div class="schedule-item"><span class="schedule-time">7:25a</span><span class="schedule-evt">Cold call block · 5 prospects</span><span class="schedule-tag" style="background:rgba(255,68,85,0.1);color:var(--neon-red)">SALES</span></div>
+      <div class="schedule-item"><span class="schedule-time">9:00a</span><span class="schedule-evt">Jessica clock-in · power dials</span><span class="schedule-tag" style="background:rgba(255,136,0,0.1);color:var(--neon-orange)">TEAM</span></div>
+      <div class="schedule-item"><span class="schedule-time">10:30a</span><span class="schedule-evt">Mercury Bank application</span><span class="schedule-tag" style="background:rgba(123,97,255,0.1);color:var(--neon-purple)">OPS</span></div>
+      <div class="schedule-item"><span class="schedule-time">12:00p</span><span class="schedule-evt">Trippy Plan A text · $50</span><span class="schedule-tag" style="background:rgba(255,68,85,0.1);color:var(--neon-red)">COLLECT</span></div>
+      <div class="schedule-item"><span class="schedule-time">2:00p</span><span class="schedule-evt">Francisco close attempt</span><span class="schedule-tag" style="background:rgba(0,240,255,0.1);color:var(--neon-cyan)">PITCH</span></div>
+      <div class="schedule-item"><span class="schedule-time">5:00p</span><span class="schedule-evt">Pablo demo research</span><span class="schedule-tag" style="background:rgba(123,97,255,0.1);color:var(--neon-purple)">BUILD</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">$100K <span class="italic">sprint</span></div>
+      <div class="card-sub">// Day 20 of 60</div>
+      <div style="padding:12px;background:var(--bg-card-deep);border-radius:10px;margin-bottom:10px;text-align:center">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px">Progress</div>
+        <div style="font-size:26px;font-weight:800;color:var(--neon-yellow);line-height:1">0.4%</div>
+        <div style="font-size:10px;color:var(--text-mid);margin-top:4px">$400 / $100,000</div>
+        <div class="progress" style="margin-top:10px"><div class="progress-fill" style="width:0.4%"></div></div>
+      </div>
+      <div style="padding:10px;background:var(--bg-card-deep);border-radius:10px;text-align:center">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px">Remaining</div>
+        <div style="font-size:20px;font-weight:700;color:var(--neon-cyan)">40 days</div>
+        <div style="font-size:10px;color:var(--text-mid);margin-top:4px">$2,490/day required</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Pipeline <span class="italic">snapshot</span><a href="#" class="card-link" onclick="event.preventDefault();showView('pipeline')">Full →</a></div>
+      <div class="card-sub">// 5 active deals · $5,700 potential</div>
+      <table class="data-table">
+        <thead><tr><th>Prospect</th><th>Quote</th><th>Stage</th><th>Next</th></tr></thead>
+        <tbody>
+          <tr><td><b>Trippy Blendz</b><div class="cell-mono" style="color:var(--text-dim);font-size:10px">Barber · paying</div></td><td class="cell-mono">$200 owed</td><td><span class="chip hot">COLLECT</span></td><td>Fri Apr 25</td></tr>
+          <tr><td><b>Pablo Sanchez</b><div class="cell-mono" style="color:var(--text-dim);font-size:10px">Trailer loans + TV</div></td><td class="cell-mono">$1,800</td><td><span class="chip warm">DEMO</span></td><td>Wed Apr 22</td></tr>
+          <tr><td><b>Adan (Allendes)</b><div class="cell-mono" style="color:var(--text-dim);font-size:10px">Auto detailing</div></td><td class="cell-mono">$800</td><td><span class="chip warm">WARM</span></td><td>Follow-up</td></tr>
+          <tr><td><b>Francisco</b><div class="cell-mono" style="color:var(--text-dim);font-size:10px">Mobile car wash</div></td><td class="cell-mono">$500</td><td><span class="chip warm">PITCH</span></td><td>Today 2p</td></tr>
+          <tr><td><b>GW Hauling</b><div class="cell-mono" style="color:var(--text-dim);font-size:10px">Dumpster rental</div></td><td class="cell-mono">$897+$297</td><td><span class="chip hot">HOT</span></td><td>Sat Apr 25</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Jessica · <span class="italic">day 2</span></div>
+      <div class="card-sub">// 30-45 min deep + phone async · $22/hr · 1099</div>
+      <div style="padding:10px;background:var(--bg-card-deep);border-radius:10px;margin-bottom:10px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px;text-transform:uppercase;letter-spacing:1.5px">Dials (Tue)</div><div style="font-size:16px;font-weight:700;color:var(--neon-orange);font-family:'JetBrains Mono',monospace">0/5</div></div>
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px;text-transform:uppercase;letter-spacing:1.5px">Wk Books</div><div style="font-size:16px;font-weight:700;color:var(--neon-green);font-family:'JetBrains Mono',monospace">0</div></div>
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px;text-transform:uppercase;letter-spacing:1.5px">Wk Hrs</div><div style="font-size:16px;font-weight:700;color:var(--neon-cyan);font-family:'JetBrains Mono',monospace">2.5</div></div>
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px;text-transform:uppercase;letter-spacing:1.5px">Earned</div><div style="font-size:16px;font-weight:700;color:var(--neon-purple);font-family:'JetBrains Mono',monospace">$55</div></div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-mid);line-height:1.6">
+        <b style="color:var(--text)">Mon (Day 1):</b> onboarding · 2.5 hrs logged · $55 billed<br>
+        <b style="color:var(--text)">Tue target:</b> 5 dials · 1+ real convo · film 1 TikTok (optional)<br>
+        <b style="color:var(--text)">Wk bonus gate:</b> 5 meetings booked = +$100<br>
+        <b style="color:var(--text)">Brief:</b> <a href="../jessica.html" style="color:var(--neon-cyan)">jessica.html LIVE</a> · <a href="../mission-v3/jessica/MAIN_TODO.md" style="color:var(--neon-cyan)">MAIN_TODO</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= LIVE ACTIVITY FEED ========= -->
+  <div class="card" style="margin-top:14px" id="activityCard">
+    <div class="card-title">
+      <span class="activity-live-dot" aria-hidden="true"></span>Live <span class="italic">activity</span>
+      <span class="chip new" id="activityCount" style="margin-left:8px">0</span>
+      <a href="#" class="card-link" onclick="event.preventDefault();refreshActivityFeed()">Refresh</a>
+    </div>
+    <div class="card-sub">// Every call, stage change, qualified lead — offline-first (localStorage)</div>
+    <div class="activity-tabs" role="tablist" aria-label="Activity filter">
+      <button class="activity-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="activity-tab" data-filter="sabino" role="tab" aria-selected="false">Sabino</button>
+      <button class="activity-tab" data-filter="jessica" role="tab" aria-selected="false">Jessica</button>
+      <button class="activity-tab" data-filter="claude" role="tab" aria-selected="false">Claude</button>
+      <button class="activity-tab" data-filter="system" role="tab" aria-selected="false">System</button>
+    </div>
+    <div class="activity-list" id="activityList" aria-live="polite">
+      <div class="activity-empty">Loading activity…</div>
+    </div>
+    <div class="activity-foot">
+      <span>Auto-refresh · 30s</span>
+      <a href="../activity.html">View full timeline &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- SCHEDULE -->
+<div class="view" id="schedule">
+  <div class="topbar"><div><h1 class="page-title">Schedule <span class="italic">+ calendar</span></h1><p class="page-sub">Day, week, upcoming.</p></div><div class="top-actions"><button class="btn-cta">+ New Event</button></div></div>
+  <style>
+    .schedule-item{cursor:pointer;text-decoration:none;color:inherit;transition:all 0.15s;display:grid;grid-template-columns:60px 1fr auto;gap:10px;padding:8px 12px;border-radius:6px;align-items:center}
+    .schedule-item:hover{background:var(--bg-card-deep);transform:translateX(2px)}
+    .schedule-item:hover .schedule-evt{color:var(--neon-cyan)}
+    .schedule-item:hover::after{content:"↗";color:var(--text-dim);font-size:11px;margin-left:4px}
+  </style>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">Today · Tue Apr 21 <span class="italic">· click any →</span></div>
+      <div class="card-sub">// Day 20/60 · every block clickable</div>
+      <a class="schedule-item" href="/today.html" title="Open dial queue"><span class="schedule-time">7:25a</span><span class="schedule-evt">Cold call block · 5 dials</span><span class="schedule-tag" style="background:rgba(255,68,85,0.1);color:var(--neon-red)">SALES</span></a>
+      <a class="schedule-item" href="/jessica.html#roleplay" title="Jessica Day 2 brief"><span class="schedule-time">8:50a*</span><span class="schedule-evt">Jessica roleplay (flex — when freight allows)</span><span class="schedule-tag" style="background:rgba(255,136,0,0.1);color:var(--neon-orange)">TEAM</span></a>
+      <a class="schedule-item" href="/jessica.html" title="Jessica dashboard"><span class="schedule-time">Async</span><span class="schedule-evt">Jessica 30-45 min deep block (her window)</span><span class="schedule-tag" style="background:rgba(255,68,85,0.1);color:var(--neon-red)">SALES</span></a>
+      <a class="schedule-item" href="https://mercury.com/apply" target="_blank" rel="noopener" title="Mercury signup"><span class="schedule-time">10:30a</span><span class="schedule-evt">Mercury Bank app → finish signup</span><span class="schedule-tag" style="background:rgba(123,97,255,0.1);color:var(--neon-purple)">OPS</span></a>
+      <a class="schedule-item" href="/invoices/trippy.html" title="Invoice + collection script"><span class="schedule-time">12:00p</span><span class="schedule-evt">Trippy collection text · $50 overdue</span><span class="schedule-tag" style="background:rgba(255,68,85,0.1);color:var(--neon-red)">COLLECT</span></a>
+      <a class="schedule-item" href="/today.html" title="Track Francisco outreach"><span class="schedule-time">2:00p</span><span class="schedule-evt">Francisco bilingual follow-up text (ES)</span><span class="schedule-tag" style="background:rgba(0,240,255,0.1);color:var(--neon-cyan)">PITCH</span></a>
+      <a class="schedule-item" href="/demos/pablo-trailer-loans/" title="Pablo demo 1"><span class="schedule-time">3:30p</span><span class="schedule-evt">Pablo demo build · trailer loans</span><span class="schedule-tag" style="background:rgba(123,97,255,0.1);color:var(--neon-purple)">BUILD</span></a>
+      <a class="schedule-item" href="/demos/pablo-deportados-tv/" title="Pablo demo 2"><span class="schedule-time">5:00p</span><span class="schedule-evt">Pablo demo build · Deportados TV</span><span class="schedule-tag" style="background:rgba(123,97,255,0.1);color:var(--neon-purple)">BUILD</span></a>
+      <a class="schedule-item" href="https://drive.google.com" target="_blank" rel="noopener" title="Jessica content Drive"><span class="schedule-time">7:00p</span><span class="schedule-evt">Review + edit Jessica TikTok raw</span><span class="schedule-tag" style="background:rgba(0,240,255,0.1);color:var(--neon-cyan)">CONTENT</span></a>
+      <a class="schedule-item" href="/activity.html" title="Activity timeline"><span class="schedule-time">9:00p</span><span class="schedule-evt">EOD review · Jessica's dial log</span><span class="schedule-tag" style="background:rgba(0,240,255,0.1);color:var(--neon-cyan)">REVIEW</span></a>
+      <div style="font-size:10px;color:var(--text-dim);padding:6px 12px;margin-top:4px">*Jessica roleplay: schedule when freight breaks · same window daily once locked</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">This week <span class="italic">· click to open</span></div>
+      <div class="card-sub">// Apr 20-26 · every item is live</div>
+      <div class="schedule-day"><div class="schedule-head">Mon Apr 20 <span style="color:var(--text-dim);font-size:10px">· done ✓</span></div>
+        <div style="font-size:11px;color:var(--text-mid);padding:4px 12px">Jessica onboarded · 2.5 hrs logged · Pablo demos built · uptime monitor live · Tuesday brief shipped</div>
+      </div>
+      <div class="schedule-day"><div class="schedule-head today">Tue Apr 21 · TODAY</div>
+        <a class="schedule-item" href="/today.html"><span class="schedule-time">Async</span><span class="schedule-evt">Jessica first real dials</span><span></span></a>
+        <a class="schedule-item" href="/demos/pablo-trailer-loans/"><span class="schedule-time">PM</span><span class="schedule-evt">Pablo demos polish + deploy</span><span></span></a>
+      </div>
+      <div class="schedule-day"><div class="schedule-head">Wed Apr 22</div>
+        <a class="schedule-item" href="/demos/pablo-trailer-loans/"><span class="schedule-time">AM</span><span class="schedule-evt">Send Pablo both demos · screenshot</span><span></span></a>
+        <a class="schedule-item" href="/jessica.html"><span class="schedule-time">Async</span><span class="schedule-evt">Jessica 5 dials · Wed rhythm</span><span></span></a>
+      </div>
+      <div class="schedule-day"><div class="schedule-head">Thu Apr 23</div>
+        <a class="schedule-item" href="/mission-v3/pablo/PITCH_BRIEF.md"><span class="schedule-time">PM</span><span class="schedule-evt">Pablo pre-meeting brief review</span><span></span></a>
+        <a class="schedule-item" href="/jessica.html"><span class="schedule-time">Async</span><span class="schedule-evt">Jessica 6-7 dials · highest book day</span><span></span></a>
+      </div>
+      <div class="schedule-day"><div class="schedule-head">Fri Apr 25</div>
+        <a class="schedule-item" href="/mission-v3/pablo/PITCH_BRIEF.md"><span class="schedule-time">1:00p</span><span class="schedule-evt">Pablo pitch meeting</span><span class="schedule-tag" style="background:rgba(255,68,85,0.1);color:var(--neon-red)">HOT</span></a>
+        <a class="schedule-item" href="/prospect-list.html"><span class="schedule-time">1:00p</span><span class="schedule-evt">GW Hauling call</span><span class="schedule-tag" style="background:rgba(255,68,85,0.1);color:var(--neon-red)">HOT</span></a>
+        <a class="schedule-item" href="/invoices/trippy.html"><span class="schedule-time">EOD</span><span class="schedule-evt">Trippy $150 due → close Phase 1</span><span class="schedule-tag" style="background:rgba(255,136,0,0.1);color:var(--neon-orange)">$</span></a>
+        <a class="schedule-item" href="/jessica.html"><span class="schedule-time">12:30p</span><span class="schedule-evt">Jessica weekly huddle + payroll</span><span class="schedule-tag" style="background:rgba(255,136,0,0.1);color:var(--neon-orange)">TEAM</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Upcoming <span class="italic">· click for source</span></div>
+      <div class="card-sub">// Apr 27 → May 31</div>
+      <a class="schedule-item" href="/activity.html"><span class="schedule-time">May 3</span><span class="schedule-evt">Weekly review (Sunday recap)</span><span class="schedule-tag" style="background:rgba(0,240,255,0.1);color:var(--neon-cyan)">REVIEW</span></a>
+      <a class="schedule-item" href="https://bizfileonline.sos.ca.gov" target="_blank" rel="noopener"><span class="schedule-time">May 10</span><span class="schedule-evt">LLC registration review · CA SOS</span><span class="schedule-tag" style="background:rgba(123,97,255,0.1);color:var(--neon-purple)">LEGAL</span></a>
+      <a class="schedule-item" href="https://directpay.irs.gov" target="_blank" rel="noopener"><span class="schedule-time">May 15</span><span class="schedule-evt">Tax Q1 estimate deadline · IRS</span><span class="schedule-tag" style="background:rgba(255,68,85,0.1);color:var(--neon-red)">TAX</span></a>
+      <a class="schedule-item" href="https://ads.google.com" target="_blank" rel="noopener"><span class="schedule-time">May 20</span><span class="schedule-evt">Sprint midpoint (30/60) + Ads $500 match</span><span class="schedule-tag" style="background:rgba(255,215,0,0.1);color:var(--neon-yellow)">MILE</span></a>
+      <a class="schedule-item" href="/analytics-hub.html"><span class="schedule-time">May 30</span><span class="schedule-evt">Google Ads credit expires · spend it</span><span class="schedule-tag" style="background:rgba(255,215,0,0.1);color:var(--neon-yellow)">DEADLINE</span></a>
+      <a class="schedule-item" href="/analytics-hub.html"><span class="schedule-time">Jun 19</span><span class="schedule-evt">Sprint end · $100K target</span><span class="schedule-tag" style="background:rgba(255,215,0,0.1);color:var(--neon-yellow)">TARGET</span></a>
+      <a class="schedule-item" href="https://app.netlify.com/user/applications" target="_blank" rel="noopener"><span class="schedule-time">Jul 12</span><span class="schedule-evt">Netlify token expires · renew</span><span class="schedule-tag" style="background:rgba(255,136,0,0.1);color:var(--neon-orange)">RENEW</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- PLANNER -->
+<div class="view" id="planner">
+  <div class="topbar"><div><h1 class="page-title">Planner <span class="italic">— kanban</span></h1><p class="page-sub">Click a task to advance it through stages.</p></div>
+    <div class="top-actions"><input type="text" id="newTask" placeholder="Add task, press Enter..." style="width:280px"><button class="btn-cta" onclick="addTask()">+ Add</button></div>
+  </div>
+  <div class="kanban">
+    <div class="kanban-col"><div class="kanban-col-head">Backlog<span class="count" id="c_backlog">0</span></div><div id="col_backlog"></div></div>
+    <div class="kanban-col"><div class="kanban-col-head" style="color:var(--neon-orange)">In Progress<span class="count" id="c_doing">0</span></div><div id="col_doing"></div></div>
+    <div class="kanban-col"><div class="kanban-col-head" style="color:var(--neon-green)">Done<span class="count" id="c_done">0</span></div><div id="col_done"></div></div>
+  </div>
+</div>
+
+<!-- PIPELINE -->
+<div class="view" id="pipeline">
+  <div class="topbar"><div><h1 class="page-title">Sales <span class="italic">pipeline</span></h1><p class="page-sub">Every prospect · every stage · every next action.</p></div><div class="top-actions"><button class="btn-cta">+ New Lead</button></div></div>
+  <div class="kpi-row">
+    <div class="kpi red"><div class="kpi-lbl">Hot</div><div class="kpi-val" style="color:var(--neon-red)">4</div><div class="kpi-delta">ready to close</div></div>
+    <div class="kpi orange"><div class="kpi-lbl">Warm</div><div class="kpi-val" style="color:var(--neon-orange)">6</div><div class="kpi-delta">in convo</div></div>
+    <div class="kpi"><div class="kpi-lbl">Cold</div><div class="kpi-val" style="color:var(--text-mid)">50</div><div class="kpi-delta">to dial</div></div>
+    <div class="kpi green"><div class="kpi-lbl">Closed 30d</div><div class="kpi-val" style="color:var(--neon-green)">1</div><div class="kpi-delta">Trippy</div></div>
+    <div class="kpi cyan"><div class="kpi-lbl">Avg deal</div><div class="kpi-val" style="color:var(--neon-cyan)">$600</div><div class="kpi-delta">rising</div></div>
+    <div class="kpi yellow"><div class="kpi-lbl">Win rate</div><div class="kpi-val" style="color:var(--neon-yellow)">16%</div><div class="kpi-delta">1 of 6</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">All <span class="italic">prospects</span></div>
+    <table class="data-table">
+      <thead><tr><th>Name</th><th>Vertical</th><th>Stage</th><th>Quote</th><th>Source</th><th>Last touch</th><th>Next action</th></tr></thead>
+      <tbody>
+        <tr><td><b>Trippy Blendz</b></td><td>Barber shop</td><td><span class="chip active">PAYING</span></td><td class="cell-mono">$600 ($400 pd · $200 due)</td><td>In-person</td><td>Apr 20</td><td class="cell-mono">$50 overdue · $150 Fri Apr 25</td></tr>
+        <tr><td><b>Pablo Sanchez</b></td><td>Trailer + TV</td><td><span class="chip hot">HOT</span></td><td class="cell-mono">$1,800</td><td>Referral</td><td>Apr 20</td><td class="cell-mono">Demo by Wed</td></tr>
+        <tr><td><b>Adan (Allendes)</b></td><td>Auto detailing</td><td><span class="chip warm">WARM</span></td><td class="cell-mono">$800</td><td>IG DM</td><td>Apr 15</td><td class="cell-mono">Follow-up call</td></tr>
+        <tr><td><b>Francisco</b></td><td>Car wash</td><td><span class="chip warm">WARM</span></td><td class="cell-mono">$500</td><td>In-person</td><td>Apr 13</td><td class="cell-mono">Spanish text</td></tr>
+        <tr><td><b>Tune Up Maestro</b></td><td>Auto mechanic</td><td><span class="chip cold">COLD</span></td><td class="cell-mono">$600</td><td>Cold dial</td><td>Pending</td><td class="cell-mono">Jessica dials</td></tr>
+        <tr><td><b>GW Hauling</b></td><td>Dumpster</td><td><span class="chip hot">HOT</span></td><td class="cell-mono">$897+$297</td><td>Cold email</td><td>Apr 18</td><td class="cell-mono">Sat call 1pm</td></tr>
+        <tr><td><b>Sun Pacific</b></td><td>Trucking (29)</td><td><span class="chip new">DEMO LIVE</span></td><td class="cell-mono">$2,497+</td><td>Demo built</td><td>Ready</td><td class="cell-mono">Outreach</td></tr>
+        <tr><td><b>Reynosos</b></td><td>General svc</td><td><span class="chip warm">WARM</span></td><td class="cell-mono">$700</td><td>Referral</td><td>Apr 10</td><td class="cell-mono">Re-engage</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<div class="view" id="clients">
+  <div class="topbar"><div><h1 class="page-title">Active <span class="italic">clients</span></h1><p class="page-sub">Paying customers. Deliverables + retention.</p></div><div class="top-actions"><button class="btn-cta">+ Add Client</button></div></div>
+  <div class="card">
+    <table class="data-table">
+      <thead><tr><th>Client</th><th>Package</th><th>MRR</th><th>Site</th><th>Health</th><th>Next action</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>Trippy Blendz</b><div class="cell-mono" style="color:var(--text-dim);font-size:10px">Trip · Barber</div></td>
+          <td>Pro Build ($600 1-time)</td>
+          <td class="cell-mono">$0</td>
+          <td><a href="https://trippyblendz.com" target="_blank" class="cell-mono" style="color:var(--neon-cyan)">trippyblendz.com ↗</a></td>
+          <td><span class="dot-green"></span>Live</td>
+          <td class="cell-mono">Collect $50 · retainer pitch</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">Delivery <span class="italic">quality</span></div>
+    <div class="card-sub">// Trippy deliverables vs contract</div>
+    <div class="grid-equal">
+      <div>
+        <div class="row"><span class="row-label">// Site build</span><span class="row-val"><span class="dot-green"></span>Delivered Apr 14</span></div>
+        <div class="row"><span class="row-label">// Domain</span><span class="row-val"><span class="dot-green"></span>trippyblendz.com</span></div>
+        <div class="row"><span class="row-label">// Booksy</span><span class="row-val"><span class="dot-green"></span>Integrated</span></div>
+        <div class="row"><span class="row-label">// Meta Pixel</span><span class="row-val"><span class="dot-green"></span>Firing</span></div>
+      </div>
+      <div>
+        <div class="row"><span class="row-label">// Brand kit</span><span class="row-val"><span class="dot-green"></span>Delivered</span></div>
+        <div class="row"><span class="row-label">// 12 scripts</span><span class="row-val"><span class="dot-green"></span>PDF shipped</span></div>
+        <div class="row"><span class="row-label">// 14d fix window</span><span class="row-val"><span class="dot-orange"></span>Active thru Apr 28</span></div>
+        <div class="row"><span class="row-label">// NPS quote</span><span class="row-val">"This is fire"</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINANCE -->
+<div class="view" id="finance">
+  <div class="topbar"><div><h1 class="page-title">Finance <span class="italic">console</span></h1><p class="page-sub">Revenue · expenses · cash · debt.</p></div>
+    <div class="top-actions"><a href="https://dashboard.stripe.com" target="_blank" class="btn-ghost">Stripe ↗</a><button class="btn-cta">+ Entry</button></div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi green"><div class="kpi-lbl">Cash on hand</div><div class="kpi-val" style="color:var(--neon-green)">~$300</div><div class="kpi-delta warn">see finance-os</div></div>
+    <div class="kpi cyan"><div class="kpi-lbl">Revenue · Apr</div><div class="kpi-val" style="color:var(--neon-cyan)">$400</div><div class="kpi-delta">Trippy</div></div>
+    <div class="kpi"><div class="kpi-lbl">MRR</div><div class="kpi-val" style="color:var(--neon-purple)">$0</div><div class="kpi-delta">1-time deals</div></div>
+    <div class="kpi red"><div class="kpi-lbl">A/R overdue</div><div class="kpi-val" style="color:var(--neon-red)">$50</div><div class="kpi-delta down">3d late</div></div>
+    <div class="kpi orange"><div class="kpi-lbl">Outstanding</div><div class="kpi-val" style="color:var(--neon-orange)">$200</div><div class="kpi-delta">Trippy total</div></div>
+    <div class="kpi yellow"><div class="kpi-lbl">Freight W2</div><div class="kpi-val" style="color:var(--neon-yellow)">$32/hr</div><div class="kpi-delta">exit @ $10K MRR</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Invoices <span class="italic">· Apr</span></div>
+      <table class="data-table">
+        <thead><tr><th>Client</th><th>Memo</th><th>Due</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Trippy</td><td>Pro Build final</td><td class="cell-mono">Apr 25</td><td class="cell-mono">$150</td><td><span class="chip due">DUE</span></td></tr>
+          <tr><td>Trippy</td><td>Balance</td><td class="cell-mono">Apr 17 · 4d late</td><td class="cell-mono">$50</td><td><span class="chip overdue">OVERDUE</span></td></tr>
+          <tr><td>Trippy</td><td>Install 2</td><td class="cell-mono">Apr 8</td><td class="cell-mono">$200</td><td><span class="chip paid">PAID</span></td></tr>
+          <tr><td>Trippy</td><td>Install 1 + haircut</td><td class="cell-mono">Apr 1</td><td class="cell-mono">$200</td><td><span class="chip paid">PAID</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title">Banking <span class="italic">status</span></div>
+      <div class="card-sub">// Setup checklist</div>
+      <div class="row"><span class="row-label">// LLC</span><span class="row-val"><span class="dot-orange"></span>Pending review</span></div>
+      <div class="row"><span class="row-label">// EIN</span><span class="row-val"><span class="dot-green"></span>42-1937875</span></div>
+      <div class="row"><span class="row-label">// Stripe</span><span class="row-val"><span class="dot-green"></span>EIN attached</span></div>
+      <div class="row"><span class="row-label">// Mercury</span><span class="row-val"><span class="dot-red"></span>NOT OPENED</span></div>
+      <div class="row"><span class="row-label">// Business CC</span><span class="row-val"><span class="dot-red"></span>Queued</span></div>
+      <div class="row"><span class="row-label">// Bookkeeping</span><span class="row-val"><span class="dot-orange"></span>finance-os.py</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SPRINT -->
+<div class="view" id="sprint">
+  <div class="topbar"><div><h1 class="page-title">$100K <span class="italic">sprint</span> · Day 20/60</h1><p class="page-sub">Exit freight job trigger: $10K Rivven MRR.</p></div></div>
+  <div class="kpi-row">
+    <div class="kpi yellow"><div class="kpi-lbl">Target</div><div class="kpi-val" style="color:var(--neon-yellow)">$100K</div><div class="kpi-delta">60 days</div></div>
+    <div class="kpi green"><div class="kpi-lbl">Collected</div><div class="kpi-val" style="color:var(--neon-green)">$400</div><div class="kpi-delta">0.4%</div></div>
+    <div class="kpi cyan"><div class="kpi-lbl">Days used</div><div class="kpi-val" style="color:var(--neon-cyan)">20</div><div class="kpi-delta">33%</div></div>
+    <div class="kpi red"><div class="kpi-lbl">$/day needed</div><div class="kpi-val" style="color:var(--neon-red)">$2,490</div><div class="kpi-delta down">to hit</div></div>
+    <div class="kpi orange"><div class="kpi-lbl">Calls floor</div><div class="kpi-val" style="color:var(--neon-orange)">25/wk</div><div class="kpi-delta">M-F</div></div>
+    <div class="kpi"><div class="kpi-lbl">Avg deal</div><div class="kpi-val" style="color:var(--neon-purple)">$600</div><div class="kpi-delta">target $1,500</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">MRR <span class="italic">milestones</span></div>
+    <div class="card-sub">// Reframed from spec v3</div>
+    <div class="row"><span class="row-label">// $1,000 MRR</span><span class="row-val"><span class="dot-orange"></span>3 clients × $300</span></div>
+    <div class="row"><span class="row-label">// $3,000 MRR</span><span class="row-val"><span class="dot-red"></span>10 clients × $300</span></div>
+    <div class="row"><span class="row-label">// $10,000 MRR</span><span class="row-val"><span class="dot-red"></span>EXIT TRIGGER · quit freight</span></div>
+    <div class="row"><span class="row-label">// $25,000 MRR</span><span class="row-val"><span class="dot-red"></span>Hire #2 + office</span></div>
+    <div class="row"><span class="row-label">// $100K ARR</span><span class="row-val"><span class="dot-red"></span>Year 1 north star</span></div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="view" id="team">
+  <div class="topbar"><div><h1 class="page-title">Team <span class="italic">operations</span></h1><p class="page-sub">Hires · producers · producing assets.</p></div><div class="top-actions"><button class="btn-cta">+ New Hire</button></div></div>
+  <div class="card">
+    <div class="card-title">Roster</div>
+    <table class="data-table">
+      <thead><tr><th>Name</th><th>Role</th><th>Rate</th><th>Window</th><th>Status</th><th>Metric</th></tr></thead>
+      <tbody>
+        <tr><td><b>Sabino Sanchez</b></td><td>Founder · Operator</td><td class="cell-mono">Equity</td><td class="cell-mono">24/7</td><td><span class="chip active">ACTIVE</span></td><td class="cell-mono">All KPIs</td></tr>
+        <tr><td><b>Jessica Solares</b></td><td>SDR · Sales + IG + Content</td><td class="cell-mono">$22/hr (1099)</td><td class="cell-mono">30-45 min deep + phone async</td><td><span class="chip active">DAY 2</span></td><td class="cell-mono">5 dials/day · 1+ mtg/wk</td></tr>
+        <tr><td><b>Hire #2</b></td><td>TBD · post $1K MRR</td><td class="cell-mono">TBD</td><td class="cell-mono">—</td><td><span class="chip cold">QUEUED</span></td><td class="cell-mono">—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid-2" style="margin-top:14px">
+    <div class="card">
+      <div class="card-title">Jessica · <span class="italic">this week</span></div>
+      <div class="card-sub">// 22 hrs/wk max</div>
+      <div style="padding:10px;background:var(--bg-card-deep);border-radius:10px;margin-bottom:10px">
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;text-align:center">
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px">M</div><div style="font-size:16px;font-weight:700;color:var(--neon-orange);font-family:'JetBrains Mono',monospace">5</div></div>
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px">T</div><div style="font-size:16px;font-weight:700;color:var(--text-dim);font-family:'JetBrains Mono',monospace">—</div></div>
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px">W</div><div style="font-size:16px;font-weight:700;color:var(--text-dim);font-family:'JetBrains Mono',monospace">—</div></div>
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px">Th</div><div style="font-size:16px;font-weight:700;color:var(--text-dim);font-family:'JetBrains Mono',monospace">—</div></div>
+          <div><div class="cell-mono" style="color:var(--text-dim);font-size:9px">F</div><div style="font-size:16px;font-weight:700;color:var(--text-dim);font-family:'JetBrains Mono',monospace">—</div></div>
+        </div>
+      </div>
+      <div class="row"><span class="row-label">// Bookings</span><span class="row-val">0 (target: 5)</span></div>
+      <div class="row"><span class="row-label">// IG posts</span><span class="row-val">2 (target: 15)</span></div>
+      <div class="row"><span class="row-label">// Scripts filmed</span><span class="row-val">5 (target: 12)</span></div>
+      <div class="row"><span class="row-label">// Hours</span><span class="row-val">4.5 / 22</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">SOPs <span class="italic">+ kit</span></div>
+      <div class="card-sub">// All docs</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <a href="https://rivven.ai/jessica.html" target="_blank" class="btn-ghost">Jessica Workspace ↗</a>
+        <a href="https://rivven.ai/jessica-leads.csv" target="_blank" class="btn-ghost">50-Lead Call Sheet ↗</a>
+        <a href="https://rivven.ai/command.html" target="_blank" class="btn-ghost">Live Dial Command ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SITES -->
+<div class="view" id="sites">
+  <div class="topbar"><div><h1 class="page-title">Sites <span class="italic">monitor</span></h1><p class="page-sub">Every property · uptime every 15 min.</p></div><div class="top-actions"><button class="btn-cta">+ Deploy</button></div></div>
+  <div class="kpi-row">
+    <div class="kpi green"><div class="kpi-lbl">All systems</div><div class="kpi-val" style="color:var(--neon-green)">✓</div><div class="kpi-delta">99.98%</div></div>
+    <div class="kpi cyan"><div class="kpi-lbl">Live props</div><div class="kpi-val" style="color:var(--neon-cyan)">39</div><div class="kpi-delta">+2 this wk</div></div>
+    <div class="kpi"><div class="kpi-lbl">Pages</div><div class="kpi-val" style="color:var(--neon-purple)">85+</div><div class="kpi-delta">rivven.ai</div></div>
+    <div class="kpi orange"><div class="kpi-lbl">Demos</div><div class="kpi-val" style="color:var(--neon-orange)">37</div><div class="kpi-delta">32+5</div></div>
+    <div class="kpi yellow"><div class="kpi-lbl">Deploys · 24h</div><div class="kpi-val" style="color:var(--neon-yellow)">14</div><div class="kpi-delta">sprint pace</div></div>
+    <div class="kpi red"><div class="kpi-lbl">Alerts</div><div class="kpi-val" style="color:var(--neon-red)">0</div><div class="kpi-delta">all clear</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Flagship <span class="italic">properties</span></div>
+    <table class="data-table">
+      <thead><tr><th>Site</th><th>Type</th><th>Owner</th><th>Host</th><th>Status</th><th>Last deploy</th></tr></thead>
+      <tbody>
+        <tr><td><b>rivven.ai</b></td><td>Agency HQ</td><td>Sabino</td><td>Netlify</td><td><span class="dot-green"></span>Live</td><td class="cell-mono">&lt; 1h</td></tr>
+        <tr><td><b>trippyblendz.com</b></td><td>Barber · paying</td><td>Trip</td><td>Netlify</td><td><span class="dot-green"></span>Live</td><td class="cell-mono">Apr 14</td></tr>
+        <tr><td><b>gwhauling.rivven.ai</b></td><td>Demo · Dumpster</td><td>Demo</td><td>Netlify+CF</td><td><span class="dot-green"></span>Live</td><td class="cell-mono">Apr 18</td></tr>
+        <tr><td><b>allendes.rivven.ai</b></td><td>Demo · Detailing</td><td>Demo</td><td>Netlify</td><td><span class="dot-green"></span>Live</td><td class="cell-mono">Apr 15</td></tr>
+        <tr><td><b>francisco.rivven.ai</b></td><td>Demo · Car wash</td><td>Demo</td><td>Netlify</td><td><span class="dot-green"></span>Live</td><td class="cell-mono">Apr 13</td></tr>
+        <tr><td><b>Sun Pacific demo</b></td><td>Demo · Trucking</td><td>Demo</td><td>Netlify</td><td><span class="dot-green"></span>Live</td><td class="cell-mono">Apr 19</td></tr>
+        <tr><td><b>jessica.html</b></td><td>Team workspace</td><td>Jessica</td><td>Netlify</td><td><span class="dot-green"></span>Live</td><td class="cell-mono">Apr 20</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="view" id="content">
+  <div class="topbar"><div><h1 class="page-title">Content <span class="italic">engine</span></h1><p class="page-sub">Scripts · posts · UGC · publishing queue.</p></div><div class="top-actions"><button class="btn-cta">+ New Script</button></div></div>
+  <div class="kpi-row">
+    <div class="kpi cyan"><div class="kpi-lbl">Scripts ready</div><div class="kpi-val" style="color:var(--neon-cyan)">12</div><div class="kpi-delta">UGC machine</div></div>
+    <div class="kpi"><div class="kpi-lbl">Filmed</div><div class="kpi-val" style="color:var(--neon-purple)">5</div><div class="kpi-delta">Jessica</div></div>
+    <div class="kpi green"><div class="kpi-lbl">Posted · 7d</div><div class="kpi-val" style="color:var(--neon-green)">2</div><div class="kpi-delta">IG</div></div>
+    <div class="kpi orange"><div class="kpi-lbl">In edit</div><div class="kpi-val" style="color:var(--neon-orange)">3</div><div class="kpi-delta">Tue pub</div></div>
+    <div class="kpi yellow"><div class="kpi-lbl">Audio</div><div class="kpi-val" style="color:var(--neon-yellow)">T1</div><div class="kpi-delta">tonight</div></div>
+    <div class="kpi red"><div class="kpi-lbl">Backlog</div><div class="kpi-val" style="color:var(--neon-red)">4</div><div class="kpi-delta">unfilmed</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">Script <span class="italic">queue</span></div>
+    <table class="data-table">
+      <thead><tr><th>Script</th><th>Pillar</th><th>Format</th><th>Status</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>AI replaces your web designer</td><td>Authority</td><td>Reel 30s</td><td><span class="chip new">FILMED</span></td><td>Jessica</td></tr>
+        <tr><td>Built Trippy's site in 4 hours</td><td>Case study</td><td>Reel 60s</td><td><span class="chip new">FILMED</span></td><td>Jessica</td></tr>
+        <tr><td>Objection: "we have a guy"</td><td>Sales</td><td>Reel 45s</td><td><span class="chip warm">EDIT</span></td><td>Sabino</td></tr>
+        <tr><td>Why freight isn't the enemy</td><td>Story</td><td>TikTok 60s</td><td><span class="chip warm">EDIT</span></td><td>Sabino</td></tr>
+        <tr><td>Day in the life · founder</td><td>Story</td><td>Vlog 3m</td><td><span class="chip cold">QUEUE</span></td><td>Sabino</td></tr>
+        <tr><td>Trippy before/after reveal</td><td>Case study</td><td>Carousel</td><td><span class="chip cold">QUEUE</span></td><td>Jessica</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- OPS -->
+<div class="view" id="ops">
+  <div class="topbar"><div><h1 class="page-title">System <span class="italic">ops</span></h1><p class="page-sub">Infra · deploys · monitoring · tokens.</p></div></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Service <span class="italic">health</span></div>
+      <div class="health-grid">
+        <div class="health"><div class="health-name">// Netlify</div><div class="health-status"><span class="dot-green"></span>Operational</div></div>
+        <div class="health"><div class="health-name">// Namecheap</div><div class="health-status"><span class="dot-green"></span>Operational</div></div>
+        <div class="health"><div class="health-name">// Cloudflare</div><div class="health-status"><span class="dot-green"></span>Operational</div></div>
+        <div class="health"><div class="health-name">// Stripe</div><div class="health-status"><span class="dot-green"></span>Connected</div></div>
+        <div class="health"><div class="health-name">// Mercury</div><div class="health-status"><span class="dot-red"></span>Not opened</div></div>
+        <div class="health"><div class="health-name">// Google Workspace</div><div class="health-status"><span class="dot-orange"></span>Pending</div></div>
+        <div class="health"><div class="health-name">// GA4</div><div class="health-status"><span class="dot-green"></span>G-NRD18H529M</div></div>
+        <div class="health"><div class="health-name">// Discord HQ</div><div class="health-status"><span class="dot-red"></span>Not built</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Credentials <span class="italic">vault</span></div>
+      <div class="row"><span class="row-label">// Netlify token</span><span class="row-val">exp Jul 12 2026</span></div>
+      <div class="row"><span class="row-label">// Namecheap API</span><span class="row-val">sabinosanchez</span></div>
+      <div class="row"><span class="row-label">// Stripe live</span><span class="row-val">EIN attached</span></div>
+      <div class="row"><span class="row-label">// CF zone</span><span class="row-val">rivven.ai proxied</span></div>
+      <div class="row"><span class="row-label">// Domain</span><span class="row-val">exp Apr 15 2028</span></div>
+      <div class="row"><span class="row-label">// LLC</span><span class="row-val">B20260162241 (CA)</span></div>
+      <div class="row"><span class="row-label">// EIN</span><span class="row-val">42-1937875</span></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">Deploy <span class="italic">log</span></div>
+    <table class="data-table">
+      <thead><tr><th>When</th><th>Site</th><th>Change</th><th>Who</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td class="cell-mono">&lt; 5m</td><td>rivven.ai</td><td>Command Center v1 · full dashboard</td><td>Claude</td><td><span class="chip active">OK</span></td></tr>
+        <tr><td class="cell-mono">10m</td><td>rivven.ai</td><td>Custom SHA-256 auth · replaces Identity</td><td>Claude</td><td><span class="chip active">OK</span></td></tr>
+        <tr><td class="cell-mono">1h</td><td>rivven.ai</td><td>Portal · Fuel Usage + Fleet views</td><td>Claude</td><td><span class="chip active">OK</span></td></tr>
+        <tr><td class="cell-mono">Apr 20</td><td>rivven.ai</td><td>Jessica workspace v14 · 336KB</td><td>Claude</td><td><span class="chip active">OK</span></td></tr>
+        <tr><td class="cell-mono">Apr 20</td><td>rivven.ai</td><td>8-page expansion · proof/login/portal/quote</td><td>Claude</td><td><span class="chip active">OK</span></td></tr>
+        <tr><td class="cell-mono">Apr 18</td><td>gwhauling.rivven.ai</td><td>Bin calculator + quote form</td><td>Claude</td><td><span class="chip active">OK</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- INTEL -->
+<div class="view" id="intel">
+  <div class="topbar"><div><h1 class="page-title">Market <span class="italic">intel</span></h1><p class="page-sub">Agencies · verticals · pricing benchmarks.</p></div></div>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Top agencies</div>
+      <div class="row"><span class="row-label">1 · Accenture Song</span><span class="row-val">$18B · enterprise</span></div>
+      <div class="row"><span class="row-label">2 · Deloitte Digital</span><span class="row-val">$8B · consulting</span></div>
+      <div class="row"><span class="row-label">3 · PwC Digital</span><span class="row-val">$6B · transformation</span></div>
+      <div class="row"><span class="row-label">4 · IBM iX</span><span class="row-val">$5.5B · AI-first</span></div>
+      <div class="row"><span class="row-label">5 · Publicis Sapient</span><span class="row-val">$2.1B · digital biz</span></div>
+      <div class="row"><span class="row-label">6 · Wunderman Thompson</span><span class="row-val">$1.4B · creative+tech</span></div>
+      <div class="row"><span class="row-label">7 · R/GA</span><span class="row-val">$650M · innovation</span></div>
+      <div class="row"><span class="row-label">8 · AKQA</span><span class="row-val">$400M · design-led</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Booming verticals</div>
+      <div class="row"><span class="row-label">// AI Agents</span><span class="row-val">$10.9B · 45% CAGR</span></div>
+      <div class="row"><span class="row-label">// SaaS local svc</span><span class="row-val">$4.2B · steady</span></div>
+      <div class="row"><span class="row-label">// Micro-agencies</span><span class="row-val">+80% post-AI</span></div>
+      <div class="row"><span class="row-label">// Home services</span><span class="row-val">$2.1B · underserved</span></div>
+      <div class="row"><span class="row-label">// Trucking tech</span><span class="row-val">$18B · fuel cards</span></div>
+      <div class="row"><span class="row-label">// Hispanic SMB</span><span class="row-val">$800B buying pwr</span></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="card-title">Pricing <span class="italic">benchmarks</span></div>
+    <div class="card-sub">// What competitors charge vs Rivven</div>
+    <table class="data-table">
+      <thead><tr><th>Package</th><th>Industry avg</th><th>Rivven</th><th>Position</th></tr></thead>
+      <tbody>
+        <tr><td>Starter (5 pg)</td><td class="cell-mono">$1,500-3,000</td><td class="cell-mono">$599</td><td><span class="chip active">UNDERCUT</span></td></tr>
+        <tr><td>Pro (12 pg)</td><td class="cell-mono">$3,000-8,000</td><td class="cell-mono">$1,497</td><td><span class="chip active">50% BELOW</span></td></tr>
+        <tr><td>Growth retainer</td><td class="cell-mono">$1,500-5,000/mo</td><td class="cell-mono">$297-997/mo</td><td><span class="chip new">OPENING</span></td></tr>
+        <tr><td>Chatbot add-on</td><td class="cell-mono">$200-800/mo</td><td class="cell-mono">$97-297/mo</td><td><span class="chip active">VALUE</span></td></tr>
+        <tr><td>GBP mgmt</td><td class="cell-mono">$300-800/mo</td><td class="cell-mono">$197/mo</td><td><span class="chip active">VALUE</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div class="view" id="research">
+  <div class="topbar"><div><h1 class="page-title">Research <span class="italic">queue</span></h1><p class="page-sub">Claude features · tools · open questions.</p></div></div>
+  <div class="card">
+    <div class="card-title">Active research</div>
+    <table class="data-table">
+      <thead><tr><th>Topic</th><th>Priority</th><th>Status</th><th>Next</th></tr></thead>
+      <tbody>
+        <tr><td>Deportados TV presence (Pablo)</td><td><span class="chip hot">HIGH</span></td><td><span class="chip warm">IN-PROGRESS</span></td><td class="cell-mono">Tonight</td></tr>
+        <tr><td>Deported-veteran petition landscape</td><td><span class="chip hot">HIGH</span></td><td><span class="chip warm">QUEUED</span></td><td class="cell-mono">Tue AM</td></tr>
+        <tr><td>Claude Code weekly feature scan</td><td><span class="chip warm">MED</span></td><td><span class="chip active">RECURRING</span></td><td class="cell-mono">Fri</td></tr>
+        <tr><td>n8n/Make/Zapier comp</td><td><span class="chip warm">MED</span></td><td><span class="chip cold">PARKED</span></td><td class="cell-mono">Post-MRR</td></tr>
+        <tr><td>Whatnot reselling ROI</td><td><span class="chip cold">LOW</span></td><td><span class="chip cold">PARKED</span></td><td class="cell-mono">After $10K MRR</td></tr>
+        <tr><td>OpenClaw partnership spec</td><td><span class="chip warm">MED</span></td><td><span class="chip new">SPEC</span></td><td class="cell-mono">May</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- AI CHATS (widget conversations) -->
+<div class="view" id="chats">
+  <div class="topbar">
+    <div>
+      <h1 class="page-title">AI <span class="italic">Chats</span></h1>
+      <p class="page-sub">Live rivven.ai chat widget conversations · captured leads · Claude traffic.</p>
+    </div>
+    <div class="top-actions">
+      <button class="btn-ghost" onclick="chatsLoad()">↻ Refresh</button>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-title">Last 24h</div>
+    <div id="chatStats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px">
+      <div><div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px">Total sessions</div><div id="statTotal" style="font-size:24px;font-weight:700;color:var(--text)">—</div></div>
+      <div><div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px">Active 24h</div><div id="statActive" style="font-size:24px;font-weight:700;color:var(--neon-cyan,#00F0FF)">—</div></div>
+      <div><div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px">Leads captured</div><div id="statLeads" style="font-size:24px;font-weight:700;color:var(--neon-green,#00FF88)">—</div></div>
+      <div><div style="font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px">Messages 24h</div><div id="statMsgs" style="font-size:24px;font-weight:700;color:var(--text)">—</div></div>
+    </div>
+  </div>
+
+  <!-- Two-pane: session list + transcript -->
+  <div style="display:grid;grid-template-columns:360px 1fr;gap:16px;align-items:start">
+    <div class="card" style="max-height:70vh;overflow-y:auto">
+      <div class="card-title">Recent sessions</div>
+      <div id="chatSessionList" style="margin-top:8px;display:flex;flex-direction:column;gap:6px">
+        <div style="padding:12px;color:var(--text-dim);font-size:12px">Loading…</div>
+      </div>
+    </div>
+
+    <div class="card" style="max-height:70vh;overflow-y:auto">
+      <div class="card-title" id="chatTxHeader">Select a session on the left</div>
+      <div id="chatTranscript" style="margin-top:8px;display:flex;flex-direction:column;gap:10px">
+        <div style="padding:12px;color:var(--text-dim);font-size:12px">Click any session to view the full transcript.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<div class="guard" id="guard">
+  <div class="guard-content">
+    <h2>Admin <em>only</em>.</h2>
+    <p>You need an admin-role session to access the Command Center.</p>
+    <a href="../login.html">Sign in →</a>
+  </div>
+</div>
+
+<script src="../auth.js"></script>
+<script>
+  (async () => {
+    const session = await RivvenAuth.requireRole(['admin']);
+    if (!session) return;
+    document.getElementById('app').style.display = 'flex';
+    document.getElementById('guard').style.display = 'none';
+    const fname = session.name.split(' ')[0];
+    document.getElementById('userName').textContent = session.name;
+    document.getElementById('userInitial').textContent = fname.charAt(0).toUpperCase();
+    document.getElementById('fname').textContent = fname;
+    const h = new Date().getHours();
+    document.getElementById('greetTime').textContent = h < 12 ? 'morning' : h < 18 ? 'afternoon' : 'evening';
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
+    if (session.preview) {
+      const b = document.createElement('div');
+      b.style.cssText = 'position:fixed;top:0;left:260px;right:0;background:rgba(123,97,255,0.15);border-bottom:1px solid rgba(123,97,255,0.3);color:var(--neon-purple);font-family:JetBrains Mono,monospace;font-size:11px;text-align:center;padding:6px;letter-spacing:1.5px;text-transform:uppercase;z-index:100';
+      b.innerHTML = '◎ Preview Mode · <a href="../login.html" style="color:var(--neon-cyan);text-decoration:none">Sign in for live data →</a>';
+      document.body.appendChild(b);
+      document.querySelector('main').style.paddingTop = '60px';
+    }
+  })();
+
+  function doLogout(){ RivvenAuth.logout(); }
+
+  function showView(id){
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    const el = document.getElementById(id);
+    if (el) el.classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const link = document.querySelector('.nav-link[data-view="'+id+'"]');
+    if (link) link.classList.add('active');
+    window.scrollTo(0, 0);
+    if (id === 'planner') renderKanban();
+    if (id === 'chats')   chatsLoad();
+  }
+  document.querySelectorAll('.nav-link').forEach(l => { l.addEventListener('click', () => { const v = l.getAttribute('data-view'); if (v) showView(v); }); });
+
+  // ── AI Chats view ──────────────────────────────────────────────
+  const CHAT_ADMIN_URL = '/.netlify/functions/chat-admin';
+  function chatAdminHeaders(){
+    const t = localStorage.getItem('rivven_admin_token') || '';
+    return t ? { 'x-admin-token': t } : {};
+  }
+  function chatEsc(s){
+    if (typeof s !== 'string') return '';
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function chatTimeAgo(iso){
+    if (!iso) return '';
+    const d = new Date(iso); const sec = Math.max(1, Math.floor((Date.now() - d.getTime())/1000));
+    if (sec < 60)       return sec + 's ago';
+    if (sec < 3600)     return Math.floor(sec/60) + 'm ago';
+    if (sec < 86400)    return Math.floor(sec/3600) + 'h ago';
+    return Math.floor(sec/86400) + 'd ago';
+  }
+  async function chatsLoad(){
+    const listEl  = document.getElementById('chatSessionList');
+    if (!listEl) return;
+    listEl.innerHTML = '<div style="padding:12px;color:var(--text-dim);font-size:12px">Loading…</div>';
+
+    // Stats
+    try {
+      const s = await fetch(CHAT_ADMIN_URL + '?mode=stats', { headers: chatAdminHeaders() }).then(r => r.json());
+      const st = (s && s.stats) || {};
+      document.getElementById('statTotal').textContent  = st.total_sessions ?? '—';
+      document.getElementById('statActive').textContent = st.active_24h ?? '—';
+      document.getElementById('statLeads').textContent  = st.leads_captured ?? '—';
+      document.getElementById('statMsgs').textContent   = st.messages_24h ?? '—';
+    } catch (e) { /* leave dashes */ }
+
+    // Session list
+    try {
+      const j = await fetch(CHAT_ADMIN_URL + '?mode=sessions&limit=100', { headers: chatAdminHeaders() }).then(r => r.json());
+      const sessions = (j && j.sessions) || [];
+      if (sessions.length === 0) {
+        listEl.innerHTML = '<div style="padding:20px 12px;color:var(--text-dim);font-size:12px;text-align:center">No sessions yet.<br><br>Post to <code style="color:var(--neon-cyan,#00F0FF)">/.netlify/functions/chat</code> to create one.</div>';
+        return;
+      }
+      listEl.innerHTML = sessions.map(s => {
+        const lead = s.lead_name || s.lead_phone || s.lead_email;
+        const leadChip = lead
+          ? '<span style="display:inline-block;margin-left:6px;padding:1px 6px;background:rgba(0,255,136,0.15);color:#00FF88;border-radius:4px;font-size:9px;letter-spacing:1px">LEAD</span>'
+          : '';
+        const lang = s.last_language === 'es' ? 'ES' : 'EN';
+        const preview = chatEsc((s.last_user_message || s.first_user_message || '').slice(0, 80));
+        const intent = s.last_intent ? chatEsc(s.last_intent).toUpperCase() : '';
+        return '<button class="chat-session-btn" data-sid="' + chatEsc(s.id) + '" style="all:unset;cursor:pointer;padding:10px;border:1px solid var(--border,#222);border-radius:8px;display:flex;flex-direction:column;gap:4px;background:transparent;transition:all 0.15s">' +
+          '<div style="display:flex;justify-content:space-between;align-items:center;gap:6px">' +
+            '<div style="font-size:11px;color:var(--text-dim)">' + chatTimeAgo(s.last_seen_at) + ' · ' + lang + leadChip + '</div>' +
+            '<div style="font-size:10px;color:var(--neon-cyan,#00F0FF);letter-spacing:1px">' + intent + '</div>' +
+          '</div>' +
+          '<div style="font-size:12px;color:var(--text,#fff);font-weight:500">' + (lead ? chatEsc(lead) : 'Anonymous · ' + chatEsc(s.id.slice(0, 10))) + '</div>' +
+          '<div style="font-size:11px;color:var(--text-mid,#a1a1aa);line-height:1.3">' + (preview || '(no messages)') + '</div>' +
+          '<div style="font-size:10px;color:var(--text-dim);margin-top:2px">' + (s.msg_count_user || 0) + ' user · ' + (s.msg_count_assistant || 0) + ' bot · ' + (s.tokens_in_total || 0) + '↓ ' + (s.tokens_out_total || 0) + '↑</div>' +
+        '</button>';
+      }).join('');
+      listEl.querySelectorAll('.chat-session-btn').forEach(b => {
+        b.addEventListener('mouseenter', () => { b.style.borderColor = 'var(--neon-cyan, #00F0FF)'; });
+        b.addEventListener('mouseleave', () => { b.style.borderColor = 'var(--border, #222)'; });
+        b.addEventListener('click', () => chatsLoadTranscript(b.getAttribute('data-sid')));
+      });
+    } catch (e) {
+      listEl.innerHTML = '<div style="padding:12px;color:var(--neon-red,#FF4D6D);font-size:12px">Load failed — check that chat-admin.js is deployed and Supabase schema is applied. <a href="#" onclick="chatsLoad();return false" style="color:var(--neon-cyan,#00F0FF)">Retry</a></div>';
+    }
+  }
+  async function chatsLoadTranscript(sid){
+    const tx = document.getElementById('chatTranscript');
+    const hdr = document.getElementById('chatTxHeader');
+    if (!tx || !hdr) return;
+    hdr.textContent = 'Loading…';
+    tx.innerHTML = '';
+    try {
+      const j = await fetch(CHAT_ADMIN_URL + '?mode=messages&session_id=' + encodeURIComponent(sid), { headers: chatAdminHeaders() }).then(r => r.json());
+      const msgs = (j && j.messages) || [];
+      const sess = j && j.session;
+      const leadLine = sess && (sess.lead_name || sess.lead_phone || sess.lead_email)
+        ? ' · LEAD: ' + [sess.lead_name, sess.lead_phone, sess.lead_email].filter(Boolean).join(' / ')
+        : '';
+      hdr.textContent = 'Session ' + sid.slice(0, 16) + leadLine;
+      if (msgs.length === 0) { tx.innerHTML = '<div style="color:var(--text-dim);font-size:12px">No messages.</div>'; return; }
+      tx.innerHTML = msgs.map(m => {
+        const isUser = m.role === 'user';
+        const bg = isUser ? 'var(--neon-cyan, #00F0FF)' : 'var(--bg-card, #111)';
+        const color = isUser ? '#0A0A0B' : 'var(--text-mid, #a1a1aa)';
+        const align = isUser ? 'flex-end' : 'flex-start';
+        const border = isUser ? 'none' : '1px solid var(--border, #222)';
+        return '<div style="align-self:' + align + ';max-width:85%;padding:10px 14px;background:' + bg + ';color:' + color + ';border:' + border + ';border-radius:12px;font-size:12px;line-height:1.5">' +
+          chatEsc(m.content).replace(/\n/g,'<br>') +
+          '<div style="font-size:9px;opacity:0.65;margin-top:4px">' + new Date(m.created_at).toLocaleString() + (m.language ? ' · ' + m.language : '') + (m.intent ? ' · ' + m.intent : '') + (m.tokens_in ? ' · ' + m.tokens_in + '↓' + (m.tokens_out || 0) + '↑' : '') + '</div>' +
+          '</div>';
+      }).join('');
+    } catch (e) {
+      hdr.textContent = 'Load failed';
+      tx.innerHTML = '<div style="color:var(--neon-red,#FF4D6D);font-size:12px">Could not load transcript.</div>';
+    }
+  }
+  window.chatsLoad = chatsLoad;
+
+  const TASK_KEY = 'rvn_tasks_v1';
+  function loadTasks(){ try { return JSON.parse(localStorage.getItem(TASK_KEY) || '[]'); } catch(e){ return []; } }
+  function saveTasks(t){ localStorage.setItem(TASK_KEY, JSON.stringify(t)); }
+  function seedTasks(){
+    if (localStorage.getItem(TASK_KEY)) return;
+    const seed = [
+      { id: 1, title: 'Text Trippy Plan A · collect $50 overdue', status: 'doing', prio: 'high', tag: 'Collect', due: 'Today' },
+      { id: 2, title: 'Open Mercury business bank account', status: 'doing', prio: 'high', tag: 'Ops', due: 'Today' },
+      { id: 3, title: 'Francisco close attempt (Spanish text)', status: 'backlog', prio: 'high', tag: 'Pitch', due: 'Today 2p' },
+      { id: 4, title: 'Build Pablo demo · trailer loans site', status: 'backlog', prio: 'high', tag: 'Build', due: 'Tue' },
+      { id: 5, title: 'Build Pablo demo · Deportados TV', status: 'backlog', prio: 'high', tag: 'Build', due: 'Tue' },
+      { id: 6, title: 'Record Tier 1 audio scripts (own voice)', status: 'backlog', prio: 'mid', tag: 'Content', due: 'Tonight' },
+      { id: 7, title: 'Discord HQ server build (15 min)', status: 'backlog', prio: 'mid', tag: 'Setup', due: 'Today' },
+      { id: 8, title: 'Review Jessica day 1 videos', status: 'backlog', prio: 'mid', tag: 'Content', due: 'EOD' },
+      { id: 9, title: 'Edit 1-2 Jessica videos for Tue post', status: 'backlog', prio: 'mid', tag: 'Content', due: 'EOD' },
+      { id: 10, title: 'Tuesday brief drop in Jessica Drive', status: 'backlog', prio: 'mid', tag: 'Team', due: 'Tonight' },
+      { id: 11, title: 'Jessica kit v14 shipped (336KB)', status: 'done', prio: 'high', tag: 'Build', due: 'Apr 20' },
+      { id: 12, title: 'Command Center + 3 role portals shipped', status: 'done', prio: 'high', tag: 'Build', due: 'Apr 20' }
+    ];
+    saveTasks(seed);
+  }
+  function renderKanban(){
+    seedTasks();
+    const tasks = loadTasks();
+    const cols = { backlog: [], doing: [], done: [] };
+    tasks.forEach(t => { (cols[t.status] || cols.backlog).push(t); });
+    ['backlog','doing','done'].forEach(col => {
+      const host = document.getElementById('col_' + col);
+      const count = document.getElementById('c_' + col);
+      if (!host) return;
+      host.innerHTML = cols[col].map(t => `
+        <div class="task prio-${escapeHtml(String(t.prio || ''))}" data-task-id="${escapeHtml(String(t.id))}">
+          <div class="task-title">${escapeHtml(t.title)}</div>
+          <div class="task-meta">
+            <span style="color:var(--neon-purple)">${escapeHtml(String(t.tag || ''))}</span>
+            <span>·</span>
+            <span>${escapeHtml(String(t.due || ''))}</span>
+            ${t.prio === 'high' ? '<span style="color:var(--neon-red);margin-left:auto">HIGH</span>' : ''}
+          </div>
+        </div>`).join('');
+      if (!host.dataset.kanbanBound){
+        host.addEventListener('click', function(ev){
+          const card = ev.target.closest && ev.target.closest('.task[data-task-id]');
+          if (!card || !host.contains(card)) return;
+          const raw = card.getAttribute('data-task-id');
+          const idNum = Number(raw);
+          advanceTask(Number.isFinite(idNum) ? idNum : raw);
+        });
+        host.dataset.kanbanBound = '1';
+      }
+      count.textContent = cols[col].length;
+    });
+  }
+  function advanceTask(id){
+    const tasks = loadTasks();
+    const t = tasks.find(x => x.id === id);
+    if (!t) return;
+    t.status = t.status === 'backlog' ? 'doing' : t.status === 'doing' ? 'done' : 'backlog';
+    saveTasks(tasks);
+    renderKanban();
+  }
+  function addTask(){
+    const input = document.getElementById('newTask');
+    const val = input.value.trim();
+    if (!val) return;
+    const tasks = loadTasks();
+    tasks.push({ id: Date.now(), title: val, status: 'backlog', prio: 'mid', tag: 'Manual', due: 'Today' });
+    saveTasks(tasks);
+    input.value = '';
+    renderKanban();
+  }
+  function escapeHtml(s){ return String(s).replace(/[&<>"'`]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'}[c])); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.activeElement && document.activeElement.id === 'newTask') { addTask(); }
+  });
+
+  setTimeout(renderKanban, 50);
+
+  // ========= RIVVEN ACTIVITY UTILITY (offline-first, localStorage) =========
+  const RivvenActivity = {
+    KEY: 'rivven.activity.log',
+    log(event){
+      const log = JSON.parse(localStorage.getItem(this.KEY) || '[]');
+      event.id = event.id || (crypto.randomUUID ? crypto.randomUUID() : 'e_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9));
+      event.ts = event.ts || new Date().toISOString();
+      log.unshift(event);
+      if (log.length > 500) log.length = 500;
+      localStorage.setItem(this.KEY, JSON.stringify(log));
+      return event.id;
+    },
+    getAll(){ return JSON.parse(localStorage.getItem(this.KEY) || '[]'); },
+    getFiltered(filter = {}){
+      return this.getAll().filter(e =>
+        (!filter.actor || e.actor === filter.actor) &&
+        (!filter.type || e.type === filter.type) &&
+        (!filter.subject || (e.subject || '').toLowerCase().includes(filter.subject.toLowerCase()))
+      );
+    },
+    clear(){ localStorage.removeItem(this.KEY); }
+  };
+  window.RivvenActivity = RivvenActivity;
+
+  // ========= LIVE ACTIVITY FEED =========
+  const ACTOR_ICONS = { sabino: '\uD83D\uDC64', jessica: '\uD83D\uDC69', claude: '\uD83E\uDD16', system: '\u2699\uFE0F' };
+  let _activityFilter = 'all';
+
+  function relTime(iso){
+    const then = new Date(iso).getTime();
+    if (!then) return '';
+    const diff = (Date.now() - then) / 1000;
+    if (diff < 60) return Math.max(1, Math.floor(diff)) + 's ago';
+    if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+    if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+    if (diff < 604800) return Math.floor(diff / 86400) + 'd ago';
+    return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function renderActivityFeed(){
+    const list = document.getElementById('activityList');
+    const countEl = document.getElementById('activityCount');
+    if (!list) return;
+    let events = RivvenActivity.getAll();
+    if (_activityFilter !== 'all'){
+      events = events.filter(e => (e.actor || '') === _activityFilter);
+    }
+    if (countEl) countEl.textContent = events.length;
+    events = events.slice(0, 20);
+    if (!events.length){
+      list.innerHTML = '<div class="activity-empty">No activity yet. Get dialing \uD83D\uDCDE<br><a href="../today.html">Open Today\'s Queue &rarr;</a></div>';
+      return;
+    }
+    list.innerHTML = events.map(e => {
+      const actor = (e.actor || 'sabino').toLowerCase();
+      const icon = ACTOR_ICONS[actor] || '\uD83D\uDC64';
+      const type = (e.type || 'note').toLowerCase();
+      const subject = escapeHtml(e.subject || 'No subject');
+      const outcome = e.outcome ? '<span class="activity-outcome">&middot; ' + escapeHtml(e.outcome) + '</span>' : '';
+      const notes = e.notes ? '<div class="activity-notes">' + escapeHtml(e.notes) + '</div>' : '';
+      const dur = e.duration ? ' &middot; ' + escapeHtml(e.duration) : '';
+      return '<div class="activity-row">' +
+        '<div class="activity-actor-ico" title="' + escapeHtml(actor) + '">' + icon + '</div>' +
+        '<div class="activity-main">' +
+          '<div class="activity-line1">' +
+            '<span class="activity-type ' + escapeHtml(type) + '">' + escapeHtml(type.replace('_', ' ')) + '</span>' +
+            '<span class="activity-subject" title="' + subject + '">' + subject + '</span>' +
+            outcome + dur +
+          '</div>' +
+          notes +
+        '</div>' +
+        '<div class="activity-time">' + escapeHtml(relTime(e.ts)) + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function setActivityFilter(filter){
+    _activityFilter = filter;
+    document.querySelectorAll('.activity-tab').forEach(t => {
+      const active = t.getAttribute('data-filter') === filter;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    renderActivityFeed();
+  }
+
+  function refreshActivityFeed(){ renderActivityFeed(); }
+  window.refreshActivityFeed = refreshActivityFeed;
+
+  document.addEventListener('click', function(e){
+    const tab = e.target.closest && e.target.closest('.activity-tab');
+    if (tab && tab.dataset.filter){ setActivityFilter(tab.dataset.filter); }
+  });
+
+  // Initial render + 30s auto-refresh
+  renderActivityFeed();
+  setInterval(renderActivityFeed, 30000);
+</script>
+
+</body>
+</html>
