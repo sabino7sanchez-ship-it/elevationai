@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Quote — Build Your Site | Rivven</title>
+<meta name="description" content="Get an instant quote for your Rivven build. Pick your industry, size, and add-ons — see live pricing before you book. Starts at $897.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://rivven.ai/quote.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
+<meta property="og:title" content="Instant Quote — Build Your Rivven Site">
+<meta property="og:description" content="Custom quote in 30 seconds. No sales call required.">
+<meta property="og:url" content="https://rivven.ai/quote.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://rivven.ai/og-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Instant Quote — Build Your Rivven Site">
+<meta name="twitter:description" content="Custom quote in 30 seconds. No sales call required.">
+<meta name="twitter:image" content="https://rivven.ai/og-default.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Rivven AI Website & Growth System Build",
+  "provider": {"@type":"Organization","name":"Rivven","url":"https://rivven.ai/"},
+  "areaServed": "Worldwide",
+  "description": "Custom AI-powered websites, lead generation systems, and marketing automation. Instant quote in 30 seconds. Starts at $897.",
+  "offers": {"@type":"Offer","price":"897","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://rivven.ai/quote.html"}
+}
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+  :root{--bg:#0A0A0B;--bg-card:#111113;--bg-card-hover:#18181B;--border:#222225;--text:#FAFAFA;--text-dim:#71717A;--text-mid:#A1A1AA;--neon-cyan:#00F0FF;--neon-green:#00FF88;--neon-purple:#7B61FF;--neon-orange:#FF8800;--glow-cyan:rgba(0,240,255,0.15)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;animation:fadeIn 0.5s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,11,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--neon-cyan);text-decoration:none;letter-spacing:-0.5px}
+  .nav-logo span{color:var(--text-dim);font-weight:400}
+  .nav-links{display:flex;gap:20px;align-items:center}
+  .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500}
+  .nav-links a:hover{color:var(--text)}
+
+  .container{max-width:1100px;margin:0 auto;padding:120px 24px 80px}
+
+  .hero{text-align:center;margin-bottom:56px}
+  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-green);text-transform:uppercase;letter-spacing:3px;padding:6px 14px;border:1px solid var(--neon-green);border-radius:100px;background:rgba(0,255,136,0.05);margin-bottom:20px}
+  .hero h1{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:14px}
+  .hero h1 .italic{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--neon-cyan)}
+  .hero p{font-size:17px;color:var(--text-mid);max-width:580px;margin:0 auto}
+
+  .grid{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start}
+  .form-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px}
+  .price-card{background:linear-gradient(135deg,rgba(0,240,255,0.06) 0%,rgba(123,97,255,0.04) 100%);border:1px solid var(--border);border-radius:16px;padding:28px;position:sticky;top:100px}
+
+  .form-group{margin-bottom:28px}
+  .form-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-cyan);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;display:block}
+  .form-hint{font-size:12px;color:var(--text-dim);margin-top:6px}
+
+  /* INDUSTRY CHIPS */
+  .chip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+  .chip{padding:12px 14px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.15s;font-size:13px;font-weight:600;text-align:center;user-select:none}
+  .chip:hover{border-color:var(--neon-cyan);color:var(--neon-cyan)}
+  .chip.active{background:rgba(0,240,255,0.08);border-color:var(--neon-cyan);color:var(--neon-cyan)}
+
+  /* TIER */
+  .tier-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .tier{padding:18px 16px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all 0.15s;text-align:center}
+  .tier:hover{border-color:var(--neon-cyan)}
+  .tier.active{background:rgba(0,240,255,0.08);border-color:var(--neon-cyan);box-shadow:0 0 0 1px var(--neon-cyan) inset}
+  .tier-name{font-size:14px;font-weight:700;margin-bottom:4px}
+  .tier-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+  .tier-price{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--neon-cyan)}
+  .tier.active .tier-price{color:var(--neon-green)}
+
+  /* ADDONS */
+  .addon-row{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:all 0.15s;user-select:none}
+  .addon-row:hover{border-color:var(--neon-cyan)}
+  .addon-row.active{background:rgba(0,255,136,0.05);border-color:var(--neon-green)}
+  .addon-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;font-weight:700;font-size:12px;color:transparent}
+  .addon-row.active .addon-check{background:var(--neon-green);border-color:var(--neon-green);color:var(--bg)}
+  .addon-row.active .addon-check::before{content:'✓'}
+  .addon-body{flex:1}
+  .addon-name{font-size:14px;font-weight:600;margin-bottom:2px}
+  .addon-desc{font-size:12px;color:var(--text-dim);line-height:1.4}
+  .addon-price{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--neon-cyan);white-space:nowrap}
+
+  /* TIMELINE */
+  .timeline-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .time-opt{padding:16px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.15s;text-align:center}
+  .time-opt:hover{border-color:var(--neon-cyan)}
+  .time-opt.active{background:rgba(0,240,255,0.08);border-color:var(--neon-cyan)}
+  .time-opt-name{font-size:14px;font-weight:700;margin-bottom:2px}
+  .time-opt-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+  .time-opt-mult{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-cyan);margin-top:6px;font-weight:700}
+
+  /* INPUT */
+  .text-input{width:100%;padding:12px 14px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'Inter',sans-serif;transition:all 0.15s}
+  .text-input:focus{outline:none;border-color:var(--neon-cyan);box-shadow:0 0 0 3px var(--glow-cyan)}
+
+  /* PRICE CARD */
+  .price-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+  .price-big{font-family:'JetBrains Mono',monospace;font-size:56px;font-weight:700;color:var(--neon-cyan);line-height:1;margin-bottom:4px;letter-spacing:-2px}
+  .price-sub{font-size:13px;color:var(--text-mid);margin-bottom:24px}
+  .price-breakdown{border-top:1px solid var(--border);padding-top:16px;margin-bottom:20px}
+  .price-line{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
+  .price-line .lbl{color:var(--text-mid)}
+  .price-line .val{font-family:'JetBrains Mono',monospace;color:var(--text)}
+  .price-line.total{border-top:1px solid var(--border);margin-top:8px;padding-top:12px;font-size:14px;font-weight:700}
+  .price-line.total .val{color:var(--neon-cyan);font-size:16px}
+  .btn-book{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;background:var(--neon-cyan);color:var(--bg);font-size:15px;font-weight:700;border-radius:10px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer}
+  .btn-book:hover{box-shadow:0 0 30px var(--glow-cyan);transform:translateY(-2px)}
+  .price-note{text-align:center;font-size:11px;color:var(--text-dim);margin-top:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+
+  @media(max-width:860px){
+    .grid{grid-template-columns:1fr}
+    .price-card{position:static}
+    .tier-grid{grid-template-columns:1fr}
+    .timeline-opts{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="index.html">Sanchez<span>_Rivven</span></a>
+  <div class="nav-links">
+    <a href="demos.html">Demos</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="proof.html">Proof</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="hero-tag">Instant Quote · 30 Seconds</div>
+    <h1>Pick your <span class="italic">build</span>.<br>See the price <span class="italic">live</span>.</h1>
+    <p>No sales call. No hidden costs. Change any option — the quote updates in real time.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- FORM -->
+    <div class="form-card">
+
+      <div class="form-group">
+        <label class="form-label">// 01 · Industry</label>
+        <div class="chip-grid" id="industryChips">
+          <div class="chip active" data-industry="Barbershop">Barbershop</div>
+          <div class="chip" data-industry="Salon">Hair Salon</div>
+          <div class="chip" data-industry="Med Spa">Med Spa</div>
+          <div class="chip" data-industry="Auto Detailing">Auto Detail</div>
+          <div class="chip" data-industry="Auto Repair">Auto Repair</div>
+          <div class="chip" data-industry="HVAC">HVAC</div>
+          <div class="chip" data-industry="Plumbing">Plumbing</div>
+          <div class="chip" data-industry="Electrician">Electrician</div>
+          <div class="chip" data-industry="Roofing">Roofing</div>
+          <div class="chip" data-industry="Landscaping">Landscaping</div>
+          <div class="chip" data-industry="Construction">Construction</div>
+          <div class="chip" data-industry="Restaurant">Restaurant</div>
+          <div class="chip" data-industry="Catering">Catering</div>
+          <div class="chip" data-industry="Law Firm">Law Firm</div>
+          <div class="chip" data-industry="Mortgage">Mortgage</div>
+          <div class="chip" data-industry="Real Estate">Real Estate</div>
+          <div class="chip" data-industry="Fitness">Fitness</div>
+          <div class="chip" data-industry="Dental">Dental</div>
+          <div class="chip" data-industry="Trucking">Trucking</div>
+          <div class="chip" data-industry="Other">Other</div>
+        </div>
+        <div class="form-hint">Don't see yours? Pick "Other" — we build for any industry.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">// 02 · Package</label>
+        <div class="tier-grid" id="tierGrid">
+          <div class="tier" data-tier="starter" data-price="897">
+            <div class="tier-name">Basic</div>
+            <div class="tier-sub">8-page launch</div>
+            <div class="tier-price">$897</div>
+          </div>
+          <div class="tier active" data-tier="pro" data-price="1497">
+            <div class="tier-name">Professional</div>
+            <div class="tier-sub">12-page + AI tools</div>
+            <div class="tier-price">$1,497</div>
+          </div>
+          <div class="tier" data-tier="growth" data-price="2997">
+            <div class="tier-name">Growth</div>
+            <div class="tier-sub">Full stack + ads</div>
+            <div class="tier-price">$2,997</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">// 03 · Add-Ons</label>
+        <div class="addon-row" data-addon="chatbot" data-price="297">
+          <div class="addon-check"></div>
+          <div class="addon-body"><div class="addon-name">AI Chatbot</div><div class="addon-desc">Custom GPT trained on your business — answers FAQs + captures leads 24/7</div></div>
+          <div class="addon-price">+$297</div>
+        </div>
+        <div class="addon-row" data-addon="bilingual" data-price="397">
+          <div class="addon-check"></div>
+          <div class="addon-body"><div class="addon-name">Bilingual (EN + ES)</div><div class="addon-desc">Full Spanish translation — critical for LA / SoCal markets</div></div>
+          <div class="addon-price">+$397</div>
+        </div>
+        <div class="addon-row" data-addon="calculator" data-price="297">
+          <div class="addon-check"></div>
+          <div class="addon-body"><div class="addon-name">Custom Quote Calculator</div><div class="addon-desc">Instant quote tool (like Manny's mortgage calc) that closes leads before the call</div></div>
+          <div class="addon-price">+$297</div>
+        </div>
+        <div class="addon-row" data-addon="booking" data-price="197">
+          <div class="addon-check"></div>
+          <div class="addon-body"><div class="addon-name">Booking Integration</div><div class="addon-desc">Connect Booksy, Calendly, Acuity, or Square — deep-linked from every CTA</div></div>
+          <div class="addon-price">+$197</div>
+        </div>
+        <div class="addon-row" data-addon="pixel" data-price="147">
+          <div class="addon-check"></div>
+          <div class="addon-body"><div class="addon-name">Meta + Google Ads Setup</div><div class="addon-desc">Pixel + conversion API + first campaign blueprint (ad spend not included)</div></div>
+          <div class="addon-price">+$147</div>
+        </div>
+        <div class="addon-row" data-addon="content" data-price="497">
+          <div class="addon-check"></div>
+          <div class="addon-body"><div class="addon-name">Content Kit</div><div class="addon-desc">12 IG reel scripts, content calendar, 6 post templates ready to film</div></div>
+          <div class="addon-price">+$497</div>
+        </div>
+        <div class="addon-row" data-addon="gbp" data-price="197">
+          <div class="addon-check"></div>
+          <div class="addon-body"><div class="addon-name">Google Business Profile Setup</div><div class="addon-desc">Full GBP optimization + first 10 posts + review strategy</div></div>
+          <div class="addon-price">+$197</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">// 04 · Timeline</label>
+        <div class="timeline-opts" id="timelineOpts">
+          <div class="time-opt active" data-timeline="standard" data-mult="1.0">
+            <div class="time-opt-name">Standard</div>
+            <div class="time-opt-meta">7-day ship · no rush</div>
+            <div class="time-opt-mult">Base price</div>
+          </div>
+          <div class="time-opt" data-timeline="rush" data-mult="1.35">
+            <div class="time-opt-name">Rush</div>
+            <div class="time-opt-meta">48-hour ship · priority queue</div>
+            <div class="time-opt-mult">+35%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">// 05 · Your Business Name</label>
+        <input type="text" class="text-input" id="bizName" placeholder="e.g. Trippy Blendz Cuts" autocomplete="organization" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">// 06 · Your Name</label>
+        <input type="text" class="text-input" id="contactName" placeholder="First and last" autocomplete="name" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">// 07 · Email</label>
+        <input type="email" class="text-input" id="contactEmail" placeholder="you@business.com" autocomplete="email" required inputmode="email" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">// 08 · Phone</label>
+        <input type="tel" class="text-input" id="contactPhone" placeholder="(562) 555-1234" autocomplete="tel" inputmode="tel" />
+        <div class="form-hint">Sabino texts you within 1 hour. Faster than email.</div>
+      </div>
+
+      <!-- Honeypot: humans don't fill this. CSS-hidden + aria-hidden so screenreaders skip. -->
+      <div style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden" aria-hidden="true">
+        <label>Website (leave empty)</label>
+        <input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+    </div>
+
+    <!-- PRICE CARD -->
+    <div class="price-card">
+      <div class="price-label">// Your Quote</div>
+      <div class="price-big" id="priceDisplay">$1,497</div>
+      <div class="price-sub">One-time · no retainer · you own everything</div>
+
+      <div class="price-breakdown" id="breakdown">
+        <div class="price-line"><span class="lbl">Professional package</span><span class="val">$1,497</span></div>
+        <div class="price-line total"><span class="lbl">Total</span><span class="val" id="totalDisplay">$1,497</span></div>
+      </div>
+
+      <button class="btn-book" id="submitBtn" onclick="bookBuild()">Lock this quote →</button>
+      <div class="price-note" id="submitNote">// Instant proposal email + 50% deposit option</div>
+      <div id="submitError" style="display:none;margin-top:12px;padding:12px;background:rgba(255,68,102,0.08);border:1px solid #FF4466;border-radius:8px;color:#FF8FA0;font-size:12px;line-height:1.5"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const state = {
+    industry: 'Barbershop',
+    tier: 'pro',
+    tierPrice: 1497,
+    tierName: 'Professional',
+    addons: new Set(),
+    addonMap: {
+      chatbot: { name: 'AI Chatbot', price: 297 },
+      bilingual: { name: 'Bilingual (EN+ES)', price: 397 },
+      calculator: { name: 'Quote Calculator', price: 297 },
+      booking: { name: 'Booking Integration', price: 197 },
+      pixel: { name: 'Meta + Google Ads', price: 147 },
+      content: { name: 'Content Kit', price: 497 },
+      gbp: { name: 'GBP Setup', price: 197 }
+    },
+    timeline: 'standard',
+    multiplier: 1.0,
+    bizName: ''
+  };
+
+  function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+  function recalc() {
+    const base = state.tierPrice;
+    let addonSum = 0;
+    state.addons.forEach(k => { addonSum += state.addonMap[k].price; });
+    const subtotal = base + addonSum;
+    const total = subtotal * state.multiplier;
+
+    document.getElementById('priceDisplay').textContent = fmt(total);
+    document.getElementById('totalDisplay').textContent = fmt(total);
+
+    const bd = document.getElementById('breakdown');
+    let html = `<div class="price-line"><span class="lbl">${state.tierName} package</span><span class="val">${fmt(base)}</span></div>`;
+    state.addons.forEach(k => {
+      const a = state.addonMap[k];
+      html += `<div class="price-line"><span class="lbl">+ ${a.name}</span><span class="val">${fmt(a.price)}</span></div>`;
+    });
+    if (state.multiplier > 1.0) {
+      html += `<div class="price-line"><span class="lbl">Rush (+35%)</span><span class="val">${fmt(subtotal * (state.multiplier - 1))}</span></div>`;
+    }
+    html += `<div class="price-line total"><span class="lbl">Total</span><span class="val">${fmt(total)}</span></div>`;
+    bd.innerHTML = html;
+  }
+
+  // Industry chips
+  document.querySelectorAll('#industryChips .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      document.querySelectorAll('#industryChips .chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      state.industry = c.dataset.industry;
+    });
+  });
+
+  // Tier
+  document.querySelectorAll('#tierGrid .tier').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('#tierGrid .tier').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      state.tier = t.dataset.tier;
+      state.tierPrice = parseInt(t.dataset.price, 10);
+      state.tierName = t.querySelector('.tier-name').textContent;
+      recalc();
+    });
+  });
+
+  // Addons
+  document.querySelectorAll('.addon-row').forEach(r => {
+    r.addEventListener('click', () => {
+      const key = r.dataset.addon;
+      if (r.classList.contains('active')) { r.classList.remove('active'); state.addons.delete(key); }
+      else { r.classList.add('active'); state.addons.add(key); }
+      recalc();
+    });
+  });
+
+  // Timeline
+  document.querySelectorAll('#timelineOpts .time-opt').forEach(o => {
+    o.addEventListener('click', () => {
+      document.querySelectorAll('#timelineOpts .time-opt').forEach(x => x.classList.remove('active'));
+      o.classList.add('active');
+      state.timeline = o.dataset.timeline;
+      state.multiplier = parseFloat(o.dataset.mult);
+      recalc();
+    });
+  });
+
+  // Biz name
+  document.getElementById('bizName').addEventListener('input', (e) => { state.bizName = e.target.value; });
+
+  // ------------------------------------------------------------------
+  // SUBMIT — POSTs to /.netlify/functions/quote-submit
+  // Server: Stripe Checkout + Resend (prospect + Sabino) + Supabase log
+  // On success → redirect to /quote-confirmed.html?qid=...&stripe=...
+  // On failure → friendly error + fallback to intake.html (manual)
+  // ------------------------------------------------------------------
+  function showError(msg) {
+    const el = document.getElementById('submitError');
+    if (!el) return;
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+  function hideError() {
+    const el = document.getElementById('submitError');
+    if (el) el.style.display = 'none';
+  }
+  function setSubmitting(on) {
+    const btn = document.getElementById('submitBtn');
+    const note = document.getElementById('submitNote');
+    if (!btn) return;
+    btn.disabled = !!on;
+    btn.style.opacity = on ? '0.7' : '1';
+    btn.style.cursor = on ? 'wait' : 'pointer';
+    btn.textContent = on ? 'Sending your quote…' : 'Lock this quote →';
+    if (note) note.textContent = on ? '// generating proposal · creating payment link · emailing you' : '// Instant proposal email + 50% deposit option';
+  }
+
+  function calcTotal() {
+    const base = state.tierPrice;
+    let addonSum = 0;
+    state.addons.forEach(k => { addonSum += state.addonMap[k].price; });
+    return Math.round((base + addonSum) * state.multiplier);
+  }
+
+  function validateContact() {
+    const name = (document.getElementById('contactName').value || '').trim();
+    const email = (document.getElementById('contactEmail').value || '').trim();
+    const phone = (document.getElementById('contactPhone').value || '').trim();
+    if (name.length < 2) return { ok: false, msg: 'Add your name so Sabino can reach you.' };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return { ok: false, msg: 'Email looks off. Double-check it.' };
+    if (phone && phone.replace(/\D/g, '').length < 7) return { ok: false, msg: 'Phone looks short. Use a real number or leave blank.' };
+    return { ok: true, name, email, phone };
+  }
+
+  async function bookBuild() {
+    hideError();
+    const c = validateContact();
+    if (!c.ok) { showError(c.msg); return; }
+
+    // Honeypot — bots auto-fill this; humans don't.
+    const hp = document.getElementById('hp_website');
+    const honey = hp ? hp.value : '';
+
+    const payload = {
+      name: c.name,
+      email: c.email,
+      phone: c.phone,
+      businessName: state.bizName || '',
+      industry: state.industry,
+      tier: state.tierName,
+      addons: [...state.addons].map(k => state.addonMap[k].name),
+      timeline: state.timeline,
+      total: calcTotal(),
+      source: 'quote.html',
+      website: honey   // honeypot — server rejects if non-empty
+    };
+
+    setSubmitting(true);
+
+    try {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 15000);
+      const res = await fetch('/.netlify/functions/quote-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: ctrl.signal
+      });
+      clearTimeout(t);
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data.ok) {
+        // Fallback: pass payload to intake.html so the lead is never lost.
+        const params = new URLSearchParams({
+          industry: payload.industry,
+          tier: payload.tier,
+          addons: payload.addons.join(','),
+          timeline: payload.timeline,
+          biz: payload.businessName,
+          name: payload.name,
+          email: payload.email,
+          phone: payload.phone,
+          quote: '$' + payload.total.toLocaleString(),
+          fallback: '1'
+        });
+        showError('Couldn\'t generate the live quote. Saving your info — Sabino will follow up directly.');
+        setTimeout(() => { window.location.href = 'intake.html?' + params.toString(); }, 1500);
+        return;
+      }
+
+      // Success → confirmation page
+      const qs = new URLSearchParams({
+        qid: data.quoteId,
+        total: String(data.total),
+        deposit: String(data.deposit),
+        stripe: data.stripeUrl || '',
+        biz: payload.businessName,
+        name: payload.name,
+        tier: payload.tier
+      });
+      window.location.href = '/quote-confirmed.html?' + qs.toString();
+    } catch (err) {
+      // Network / timeout fallback — never lose the lead.
+      const params = new URLSearchParams({
+        industry: payload.industry,
+        tier: payload.tier,
+        addons: payload.addons.join(','),
+        timeline: payload.timeline,
+        biz: payload.businessName,
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        quote: '$' + payload.total.toLocaleString(),
+        fallback: '1'
+      });
+      showError('Network hiccup. Saving your info — Sabino will follow up.');
+      setTimeout(() => { window.location.href = 'intake.html?' + params.toString(); }, 1500);
+    } finally {
+      // Don't unstick the button — the page is navigating.
+    }
+  }
+
+  recalc();
+</script>
+
+<script src="/_components/meta-events.js" defer></script>
+<script src="/_components/exit-intent.js" defer></script>
+<script src="/chat-launcher.js?v=20260428c" defer></script>
+</body>
+</html>

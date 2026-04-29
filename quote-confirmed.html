@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quote Locked — Pay Deposit | Rivven</title>
+<meta name="description" content="Your RIVVEN quote is locked for 48 hours. Pay 50% deposit to start today.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://rivven.ai/quote-confirmed.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
+<meta property="og:title" content="Your RIVVEN quote — locked for 48 hours">
+<meta property="og:description" content="Pay 50% deposit to start today, or schedule a 15-min call.">
+<meta property="og:url" content="https://rivven.ai/quote-confirmed.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://rivven.ai/og-default.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+  :root{
+    --bg:#0A0A0B;--bg-card:#111113;--bg-card-hover:#18181B;--border:#222225;
+    --text:#FAFAFA;--text-dim:#71717A;--text-mid:#A1A1AA;
+    --neon-cyan:#00F0FF;--neon-green:#00FF88;--neon-purple:#7B61FF;--neon-orange:#FF8800;
+    --warn:#FFB020;--err:#FF4466;
+    --glow-cyan:rgba(0,240,255,0.15);--glow-green:rgba(0,255,136,0.15)
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;animation:fadeIn .4s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,11,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--neon-cyan);text-decoration:none;letter-spacing:-0.5px}
+  .nav-logo span{color:var(--text-dim);font-weight:400}
+  .nav-links{display:flex;gap:20px;align-items:center}
+  .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500}
+  .nav-links a:hover{color:var(--text)}
+
+  .container{max-width:840px;margin:0 auto;padding:120px 24px 80px}
+
+  /* HEADER */
+  .badge{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-green);text-transform:uppercase;letter-spacing:3px;padding:8px 16px;border:1px solid var(--neon-green);border-radius:100px;background:rgba(0,255,136,0.05);margin-bottom:24px}
+  .badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--neon-green);box-shadow:0 0 8px var(--neon-green);animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+  .h1{font-size:clamp(32px,5vw,48px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:12px}
+  .h1 .italic{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--neon-cyan)}
+  .lead{font-size:16px;color:var(--text-mid);margin-bottom:36px;max-width:560px}
+
+  /* QUOTE CARD */
+  .quote-card{background:linear-gradient(135deg,var(--bg-card) 0%,#0c0c0e 100%);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px;position:relative;overflow:hidden}
+  .quote-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--neon-cyan) 50%,transparent 100%)}
+  .qid-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+  .qid{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--neon-cyan);letter-spacing:2px;text-transform:uppercase}
+  .qid-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase}
+  .biz-name{font-size:20px;font-weight:700;margin-bottom:6px}
+  .tier-row{font-size:14px;color:var(--text-mid);margin-bottom:24px}
+  .price-display{display:flex;align-items:baseline;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+  .price-big{font-family:'JetBrains Mono',monospace;font-size:64px;font-weight:700;color:var(--neon-cyan);letter-spacing:-3px;line-height:1}
+  .price-cap{color:var(--text-dim);font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+
+  /* DEPOSIT BLOCK */
+  .deposit-block{background:rgba(0,255,136,0.04);border:1px solid var(--neon-green);border-radius:12px;padding:24px;margin-bottom:16px}
+  .deposit-block.disabled{background:rgba(255,176,32,0.04);border-color:var(--warn)}
+  .deposit-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-green);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+  .deposit-block.disabled .deposit-label{color:var(--warn)}
+  .deposit-amount{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;color:var(--neon-green);margin-bottom:6px;letter-spacing:-1px}
+  .deposit-block.disabled .deposit-amount{color:var(--warn)}
+  .deposit-sub{font-size:13px;color:var(--text-mid);margin-bottom:16px}
+  .btn-pay{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px;background:var(--neon-green);color:var(--bg);font-size:16px;font-weight:800;border-radius:10px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;letter-spacing:.3px}
+  .btn-pay:hover{box-shadow:0 0 36px var(--glow-green);transform:translateY(-2px)}
+  .btn-pay:active{transform:translateY(0)}
+  .btn-pay-dim{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px;background:var(--bg-card-hover);color:var(--text-mid);font-size:14px;font-weight:600;border-radius:10px;text-decoration:none;border:1px solid var(--border)}
+
+  /* SECONDARY CTA */
+  .alt-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+  .alt-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px;text-decoration:none;color:var(--text);transition:all .15s;display:block}
+  .alt-card:hover{border-color:var(--neon-cyan);transform:translateY(-1px)}
+  .alt-icon{font-size:22px;margin-bottom:6px;display:block}
+  .alt-title{font-size:14px;font-weight:700;margin-bottom:2px}
+  .alt-desc{font-size:12px;color:var(--text-dim);line-height:1.5}
+
+  /* WHAT HAPPENS NEXT */
+  .timeline{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:24px}
+  .timeline-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-cyan);letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+  .step{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border)}
+  .step:last-child{border-bottom:none}
+  .step-num{width:32px;height:32px;min-width:32px;border-radius:50%;background:var(--bg-card-hover);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--neon-cyan)}
+  .step-content h4{font-size:15px;font-weight:700;margin-bottom:2px}
+  .step-content p{font-size:13px;color:var(--text-mid);line-height:1.5}
+
+  /* PAID STATE */
+  .paid-banner{background:linear-gradient(135deg,rgba(0,255,136,0.1) 0%,rgba(0,240,255,0.06) 100%);border:1px solid var(--neon-green);border-radius:16px;padding:32px;margin-bottom:24px;text-align:center}
+  .paid-banner h2{font-size:28px;font-weight:900;margin-bottom:8px}
+  .paid-banner p{color:var(--text-mid);font-size:15px}
+
+  /* TRUST */
+  .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+  .trust-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+  .trust-num{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--neon-cyan);margin-bottom:4px}
+  .trust-label{font-size:11px;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase}
+
+  /* FOOTER */
+  .foot{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:2px;text-transform:uppercase;padding-top:32px}
+
+  @media(max-width:640px){
+    .alt-row,.trust-row{grid-template-columns:1fr}
+    .price-big{font-size:48px}
+    .container{padding:96px 18px 60px}
+  }
+
+  @media print{
+    .nav,.alt-row,.btn-pay,.btn-pay-dim{display:none}
+    body{background:#fff;color:#000}
+    .quote-card,.deposit-block,.timeline{border-color:#ccc;background:#fff;color:#000}
+    .h1,.biz-name,.deposit-amount,.price-big,.qid,.timeline-title{color:#000}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Service",
+  "name":"RIVVEN AI Website + Growth System",
+  "provider":{"@type":"Organization","name":"RIVVEN","url":"https://rivven.ai/"},
+  "areaServed":"Worldwide",
+  "description":"Custom AI-powered websites and lead-gen systems for service businesses. Pay 50% deposit to start.",
+  "offers":{"@type":"Offer","priceCurrency":"USD","availability":"https://schema.org/InStock"}
+}
+</script>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/">RIVVEN<span>_</span></a>
+  <div class="nav-links">
+    <a href="/booking.html">Book a call</a>
+    <a href="/case-studies.html">Case studies</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- DEFAULT (just submitted) -->
+  <div id="defaultState">
+    <div class="badge">Quote locked · 48 hours</div>
+    <h1 class="h1">Your <span class="italic">build</span> is queued.<br>Lock it in with a deposit.</h1>
+    <p class="lead">Proposal emailed. Sabino just got pinged. Pay the 50% deposit below to skip the call and start today, or wait for his text — comes within an hour.</p>
+
+    <div class="quote-card">
+      <div class="qid-row">
+        <div class="qid" id="qidDisplay">// QUOTE —</div>
+        <div class="qid-meta" id="qDate">// — / —</div>
+      </div>
+      <div class="biz-name" id="bizDisplay">Your business</div>
+      <div class="tier-row" id="tierDisplay">Package · Standard timeline</div>
+      <div class="price-display">
+        <div class="price-big" id="totalDisplay">$0</div>
+        <div class="price-cap">// total · one-time</div>
+      </div>
+
+      <div class="deposit-block" id="depositBlock">
+        <div class="deposit-label">// Pay 50% to start today</div>
+        <div class="deposit-amount" id="depositDisplay">$0</div>
+        <div class="deposit-sub" id="depositSub">Stripe Checkout · 256-bit TLS · refundable until kickoff call</div>
+        <a class="btn-pay" id="payButton" href="#">Pay deposit · Start build →</a>
+      </div>
+    </div>
+
+    <div class="alt-row">
+      <a class="alt-card" id="callLink" href="tel:+15622099395">
+        <span class="alt-icon">📞</span>
+        <div class="alt-title">Call Sabino direct</div>
+        <div class="alt-desc">(562) 209-9395 · 15 min · zero commitment</div>
+      </a>
+      <a class="alt-card" id="textLink" href="sms:+15622099395">
+        <span class="alt-icon">💬</span>
+        <div class="alt-title">Text the team</div>
+        <div class="alt-desc">Bilingual EN/ES · response inside 1hr</div>
+      </a>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-title">// What happens next</div>
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h4>Deposit hits, kickoff fires</h4>
+          <p>Stripe sends the receipt. We text you a 6-question kickoff form. Total time: 4 minutes.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h4>Build starts within 24hr</h4>
+          <p>You see staged previews. Every change is reviewed. Standard ships in 7 days, Rush in 48hr.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h4>Launch + final 50%</h4>
+          <p>You approve final, we flip live, second 50% charges. You own everything — no monthly lock-in.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-card"><div class="trust-num">22</div><div class="trust-label">Demos shipped</div></div>
+      <div class="trust-card"><div class="trust-num">48hr</div><div class="trust-label">Rush ship time</div></div>
+      <div class="trust-card"><div class="trust-num">EN/ES</div><div class="trust-label">Bilingual native</div></div>
+    </div>
+  </div>
+
+  <!-- PAID STATE (Stripe success redirect) -->
+  <div id="paidState" style="display:none">
+    <div class="paid-banner">
+      <div style="font-size:48px;margin-bottom:8px">✓</div>
+      <h2>Deposit received.</h2>
+      <p>Kickoff fires next. You'll get a text within minutes with your 6-question form. Sabino's locked in — let's ship it.</p>
+    </div>
+    <div class="quote-card">
+      <div class="qid-row">
+        <div class="qid" id="qidPaid">// QUOTE —</div>
+      </div>
+      <div class="biz-name" id="bizPaid">Your business</div>
+      <div class="tier-row">Build started · Final 50% charges on launch.</div>
+      <div class="price-display">
+        <div class="price-big" id="totalPaid" style="color:var(--neon-green)">$0</div>
+        <div class="price-cap">// total committed</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-title">// next 24 hours</div>
+      <div class="step"><div class="step-num">01</div><div class="step-content"><h4>Kickoff text incoming</h4><p>Bilingual EN/ES form — pick the one you prefer.</p></div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-content"><h4>Brand intake call (optional)</h4><p>15 min. Voice or text. Whichever you prefer.</p></div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-content"><h4>Build starts</h4><p>You see staged previews within 24hr.</p></div></div>
+    </div>
+    <div class="alt-row">
+      <a class="alt-card" href="https://rivven.ai/portal/" >
+        <span class="alt-icon">🎯</span>
+        <div class="alt-title">Open client portal</div>
+        <div class="alt-desc">Track build progress · invoices · deliverables</div>
+      </a>
+      <a class="alt-card" href="sms:+15622099395">
+        <span class="alt-icon">💬</span>
+        <div class="alt-title">Text Sabino</div>
+        <div class="alt-desc">(562) 209-9395 · anytime</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- CANCELED STATE (Stripe cancel redirect) -->
+  <div id="canceledState" style="display:none">
+    <div class="quote-card" style="border-color:var(--warn)">
+      <div class="qid-row">
+        <div class="qid" style="color:var(--warn)" id="qidCanceled">// QUOTE — STILL OPEN</div>
+      </div>
+      <div class="biz-name">No payment yet — quote still locked for 48h.</div>
+      <div class="tier-row">Pick up where you left off, or text Sabino if anything's blocking.</div>
+      <div class="deposit-block" style="margin-top:20px">
+        <div class="deposit-label">// Pay 50% to start today</div>
+        <div class="deposit-amount" id="depositCanceled">$0</div>
+        <a class="btn-pay" id="payButtonCanceled" href="#">Pay deposit · Start build →</a>
+      </div>
+    </div>
+    <div class="alt-row">
+      <a class="alt-card" href="tel:+15622099395"><span class="alt-icon">📞</span><div class="alt-title">Call Sabino</div><div class="alt-desc">(562) 209-9395</div></a>
+      <a class="alt-card" href="sms:+15622099395"><span class="alt-icon">💬</span><div class="alt-title">Text first</div><div class="alt-desc">Faster than email</div></a>
+    </div>
+  </div>
+
+  <div class="foot">// rivven · built by operators · paid in pieces</div>
+</main>
+
+<script>
+(function(){
+  function qp(name, def) {
+    const u = new URLSearchParams(window.location.search);
+    const v = u.get(name);
+    return (v == null || v === '') ? (def == null ? '' : def) : v;
+  }
+  function fmtUSD(n) {
+    const num = Number(n);
+    if (!Number.isFinite(num)) return '$—';
+    return '$' + Math.round(num).toLocaleString('en-US');
+  }
+  function safeText(el, txt) { if (el) el.textContent = txt; }
+  function safeAttr(el, attr, val) { if (el) el.setAttribute(attr, val); }
+  function isHttps(u) { return typeof u === 'string' && /^https:\/\//i.test(u); }
+
+  const qid     = qp('qid', '');
+  const total   = Number(qp('total', '0')) || 0;
+  const deposit = Number(qp('deposit', '0')) || Math.round(total * 0.5);
+  const stripe  = qp('stripe', '');
+  const biz     = qp('biz', '') || qp('name', '') || 'Your build';
+  const tier    = qp('tier', '');
+  const paid    = qp('paid', '');
+
+  const today = new Date();
+  const dStr = `${today.getUTCFullYear()}-${String(today.getUTCMonth()+1).padStart(2,'0')}-${String(today.getUTCDate()).padStart(2,'0')}`;
+
+  // Stripe URL safety: only accept https://
+  const safeStripe = isHttps(stripe) ? stripe : '';
+
+  // Default state
+  safeText(document.getElementById('qidDisplay'), '// QUOTE ' + (qid || '—'));
+  safeText(document.getElementById('qDate'), '// ' + dStr + ' · LOCKED 48H');
+  safeText(document.getElementById('bizDisplay'), biz);
+  safeText(document.getElementById('tierDisplay'), (tier || 'Custom') + ' · standard timeline');
+  safeText(document.getElementById('totalDisplay'), fmtUSD(total));
+  safeText(document.getElementById('depositDisplay'), fmtUSD(deposit));
+
+  const payBtn = document.getElementById('payButton');
+  if (safeStripe && payBtn) {
+    safeAttr(payBtn, 'href', safeStripe);
+  } else if (payBtn) {
+    // No Stripe link — graceful degrade
+    payBtn.classList.remove('btn-pay');
+    payBtn.className = 'btn-pay-dim';
+    payBtn.textContent = 'Payment link being verified — Sabino will text shortly';
+    payBtn.removeAttribute('href');
+    payBtn.style.cursor = 'default';
+    const block = document.getElementById('depositBlock');
+    if (block) block.classList.add('disabled');
+    const sub = document.getElementById('depositSub');
+    if (sub) sub.textContent = 'Stripe link is processing — you\'ll receive it via text or email within minutes.';
+  }
+
+  // Paid state
+  if (paid === '1') {
+    document.getElementById('defaultState').style.display = 'none';
+    const ps = document.getElementById('paidState');
+    if (ps) ps.style.display = 'block';
+    safeText(document.getElementById('qidPaid'), '// QUOTE ' + (qid || '—'));
+    safeText(document.getElementById('bizPaid'), biz);
+    safeText(document.getElementById('totalPaid'), fmtUSD(total));
+    document.title = 'Deposit received — Build queued | Rivven';
+  }
+  // Canceled state
+  if (paid === '0') {
+    document.getElementById('defaultState').style.display = 'none';
+    const cs = document.getElementById('canceledState');
+    if (cs) cs.style.display = 'block';
+    safeText(document.getElementById('qidCanceled'), '// QUOTE ' + (qid || '—') + ' — STILL OPEN');
+    safeText(document.getElementById('depositCanceled'), fmtUSD(deposit));
+    const cb = document.getElementById('payButtonCanceled');
+    if (safeStripe && cb) safeAttr(cb, 'href', safeStripe);
+    else if (cb) {
+      cb.removeAttribute('href');
+      cb.className = 'btn-pay-dim';
+      cb.textContent = 'Text Sabino for new payment link';
+    }
+    document.title = 'No payment yet — Quote still open | Rivven';
+  }
+
+  // Persist quote ID in localStorage so user can return without URL
+  try {
+    if (qid) localStorage.setItem('rivven:lastQuoteId', qid);
+  } catch (e) { /* storage might be disabled */ }
+
+  // Track event for GA4 / Meta if loaded
+  try {
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: paid === '1' ? 'quote_paid' : (paid === '0' ? 'quote_payment_canceled' : 'quote_confirmed'),
+        quote_id: qid,
+        value: total,
+        currency: 'USD'
+      });
+    }
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', paid === '1' ? 'purchase' : 'quote_confirmed', {
+        value: paid === '1' ? deposit : total,
+        currency: 'USD',
+        transaction_id: qid
+      });
+    }
+  } catch (e) { /* tracking optional */ }
+})();
+</script>
+
+<script src="/_components/meta-events.js" defer></script>
+</body>
+</html>
