@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RIVVEN OS — 100+ AI Agents Running a Real Agency Solo at 19 · Sabino Sanchez</title>
+<meta name="description" content="A Claude-powered multi-agent operating system with 100+ specialized skills, an 8-mode autopilot dispatcher, a 5-archetype advisory council, 38 productized vertical demos, and 24/7 cron monitoring — built and operated solo by 19-year-old founder Sabino Sanchez to run a real, revenue-generating AI agency.">
+<meta name="theme-color" content="#0A0A0B">
+<meta property="og:title" content="RIVVEN OS — Multi-Agent AI Operating System (Sabino Sanchez, 19)">
+<meta property="og:description" content="100+ AI agents. 38 productized vertical demos. 8-mode autopilot dispatcher. 5-archetype Council of 5. Real paying clients. One solo 19-year-old founder.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rivven.ai/showcase/">
+<meta property="og:image" content="https://rivven.ai/home-hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RIVVEN OS — Multi-Agent AI Operating System">
+<meta name="twitter:description" content="100+ AI agents · 38 verticals · 8-mode dispatch · 5-archetype Council. Built solo at 19. Try the live Council of 5 audit below.">
+<meta name="twitter:image" content="https://rivven.ai/home-hero.png">
+<link rel="canonical" href="https://rivven.ai/showcase/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "RIVVEN OS — Multi-Agent AI Operating System",
+  "creator": {
+    "@type": "Person",
+    "name": "Sabino Sanchez",
+    "jobTitle": "Founder, RIVVEN AI",
+    "url": "https://rivven.ai/"
+  },
+  "description": "A Claude-powered multi-agent operating system with 100+ specialized skills, an 8-mode autopilot dispatcher, a 5-archetype advisory council, 38 productized vertical demos, and 24/7 cron monitoring — built and operated solo to run a real revenue-generating AI agency.",
+  "url": "https://rivven.ai/showcase/",
+  "image": "https://rivven.ai/home-hero.png",
+  "keywords": "AI agents, multi-agent systems, Claude, Anthropic, MCP, autopilot, RIVVEN, Sabino Sanchez, agentic AI, Handshake AI Showcase, Codex Creator Challenge"
+}
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap');
+
+:root{
+  --bg:#0A0A0B; --bg-card:#111113; --bg-3:#1A1A1F;
+  --border:#222225; --border-hi:#2E2E34;
+  --text:#FAFAFA; --text-mid:#A1A1AA; --text-dim:#71717A;
+  --neon-cyan:#00F0FF; --neon-green:#00FF88; --neon-red:#FF4455;
+  --gold:#F5C518; --pink:#FF6BAA; --orange:#FF8C42; --purple:#A78BFA;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--bg); color:var(--text);
+  line-height:1.55; font-size:15px;
+  min-height:100vh; overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 800px 600px at 12% -5%, rgba(0,240,255,.08), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 88% 8%, rgba(167,139,250,.06), transparent 60%),
+    radial-gradient(ellipse 900px 700px at 50% 110%, rgba(0,255,136,.05), transparent 60%);
+}
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+.wrap{max-width:1200px; margin:0 auto; padding:0 24px}
+
+/* ─── NAV ─── */
+nav{
+  position:sticky; top:0; z-index:50;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 24px; backdrop-filter:blur(20px);
+  background:rgba(10,10,11,.78);
+  border-bottom:1px solid var(--border);
+}
+.logo{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:800; font-size:13px; letter-spacing:2.5px;
+  color:var(--gold);
+}
+.logo span{color:var(--text-mid); font-weight:400}
+.nav-actions{display:flex; gap:18px; align-items:center; font-size:13px}
+.nav-actions a{color:var(--text-mid); transition:color .15s}
+.nav-actions a:hover{color:var(--gold)}
+.nav-cta{
+  padding:8px 18px; background:var(--gold); color:#000 !important;
+  border-radius:999px; font-weight:700; font-size:13px;
+  transition:transform .15s, box-shadow .15s;
+}
+.nav-cta:hover{transform:translateY(-1px); box-shadow:0 8px 22px rgba(245,197,24,.35)}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;
+  padding:90px 0 60px;
+  overflow:hidden;
+}
+.hero::before{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:36px 36px; mask-image:linear-gradient(180deg, #000 30%, transparent 100%);
+}
+.hero-inner{position:relative; text-align:center}
+.hero-badge{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:7px 16px; background:rgba(0,240,255,.07);
+  border:1px solid rgba(0,240,255,.25); border-radius:999px;
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  font-weight:700; color:var(--neon-cyan); letter-spacing:1.5px;
+  margin-bottom:28px;
+}
+.dot-pulse{
+  width:7px; height:7px; border-radius:50%;
+  background:var(--neon-green); animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1; box-shadow:0 0 10px var(--neon-green)}50%{opacity:.4; box-shadow:none}}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(40px, 7.4vw, 88px);
+  font-weight:900; line-height:1.02;
+  letter-spacing:-2px; margin:0 auto 22px;
+  max-width:1000px;
+}
+.hero h1 .ital{font-style:italic; font-weight:400; color:var(--gold)}
+.hero h1 .grad{
+  background:linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero p.lede{
+  font-size:clamp(16px, 2vw, 20px); color:var(--text-mid);
+  max-width:760px; margin:0 auto 36px; line-height:1.55;
+}
+.hero p.lede b{color:var(--text)}
+.hero-cta{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:48px}
+.btn{
+  padding:14px 26px; border-radius:999px; font-weight:700; font-size:14px;
+  transition:transform .15s, box-shadow .15s, background .15s;
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:'Inter',sans-serif; cursor:pointer; border:none;
+}
+.btn-primary{background:var(--gold); color:#000}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 30px rgba(245,197,24,.4)}
+.btn-ghost{background:transparent; color:var(--text); border:1px solid var(--border-hi)}
+.btn-ghost:hover{border-color:var(--gold); color:var(--gold)}
+
+/* ─── COUNTER STRIP ─── */
+.counter-strip{
+  display:grid; grid-template-columns:repeat(5, 1fr); gap:12px;
+  max-width:1100px; margin:0 auto;
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:18px; padding:22px 18px;
+}
+.counter{text-align:center}
+.counter .num{
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:44px; font-weight:900; line-height:1;
+  background:linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.counter .lbl{
+  font-family:'JetBrains Mono',monospace; font-size:10px;
+  color:var(--text-dim); letter-spacing:1.8px;
+  margin-top:8px; text-transform:uppercase;
+}
+@media (max-width:780px){
+  .counter-strip{grid-template-columns:repeat(2, 1fr)}
+  .counter:nth-child(5){grid-column:span 2}
+  .counter .num{font-size:36px}
+}
+
+/* ─── SECTION ─── */
+section{padding:96px 0; position:relative}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  letter-spacing:2.5px; color:var(--gold); font-weight:700;
+  margin-bottom:16px; text-transform:uppercase;
+}
+.section-title{
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:clamp(32px, 4.8vw, 54px); line-height:1.05;
+  letter-spacing:-1.5px; margin-bottom:18px;
+}
+.section-title .ital{font-style:italic; font-weight:400; color:var(--gold)}
+.section-lede{
+  font-size:17px; color:var(--text-mid);
+  max-width:680px; margin-bottom:48px; line-height:1.6;
+}
+
+/* ─── COUNCIL DEMO ─── */
+.council-wrap{
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:22px; padding:32px;
+  background-image:
+    radial-gradient(ellipse 600px 300px at 0% 0%, rgba(0,240,255,.05), transparent 60%),
+    radial-gradient(ellipse 600px 300px at 100% 100%, rgba(167,139,250,.05), transparent 60%);
+}
+.council-input{
+  width:100%; padding:18px 20px; border-radius:14px;
+  background:var(--bg-3); border:1px solid var(--border-hi);
+  color:var(--text); font-size:15px; font-family:'Inter',sans-serif;
+  resize:vertical; min-height:90px; line-height:1.5;
+  transition:border-color .2s, box-shadow .2s;
+}
+.council-input:focus{
+  outline:none; border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(245,197,24,.15);
+}
+.council-input::placeholder{color:var(--text-dim)}
+.council-actions{display:flex; gap:10px; align-items:center; margin-top:14px; flex-wrap:wrap}
+.preset-chips{display:flex; gap:8px; flex-wrap:wrap}
+.chip{
+  padding:7px 14px; border-radius:999px;
+  background:var(--bg-3); border:1px solid var(--border);
+  font-size:12px; color:var(--text-mid); cursor:pointer;
+  transition:all .15s; font-family:'JetBrains Mono',monospace;
+}
+.chip:hover{border-color:var(--gold); color:var(--gold)}
+
+.council-grid{
+  display:grid; grid-template-columns:repeat(5, 1fr); gap:14px;
+  margin-top:28px;
+}
+.archetype{
+  background:var(--bg-3); border:1px solid var(--border);
+  border-radius:14px; padding:18px;
+  display:flex; flex-direction:column; gap:10px;
+  transition:border-color .25s, transform .25s;
+  position:relative; overflow:hidden;
+  min-height:200px;
+}
+.archetype.thinking{border-color:var(--gold); animation:thinking 1.4s ease-in-out infinite}
+@keyframes thinking{0%,100%{box-shadow:0 0 0 rgba(245,197,24,.4)}50%{box-shadow:0 0 22px rgba(245,197,24,.25)}}
+.archetype.spoken{border-color:var(--archcol)}
+.arche-head{display:flex; align-items:center; gap:10px}
+.arche-icon{
+  width:32px; height:32px; border-radius:9px;
+  display:grid; place-items:center;
+  background:var(--archcol-bg); color:var(--archcol);
+  font-size:14px; font-weight:800;
+  font-family:'JetBrains Mono',monospace;
+}
+.arche-name{
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  font-weight:800; letter-spacing:1.5px; color:var(--archcol);
+}
+.arche-tag{
+  font-size:11px; color:var(--text-dim);
+  font-family:'JetBrains Mono',monospace;
+}
+.arche-body{
+  font-size:13px; color:var(--text-mid);
+  line-height:1.5; flex:1;
+}
+.arche-body.placeholder{color:var(--text-dim); font-style:italic}
+.arche-verdict{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px; letter-spacing:1.5px;
+  padding:5px 10px; border-radius:6px;
+  background:var(--archcol-bg); color:var(--archcol);
+  display:inline-block; font-weight:700; align-self:flex-start;
+}
+.archetype[data-arch="closer"]   {--archcol:var(--neon-red);   --archcol-bg:rgba(255,68,85,.10)}
+.archetype[data-arch="operator"] {--archcol:var(--neon-cyan);  --archcol-bg:rgba(0,240,255,.10)}
+.archetype[data-arch="builder"]  {--archcol:var(--neon-green); --archcol-bg:rgba(0,255,136,.10)}
+.archetype[data-arch="guardian"] {--archcol:var(--gold);       --archcol-bg:rgba(245,197,24,.10)}
+.archetype[data-arch="scout"]    {--archcol:var(--purple);     --archcol-bg:rgba(167,139,250,.12)}
+
+@media (max-width:980px){.council-grid{grid-template-columns:repeat(2, 1fr)}}
+@media (max-width:540px){.council-grid{grid-template-columns:1fr}}
+
+.council-verdict{
+  margin-top:28px; padding:22px;
+  background:linear-gradient(135deg, rgba(245,197,24,.08), rgba(0,240,255,.05));
+  border:1px solid rgba(245,197,24,.3); border-radius:14px;
+  display:none;
+}
+.council-verdict.show{display:block; animation:fadeUp .5s ease}
+@keyframes fadeUp{from{opacity:0; transform:translateY(8px)}to{opacity:1; transform:translateY(0)}}
+.council-verdict h4{
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:22px; color:var(--gold); margin-bottom:10px;
+}
+.council-verdict p{font-size:15px; color:var(--text); line-height:1.6}
+
+/* ─── ARCHITECTURE ─── */
+.arch-grid{display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start}
+@media (max-width:880px){.arch-grid{grid-template-columns:1fr}}
+.arch-card{
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:18px; padding:26px;
+}
+.arch-card h3{
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  letter-spacing:2px; color:var(--gold); font-weight:800;
+  margin-bottom:18px; text-transform:uppercase;
+}
+.modes{display:grid; grid-template-columns:repeat(2,1fr); gap:8px}
+.mode{
+  padding:11px 13px; background:var(--bg-3);
+  border:1px solid var(--border); border-radius:10px;
+  display:flex; flex-direction:column; gap:3px;
+}
+.mode .name{
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  color:var(--neon-cyan); letter-spacing:1.5px; font-weight:800;
+}
+.mode .blurb{font-size:11px; color:var(--text-mid); line-height:1.4}
+
+.skill-cats{display:flex; flex-direction:column; gap:14px}
+.skill-cat{}
+.skill-cat .cat-name{
+  font-family:'JetBrains Mono',monospace; font-size:10px;
+  color:var(--text-dim); letter-spacing:1.5px; font-weight:700;
+  text-transform:uppercase; margin-bottom:8px;
+}
+.skill-pills{display:flex; flex-wrap:wrap; gap:6px}
+.skill-pill{
+  padding:5px 11px; background:var(--bg-3); border:1px solid var(--border);
+  border-radius:999px; font-size:11px; color:var(--text-mid);
+  font-family:'JetBrains Mono',monospace; transition:all .15s;
+}
+.skill-pill:hover{border-color:var(--gold); color:var(--gold)}
+
+/* ─── VERTICAL GRID ─── */
+.vert-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+  gap:10px;
+}
+.vert{
+  padding:14px 16px; background:var(--bg-card);
+  border:1px solid var(--border); border-radius:12px;
+  display:flex; flex-direction:column; gap:4px;
+  transition:all .2s; text-decoration:none;
+}
+.vert:hover{
+  border-color:var(--gold); transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(0,0,0,.3);
+}
+.vert .name{font-size:14px; font-weight:700; color:var(--text)}
+.vert .url{
+  font-family:'JetBrains Mono',monospace; font-size:10px;
+  color:var(--text-dim); letter-spacing:.5px;
+}
+.vert:hover .url{color:var(--gold)}
+
+/* ─── STACK ─── */
+.stack-grid{
+  display:flex; flex-wrap:wrap; gap:10px;
+  justify-content:center; margin-top:28px;
+}
+.tech{
+  padding:10px 18px; background:var(--bg-card);
+  border:1px solid var(--border); border-radius:999px;
+  font-family:'JetBrains Mono',monospace; font-size:13px;
+  color:var(--text-mid); transition:all .2s;
+}
+.tech:hover{border-color:var(--neon-cyan); color:var(--neon-cyan)}
+
+/* ─── STORY ─── */
+.story-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center}
+@media (max-width:880px){.story-grid{grid-template-columns:1fr}}
+.story-text p{font-size:16px; color:var(--text-mid); line-height:1.7; margin-bottom:18px}
+.story-text p b{color:var(--text)}
+.story-stats{
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:18px; padding:32px;
+}
+.stat-row{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:18px 0; border-bottom:1px solid var(--border);
+}
+.stat-row:last-child{border-bottom:none}
+.stat-row .lbl{
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  color:var(--text-dim); letter-spacing:1.5px; text-transform:uppercase;
+}
+.stat-row .val{
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:24px; font-weight:700; color:var(--gold);
+}
+
+/* ─── CTA ─── */
+.cta-band{
+  background:var(--bg-card); border:1px solid var(--border-hi);
+  border-radius:24px; padding:54px 38px; text-align:center;
+  background-image:
+    radial-gradient(ellipse 700px 400px at 20% 0%, rgba(0,240,255,.08), transparent 60%),
+    radial-gradient(ellipse 700px 400px at 80% 100%, rgba(245,197,24,.06), transparent 60%);
+}
+.cta-band h2{
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:clamp(30px, 4.4vw, 48px); line-height:1.05;
+  letter-spacing:-1.5px; margin-bottom:18px;
+}
+.cta-band h2 .ital{font-style:italic; font-weight:400; color:var(--gold)}
+.cta-band p{font-size:16px; color:var(--text-mid); max-width:580px; margin:0 auto 28px}
+
+/* ─── FOOTER ─── */
+footer{
+  padding:40px 0 60px; text-align:center;
+  border-top:1px solid var(--border); margin-top:60px;
+  font-family:'JetBrains Mono',monospace; font-size:11px;
+  color:var(--text-dim); letter-spacing:.8px;
+}
+footer a{color:var(--text-mid)}
+footer a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">RIVVEN<span> · OS</span></a>
+  <div class="nav-actions">
+    <a href="#council">Try it live</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#verticals">38 demos</a>
+    <a href="https://www.linkedin.com/in/sabino-sanchez-77401b381" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:sabino.sanchez7@gmail.com" class="nav-cta">Hire me</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <span class="hero-badge"><span class="dot-pulse"></span>HANDSHAKE AI SHOWCASE · CODEX CREATOR CHALLENGE</span>
+    <h1>I built <span class="grad">100+ AI agents</span><br>that run a real agency,<br><span class="ital">solo at nineteen.</span></h1>
+    <p class="lede"><b>RIVVEN OS</b> is a Claude-powered multi-agent operating system: an 8-mode autopilot dispatcher, a 5-archetype advisory council, 38 productized vertical demos, 24/7 cron-based site monitors, and a 100+ skill library — wired together to run a real, revenue-generating AI agency end-to-end. <b>Try the live Council of 5 below — type any decision, get five specialist reactions in &lt; 1 second.</b></p>
+    <div class="hero-cta">
+      <a href="#council" class="btn btn-primary">▶ Run the live demo</a>
+      <a href="#story" class="btn btn-ghost">Read the story</a>
+    </div>
+    <div class="counter-strip">
+      <div class="counter"><div class="num" data-target="100">0</div><div class="lbl">AI Skills</div></div>
+      <div class="counter"><div class="num" data-target="38">0</div><div class="lbl">Vertical Demos</div></div>
+      <div class="counter"><div class="num" data-target="8">0</div><div class="lbl">Dispatch Modes</div></div>
+      <div class="counter"><div class="num" data-target="24" data-suffix="/7">0</div><div class="lbl">Cron Monitors</div></div>
+      <div class="counter"><div class="num" data-target="5">0</div><div class="lbl">Council Archetypes</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="council">
+  <div class="wrap">
+    <div class="eyebrow">▸ Live Multi-Agent Demo</div>
+    <h2 class="section-title">Five specialists, <span class="ital">one second.</span></h2>
+    <p class="section-lede">Most AI demos give you one model's opinion. RIVVEN's Council of 5 spawns five archetype-specialist agents in parallel — Closer, Operator, Builder, Guardian, Scout — each pressure-tests a decision through their own lens, then a meta-judge reconciles them into one verdict. Type anything below.</p>
+
+    <div class="council-wrap">
+      <textarea id="council-input" class="council-input" placeholder="e.g. 'Should I drop $500 on Meta ads to find local HVAC clients this week?' or 'I'm 19 with $4K to my name — should I bootstrap or raise?'"></textarea>
+
+      <div class="council-actions">
+        <button class="btn btn-primary" id="council-run">▶ Convene the Council</button>
+        <div class="preset-chips">
+          <span class="chip" data-preset="Should I raise prices on my 3 paying clients or lock in their current rate forever?">Pricing</span>
+          <span class="chip" data-preset="I have 6 hot prospects and 4 hours today — call which ones first?">Sales</span>
+          <span class="chip" data-preset="Should I hire my first full-time employee at $4K MRR or wait until $10K?">Hiring</span>
+          <span class="chip" data-preset="Should I add a chatbot to every demo or keep them static for now?">Build</span>
+        </div>
+      </div>
+
+      <div class="council-grid">
+        <div class="archetype" data-arch="closer">
+          <div class="arche-head"><div class="arche-icon">CL</div><div><div class="arche-name">CLOSER</div><div class="arche-tag">revenue lens</div></div></div>
+          <div class="arche-body placeholder">Type a decision above and hit <i>Convene the Council</i> — Closer will tell you what kills or makes the money.</div>
+        </div>
+        <div class="archetype" data-arch="operator">
+          <div class="arche-head"><div class="arche-icon">OP</div><div><div class="arche-name">OPERATOR</div><div class="arche-tag">execution lens</div></div></div>
+          <div class="arche-body placeholder">Operator audits time-cost, sequencing, and whether you have the bandwidth.</div>
+        </div>
+        <div class="archetype" data-arch="builder">
+          <div class="arche-head"><div class="arche-icon">BL</div><div><div class="arche-name">BUILDER</div><div class="arche-tag">leverage lens</div></div></div>
+          <div class="arche-body placeholder">Builder asks: what could you build once that solves this forever?</div>
+        </div>
+        <div class="archetype" data-arch="guardian">
+          <div class="arche-head"><div class="arche-icon">GD</div><div><div class="arche-name">GUARDIAN</div><div class="arche-tag">risk lens</div></div></div>
+          <div class="arche-body placeholder">Guardian flags downside, compliance, and what blows up if this fails.</div>
+        </div>
+        <div class="archetype" data-arch="scout">
+          <div class="arche-head"><div class="arche-icon">SC</div><div><div class="arche-name">SCOUT</div><div class="arche-tag">intel lens</div></div></div>
+          <div class="arche-body placeholder">Scout asks: what does the data, the market, and the long-game say?</div>
+        </div>
+      </div>
+
+      <div class="council-verdict" id="verdict">
+        <h4>Sensei verdict</h4>
+        <p id="verdict-text"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="architecture">
+  <div class="wrap">
+    <div class="eyebrow">▸ Under the hood</div>
+    <h2 class="section-title">Eight dispatch modes. <span class="ital">One brain.</span></h2>
+    <p class="section-lede">Every prompt is silently classified into one of 8 modes, lensed through a 7-layer revenue funnel + routing efficiency check, then fanned out to the matching skill chain. Sub-agents run in parallel. The user sees only the deliverable.</p>
+
+    <div class="arch-grid">
+      <div class="arch-card">
+        <h3>▸ 8-Mode Autopilot</h3>
+        <div class="modes">
+          <div class="mode"><div class="name">DECIDE</div><div class="blurb">Lenses → Council → Sensei verdict</div></div>
+          <div class="mode"><div class="name">REACH</div><div class="blurb">Hermes draft → Guardian → deliver</div></div>
+          <div class="mode"><div class="name">BUILD</div><div class="blurb">Lens → scope → ship → verify</div></div>
+          <div class="mode"><div class="name">SELL</div><div class="blurb">Research → ICP → qualify → prep</div></div>
+          <div class="mode"><div class="name">GROW</div><div class="blurb">Context → lens → market chain</div></div>
+          <div class="mode"><div class="name">SEO</div><div class="blurb">Drift baseline → specialist → diff</div></div>
+          <div class="mode"><div class="name">OPS</div><div class="blurb">HOME + daily + handoff + finance</div></div>
+          <div class="mode"><div class="name">META</div><div class="blurb">Classify → fire top mode chain</div></div>
+        </div>
+      </div>
+
+      <div class="arch-card">
+        <h3>▸ 100+ Specialist Skills</h3>
+        <div class="skill-cats">
+          <div class="skill-cat">
+            <div class="cat-name">SALES & OUTREACH (12)</div>
+            <div class="skill-pills">
+              <span class="skill-pill">hermes</span><span class="skill-pill">cold-email</span><span class="skill-pill">sales-prospect</span><span class="skill-pill">sales-qualify</span><span class="skill-pill">sales-objections</span><span class="skill-pill">pace-os</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <div class="cat-name">SEO & GEO (16)</div>
+            <div class="skill-pills">
+              <span class="skill-pill">seo-audit</span><span class="skill-pill">seo-geo</span><span class="skill-pill">seo-schema</span><span class="skill-pill">seo-technical</span><span class="skill-pill">seo-local</span><span class="skill-pill">seo-maps</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <div class="cat-name">MARKETING (14)</div>
+            <div class="skill-pills">
+              <span class="skill-pill">copywriting</span><span class="skill-pill">paid-ads</span><span class="skill-pill">page-cro</span><span class="skill-pill">launch-strategy</span><span class="skill-pill">email-sequence</span><span class="skill-pill">marketing-psychology</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <div class="cat-name">OPS & ORCHESTRATION (10)</div>
+            <div class="skill-pills">
+              <span class="skill-pill">autopilot</span><span class="skill-pill">council-of-5</span><span class="skill-pill">recap</span><span class="skill-pill">archive-session</span><span class="skill-pill">meta-optimizer</span><span class="skill-pill">propagate-learning</span>
+            </div>
+          </div>
+          <div class="skill-cat">
+            <div class="cat-name">CLIENT-FACING (8)</div>
+            <div class="skill-pills">
+              <span class="skill-pill">add-chatbot</span><span class="skill-pill">spin-prospect-page</span><span class="skill-pill">onboard-rep</span><span class="skill-pill">construction-os</span><span class="skill-pill">field-ops-copilot</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="verticals">
+  <div class="wrap">
+    <div class="eyebrow">▸ Productized at scale</div>
+    <h2 class="section-title">38 vertical demos. <span class="ital">All deployed. All live.</span></h2>
+    <p class="section-lede">Each is a fully functional small-business website with bilingual copy, lead capture, schema markup, GA4, and an AI chatbot — generated via a single skill invocation, deployed to Netlify, monitored 24/7 by cron. Click any to open.</p>
+    <div class="vert-grid">
+      <a class="vert" href="/demos/locksmith/" target="_blank"><div class="name">Locksmith</div><div class="url">/demos/locksmith/</div></a>
+      <a class="vert" href="/demos/hvac/" target="_blank"><div class="name">HVAC</div><div class="url">/demos/hvac/</div></a>
+      <a class="vert" href="/demos/electrician/" target="_blank"><div class="name">Electrician</div><div class="url">/demos/electrician/</div></a>
+      <a class="vert" href="/demos/plumbing/" target="_blank"><div class="name">Plumbing</div><div class="url">/demos/plumbing/</div></a>
+      <a class="vert" href="/demos/roofing/" target="_blank"><div class="name">Roofing</div><div class="url">/demos/roofing/</div></a>
+      <a class="vert" href="/demos/construction/" target="_blank"><div class="name">Construction</div><div class="url">/demos/construction/</div></a>
+      <a class="vert" href="/demos/handyman/" target="_blank"><div class="name">Handyman</div><div class="url">/demos/handyman/</div></a>
+      <a class="vert" href="/demos/painting/" target="_blank"><div class="name">Painting</div><div class="url">/demos/painting/</div></a>
+      <a class="vert" href="/demos/landscaping/" target="_blank"><div class="name">Landscaping</div><div class="url">/demos/landscaping/</div></a>
+      <a class="vert" href="/demos/poolservice/" target="_blank"><div class="name">Pool Service</div><div class="url">/demos/poolservice/</div></a>
+      <a class="vert" href="/demos/pressurewashing/" target="_blank"><div class="name">Pressure Wash</div><div class="url">/demos/pressurewashing/</div></a>
+      <a class="vert" href="/demos/cleaning/" target="_blank"><div class="name">Cleaning</div><div class="url">/demos/cleaning/</div></a>
+      <a class="vert" href="/demos/moving/" target="_blank"><div class="name">Moving</div><div class="url">/demos/moving/</div></a>
+      <a class="vert" href="/demos/towing/" target="_blank"><div class="name">Towing</div><div class="url">/demos/towing/</div></a>
+      <a class="vert" href="/demos/trucking/" target="_blank"><div class="name">Trucking</div><div class="url">/demos/trucking/</div></a>
+      <a class="vert" href="/demos/autorepair/" target="_blank"><div class="name">Auto Repair</div><div class="url">/demos/autorepair/</div></a>
+      <a class="vert" href="/demos/autodetailing/" target="_blank"><div class="name">Auto Detail</div><div class="url">/demos/autodetailing/</div></a>
+      <a class="vert" href="/demos/carwash/" target="_blank"><div class="name">Car Wash</div><div class="url">/demos/carwash/</div></a>
+      <a class="vert" href="/demos/realestate/" target="_blank"><div class="name">Real Estate</div><div class="url">/demos/realestate/</div></a>
+      <a class="vert" href="/demos/mortgage/" target="_blank"><div class="name">Mortgage</div><div class="url">/demos/mortgage/</div></a>
+      <a class="vert" href="/demos/insurance/" target="_blank"><div class="name">Insurance</div><div class="url">/demos/insurance/</div></a>
+      <a class="vert" href="/demos/lawfirm/" target="_blank"><div class="name">Law Firm</div><div class="url">/demos/lawfirm/</div></a>
+      <a class="vert" href="/demos/dental/" target="_blank"><div class="name">Dental</div><div class="url">/demos/dental/</div></a>
+      <a class="vert" href="/demos/medspa/" target="_blank"><div class="name">Med Spa</div><div class="url">/demos/medspa/</div></a>
+      <a class="vert" href="/demos/salon/" target="_blank"><div class="name">Salon</div><div class="url">/demos/salon/</div></a>
+      <a class="vert" href="/demos/barbershop/" target="_blank"><div class="name">Barber Shop</div><div class="url">/demos/barbershop/</div></a>
+      <a class="vert" href="/demos/tattoo/" target="_blank"><div class="name">Tattoo</div><div class="url">/demos/tattoo/</div></a>
+      <a class="vert" href="/demos/petgrooming/" target="_blank"><div class="name">Pet Grooming</div><div class="url">/demos/petgrooming/</div></a>
+      <a class="vert" href="/demos/daycare/" target="_blank"><div class="name">Daycare</div><div class="url">/demos/daycare/</div></a>
+      <a class="vert" href="/demos/restaurant/" target="_blank"><div class="name">Restaurant</div><div class="url">/demos/restaurant/</div></a>
+      <a class="vert" href="/demos/foodtruck/" target="_blank"><div class="name">Food Truck</div><div class="url">/demos/foodtruck/</div></a>
+      <a class="vert" href="/demos/catering/" target="_blank"><div class="name">Catering</div><div class="url">/demos/catering/</div></a>
+      <a class="vert" href="/demos/gym/" target="_blank"><div class="name">Gym</div><div class="url">/demos/gym/</div></a>
+      <a class="vert" href="/demos/fitness/" target="_blank"><div class="name">Fitness</div><div class="url">/demos/fitness/</div></a>
+      <a class="vert" href="/demos/photography/" target="_blank"><div class="name">Photography</div><div class="url">/demos/photography/</div></a>
+      <a class="vert" href="/demos/videography/" target="_blank"><div class="name">Videography</div><div class="url">/demos/videography/</div></a>
+      <a class="vert" href="/demos/djevents/" target="_blank"><div class="name">DJ / Events</div><div class="url">/demos/djevents/</div></a>
+      <a class="vert" href="/demos/construction-invoicing/" target="_blank"><div class="name">Invoicing AI</div><div class="url">/demos/construction-invoicing/</div></a>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <div class="eyebrow">▸ The story</div>
+    <h2 class="section-title">Solo. Nineteen. <span class="ital">Pico Rivera.</span></h2>
+    <div class="story-grid">
+      <div class="story-text">
+        <p>I was nineteen, broke, and watching every "AI agency" YouTuber sell a $5K course on cold email. So I built the agency they were teaching about — and I built it the way an engineer would.</p>
+        <p>Instead of one chatbot, <b>I built an operating system.</b> 100+ specialist skills. An 8-mode dispatcher that classifies every input and routes it to the right chain. A 5-archetype Council that pressure-tests every money decision. 38 vertical demos that deploy in 30 seconds. A CRM that scans for revenue leaks every 6 hours. Hooks that filter every outbound message through my own voice corpus before it leaves.</p>
+        <p>RIVVEN runs <b>autonomously, 24/7</b>, on a laptop in my bedroom. While I sleep, cron jobs back up the source, audit deployed sites for drift, scrape industry intel from the people I learn from, and grade tomorrow's quota against today's pace.</p>
+        <p>This isn't a class project. It's the production stack of a real business with real paying clients. And it was built by one teenager with one Claude subscription.</p>
+      </div>
+      <div class="story-stats">
+        <div class="stat-row"><span class="lbl">Founder Age</span><span class="val">19</span></div>
+        <div class="stat-row"><span class="lbl">Team Size</span><span class="val">Solo</span></div>
+        <div class="stat-row"><span class="lbl">Productized Verticals</span><span class="val">38</span></div>
+        <div class="stat-row"><span class="lbl">Specialist Skills</span><span class="val">100+</span></div>
+        <div class="stat-row"><span class="lbl">Lines of Code</span><span class="val">200K+</span></div>
+        <div class="stat-row"><span class="lbl">Cron Monitors</span><span class="val">24/7</span></div>
+        <div class="stat-row"><span class="lbl">Languages</span><span class="val">EN · ES</span></div>
+        <div class="stat-row"><span class="lbl">Built With</span><span class="val">Claude</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap" style="text-align:center">
+    <div class="eyebrow">▸ The stack</div>
+    <h2 class="section-title">Everything you'd <span class="ital">expect to see.</span></h2>
+    <p class="section-lede" style="margin-left:auto; margin-right:auto">Production-grade tooling end-to-end. Nothing fragile. Nothing unmaintained. Every layer chosen because it survives 3am.</p>
+    <div class="stack-grid">
+      <span class="tech">Claude Opus 4.7 (1M ctx)</span>
+      <span class="tech">Claude Code CLI</span>
+      <span class="tech">Anthropic SDK</span>
+      <span class="tech">MCP Servers</span>
+      <span class="tech">Sub-agent orchestration</span>
+      <span class="tech">Python 3.13</span>
+      <span class="tech">Node.js</span>
+      <span class="tech">PowerShell · Bash</span>
+      <span class="tech">SQLite</span>
+      <span class="tech">Supabase</span>
+      <span class="tech">Netlify Functions</span>
+      <span class="tech">Cloudflare DNS</span>
+      <span class="tech">Resend Email API</span>
+      <span class="tech">Twilio SMS</span>
+      <span class="tech">GitHub Actions</span>
+      <span class="tech">Schema.org JSON-LD</span>
+      <span class="tech">Playwright (QA)</span>
+      <span class="tech">Firecrawl MCP</span>
+      <span class="tech">DataForSEO MCP</span>
+      <span class="tech">Discord Webhooks</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Hire the kid who <span class="ital">built the operating system.</span></h2>
+      <p>I'm a 19-year-old solo founder who ships production multi-agent AI infrastructure. If you're hiring for AI engineering, applied research, dev rel, or founding-team roles — let's talk.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
+        <a href="mailto:sabino.sanchez7@gmail.com" class="btn btn-primary">📩 sabino.sanchez7@gmail.com</a>
+        <a href="https://www.linkedin.com/in/sabino-sanchez-77401b381" target="_blank" rel="noopener" class="btn btn-ghost">in/ LinkedIn</a>
+        <a href="https://rivven.ai/" class="btn btn-ghost">rivven.ai →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built with Claude · Sabino Sanchez · RIVVEN LLC · Pico Rivera, CA<br>
+    <a href="/">rivven.ai</a> · <a href="https://www.linkedin.com/in/sabino-sanchez-77401b381" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:sabino.sanchez7@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+/* ──────── ANIMATED COUNTERS ──────── */
+const counters = document.querySelectorAll('.counter .num');
+const animateCounter = (el) => {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1400;
+  const start = performance.now();
+  const tick = (now) => {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(eased * target) + (target >= 100 ? '+' : '') + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = target + (target >= 100 ? '+' : '') + suffix;
+  };
+  requestAnimationFrame(tick);
+};
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); }});
+}, { threshold: .4 });
+counters.forEach(c => counterObserver.observe(c));
+
+/* ──────── COUNCIL OF 5 ENGINE ──────── */
+const archetypes = {
+  closer: {
+    name: 'CLOSER',
+    /* keyword -> response template */
+    rules: [
+      { match: /price|raise|charge|rate|pricing|fee|cost|invoice/i, body: q => `Raise prices on what's working. Floor your rate, then drag every new prospect across it. Loyalty discounts kill margin — value them with access, not pricing.`, verdict: 'RAISE' },
+      { match: /hire|employee|team|sub|delegate/i, body: q => `Hiring before $10K MRR is buying a leash. Buy revenue first. If you can't sell the seat, you can't fund the seat.`, verdict: 'NOT YET' },
+      { match: /ad|meta|google|facebook|paid|spend|budget/i, body: q => `Don't burn $500 on ads to find clients you haven't outbounded yet. Send 50 cold messages first — same dollar value, ten times the data.`, verdict: 'OUTBOUND FIRST' },
+      { match: /call|prospect|lead|outreach|cold/i, body: q => `Call the 6 in pain order. Hottest first, oldest second, biggest deal third. The other three are tomorrow's work — don't dilute today's energy.`, verdict: 'GO NOW' },
+      { match: /raise|funding|investor|vc/i, body: q => `Raising at $4K MRR and 19 means selling 30% of your future for a year of runway. Bootstrap two more clients. Investors chase momentum — they don't fund optimism.`, verdict: 'BOOTSTRAP' },
+      { match: /build|chatbot|ship|deploy|feature/i, body: q => `Build the thing that lets you charge more next month. Static demos sell once. Chatbots sell forever — and they're a ladder rung on every renewal.`, verdict: 'BUILD' },
+      { default: true, body: q => `If this decision doesn't move money in 30 days, it's a vanity move. Either price it, sell it, or shelve it.`, verdict: 'PRICE IT' }
+    ]
+  },
+  operator: {
+    name: 'OPERATOR',
+    rules: [
+      { match: /price|raise|rate|charge/i, body: q => `Document the price change in one place — your pricing page — then propagate across every demo, proposal template, and Hermes draft in one cron run. No drift.`, verdict: 'CASCADE' },
+      { match: /hire|employee|delegate|team/i, body: q => `Build the SOP before the seat. If you can't write down what they'd do for 8 hours a day, you'll burn them in 3 weeks. Skill > headcount.`, verdict: 'SOP FIRST' },
+      { match: /ad|meta|google|paid|campaign/i, body: q => `Ads without UTM hygiene + a landing-page-per-audience is wasted spend. Fix the funnel before you turn the faucet.`, verdict: 'FIX FUNNEL' },
+      { match: /call|prospect|lead|outreach/i, body: q => `Time-box: 4 hours, 6 prospects, 40-min slots, 20-min buffer between. Anything past slot 4 is already worse data than tomorrow's first call.`, verdict: 'TIME-BOX' },
+      { match: /build|chatbot|deploy|feature|ship/i, body: q => `Productize before you customize. One template + one config file beats 38 hand-built demos every time. Already true here — keep the discipline.`, verdict: 'TEMPLATE' },
+      { match: /raise|investor|funding|vc/i, body: q => `Raising adds ops weight you don't have headcount to absorb. You'd spend half the runway managing the fundraise.`, verdict: 'WAIT' },
+      { default: true, body: q => `Sequence the steps. What ships in 1 hour, what ships in 1 day, what ships never. Most decisions die from poor sequencing, not wrong calls.`, verdict: 'SEQUENCE' }
+    ]
+  },
+  builder: {
+    name: 'BUILDER',
+    rules: [
+      { match: /price|rate|charge|invoice/i, body: q => `Build a pricing-tier configurator once. Plugs into every quote, proposal, and renewal. You'll never re-debate price math again.`, verdict: 'AUTOMATE' },
+      { match: /hire|delegate|sub|team/i, body: q => `Before you hire a human, ask whether a skill + cron task can do 80% of the seat. The answer is usually yes for ops roles.`, verdict: 'SKILL FIRST' },
+      { match: /ad|meta|paid|campaign/i, body: q => `Build the auto-creative skill before the spend. 12 ad variants generated by a copywriting agent costs you $0 and saves you a $400 round of rewrites.`, verdict: 'SKILL FIRST' },
+      { match: /call|prospect|lead|outreach/i, body: q => `Wire a Hermes draft into the call prep. By the time you dial, the SMS follow-up is already staged. Outreach without staged follow-up is a leak.`, verdict: 'STAGE IT' },
+      { match: /chatbot|build|deploy|feature|ship/i, body: q => `Ship the chatbot to all 38 demos as one config-driven include. One file, 38 wins. The leverage is in the abstraction, not the deployment.`, verdict: 'BUILD ONCE' },
+      { match: /raise|funding|investor/i, body: q => `Build distribution first. A working product with 10 paying clients is worth more at the table than a deck with 0.`, verdict: 'BUILD' },
+      { default: true, body: q => `What's the leverage move? Build the thing that makes this decision irrelevant the second time it shows up.`, verdict: 'LEVERAGE' }
+    ]
+  },
+  guardian: {
+    name: 'GUARDIAN',
+    rules: [
+      { match: /price|raise|rate|charge/i, body: q => `Grandfather existing clients at current rate, document the change in writing, give 30 days notice. Otherwise you're buying a churn event.`, verdict: 'GRANDFATHER' },
+      { match: /hire|employee|w-?2|1099/i, body: q => `If they work set hours on your tools, they're W-2, not 1099 — IRS doesn't care what your contract says. Misclassification penalty is 100% of payroll tax.`, verdict: 'CLASSIFY RIGHT' },
+      { match: /ad|meta|paid|campaign/i, body: q => `Set a hard daily cap. Meta's auto-spend will silently rebid into garbage placements at 2am if you don't cap. Treat ad budgets like guard rails, not goals.`, verdict: 'HARD CAP' },
+      { match: /call|prospect|lead|sms|cold/i, body: q => `TCPA: no SMS to consumers without prior express written consent. A2P 10DLC registered. Quiet hours respected. One non-compliant blast costs $1,500 per number.`, verdict: 'TCPA' },
+      { match: /chatbot|deploy|build|feature/i, body: q => `Pre-deploy: backup, validate, smoke-test on mobile + desktop. Demos go down = sales credibility goes down. Uptime is a sales asset.`, verdict: 'BACKUP FIRST' },
+      { match: /raise|funding|vc|investor/i, body: q => `Read the SAFE clauses on liquidation pref, pro-rata, and information rights before signing anything. Losing 30% to a $50K check is a bad first round.`, verdict: 'READ THE PAPER' },
+      { default: true, body: q => `What's the worst plausible outcome and can you survive it? If yes, ship it. If no, stage it smaller.`, verdict: 'STRESS-TEST' }
+    ]
+  },
+  scout: {
+    name: 'SCOUT',
+    rules: [
+      { match: /price|raise|rate/i, body: q => `Tier-A trades pay $500–$1,500 setup + $97–$497/mo without flinching. You're underpriced. Industry comp data backs raising 25% across the board.`, verdict: 'UNDERPRICED' },
+      { match: /hire|employee|delegate/i, body: q => `For solo founders under $20K MRR, the optimal first hire is a part-time SDR at $20–25/hr commission-leaning. W-2 ops manager is hire #4, not hire #1.`, verdict: 'SDR FIRST' },
+      { match: /ad|meta|google|paid/i, body: q => `Local-services CPA on Meta in 2026: $40–80 for trades, $80–150 for med/legal. If your offer doesn't survive at $80 CAC, ads are not the problem.`, verdict: 'CAC GATE' },
+      { match: /call|prospect|lead|cold/i, body: q => `Best-in-class cold-call connect rate is 8% of dials, 22% of connects book a meeting. 60 dials = 5 connects = 1 meeting. That's the math you're playing.`, verdict: 'KNOW THE MATH' },
+      { match: /chatbot|build|deploy/i, body: q => `Conversion lift on small-business sites with chatbot vs. without: 11–18% on lead-form pages (HubSpot 2025). On Tier-A trades it's higher because urgency.`, verdict: 'PROVEN LIFT' },
+      { match: /raise|funding|vc|investor/i, body: q => `Median 19-year-old solo bootstrapper outearns the median 19-year-old funded founder for 3 years. Funding optimizes for exit, not for income — different game.`, verdict: 'BOOTSTRAP' },
+      { default: true, body: q => `What does the data say. What did the last 5 people who tried this learn. Most "novel" decisions have a comp set — find it before you decide.`, verdict: 'CHECK COMPS' }
+    ]
+  }
+};
+
+const archOrder = ['closer','operator','builder','guardian','scout'];
+const verdictReconcile = (verdicts) => {
+  const counts = verdicts.reduce((m,v) => (m[v]=(m[v]||0)+1, m), {});
+  const top = Object.entries(counts).sort((a,b)=>b[1]-a[1])[0];
+  if (top[1] >= 3) return `Strong consensus: ${top[0]}. ${top[1]} of 5 archetypes converged. Move.`;
+  if (top[1] === 2) return `Split vote — ${verdicts.join(' · ')}. The Closer + Operator alignment usually wins. Read those two again, then choose.`;
+  return `Five-way split. This means it's not a strategic decision — it's a values one. Pick the lens you trust most and move. Don't optimize for the average.`;
+};
+
+const matchRule = (rules, q) => {
+  for (const r of rules) {
+    if (r.match && r.match.test(q)) return r;
+  }
+  return rules.find(r => r.default);
+};
+
+const runCouncil = async () => {
+  const q = document.getElementById('council-input').value.trim();
+  if (!q) {
+    document.getElementById('council-input').focus();
+    document.getElementById('council-input').placeholder = '↑ type a real decision first';
+    return;
+  }
+  const verdictBox = document.getElementById('verdict');
+  verdictBox.classList.remove('show');
+
+  /* clear previous + show thinking */
+  archOrder.forEach(arch => {
+    const card = document.querySelector(`.archetype[data-arch="${arch}"]`);
+    card.classList.remove('spoken');
+    card.classList.add('thinking');
+    const body = card.querySelector('.arche-body');
+    body.classList.remove('placeholder');
+    body.textContent = 'Convening…';
+    const verd = card.querySelector('.arche-verdict');
+    if (verd) verd.remove();
+  });
+
+  /* fire each archetype with staggered delay so it feels parallel-but-narratable */
+  const verdicts = [];
+  for (let i = 0; i < archOrder.length; i++) {
+    const arch = archOrder[i];
+    await new Promise(r => setTimeout(r, 220 + Math.random() * 180));
+    const rule = matchRule(archetypes[arch].rules, q);
+    const card = document.querySelector(`.archetype[data-arch="${arch}"]`);
+    card.classList.remove('thinking');
+    card.classList.add('spoken');
+    const body = card.querySelector('.arche-body');
+    body.textContent = rule.body(q);
+    const verd = document.createElement('div');
+    verd.className = 'arche-verdict';
+    verd.textContent = rule.verdict;
+    card.appendChild(verd);
+    verdicts.push(rule.verdict);
+  }
+
+  /* reconcile */
+  await new Promise(r => setTimeout(r, 240));
+  document.getElementById('verdict-text').textContent = verdictReconcile(verdicts);
+  verdictBox.classList.add('show');
+};
+
+document.getElementById('council-run').addEventListener('click', runCouncil);
+document.getElementById('council-input').addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') runCouncil();
+});
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.getElementById('council-input').value = chip.dataset.preset;
+    runCouncil();
+  });
+});
+</script>
+</body>
+</html>
