@@ -2,529 +2,539 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instant Quote — Build Your Site | Rivven</title>
-<meta name="description" content="Get an instant quote for your Rivven build. Pick your industry, size, and add-ons — see live pricing before you book. Starting at $1,500 — tailored to your business size.">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tailored Quote — RIVVEN</title>
+<meta name="description" content="Get your custom RIVVEN quote in 90 seconds. 4 questions. Tailored to your revenue, vertical, and pain points. Starting at $1,500.">
+<meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://rivven.ai/quote.html">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
-<meta property="og:title" content="Instant Quote — Build Your Rivven Site">
-<meta property="og:description" content="Custom quote in 30 seconds. No sales call required.">
+<meta property="og:title" content="Tailored Quote — RIVVEN">
+<meta property="og:description" content="Custom RIVVEN quote in 90 seconds. 4 questions. Tailored to your business.">
 <meta property="og:url" content="https://rivven.ai/quote.html">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://rivven.ai/og-default.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Instant Quote — Build Your Rivven Site">
-<meta name="twitter:description" content="Custom quote in 30 seconds. No sales call required.">
-<meta name="twitter:image" content="https://rivven.ai/og-default.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Rivven AI Website & Growth System Build",
-  "provider": {"@type":"Organization","name":"Rivven","url":"https://rivven.ai/"},
+  "name": "RIVVEN AI Receptionist + Growth System",
+  "provider": {"@type":"Organization","name":"RIVVEN","url":"https://rivven.ai/","telephone":"+1-562-373-1027"},
   "areaServed": "Worldwide",
-  "description": "Custom AI-powered websites, lead generation systems, and marketing automation. Instant quote in 30 seconds. Starting at $1,500 — tailored to your business size.",
-  "offers": {"@type":"AggregateOffer","lowPrice":"1500","highPrice":"15000","priceCurrency":"USD","offerCount":"4","availability":"https://schema.org/InStock","url":"https://rivven.ai/quote.html"}
+  "description": "Custom AI receptionists, voice agents, and growth systems for trades and service businesses. Quote in 90 seconds based on your revenue band.",
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "1500",
+    "highPrice": "15000",
+    "priceCurrency": "USD",
+    "offerCount": "4",
+    "availability": "https://schema.org/InStock",
+    "url": "https://rivven.ai/quote.html"
+  }
 }
 </script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
-  :root{--bg:#0A0A0B;--bg-card:#111113;--bg-card-hover:#18181B;--border:#222225;--text:#FAFAFA;--text-dim:#71717A;--text-mid:#A1A1AA;--neon-cyan:#00F0FF;--neon-green:#00FF88;--neon-purple:#7B61FF;--neon-orange:#FF8800;--glow-cyan:rgba(0,240,255,0.15)}
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;animation:fadeIn 0.5s ease}
+  :root{
+    --bg:#0A0A0B;
+    --bg-card:#111113;
+    --bg-card-hover:#18181B;
+    --border:#222225;
+    --border-active:#2E2E33;
+    --text:#FAFAFA;
+    --text-dim:#71717A;
+    --text-mid:#A1A1AA;
+    --gold:#F5C518;
+    --green:#00FF88;
+    --neon-cyan:#00F0FF;
+    --neon-purple:#7B61FF;
+    --danger:#FF4466;
+    --glow-cyan:rgba(0,240,255,0.15);
+    --glow-green:rgba(0,255,136,0.18);
+    --glow-gold:rgba(245,197,24,0.18);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh;min-height:100dvh;animation:fadeIn 0.4s ease;overflow-x:hidden}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes slideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--glow-cyan)}50%{box-shadow:0 0 0 12px transparent}}
 
-  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,11,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,11,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
   .nav-logo{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--neon-cyan);text-decoration:none;letter-spacing:-0.5px}
   .nav-logo span{color:var(--text-dim);font-weight:400}
-  .nav-links{display:flex;gap:20px;align-items:center}
-  .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500}
-  .nav-links a:hover{color:var(--text)}
+  .nav-cta{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);text-decoration:none;padding:8px 14px;border:1px solid var(--gold);border-radius:100px;background:rgba(245,197,24,0.04);transition:all 0.15s}
+  .nav-cta:hover{background:rgba(245,197,24,0.12)}
 
-  .container{max-width:1100px;margin:0 auto;padding:120px 24px 80px}
+  .container{max-width:720px;margin:0 auto;padding:88px 20px 60px}
 
-  .hero{text-align:center;margin-bottom:56px}
-  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-green);text-transform:uppercase;letter-spacing:3px;padding:6px 14px;border:1px solid var(--neon-green);border-radius:100px;background:rgba(0,255,136,0.05);margin-bottom:20px}
-  .hero h1{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:14px}
-  .hero h1 .italic{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--neon-cyan)}
-  .hero p{font-size:17px;color:var(--text-mid);max-width:580px;margin:0 auto}
+  .hero{text-align:center;margin-bottom:36px;animation:slideUp 0.5s ease}
+  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:3px;padding:6px 14px;border:1px solid var(--green);border-radius:100px;background:rgba(0,255,136,0.05);margin-bottom:18px}
+  .hero h1{font-size:clamp(30px,6vw,46px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;margin-bottom:12px}
+  .hero h1 .italic{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--gold)}
+  .hero p{font-size:16px;color:var(--text-mid);max-width:520px;margin:0 auto;padding:0 8px}
 
-  .grid{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start}
-  .form-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px}
-  .price-card{background:linear-gradient(135deg,rgba(0,240,255,0.06) 0%,rgba(123,97,255,0.04) 100%);border:1px solid var(--border);border-radius:16px;padding:28px;position:sticky;top:100px}
+  .progress{display:flex;gap:6px;margin:0 auto 24px;max-width:280px;padding:0 8px}
+  .progress-dot{flex:1;height:4px;border-radius:2px;background:var(--border);transition:background 0.3s}
+  .progress-dot.done{background:var(--green)}
+  .progress-dot.current{background:var(--gold)}
 
-  .form-group{margin-bottom:28px}
-  .form-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-cyan);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;display:block}
-  .form-hint{font-size:12px;color:var(--text-dim);margin-top:6px}
+  .step{display:none;animation:slideUp 0.4s ease}
+  .step.active{display:block}
 
-  /* INDUSTRY CHIPS */
-  .chip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
-  .chip{padding:12px 14px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.15s;font-size:13px;font-weight:600;text-align:center;user-select:none}
-  .chip:hover{border-color:var(--neon-cyan);color:var(--neon-cyan)}
-  .chip.active{background:rgba(0,240,255,0.08);border-color:var(--neon-cyan);color:var(--neon-cyan)}
+  .question-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:28px 22px;margin-bottom:18px}
+  .question-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-cyan);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px}
+  .question-label{font-size:22px;font-weight:800;letter-spacing:-0.5px;line-height:1.2;margin-bottom:6px}
+  .question-sub{font-size:14px;color:var(--text-dim);margin-bottom:22px}
 
-  /* TIER */
-  .tier-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-  .tier{padding:18px 16px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:12px;cursor:pointer;transition:all 0.15s;text-align:center}
-  .tier:hover{border-color:var(--neon-cyan)}
-  .tier.active{background:rgba(0,240,255,0.08);border-color:var(--neon-cyan);box-shadow:0 0 0 1px var(--neon-cyan) inset}
-  .tier-name{font-size:14px;font-weight:700;margin-bottom:4px}
-  .tier-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
-  .tier-price{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:var(--neon-cyan)}
-  .tier.active .tier-price{color:var(--neon-green)}
+  /* Q1 — vertical chip grid */
+  .chip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(min-width:520px){.chip-grid{grid-template-columns:repeat(3,1fr)}}
+  .chip{min-height:56px;padding:14px 12px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:14px;cursor:pointer;transition:all 0.15s;font-size:14px;font-weight:600;text-align:center;user-select:none;display:flex;align-items:center;justify-content:center;line-height:1.2}
+  .chip:hover,.chip:focus-visible{border-color:var(--neon-cyan);color:var(--neon-cyan);outline:none}
+  .chip:active{transform:scale(0.97)}
+  .chip.active{background:rgba(0,240,255,0.1);border-color:var(--neon-cyan);color:var(--neon-cyan);box-shadow:0 0 0 1px var(--neon-cyan) inset}
 
-  /* ADDONS */
-  .addon-row{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:all 0.15s;user-select:none}
-  .addon-row:hover{border-color:var(--neon-cyan)}
-  .addon-row.active{background:rgba(0,255,136,0.05);border-color:var(--neon-green)}
-  .addon-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;font-weight:700;font-size:12px;color:transparent}
-  .addon-row.active .addon-check{background:var(--neon-green);border-color:var(--neon-green);color:var(--bg)}
-  .addon-row.active .addon-check::before{content:'✓'}
-  .addon-body{flex:1}
-  .addon-name{font-size:14px;font-weight:600;margin-bottom:2px}
-  .addon-desc{font-size:12px;color:var(--text-dim);line-height:1.4}
-  .addon-price{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--neon-cyan);white-space:nowrap}
+  /* Q2-Q4 — big button grid */
+  .btn-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .btn-grid.three{grid-template-columns:repeat(3,1fr)}
+  .btn-grid.four{grid-template-columns:repeat(2,1fr)}
+  @media(min-width:520px){.btn-grid.four{grid-template-columns:repeat(4,1fr)}}
+  .big-btn{min-height:72px;padding:16px 12px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:14px;cursor:pointer;transition:all 0.15s;text-align:center;user-select:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+  .big-btn:hover,.big-btn:focus-visible{border-color:var(--gold);outline:none}
+  .big-btn:active{transform:scale(0.97)}
+  .big-btn.active{background:rgba(245,197,24,0.08);border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+  .big-btn-main{font-size:16px;font-weight:800;color:var(--text);letter-spacing:-0.3px}
+  .big-btn.active .big-btn-main{color:var(--gold)}
+  .big-btn-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1.2px}
 
-  /* TIMELINE */
-  .timeline-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .time-opt{padding:16px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all 0.15s;text-align:center}
-  .time-opt:hover{border-color:var(--neon-cyan)}
-  .time-opt.active{background:rgba(0,240,255,0.08);border-color:var(--neon-cyan)}
-  .time-opt-name{font-size:14px;font-weight:700;margin-bottom:2px}
-  .time-opt-meta{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
-  .time-opt-mult{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--neon-cyan);margin-top:6px;font-weight:700}
+  /* Nav buttons */
+  .step-nav{display:flex;gap:10px;margin-top:8px}
+  .btn-back{flex:0 0 auto;min-height:52px;padding:14px 20px;background:transparent;border:1px solid var(--border);border-radius:12px;color:var(--text-mid);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:inherit}
+  .btn-back:hover{border-color:var(--text-mid);color:var(--text)}
+  .btn-next{flex:1;min-height:52px;padding:14px 20px;background:var(--gold);color:var(--bg);font-size:15px;font-weight:800;border:none;border-radius:12px;cursor:pointer;transition:all 0.2s;font-family:inherit;letter-spacing:-0.2px}
+  .btn-next:hover:not(:disabled){box-shadow:0 8px 24px var(--glow-gold);transform:translateY(-1px)}
+  .btn-next:disabled{opacity:0.4;cursor:not-allowed;background:var(--border-active);color:var(--text-dim)}
+  .btn-next:active:not(:disabled){transform:translateY(0)}
 
-  /* INPUT */
-  .text-input{width:100%;padding:12px 14px;background:var(--bg-card-hover);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;font-family:'Inter',sans-serif;transition:all 0.15s}
-  .text-input:focus{outline:none;border-color:var(--neon-cyan);box-shadow:0 0 0 3px var(--glow-cyan)}
+  /* Step 5 — Result */
+  .result-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:30px 22px;text-align:center}
+  .result-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:3px;padding:6px 14px;border:1px solid var(--green);border-radius:100px;background:rgba(0,255,136,0.05);margin-bottom:18px}
+  .result-headline{font-size:22px;font-weight:700;letter-spacing:-0.5px;line-height:1.3;margin-bottom:8px;color:var(--text-mid)}
+  .result-band{font-size:clamp(48px,11vw,68px);font-weight:900;letter-spacing:-2.5px;line-height:1;margin-bottom:6px;font-family:'Playfair Display',serif;font-style:italic;color:var(--gold);text-shadow:0 0 40px var(--glow-gold)}
+  .result-tier{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:26px}
 
-  /* PRICE CARD */
-  .price-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
-  .price-big{font-family:'JetBrains Mono',monospace;font-size:56px;font-weight:700;color:var(--neon-cyan);line-height:1;margin-bottom:4px;letter-spacing:-2px}
-  .price-sub{font-size:13px;color:var(--text-mid);margin-bottom:24px}
-  .price-breakdown{border-top:1px solid var(--border);padding-top:16px;margin-bottom:20px}
-  .price-line{display:flex;justify-content:space-between;padding:6px 0;font-size:13px}
-  .price-line .lbl{color:var(--text-mid)}
-  .price-line .val{font-family:'JetBrains Mono',monospace;color:var(--text)}
-  .price-line.total{border-top:1px solid var(--border);margin-top:8px;padding-top:12px;font-size:14px;font-weight:700}
-  .price-line.total .val{color:var(--neon-cyan);font-size:16px}
-  .btn-book{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;background:var(--neon-cyan);color:var(--bg);font-size:15px;font-weight:700;border-radius:10px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer}
-  .btn-book:hover{box-shadow:0 0 30px var(--glow-cyan);transform:translateY(-2px)}
-  .price-note{text-align:center;font-size:11px;color:var(--text-dim);margin-top:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+  .price-band{background:linear-gradient(135deg,rgba(245,197,24,0.04) 0%,rgba(0,240,255,0.03) 100%);border:1px solid var(--border-active);border-radius:14px;padding:20px 18px;margin-bottom:18px;text-align:left}
+  .price-band-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+  .price-band-value{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--text);line-height:1.4;letter-spacing:-0.5px}
+  .price-band-value .green{color:var(--green)}
+  .price-band-value .gold{color:var(--gold)}
+  .price-band-note{font-size:12px;color:var(--text-dim);margin-top:8px;line-height:1.5}
 
-  @media(max-width:860px){
-    .grid{grid-template-columns:1fr}
-    .price-card{position:static}
-    .tier-grid{grid-template-columns:1fr}
-    .timeline-opts{grid-template-columns:1fr}
+  .bleed-card{background:rgba(255,68,102,0.04);border:1px solid rgba(255,68,102,0.18);border-radius:14px;padding:18px;margin-bottom:22px;text-align:left}
+  .bleed-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--danger);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+  .bleed-amount{font-size:24px;font-weight:800;color:var(--text);letter-spacing:-0.8px;margin-bottom:4px}
+  .bleed-amount .red{color:var(--danger)}
+  .bleed-sub{font-size:13px;color:var(--text-mid);line-height:1.5}
+  .bleed-sub .green{color:var(--green);font-weight:600}
+
+  .cta-stack{display:flex;flex-direction:column;gap:10px}
+  .cta-primary{display:flex;align-items:center;justify-content:center;gap:8px;min-height:60px;padding:18px;background:var(--gold);color:var(--bg);font-size:16px;font-weight:800;border-radius:14px;text-decoration:none;transition:all 0.2s;letter-spacing:-0.3px}
+  .cta-primary:hover{box-shadow:0 12px 32px var(--glow-gold);transform:translateY(-1px)}
+  .cta-secondary{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:14px;background:transparent;color:var(--neon-cyan);font-size:14px;font-weight:600;border:1px solid var(--neon-cyan);border-radius:12px;text-decoration:none;transition:all 0.2s}
+  .cta-secondary:hover{background:rgba(0,240,255,0.06);box-shadow:0 0 24px var(--glow-cyan)}
+  .cta-restart{margin-top:8px;background:transparent;border:none;color:var(--text-dim);font-size:13px;cursor:pointer;text-decoration:underline;padding:8px;font-family:inherit}
+  .cta-restart:hover{color:var(--text-mid)}
+
+  .footnote{margin-top:18px;font-size:11px;color:var(--text-dim);text-align:center;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+
+  @media(max-width:480px){
+    .container{padding:80px 16px 40px}
+    .question-card{padding:24px 18px;border-radius:16px}
+    .result-card{padding:26px 18px}
+    .nav{padding:12px 16px}
+    .nav-cta{font-size:11px;padding:7px 12px}
+    .big-btn-main{font-size:15px}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important}
   }
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <a class="nav-logo" href="index.html">Sanchez<span>_Rivven</span></a>
-  <div class="nav-links">
-    <a href="demos.html">Demos</a>
-    <a href="case-studies.html">Case Studies</a>
-    <a href="proof.html">Proof</a>
-  </div>
+  <a class="nav-logo" href="index.html" aria-label="RIVVEN home">RIVVEN<span>_AI</span></a>
+  <a class="nav-cta" href="tel:+15623731027" aria-label="Call RIVVEN">Call →</a>
 </nav>
 
 <div class="container">
 
   <div class="hero">
-    <div class="hero-tag">Instant Quote · 30 Seconds</div>
-    <h1>Pick your <span class="italic">build</span>.<br>See the price <span class="italic">live</span>.</h1>
-    <p>No sales call. No hidden costs. Change any option — the quote updates in real time.</p>
+    <div class="hero-tag">Tailored Quote · 90 Seconds</div>
+    <h1>4 questions. Your <span class="italic">band</span>. Your number.</h1>
+    <p>We price to your business — not a fixed menu. Tap through, see where you land.</p>
   </div>
 
-  <div class="grid">
-
-    <!-- FORM -->
-    <div class="form-card">
-
-      <div class="form-group">
-        <label class="form-label">// 01 · Industry</label>
-        <div class="chip-grid" id="industryChips">
-          <div class="chip active" data-industry="Barbershop">Barbershop</div>
-          <div class="chip" data-industry="Salon">Hair Salon</div>
-          <div class="chip" data-industry="Med Spa">Med Spa</div>
-          <div class="chip" data-industry="Auto Detailing">Auto Detail</div>
-          <div class="chip" data-industry="Auto Repair">Auto Repair</div>
-          <div class="chip" data-industry="HVAC">HVAC</div>
-          <div class="chip" data-industry="Plumbing">Plumbing</div>
-          <div class="chip" data-industry="Electrician">Electrician</div>
-          <div class="chip" data-industry="Roofing">Roofing</div>
-          <div class="chip" data-industry="Landscaping">Landscaping</div>
-          <div class="chip" data-industry="Construction">Construction</div>
-          <div class="chip" data-industry="Restaurant">Restaurant</div>
-          <div class="chip" data-industry="Catering">Catering</div>
-          <div class="chip" data-industry="Law Firm">Law Firm</div>
-          <div class="chip" data-industry="Mortgage">Mortgage</div>
-          <div class="chip" data-industry="Real Estate">Real Estate</div>
-          <div class="chip" data-industry="Fitness">Fitness</div>
-          <div class="chip" data-industry="Dental">Dental</div>
-          <div class="chip" data-industry="Trucking">Trucking</div>
-          <div class="chip" data-industry="Other">Other</div>
-        </div>
-        <div class="form-hint">Don't see yours? Pick "Other" — we build for any industry.</div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">// 02 · Package</label>
-        <div class="tier-grid" id="tierGrid">
-          <div class="tier" data-tier="starter" data-price="897">
-            <div class="tier-name">Basic</div>
-            <div class="tier-sub">8-page launch</div>
-            <div class="tier-price">$897</div>
-          </div>
-          <div class="tier active" data-tier="pro" data-price="1497">
-            <div class="tier-name">Professional</div>
-            <div class="tier-sub">12-page + AI tools</div>
-            <div class="tier-price">$1,497</div>
-          </div>
-          <div class="tier" data-tier="growth" data-price="2997">
-            <div class="tier-name">Growth</div>
-            <div class="tier-sub">Full stack + ads</div>
-            <div class="tier-price">$2,997</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">// 03 · Add-Ons</label>
-        <div class="addon-row" data-addon="chatbot" data-price="297">
-          <div class="addon-check"></div>
-          <div class="addon-body"><div class="addon-name">AI Chatbot</div><div class="addon-desc">Custom GPT trained on your business — answers FAQs + captures leads 24/7</div></div>
-          <div class="addon-price">+$297</div>
-        </div>
-        <div class="addon-row" data-addon="bilingual" data-price="397">
-          <div class="addon-check"></div>
-          <div class="addon-body"><div class="addon-name">Bilingual (EN + ES)</div><div class="addon-desc">Full Spanish translation — critical for LA / SoCal markets</div></div>
-          <div class="addon-price">+$397</div>
-        </div>
-        <div class="addon-row" data-addon="calculator" data-price="297">
-          <div class="addon-check"></div>
-          <div class="addon-body"><div class="addon-name">Custom Quote Calculator</div><div class="addon-desc">Instant quote tool (like Manny's mortgage calc) that closes leads before the call</div></div>
-          <div class="addon-price">+$297</div>
-        </div>
-        <div class="addon-row" data-addon="booking" data-price="197">
-          <div class="addon-check"></div>
-          <div class="addon-body"><div class="addon-name">Booking Integration</div><div class="addon-desc">Connect Booksy, Calendly, Acuity, or Square — deep-linked from every CTA</div></div>
-          <div class="addon-price">+$197</div>
-        </div>
-        <div class="addon-row" data-addon="pixel" data-price="147">
-          <div class="addon-check"></div>
-          <div class="addon-body"><div class="addon-name">Meta + Google Ads Setup</div><div class="addon-desc">Pixel + conversion API + first campaign blueprint (ad spend not included)</div></div>
-          <div class="addon-price">+$147</div>
-        </div>
-        <div class="addon-row" data-addon="content" data-price="497">
-          <div class="addon-check"></div>
-          <div class="addon-body"><div class="addon-name">Content Kit</div><div class="addon-desc">12 IG reel scripts, content calendar, 6 post templates ready to film</div></div>
-          <div class="addon-price">+$497</div>
-        </div>
-        <div class="addon-row" data-addon="gbp" data-price="197">
-          <div class="addon-check"></div>
-          <div class="addon-body"><div class="addon-name">Google Business Profile Setup</div><div class="addon-desc">Full GBP optimization + first 10 posts + review strategy</div></div>
-          <div class="addon-price">+$197</div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">// 04 · Timeline</label>
-        <div class="timeline-opts" id="timelineOpts">
-          <div class="time-opt active" data-timeline="standard" data-mult="1.0">
-            <div class="time-opt-name">Standard</div>
-            <div class="time-opt-meta">7-day ship · no rush</div>
-            <div class="time-opt-mult">Base price</div>
-          </div>
-          <div class="time-opt" data-timeline="rush" data-mult="1.35">
-            <div class="time-opt-name">Rush</div>
-            <div class="time-opt-meta">48-hour ship · priority queue</div>
-            <div class="time-opt-mult">+35%</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">// 05 · Your Business Name</label>
-        <input type="text" class="text-input" id="bizName" placeholder="e.g. Trippy Blendz Cuts" autocomplete="organization" />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">// 06 · Your Name</label>
-        <input type="text" class="text-input" id="contactName" placeholder="First and last" autocomplete="name" required />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">// 07 · Email</label>
-        <input type="email" class="text-input" id="contactEmail" placeholder="you@business.com" autocomplete="email" required inputmode="email" />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">// 08 · Phone</label>
-        <input type="tel" class="text-input" id="contactPhone" placeholder="(562) 555-1234" autocomplete="tel" inputmode="tel" />
-        <div class="form-hint">Sabino texts you within 1 hour. Faster than email.</div>
-      </div>
-
-      <!-- Honeypot: humans don't fill this. CSS-hidden + aria-hidden so screenreaders skip. -->
-      <div style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden" aria-hidden="true">
-        <label>Website (leave empty)</label>
-        <input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off" />
-      </div>
-
-    </div>
-
-    <!-- PRICE CARD -->
-    <div class="price-card">
-      <div class="price-label">// Your Quote</div>
-      <div class="price-big" id="priceDisplay">$1,497</div>
-      <div class="price-sub">One-time · no retainer · you own everything</div>
-
-      <div class="price-breakdown" id="breakdown">
-        <div class="price-line"><span class="lbl">Professional package</span><span class="val">$1,497</span></div>
-        <div class="price-line total"><span class="lbl">Total</span><span class="val" id="totalDisplay">$1,497</span></div>
-      </div>
-
-      <button class="btn-book" id="submitBtn" onclick="bookBuild()">Lock this quote →</button>
-      <div class="price-note" id="submitNote">// Instant proposal email + 50% deposit option</div>
-      <div id="submitError" style="display:none;margin-top:12px;padding:12px;background:rgba(255,68,102,0.08);border:1px solid #FF4466;border-radius:8px;color:#FF8FA0;font-size:12px;line-height:1.5"></div>
-    </div>
-
+  <div class="progress" role="progressbar" aria-label="Quote progress" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="progress">
+    <div class="progress-dot current"></div>
+    <div class="progress-dot"></div>
+    <div class="progress-dot"></div>
+    <div class="progress-dot"></div>
+    <div class="progress-dot"></div>
   </div>
+
+  <!-- STEP 1 — VERTICAL -->
+  <section class="step active" id="step1" aria-labelledby="q1-label">
+    <div class="question-card">
+      <div class="question-num">// 01 of 04</div>
+      <h2 class="question-label" id="q1-label">What kind of business?</h2>
+      <p class="question-sub">Pick the closest — we build for every trade.</p>
+      <div class="chip-grid" id="verticalChips" role="radiogroup" aria-label="Business vertical"></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-next" id="next1" disabled type="button">Continue →</button>
+    </div>
+  </section>
+
+  <!-- STEP 2 — AVG TICKET -->
+  <section class="step" id="step2" aria-labelledby="q2-label">
+    <div class="question-card">
+      <div class="question-num">// 02 of 04</div>
+      <h2 class="question-label" id="q2-label">Average ticket?</h2>
+      <p class="question-sub">What does a typical job, call, or lockout bring in?</p>
+      <div class="btn-grid four" id="ticketBtns" role="radiogroup" aria-label="Average ticket"></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" type="button" data-back="2">← Back</button>
+      <button class="btn-next" id="next2" disabled type="button">Continue →</button>
+    </div>
+  </section>
+
+  <!-- STEP 3 — VOLUME -->
+  <section class="step" id="step3" aria-labelledby="q3-label">
+    <div class="question-card">
+      <div class="question-num">// 03 of 04</div>
+      <h2 class="question-label" id="q3-label">Jobs or calls per month?</h2>
+      <p class="question-sub">Slow + busy month average — rough is fine.</p>
+      <div class="btn-grid four" id="volumeBtns" role="radiogroup" aria-label="Monthly volume"></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" type="button" data-back="3">← Back</button>
+      <button class="btn-next" id="next3" disabled type="button">Continue →</button>
+    </div>
+  </section>
+
+  <!-- STEP 4 — TEAM -->
+  <section class="step" id="step4" aria-labelledby="q4-label">
+    <div class="question-card">
+      <div class="question-num">// 04 of 04</div>
+      <h2 class="question-label" id="q4-label">Team size?</h2>
+      <p class="question-sub">Just you, a small crew, or a full operation?</p>
+      <div class="btn-grid three" id="teamBtns" role="radiogroup" aria-label="Team size"></div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" type="button" data-back="4">← Back</button>
+      <button class="btn-next" id="next4" disabled type="button">Show my band →</button>
+    </div>
+  </section>
+
+  <!-- STEP 5 — RESULT -->
+  <section class="step" id="step5" aria-labelledby="result-label">
+    <div class="result-card">
+      <div class="result-tag" id="resultTag">Your band</div>
+      <h2 class="result-headline" id="result-label">Based on what you told us, you're in</h2>
+      <div class="result-band" id="resultBand">GROW</div>
+      <div class="result-tier" id="resultTier">★ Recommended tier</div>
+
+      <div class="price-band">
+        <div class="price-band-label">Setup (one-time)</div>
+        <div class="price-band-value" id="setupRange"><span class="gold">$3,000 – $7,500</span></div>
+      </div>
+
+      <div class="price-band">
+        <div class="price-band-label">Monthly (runs on autopilot)</div>
+        <div class="price-band-value" id="monthlyRange"><span class="green">$397 – $697</span> <span style="color:var(--text-dim);font-size:13px;font-weight:400">/ mo</span></div>
+        <div class="price-band-note" id="customNote" style="display:none">Custom-quoted because every multi-location is different. Book the diagnostic for real numbers.</div>
+      </div>
+
+      <div class="bleed-card" id="bleedCard">
+        <div class="bleed-label">Phones you're already missing</div>
+        <div class="bleed-amount">You're losing about <span class="red" id="missLoss">$2,200</span>/mo</div>
+        <div class="bleed-sub">The system pays itself back in <span class="green" id="paybackMonths">≈ 1.5 months</span>.</div>
+      </div>
+
+      <div class="cta-stack">
+        <a class="cta-primary" id="ctaBook" href="#" rel="noopener">Lock the exact number — 15 min →</a>
+        <a class="cta-secondary" id="ctaText" href="sms:+15623731027" aria-label="Text Sabino">Or text Sabino · 562-373-1027</a>
+        <button class="cta-restart" type="button" onclick="restart()">↺ Start over</button>
+      </div>
+
+      <div class="footnote">// No retainer · month-to-month · 30-day notice</div>
+    </div>
+  </section>
+
 </div>
 
 <script>
-  const state = {
-    industry: 'Barbershop',
-    tier: 'pro',
-    tierPrice: 1497,
-    tierName: 'Professional',
-    addons: new Set(),
-    addonMap: {
-      chatbot: { name: 'AI Chatbot', price: 297 },
-      bilingual: { name: 'Bilingual (EN+ES)', price: 397 },
-      calculator: { name: 'Quote Calculator', price: 297 },
-      booking: { name: 'Booking Integration', price: 197 },
-      pixel: { name: 'Meta + Google Ads', price: 147 },
-      content: { name: 'Content Kit', price: 497 },
-      gbp: { name: 'GBP Setup', price: 197 }
+(function(){
+  'use strict';
+
+  // ===== DATA =====
+  const VERTICALS = [
+    'Locksmith','HVAC','Plumber','Electrician','Garage Door',
+    'Restoration','Roofer','Mover','Auto Service','Restaurant','Salon','Other'
+  ];
+
+  const TICKETS = [
+    { id: 'low',   label: '<$100',     mid: 75,   sub: 'per job' },
+    { id: 'mid',   label: '$100-300',  mid: 200,  sub: 'per job' },
+    { id: 'high',  label: '$300-700',  mid: 500,  sub: 'per job' },
+    { id: 'top',   label: '$700+',     mid: 1000, sub: 'per job' }
+  ];
+
+  const VOLUMES = [
+    { id: 'v1', label: '<30',     mid: 20,  sub: 'per month' },
+    { id: 'v2', label: '30-80',   mid: 55,  sub: 'per month' },
+    { id: 'v3', label: '80-200',  mid: 140, sub: 'per month' },
+    { id: 'v4', label: '200+',    mid: 280, sub: 'per month' }
+  ];
+
+  const TEAMS = [
+    { id: 'solo', label: 'Solo',     sub: 'just me' },
+    { id: 'team', label: '2-5 team', sub: 'small crew' },
+    { id: 'big',  label: '6+ team',  sub: 'multi-truck' }
+  ];
+
+  const BANDS = {
+    STARTER: {
+      tier: '— entry band',
+      setup: '$1,500 – $3,000',
+      monthly: '$197 – $397',
+      monthlyMid: 297
     },
-    timeline: 'standard',
-    multiplier: 1.0,
-    bizName: ''
+    GROW: {
+      tier: '★ Recommended tier',
+      setup: '$3,000 – $7,500',
+      monthly: '$397 – $697',
+      monthlyMid: 497
+    },
+    SCALE: {
+      tier: '— multi-truck band',
+      setup: '$7,500 – $15,000',
+      monthly: '$697 – $1,497',
+      monthlyMid: 997
+    },
+    DOMINANCE: {
+      tier: '— enterprise / custom',
+      setup: '$15,000+ custom',
+      monthly: '$1,497+ custom',
+      monthlyMid: 1997,
+      custom: true
+    }
   };
 
-  function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+  // ===== STATE =====
+  const state = {
+    step: 1,
+    vertical: null,
+    ticket: null,
+    volume: null,
+    team: null,
+    band: null
+  };
 
-  function recalc() {
-    const base = state.tierPrice;
-    let addonSum = 0;
-    state.addons.forEach(k => { addonSum += state.addonMap[k].price; });
-    const subtotal = base + addonSum;
-    const total = subtotal * state.multiplier;
+  // ===== HELPERS =====
+  const fmtMoney = (n) => '$' + Math.round(n).toLocaleString();
 
-    document.getElementById('priceDisplay').textContent = fmt(total);
-    document.getElementById('totalDisplay').textContent = fmt(total);
+  function $(sel){ return document.querySelector(sel); }
+  function $$(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
 
-    const bd = document.getElementById('breakdown');
-    let html = `<div class="price-line"><span class="lbl">${state.tierName} package</span><span class="val">${fmt(base)}</span></div>`;
-    state.addons.forEach(k => {
-      const a = state.addonMap[k];
-      html += `<div class="price-line"><span class="lbl">+ ${a.name}</span><span class="val">${fmt(a.price)}</span></div>`;
+  // ===== RENDER OPTION BUTTONS =====
+  function renderVerticals(){
+    const wrap = $('#verticalChips');
+    wrap.innerHTML = VERTICALS.map(function(v){
+      return '<button type="button" class="chip" role="radio" aria-checked="false" data-value="' + v + '">' + v + '</button>';
+    }).join('');
+    wrap.addEventListener('click', function(e){
+      const btn = e.target.closest('.chip');
+      if (!btn) return;
+      $$('.chip', wrap).forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-checked','false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-checked','true');
+      state.vertical = btn.dataset.value;
+      $('#next1').disabled = false;
     });
-    if (state.multiplier > 1.0) {
-      html += `<div class="price-line"><span class="lbl">Rush (+35%)</span><span class="val">${fmt(subtotal * (state.multiplier - 1))}</span></div>`;
+  }
+
+  function renderOptions(wrapId, list, fieldKey, nextBtnId){
+    const wrap = $('#' + wrapId);
+    wrap.innerHTML = list.map(function(o){
+      return '<button type="button" class="big-btn" role="radio" aria-checked="false" data-value="' + o.id + '">' +
+        '<span class="big-btn-main">' + o.label + '</span>' +
+        '<span class="big-btn-sub">' + o.sub + '</span>' +
+      '</button>';
+    }).join('');
+    wrap.addEventListener('click', function(e){
+      const btn = e.target.closest('.big-btn');
+      if (!btn) return;
+      $$('.big-btn', wrap).forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-checked','false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-checked','true');
+      state[fieldKey] = btn.dataset.value;
+      $('#' + nextBtnId).disabled = false;
+    });
+  }
+
+  // ===== STEP NAVIGATION =====
+  function showStep(n){
+    state.step = n;
+    $$('.step').forEach(function(s){ s.classList.remove('active'); });
+    $('#step' + n).classList.add('active');
+    // progress dots
+    const dots = $$('#progress .progress-dot');
+    dots.forEach(function(d,i){
+      d.classList.remove('done','current');
+      if (i + 1 < n) d.classList.add('done');
+      else if (i + 1 === n) d.classList.add('current');
+    });
+    $('#progress').setAttribute('aria-valuenow', String(n));
+    // scroll the new step into view (mobile)
+    setTimeout(function(){
+      const top = $('#step' + n).getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }, 50);
+  }
+
+  // ===== BAND CALCULATION =====
+  function ticketMid(id){
+    const t = TICKETS.find(function(x){ return x.id === id; });
+    return t ? t.mid : 0;
+  }
+  function volumeMid(id){
+    const v = VOLUMES.find(function(x){ return x.id === id; });
+    return v ? v.mid : 0;
+  }
+
+  function computeBand(){
+    const gross = ticketMid(state.ticket) * volumeMid(state.volume);
+    const missLoss = Math.round(gross * 0.20);
+
+    let bandKey;
+    if (state.team === 'big' || gross >= 100000) {
+      bandKey = 'DOMINANCE';
+    } else if (state.team === 'team' || gross >= 30000) {
+      bandKey = 'SCALE';
+    } else if (gross >= 10000) {
+      bandKey = 'GROW';
+    } else if (state.team === 'solo' && gross < 10000) {
+      bandKey = 'STARTER';
+    } else {
+      bandKey = 'GROW'; // default to recommended
     }
-    html += `<div class="price-line total"><span class="lbl">Total</span><span class="val">${fmt(total)}</span></div>`;
-    bd.innerHTML = html;
-  }
 
-  // Industry chips
-  document.querySelectorAll('#industryChips .chip').forEach(c => {
-    c.addEventListener('click', () => {
-      document.querySelectorAll('#industryChips .chip').forEach(x => x.classList.remove('active'));
-      c.classList.add('active');
-      state.industry = c.dataset.industry;
-    });
-  });
+    state.band = bandKey;
+    const band = BANDS[bandKey];
 
-  // Tier
-  document.querySelectorAll('#tierGrid .tier').forEach(t => {
-    t.addEventListener('click', () => {
-      document.querySelectorAll('#tierGrid .tier').forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
-      state.tier = t.dataset.tier;
-      state.tierPrice = parseInt(t.dataset.price, 10);
-      state.tierName = t.querySelector('.tier-name').textContent;
-      recalc();
-    });
-  });
-
-  // Addons
-  document.querySelectorAll('.addon-row').forEach(r => {
-    r.addEventListener('click', () => {
-      const key = r.dataset.addon;
-      if (r.classList.contains('active')) { r.classList.remove('active'); state.addons.delete(key); }
-      else { r.classList.add('active'); state.addons.add(key); }
-      recalc();
-    });
-  });
-
-  // Timeline
-  document.querySelectorAll('#timelineOpts .time-opt').forEach(o => {
-    o.addEventListener('click', () => {
-      document.querySelectorAll('#timelineOpts .time-opt').forEach(x => x.classList.remove('active'));
-      o.classList.add('active');
-      state.timeline = o.dataset.timeline;
-      state.multiplier = parseFloat(o.dataset.mult);
-      recalc();
-    });
-  });
-
-  // Biz name
-  document.getElementById('bizName').addEventListener('input', (e) => { state.bizName = e.target.value; });
-
-  // ------------------------------------------------------------------
-  // SUBMIT — POSTs to /.netlify/functions/quote-submit
-  // Server: Stripe Checkout + Resend (prospect + Sabino) + Supabase log
-  // On success → redirect to /quote-confirmed.html?qid=...&stripe=...
-  // On failure → friendly error + fallback to intake.html (manual)
-  // ------------------------------------------------------------------
-  function showError(msg) {
-    const el = document.getElementById('submitError');
-    if (!el) return;
-    el.textContent = msg;
-    el.style.display = 'block';
-  }
-  function hideError() {
-    const el = document.getElementById('submitError');
-    if (el) el.style.display = 'none';
-  }
-  function setSubmitting(on) {
-    const btn = document.getElementById('submitBtn');
-    const note = document.getElementById('submitNote');
-    if (!btn) return;
-    btn.disabled = !!on;
-    btn.style.opacity = on ? '0.7' : '1';
-    btn.style.cursor = on ? 'wait' : 'pointer';
-    btn.textContent = on ? 'Sending your quote…' : 'Lock this quote →';
-    if (note) note.textContent = on ? '// generating proposal · creating payment link · emailing you' : '// Instant proposal email + 50% deposit option';
-  }
-
-  function calcTotal() {
-    const base = state.tierPrice;
-    let addonSum = 0;
-    state.addons.forEach(k => { addonSum += state.addonMap[k].price; });
-    return Math.round((base + addonSum) * state.multiplier);
-  }
-
-  function validateContact() {
-    const name = (document.getElementById('contactName').value || '').trim();
-    const email = (document.getElementById('contactEmail').value || '').trim();
-    const phone = (document.getElementById('contactPhone').value || '').trim();
-    if (name.length < 2) return { ok: false, msg: 'Add your name so Sabino can reach you.' };
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return { ok: false, msg: 'Email looks off. Double-check it.' };
-    if (phone && phone.replace(/\D/g, '').length < 7) return { ok: false, msg: 'Phone looks short. Use a real number or leave blank.' };
-    return { ok: true, name, email, phone };
-  }
-
-  async function bookBuild() {
-    hideError();
-    const c = validateContact();
-    if (!c.ok) { showError(c.msg); return; }
-
-    // Honeypot — bots auto-fill this; humans don't.
-    const hp = document.getElementById('hp_website');
-    const honey = hp ? hp.value : '';
-
-    const payload = {
-      name: c.name,
-      email: c.email,
-      phone: c.phone,
-      businessName: state.bizName || '',
-      industry: state.industry,
-      tier: state.tierName,
-      addons: [...state.addons].map(k => state.addonMap[k].name),
-      timeline: state.timeline,
-      total: calcTotal(),
-      source: 'quote.html',
-      website: honey   // honeypot — server rejects if non-empty
-    };
-
-    setSubmitting(true);
-
-    try {
-      const ctrl = new AbortController();
-      const t = setTimeout(() => ctrl.abort(), 15000);
-      const res = await fetch('/.netlify/functions/quote-submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(payload),
-        signal: ctrl.signal
-      });
-      clearTimeout(t);
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok || !data.ok) {
-        // Fallback: pass payload to intake.html so the lead is never lost.
-        const params = new URLSearchParams({
-          industry: payload.industry,
-          tier: payload.tier,
-          addons: payload.addons.join(','),
-          timeline: payload.timeline,
-          biz: payload.businessName,
-          name: payload.name,
-          email: payload.email,
-          phone: payload.phone,
-          quote: '$' + payload.total.toLocaleString(),
-          fallback: '1'
-        });
-        showError('Couldn\'t generate the live quote. Saving your info — Sabino will follow up directly.');
-        setTimeout(() => { window.location.href = 'intake.html?' + params.toString(); }, 1500);
-        return;
-      }
-
-      // Success → confirmation page
-      const qs = new URLSearchParams({
-        qid: data.quoteId,
-        total: String(data.total),
-        deposit: String(data.deposit),
-        stripe: data.stripeUrl || '',
-        biz: payload.businessName,
-        name: payload.name,
-        tier: payload.tier
-      });
-      window.location.href = '/quote-confirmed.html?' + qs.toString();
-    } catch (err) {
-      // Network / timeout fallback — never lose the lead.
-      const params = new URLSearchParams({
-        industry: payload.industry,
-        tier: payload.tier,
-        addons: payload.addons.join(','),
-        timeline: payload.timeline,
-        biz: payload.businessName,
-        name: payload.name,
-        email: payload.email,
-        phone: payload.phone,
-        quote: '$' + payload.total.toLocaleString(),
-        fallback: '1'
-      });
-      showError('Network hiccup. Saving your info — Sabino will follow up.');
-      setTimeout(() => { window.location.href = 'intake.html?' + params.toString(); }, 1500);
-    } finally {
-      // Don't unstick the button — the page is navigating.
+    // payback in months = monthlyMid / missLoss (if missLoss > 0)
+    let payback;
+    if (missLoss <= 0) {
+      payback = '— ask on the call';
+    } else {
+      const months = band.monthlyMid / missLoss;
+      if (months < 1) payback = '< 1 month';
+      else if (months < 2) payback = '≈ ' + months.toFixed(1) + ' months';
+      else payback = '≈ ' + Math.round(months) + ' months';
     }
+
+    return { bandKey: bandKey, gross: gross, missLoss: missLoss, payback: payback };
   }
 
-  recalc();
+  // ===== RENDER RESULT =====
+  function renderResult(){
+    const r = computeBand();
+    const band = BANDS[r.bandKey];
+
+    $('#resultBand').textContent = r.bandKey;
+    $('#resultTier').textContent = band.tier;
+    $('#setupRange').innerHTML = '<span class="gold">' + band.setup + '</span>';
+    $('#monthlyRange').innerHTML = '<span class="green">' + band.monthly + '</span> <span style="color:var(--text-dim);font-size:13px;font-weight:400">/ mo</span>';
+
+    if (band.custom){
+      $('#customNote').style.display = 'block';
+    } else {
+      $('#customNote').style.display = 'none';
+    }
+
+    if (r.missLoss > 0) {
+      $('#bleedCard').style.display = 'block';
+      $('#missLoss').textContent = fmtMoney(r.missLoss);
+      $('#paybackMonths').textContent = r.payback;
+    } else {
+      $('#bleedCard').style.display = 'none';
+    }
+
+    // Booking CTA — mailto fallback with band + vertical baked in
+    const subject = 'RIVVEN Quote Request — ' + r.bandKey + ' band';
+    const bodyLines = [
+      'Hi Sabino — got my quote from rivven.ai/quote.html.',
+      '',
+      '· Business: ' + state.vertical,
+      '· Band: ' + r.bandKey,
+      '· Avg ticket: ' + (TICKETS.find(function(x){return x.id===state.ticket;})||{}).label,
+      '· Volume: ' + (VOLUMES.find(function(x){return x.id===state.volume;})||{}).label,
+      '· Team: ' + (TEAMS.find(function(x){return x.id===state.team;})||{}).label,
+      '',
+      'Ready to lock the number. What times work this week?'
+    ];
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    $('#ctaBook').href = 'mailto:sabino.sanchez7@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
+
+    // SMS body for "text Sabino" — pre-fills band so first message is qualified
+    const smsBody = encodeURIComponent('Hey Sabino — ' + state.vertical + ' owner, ' + r.bandKey + ' band per quote.html. Want to lock the number.');
+    $('#ctaText').href = 'sms:+15623731027?&body=' + smsBody;
+  }
+
+  // ===== EVENT WIRING =====
+  function init(){
+    renderVerticals();
+    renderOptions('ticketBtns', TICKETS, 'ticket', 'next2');
+    renderOptions('volumeBtns', VOLUMES, 'volume', 'next3');
+    renderOptions('teamBtns',   TEAMS,   'team',   'next4');
+
+    // Next buttons
+    $('#next1').addEventListener('click', function(){ if (state.vertical) showStep(2); });
+    $('#next2').addEventListener('click', function(){ if (state.ticket) showStep(3); });
+    $('#next3').addEventListener('click', function(){ if (state.volume) showStep(4); });
+    $('#next4').addEventListener('click', function(){
+      if (!state.team) return;
+      renderResult();
+      showStep(5);
+    });
+
+    // Back buttons
+    $$('.btn-back').forEach(function(b){
+      b.addEventListener('click', function(){
+        const from = parseInt(b.dataset.back, 10);
+        if (!isNaN(from) && from > 1) showStep(from - 1);
+      });
+    });
+  }
+
+  window.restart = function restart(){
+    state.vertical = null;
+    state.ticket = null;
+    state.volume = null;
+    state.team = null;
+    state.band = null;
+    $$('.chip, .big-btn').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-checked','false'); });
+    $$('.btn-next').forEach(function(b){ b.disabled = true; });
+    showStep(1);
+  };
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
 </script>
 
-<script src="/_components/meta-events.js" defer></script>
-<script src="/_components/exit-intent.js" defer></script>
-<script src="/chat-launcher.js?v=20260428c" defer></script>
 </body>
 </html>
