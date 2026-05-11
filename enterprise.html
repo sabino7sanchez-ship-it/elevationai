@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NRD18H529M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NRD18H529M');
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1460548358899377');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1460548358899377&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise AI Infrastructure | RIVVEN - Revenue Machines for Serious Businesses</title>
+<meta name="description" content="AI infrastructure for businesses doing $500K+/year. Custom AI agents, automation, CRM, ads, and growth systems. Custom-quoted to your revenue and stack, with 90-day performance guarantee.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://rivven.ai/enterprise.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Enterprise AI Infrastructure | RIVVEN">
+<meta property="og:description" content="We don't build websites. We build revenue machines. AI infrastructure for businesses doing $500K+/year. Custom-quoted to your revenue.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rivven.ai/enterprise.html">
+<meta property="og:image" content="https://rivven.ai/icon-1200.svg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Enterprise AI Infrastructure | RIVVEN">
+<meta name="twitter:description" content="We don't build websites. We build revenue machines.">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "RIVVEN",
+  "url": "https://rivven.ai",
+  "description": "AI-powered business infrastructure: custom websites, AI agents, automation, CRM, and growth systems for businesses doing $500K+/year.",
+  "founder": {
+    "@type": "Person",
+    "name": "Sabino Sanchez"
+  },
+  "areaServed": "Worldwide",
+  "priceRange": "$$$ · custom-quoted to revenue band",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Enterprise AI Packages",
+    "itemListElement": [
+      {
+        "@type": "AggregateOffer",
+        "name": "Growth Engine, Revenue Machine, and Enterprise tiers",
+        "priceCurrency": "USD",
+        "lowPrice": "5000",
+        "highPrice": "25000",
+        "offerCount": "3",
+        "availability": "https://schema.org/InStock",
+        "url": "https://rivven.ai/quote.html"
+      }
+    ]
+  }
+}
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+  :root {
+    --bg: #0A0A0B;
+    --bg-card: #111113;
+    --bg-card-hover: #18181B;
+    --border: #222225;
+    --text: #FAFAFA;
+    --text-dim: #71717A;
+    --text-mid: #A1A1AA;
+    --neon-cyan: #00F0FF;
+    --neon-green: #00FF88;
+    --neon-purple: #7B61FF;
+    --glow-cyan: rgba(0,240,255,0.15);
+    --glow-green: rgba(0,255,136,0.15);
+    --glow-purple: rgba(123,97,255,0.15);
+    --neon-red: #FF4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  /* ── LOADING ANIMATION ── */
+  body { animation: rivvenFadeIn 0.5s ease; }
+  @keyframes rivvenFadeIn { from { opacity:0 } to { opacity:1 } }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── PARTICLE CANVAS ── */
+  #particleCanvas { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+
+  /* ── NAV GLOW ON SCROLL ── */
+  .nav { transition: border-bottom-color 0.4s ease, box-shadow 0.4s ease; }
+  .nav.scrolled { box-shadow: 0 1px 20px rgba(0,240,255,0.1); border-bottom-color: rgba(0,240,255,0.15) !important; }
+
+  /* ── TYPEWRITER CURSOR ── */
+  .typewriter-cursor { display:inline-block; width:2px; height:0.9em; background:var(--neon-cyan); margin-left:2px; vertical-align:text-bottom; animation:twBlink 0.7s step-end infinite; }
+  @keyframes twBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── SECTION DIVIDER ── */
+  .section-divider { height:1px; background:linear-gradient(90deg,transparent,var(--neon-cyan),transparent); margin:0 auto; max-width:600px; }
+
+  /* Noise texture */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--text-dim); font-weight: 400; }
+  .nav-links { display: flex; align-items: center; gap: 20px; }
+  .nav-link { font-size: 13px; color: var(--text-mid); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  .nav-link:hover { color: var(--neon-cyan); }
+  .nav-link.green { color: var(--neon-green); font-weight: 600; }
+  .nav-cta {
+    padding: 8px 20px;
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover {
+    background: var(--neon-cyan);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--glow-cyan);
+  }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; margin: 5px 0; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+  .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,11,0.97); backdrop-filter: blur(20px); padding: 24px; border-bottom: 1px solid var(--border); z-index: 99; flex-direction: column; gap: 16px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 16px; color: var(--text-mid); text-decoration: none; padding: 8px 0; border-bottom: 1px solid var(--border); }
+
+  /* Scroll progress */
+  .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green)); z-index: 200; transition: width 0.1s; width: 0%; }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Back to top */
+  .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--neon-cyan); font-size: 20px; cursor: pointer; opacity: 0; pointer-events: none; transition: all 0.3s; z-index: 50; text-decoration: none; }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { background: var(--neon-cyan); color: var(--bg); box-shadow: 0 0 20px var(--glow-cyan); }
+
+  @media(max-width:768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; flex-direction: column; }
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, var(--glow-cyan) 0%, rgba(123,97,255,0.08) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border: 1px solid rgba(123,97,255,0.4);
+    border-radius: 99px;
+    font-size: 12px;
+    color: var(--neon-purple);
+    margin-bottom: 32px;
+    background: rgba(123,97,255,0.08);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--neon-purple);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--neon-purple); }
+    50% { opacity: 0.4; box-shadow: none; }
+  }
+  .hero h1 {
+    font-size: clamp(36px, 7vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    max-width: 900px;
+    position: relative;
+  }
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 20px;
+    color: var(--text-mid);
+    max-width: 580px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 60px;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: var(--neon-cyan);
+    color: var(--bg);
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 30px var(--glow-cyan);
+    transform: translateY(-2px);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: transparent;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: var(--text-mid);
+    background: var(--bg-card);
+  }
+
+  /* Hero stats */
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 24px;
+  }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--neon-green);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-mid);
+    max-width: 600px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .problem-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .problem-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 48px;
+    font-weight: 700;
+    color: rgba(255,68,68,0.15);
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    line-height: 1;
+  }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .problem-card {
+    background: rgba(17,17,19,0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .problem-card:hover {
+    border-color: var(--neon-red);
+    transform: translateY(-2px);
+  }
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--neon-red);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .problem-card:hover::before { opacity: 1; }
+  .problem-icon {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+  .problem-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .problem-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ── APPROACH / PHASES ── */
+  .phases {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .phase-card {
+    background: rgba(17,17,19,0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .phase-card:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .phase-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: rgba(0,240,255,0.07);
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    line-height: 1;
+  }
+  .phase-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+  .phase-tag.free { background: rgba(0,255,136,0.1); color: var(--neon-green); border: 1px solid rgba(0,255,136,0.2); }
+  .phase-tag.build { background: rgba(0,240,255,0.1); color: var(--neon-cyan); border: 1px solid rgba(0,240,255,0.2); }
+  .phase-tag.scale { background: rgba(123,97,255,0.1); color: var(--neon-purple); border: 1px solid rgba(123,97,255,0.2); }
+  .phase-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .phase-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .phase-list {
+    list-style: none;
+  }
+  .phase-list li {
+    font-size: 13px;
+    color: var(--text-dim);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(34,34,37,0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .phase-list li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .phase-card:nth-child(1) .phase-list li::before { background: var(--neon-green); }
+  .phase-card:nth-child(2) .phase-list li::before { background: var(--neon-cyan); }
+  .phase-card:nth-child(3) .phase-list li::before { background: var(--neon-purple); }
+
+  /* ── INCLUDED / WHAT YOU GET ── */
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .included-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+    background: rgba(17,17,19,0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+  .included-item:hover {
+    border-color: var(--neon-green);
+    background: var(--bg-card-hover);
+  }
+  .included-check {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon-green);
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .included-text h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .included-text p {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  /* ── ROI CALCULATOR ── */
+  .calc-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .calculator {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .calculator::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green), var(--neon-purple));
+  }
+  .calc-input-group {
+    margin-bottom: 32px;
+  }
+  .calc-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .calc-label span:first-child {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .calc-label .calc-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+  }
+  .calc-slider {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border);
+    outline: none;
+    cursor: pointer;
+  }
+  .calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--neon-cyan);
+    cursor: pointer;
+    box-shadow: 0 0 12px var(--glow-cyan);
+    border: 2px solid var(--bg);
+  }
+  .calc-slider::-moz-range-thumb {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--neon-cyan);
+    cursor: pointer;
+    box-shadow: 0 0 12px var(--glow-cyan);
+    border: 2px solid var(--bg);
+  }
+  .calc-results {
+    background: rgba(0,240,255,0.04);
+    border: 1px solid rgba(0,240,255,0.15);
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 8px;
+  }
+  .calc-results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .calc-result-item {
+    text-align: center;
+  }
+  .calc-result-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .calc-result-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .calc-result-value.current { color: var(--text-dim); }
+  .calc-result-value.projected { color: var(--neon-green); }
+  .calc-result-value.roi { color: var(--neon-cyan); }
+  .calc-payback {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,240,255,0.1);
+  }
+  .calc-payback-label {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+  .calc-payback-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--neon-green);
+  }
+
+  /* ── CASE STUDIES ── */
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  .case-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .case-card:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .case-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .case-card:hover::before { opacity: 1; }
+  .case-industry {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--neon-green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .case-name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .case-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .case-metrics {
+    display: flex;
+    gap: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .case-metric {
+    text-align: center;
+    flex: 1;
+  }
+  .case-metric-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+  }
+  .case-metric-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    align-items: start;
+  }
+  .pricing-card {
+    background: rgba(17,17,19,0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 28px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .pricing-card.featured {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 40px rgba(0,240,255,0.08);
+  }
+  .pricing-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+    border-radius: 16px 16px 0 0;
+  }
+  .pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--neon-cyan);
+    color: var(--bg);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+  .pricing-tier {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--neon-green);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+  .pricing-name {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .pricing-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .pricing-amount {
+    margin-bottom: 8px;
+  }
+  .pricing-setup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .pricing-setup-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-left: 4px;
+  }
+  .pricing-monthly {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+  }
+  .pricing-monthly strong {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--neon-cyan);
+  }
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+  .pricing-features li {
+    font-size: 13px;
+    color: var(--text-mid);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(34,34,37,0.5);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pricing-features li::before {
+    content: '\2713';
+    color: var(--neon-green);
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .pricing-cta {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .pricing-cta.primary {
+    background: var(--neon-cyan);
+    color: var(--bg);
+  }
+  .pricing-cta.primary:hover {
+    box-shadow: 0 0 30px var(--glow-cyan);
+    transform: translateY(-2px);
+  }
+  .pricing-cta.secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .pricing-cta.secondary:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+  }
+
+  /* ── APPLICATION FORM ── */
+  .form-section {
+    border-top: 1px solid var(--border);
+  }
+  .application-form {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .application-form::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan), var(--neon-green));
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-row.full {
+    grid-template-columns: 1fr;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-mid);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+  }
+  .form-group select {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2371717A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--neon-cyan);
+    color: var(--bg);
+    font-size: 15px;
+    font-weight: 800;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .form-submit:hover {
+    box-shadow: 0 0 30px var(--glow-cyan);
+    transform: translateY(-2px);
+  }
+  .form-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 16px;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 24px;
+    text-align: center;
+  }
+  .trust-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+  }
+  .trust-text strong {
+    color: var(--neon-cyan);
+    font-style: normal;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .footer a { color: var(--neon-cyan); text-decoration: none; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--neon-cyan); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { padding: 100px 20px 60px; }
+    .hero h1 { letter-spacing: -1px; }
+    .hero-stats { gap: 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .calculator { padding: 32px 24px; }
+    .calc-results-grid { grid-template-columns: 1fr; gap: 16px; }
+    .application-form { padding: 32px 24px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    .section { padding: 60px 20px; }
+  }
+</style>
+<link rel="stylesheet" href="/_components/motion.css">
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://rivven.ai" class="nav-logo">RIVVEN<span>.ai</span></a>
+  <div class="nav-links">
+    <a href="https://rivven.ai" class="nav-link">Home</a>
+    <a href="https://rivven.ai/agents.html" class="nav-link">AI Agents</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#roi" class="nav-link green">ROI Calculator</a>
+    <a href="#apply" class="nav-cta">Apply Now</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://rivven.ai">Home</a>
+  <a href="https://rivven.ai/agents.html">AI Agents</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#roi">ROI Calculator</a>
+  <a href="#apply">Apply Now</a>
+</div>
+
+<!-- ════════════════════════════════════ HERO ════════════════════════════════════ -->
+<section class="hero">
+  <canvas id="particleCanvas"></canvas>
+  <div class="hero-badge reveal">
+    <span class="hero-badge-dot"></span>
+    By Application Only
+  </div>
+  <h1 class="reveal reveal-delay-1">AI Infrastructure for<br><span class="gradient">Serious Businesses</span></h1>
+  <p class="hero-sub reveal reveal-delay-2">We don't build websites. We build revenue machines. Full-stack AI systems that generate leads, close deals, and scale operations — while you run the business.</p>
+  <div class="hero-ctas reveal reveal-delay-3">
+    <a href="#apply" class="btn-primary">Apply for Strategy Session &rarr;</a>
+    <a href="#roi" class="btn-secondary">Calculate Your ROI</a>
+  </div>
+  <div class="hero-stats reveal reveal-delay-4">
+    <div class="hero-stat">
+      <div class="hero-stat-value">$50K+</div>
+      <div class="hero-stat-label">Client Results Generated</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">22</div>
+      <div class="hero-stat-label">Industries Served</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">48hr</div>
+      <div class="hero-stat-label">Average Build Time</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<!-- ════════════════════════════════════ THE PROBLEM ════════════════════════════════════ -->
+<section class="section problem-section">
+  <div class="section-label reveal">The Problem</div>
+  <h2 class="section-title reveal reveal-delay-1">You're Bleeding Money on<br>Agencies That Don't Deliver</h2>
+  <p class="section-sub reveal reveal-delay-2">Most businesses waste $5K-$25K per year on agencies that deliver pretty mockups and zero ROI. Here's what's actually happening:</p>
+
+  <div class="problem-grid">
+    <div class="problem-card reveal reveal-delay-1">
+      <div class="problem-number">01</div>
+      <div class="problem-icon">&#x26A0;</div>
+      <div class="problem-title">Your Website Is a Digital Brochure</div>
+      <div class="problem-desc">It looks nice but doesn't generate a single lead. No booking system, no follow-up, no conversion tracking. It's an expensive business card that nobody reads.</div>
+    </div>
+    <div class="problem-card reveal reveal-delay-2">
+      <div class="problem-number">02</div>
+      <div class="problem-icon">&#x23F3;</div>
+      <div class="problem-title">You're Answering the Same Questions 50x a Day</div>
+      <div class="problem-desc">Pricing, hours, availability, directions. Your team wastes hours on messages that an AI agent could handle in 2 seconds, 24/7, in English and Spanish.</div>
+    </div>
+    <div class="problem-card reveal reveal-delay-3">
+      <div class="problem-number">03</div>
+      <div class="problem-icon">&#x1F4B8;</div>
+      <div class="problem-title">Leads Fall Through the Cracks</div>
+      <div class="problem-desc">Someone fills out a form at 9pm. You see it at 11am. By then they already booked with your competitor. No automated follow-up means lost revenue every single day.</div>
+    </div>
+    <div class="problem-card reveal reveal-delay-1">
+      <div class="problem-number">04</div>
+      <div class="problem-icon">&#x1F50D;</div>
+      <div class="problem-title">You're Invisible on Google</div>
+      <div class="problem-desc">Your competitors show up first because they have SEO, reviews, and optimized Google Business Profiles. You rely on word-of-mouth and hope. Hope is not a strategy.</div>
+    </div>
+    <div class="problem-card reveal reveal-delay-2">
+      <div class="problem-number">05</div>
+      <div class="problem-icon">&#x1F4CA;</div>
+      <div class="problem-title">You Have Zero Visibility Into What's Working</div>
+      <div class="problem-desc">No analytics, no conversion tracking, no idea which marketing channel actually brings in money. You're flying blind and making decisions based on gut feeling.</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<!-- ════════════════════════════════════ THE RIVVEN APPROACH ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label reveal">The RIVVEN Approach</div>
+  <h2 class="section-title reveal reveal-delay-1">Three Phases to<br><span style="color:var(--neon-cyan)">Predictable Revenue</span></h2>
+  <p class="section-sub reveal reveal-delay-2">We don't guess. We audit, build, and optimize — in that order. Every decision is data-driven. Every system is automated.</p>
+
+  <div class="phases">
+    <div class="phase-card reveal reveal-delay-1">
+      <div class="phase-number">01</div>
+      <span class="phase-tag free">Free</span>
+      <h3 class="phase-title">AI Audit</h3>
+      <p class="phase-desc">We analyze your entire digital presence, competitors, and revenue leaks before you spend a dime. You get a full report with specific opportunities and dollar amounts.</p>
+      <ul class="phase-list">
+        <li>Full website + SEO analysis</li>
+        <li>Competitor benchmarking</li>
+        <li>Revenue leak identification</li>
+        <li>Google Business Profile audit</li>
+        <li>Custom growth roadmap</li>
+      </ul>
+    </div>
+    <div class="phase-card reveal reveal-delay-2">
+      <div class="phase-number">02</div>
+      <span class="phase-tag build">2-4 Weeks</span>
+      <h3 class="phase-title">System Build</h3>
+      <p class="phase-desc">We build your complete revenue infrastructure. Custom AI agents, conversion-optimized website, SEO, automation, CRM — the entire machine, end to end.</p>
+      <ul class="phase-list">
+        <li>Custom AI-powered website</li>
+        <li>AI agents (booking, quotes, follow-up)</li>
+        <li>CRM + automation pipelines</li>
+        <li>Meta Ads + Google Ads setup</li>
+        <li>Bilingual EN/ES everything</li>
+      </ul>
+    </div>
+    <div class="phase-card reveal reveal-delay-3">
+      <div class="phase-number">03</div>
+      <span class="phase-tag scale">Ongoing</span>
+      <h3 class="phase-title">Scale + Optimize</h3>
+      <p class="phase-desc">Systems live, now we scale. Monthly optimization, A/B testing, new campaigns, performance reporting. Your revenue compounds every month.</p>
+      <ul class="phase-list">
+        <li>Weekly performance reports</li>
+        <li>A/B testing + conversion optimization</li>
+        <li>New ad campaigns + creatives</li>
+        <li>AI agent refinement</li>
+        <li>Dedicated support channel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<!-- ════════════════════════════════════ WHAT'S INCLUDED ════════════════════════════════════ -->
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="section-label reveal">Enterprise Package</div>
+  <h2 class="section-title reveal reveal-delay-1">Everything You Get</h2>
+  <p class="section-sub reveal reveal-delay-2">This isn't a website package. It's a complete business operating system, built and managed for you.</p>
+
+  <div class="included-grid">
+    <div class="included-item reveal reveal-delay-1">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>Custom AI-Powered Website</h4>
+        <p>Not a template. Hand-built, conversion-optimized, mobile-first. Designed to turn visitors into customers.</p>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-2">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>3-5 AI Agents</h4>
+        <p>Booking, quotes, follow-up, review collection, lead qualification. Working 24/7 in English and Spanish.</p>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-1">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>Google Business Profile Optimization</h4>
+        <p>Full setup and optimization so you show up when locals search for your services.</p>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-2">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>Meta Ads Setup + Management</h4>
+        <p>Targeted Facebook and Instagram campaigns. Audience building, creative testing, budget optimization.</p>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-1">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>CRM + Automation Pipeline</h4>
+        <p>Every lead tracked, every follow-up automated. Nothing falls through the cracks.</p>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-2">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>Bilingual EN/ES Everything</h4>
+        <p>Website, agents, ads, emails — all in both languages. Reach 100% of your market.</p>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-1">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>Weekly Performance Reports</h4>
+        <p>Clear, actionable dashboards. Leads, conversions, revenue, ad spend — everything tracked.</p>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-2">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>Dedicated Slack/WhatsApp Channel</h4>
+        <p>Direct line to your team. No ticket systems, no 48-hour wait times. You message, we respond.</p>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-1">
+      <div class="included-check">&#10003;</div>
+      <div class="included-text">
+        <h4>90-Day Performance Guarantee</h4>
+        <p>If we don't deliver measurable results in 90 days, we work for free until we do. Zero risk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ ROI CALCULATOR ════════════════════════════════════ -->
+<section class="section calc-section" id="roi">
+  <div style="text-align:center">
+    <div class="section-label reveal">ROI Calculator</div>
+    <h2 class="section-title reveal reveal-delay-1" style="max-width:600px;margin-left:auto;margin-right:auto;">See What RIVVEN Is Worth<br>to <span style="color:var(--neon-green)">Your Business</span></h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin-left:auto;margin-right:auto">Adjust the sliders to match your business. Watch the numbers change in real time.</p>
+  </div>
+
+  <div class="calculator reveal reveal-delay-3">
+    <div class="calc-input-group">
+      <div class="calc-label">
+        <span>Average Job / Sale Value</span>
+        <span class="calc-value" id="avgValueDisplay">$2,500</span>
+      </div>
+      <input type="range" class="calc-slider" id="avgValue" min="500" max="50000" value="2500" step="100">
+    </div>
+    <div class="calc-input-group">
+      <div class="calc-label">
+        <span>Monthly Leads</span>
+        <span class="calc-value" id="monthlyLeadsDisplay">20</span>
+      </div>
+      <input type="range" class="calc-slider" id="monthlyLeads" min="5" max="200" value="20" step="1">
+    </div>
+    <div class="calc-input-group">
+      <div class="calc-label">
+        <span>Current Close Rate</span>
+        <span class="calc-value" id="closeRateDisplay">15%</span>
+      </div>
+      <input type="range" class="calc-slider" id="closeRate" min="5" max="50" value="15" step="1">
+    </div>
+
+    <div class="calc-results">
+      <div class="calc-results-grid">
+        <div class="calc-result-item">
+          <div class="calc-result-label">Current Monthly Revenue</div>
+          <div class="calc-result-value current" id="currentRevenue">$7,500</div>
+        </div>
+        <div class="calc-result-item">
+          <div class="calc-result-label">Projected with RIVVEN</div>
+          <div class="calc-result-value projected" id="projectedRevenue">$18,750</div>
+        </div>
+        <div class="calc-result-item">
+          <div class="calc-result-label">Additional Monthly Revenue</div>
+          <div class="calc-result-value roi" id="additionalRevenue">+$11,250</div>
+        </div>
+        <div class="calc-result-item">
+          <div class="calc-result-label">Annual ROI</div>
+          <div class="calc-result-value roi" id="annualROI">1,250%</div>
+        </div>
+      </div>
+      <div class="calc-payback">
+        <div class="calc-payback-label">Your RIVVEN system pays for itself in</div>
+        <div class="calc-payback-value" id="paybackDays">27 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<!-- ════════════════════════════════════ CASE STUDIES ════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label reveal">Case Studies</div>
+  <h2 class="section-title reveal reveal-delay-1">Real Businesses,<br>Real Results</h2>
+  <p class="section-sub reveal reveal-delay-2">Every project is a custom build. Here's what that looks like in practice.</p>
+
+  <div class="case-grid">
+    <div class="case-card reveal reveal-delay-1">
+      <div class="case-industry">Barbershop / Grooming</div>
+      <h3 class="case-name">Trippy Blendz Barbershop</h3>
+      <p class="case-desc">From Instagram-only to full digital presence in 24 hours. Custom domain, 27 scroll animations, personalized copy, integrated booking, and review system. First RIVVEN client, fully deployed and live.</p>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-value">24hrs</div>
+          <div class="case-metric-label">Build Time</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-value">27</div>
+          <div class="case-metric-label">Animations</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-value">10</div>
+          <div class="case-metric-label">Reviews Live</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card reveal reveal-delay-2">
+      <div class="case-industry">Construction / Contracting</div>
+      <h3 class="case-name">Multi-Service Construction Co.</h3>
+      <p class="case-desc">26-service website with local SEO, marketing kit, and complete Google Business Profile. Transitioned from pure word-of-mouth to a searchable, professional digital presence that generates inbound leads.</p>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-value">26</div>
+          <div class="case-metric-label">Services Listed</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-value">SEO</div>
+          <div class="case-metric-label">Optimized</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-value">GBP</div>
+          <div class="case-metric-label">Full Setup</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card reveal reveal-delay-3">
+      <div class="case-industry">Financial Services / Lending</div>
+      <h3 class="case-name">Lending Professional</h3>
+      <p class="case-desc">AI-powered quote tool replaced manual Excel screenshots. Generates branded, professional quotes in 30 seconds with CVP analysis, fee breakdowns, and closing cost estimates. Saved hours per week on manual calculations.</p>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <div class="case-metric-value">30sec</div>
+          <div class="case-metric-label">Quote Time</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-value">AI</div>
+          <div class="case-metric-label">Powered Tool</div>
+        </div>
+        <div class="case-metric">
+          <div class="case-metric-value">10+hrs</div>
+          <div class="case-metric-label">Saved / Week</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+<!-- ════════════════════════════════════ PRICING ════════════════════════════════════ -->
+<section class="section" id="pricing" style="border-top:1px solid var(--border)">
+  <div style="text-align:center">
+    <div class="section-label reveal">Investment</div>
+    <h2 class="section-title reveal reveal-delay-1">Choose Your <span style="color:var(--neon-cyan)">Growth Path</span></h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin-left:auto;margin-right:auto">Every tier includes the free AI audit. Pick the system that matches your revenue goals.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- Growth Engine -->
+    <div class="pricing-card reveal reveal-delay-1">
+      <div class="pricing-tier">Tier 1</div>
+      <h3 class="pricing-name">Growth Engine</h3>
+      <p class="pricing-desc">For businesses doing $30–100K/mo ready to get serious about their digital presence and start generating consistent inbound leads.</p>
+      <div class="pricing-amount">
+        <span class="pricing-setup" style="font-size:38px">From $5K</span>
+        <span class="pricing-setup-label">setup, scaled to scope</span>
+      </div>
+      <div class="pricing-monthly">Then <strong>from $997/mo</strong> for ongoing management</div>
+      <ul class="pricing-features">
+        <li>Custom AI-powered website</li>
+        <li>2 AI agents (booking + follow-up)</li>
+        <li>Google Business Profile optimization</li>
+        <li>On-page SEO setup</li>
+        <li>Monthly performance report</li>
+        <li>Email + chat support</li>
+      </ul>
+      <a href="/quote.html" class="pricing-cta secondary">Get my quote</a>
+    </div>
+
+    <!-- Revenue Machine (Featured) -->
+    <div class="pricing-card featured reveal reveal-delay-2">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="pricing-tier">Tier 2</div>
+      <h3 class="pricing-name">Revenue Machine</h3>
+      <p class="pricing-desc">The complete system for businesses doing $50–200K/mo. Everything you need to dominate your local market and scale predictably with full automation.</p>
+      <div class="pricing-amount">
+        <span class="pricing-setup" style="font-size:38px">From $10K</span>
+        <span class="pricing-setup-label">setup, scaled to scope</span>
+      </div>
+      <div class="pricing-monthly">Then <strong>from $1,997/mo</strong> for ongoing management</div>
+      <ul class="pricing-features">
+        <li>Everything in Growth Engine</li>
+        <li>5 AI agents (booking, quotes, follow-up, reviews, lead qual)</li>
+        <li>Meta Ads setup + management</li>
+        <li>CRM + automation pipeline</li>
+        <li>Bilingual EN/ES everything</li>
+        <li>Weekly performance reports</li>
+        <li>Dedicated Slack/WhatsApp channel</li>
+        <li>90-day performance guarantee</li>
+      </ul>
+      <a href="/quote.html" class="pricing-cta primary">Get my quote &rarr;</a>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="pricing-card reveal reveal-delay-3">
+      <div class="pricing-tier">Tier 3</div>
+      <h3 class="pricing-name">Enterprise</h3>
+      <p class="pricing-desc">Full digital transformation for established multi-location businesses doing $200K+/mo. White-label ready, multi-location support, and a dedicated team.</p>
+      <div class="pricing-amount">
+        <span class="pricing-setup" style="font-size:38px">Custom</span>
+        <span class="pricing-setup-label">15-min diagnostic to scope</span>
+      </div>
+      <div class="pricing-monthly">Monthly retainer <strong>scales with scope</strong></div>
+      <ul class="pricing-features">
+        <li>Everything in Revenue Machine</li>
+        <li>Full digital transformation audit</li>
+        <li>White-label ready systems</li>
+        <li>Multi-location support</li>
+        <li>Google + Meta Ads management</li>
+        <li>Dedicated account manager</li>
+        <li>Priority 4-hour response time</li>
+        <li>Custom integrations + API access</li>
+        <li>Quarterly strategy sessions</li>
+      </ul>
+      <a href="/quote.html" class="pricing-cta secondary">Book diagnostic</a>
+    </div>
+  </div>
+
+  <div style="background:#1A1A1F;border:1px solid #F5C518;border-radius:14px;padding:18px;margin:40px auto 0;max-width:760px;text-align:center">
+    <div style="font-family:monospace;font-size:11px;letter-spacing:2px;color:#F5C518;font-weight:800;margin-bottom:8px">ENTERPRISE PRICING IS ALWAYS TAILORED</div>
+    <p style="color:#FAFAFA;font-size:15px;margin-bottom:16px">Every enterprise quote is priced to your revenue, stack, integrations, and location count — not flat-rate. Numbers above are starting points for the band, not final quotes.</p>
+    <a href="/quote.html" style="display:inline-block;background:#F5C518;color:#000;padding:12px 24px;border-radius:8px;text-decoration:none;font-family:monospace;font-weight:800;letter-spacing:1px;text-transform:uppercase;font-size:12px">Get your quote in 90 sec →</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════ APPLICATION FORM ════════════════════════════════════ -->
+<section class="section form-section" id="apply">
+  <div style="text-align:center">
+    <div class="section-label reveal">Apply</div>
+    <h2 class="section-title reveal reveal-delay-1">Ready to Build Your<br><span style="color:var(--neon-cyan)">Revenue Machine?</span></h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin-left:auto;margin-right:auto">This isn't a contact form. It's an application. We work with businesses that are serious about growth. Fill this out and we'll respond within 24 hours.</p>
+  </div>
+
+  <form class="application-form reveal reveal-delay-3" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="5fff5983-1fc1-421b-96a1-6652dd3c496b">
+    <input type="hidden" name="subject" value="Enterprise Application - RIVVEN">
+    <input type="hidden" name="from_name" value="RIVVEN Enterprise">
+    <input type="hidden" name="redirect" value="https://rivven.ai/enterprise.html?submitted=true">
+    <!-- Honeypot -->
+    <input type="text" name="botcheck" style="display:none">
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="businessName">Business Name *</label>
+        <input type="text" id="businessName" name="Business Name" required placeholder="Your business name">
+      </div>
+      <div class="form-group">
+        <label for="yourName">Your Name *</label>
+        <input type="text" id="yourName" name="Your Name" required placeholder="Full name">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="Email" required placeholder="you@business.com">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone *</label>
+        <input type="tel" id="phone" name="Phone" required placeholder="(555) 123-4567">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="revenue">Annual Revenue *</label>
+        <select id="revenue" name="Annual Revenue" required>
+          <option value="" disabled selected>Select range</option>
+          <option value="Under $100K">Under $100K</option>
+          <option value="$100K - $500K">$100K - $500K</option>
+          <option value="$500K - $1M">$500K - $1M</option>
+          <option value="$1M - $5M">$1M - $5M</option>
+          <option value="$5M+">$5M+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="industry">Industry *</label>
+        <select id="industry" name="Industry" required>
+          <option value="" disabled selected>Select industry</option>
+          <option value="Construction / Contracting">Construction / Contracting</option>
+          <option value="Home Services (HVAC, Plumbing, Electrical)">Home Services (HVAC, Plumbing, Electrical)</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Healthcare / Dental / Med Spa">Healthcare / Dental / Med Spa</option>
+          <option value="Legal Services">Legal Services</option>
+          <option value="Restaurant / Food Service">Restaurant / Food Service</option>
+          <option value="Retail / E-Commerce">Retail / E-Commerce</option>
+          <option value="Automotive / Detailing">Automotive / Detailing</option>
+          <option value="Beauty / Barbershop / Salon">Beauty / Barbershop / Salon</option>
+          <option value="Financial Services / Lending">Financial Services / Lending</option>
+          <option value="Insurance">Insurance</option>
+          <option value="Fitness / Gym / Personal Training">Fitness / Gym / Personal Training</option>
+          <option value="Landscaping / Lawn Care">Landscaping / Lawn Care</option>
+          <option value="Cleaning Services">Cleaning Services</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row full">
+      <div class="form-group">
+        <label for="challenge">What's your biggest growth challenge right now? *</label>
+        <textarea id="challenge" name="Biggest Challenge" required placeholder="Tell us what's holding your business back. Be specific — the more detail, the better our strategy session will be."></textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="budget">Monthly Marketing Budget</label>
+        <select id="budget" name="Marketing Budget">
+          <option value="" disabled selected>Select range</option>
+          <option value="Under $1K">Under $1K</option>
+          <option value="$1K - $3K">$1K - $3K</option>
+          <option value="$3K - $5K">$3K - $5K</option>
+          <option value="$5K - $10K">$5K - $10K</option>
+          <option value="$10K+">$10K+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="source">How did you find us?</label>
+        <select id="source" name="How Found Us">
+          <option value="" disabled selected>Select one</option>
+          <option value="Google Search">Google Search</option>
+          <option value="Instagram">Instagram</option>
+          <option value="TikTok">TikTok</option>
+          <option value="LinkedIn">LinkedIn</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Referral">Referral / Word of Mouth</option>
+          <option value="Cold Outreach">You Reached Out to Me</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="form-submit">Apply for a Strategy Session &rarr;</button>
+    <p class="form-note">We review every application within 24 hours. If we're a fit, you'll get a free AI audit of your business before any commitment.</p>
+  </form>
+</section>
+
+<!-- ════════════════════════════════════ TRUST BAR ════════════════════════════════════ -->
+<div class="trust-bar">
+  <p class="trust-text reveal">Built by a <strong>19-year-old who ships faster than any agency you've used</strong>. Zero fluff. Zero meetings that could've been emails. Just results. Every system is built with AI-grade tools, tested before deploy, and guaranteed to perform.</p>
+</div>
+
+<!-- ════════════════════════════════════ FOOTER ════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="https://rivven.ai">Home</a>
+    <a href="https://rivven.ai/agents.html">AI Agents</a>
+    <a href="https://rivven.ai/demos.html">Demos</a>
+    <a href="#apply">Apply</a>
+  </div>
+  <p>&copy; 2026 <a href="https://rivven.ai">RIVVEN LLC</a>. All rights reserved. &nbsp;|&nbsp; AI-Powered Business Infrastructure</p>
+</footer>
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top" id="backToTop">&uarr;</a>
+
+<!-- ════════════════════════════════════ JAVASCRIPT ════════════════════════════════════ -->
+<script>
+(function(){
+
+  // ── PARTICLE BACKGROUND ──
+  var canvas = document.getElementById('particleCanvas');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var particleCount = 50;
+    function resizeCanvas(){
+      var hero = canvas.parentElement;
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for(var i=0;i<particleCount;i++){
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*2+1,
+        a: Math.random()*0.2+0.1,
+        speed: Math.random()*0.5+0.2
+      });
+    }
+    function drawParticles(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for(var i=0;i<particles.length;i++){
+        var p=particles[i];
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,'+p.a+')';
+        ctx.fill();
+        p.y-=p.speed;
+        if(p.y<-5){p.y=canvas.height+5;p.x=Math.random()*canvas.width;}
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
+
+  // ── TYPEWRITER EFFECT ──
+  var h1 = document.querySelector('.hero h1');
+  if(h1){
+    var gradientEl = h1.querySelector('.gradient');
+    function typewrite(el, cb){
+      if(!el){ if(cb) cb(); return; }
+      var text = el.textContent;
+      el.textContent = '';
+      var cursor = document.createElement('span');
+      cursor.className = 'typewriter-cursor';
+      el.appendChild(cursor);
+      var idx = 0;
+      var interval = setInterval(function(){
+        if(idx<text.length){
+          el.insertBefore(document.createTextNode(text[idx]),cursor);
+          idx++;
+        } else {
+          clearInterval(interval);
+          setTimeout(function(){ cursor.remove(); if(cb) cb(); }, 600);
+        }
+      }, Math.floor(2000/text.length));
+    }
+    setTimeout(function(){ typewrite(gradientEl); }, 300);
+  }
+
+  // ── MAGNETIC CURSOR ON CTA BUTTONS ──
+  document.querySelectorAll('.btn-primary, .btn-secondary').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var rect = btn.getBoundingClientRect();
+      var cx = rect.left + rect.width/2;
+      var cy = rect.top + rect.height/2;
+      var dx = e.clientX - cx;
+      var dy = e.clientY - cy;
+      var dist = Math.sqrt(dx*dx+dy*dy);
+      if(dist<100){
+        var pull = (100-dist)/100;
+        btn.style.transform = 'translate('+Math.round(dx*pull*0.08)+'px,'+Math.round(dy*pull*0.08)+'px)';
+      }
+    });
+    btn.addEventListener('mouseleave', function(){
+      btn.style.transform = '';
+    });
+  });
+
+  // ── HOVER TILT ON CARDS ──
+  document.querySelectorAll('.problem-card, .phase-card, .pricing-card, .included-item').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var cx = rect.width/2;
+      var cy = rect.height/2;
+      var rotateY = ((x-cx)/cx)*5;
+      var rotateX = ((cy-y)/cy)*5;
+      card.style.transform = 'perspective(1000px) rotateX('+rotateX+'deg) rotateY('+rotateY+'deg) translateY(-2px)';
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = '';
+    });
+  });
+
+  // ── Scroll Progress + Back to Top + Nav Glow ──
+  const sp = document.getElementById('scrollProgress');
+  const btt = document.getElementById('backToTop');
+  const navEl = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    sp.style.width = (window.scrollY / h * 100) + '%';
+    btt.classList.toggle('visible', window.scrollY > 400);
+    if(window.scrollY > 50) navEl.classList.add('scrolled');
+    else navEl.classList.remove('scrolled');
+  });
+
+  // ── Hamburger ──
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileMenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+  });
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+  }));
+
+  // ── Scroll Reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── ROI Calculator ──
+  const avgSlider = document.getElementById('avgValue');
+  const leadsSlider = document.getElementById('monthlyLeads');
+  const closeSlider = document.getElementById('closeRate');
+
+  function formatMoney(n) {
+    return '$' + n.toLocaleString('en-US');
+  }
+
+  function updateCalc() {
+    const avg = parseInt(avgSlider.value);
+    const leads = parseInt(leadsSlider.value);
+    const close = parseInt(closeSlider.value) / 100;
+
+    document.getElementById('avgValueDisplay').textContent = formatMoney(avg);
+    document.getElementById('monthlyLeadsDisplay').textContent = leads;
+    document.getElementById('closeRateDisplay').textContent = closeSlider.value + '%';
+
+    const currentRev = avg * leads * close;
+    // RIVVEN improvement: 40% more leads, 35% better close rate
+    const newLeads = Math.round(leads * 1.4);
+    const newClose = Math.min(close * 1.35, 0.85);
+    const projectedRev = avg * newLeads * newClose;
+    const additional = projectedRev - currentRev;
+    const investment = 10000; // Revenue Machine setup
+    const annualReturn = (additional * 12 / investment * 100);
+    const payback = additional > 0 ? Math.max(1, Math.round(investment / (additional / 30))) : 999;
+
+    document.getElementById('currentRevenue').textContent = formatMoney(Math.round(currentRev));
+    document.getElementById('projectedRevenue').textContent = formatMoney(Math.round(projectedRev));
+    document.getElementById('additionalRevenue').textContent = '+' + formatMoney(Math.round(additional));
+    document.getElementById('annualROI').textContent = Math.round(annualReturn).toLocaleString() + '%';
+    document.getElementById('paybackDays').textContent = payback + ' days';
+
+    // Update slider fill
+    [avgSlider, leadsSlider, closeSlider].forEach(s => {
+      const pct = (s.value - s.min) / (s.max - s.min) * 100;
+      s.style.background = `linear-gradient(to right, #00F0FF ${pct}%, #222225 ${pct}%)`;
+    });
+  }
+
+  avgSlider.addEventListener('input', updateCalc);
+  leadsSlider.addEventListener('input', updateCalc);
+  closeSlider.addEventListener('input', updateCalc);
+  updateCalc();
+
+  // ── Check for submission redirect ──
+  if (window.location.search.includes('submitted=true')) {
+    const form = document.querySelector('.application-form');
+    form.innerHTML = '<div style="text-align:center;padding:40px 0"><div style="font-size:48px;margin-bottom:16px;color:#00FF88">&#10003;</div><h3 style="font-size:24px;font-weight:800;margin-bottom:12px">Application Received</h3><p style="color:#A1A1AA;font-size:15px;line-height:1.7;max-width:400px;margin:0 auto">We review every application within 24 hours. If we are a fit, you will receive a free AI audit of your business before any commitment. Keep an eye on your inbox.</p></div>';
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // ── Track form submission with GA4 + Meta ──
+  const form = document.querySelector('.application-form');
+  if (form && form.tagName === 'FORM') {
+    form.addEventListener('submit', function() {
+      if (typeof gtag === 'function') {
+        gtag('event', 'enterprise_application', {
+          event_category: 'lead',
+          event_label: 'enterprise_form'
+        });
+      }
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { content_name: 'Enterprise Application' });
+      }
+    });
+  }
+})();
+</script>
+
+<script src="/_components/motion.js" defer></script>
+</body>
+</html>
