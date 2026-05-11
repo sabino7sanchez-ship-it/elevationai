@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RIVVEN · Calls Today · Mon 5/11</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
+<script src="../auth.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@1,400&display=swap');
+:root{--bg:#0A0A0B;--card:#111113;--card2:#1A1A1F;--border:#222225;--text:#FAFAFA;--mid:#A1A1AA;--dim:#71717A;--gold:#F5C518;--green:#00FF88;--cyan:#00F0FF;--red:#FF4455;--pink:#FF6BAA}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.45;font-size:15px;padding:16px;padding-bottom:80px;background-image:radial-gradient(circle at 20% 0%,rgba(245,197,24,0.05),transparent 50%)}
+.wrap{max-width:680px;margin:0 auto}
+header{margin-bottom:20px}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:800}
+h1{font-size:26px;font-weight:900;letter-spacing:-0.5px;line-height:1.1;margin-top:4px}
+h1 .it{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--gold)}
+.sub{color:var(--mid);font-size:13px;margin-top:6px}
+.stats{display:flex;gap:8px;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;flex-wrap:wrap}
+.stat{background:var(--card);border:1px solid var(--border);padding:6px 12px;border-radius:999px;color:var(--mid)}
+.stat b{color:var(--gold)}
+.stat.done{border-color:var(--green);color:var(--green)}
+.opener{background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:16px;margin:20px 0;position:relative}
+.opener::before{content:'OPENER · VERBATIM';position:absolute;top:-9px;left:14px;background:var(--bg);padding:0 8px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);font-weight:800;letter-spacing:1.5px}
+.opener q{font-size:15px;line-height:1.55;color:var(--text);display:block;font-style:italic}
+.opener q::before,.opener q::after{content:''}
+.flow{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:10px}
+.step{background:var(--card2);padding:5px 10px;border-radius:6px;color:var(--mid);border:1px solid var(--border)}
+.step b{color:var(--gold)}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);font-weight:800;margin:22px 0 10px;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;transition:all .15s}
+.card.done{opacity:0.45;border-color:var(--green)}
+.card.done .biz{text-decoration:line-through;color:var(--dim)}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.rank{font-family:'Playfair Display',serif;font-style:italic;font-size:30px;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;min-width:34px}
+.biz{font-size:17px;font-weight:800;line-height:1.2;color:var(--text)}
+.tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;background:rgba(245,197,24,0.12);color:var(--gold);padding:3px 8px;border-radius:4px;font-weight:700;text-transform:uppercase;display:inline-block;margin-top:4px;margin-right:4px}
+.tag.gar{background:rgba(0,240,255,0.12);color:var(--cyan)}
+.tag.hvac{background:rgba(255,107,170,0.12);color:var(--pink)}
+.tag.pl{background:rgba(0,255,136,0.10);color:var(--green)}
+.note{font-size:12px;color:var(--mid);margin-top:6px;line-height:1.45}
+.note b{color:var(--text)}
+.roi{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);background:rgba(245,197,24,0.06);border-left:3px solid var(--gold);padding:8px 10px;border-radius:0 6px 6px 0;margin-top:10px;font-weight:700}
+.btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{flex:1;min-width:120px;padding:14px 16px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-decoration:none;text-align:center;border:none;cursor:pointer;transition:transform .1s;color:#000}
+.btn.call{background:var(--green);color:#000}
+.btn.call:active{transform:scale(0.97)}
+.btn.sms{background:var(--cyan);color:#000}
+.btn.done-btn{background:transparent;color:var(--mid);border:1px solid var(--border);flex:0 0 auto;min-width:60px;padding:14px 18px}
+.btn.done-btn:hover,.btn.done-btn:active{border-color:var(--green);color:var(--green)}
+.card.done .btn.done-btn{background:var(--green);color:#000;border-color:var(--green)}
+.card.done .btn.call,.card.done .btn.sms{opacity:0.4;pointer-events:none}
+details{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:0;margin-top:10px;overflow:hidden}
+summary{padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--mid);font-weight:700;cursor:pointer;text-transform:uppercase;user-select:none}
+summary:hover{color:var(--gold)}
+details[open] summary{border-bottom:1px solid var(--border)}
+.objs{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.obj{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px}
+.obj .q{font-size:11px;color:var(--mid);font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;margin-bottom:6px;text-transform:uppercase}
+.obj .a{font-size:13px;color:var(--text);line-height:1.5;font-style:italic}
+.pricing{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin:18px 0;font-family:'JetBrains Mono',monospace;font-size:12px}
+.pricing-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--border)}
+.pricing-row:last-child{border:0}
+.pricing-row b{color:var(--gold)}
+.tier{color:var(--text);font-weight:700}
+.demo-card{background:linear-gradient(135deg,rgba(245,197,24,0.08),rgba(0,240,255,0.06));border:1px solid var(--gold);border-radius:14px;padding:14px;margin-bottom:18px;text-align:center}
+.demo-card .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:800;margin-bottom:6px}
+.demo-card .url{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text);word-break:break-all;margin-bottom:10px}
+.demo-btn{display:inline-block;background:var(--gold);color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.reset{margin-top:30px;text-align:center}
+.reset button{background:transparent;color:var(--dim);border:1px solid var(--border);padding:8px 16px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer}
+.reset button:hover{color:var(--red);border-color:var(--red)}
+@media(max-width:480px){
+  h1{font-size:22px}
+  .btn{min-width:100px;font-size:12px;padding:13px 12px}
+  .btn.done-btn{min-width:55px;padding:13px 14px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">RIVVEN · COMMAND</div>
+  <h1>Calls <span class="it">Today</span></h1>
+  <div class="sub">Mon 5/11 · 2:16 PM PT · 8 cold leads · owner-operated · tier-A verticals</div>
+  <div class="stats">
+    <div class="stat">DIALS: <b id="dials">0</b>/8</div>
+    <div class="stat">FLOOR: <b>7/day</b></div>
+    <div class="stat done" id="closedStat" style="display:none">CLOSED: <b id="closed">0</b></div>
+  </div>
+</header>
+
+<div class="opener">
+  <q>"Hey — quick, you the owner? … Cool. This isn't a pitch, I'm not asking for anything. 90 seconds, you say yes or no, we both move on. Cool?"</q>
+  <div class="flow">
+    <div class="step"><b>1.</b> Opener</div>
+    <div class="step"><b>2.</b> Hook · "$X missed/day"</div>
+    <div class="step"><b>3.</b> Demo drop · they listen</div>
+    <div class="step"><b>4.</b> "Which tier?"</div>
+    <div class="step"><b>5.</b> Tuesday OR lock today</div>
+  </div>
+</div>
+
+<div class="demo-card">
+  <div class="lbl">DEMO TO DROP (have them tap during call)</div>
+  <div class="url">rivven.ai/demos/construction-invoicing/</div>
+  <a href="https://rivven.ai/demos/construction-invoicing/?utm_source=cmd-calls" target="_blank" class="demo-btn">Verify Live</a>
+</div>
+
+<div class="section-label">The List · Dial Top to Bottom</div>
+
+<div class="card" data-id="1">
+  <div class="card-head">
+    <div class="rank">1</div>
+    <div style="flex:1">
+      <div class="biz">24/7 Locksmith Phoenix AZ</div>
+      <span class="tag">LOCKSMITH</span><span class="tag" style="background:rgba(0,255,136,0.10);color:var(--green)">OWNER ANSWERS</span>
+      <div class="note">Owner-operated · mobile · <b>answers own phone</b> — you're talking to the decision-maker in 8 seconds.</div>
+      <div class="roi">$150–300/lockout · "bet you missed 3 already today = $700 walking"</div>
+    </div>
+  </div>
+  <div class="btns">
+    <a href="tel:+16028442844" class="btn call">📞 602-844-2844</a>
+    <a href="sms:+16028442844?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Saw%20you%27re%20owner-operated.%20Built%20an%20AI%20that%20answers%20your%20phone%20when%20you%27re%20on%20a%20call%20—%20hear%20it%20live%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <button class="btn done-btn" onclick="toggleDone(1)">✓</button>
+  </div>
+</div>
+
+<div class="card" data-id="2">
+  <div class="card-head">
+    <div class="rank">2</div>
+    <div style="flex:1">
+      <div class="biz">Sunrise Garage Doors LV</div>
+      <span class="tag gar">GARAGE</span><span class="tag" style="background:rgba(0,255,136,0.10);color:var(--green)">OWNER NAMED</span>
+      <div class="note">Owner: <b>Ozzie Maldonado</b> · family-owned since 2005 · open with "Ozzie?"</div>
+      <div class="roi">$250 avg · "miss 3-4 Monday afternoons, that's $1K walking"</div>
+    </div>
+  </div>
+  <div class="btns">
+    <a href="tel:+17253008930" class="btn call">📞 725-300-8930</a>
+    <a href="sms:+17253008930?body=Hey%20Ozzie%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20answers%20your%20phone%20when%20you%27re%20on%20a%20call.%20Hear%20it%20live%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <button class="btn done-btn" onclick="toggleDone(2)">✓</button>
+  </div>
+</div>
+
+<div class="card" data-id="3">
+  <div class="card-head">
+    <div class="rank">3</div>
+    <div style="flex:1">
+      <div class="biz">Speedway Locksmith Phoenix</div>
+      <span class="tag">LOCKSMITH</span><span class="tag pl">FAMILY-OWNED</span>
+      <div class="note">Family-owned Phoenix shop · 24/7</div>
+      <div class="roi">$150–300/lockout · same ROI as #1</div>
+    </div>
+  </div>
+  <div class="btns">
+    <a href="tel:+14802777674" class="btn call">📞 480-277-7674</a>
+    <a href="sms:+14802777674?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20answers%20your%20phone%20when%20you%27re%20on%20a%20call.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <button class="btn done-btn" onclick="toggleDone(3)">✓</button>
+  </div>
+</div>
+
+<div class="card" data-id="4">
+  <div class="card-head">
+    <div class="rank">4</div>
+    <div style="flex:1">
+      <div class="biz">C &amp; M Garage Door LV</div>
+      <span class="tag gar">GARAGE</span><span class="tag pl">SINCE 1991</span>
+      <div class="note">Old-school · talk plain English · no tech jargon · since 1991</div>
+      <div class="roi">$250 avg · "$1K/day Monday afternoons gone"</div>
+    </div>
+  </div>
+  <div class="btns">
+    <a href="tel:+17026553667" class="btn call">📞 702-655-3667</a>
+    <a href="sms:+17026553667?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20answering%20service%20—%20half%20the%20cost%2C%20books%20instead%20of%20takes%20a%20message.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <button class="btn done-btn" onclick="toggleDone(4)">✓</button>
+  </div>
+</div>
+
+<div class="card" data-id="5">
+  <div class="card-head">
+    <div class="rank">5</div>
+    <div style="flex:1">
+      <div class="biz">Royal Garage Door LV</div>
+      <span class="tag gar">GARAGE</span><span class="tag pl">FAMILY-OWNED</span>
+      <div class="note">Family-owned · LV + Henderson + North LV coverage</div>
+      <div class="roi">$250 avg · Monday afternoon dead zone</div>
+    </div>
+  </div>
+  <div class="btns">
+    <a href="tel:+17028185890" class="btn call">📞 702-818-5890</a>
+    <a href="sms:+17028185890?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20phone%20answering%20—%20books%20jobs%20while%20you%27re%20on%20a%20call.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <button class="btn done-btn" onclick="toggleDone(5)">✓</button>
+  </div>
+</div>
+
+<div class="card" data-id="6">
+  <div class="card-head">
+    <div class="rank">6</div>
+    <div style="flex:1">
+      <div class="biz">AAA AUGER Plumbing Austin</div>
+      <span class="tag hvac" style="background:rgba(0,255,136,0.10);color:var(--green)">PLUMBER</span><span class="tag pl">TEXAS FAMILY</span>
+      <div class="note">Texas family-owned · 24/7 · guarantees parts</div>
+      <div class="roi">$400 avg · "miss 2 Monday afternoon emergencies = $800/day, every day"</div>
+    </div>
+  </div>
+  <div class="btns">
+    <a href="tel:+15129280467" class="btn call">📞 512-928-0467</a>
+    <a href="sms:+15129280467?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20books%20plumbing%20emergencies%2024%2F7.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <button class="btn done-btn" onclick="toggleDone(6)">✓</button>
+  </div>
+</div>
+
+<div class="card" data-id="7">
+  <div class="card-head">
+    <div class="rank">7</div>
+    <div style="flex:1">
+      <div class="biz">The A/C Guy of Tampa Bay</div>
+      <span class="tag hvac">HVAC</span><span class="tag pl">15+ YEARS</span>
+      <div class="note">15+ years · owner-led shop · Tampa Bay</div>
+      <div class="roi">$350 avg AC call · Tampa heat = "$10K/mo gone if you miss one a day"</div>
+    </div>
+  </div>
+  <div class="btns">
+    <a href="tel:+17272863170" class="btn call">📞 727-286-3170</a>
+    <a href="sms:+17272863170?body=Hey%20—%20Sabino%20with%20RIVVEN.%20AC%20call%20in%20Tampa%20heat%20%24350%20avg%20—%20our%20AI%20answers%20when%20you%20can%27t.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <button class="btn done-btn" onclick="toggleDone(7)">✓</button>
+  </div>
+</div>
+
+<div class="card" data-id="8">
+  <div class="card-head">
+    <div class="rank">8</div>
+    <div style="flex:1">
+      <div class="biz">I Care Air Care · Tim Hawk</div>
+      <span class="tag hvac">HVAC</span><span class="tag" style="background:rgba(0,255,136,0.10);color:var(--green)">OWNER NAMED</span>
+      <div class="note">Owner: <b>Tim Hawk</b> · 20+ yrs · Wesley Chapel · open with "Tim?"</div>
+      <div class="roi">$350 avg · same Tampa heat ROI</div>
+    </div>
+  </div>
+  <div class="btns">
+    <a href="tel:+18133952324" class="btn call">📞 813-395-2324</a>
+    <a href="sms:+18133952324?body=Hey%20Tim%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20books%20AC%20calls%20while%20you%27re%20on%20a%20roof.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <button class="btn done-btn" onclick="toggleDone(8)">✓</button>
+  </div>
+</div>
+
+<div class="pricing">
+  <div class="pricing-row"><span class="tier">ESSENTIAL</span><span><b>$5K</b> setup + <b>$497</b>/mo</span></div>
+  <div class="pricing-row"><span class="tier">GROWTH</span><span><b>$9.5K</b> setup + <b>$797</b>/mo</span></div>
+  <div class="pricing-row"><span class="tier">DOMINANCE</span><span><b>$15K</b> setup + <b>$997</b>/mo</span></div>
+  <div class="pricing-row" style="border-top:1px solid var(--gold);padding-top:8px;margin-top:4px"><span style="color:var(--gold)">TWO-OPTION CLOSE</span><span style="font-size:11px">Tue 2pm Zoom · OR · waive $500 deploy if locked today</span></div>
+</div>
+
+<details>
+<summary>▸ Objection Quick-Refs</summary>
+<div class="objs">
+  <div class="obj"><div class="q">"I already have an answering service"</div><div class="a">"Cool. What's it cost? … I'm half that and it <b>books on the spot</b> instead of taking a message. 10-day trial, you keep the calls it books, fire me if it's worse. Fair?"</div></div>
+  <div class="obj"><div class="q">"How do I know it sounds real"</div><div class="a">"You just heard it. Trial it free 10 days on your line — if a single customer says it sounds robotic, you owe me zero."</div></div>
+  <div class="obj"><div class="q">"Send me info"</div><div class="a">"I'll text you the demo link <b>right now while we're on</b>. Open it." (Then re-enter close.)</div></div>
+  <div class="obj"><div class="q">"Too expensive"</div><div class="a">"What's <b>one</b> missed weekend job worth to you? Two of those a month and it's free. I'm not asking you to spend — I'm asking you to plug a leak."</div></div>
+</div>
+</details>
+
+<div class="reset">
+  <button onclick="resetAll()">RESET PROGRESS</button>
+</div>
+
+</div>
+
+<script>
+const STORE_KEY='calls-today-2026-05-11';
+function getState(){try{return JSON.parse(localStorage.getItem(STORE_KEY))||{}}catch(e){return{}}}
+function setState(s){localStorage.setItem(STORE_KEY,JSON.stringify(s))}
+function render(){
+  const s=getState();
+  let done=0;
+  document.querySelectorAll('.card').forEach(c=>{
+    const id=c.dataset.id;
+    if(s[id]){c.classList.add('done');done++}else{c.classList.remove('done')}
+  });
+  document.getElementById('dials').textContent=done;
+}
+function toggleDone(id){
+  const s=getState();
+  if(s[id])delete s[id];else s[id]=Date.now();
+  setState(s);render();
+}
+function resetAll(){if(confirm('Clear progress?')){localStorage.removeItem(STORE_KEY);render()}}
+// Auto-mark when tel: link tapped
+document.querySelectorAll('.btn.call').forEach((btn,i)=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.card');
+    const id=card.dataset.id;
+    setTimeout(()=>{
+      const s=getState();
+      if(!s[id]){s[id]=Date.now();setState(s);render()}
+    },800);
+  });
+});
+render();
+</script>
+
+</body>
+</html>
