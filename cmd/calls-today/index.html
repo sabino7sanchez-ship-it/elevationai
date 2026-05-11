@@ -9,12 +9,12 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>R</text></svg>">
 <script src="../../auth.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@1,400&display=swap');
-:root{--bg:#0A0A0B;--card:#111113;--card2:#1A1A1F;--border:#222225;--text:#FAFAFA;--mid:#A1A1AA;--dim:#71717A;--gold:#F5C518;--green:#00FF88;--cyan:#00F0FF;--red:#FF4455;--pink:#FF6BAA}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&family=Playfair+Display:ital,wght@1,400&display=swap');
+:root{--bg:#0A0A0B;--card:#111113;--card2:#1A1A1F;--card3:#222225;--border:#222225;--text:#FAFAFA;--mid:#A1A1AA;--dim:#71717A;--gold:#F5C518;--green:#00FF88;--cyan:#00F0FF;--red:#FF4455;--pink:#FF6BAA;--orange:#FF8C42}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.45;font-size:15px;padding:16px;padding-bottom:80px;background-image:radial-gradient(circle at 20% 0%,rgba(245,197,24,0.05),transparent 50%)}
-.wrap{max-width:680px;margin:0 auto}
-header{margin-bottom:20px}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.45;font-size:15px;padding:16px;padding-bottom:120px;background-image:radial-gradient(circle at 20% 0%,rgba(245,197,24,0.05),transparent 50%)}
+.wrap{max-width:720px;margin:0 auto}
+header{margin-bottom:18px}
 .kicker{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:800}
 h1{font-size:26px;font-weight:900;letter-spacing:-0.5px;line-height:1.1;margin-top:4px}
 h1 .it{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;color:var(--gold)}
@@ -23,16 +23,51 @@ h1 .it{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;co
 .stat{background:var(--card);border:1px solid var(--border);padding:6px 12px;border-radius:999px;color:var(--mid)}
 .stat b{color:var(--gold)}
 .stat.done{border-color:var(--green);color:var(--green)}
+
+/* ============ NAV TABS ============ */
+.tabs{display:flex;gap:6px;margin:18px 0 14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;background:var(--card);border:1px solid var(--border);color:var(--mid);padding:9px 14px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;cursor:pointer;font-weight:700;text-transform:uppercase}
+.tab.active{background:var(--gold);color:#000;border-color:var(--gold)}
+.tab:hover{color:var(--text)}
+.panel{display:none}
+.panel.active{display:block}
+
+/* ============ FLOW MAP ============ */
+.flow-map{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:20px}
+.flow-map h3{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--gold);font-weight:800;margin-bottom:14px}
+.fnode{background:var(--card2);border-left:3px solid var(--gold);padding:10px 12px;margin-bottom:6px;border-radius:0 8px 8px 0;position:relative;font-size:13px;line-height:1.4}
+.fnode .step{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:1.5px;font-weight:800;margin-bottom:4px;text-transform:uppercase}
+.fnode .txt{color:var(--text)}
+.fnode .time{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--dim);float:right;letter-spacing:1px}
+.fnode.demo{border-left-color:var(--cyan)}
+.fnode.demo .step{color:var(--cyan)}
+.fnode.close{border-left-color:var(--green)}
+.fnode.close .step{color:var(--green)}
+.fnode.branch{border-left-color:var(--red)}
+.fnode.branch .step{color:var(--red)}
+.arrow{text-align:center;color:var(--gold);font-size:14px;line-height:1;margin:2px 0;opacity:0.6}
+.flow-branches{margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.flow-branch{background:var(--card2);border:1px solid var(--border);padding:8px 10px;border-radius:8px;font-size:11px;color:var(--mid);cursor:pointer;transition:all .15s}
+.flow-branch:hover{border-color:var(--red);color:var(--text)}
+.flow-branch b{color:var(--red);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;display:block;margin-bottom:2px}
+
+/* ============ OPENER ============ */
 .opener{background:var(--card);border:1px solid var(--gold);border-radius:14px;padding:16px;margin:20px 0;position:relative}
 .opener::before{content:'OPENER · VERBATIM';position:absolute;top:-9px;left:14px;background:var(--bg);padding:0 8px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);font-weight:800;letter-spacing:1.5px}
 .opener q{font-size:15px;line-height:1.55;color:var(--text);display:block;font-style:italic}
 .opener q::before,.opener q::after{content:''}
-.flow{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:10px}
-.step{background:var(--card2);padding:5px 10px;border-radius:6px;color:var(--mid);border:1px solid var(--border)}
-.step b{color:var(--gold)}
+
+/* ============ DEMO ============ */
+.demo-card{background:linear-gradient(135deg,rgba(245,197,24,0.08),rgba(0,240,255,0.06));border:1px solid var(--gold);border-radius:14px;padding:14px;margin-bottom:18px;text-align:center}
+.demo-card .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:800;margin-bottom:6px}
+.demo-card .url{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text);word-break:break-all;margin-bottom:10px}
+.demo-btn{display:inline-block;background:var(--gold);color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+
+/* ============ LEADS ============ */
 .section-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--dim);font-weight:800;margin:22px 0 10px;text-transform:uppercase}
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;transition:all .15s}
-.card.done{opacity:0.45;border-color:var(--green)}
+.card.done{opacity:0.5;border-color:var(--green)}
 .card.done .biz{text-decoration:line-through;color:var(--dim)}
 .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
 .rank{font-family:'Playfair Display',serif;font-style:italic;font-size:30px;font-weight:700;color:var(--gold);line-height:1;flex-shrink:0;min-width:34px}
@@ -44,6 +79,9 @@ h1 .it{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;co
 .note{font-size:12px;color:var(--mid);margin-top:6px;line-height:1.45}
 .note b{color:var(--text)}
 .roi{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);background:rgba(245,197,24,0.06);border-left:3px solid var(--gold);padding:8px 10px;border-radius:0 6px 6px 0;margin-top:10px;font-weight:700}
+.tailor{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-top:10px;font-size:12px;color:var(--text);line-height:1.55}
+.tailor .lbl-tailor{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:1.5px;font-weight:800;text-transform:uppercase;margin-bottom:6px;display:block}
+.tailor i{color:var(--gold);font-style:normal;font-weight:700}
 .btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .btn{flex:1;min-width:120px;padding:14px 16px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-decoration:none;text-align:center;border:none;cursor:pointer;transition:transform .1s;color:#000}
 .btn.call{background:var(--green);color:#000}
@@ -53,30 +91,73 @@ h1 .it{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;co
 .btn.done-btn:hover,.btn.done-btn:active{border-color:var(--green);color:var(--green)}
 .card.done .btn.done-btn{background:var(--green);color:#000;border-color:var(--green)}
 .card.done .btn.call,.card.done .btn.sms{opacity:0.4;pointer-events:none}
-details{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:0;margin-top:10px;overflow:hidden}
-summary{padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--mid);font-weight:700;cursor:pointer;text-transform:uppercase;user-select:none}
-summary:hover{color:var(--gold)}
-details[open] summary{border-bottom:1px solid var(--border)}
-.objs{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
-.obj{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px}
-.obj .q{font-size:11px;color:var(--mid);font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;margin-bottom:6px;text-transform:uppercase}
-.obj .a{font-size:13px;color:var(--text);line-height:1.5;font-style:italic}
+
+/* ============ VERTICAL PACKAGES ============ */
+.pkg{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px}
+.pkg-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px dashed var(--border)}
+.pkg-name{font-size:18px;font-weight:900;letter-spacing:-0.3px}
+.pkg-rec{font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--gold);color:#000;padding:4px 10px;border-radius:6px;font-weight:800;letter-spacing:1px}
+.pkg-rec.growth{background:var(--cyan)}
+.pkg-rec.dominance{background:var(--pink);color:#000}
+.pains{margin:10px 0}
+.pain{display:flex;gap:8px;align-items:flex-start;margin-bottom:6px;font-size:13px;color:var(--text);line-height:1.5}
+.pain::before{content:'→';color:var(--red);font-weight:800;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:14px;margin-top:1px}
+.pitch{background:var(--card2);border:1px solid var(--gold);border-radius:8px;padding:12px;margin-top:12px;font-size:13px;line-height:1.55;font-style:italic;color:var(--text)}
+.pitch .lbl-p{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:1.5px;font-weight:800;text-transform:uppercase;display:block;margin-bottom:6px;font-style:normal}
+.pitch b{color:var(--gold);font-style:normal}
+.pkg-why{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mid);margin-top:10px;padding-top:10px;border-top:1px dashed var(--border)}
+.pkg-why b{color:var(--text)}
+
+/* ============ PRICING ============ */
 .pricing{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin:18px 0;font-family:'JetBrains Mono',monospace;font-size:12px}
-.pricing-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--border)}
+.pricing-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--border);align-items:center}
 .pricing-row:last-child{border:0}
 .pricing-row b{color:var(--gold)}
 .tier{color:var(--text);font-weight:700}
-.demo-card{background:linear-gradient(135deg,rgba(245,197,24,0.08),rgba(0,240,255,0.06));border:1px solid var(--gold);border-radius:14px;padding:14px;margin-bottom:18px;text-align:center}
-.demo-card .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gold);font-weight:800;margin-bottom:6px}
-.demo-card .url{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text);word-break:break-all;margin-bottom:10px}
-.demo-btn{display:inline-block;background:var(--gold);color:#000;padding:10px 20px;border-radius:8px;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
-.reset{margin-top:30px;text-align:center}
+
+/* ============ OBJECTION LIBRARY ============ */
+.obj-section{margin:24px 0}
+.obj-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:8px;overflow:hidden}
+.obj-summary{padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;user-select:none;background:var(--card)}
+.obj-summary:hover{background:var(--card2)}
+.obj-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);font-weight:800;letter-spacing:1px;flex-shrink:0;min-width:48px}
+.obj-q{flex:1;font-size:14px;font-weight:700;color:var(--text)}
+.obj-toggle{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--dim);font-weight:800}
+.obj-body{display:none;padding:0 16px 14px;border-top:1px solid var(--border);background:var(--card2)}
+.obj-body.open{display:block}
+.obj-step{margin-top:12px}
+.obj-step-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.5px;font-weight:800;text-transform:uppercase;margin-bottom:4px}
+.obj-step-lbl.label{color:var(--cyan)}
+.obj-step-lbl.reframe{color:var(--gold)}
+.obj-step-lbl.evidence{color:var(--green)}
+.obj-step-lbl.close{color:var(--red)}
+.obj-text{font-size:13px;line-height:1.55;color:var(--text);font-style:italic;background:var(--card);border-left:3px solid;padding:10px 12px;border-radius:0 6px 6px 0}
+.obj-text.label{border-left-color:var(--cyan)}
+.obj-text.reframe{border-left-color:var(--gold)}
+.obj-text.evidence{border-left-color:var(--green)}
+.obj-text.close{border-left-color:var(--red)}
+.obj-text b{color:var(--gold);font-style:normal}
+
+/* ============ CLOSE MECHANICS ============ */
+.close-grid{display:grid;grid-template-columns:1fr;gap:8px;margin:12px 0}
+.close-prim{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.close-prim .cl-name{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--gold);font-weight:800;margin-bottom:6px}
+.close-prim .cl-ex{font-size:13px;color:var(--text);font-style:italic;line-height:1.45}
+.close-prim .cl-bad{font-size:11px;color:var(--red);margin-top:6px;font-family:'JetBrains Mono',monospace}
+.close-prim .cl-bad::before{content:'❌ NEVER: ';font-weight:800}
+
+/* ============ STICKY BAR ============ */
+.sticky{position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,11,0.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:10px 16px;display:flex;gap:8px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;z-index:100}
+.sticky-stat{color:var(--mid)}
+.sticky-stat b{color:var(--gold)}
+.reset{margin-top:30px;text-align:center;padding-bottom:60px}
 .reset button{background:transparent;color:var(--dim);border:1px solid var(--border);padding:8px 16px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10px;cursor:pointer}
 .reset button:hover{color:var(--red);border-color:var(--red)}
 @media(max-width:480px){
   h1{font-size:22px}
   .btn{min-width:100px;font-size:12px;padding:13px 12px}
   .btn.done-btn{min-width:55px;padding:13px 14px}
+  .flow-branches{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -86,7 +167,7 @@ details[open] summary{border-bottom:1px solid var(--border)}
 <header>
   <div class="kicker">RIVVEN · COMMAND</div>
   <h1>Calls <span class="it">Today</span></h1>
-  <div class="sub">Mon 5/11 · 2:16 PM PT · 8 cold leads · owner-operated · tier-A verticals</div>
+  <div class="sub">Mon 5/11 · 2:16 PM PT · 8 owner-operated · tier-A verticals · full close kit</div>
   <div class="stats">
     <div class="stat">DIALS: <b id="dials">0</b>/8</div>
     <div class="stat">FLOOR: <b>7/day</b></div>
@@ -94,15 +175,19 @@ details[open] summary{border-bottom:1px solid var(--border)}
   </div>
 </header>
 
+<div class="tabs">
+  <div class="tab active" data-panel="calls">📞 CALLS</div>
+  <div class="tab" data-panel="flow">⚡ FLOW</div>
+  <div class="tab" data-panel="packages">🎯 PACKAGES</div>
+  <div class="tab" data-panel="objections">🛡️ OBJECTIONS</div>
+  <div class="tab" data-panel="closes">🔒 CLOSES</div>
+</div>
+
+<!-- ============ PANEL: CALLS ============ -->
+<div class="panel active" id="panel-calls">
+
 <div class="opener">
   <q>"Hey — quick, you the owner? … Cool. This isn't a pitch, I'm not asking for anything. 90 seconds, you say yes or no, we both move on. Cool?"</q>
-  <div class="flow">
-    <div class="step"><b>1.</b> Opener</div>
-    <div class="step"><b>2.</b> Hook · "$X missed/day"</div>
-    <div class="step"><b>3.</b> Demo drop · they listen</div>
-    <div class="step"><b>4.</b> "Which tier?"</div>
-    <div class="step"><b>5.</b> Tuesday OR lock today</div>
-  </div>
 </div>
 
 <div class="demo-card">
@@ -118,9 +203,10 @@ details[open] summary{border-bottom:1px solid var(--border)}
     <div class="rank">1</div>
     <div style="flex:1">
       <div class="biz">24/7 Locksmith Phoenix AZ</div>
-      <span class="tag">LOCKSMITH</span><span class="tag" style="background:rgba(0,255,136,0.10);color:var(--green)">OWNER ANSWERS</span>
-      <div class="note">Owner-operated · mobile · <b>answers own phone</b> — you're talking to the decision-maker in 8 seconds.</div>
-      <div class="roi">$150–300/lockout · "bet you missed 3 already today = $700 walking"</div>
+      <span class="tag">LOCKSMITH</span><span class="tag pl">OWNER ANSWERS</span>
+      <div class="note">Owner-operated · mobile · <b>answers own phone</b> — talking to decision-maker in 8 sec.</div>
+      <div class="roi">$150–300/lockout · 24/7 emergency · "bet you missed 3 today = $700 walking"</div>
+      <div class="tailor"><span class="lbl-tailor">Tailored Pitch (read after demo)</span>"From what I'm gathering, you're <i>solo on the truck</i>, you're <i>missing after-hours calls</i> when you're already on a job, and your <i>AAA referrals</i> dry up when you don't answer fast. That's why I'd put you in <i>GROWTH ($9.5K + $797/mo)</i> — AI answers 24/7, gives ETA, dispatches your location, books the lockout while you finish the one in front of you. Sound right?"</div>
     </div>
   </div>
   <div class="btns">
@@ -135,14 +221,15 @@ details[open] summary{border-bottom:1px solid var(--border)}
     <div class="rank">2</div>
     <div style="flex:1">
       <div class="biz">Sunrise Garage Doors LV</div>
-      <span class="tag gar">GARAGE</span><span class="tag" style="background:rgba(0,255,136,0.10);color:var(--green)">OWNER NAMED</span>
+      <span class="tag gar">GARAGE</span><span class="tag pl">OWNER NAMED</span>
       <div class="note">Owner: <b>Ozzie Maldonado</b> · family-owned since 2005 · open with "Ozzie?"</div>
-      <div class="roi">$250 avg · "miss 3-4 Monday afternoons, that's $1K walking"</div>
+      <div class="roi">$250 avg/job · weekend = double-rate · "miss 3-4 Mondays = $1K walking"</div>
+      <div class="tailor"><span class="lbl-tailor">Tailored Pitch (Ozzie)</span>"Ozzie — what I'm hearing is you've been running this <i>since '05</i>, you've got <i>repeat customers</i> who expect to talk to you, but you're <i>under a door 60% of the day</i>. That's why <i>GROWTH</i> is the right call — AI answers in your voice tone, books the springs job while you finish the opener, and your repeats still feel like they got Ozzie. ESSENTIAL would just route — that's the answering service you already have."</div>
     </div>
   </div>
   <div class="btns">
     <a href="tel:+17253008930" class="btn call">📞 725-300-8930</a>
-    <a href="sms:+17253008930?body=Hey%20Ozzie%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20answers%20your%20phone%20when%20you%27re%20on%20a%20call.%20Hear%20it%20live%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <a href="sms:+17253008930?body=Hey%20Ozzie%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20answers%20your%20phone%20while%20you%27re%20on%20a%20job.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
     <button class="btn done-btn" onclick="toggleDone(2)">✓</button>
   </div>
 </div>
@@ -154,12 +241,13 @@ details[open] summary{border-bottom:1px solid var(--border)}
       <div class="biz">Speedway Locksmith Phoenix</div>
       <span class="tag">LOCKSMITH</span><span class="tag pl">FAMILY-OWNED</span>
       <div class="note">Family-owned Phoenix shop · 24/7</div>
-      <div class="roi">$150–300/lockout · same ROI as #1</div>
+      <div class="roi">$150–300/lockout · 24/7 = $500+ premium rate</div>
+      <div class="tailor"><span class="lbl-tailor">Tailored Pitch</span>"From what I'm gathering, the <i>family runs this together</i>, you've got <i>2-3 trucks rolling</i>, and your dispatch bottleneck is <i>who picks up the phone when everyone's driving</i>. <i>GROWTH</i> fits — AI triages by job type, ETAs by truck nearest, and pushes the job to whoever's free. That's not an answering service, that's a digital dispatcher."</div>
     </div>
   </div>
   <div class="btns">
     <a href="tel:+14802777674" class="btn call">📞 480-277-7674</a>
-    <a href="sms:+14802777674?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20answers%20your%20phone%20when%20you%27re%20on%20a%20call.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <a href="sms:+14802777674?body=Hey%20—%20Sabino%20with%20RIVVEN.%20AI%20that%20dispatches%20your%20trucks%20while%20you%27re%20driving.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
     <button class="btn done-btn" onclick="toggleDone(3)">✓</button>
   </div>
 </div>
@@ -170,13 +258,14 @@ details[open] summary{border-bottom:1px solid var(--border)}
     <div style="flex:1">
       <div class="biz">C &amp; M Garage Door LV</div>
       <span class="tag gar">GARAGE</span><span class="tag pl">SINCE 1991</span>
-      <div class="note">Old-school · talk plain English · no tech jargon · since 1991</div>
-      <div class="roi">$250 avg · "$1K/day Monday afternoons gone"</div>
+      <div class="note">Old-school · talk plain English · since 1991 · 35-year shop</div>
+      <div class="roi">$250 avg · 35 years of customers = big base · "voicemails are dead leads"</div>
+      <div class="tailor"><span class="lbl-tailor">Tailored Pitch (old-school)</span>"From what I'm hearing, you've been doing this <i>35 years</i>, you've got a <i>customer list nobody can replace</i>, and the only thing slowing you down is <i>everyone calls during install hours and gets voicemail</i>. I'd put you in <i>ESSENTIAL ($5K + $497/mo)</i> — not GROWTH. You don't need fancy. You need the phone answered with your name, message taken accurately, callback set up. ESSENTIAL does exactly that, half the price."</div>
     </div>
   </div>
   <div class="btns">
     <a href="tel:+17026553667" class="btn call">📞 702-655-3667</a>
-    <a href="sms:+17026553667?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20answering%20service%20—%20half%20the%20cost%2C%20books%20instead%20of%20takes%20a%20message.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <a href="sms:+17026553667?body=Hey%20—%20Sabino%20with%20RIVVEN.%20AI%20answering%20service%2C%20half%20the%20cost.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
     <button class="btn done-btn" onclick="toggleDone(4)">✓</button>
   </div>
 </div>
@@ -186,14 +275,15 @@ details[open] summary{border-bottom:1px solid var(--border)}
     <div class="rank">5</div>
     <div style="flex:1">
       <div class="biz">Royal Garage Door LV</div>
-      <span class="tag gar">GARAGE</span><span class="tag pl">FAMILY-OWNED</span>
-      <div class="note">Family-owned · LV + Henderson + North LV coverage</div>
-      <div class="roi">$250 avg · Monday afternoon dead zone</div>
+      <span class="tag gar">GARAGE</span><span class="tag pl">3-CITY COVERAGE</span>
+      <div class="note">Family-owned · LV + Henderson + North LV</div>
+      <div class="roi">$250 avg · 3-city coverage = more dispatch complexity</div>
+      <div class="tailor"><span class="lbl-tailor">Tailored Pitch</span>"What I'm gathering — you cover <i>3 cities</i>, customers are <i>spread across 30 miles</i>, and the question on every call is <i>'can you be here today?'</i>. That's a dispatch problem, not an answering problem. <i>GROWTH</i> tier — AI tells the Henderson customer 'we're already in Henderson at 3pm, we can be there 3:30' because it knows where your trucks are. That answer wins the job."</div>
     </div>
   </div>
   <div class="btns">
     <a href="tel:+17028185890" class="btn call">📞 702-818-5890</a>
-    <a href="sms:+17028185890?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20phone%20answering%20—%20books%20jobs%20while%20you%27re%20on%20a%20call.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <a href="sms:+17028185890?body=Hey%20—%20Sabino%20with%20RIVVEN.%20AI%20that%20knows%20where%20your%20trucks%20are%2C%20books%20on%20ETA.%20Hear%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
     <button class="btn done-btn" onclick="toggleDone(5)">✓</button>
   </div>
 </div>
@@ -203,14 +293,15 @@ details[open] summary{border-bottom:1px solid var(--border)}
     <div class="rank">6</div>
     <div style="flex:1">
       <div class="biz">AAA AUGER Plumbing Austin</div>
-      <span class="tag hvac" style="background:rgba(0,255,136,0.10);color:var(--green)">PLUMBER</span><span class="tag pl">TEXAS FAMILY</span>
-      <div class="note">Texas family-owned · 24/7 · guarantees parts</div>
-      <div class="roi">$400 avg · "miss 2 Monday afternoon emergencies = $800/day, every day"</div>
+      <span class="tag pl">PLUMBER</span><span class="tag pl">TX FAMILY</span>
+      <div class="note">Texas family-owned · 24/7 · parts guaranteed</div>
+      <div class="roi">$400 avg · burst pipe = 30-sec decision window · "first plumber to answer wins"</div>
+      <div class="tailor"><span class="lbl-tailor">Tailored Pitch (emergency-heavy)</span>"From what I'm gathering, your <i>biggest jobs are emergencies</i>, customers call <i>3 plumbers in a row</i>, and they <i>book whoever answers first</i>. You've got a <i>30-second window</i> to win the job. That's why I'd put you in <i>DOMINANCE ($15K + $997/mo)</i> — multi-line so no busy signal, ER triage, insurance-claim language built-in. GROWTH would be solid, but you're losing your highest-ticket jobs to the next plumber's voicemail. DOMINANCE = no plumber ever ahead of you."</div>
     </div>
   </div>
   <div class="btns">
     <a href="tel:+15129280467" class="btn call">📞 512-928-0467</a>
-    <a href="sms:+15129280467?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20books%20plumbing%20emergencies%2024%2F7.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <a href="sms:+15129280467?body=Hey%20—%20Sabino%20with%20RIVVEN.%20Multi-line%20AI%20that%20books%20plumbing%20emergencies%20before%20your%20competitor%20answers.%20Hear%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
     <button class="btn done-btn" onclick="toggleDone(6)">✓</button>
   </div>
 </div>
@@ -221,13 +312,14 @@ details[open] summary{border-bottom:1px solid var(--border)}
     <div style="flex:1">
       <div class="biz">The A/C Guy of Tampa Bay</div>
       <span class="tag hvac">HVAC</span><span class="tag pl">15+ YEARS</span>
-      <div class="note">15+ years · owner-led shop · Tampa Bay</div>
-      <div class="roi">$350 avg AC call · Tampa heat = "$10K/mo gone if you miss one a day"</div>
+      <div class="note">15+ years · owner-led · Tampa heat market</div>
+      <div class="roi">$350/call · Tampa heat = panicked customers · "miss one a day = $10K/mo gone"</div>
+      <div class="tailor"><span class="lbl-tailor">Tailored Pitch (heat-wave)</span>"What I'm hearing — you've been doing this <i>15 years</i>, you know <i>heat waves bring 50 calls a day</i>, and Tampa customers <i>panic when their AC goes out</i> — they want <i>same-day</i>. <i>GROWTH tier</i> — AI answers, triages emergency vs maintenance, books same-day for emergencies, drops maintenance into next week. Without it, heat-wave days you lose half your premium calls to voicemail. With it, you capture all the panic money."</div>
     </div>
   </div>
   <div class="btns">
     <a href="tel:+17272863170" class="btn call">📞 727-286-3170</a>
-    <a href="sms:+17272863170?body=Hey%20—%20Sabino%20with%20RIVVEN.%20AC%20call%20in%20Tampa%20heat%20%24350%20avg%20—%20our%20AI%20answers%20when%20you%20can%27t.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <a href="sms:+17272863170?body=Hey%20—%20Sabino%20with%20RIVVEN.%20AI%20that%20captures%20heat-wave%20calls%20while%20you%27re%20on%20a%20roof.%20Hear%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
     <button class="btn done-btn" onclick="toggleDone(7)">✓</button>
   </div>
 </div>
@@ -237,39 +329,510 @@ details[open] summary{border-bottom:1px solid var(--border)}
     <div class="rank">8</div>
     <div style="flex:1">
       <div class="biz">I Care Air Care · Tim Hawk</div>
-      <span class="tag hvac">HVAC</span><span class="tag" style="background:rgba(0,255,136,0.10);color:var(--green)">OWNER NAMED</span>
-      <div class="note">Owner: <b>Tim Hawk</b> · 20+ yrs · Wesley Chapel · open with "Tim?"</div>
-      <div class="roi">$350 avg · same Tampa heat ROI</div>
+      <span class="tag hvac">HVAC</span><span class="tag pl">OWNER NAMED</span>
+      <div class="note">Owner: <b>Tim Hawk</b> · 20+ yrs residential + commercial · Wesley Chapel</div>
+      <div class="roi">$350 avg · residential+commercial = mixed-tier customers</div>
+      <div class="tailor"><span class="lbl-tailor">Tailored Pitch (Tim)</span>"Tim — you run <i>both residential and commercial</i>, you've been at this <i>20 years</i>, and your commercial accounts <i>expect a real person fast</i>. Residential can wait an hour, commercial can't wait 10 minutes. <i>GROWTH</i> — AI separates the two on intake, fast-tracks commercial to you direct, queues residential. You stop missing commercial maintenance contracts because you were stuck on a residential repair quote call."</div>
     </div>
   </div>
   <div class="btns">
     <a href="tel:+18133952324" class="btn call">📞 813-395-2324</a>
-    <a href="sms:+18133952324?body=Hey%20Tim%20—%20Sabino%20with%20RIVVEN.%20Built%20an%20AI%20that%20books%20AC%20calls%20while%20you%27re%20on%20a%20roof.%20Hear%20it%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
+    <a href="sms:+18133952324?body=Hey%20Tim%20—%20Sabino%20with%20RIVVEN.%20AI%20that%20separates%20commercial%20from%20residential%20on%20the%20intake.%20Hear%3A%20https%3A%2F%2Frivven.ai%2Fdemos%2Fconstruction-invoicing%2F" class="btn sms">SMS</a>
     <button class="btn done-btn" onclick="toggleDone(8)">✓</button>
   </div>
 </div>
 
-<div class="pricing">
-  <div class="pricing-row"><span class="tier">ESSENTIAL</span><span><b>$5K</b> setup + <b>$497</b>/mo</span></div>
-  <div class="pricing-row"><span class="tier">GROWTH</span><span><b>$9.5K</b> setup + <b>$797</b>/mo</span></div>
-  <div class="pricing-row"><span class="tier">DOMINANCE</span><span><b>$15K</b> setup + <b>$997</b>/mo</span></div>
-  <div class="pricing-row" style="border-top:1px solid var(--gold);padding-top:8px;margin-top:4px"><span style="color:var(--gold)">TWO-OPTION CLOSE</span><span style="font-size:11px">Tue 2pm Zoom · OR · waive $500 deploy if locked today</span></div>
 </div>
 
-<details>
-<summary>▸ Objection Quick-Refs</summary>
-<div class="objs">
-  <div class="obj"><div class="q">"I already have an answering service"</div><div class="a">"Cool. What's it cost? … I'm half that and it <b>books on the spot</b> instead of taking a message. 10-day trial, you keep the calls it books, fire me if it's worse. Fair?"</div></div>
-  <div class="obj"><div class="q">"How do I know it sounds real"</div><div class="a">"You just heard it. Trial it free 10 days on your line — if a single customer says it sounds robotic, you owe me zero."</div></div>
-  <div class="obj"><div class="q">"Send me info"</div><div class="a">"I'll text you the demo link <b>right now while we're on</b>. Open it." (Then re-enter close.)</div></div>
-  <div class="obj"><div class="q">"Too expensive"</div><div class="a">"What's <b>one</b> missed weekend job worth to you? Two of those a month and it's free. I'm not asking you to spend — I'm asking you to plug a leak."</div></div>
+<!-- ============ PANEL: FLOW MAP ============ -->
+<div class="panel" id="panel-flow">
+
+<div class="flow-map">
+  <h3>▸ THE FULL CALL FLOW · 90 SEC TO PITCH</h3>
+
+  <div class="fnode">
+    <div class="step">0 · OPENING</div>
+    <span class="time">5 sec</span>
+    <div class="txt">"Hey — quick, you the owner?"</div>
+  </div>
+  <div class="arrow">▼</div>
+
+  <div class="fnode">
+    <div class="step">1 · PRE-FRAME (anxiety drop)</div>
+    <span class="time">10 sec</span>
+    <div class="txt">"Cool. This isn't a pitch, not asking for anything. 90 sec, you say yes or no, we both move on. Cool?"</div>
+  </div>
+  <div class="arrow">▼</div>
+
+  <div class="fnode">
+    <div class="step">2 · HOOK (their pain in their words)</div>
+    <span class="time">30 sec</span>
+    <div class="txt">"I build AI that answers your phone when you can't. Owner-operated [VERTICAL] — Monday 2 PM you're [in a truck / under a sink / on a roof]. I'd bet you missed 2-3 calls already today. Each one's roughly $[ROI]. Sound right?"</div>
+  </div>
+  <div class="arrow">▼</div>
+
+  <div class="fnode demo">
+    <div class="step">3 · DEMO DROP (let them hear it)</div>
+    <span class="time">20 sec</span>
+    <div class="txt">"Pull up your phone — rivven.ai/demos/construction-invoicing. Tap the call button. 10 seconds, you'll hear it answer like a real person and book a job. I'll wait."</div>
+  </div>
+  <div class="arrow">▼</div>
+
+  <div class="fnode">
+    <div class="step">4 · TAILORED PITCH (the magic phrase)</div>
+    <span class="time">30 sec</span>
+    <div class="txt">"From what I'm gathering, you're [<b>pain 1</b>], you're [<b>pain 2</b>], and your [<b>pain 3</b>]. That's why I'd put you in [<b>TIER</b>] — [<b>specific feature</b>] solves [<b>pain 1</b>], [<b>specific feature</b>] solves [<b>pain 2</b>]. Sound right?"</div>
+  </div>
+  <div class="arrow">▼</div>
+
+  <div class="fnode close">
+    <div class="step">5 · ASSUME-THE-SALE CLOSE</div>
+    <span class="time">15 sec</span>
+    <div class="txt">"Two paths. Zoom Tuesday 2 PM, I walk you through it. <b>Or</b> — lock today, I waive the $500 deploy fee, we're live Friday. Which?"</div>
+  </div>
+  <div class="arrow">▼</div>
+
+  <div class="fnode branch">
+    <div class="step">⚠ IF OBJECTION (any of 16)</div>
+    <span class="time">→ branches</span>
+    <div class="txt">→ 4-step pattern: <b>LABEL → REFRAME → EVIDENCE → MICRO-CLOSE</b> → loop back to step 5</div>
+  </div>
+
+  <div class="flow-branches">
+    <div class="flow-branch" onclick="jumpToObj(1)"><b>OBJ-1</b>Price → minimize + ROI math</div>
+    <div class="flow-branch" onclick="jumpToObj(2)"><b>OBJ-2</b>Think about it → "what specifically?"</div>
+    <div class="flow-branch" onclick="jumpToObj(3)"><b>OBJ-3</b>Partner → "bring them on call"</div>
+    <div class="flow-branch" onclick="jumpToObj(4)"><b>OBJ-4</b>Tried AI → build vs rent</div>
+    <div class="flow-branch" onclick="jumpToObj(5)"><b>OBJ-5</b>Bad timing → "install before storm"</div>
+    <div class="flow-branch" onclick="jumpToObj(6)"><b>OBJ-6</b>Compare → 3 differences</div>
+    <div class="flow-branch" onclick="jumpToObj(7)"><b>OBJ-7</b>Send info → refuse + custom Loom</div>
+    <div class="flow-branch" onclick="jumpToObj(8)"><b>OBJ-8</b>Have receptionist → upgrade not replace</div>
+    <div class="flow-branch" onclick="jumpToObj(9)"><b>OBJ-9</b>No problem → free 14-day audit</div>
+    <div class="flow-branch" onclick="jumpToObj(10)"><b>OBJ-10</b>Cheaper? → hard hold + 50/50</div>
+    <div class="flow-branch" onclick="jumpToObj(11)"><b>OBJ-11</b>Contract? → 30-day out</div>
+    <div class="flow-branch" onclick="jumpToObj(12)"><b>OBJ-12</b>Will it work? → 30-day refund</div>
+    <div class="flow-branch" onclick="jumpToObj(13)"><b>OBJ-13</b>Not interested → "what would change it?"</div>
+    <div class="flow-branch" onclick="jumpToObj(14)"><b>OBJ-14</b>Family does it → "I amplify"</div>
+    <div class="flow-branch" onclick="jumpToObj(15)"><b>OBJ-15</b>Who are you → drop credentials</div>
+    <div class="flow-branch" onclick="jumpToObj(16)"><b>OBJ-16</b>Take me off list → 1 value drop + exit</div>
+  </div>
 </div>
-</details>
+
+<div class="card" style="border-color:var(--gold)">
+  <div class="card-head">
+    <div style="flex:1">
+      <div class="biz" style="color:var(--gold)">⚡ THE 4-STEP OBJECTION PATTERN</div>
+      <div class="note" style="margin-top:10px;color:var(--text);font-size:13px">Every objection — no exceptions — gets the same 4-step response. Never argue, never defend. Drill this until it's reflex.</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr;gap:8px;margin-top:14px">
+    <div style="background:var(--card2);border-left:3px solid var(--cyan);padding:10px 12px;border-radius:0 8px 8px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cyan);letter-spacing:1.5px;font-weight:800">1 · LABEL (disarm)</div>
+      <div style="margin-top:4px;font-size:13px;font-style:italic">"Sounds like the price feels heavy."</div>
+    </div>
+    <div style="background:var(--card2);border-left:3px solid var(--gold);padding:10px 12px;border-radius:0 8px 8px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold);letter-spacing:1.5px;font-weight:800">2 · REFRAME (redirect)</div>
+      <div style="margin-top:4px;font-size:13px;font-style:italic">"You're missing $X/mo right now. The system isn't a cost, it's plugging a leak."</div>
+    </div>
+    <div style="background:var(--card2);border-left:3px solid var(--green);padding:10px 12px;border-radius:0 8px 8px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:1.5px;font-weight:800">3 · EVIDENCE (prove)</div>
+      <div style="margin-top:4px;font-size:13px;font-style:italic">"One shop missed $18K/mo. We recovered $11K of it in 60 days. Setup paid back in 27."</div>
+    </div>
+    <div style="background:var(--card2);border-left:3px solid var(--red);padding:10px 12px;border-radius:0 8px 8px 0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--red);letter-spacing:1.5px;font-weight:800">4 · MICRO-CLOSE (re-take the floor)</div>
+      <div style="margin-top:4px;font-size:13px;font-style:italic">"If I show the bleeding stops in 30 days, are we good to move?" — then SILENCE. First to speak loses.</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- ============ PANEL: PACKAGES ============ -->
+<div class="panel" id="panel-packages">
+
+<div class="section-label">Tailored Package by Vertical · "From what I'm gathering, I'd offer you…"</div>
+
+<div class="pkg">
+  <div class="pkg-head">
+    <div class="pkg-name">🔑 LOCKSMITH</div>
+    <div class="pkg-rec growth">GROWTH · $9.5K + $797</div>
+  </div>
+  <div class="pains">
+    <div class="pain">Solo on the truck — phone rings when you're cutting a key</div>
+    <div class="pain">After-hours = highest-ticket calls (lockouts $300-500) AND highest miss rate</div>
+    <div class="pain">AAA/insurance referrals dry up if you don't answer in 60 sec</div>
+    <div class="pain">Customer wants ETA NOW or they call the next locksmith</div>
+  </div>
+  <div class="pitch">
+    <span class="lbl-p">Tailored Pitch (read verbatim)</span>
+    "From what I'm gathering, you're <b>solo on the truck</b>, you're <b>missing after-hours calls</b> when you're already on a job, and your <b>AAA referrals</b> dry up when you don't answer fast. That's why I'd put you in <b>GROWTH</b> — AI answers 24/7, gives ETA the second they call, dispatches your location to them, and books the next lockout while you finish the one in front of you. Sound right?"
+  </div>
+  <div class="pkg-why"><b>Why GROWTH not ESSENTIAL:</b> lockouts are time-critical — you need booking + ETA + dispatch, not just routing. ESSENTIAL would just take a message — you'd still lose the AAA contract.</div>
+</div>
+
+<div class="pkg">
+  <div class="pkg-head">
+    <div class="pkg-name">🚪 GARAGE DOOR</div>
+    <div class="pkg-rec growth">GROWTH · $9.5K + $797</div>
+  </div>
+  <div class="pains">
+    <div class="pain">Under a door 60% of the day — can't hear the phone</div>
+    <div class="pain">Customer's car is trapped — they want ETA, not voicemail</div>
+    <div class="pain">Multi-city coverage = "can you be in [city] today?" is the buying question</div>
+    <div class="pain">Weekend emergencies = double rate, can't afford to miss</div>
+  </div>
+  <div class="pitch">
+    <span class="lbl-p">Tailored Pitch</span>
+    "What I'm hearing — you're <b>under a door 60% of the day</b>, your customers want <b>ETA immediately</b>, and the question on every call is <b>'can you be here today?'</b>. <b>GROWTH</b> tier — AI knows where your trucks are, gives a real ETA based on current job, and books the springs replacement while you finish the opener. ESSENTIAL just routes — you don't need an answering service, you need a digital dispatcher."
+  </div>
+  <div class="pkg-why"><b>Why GROWTH:</b> the close rate on garage-door calls is "first to give ETA wins." Without scheduling intelligence, AI's just a smarter voicemail.</div>
+</div>
+
+<div class="pkg">
+  <div class="pkg-head">
+    <div class="pkg-name">🚿 PLUMBER</div>
+    <div class="pkg-rec dominance">DOMINANCE · $15K + $997</div>
+  </div>
+  <div class="pains">
+    <div class="pain">Burst pipe = 30-second decision window — customer calls 3 plumbers in a row</div>
+    <div class="pain">Water damage compounds every minute — premium pricing for speed</div>
+    <div class="pain">2 AM emergencies = $500+ tickets, voicemail = total loss</div>
+    <div class="pain">Insurance claims need same-day documentation</div>
+  </div>
+  <div class="pitch">
+    <span class="lbl-p">Tailored Pitch (emergency-heavy)</span>
+    "From what I'm gathering, your <b>biggest jobs are emergencies</b>, customers call <b>3 plumbers in a row</b>, and they <b>book whoever answers first</b>. That's why I'd put you in <b>DOMINANCE</b> — multi-line so no busy signal, ER triage built-in, insurance-claim language pre-loaded. GROWTH is solid, but you're losing your highest-ticket jobs to the next plumber's voicemail. DOMINANCE = no plumber ahead of you on a 2 AM burst pipe."
+  </div>
+  <div class="pkg-why"><b>Why DOMINANCE:</b> plumbing emergencies are the highest $/call in trades. Multi-line + triage pays back the $5K delta in 2-3 emergency captures.</div>
+</div>
+
+<div class="pkg">
+  <div class="pkg-head">
+    <div class="pkg-name">❄️ HVAC</div>
+    <div class="pkg-rec growth">GROWTH · $9.5K + $797</div>
+  </div>
+  <div class="pains">
+    <div class="pain">Heat wave / cold snap = 50+ calls/day, can't humanly answer all</div>
+    <div class="pain">Customer expectation = same-day service, lose to next-best if voicemail</div>
+    <div class="pain">Commercial vs residential need different triage speeds</div>
+    <div class="pain">Maintenance contract renewals are slow-pipeline revenue you forget about</div>
+  </div>
+  <div class="pitch">
+    <span class="lbl-p">Tailored Pitch (mixed res+comm)</span>
+    "What I'm hearing — heat waves bring <b>50 calls a day</b>, customers <b>panic when AC goes out</b>, and your <b>commercial accounts expect a real person fast</b> while residential can wait. That's why <b>GROWTH</b> — AI separates commercial vs residential on intake, fast-tracks commercial direct to you, queues residential. You stop losing commercial maintenance contracts because you were stuck on a $150 residential quote call."
+  </div>
+  <div class="pkg-why"><b>Why GROWTH:</b> HVAC volume needs intake intelligence, not just call answering. DOMINANCE overkill until you've got 5+ trucks.</div>
+</div>
+
+</div>
+
+<!-- ============ PANEL: OBJECTIONS ============ -->
+<div class="panel" id="panel-objections">
+
+<div class="section-label">Full Library · 16 Objections · Label → Reframe → Evidence → Micro-Close</div>
+
+<div style="background:var(--card);border:1px solid var(--gold);border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:13px;line-height:1.5">
+  <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;display:block;margin-bottom:6px">⚠ UNIVERSAL RULE</span>
+  <b>Mirror first, always.</b> Every objection = anxiety leaking through. Label disarms. Never argue. Never defend. After Label → Reframe → Evidence, micro-close is "if I addressed that one thing, are we OK to move?" — then <b>SILENCE</b>. First to speak loses.
+</div>
+
+<div class="obj-section" id="obj-list">
+
+<div class="obj-card" id="obj-1">
+  <div class="obj-summary" onclick="toggleObj(1)">
+    <div class="obj-num">OBJ-01</div>
+    <div class="obj-q">"It's too expensive"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Sounds like the price feels heavy."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe</div><div class="obj-text reframe">"I get it. When you said you're missing about [their %] of calls and your avg ticket is [$X] — we're already at [calculated monthly loss] in revenue you're not capturing. The $9,500 isn't the cost of the system. It's the price of stopping the bleed. Real question: <b>will this actually fix the bleeding?</b>"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence</div><div class="obj-text evidence">"One shop was missing $18K/mo. We recovered $11K of it in 60 days. Setup paid back in 27 days."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close (assume the sale)</div><div class="obj-text close">"If I show the bleeding stops in 30 days, <b>which email gets the Stripe link?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-2">
+  <div class="obj-summary" onclick="toggleObj(2)">
+    <div class="obj-num">OBJ-02</div>
+    <div class="obj-q">"I need to think about it"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Yeah, makes sense — this isn't a coffee-decision."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (Sandler reverse)</div><div class="obj-text reframe">"Quick — when you say 'think about it,' what specifically? Because in my experience it's usually one of three: <b>the price</b>, <b>whether the AI part actually works</b>, or <b>whether your team will adopt it</b>. Which one is it for you?"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence</div><div class="obj-text evidence">Once they name it → respond directly to THAT objection. Route to the matching OBJ-XX.</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"If I answer that one thing right now, <b>are we Monday or Wednesday for kickoff?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-3">
+  <div class="obj-summary" onclick="toggleObj(3)">
+    <div class="obj-num">OBJ-03</div>
+    <div class="obj-q">"I need to talk to my partner / wife / ops manager"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Totally — I'd want my partner in on a call this size too."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe</div><div class="obj-text reframe">"Here's what I'd suggest — saves you playing telephone. Let's lock 15 minutes with all three of us this week. I show your partner the same diagnostic I just walked you through, you don't relay anything, they ask the questions you can't answer for them. When does [partner name] usually have 15 minutes — lunch, end of day?"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence</div><div class="obj-text evidence">"I do this on every deal where there's a co-decider. Saves about 2 weeks of back-and-forth and your partner respects you more for not making the call alone."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"<b>Wednesday lunch or Thursday end-of-day?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-4">
+  <div class="obj-summary" onclick="toggleObj(4)">
+    <div class="obj-num">OBJ-04</div>
+    <div class="obj-q">"I tried AI before, it didn't work"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"That's a real one. Most AI stuff out there is garbage right now."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe</div><div class="obj-text reframe">"Two questions — <b>what specifically didn't work</b>, and <b>which company was it</b>?" (let them answer — usually it's a Vapi white-label, HighLevel default, or outsourced answering service)</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (build vs rent moat)</div><div class="obj-text evidence">"OK so what you tried was a rented stack. They took someone else's voice model, slapped a logo on it, shipped without tuning. The reason ours doesn't sound like that is <b>we OWN the stack</b>. Our voice model, our dispatch logic, our dashboards. When something needs a tweak, I push it the same day — your old vendor needed a ticket and 3 weeks. Want to hear a 30-second sample of one of our agents on a real call so you can compare?"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"If the voice quality and the customization are different than what you tried, <b>which tier — ESSENTIAL or GROWTH?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-5">
+  <div class="obj-summary" onclick="toggleObj(5)">
+    <div class="obj-num">OBJ-05</div>
+    <div class="obj-q">"Not the right time / bad timing"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Got it. Timing is real."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (Voss future-pace)</div><div class="obj-text reframe">"What would have to change for the timing to be right? Cash flow, staffing, the season about to break — what's the trigger?"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (install-before-storm)</div><div class="obj-text evidence">"Here's what I see — owners say 'not the right time,' season picks up, they get slammed, miss-call problem 3x's, now they're installing AI in the middle of chaos. <b>The right time to install plumbing is BEFORE the storm, not during.</b> If we kick off now, you're fully live in 21 days — before [their busy season]."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"Does it actually serve you better to wait, or is timing just the polite version of 'not sure'? <b>Either way — what email gets the agreement?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-6">
+  <div class="obj-summary" onclick="toggleObj(6)">
+    <div class="obj-num">OBJ-06</div>
+    <div class="obj-q">"What makes you different from [other AI agency]"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Honest question, and you should ask it."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (3 differences)</div><div class="obj-text reframe"><b>"One</b> — I build my own tools. 90% of these IG-agency guys white-label Vapi or Voiceflow and resell it with their logo. When the platform breaks, they have no fix. I own the stack. <b>Two</b> — I don't run an agency, I run a software company that sells productized agents. No junior account manager farming you out — you're talking to the guy who built it. <b>Three</b> — deployment is 14-30 days because I actually integrate it, not 7 days like the white-label guys promise. They ship a chatbot that fails in 90 days. We ship a working system that lasts."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence</div><div class="obj-text evidence">"Want me to send you a clip of [their named competitor] agent vs ours, side by side? You tell me which one you'd want answering YOUR phones."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"After you hear the difference, <b>are we Monday or Wednesday for kickoff?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-7">
+  <div class="obj-summary" onclick="toggleObj(7)">
+    <div class="obj-num">OBJ-07</div>
+    <div class="obj-q">"Just send me info"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"I can do that — but real quick…"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (binary call-out)</div><div class="obj-text reframe">"'Send me info' usually means one of two things — either <b>you're not the decider</b> and want to forward it, or <b>you're being polite about not being interested</b>. Which one? No bad answer."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (custom Loom)</div><div class="obj-text evidence">Most say "no, I'm interested, just want to read." → "Cool. Instead of a generic deck — marketing fluff — let me send you a 2-min video where I walk through your specific situation, your numbers, the recommendation. Way more useful. 24 hours. What's the best email?"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"And if the video makes sense, <b>kickoff Monday or Friday?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-8">
+  <div class="obj-summary" onclick="toggleObj(8)">
+    <div class="obj-num">OBJ-08</div>
+    <div class="obj-q">"We already have a receptionist / answering service"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Got it. So you've already invested in the front office."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (3 questions)</div><div class="obj-text reframe">"Few questions. <b>One</b> — what's it cost all-in, payroll + benefits? (normally $40-$70K/yr). <b>Two</b> — do they answer 7pm? Saturdays? In the bathroom? <b>Three</b> — do they call web leads back in under 60 seconds, or does it queue for later?"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (upgrade not replace)</div><div class="obj-text evidence">"Your receptionist is great for human-touch stuff. But they're a $50K/yr asset doing an $8K/yr job (routine calls). We take the routine off their plate so they focus on high-value. <b>You don't fire them — you upgrade them.</b>"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"If we made your receptionist 3x more valuable instead of replacing her, <b>that's a yes, right? Which email for the agreement?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-9">
+  <div class="obj-summary" onclick="toggleObj(9)">
+    <div class="obj-num">OBJ-09</div>
+    <div class="obj-q">"Our calls aren't a problem / we're doing fine"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"OK, fair — let me ask one thing."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (NEPQ stack)</div><div class="obj-text reframe">"Have you ever <b>measured it</b>? Like, do you have data on what % of calls hit voicemail vs get answered, and what % of voicemails turn into closed jobs? Most shops don't measure it. The data on shops your size is consistent — <b>20-30% miss rate</b>. If you're below that, you're in the top 10% and I'd love to learn how. If you're not measuring, we don't actually know."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (free audit)</div><div class="obj-text evidence">"Want me to send a free 14-day call-audit tool? You install it, we measure your real miss rate, decide if there's a problem. No pitch, no obligation. If your number is genuinely below 10%, <b>I'll tell you not to buy from me.</b>"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"Worth 14 days to get a real number? <b>Best email to send the audit link?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-10">
+  <div class="obj-summary" onclick="toggleObj(10)">
+    <div class="obj-num">OBJ-10</div>
+    <div class="obj-q">"Can you do it cheaper / discount?"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Appreciate the directness."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (hard hold — Cardone)</div><div class="obj-text reframe">"No, and here's why. The reason this costs $9,500 isn't because I want to charge $9,500 — it's because under that I can't deliver what I'm telling you I'll deliver. Cheaper agencies cut corners on dispatch logic, voice quality, integration. They look identical on demo and <b>break in 90 days</b>. If you want a $3K version that breaks, 50 of them on Instagram. If you want this to actually work, $9,500 is the floor."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (real flexibility)</div><div class="obj-text evidence">"Here's the only flexibility I have — if cash flow is the issue, <b>50% upfront, 50% at go-live</b>. Or <b>ESSENTIAL at $5K</b> is a real product, not a downgrade — one agent instead of two. Which one helps?"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"<b>50/50 split or ESSENTIAL</b> — pick the one that actually works for you."</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-11">
+  <div class="obj-summary" onclick="toggleObj(11)">
+    <div class="obj-num">OBJ-11</div>
+    <div class="obj-q">"What's the contract / am I locked in?"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Smart to ask before signing anything."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe</div><div class="obj-text reframe">"Setup is one-time — 50% on agreement, 50% at go-live. Monthly is <b>month-to-month</b>, 30 days notice and you're out. No annual lock-in. If my system isn't earning its $797 a month for you, I'd rather you cancel than complain. <b>I bet on the system, not on contracts.</b>"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence</div><div class="obj-text evidence">"4 pages, no surprises. Your scope, my scope, the SLA, cancellation clause. I'll send it now if we're proceeding — 10 minutes."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"30-day out, 50/50 setup — sound fair? <b>What name goes on the agreement?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-12">
+  <div class="obj-summary" onclick="toggleObj(12)">
+    <div class="obj-num">OBJ-12</div>
+    <div class="obj-q">"How do I know this will work for my business?"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"That's the only question that actually matters."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (Voss illusion of control)</div><div class="obj-text reframe">"Honest — you don't, until it's running. Nobody can promise results before they've seen your data. What I CAN promise is <b>the diagnostic process</b>. Day 1-3 we install measurement. Day 4-10 deploy. Day 11-21 tune. By day 30 you have real numbers."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (30-day refund)</div><div class="obj-text evidence">"If those numbers don't pencil out — if we're not at <b>minimum 3x ROI on the monthly</b> — I refund the last 30 days of monthly fees and we shake hands. Setup is at-risk if you walk before day 30. <b>Better than any AI agency offer on the market.</b> Most lock you in 12 months and ghost. I'm betting the system on the 30-day mark."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"30-day proof window, refund-backed — what else do you need to say yes? <b>Which email for the agreement?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-13">
+  <div class="obj-summary" onclick="toggleObj(13)">
+    <div class="obj-num">OBJ-13</div>
+    <div class="obj-q">"Not interested"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Totally fair."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (force articulation)</div><div class="obj-text reframe">"Quick question — <b>what would have to be different for this to be interesting?</b>" (breaks the script, shows you're not pushy, forces them to articulate a condition)</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (if they push)</div><div class="obj-text evidence">"Got it. Last thing — is it that <b>marketing in general isn't a priority</b> right now, or is it the <b>cold call format</b> that's annoying? No judgment either way." (lets them say "I'm fine with marketing if relevant" → opens door back up)</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"If I could show you 30 verified leads in your inbox this month for $0 upfront — <b>would Tuesday work for 15 minutes?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-14">
+  <div class="obj-summary" onclick="toggleObj(14)">
+    <div class="obj-num">OBJ-14</div>
+    <div class="obj-q">"My cousin / wife / son handles it"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"That's great — family helping is huge, I respect that."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (amplify not replace)</div><div class="obj-text reframe">"Quick question — is your [cousin/wife/son] doing this <b>full-time as a pro</b>, or is it more of a <b>side thing</b>? If they're pro, we can work together — I don't replace people, I amplify them. If it's side help, that's where I come in to take the load off them so they don't burn out."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence</div><div class="obj-text evidence">"Most family helpers are doing 6-8 hours a week of stuff that takes me 2 hours and gets better results. They keep doing the strategy and the relationship stuff — I take the grunt work off their plate. That's the sweet spot."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"If we could free up your [cousin/wife/son] 6 hours a week and still get better results — <b>does Wednesday or Thursday work for a 3-way call with them on?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-15">
+  <div class="obj-summary" onclick="toggleObj(15)">
+    <div class="obj-num">OBJ-15</div>
+    <div class="obj-q">"Who are you / never heard of you"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Fair question."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (drop credentials fast)</div><div class="obj-text reframe">"I'm Sabino — run RIVVEN, AI agency in LA. Main shop I'm working with is Trippy Blendz, barber shop — doing 40-80 new bookings/mo. Construction prototype's live at rivven.ai/demos/construction-invoicing. Reached out because your vertical is similar and I thought there might be a fit. <b>You can verify the shop — trippyblendz.com.</b>"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence</div><div class="obj-text evidence">"Totally cool to google me before we talk. What I'd suggest — google 'rivven LA' right now, then let's book 15 minutes. Either you like what you see and we chat, or you pass and we move on. Fair?"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">"After you check it out, <b>Tuesday or Wednesday for 15 minutes?</b>"</div></div>
+  </div>
+</div>
+
+<div class="obj-card" id="obj-16">
+  <div class="obj-summary" onclick="toggleObj(16)">
+    <div class="obj-num">OBJ-16</div>
+    <div class="obj-q">"Take me off your list / I don't do cold calls"</div>
+    <div class="obj-toggle">▾</div>
+  </div>
+  <div class="obj-body">
+    <div class="obj-step"><div class="obj-step-lbl label">1 · Label</div><div class="obj-text label">"Fair, completely get it — cold calls are mostly garbage."</div></div>
+    <div class="obj-step"><div class="obj-step-lbl reframe">2 · Reframe (10-sec value drop)</div><div class="obj-text reframe">"10 seconds of your time and I'm out of your life — I looked at <b>[specific thing about their biz]</b> and there's <b>[specific fix]</b>. If it's interesting, text me Thursday. If not, done. My name's Sabino, number I'm calling from. <b>Best case enjoy the shop, worst case you learned one thing.</b>"</div></div>
+    <div class="obj-step"><div class="obj-step-lbl evidence">3 · Evidence (respect the boundary)</div><div class="obj-text evidence">If they still push you off: <b>"Absolutely, removing your number from the list. Sorry for the bother — have a good one."</b> Don't fight it. Move on. 1 in 20 will text back 2 weeks later.</div></div>
+    <div class="obj-step"><div class="obj-step-lbl close">4 · Micro-Close</div><div class="obj-text close">No close. Exit warmly. CRM mark 90-day re-attempt.</div></div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<!-- ============ PANEL: CLOSES ============ -->
+<div class="panel" id="panel-closes">
+
+<div class="section-label">Close Mechanics · CLOSE-01 → CLOSE-06 · Wrappers on Every Objection Response</div>
+
+<div class="pricing">
+  <div class="pricing-row"><span class="tier">ESSENTIAL</span><span><b>$5K</b> setup + <b>$497</b>/mo</span></div>
+  <div class="pricing-row"><span class="tier">GROWTH ★</span><span><b>$9.5K</b> setup + <b>$797</b>/mo</span></div>
+  <div class="pricing-row"><span class="tier">DOMINANCE</span><span><b>$15K</b> setup + <b>$997</b>/mo</span></div>
+  <div class="pricing-row" style="border-top:1px solid var(--gold);padding-top:8px;margin-top:4px;flex-direction:column;align-items:flex-start;gap:4px"><span style="color:var(--gold)">TWO-OPTION CLOSE</span><span style="font-size:11px">"Zoom Tuesday 2 PM · <b>OR</b> · waive $500 deploy if locked today"</span></div>
+</div>
+
+<div class="close-grid">
+
+<div class="close-prim">
+  <div class="cl-name">CLOSE-01 · PHASED INVESTMENT FRAME</div>
+  <div class="cl-ex">"Invest in <b>GROWTH</b> setup now ($9.5K), then we add the <b>DOMINANCE</b> tier later when you're past 60 calls a month."</div>
+  <div class="cl-bad">all-or-nothing framing</div>
+</div>
+
+<div class="close-prim">
+  <div class="cl-name">CLOSE-02 · A/B CHOICE CLOSE</div>
+  <div class="cl-ex">"<b>ESSENTIAL at $5K or GROWTH at $9.5K?</b> Most locksmiths go GROWTH because after-hours calls are your money window."</div>
+  <div class="cl-bad">"do you want to buy?"</div>
+</div>
+
+<div class="close-prim">
+  <div class="cl-name">CLOSE-03 · ALWAYS ASSUME THE SALE</div>
+  <div class="cl-ex">"<b>Which email gets the Stripe link?</b>" · "<b>What name on the invoice?</b>" · "<b>Monday or Wednesday kickoff?</b>" · "<b>Zelle or card on file?</b>"</div>
+  <div class="cl-bad">"are you ready to commit?" / "should we move forward?" / "do you want this?"</div>
+</div>
+
+<div class="close-prim">
+  <div class="cl-name">CLOSE-04 · MICRO-COMPLIMENT POST-CHOICE</div>
+  <div class="cl-ex">"Solid move — with the volume you're at right now, GROWTH is the right call. ESSENTIAL would've gotten you the answering but you'd still be missing the after-hours bookings in 3 weeks."</div>
+  <div class="cl-bad">"good choice" / "great decision" alone</div>
+</div>
+
+<div class="close-prim">
+  <div class="cl-name">CLOSE-05 · PAYMENT TRANSITION</div>
+  <div class="cl-ex">"Cool — <b>should we do the payment now while we're on the line?</b>"</div>
+  <div class="cl-bad">"please process your payment" / "I'll send you an invoice"</div>
+</div>
+
+<div class="close-prim">
+  <div class="cl-name">CLOSE-06 · PRICE MINIMIZATION</div>
+  <div class="cl-ex">"Not much — just <b>$497 to start the GROWTH setup</b>."</div>
+  <div class="cl-bad">"the investment is $X" / "the total comes to $X"</div>
+</div>
+
+</div>
+
+<div class="opener" style="margin-top:24px">
+  <q>"Three tiers. <b>ESSENTIAL</b> — answers, routes, texts back — $5K, $497. <b>GROWTH</b> — adds booking, follow-ups, your CRM — $9.5K, $797. <b>DOMINANCE</b> — multi-line, Spanish, AI invoicing, the works — $15K, $997. <b>Which one are we starting with?</b>"</q>
+</div>
+
+</div>
 
 <div class="reset">
   <button onclick="resetAll()">RESET PROGRESS</button>
 </div>
 
+</div>
+
+<div class="sticky">
+  <div class="sticky-stat"><b id="stickyDials">0</b>/8 dialed</div>
+  <div class="sticky-stat" style="margin-left:auto">⌘+F to search · tap tab to switch view</div>
 </div>
 
 <script>
@@ -279,11 +842,12 @@ function setState(s){localStorage.setItem(STORE_KEY,JSON.stringify(s))}
 function render(){
   const s=getState();
   let done=0;
-  document.querySelectorAll('.card').forEach(c=>{
+  document.querySelectorAll('.card[data-id]').forEach(c=>{
     const id=c.dataset.id;
     if(s[id]){c.classList.add('done');done++}else{c.classList.remove('done')}
   });
   document.getElementById('dials').textContent=done;
+  document.getElementById('stickyDials').textContent=done;
 }
 function toggleDone(id){
   const s=getState();
@@ -291,8 +855,40 @@ function toggleDone(id){
   setState(s);render();
 }
 function resetAll(){if(confirm('Clear progress?')){localStorage.removeItem(STORE_KEY);render()}}
+function toggleObj(n){
+  const body=document.querySelector('#obj-'+n+' .obj-body');
+  const tog=document.querySelector('#obj-'+n+' .obj-toggle');
+  if(body.classList.contains('open')){body.classList.remove('open');tog.textContent='▾'}
+  else{body.classList.add('open');tog.textContent='▴'}
+}
+function jumpToObj(n){
+  // switch to objections panel + open + scroll
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('[data-panel="objections"]').classList.add('active');
+  document.getElementById('panel-objections').classList.add('active');
+  setTimeout(()=>{
+    const el=document.getElementById('obj-'+n);
+    if(el){el.scrollIntoView({behavior:'smooth',block:'start'});
+      const body=el.querySelector('.obj-body');
+      const tog=el.querySelector('.obj-toggle');
+      if(!body.classList.contains('open')){body.classList.add('open');tog.textContent='▴'}
+    }
+  },50);
+}
+// Tab switching
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const target=tab.dataset.panel;
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+target).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
 // Auto-mark when tel: link tapped
-document.querySelectorAll('.btn.call').forEach((btn,i)=>{
+document.querySelectorAll('.btn.call').forEach((btn)=>{
   btn.addEventListener('click',()=>{
     const card=btn.closest('.card');
     const id=card.dataset.id;
