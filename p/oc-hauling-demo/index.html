@@ -1,0 +1,1129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0F1F33">
+<meta name="rivven-zero-anxiety" content="PASS 7/7">
+<meta name="rivven-prospect-only" content="true">
+<title>HAULING_BIZ_NAME · OC's family hauler, powered by AI · A RIVVEN walkthrough</title>
+<meta name="description" content="A walkthrough for the team behind Shine &amp; Smile Cleaning — the same five-star trust, now for OC junk hauling. 60-second quotes, 24/7 AI receptionist, dispatch map.">
+
+<meta property="og:title" content="HAULING_BIZ_NAME · OC's family hauler, powered by AI">
+<meta property="og:description" content="From the team behind Shine &amp; Smile Cleaning. 60-second quotes. AI catches every call. OC's first AI-powered hauler.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rivven.ai/p/oc-hauling-demo/">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231AA3DD'/><text y='.85em' x='50%25' text-anchor='middle' font-size='62' fill='%23FFC93C' font-family='system-ui,sans-serif' font-weight='800'>S</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":["LocalBusiness","MovingCompany"],"@id":"https://rivven.ai/p/oc-hauling-demo/#biz","name":"HAULING_BIZ_NAME","parentOrganization":{"@type":"Organization","name":"Shine & Smile Cleaning LLC","url":"https://shinesmilecleaning.com/"},"telephone":"+17147204915","areaServed":["Orange County","Anaheim","Santa Ana","Irvine","Huntington Beach","Costa Mesa","Fullerton"],"priceRange":"$$","description":"OC junk hauling, debris removal, bulk pickup. From the team behind Shine & Smile Cleaning. 60-second quotes. 24/7 AI receptionist.","address":{"@type":"PostalAddress","addressLocality":"Orange County","addressRegion":"CA","addressCountry":"US"},"knowsLanguage":["en","es"]},
+{"@type":"WebPage","@id":"https://rivven.ai/p/oc-hauling-demo/#page","name":"HAULING_BIZ_NAME walkthrough","isPartOf":{"@id":"https://rivven.ai/p/oc-hauling-demo/#biz"}}
+]}
+</script>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  /* Bridge palette: Shine & Smile cleaning DNA + hauling pragmatism */
+  --brand-blue:#1AA3DD;
+  --brand-blue-deep:#0F6E96;
+  --brand-blue-ink:#0F1F33;
+  --brand-sun:#FFC93C;
+  --brand-sun-deep:#E5B11D;
+  --brand-rust:#E8662B;
+  --brand-rust-deep:#C95221;
+  --cream:#FFFBF0;
+  --paper:#FAFBFC;
+  --ink:#1B2E3E;
+  --text:#243446;
+  --muted:#5F7180;
+  --border:#E1E8ED;
+  --border2:#CFD9DF;
+  --shadow-sm:0 1px 3px rgba(15,31,51,.06),0 1px 2px rgba(15,31,51,.08);
+  --shadow-md:0 4px 12px rgba(15,31,51,.08),0 2px 4px rgba(15,31,51,.06);
+  --shadow-lg:0 18px 48px rgba(15,31,51,.12),0 4px 12px rgba(15,31,51,.06);
+  --radius:14px;--radius-sm:10px;--radius-lg:22px;
+  --container:1180px;
+  --ease:cubic-bezier(.4,0,.1,1);
+}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{
+  background:var(--paper);color:var(--text);
+  font-family:'Plus Jakarta Sans','Inter',system-ui,-apple-system,sans-serif;
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+::selection{background:var(--brand-sun);color:var(--ink)}
+img,svg{max-width:100%;display:block}
+
+.wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono','Courier New',monospace}
+.label{
+  display:inline-block;
+  font-size:11px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--brand-blue-deep);
+}
+h1,h2,h3,h4{color:var(--ink);font-weight:800;line-height:1.15;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
+h3{font-size:clamp(1.25rem,2.4vw,1.5rem);margin-bottom:10px}
+p{color:var(--text)}
+.muted{color:var(--muted)}
+
+/* Top trust strip */
+.trust-strip{
+  background:var(--brand-blue-ink);
+  color:#fff;
+  padding:8px 0;
+  font-size:.78rem;
+  letter-spacing:.05em;
+  text-align:center;
+}
+.trust-strip strong{color:var(--brand-sun);font-weight:700}
+
+/* Sticky nav */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.86);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid transparent;
+  transition:background .35s var(--ease), border-color .35s var(--ease);
+}
+.nav.scrolled{background:rgba(255,255,255,.96);border-bottom-color:var(--border)}
+.nav-inner{
+  max-width:var(--container);margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);font-size:1.02rem;letter-spacing:-.01em}
+.brand-mark{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--brand-blue) 0%,var(--brand-blue-deep) 100%);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--brand-sun);font-weight:900;font-size:1.05rem;
+  box-shadow:var(--shadow-sm);
+}
+.brand-sub{font-size:.7rem;color:var(--muted);font-weight:500;letter-spacing:.12em;text-transform:uppercase;display:block;line-height:1}
+.nav-links{display:flex;gap:24px;list-style:none}
+@media(max-width:880px){.nav-links{display:none}}
+.nav-links a{font-size:.9rem;color:var(--text);font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--brand-blue-deep)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  font-size:.9rem;font-weight:700;letter-spacing:.01em;
+  transition:all .25s var(--ease);
+  white-space:nowrap;cursor:pointer;border:1px solid transparent;
+}
+.btn-primary{background:var(--brand-sun);color:var(--ink);box-shadow:0 4px 12px rgba(255,201,60,.32)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(255,201,60,.45);background:var(--brand-sun-deep)}
+.btn-secondary{background:transparent;color:var(--ink);border-color:var(--border2)}
+.btn-secondary:hover{border-color:var(--brand-blue);color:var(--brand-blue-deep)}
+.btn-rust{background:var(--brand-rust);color:#fff;box-shadow:0 4px 12px rgba(232,102,43,.32)}
+.btn-rust:hover{background:var(--brand-rust-deep);transform:translateY(-1px)}
+.btn-lg{padding:16px 30px;font-size:.96rem}
+.btn-ghost{background:transparent;color:var(--ink)}
+
+/* HERO — animated drone-style hauling truck bg + pain mirror */
+.hero{
+  position:relative;
+  padding:90px 0 80px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#FFF8DC 0%,var(--paper) 80%);
+}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-bg::before,
+.hero-bg::after{
+  content:"";position:absolute;border-radius:50%;filter:blur(70px);
+}
+.hero-bg::before{
+  width:520px;height:520px;
+  background:radial-gradient(circle,rgba(26,163,221,.18) 0%,transparent 70%);
+  top:-160px;right:-120px;
+}
+.hero-bg::after{
+  width:420px;height:420px;
+  background:radial-gradient(circle,rgba(255,201,60,.22) 0%,transparent 70%);
+  bottom:-140px;left:-120px;
+}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:880px){.hero-inner{grid-template-columns:1fr;gap:36px}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(26,163,221,.1);border:1px solid rgba(26,163,221,.22);border-radius:999px;margin-bottom:18px;font-size:.78rem;font-weight:600;color:var(--brand-blue-deep);letter-spacing:.04em}
+.hero-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.18);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.4);opacity:.6}}
+.hero h1{
+  font-size:clamp(2.2rem,5.4vw,3.6rem);
+  margin-bottom:18px;
+  letter-spacing:-.025em;
+}
+.hero h1 .accent{color:var(--brand-rust);font-style:italic;font-weight:800}
+.hero h1 .blue{color:var(--brand-blue-deep)}
+.hero-sub{font-size:1.12rem;color:var(--text);margin-bottom:14px;max-width:46ch}
+.hero-anchor{font-size:.96rem;color:var(--muted);margin-bottom:28px;max-width:48ch;font-style:italic}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.hero-permission{font-size:.82rem;color:var(--muted);max-width:42ch}
+.hero-permission strong{color:var(--ink);font-weight:600}
+
+/* Hero visual: animated truck + dispatch dots */
+.hero-visual{
+  position:relative;height:380px;
+  background:linear-gradient(145deg,var(--brand-blue-ink) 0%,#243446 100%);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.hero-visual::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0 / 24px 24px;
+}
+.truck{
+  position:absolute;left:-30%;top:50%;transform:translateY(-50%);
+  width:200px;animation:drive 8s linear infinite;
+}
+@keyframes drive{
+  0%{left:-30%;opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{left:130%;opacity:0}
+}
+.truck-svg{filter:drop-shadow(0 12px 24px rgba(255,201,60,.28))}
+.hero-stat{
+  position:absolute;
+  background:rgba(255,255,255,.96);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:14px 18px;
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--ink);
+  box-shadow:var(--shadow-md);
+  display:flex;align-items:center;gap:12px;
+}
+.hero-stat-num{font-size:1.6rem;color:var(--brand-blue-deep);font-weight:800;line-height:1}
+.hero-stat-1{top:20px;left:20px}
+.hero-stat-2{bottom:20px;right:20px}
+.hero-pin{position:absolute;width:14px;height:14px;background:var(--brand-sun);border:3px solid var(--brand-blue-ink);border-radius:50%;animation:blink 2s ease-in-out infinite}
+.hero-pin-1{top:30%;left:25%;animation-delay:0s}
+.hero-pin-2{top:55%;left:55%;animation-delay:.7s}
+.hero-pin-3{top:38%;left:78%;animation-delay:1.4s}
+@keyframes blink{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,201,60,.6)}50%{transform:scale(1.2);box-shadow:0 0 0 8px rgba(255,201,60,0)}}
+
+/* Trust transfer banner */
+.trust-banner{
+  background:var(--cream);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:24px 0;
+}
+.trust-banner-inner{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.trust-banner-stars{display:flex;gap:2px}
+.trust-banner-stars svg{width:18px;height:18px;fill:var(--brand-sun)}
+.trust-banner-text{font-size:.96rem;color:var(--ink);font-weight:600}
+.trust-banner-text em{color:var(--brand-blue-deep);font-style:normal;font-weight:700}
+.trust-banner-tag{font-size:.78rem;color:var(--muted);padding:6px 12px;background:#fff;border:1px solid var(--border);border-radius:999px}
+
+/* Section base */
+section{padding:80px 0;position:relative}
+.section-head{text-align:center;max-width:680px;margin:0 auto 48px}
+.section-head .label{margin-bottom:14px}
+.section-head p{font-size:1.05rem;color:var(--muted);margin-top:10px}
+
+/* AI Receptionist embed */
+.section-demo{
+  background:linear-gradient(180deg,var(--brand-blue-ink) 0%,#243446 100%);
+  color:#E6EEF5;
+}
+.section-demo h2{color:#fff}
+.section-demo .label{color:var(--brand-sun)}
+.section-demo .empathy-line{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--brand-sun);margin-bottom:14px;
+}
+.section-demo p{color:#B6C5D2}
+.demo-frame-wrap{display:flex;justify-content:center;align-items:center;width:100%;margin-top:36px}
+.demo-frame-wrap iframe{
+  width:100%;max-width:420px;aspect-ratio:9/16;
+  border:0;border-radius:18px;
+  box-shadow:0 12px 36px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08);
+  display:block;margin:0 auto;
+  background:#0A0A0B;
+}
+@media(max-width:480px){.demo-frame-wrap iframe{max-width:100%}}
+
+/* 60-second quote calculator */
+.section-calc{background:var(--paper)}
+.calc-shell{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:36px;box-shadow:var(--shadow-md);
+  max-width:760px;margin:0 auto;
+}
+.calc-row{margin-bottom:24px}
+.calc-row label{display:block;font-size:.86rem;font-weight:600;color:var(--ink);margin-bottom:10px}
+.calc-slider-wrap{display:flex;align-items:center;gap:16px}
+.calc-slider-wrap input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:8px;background:linear-gradient(90deg,var(--brand-blue) 0%,var(--brand-rust) 100%);border-radius:4px;outline:none}
+.calc-slider-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;background:#fff;border:3px solid var(--brand-blue-deep);border-radius:50%;cursor:pointer;box-shadow:var(--shadow-md)}
+.calc-slider-wrap input[type=range]::-moz-range-thumb{width:24px;height:24px;background:#fff;border:3px solid var(--brand-blue-deep);border-radius:50%;cursor:pointer}
+.calc-slider-value{font-weight:700;color:var(--brand-blue-deep);min-width:120px;text-align:right;font-size:.95rem}
+.calc-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.calc-type{
+  padding:14px 12px;background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius-sm);cursor:pointer;
+  font-size:.86rem;font-weight:600;color:var(--text);
+  text-align:center;transition:all .2s;
+}
+.calc-type:hover{border-color:var(--brand-blue);color:var(--brand-blue-deep)}
+.calc-type.active{background:var(--brand-blue-ink);color:#fff;border-color:var(--brand-blue-ink)}
+.calc-zip{display:flex;gap:10px;align-items:center}
+.calc-zip input{flex:1;padding:14px 16px;border:1px solid var(--border2);border-radius:var(--radius-sm);font:inherit;font-size:1rem}
+.calc-zip input:focus{outline:0;border-color:var(--brand-blue)}
+.calc-quote{
+  margin-top:28px;padding:28px;
+  background:linear-gradient(135deg,var(--cream) 0%,#FFF3D6 100%);
+  border:1px solid var(--brand-sun);
+  border-radius:var(--radius);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.calc-quote-label{font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-blue-deep);margin-bottom:6px}
+.calc-quote-amt{font-size:2.6rem;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.calc-quote-sub{font-size:.82rem;color:var(--muted);margin-top:6px}
+.calc-consent{margin-top:16px;font-size:.78rem;color:var(--muted)}
+
+/* Services grid */
+.section-services{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.service-card{
+  padding:28px;background:var(--paper);border:1px solid var(--border);
+  border-radius:var(--radius);
+  transition:all .25s var(--ease);
+}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--brand-blue)}
+.service-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--brand-sun) 0%,var(--brand-sun-deep) 100%);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--ink);font-weight:900;font-size:1.4rem}
+.service-card h3{margin-bottom:8px}
+.service-card p{font-size:.95rem;color:var(--muted)}
+
+/* Before / after slider */
+.section-before-after{background:var(--paper)}
+.ba-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.ba-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-sm);
+}
+.ba-image{
+  height:200px;position:relative;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--brand-blue-ink) 0%,#3A4D60 100%);
+  color:rgba(255,255,255,.62);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+}
+.ba-image::before{
+  content:"BEFORE";position:absolute;top:14px;left:14px;
+  font-size:.7rem;font-weight:800;letter-spacing:.16em;
+  padding:5px 10px;background:rgba(0,0,0,.6);color:var(--brand-sun);border-radius:6px;
+}
+.ba-image-after::before{content:"AFTER";color:#22C55E}
+.ba-card-body{padding:20px 24px}
+.ba-card-body h3{font-size:1.05rem;margin-bottom:6px}
+.ba-card-body p{font-size:.88rem;color:var(--muted)}
+.ba-card-meta{display:flex;gap:14px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted)}
+.ba-card-meta strong{color:var(--ink);font-weight:700}
+
+/* Dispatch map mockup */
+.section-dispatch{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.dispatch-shell{
+  position:relative;height:420px;
+  background:linear-gradient(145deg,#0F2A40 0%,#1B3F5C 100%);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.dispatch-grid{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(26,163,221,.08) 1px,transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg,rgba(26,163,221,.08) 1px,transparent 1px) 0 0 / 40px 40px;
+}
+.dispatch-route{
+  position:absolute;height:2px;
+  background:linear-gradient(90deg,var(--brand-sun) 0%,rgba(255,201,60,0) 100%);
+  transform-origin:left center;
+}
+.dispatch-route-1{top:25%;left:18%;width:30%;transform:rotate(15deg)}
+.dispatch-route-2{top:60%;left:30%;width:35%;transform:rotate(-20deg)}
+.dispatch-route-3{top:42%;left:55%;width:28%;transform:rotate(8deg)}
+.dispatch-city{
+  position:absolute;color:rgba(255,255,255,.7);font-size:.74rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  text-shadow:0 1px 4px rgba(0,0,0,.5);
+}
+.dispatch-truck{
+  position:absolute;width:32px;height:32px;
+  background:var(--brand-sun);border:3px solid var(--brand-blue-ink);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(255,201,60,.5);
+  font-size:1rem;
+}
+.dispatch-truck-1{top:24%;left:22%;animation:trundle1 12s linear infinite}
+.dispatch-truck-2{top:62%;left:32%;animation:trundle2 14s linear infinite}
+.dispatch-truck-3{top:40%;left:60%;animation:trundle3 10s linear infinite}
+@keyframes trundle1{0%{transform:translate(0,0)}50%{transform:translate(120px,-30px)}100%{transform:translate(0,0)}}
+@keyframes trundle2{0%{transform:translate(0,0)}50%{transform:translate(140px,-60px)}100%{transform:translate(0,0)}}
+@keyframes trundle3{0%{transform:translate(0,0)}50%{transform:translate(80px,40px)}100%{transform:translate(0,0)}}
+.dispatch-hud{
+  position:absolute;bottom:24px;left:24px;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);
+  padding:14px 20px;color:#fff;
+}
+.dispatch-hud-row{display:flex;align-items:center;gap:10px;font-size:.86rem;font-weight:600;margin-bottom:4px}
+.dispatch-hud-row:last-child{margin-bottom:0;font-size:.78rem;color:rgba(255,255,255,.7);font-weight:500}
+.dispatch-hud-dot{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulse 2s ease-in-out infinite}
+
+/* Competitor comparison table */
+.section-comp{background:var(--paper);border-bottom:1px solid var(--border)}
+.comp-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius);background:#fff}
+.comp-table{width:100%;border-collapse:collapse;min-width:680px;font-size:.92rem}
+.comp-table th,.comp-table td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--border)}
+.comp-table th{background:var(--cream);font-weight:700;color:var(--ink);font-size:.86rem;letter-spacing:.04em;position:sticky;top:0}
+.comp-table th:first-child,.comp-table td:first-child{text-align:left;font-weight:600;color:var(--ink)}
+.comp-table .col-rivven{background:linear-gradient(180deg,rgba(34,197,94,.08) 0%,rgba(34,197,94,.02) 100%);border-left:2px solid #22C55E;border-right:2px solid #22C55E}
+.comp-table th.col-rivven{color:#16A34A;font-weight:800}
+.comp-yes{color:#16A34A;font-weight:700}
+.comp-no{color:#DC2626;font-weight:600}
+.comp-meh{color:var(--muted)}
+
+/* Pricing transparency */
+.section-pricing{background:#fff}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1000px;margin:0 auto}
+.price-card{
+  background:var(--paper);border:1px solid var(--border);border-radius:var(--radius);
+  padding:28px 24px;text-align:center;
+  transition:all .25s var(--ease);
+}
+.price-card.feat{background:var(--brand-blue-ink);color:#fff;border-color:var(--brand-blue-ink);transform:scale(1.04);box-shadow:var(--shadow-lg)}
+.price-card.feat h3{color:#fff}
+.price-card.feat .price-amt{color:var(--brand-sun)}
+.price-card.feat .price-desc{color:#B6C5D2}
+.price-card.feat .price-tag{background:var(--brand-sun);color:var(--ink)}
+.price-tag{display:inline-block;padding:4px 10px;border-radius:6px;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--brand-blue);color:#fff;margin-bottom:14px}
+.price-amt{font-size:2rem;font-weight:800;color:var(--ink);line-height:1;margin:8px 0}
+.price-amt small{font-size:.96rem;font-weight:600;color:var(--muted)}
+.price-card.feat .price-amt small{color:#B6C5D2}
+.price-desc{font-size:.86rem;color:var(--muted);margin-top:6px;min-height:42px}
+
+/* GBP review wall */
+.section-reviews{background:var(--cream);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:28px}
+.review-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px;box-shadow:var(--shadow-sm);
+}
+.review-stars{display:flex;gap:2px;margin-bottom:10px}
+.review-stars svg{width:14px;height:14px;fill:var(--brand-sun)}
+.review-body{font-size:.92rem;color:var(--text);margin-bottom:14px;font-style:italic}
+.review-author{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--muted)}
+.review-author strong{color:var(--ink);font-weight:600}
+.review-source{margin-left:auto;padding:3px 8px;background:var(--paper);border:1px solid var(--border);border-radius:6px;font-size:.7rem;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.review-note{text-align:center;font-size:.86rem;color:var(--muted);font-style:italic;max-width:560px;margin:0 auto}
+
+/* FAQ */
+.section-faq{background:#fff}
+.faq-grid{max-width:760px;margin:0 auto}
+.faq-item{
+  border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;
+  background:var(--paper);margin-bottom:12px;
+}
+.faq-item h3{font-size:1.02rem;margin-bottom:6px;color:var(--ink)}
+.faq-item p{font-size:.92rem;color:var(--muted)}
+
+/* Off-ramp */
+.section-offramp{background:var(--paper);padding:48px 0;text-align:center}
+.offramp-text{max-width:640px;margin:0 auto;font-size:.96rem;color:var(--muted);font-style:italic}
+.offramp-text strong{color:var(--ink);font-weight:600;font-style:normal}
+
+/* Footer */
+.footer{background:var(--brand-blue-ink);color:#B6C5D2;padding:48px 0 32px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px;margin-bottom:36px}
+.footer h4{color:#fff;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.footer a{color:#B6C5D2;font-size:.9rem;line-height:1.9;display:block}
+.footer a:hover{color:var(--brand-sun)}
+.footer-bottom{padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:.78rem;color:#8095A8;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.footer-rivven{font-size:.78rem;color:#8095A8}
+.footer-rivven a{display:inline;color:var(--brand-sun)}
+.footer-tcpa{font-size:.7rem;color:#5F7180;max-width:780px;margin:18px 0 0;line-height:1.6}
+
+/* Sticky mobile CTA */
+.sticky-mobile{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:#fff;border-top:1px solid var(--border);
+  padding:10px 16px;box-shadow:0 -6px 18px rgba(15,31,51,.1);
+}
+.sticky-mobile-inner{display:flex;gap:8px;align-items:center}
+.sticky-mobile a{flex:1;padding:14px 12px;text-align:center;border-radius:10px;font-size:.86rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px}
+.sticky-mobile .truck-mini{display:inline-block;font-size:1.1rem;animation:trundle-mini 4s ease-in-out infinite}
+@keyframes trundle-mini{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+@media(max-width:720px){
+  .sticky-mobile{display:block}
+  body{padding-bottom:72px}
+}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* Mobile tweaks */
+@media(max-width:560px){
+  section{padding:60px 0}
+  .calc-shell{padding:24px}
+  .calc-quote-amt{font-size:2rem}
+  .hero{padding:60px 0 50px}
+  .hero-visual{height:280px}
+  .dispatch-shell{height:340px}
+  .nav-cta .btn-secondary{display:none}
+}
+</style>
+
+<script src="/sms-consent.js" defer></script>
+</head>
+<body>
+
+<div class="trust-strip">
+  <span>From the team behind <strong>Shine &amp; Smile Cleaning</strong> · Family-owned · Orange County</span>
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <div class="brand-mark">S</div>
+      <div>
+        HAULING_BIZ_NAME
+        <span class="brand-sub">OC Hauling · AI-Powered</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#demo">Hear It Live</a></li>
+      <li><a href="#calculator">Quote</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#area">Area</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:+17147204915" class="btn btn-secondary">(714) 720-4915</a>
+      <a href="#calculator" class="btn btn-primary">Quote in 60 sec</a>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-content reveal">
+        <span class="hero-eyebrow">Walkthrough preview · Marcelina</span>
+        <h1>
+          You're already doing junk removal.<br>
+          <span class="accent">Let's give it</span> <span class="blue">its own brand.</span>
+        </h1>
+        <p class="hero-sub">
+          The cleaning side already advertises clean-outs and junk removal. The hauling side deserves its own site, its own AI receptionist, and its own dispatch — so Shine &amp; Smile Cleaning stays clean, and the hauling brand builds its own moat in OC.
+        </p>
+        <p class="hero-anchor">
+          Same five-star trust your cleaning customers already know. New brand. New revenue line. Built in 14 days.
+        </p>
+        <div class="hero-actions">
+          <a href="#demo" class="btn btn-primary btn-lg">Hear It Live <span aria-hidden="true">→</span></a>
+          <a href="#calculator" class="btn btn-secondary btn-lg">Show me the quote tool</a>
+        </div>
+        <p class="hero-permission">
+          <strong>60 seconds, then we'll know if it's a fit.</strong> Not the right time? All good — close the tab, the cleaning side keeps running fine.
+        </p>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="truck">
+          <svg class="truck-svg" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="40" width="120" height="60" rx="6" fill="#FFC93C"/>
+            <rect x="130" y="55" width="70" height="45" rx="6" fill="#0F1F33"/>
+            <rect x="140" y="62" width="22" height="22" rx="2" fill="#1AA3DD"/>
+            <text x="55" y="80" font-family="system-ui,sans-serif" font-weight="900" font-size="22" fill="#0F1F33" text-anchor="middle">HAUL</text>
+            <circle cx="50" cy="105" r="14" fill="#1B2E3E"/>
+            <circle cx="50" cy="105" r="6" fill="#5F7180"/>
+            <circle cx="170" cy="105" r="14" fill="#1B2E3E"/>
+            <circle cx="170" cy="105" r="6" fill="#5F7180"/>
+          </svg>
+        </div>
+        <div class="hero-stat hero-stat-1"><span class="hero-stat-num">60s</span><span>quote<br>turnaround</span></div>
+        <div class="hero-stat hero-stat-2"><span class="hero-stat-num">24/7</span><span>AI catches<br>every call</span></div>
+        <span class="hero-pin hero-pin-1"></span>
+        <span class="hero-pin hero-pin-2"></span>
+        <span class="hero-pin hero-pin-3"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-banner">
+  <div class="wrap">
+    <div class="trust-banner-inner">
+      <div class="trust-banner-stars" aria-label="Five stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="trust-banner-text">Backed by the five-star reputation of <em>Shine &amp; Smile Cleaning</em> · Serving Orange County</p>
+      <span class="trust-banner-tag">Same family · Same standards · New brand</span>
+    </div>
+  </div>
+</section>
+
+<!-- AI RECEPTIONIST DEMO (per spin-prospect-page lock 2026-05-08) -->
+<section id="demo" class="section-demo" aria-label="Live AI receptionist demo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="empathy-line">Hauling shops lose 60% of weekend calls. AI catches them at 2am.</p>
+      <span class="label">Hear it live · 30 seconds</span>
+      <h2>This is the receptionist that picks up when you're on the truck.</h2>
+      <p>Real receptionist. Real call. Listen 30 sec. Same voice will answer for HAULING_BIZ_NAME, trained on your services, your pricing, your area.</p>
+    </div>
+    <div class="demo-frame-wrap reveal">
+      <iframe
+        src="https://rivven.ai/demos/construction-invoicing/"
+        loading="lazy"
+        title="Live AI receptionist demo"
+        allow="microphone"
+        referrerpolicy="strict-origin-when-cross-origin"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- 60-SECOND QUOTE CALCULATOR -->
+<section id="calculator" class="section-calc">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">60-Second Quote · No Phone Tag</span>
+      <h2>Most OC haulers take 24 hours to quote. Yours quotes in 60 seconds.</h2>
+      <p>Slide. Pick. See your price. National competitors hide behind "call for quote" — we publish ours and beat their speed by 24 hours.</p>
+    </div>
+
+    <div class="calc-shell reveal">
+      <div class="calc-row">
+        <label for="calc-volume">Volume <span id="calc-vol-label" class="muted">— Quarter truck</span></label>
+        <div class="calc-slider-wrap">
+          <input type="range" id="calc-volume" min="1" max="4" value="2" step="1" aria-label="Truck volume">
+          <span class="calc-slider-value" id="calc-vol-value">Quarter truck</span>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label>Junk type</label>
+        <div class="calc-types" role="radiogroup" aria-label="Junk type">
+          <button class="calc-type active" data-type="household" data-multiplier="1.0" role="radio" aria-checked="true">Household</button>
+          <button class="calc-type" data-type="construction" data-multiplier="1.18" role="radio" aria-checked="false">Construction debris</button>
+          <button class="calc-type" data-type="yard" data-multiplier="0.92" role="radio" aria-checked="false">Yard waste</button>
+          <button class="calc-type" data-type="appliances" data-multiplier="1.12" role="radio" aria-checked="false">Appliances</button>
+          <button class="calc-type" data-type="estate" data-multiplier="1.08" role="radio" aria-checked="false">Estate clearout</button>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label for="calc-zip">OC zip code</label>
+        <div class="calc-zip">
+          <input type="text" id="calc-zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="92614" aria-label="Zip code">
+        </div>
+      </div>
+
+      <div class="calc-quote">
+        <div>
+          <div class="calc-quote-label">Your quote</div>
+          <div class="calc-quote-amt">$<span id="calc-quote-amt">149</span></div>
+          <div class="calc-quote-sub" id="calc-quote-sub">Quarter truck · Household junk · OC base rate</div>
+        </div>
+        <a href="#demo" class="btn btn-rust btn-lg" data-requires-consent>Book this haul →</a>
+      </div>
+
+      <div data-rivven-consent></div>
+
+      <p class="calc-consent">
+        Prices are estimates for OC service area. Final price set on call confirmation. Same-day pickup available in Anaheim · Santa Ana · Irvine · Huntington Beach · Costa Mesa · Fullerton.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">What we haul</span>
+      <h2>Continuation of the services your cleaning side already runs.</h2>
+      <p>The clean-outs you already do on the cleaning side — now with their own brand, their own AI, their own dispatch.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">⌂</div>
+        <h3>Garage &amp; estate clearouts</h3>
+        <p>The full-house clean-outs you already run on the cleaning side. Same standards. Now with a truck and a brand of its own.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">⚙</div>
+        <h3>Construction debris</h3>
+        <p>Post-remodel debris, drywall, tile, lumber. Pulls right after the construction-cleaning customer is done. Cross-sell engine, not a side hustle.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">⬡</div>
+        <h3>Yard waste &amp; bulk pickup</h3>
+        <p>Branches, palm fronds, furniture, appliances. The pickups OC neighbors call about and most haulers won't show for under $300. We will.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="section-before-after">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Real jobs · OC</span>
+      <h2>The clean-outs your cleaning customers already trust you with — now branded right.</h2>
+      <p>Stock photos for launch. Real photos from your jobs replace these in week 2.</p>
+    </div>
+
+    <div class="ba-grid">
+      <div class="ba-card reveal">
+        <div class="ba-image">Garage before</div>
+        <div class="ba-card-body">
+          <h3>Garage clean-out · Anaheim</h3>
+          <p>Two-car garage, 12 years of stuff. Half truck. Same-day pickup.</p>
+          <div class="ba-card-meta">
+            <span><strong>Volume:</strong> ½ truck</span>
+            <span><strong>Time:</strong> 2.5 hrs</span>
+            <span><strong>Price:</strong> $249</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ba-card reveal">
+        <div class="ba-image ba-image-after">Yard after</div>
+        <div class="ba-card-body">
+          <h3>Yard waste · Irvine</h3>
+          <p>Storm debris, palm fronds, fence panels. Quarter truck. Same-day pickup.</p>
+          <div class="ba-card-meta">
+            <span><strong>Volume:</strong> ¼ truck</span>
+            <span><strong>Time:</strong> 90 min</span>
+            <span><strong>Price:</strong> $149</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ba-card reveal">
+        <div class="ba-image">Estate before</div>
+        <div class="ba-card-body">
+          <h3>Estate clearout · Huntington Beach</h3>
+          <p>3-bedroom estate, full clearout. Full truck. Family-handled with care.</p>
+          <div class="ba-card-meta">
+            <span><strong>Volume:</strong> full truck</span>
+            <span><strong>Time:</strong> 6 hrs</span>
+            <span><strong>Price:</strong> $449</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISPATCH MAP MOCKUP -->
+<section id="area" class="section-dispatch">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Live dispatch · OC</span>
+      <h2>3 trucks in service. Avg response: 47 min.</h2>
+      <p>Anaheim → Santa Ana → Irvine → Huntington Beach → Costa Mesa → Fullerton. Same-day pickup across the OC corridor.</p>
+    </div>
+
+    <div class="dispatch-shell reveal">
+      <div class="dispatch-grid"></div>
+
+      <span class="dispatch-route dispatch-route-1"></span>
+      <span class="dispatch-route dispatch-route-2"></span>
+      <span class="dispatch-route dispatch-route-3"></span>
+
+      <div class="dispatch-city" style="top:18%;left:18%">Anaheim</div>
+      <div class="dispatch-city" style="top:34%;left:42%">Santa Ana</div>
+      <div class="dispatch-city" style="top:48%;left:62%">Irvine</div>
+      <div class="dispatch-city" style="top:64%;left:38%">Huntington Beach</div>
+      <div class="dispatch-city" style="top:58%;left:74%">Costa Mesa</div>
+      <div class="dispatch-city" style="top:22%;left:62%">Fullerton</div>
+
+      <div class="dispatch-truck dispatch-truck-1" aria-label="Truck 1">🛻</div>
+      <div class="dispatch-truck dispatch-truck-2" aria-label="Truck 2">🛻</div>
+      <div class="dispatch-truck dispatch-truck-3" aria-label="Truck 3">🛻</div>
+
+      <div class="dispatch-hud">
+        <div class="dispatch-hud-row"><span class="dispatch-hud-dot"></span> 3 trucks in service</div>
+        <div class="dispatch-hud-row">Avg response · 47 min</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITOR COMPARISON -->
+<section class="section-comp">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Why families pick local + AI</span>
+      <h2>National chains have call centers. We have a family and an AI receptionist.</h2>
+      <p>Same speed as the chains. Local trust they can't replicate. Published prices instead of "call for quote."</p>
+    </div>
+
+    <div class="comp-table-wrap reveal">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>1-800-GOT-JUNK</th>
+            <th>Junk King</th>
+            <th>College Hunks</th>
+            <th class="col-rivven">HAULING_BIZ_NAME</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Quote turnaround</td>
+            <td class="comp-meh">24 hrs</td>
+            <td class="comp-meh">24 hrs</td>
+            <td class="comp-meh">12 hrs</td>
+            <td class="col-rivven comp-yes">60 seconds</td>
+          </tr>
+          <tr>
+            <td>Online booking</td>
+            <td class="comp-no">No</td>
+            <td class="comp-no">No</td>
+            <td class="comp-yes">Yes</td>
+            <td class="col-rivven comp-yes">Yes</td>
+          </tr>
+          <tr>
+            <td>AI receptionist 24/7</td>
+            <td class="comp-no">No</td>
+            <td class="comp-no">No</td>
+            <td class="comp-no">No</td>
+            <td class="col-rivven comp-yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Same-day pickup</td>
+            <td class="comp-meh">Sometimes</td>
+            <td class="comp-meh">Sometimes</td>
+            <td class="comp-yes">Yes</td>
+            <td class="col-rivven comp-yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Local + family-run</td>
+            <td class="comp-no">No</td>
+            <td class="comp-no">No</td>
+            <td class="comp-no">No</td>
+            <td class="col-rivven comp-yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Published pricing</td>
+            <td class="comp-no">No</td>
+            <td class="comp-no">No</td>
+            <td class="comp-meh">Some</td>
+            <td class="col-rivven comp-yes">Yes</td>
+          </tr>
+          <tr>
+            <td>Five-star sister brand trust</td>
+            <td class="comp-no">No</td>
+            <td class="comp-no">No</td>
+            <td class="comp-no">No</td>
+            <td class="col-rivven comp-yes">Shine &amp; Smile</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TRANSPARENCY -->
+<section id="pricing" class="section-pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Published pricing · OC base rates</span>
+      <h2>What it costs. Stated up front.</h2>
+      <p>National chains hide pricing because they charge 30–50% more. We don't.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-tag">Single item</div>
+        <div class="price-amt">$79<small></small></div>
+        <p class="price-desc">One couch, fridge, mattress, or single bulk item.</p>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-tag">Quarter truck</div>
+        <div class="price-amt">$149</div>
+        <p class="price-desc">Garage corner, small clean-out, yard pile.</p>
+      </div>
+      <div class="price-card feat reveal">
+        <div class="price-tag">Half truck · Most popular</div>
+        <div class="price-amt">$249</div>
+        <p class="price-desc">Full garage clean-out, post-remodel debris, big estate room.</p>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-tag">Full truck</div>
+        <div class="price-amt">$449</div>
+        <p class="price-desc">Estate clearout, full-house clean-out, large construction haul.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GBP REVIEW WALL -->
+<section class="section-reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Reviews · Transferring from cleaning side</span>
+      <h2>What OC neighbors already say about your team.</h2>
+      <p>These are reviews of Shine &amp; Smile Cleaning. The hauling brand inherits the trust. Real reviews from real OC customers.</p>
+    </div>
+
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <div class="review-stars" aria-label="5 stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-body">"Marcelina and her team have been cleaning our home for two years. Showed up early, did the move-out clean spotless, even hauled the broken bed frame out. They go above and beyond every single time."</p>
+        <div class="review-author"><strong>Verified · Cleaning customer</strong> <span class="review-source">GBP</span></div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars" aria-label="5 stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-body">"Post-construction clean was incredible. Took the debris too. Honest, on-time, respectful. We use them for every flip we finish in OC now."</p>
+        <div class="review-author"><strong>Verified · Construction customer</strong> <span class="review-source">GBP</span></div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars" aria-label="5 stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-body">"Estate clearout for my mom's place. Treated her things with respect. Same family, every time. That matters when it's your mom's house."</p>
+        <div class="review-author"><strong>Verified · Estate clearout</strong> <span class="review-source">GBP</span></div>
+      </div>
+    </div>
+
+    <p class="review-note">Five-star reputation transferring from our cleaning side. Real reviews from real OC customers. Hauling-specific reviews start collecting on day one of launch.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Common questions</span>
+      <h2>What OC neighbors ask before they book.</h2>
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <h3>What can you haul?</h3>
+        <p>Furniture, appliances, yard waste, construction debris, estate clearouts, bulk household items. No hazardous materials or chemical waste — same policy as the cleaning side.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>How fast can you come?</h3>
+        <p>Same-day in most OC zip codes. Schedule online with the 60-second quote, or call (714) 720-4915 and the AI receptionist books you in real time.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Is this the same team as Shine &amp; Smile Cleaning?</h3>
+        <p>Same family. Same five-star standards. New brand because cleaning customers and hauling customers shop differently — and the hauling side deserves its own moat.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Do you donate or recycle items?</h3>
+        <p>Yes. Reusable items go to local OC charities. Metals, electronics, and yard waste get recycled. Itemized donation receipts available on request.</p>
+      </div>
+      <div class="faq-item reveal">
+        <h3>Why is pricing published?</h3>
+        <p>Because hiding prices behind "call for quote" is how national chains charge 30–50% more. We publish ours up front and beat their speed by 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFF-RAMP -->
+<section class="section-offramp">
+  <div class="wrap">
+    <p class="offramp-text">
+      <strong>Not for everyone.</strong> If the hauling side is something you'd rather not stand up as its own brand, all good — close the tab, the cleaning side keeps running fine. We're here when you're ready.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px">
+          <div class="brand-mark">S</div>
+          <div style="color:#fff">HAULING_BIZ_NAME<span class="brand-sub" style="color:#8095A8">OC Hauling · AI-Powered</span></div>
+        </div>
+        <p style="font-size:.86rem;line-height:1.7">A walkthrough preview for the team behind <strong style="color:var(--brand-sun)">Shine &amp; Smile Cleaning</strong>. Same family. New brand. Built by RIVVEN.</p>
+      </div>
+      <div>
+        <h4>Service area</h4>
+        <a>Anaheim</a>
+        <a>Santa Ana</a>
+        <a>Irvine</a>
+        <a>Huntington Beach</a>
+        <a>Costa Mesa</a>
+        <a>Fullerton</a>
+      </div>
+      <div>
+        <h4>Reach us</h4>
+        <a href="tel:+17147204915">(714) 720-4915</a>
+        <a href="#calculator">60-second quote</a>
+        <a href="#demo">Hear AI receptionist</a>
+        <a href="https://shinesmilecleaning.com/" rel="noopener">Cleaning side →</a>
+      </div>
+      <div>
+        <h4>Languages</h4>
+        <a>English</a>
+        <a>Español</a>
+        <h4 style="margin-top:24px">Compliance</h4>
+        <a href="#faq">FAQ</a>
+        <a>Privacy on request</a>
+      </div>
+    </div>
+
+    <p class="footer-tcpa">
+      <strong style="color:#B6C5D2">SMS &amp; calls:</strong> By tapping "Book this haul" or submitting your phone, you agree to receive booking confirmations and pickup updates from HAULING_BIZ_NAME at the number provided. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Consent not required as a condition of service.
+    </p>
+
+    <div class="footer-bottom">
+      <span>© <span id="yr">2026</span> HAULING_BIZ_NAME · Sister brand of Shine &amp; Smile Cleaning LLC · Orange County, CA</span>
+      <span class="footer-rivven">Powered by <a href="https://rivven.ai/" rel="noopener">RIVVEN</a> · Human powered. AI enabled.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-mobile">
+  <div class="sticky-mobile-inner">
+    <a href="tel:+17147204915" class="btn-secondary" style="border:1px solid var(--border2)"><span class="truck-mini">🛻</span> Call</a>
+    <a href="#calculator" class="btn-primary" style="background:var(--brand-sun);color:var(--ink)">Quote in 60 sec →</a>
+  </div>
+</div>
+
+<script>
+// Reveal on scroll
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+
+// Nav scrolled state
+(function(){
+  var nav = document.getElementById('nav');
+  if(!nav) return;
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 12) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }, {passive:true});
+})();
+
+// Quote calculator
+(function(){
+  var volSlider = document.getElementById('calc-volume');
+  var volLabel = document.getElementById('calc-vol-label');
+  var volValue = document.getElementById('calc-vol-value');
+  var zip = document.getElementById('calc-zip');
+  var amt = document.getElementById('calc-quote-amt');
+  var sub = document.getElementById('calc-quote-sub');
+  var typeBtns = document.querySelectorAll('.calc-type');
+  if(!volSlider) return;
+
+  var basePrices = {1: 79, 2: 149, 3: 249, 4: 449};
+  var volLabels = {1: 'Single item', 2: 'Quarter truck', 3: 'Half truck', 4: 'Full truck'};
+  var currentMult = 1.0;
+  var currentTypeLabel = 'Household junk';
+
+  function recalc(){
+    var vol = parseInt(volSlider.value, 10) || 2;
+    var base = basePrices[vol];
+    var price = Math.round((base * currentMult) / 5) * 5;
+    amt.textContent = price;
+    volLabel.textContent = '— ' + volLabels[vol];
+    volValue.textContent = volLabels[vol];
+    var zipPart = (zip.value && /^\d{5}$/.test(zip.value)) ? (' · ' + zip.value) : '';
+    sub.textContent = volLabels[vol] + ' · ' + currentTypeLabel + ' · OC base rate' + zipPart;
+  }
+
+  volSlider.addEventListener('input', recalc);
+  zip.addEventListener('input', function(){
+    zip.value = zip.value.replace(/\D/g,'').slice(0,5);
+    recalc();
+  });
+
+  typeBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      typeBtns.forEach(function(b){
+        b.classList.remove('active');
+        b.setAttribute('aria-checked','false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-checked','true');
+      currentMult = parseFloat(btn.dataset.multiplier) || 1.0;
+      currentTypeLabel = btn.textContent.trim();
+      recalc();
+    });
+  });
+
+  recalc();
+})();
+
+// Footer year
+(function(){
+  var y = document.getElementById('yr');
+  if(y) y.textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
